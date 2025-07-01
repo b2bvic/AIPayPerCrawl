@@ -7,12 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static --project-name aipaypercrawl",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@algolia/autocomplete-core": "^1.7.3",
+    "@cloudflare/next-on-pages": "^1.13.12",
     "@headlessui/react": "^2.2.2",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -54,6 +58,7 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.6.3",
+    "wrangler": "^3.114.10",
     "zod": "^3.23.8",
     "zustand": "^4.3.2"
   },
