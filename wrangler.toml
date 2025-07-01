@@ -1,5 +1,6 @@
 name = "aipaypercrawl"
 compatibility_date = "2024-01-01"
+main = "workers-site/index.js"
 
 # Cloudflare Pages configuration
 [site]
@@ -9,12 +10,12 @@ bucket = "./out"
 [[d1_databases]]
 binding = "DB"
 database_name = "aipaypercrawl-db"
-database_id = "your-database-id-here"
+database_id = "a0d4709d-f2be-4330-981d-0735e1ceaff7"
 
 # KV Namespace for caching
 [[kv_namespaces]]
 binding = "CACHE"
-id = "your-kv-namespace-id-here"
+id = "6ec34c4721d34e07adca0d9b0e138e9e"
 
 # Environment variables
 [vars]
@@ -22,7 +23,4 @@ NEXT_PUBLIC_APP_URL = "https://aipaypercrawl.com"
 
 # Build configuration
 [build]
-command = "npm run build"
-
-[build.upload]
-format = "service-worker" 
+command = "npm run build" 

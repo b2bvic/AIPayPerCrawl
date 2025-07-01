@@ -57,6 +57,6 @@ export const Button = forwardRef<
   return typeof props.href === 'undefined' ? (
     <button ref={ref} className={className} {...props} />
   ) : (
-    <Link ref={ref} className={className} {...props} />
+    <Link className={className} {...props} />
   )
 }) 
