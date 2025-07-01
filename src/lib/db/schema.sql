@@ -34,15 +34,20 @@ CREATE TABLE IF NOT EXISTS publishers (
 -- Crawl Requests table
 CREATE TABLE IF NOT EXISTS crawl_requests (
   id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
-  domain_id TEXT NOT NULL,
-  url TEXT NOT NULL,
-  requester_id TEXT,
-  price REAL NOT NULL,
+  quote_id TEXT NOT NULL,
+  stripe_session_id TEXT,
+  stripe_payment_intent_id TEXT,
+  status TEXT DEFAULT 'pending', -- pending, processing, completed, failed, expired
+  payment_status TEXT DEFAULT 'pending', -- pending, paid, failed, expired
+  total_cost REAL NOT NULL,
   currency TEXT DEFAULT 'USD',
-  status TEXT DEFAULT 'pending', -- pending, completed, failed
-  response_time_ms INTEGER,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (domain_id) REFERENCES domains(id)
+  started_at TIMESTAMP,
+  completed_at TIMESTAMP,
+  updated_at TIMESTAMP,
+  error_message TEXT,
+  results TEXT, -- JSON array of crawl results
+  FOREIGN KEY (quote_id) REFERENCES quotes(quote_id)
 );
 
 -- Quotes table

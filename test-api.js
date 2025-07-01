@@ -135,6 +135,43 @@ async function testCrawlStatus(crawlId) {
   return response.ok;
 }
 
+async function testCheckout() {
+  console.log('\n💳 Testing Checkout API...');
+  
+  // First get a quote
+  const quoteResponse = await apiCall('/quote', 'POST', {
+    urls: testUrls.slice(0, 2) // Use first 2 URLs for testing
+  });
+  
+  if (!quoteResponse.ok) {
+    console.log('❌ Checkout test failed - Could not create quote:', quoteResponse.data?.error || quoteResponse.error);
+    return false;
+  }
+  
+  const quoteId = quoteResponse.data.quoteId;
+  console.log(`   Created quote: ${quoteId}`);
+  
+  // Test creating checkout session (will fail without Stripe keys, but should return proper error)
+  const checkoutResponse = await apiCall('/checkout', 'POST', {
+    quoteId,
+    returnUrl: 'https://example.com/success',
+    cancelUrl: 'https://example.com/cancel'
+  });
+  
+  if (checkoutResponse.ok) {
+    console.log(`✅ Checkout session created - Session ID: ${checkoutResponse.data.sessionId}`);
+    console.log(`   Checkout URL: ${checkoutResponse.data.checkoutUrl}`);
+    console.log(`   Total amount: ${checkoutResponse.data.totalAmount} ${checkoutResponse.data.currency}`);
+    return true;
+  } else if (checkoutResponse.status === 503 && checkoutResponse.data?.error === 'Payment processing not configured') {
+    console.log('⚠️  Checkout API working but Stripe not configured (expected for testing)');
+    return true;
+  } else {
+    console.log('❌ Checkout failed:', checkoutResponse.data?.error || checkoutResponse.error);
+    return false;
+  }
+}
+
 async function testAnalytics() {
   console.log('\n📈 Testing Analytics API...');
   
@@ -176,6 +213,7 @@ async function runTests() {
   const results = {
     domains: await testDomains(),
     quote: null,
+    checkout: await testCheckout(),
     crawl: false,
     analytics: await testAnalytics()
   };
