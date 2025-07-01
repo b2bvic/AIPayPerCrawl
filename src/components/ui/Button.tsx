@@ -20,6 +20,7 @@ const variantStyles = {
   outline: {
     slate:
       'border-slate-300 text-slate-700 hover:border-slate-400 active:bg-slate-100 active:text-slate-700/80 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-600 dark:active:bg-slate-800 dark:active:text-slate-400',
+    blue: 'border-blue-300 text-blue-700 hover:border-blue-400 active:bg-blue-100 active:text-blue-700/80 dark:border-blue-700 dark:text-blue-400 dark:hover:border-blue-600 dark:active:bg-blue-800 dark:active:text-blue-400',
     white:
       'border-slate-300 text-white hover:border-slate-400 active:bg-slate-100 active:text-slate-700/80',
   },

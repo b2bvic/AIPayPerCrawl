@@ -1,15 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
+import crypto from 'crypto'
 
-const quoteSchema = z.object({
+// Mock domain pricing data - in production this would come from the database
+const domainPricing: Record<string, { pricePerRequest: number; currency: string }> = {
+  'example.com': { pricePerRequest: 0.001, currency: 'USD' },
+  'news-site.com': { pricePerRequest: 0.002, currency: 'USD' },
+  'ecommerce-store.com': { pricePerRequest: 0.0015, currency: 'USD' },
+}
+
+const quoteRequestSchema = z.object({
   urls: z.array(z.string().url()).min(1).max(1000),
+  callbackUrl: z.string().url().optional(),
+  metadata: z.record(z.any()).optional(),
 })
 
-// Mock domain pricing - will be replaced with database queries
-const domainPricing = {
-  'example.com': 0.001,
-  'news-site.com': 0.002,
-  'ecommerce-store.com': 0.0015,
+interface QuoteItem {
+  url: string
+  domain: string
+  pricePerRequest: number
+  currency: string
+  available: boolean
+  error?: string
+}
+
+interface QuoteResponse {
+  quoteId: string
+  totalCost: number
+  currency: string
+  items: QuoteItem[]
+  expiresAt: string
+  createdAt: string
+  paymentUrl?: string
 }
 
 function extractDomain(url: string): string {
@@ -20,133 +42,133 @@ function extractDomain(url: string): string {
   }
 }
 
-function calculateBulkDiscount(urlCount: number): number {
-  if (urlCount >= 10000) return 0.2 // 20% discount
-  if (urlCount >= 1000) return 0.15 // 15% discount
-  if (urlCount >= 100) return 0.1 // 10% discount
-  if (urlCount >= 10) return 0.05 // 5% discount
-  return 0 // No discount
+function generateQuoteId(): string {
+  return `quote_${crypto.randomBytes(16).toString('hex')}`
+}
+
+function generateSignedToken(url: string, quoteId: string): string {
+  // In production, this would be properly signed with a secret key
+  const payload = {
+    url,
+    quoteId,
+    timestamp: Date.now(),
+  }
+  return Buffer.from(JSON.stringify(payload)).toString('base64')
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { urls } = quoteSchema.parse(body)
+    const { urls, callbackUrl, metadata } = quoteRequestSchema.parse(body)
 
-    // Group URLs by domain
-    const urlsByDomain: Record<string, string[]> = {}
-    const unsupportedDomains: string[] = []
+    const quoteId = generateQuoteId()
+    const items: QuoteItem[] = []
+    let totalCost = 0
 
+    // Process each URL
     for (const url of urls) {
-      const domain = extractDomain(url)
-      
-      if (!(domain in domainPricing)) {
-        if (!unsupportedDomains.includes(domain)) {
-          unsupportedDomains.push(domain)
+      try {
+        const domain = extractDomain(url)
+        const pricing = domainPricing[domain]
+
+        if (!pricing) {
+          items.push({
+            url,
+            domain,
+            pricePerRequest: 0,
+            currency: 'USD',
+            available: false,
+            error: 'Domain not found in Pay Per Crawl directory'
+          })
+          continue
         }
-        continue
-      }
 
-      if (!urlsByDomain[domain]) {
-        urlsByDomain[domain] = []
+        items.push({
+          url,
+          domain,
+          pricePerRequest: pricing.pricePerRequest,
+          currency: pricing.currency,
+          available: true,
+        })
+
+        totalCost += pricing.pricePerRequest
+      } catch (error) {
+        items.push({
+          url,
+          domain: '',
+          pricePerRequest: 0,
+          currency: 'USD',
+          available: false,
+          error: error instanceof Error ? error.message : 'Invalid URL'
+        })
       }
-      urlsByDomain[domain].push(url)
     }
 
-    // Check if we have any supported URLs
-    const supportedUrls = Object.values(urlsByDomain).flat()
-    if (supportedUrls.length === 0) {
-      return NextResponse.json({
-        error: 'No supported domains found',
-        unsupportedDomains,
-        supportedDomains: Object.keys(domainPricing),
-      }, { status: 400 })
-    }
+    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() // 24 hours
+    const createdAt = new Date().toISOString()
 
-    // Calculate pricing breakdown
-    const breakdown = Object.entries(urlsByDomain).map(([domain, domainUrls]) => {
-      const pricePerRequest = domainPricing[domain as keyof typeof domainPricing]
-      const baseTotal = domainUrls.length * pricePerRequest
-      const discount = calculateBulkDiscount(domainUrls.length)
-      const discountAmount = baseTotal * discount
-      const totalCost = baseTotal - discountAmount
-
-      return {
-        domain,
-        urls: domainUrls,
-        urlCount: domainUrls.length,
-        pricePerRequest,
-        baseTotal,
-        discount: discount * 100, // Convert to percentage
-        discountAmount,
-        totalCost,
-      }
-    })
-
-    // Calculate overall totals
-    const totalUrls = supportedUrls.length
-    const baseTotal = breakdown.reduce((sum, item) => sum + item.baseTotal, 0)
-    const totalDiscountAmount = breakdown.reduce((sum, item) => sum + item.discountAmount, 0)
-    const totalCost = breakdown.reduce((sum, item) => sum + item.totalCost, 0)
-    const overallDiscount = totalUrls > 0 ? (totalDiscountAmount / baseTotal) * 100 : 0
-
-    // Generate quote
-    const quote = {
-      quoteId: `quote_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-      urls: supportedUrls,
-      totalUrls,
-      baseTotal: Math.round(baseTotal * 1000000) / 1000000, // Round to 6 decimal places
-      totalDiscountAmount: Math.round(totalDiscountAmount * 1000000) / 1000000,
-      totalCost: Math.round(totalCost * 1000000) / 1000000,
-      overallDiscount: Math.round(overallDiscount * 100) / 100,
+    const response: QuoteResponse = {
+      quoteId,
+      totalCost: Number(totalCost.toFixed(6)),
       currency: 'USD',
-      breakdown,
-      expiresAt: new Date(Date.now() + 15 * 60 * 1000).toISOString(), // 15 minutes
-      createdAt: new Date().toISOString(),
-      ...(unsupportedDomains.length > 0 && {
-        warnings: {
-          unsupportedDomains,
-          message: `${unsupportedDomains.length} domains are not supported and were excluded from the quote.`,
-        },
-      }),
+      items,
+      expiresAt,
+      createdAt,
     }
 
-    return NextResponse.json(quote)
+    // Add payment URL if there are available items
+    const availableItems = items.filter(item => item.available)
+    if (availableItems.length > 0 && totalCost > 0) {
+      response.paymentUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/checkout?quoteId=${quoteId}`
+    }
+
+    return NextResponse.json(response)
   } catch (error) {
     console.error('Error generating quote:', error)
     
     if (error instanceof z.ZodError) {
-      return NextResponse.json({
-        error: 'Invalid request data',
-        details: error.errors,
-      }, { status: 400 })
+      return NextResponse.json(
+        { 
+          error: 'Invalid request format',
+          details: error.errors 
+        },
+        { status: 400 }
+      )
     }
 
-    if (error instanceof Error && error.message.startsWith('Invalid URL:')) {
-      return NextResponse.json({
-        error: error.message,
-      }, { status: 400 })
-    }
-
-    return NextResponse.json({
-      error: 'Internal server error',
-    }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }
 
-// GET endpoint to retrieve quote by ID (for future implementation)
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
-  const quoteId = searchParams.get('id')
+  const quoteId = searchParams.get('quoteId')
 
   if (!quoteId) {
-    return NextResponse.json({
-      error: 'Quote ID is required',
-    }, { status: 400 })
+    return NextResponse.json(
+      { error: 'Quote ID is required' },
+      { status: 400 }
+    )
   }
 
-  // TODO: Implement quote retrieval from database/cache
+  // In production, retrieve from database
+  // For now, return a mock response
   return NextResponse.json({
-    error: 'Quote not found or expired',
+    error: 'Quote not found or expired'
   }, { status: 404 })
+}
+
+// OPTIONS for CORS
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  })
 } 
