@@ -34,14 +34,23 @@ else
     echo "✅ KV namespace already exists"
 fi
 
-# Step 5: Build the Next.js app
-echo "📋 Step 5: Building Next.js app..."
+# Step 5: Insert test data
+echo "📋 Step 5: Inserting test data (optional)..."
+read -p "Do you want to insert test domains? (y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    wrangler d1 execute aipaypercrawl-db --command="INSERT INTO domains (domain, rank, category, pay_per_crawl_enabled, price_per_request) VALUES ('example.com', 1000, 'Technology', true, 0.001), ('news-site.com', 5000, 'News', true, 0.002), ('ecommerce-store.com', 10000, 'E-commerce', true, 0.0015) ON CONFLICT(domain) DO NOTHING;"
+    echo "✅ Test data inserted!"
+fi
+
+# Step 6: Build the Next.js app
+echo "📋 Step 6: Building Next.js app..."
 npm run build
 echo "✅ Build complete!"
 
-# Step 6: Deploy to Cloudflare Pages
-echo "📋 Step 6: Deploying to Cloudflare Pages..."
-wrangler pages deploy .next/static --project-name=aipaypercrawl
+# Step 7: Deploy to Cloudflare Pages
+echo "📋 Step 7: Deploying to Cloudflare Pages..."
+wrangler pages deploy out --project-name=aipaypercrawl --compatibility-date=2024-01-01
 
 echo ""
 echo "🎉 Deployment complete!"
@@ -49,10 +58,15 @@ echo ""
 echo "📝 Next steps:"
 echo "1. Update the database_id in wrangler.toml with the actual D1 database ID"
 echo "2. Update the KV namespace ID in wrangler.toml"
-echo "3. Set up your custom domain in Cloudflare Pages dashboard"
-echo "4. Configure environment variables in Cloudflare Pages settings:"
-echo "   - NEXT_PUBLIC_APP_URL=https://aipaypercrawl.com"
-echo "   - CLOUDFLARE_API_TOKEN=your_token"
+echo "3. Test your APIs with: node test-api.js production"
+echo "4. View real-time logs: npx wrangler pages tail --project-name=aipaypercrawl"
+echo "5. Set up your custom domain in Cloudflare Pages dashboard"
+echo "6. Configure environment variables in Cloudflare Pages settings:"
+echo "   - NEXT_PUBLIC_APP_URL=https://your-domain.com"
+echo "   - API_KEY=your-secure-api-key"
 echo "   - STRIPE_SECRET_KEY=your_stripe_key (when ready)"
 echo ""
-echo "📚 Documentation: https://developers.cloudflare.com/pages/" 
+echo "📚 Documentation:"
+echo "   - API Setup Guide: ./API_SETUP_GUIDE.md"
+echo "   - Client Example: ./client-example.js"
+echo "   - Cloudflare Pages: https://developers.cloudflare.com/pages/" 

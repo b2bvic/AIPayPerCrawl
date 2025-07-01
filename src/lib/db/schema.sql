@@ -56,10 +56,26 @@ CREATE TABLE IF NOT EXISTS quotes (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Analytics Events table
+CREATE TABLE IF NOT EXISTS analytics_events (
+  id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+  event_type TEXT NOT NULL,
+  domain_id TEXT,
+  publisher_id TEXT,
+  request_id TEXT,
+  metadata TEXT, -- JSON data
+  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (domain_id) REFERENCES domains(id),
+  FOREIGN KEY (publisher_id) REFERENCES publishers(id),
+  FOREIGN KEY (request_id) REFERENCES crawl_requests(id)
+);
+
 -- Create indexes for performance
 CREATE INDEX idx_domains_rank ON domains(rank);
 CREATE INDEX idx_domains_owner ON domains(owner_id);
 CREATE INDEX idx_domains_status ON domains(claim_status);
 CREATE INDEX idx_requests_domain ON crawl_requests(domain_id);
 CREATE INDEX idx_requests_created ON crawl_requests(created_at);
-CREATE INDEX idx_quotes_quote_id ON quotes(quote_id); 
+CREATE INDEX idx_quotes_quote_id ON quotes(quote_id);
+CREATE INDEX idx_analytics_event_type ON analytics_events(event_type);
+CREATE INDEX idx_analytics_timestamp ON analytics_events(timestamp); 
