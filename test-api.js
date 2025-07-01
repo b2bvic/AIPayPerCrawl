@@ -9,7 +9,7 @@
 const environment = process.argv[2] || 'local';
 const BASE_URL = environment === 'local' 
   ? 'http://localhost:8788/api' 
-  : 'https://your-project.pages.dev/api'; // Update this with your actual URL
+  : 'https://62f72b2a.aipaypercrawl.pages.dev/api';
 
 const API_KEY = 'test-api-key-123'; // Replace with your actual API key
 

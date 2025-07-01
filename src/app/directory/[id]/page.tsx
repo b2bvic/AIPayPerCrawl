@@ -2,6 +2,17 @@ import React from 'react'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+
+// Generate static params for static export
+export async function generateStaticParams() {
+  // In production, this would fetch all domain IDs from your database
+  // For now, return a few example IDs
+  return [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+  ]
+}
 import { LogoWithText } from '@/components/Logo'
 import { Button } from '@/components/ui/Button'
 import { 

@@ -1,20 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  distDir: 'out',
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'localhost',
       },
     ],
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/api/docs',
-        destination: '/api-docs',
-      },
-    ];
   },
 };
 
