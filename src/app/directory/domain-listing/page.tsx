@@ -236,10 +236,10 @@ function DomainCard({ domain }: { domain: Domain }) {
             </button>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm">
+            <Button variant="outline">
               View Details
             </Button>
-            <Button size="sm">
+            <Button>
               Get Quote
             </Button>
           </div>
@@ -263,7 +263,7 @@ function FeaturedDomains({ domains }: { domains: Domain[] }) {
           <h2 className="text-2xl font-bold text-gray-900">Featured Domains</h2>
           <p className="text-gray-600 mt-1">Top verified domains with proven performance</p>
         </div>
-        <Button variant="outline" size="sm">
+        <Button variant="outline">
           View All Featured
         </Button>
       </div>
@@ -321,16 +321,20 @@ function Pagination({ pagination }: { pagination: DomainsResponse['pagination'] 
             {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
               const pageNum = i + 1
               const isCurrentPage = pageNum === pagination.page
-              return (
+              return isCurrentPage ? (
                 <Button
                   key={pageNum}
-                  variant={isCurrentPage ? "default" : "outline"}
-                  className={clsx(
-                    'relative inline-flex items-center px-4 py-2 text-sm font-semibold',
-                    isCurrentPage
-                      ? 'z-10 bg-blue-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'
-                      : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'
-                  )}
+                  variant="solid"
+                  color="blue"
+                  className="relative inline-flex items-center px-4 py-2 text-sm font-semibold z-10"
+                >
+                  {pageNum}
+                </Button>
+              ) : (
+                <Button
+                  key={pageNum}
+                  variant="outline"
+                  className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                 >
                   {pageNum}
                 </Button>
