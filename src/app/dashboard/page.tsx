@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { LogoWithText } from '@/components/Logo'
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/Button'
 import { 
   Globe, 
@@ -97,35 +98,7 @@ export default function PublisherDashboard() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      {/* Header */}
-      <header className="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/">
-              <LogoWithText />
-            </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/directory" className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors">
-                Directory
-              </Link>
-              <Link href="/api-docs" className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors">
-                API Docs
-              </Link>
-              <Link href="/learn" className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors">
-                Learn
-              </Link>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <div className="text-sm text-slate-600 dark:text-slate-300">
-                Welcome, {mockPublisher.name}
-              </div>
-              <Button variant="outline" href="/auth/signout">
-                Sign Out
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header user={{ name: mockPublisher.name, email: mockPublisher.email, isPublisher: true }} />
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Page Header */}
@@ -428,6 +401,8 @@ export default function PublisherDashboard() {
           </div>
         )}
       </div>
+
+      <Footer />
     </div>
   )
 } 

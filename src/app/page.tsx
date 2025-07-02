@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { LogoWithText } from '@/components/Logo'
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/Button'
 import { 
   Search, 
@@ -39,32 +40,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-      {/* Header */}
-      <header className="relative z-50 flex items-center justify-between px-6 py-4 lg:px-8">
-        <LogoWithText />
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/directory" className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors">
-            Directory
-          </Link>
-          <Link href="/api-docs" className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors">
-            API Docs
-          </Link>
-          <Link href="/learn" className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors">
-            Learn
-          </Link>
-          <Link href="/pricing" className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors">
-            Pricing
-          </Link>
-        </nav>
-        <div className="flex items-center space-x-4">
-          <Button variant="outline" href="/auth/signin">
-            Sign In
-          </Button>
-          <Button href="/auth/signup">
-            Get Started
-          </Button>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <main className="relative">
@@ -231,68 +207,7 @@ export default function HomePage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-slate-900">
-        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div className="space-y-8">
-              <LogoWithText className="text-white" />
-              <p className="text-sm leading-6 text-slate-300">
-                The marketplace for Pay Per Crawl domains, enabling AI companies to access web data at scale.
-              </p>
-            </div>
-            <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 className="text-sm font-semibold leading-6 text-white">Platform</h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    <li>
-                      <Link href="/directory" className="text-sm leading-6 text-slate-300 hover:text-white">
-                        Directory
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/api-docs" className="text-sm leading-6 text-slate-300 hover:text-white">
-                        API Documentation
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/publishers" className="text-sm leading-6 text-slate-300 hover:text-white">
-                        Publisher Dashboard
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="mt-10 md:mt-0">
-                  <h3 className="text-sm font-semibold leading-6 text-white">Resources</h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    <li>
-                      <Link href="/learn" className="text-sm leading-6 text-slate-300 hover:text-white">
-                        Learning Center
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/blog" className="text-sm leading-6 text-slate-300 hover:text-white">
-                        Blog
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/support" className="text-sm leading-6 text-slate-300 hover:text-white">
-                        Support
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-16 border-t border-slate-700 pt-8">
-            <p className="text-xs leading-5 text-slate-400">
-              &copy; 2024 AIPayPerCrawl. Built with ❤️ for the AI community.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 } 
