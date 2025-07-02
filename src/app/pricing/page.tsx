@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { LogoWithText } from '@/components/Logo'
 import { Button } from '@/components/ui/Button'
+import { RatesAndPackaging } from '@/components/RatesAndPackaging'
 import { 
   Check, 
   X, 
@@ -15,20 +16,25 @@ import {
   Infinity,
   ChartBar,
   Code2,
-  Database
+  Database,
+  Calculator,
+  TrendingUp,
+  Globe,
+  Filter,
+  ArrowUpDown
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Pricing - Transparent Pay Per Crawl Rates',
-  description: 'Simple, transparent pricing for AI Pay Per Crawl. Start free with 1,000 requests/month. Scale as you grow with Pro and Enterprise plans. No hidden fees.',
+  title: 'Pricing - Transparent Pay Per Crawl Rates & Packages',
+  description: 'Transparent pricing for AI Pay Per Crawl. Compare rates by CPM, vertical, and traffic size. Estimate costs for home pages, article archives, or full sitemaps.',
   openGraph: {
-    title: 'Pricing - Transparent Pay Per Crawl Rates',
-    description: 'Simple, transparent pricing for AI Pay Per Crawl. Start free with 1,000 requests/month. Scale as you grow with Pro and Enterprise plans.',
+    title: 'Pricing - Transparent Pay Per Crawl Rates & Packages',
+    description: 'Compare rates by CPM, vertical, and traffic size. Estimate costs for different crawling scenarios.',
     url: 'https://aipaypercrawl.com/pricing',
   },
   twitter: {
-    title: 'Pricing - Transparent Pay Per Crawl Rates',
-    description: 'Simple, transparent pricing for AI Pay Per Crawl. Start free and scale as you grow.',
+    title: 'Pricing - Transparent Pay Per Crawl Rates & Packages',
+    description: 'Compare rates by CPM, vertical, and traffic size. Estimate costs for different crawling scenarios.',
   },
 }
 
@@ -147,6 +153,14 @@ export default function PricingPage() {
     {
       question: 'Is there a free trial?',
       answer: 'The Starter plan is free forever with 1,000 requests/month. Pro plans include a 14-day free trial. No credit card required to start.'
+    },
+    {
+      question: 'How are crawling costs calculated?',
+      answer: 'Each domain sets its own price per request. Costs vary based on traffic volume, content quality, and vertical. Use our cost calculator to estimate expenses for different crawling scenarios.'
+    },
+    {
+      question: 'What is CPM and how does it work?',
+      answer: 'CPM (Cost Per Mille) represents the cost per 1,000 requests. It helps you compare pricing across different domains and verticals. Higher traffic domains typically have higher CPMs due to increased value.'
     }
   ]
 
@@ -184,32 +198,44 @@ export default function PricingPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 py-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-            Simple, transparent pricing
+            Transparent rates & packages
           </h1>
           <p className="mt-6 text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Start free and scale as you grow. No hidden fees, no surprises.
-            Just pay for what you use.
+            Compare pricing by CPM, vertical, and traffic size. Estimate costs for home pages, 
+            article archives, or full sitemaps.
           </p>
           <div className="mt-8 flex items-center justify-center gap-8 text-sm">
             <div className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-green-500" />
-              <span className="text-slate-600 dark:text-slate-300">No setup fees</span>
+              <Calculator className="h-5 w-5 text-green-500" />
+              <span className="text-slate-600 dark:text-slate-300">Cost calculator</span>
             </div>
             <div className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-green-500" />
-              <span className="text-slate-600 dark:text-slate-300">Cancel anytime</span>
+              <TrendingUp className="h-5 w-5 text-green-500" />
+              <span className="text-slate-600 dark:text-slate-300">Traffic-based pricing</span>
             </div>
             <div className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-green-500" />
-              <span className="text-slate-600 dark:text-slate-300">24/7 support</span>
+              <Globe className="h-5 w-5 text-green-500" />
+              <span className="text-slate-600 dark:text-slate-300">Vertical insights</span>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Rates and Packaging Component */}
+      <RatesAndPackaging />
+
       {/* Pricing Plans */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
+              Platform plans
+            </h2>
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
+              Choose the plan that fits your crawling needs
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {plans.map((plan) => (
               <div

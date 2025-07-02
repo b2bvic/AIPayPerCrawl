@@ -19,25 +19,48 @@ export async function onRequest(context) {
       const limit = parseInt(url.searchParams.get('limit') || '100');
       const offset = parseInt(url.searchParams.get('offset') || '0');
       const search = url.searchParams.get('search') || '';
-      const category = url.searchParams.get('category') || '';
+      const vertical = url.searchParams.get('vertical') || '';
+      const category = url.searchParams.get('category') || vertical; // Support both vertical and category
       const minRank = parseInt(url.searchParams.get('minRank') || '0');
       const maxRank = parseInt(url.searchParams.get('maxRank') || '1000000');
       const enabled = url.searchParams.get('enabled');
+      const sortBy = url.searchParams.get('sortBy') || 'rank';
+      const sortOrder = url.searchParams.get('sortOrder') || 'asc';
 
-      // Build query
-      let query = 'SELECT * FROM domains WHERE 1=1';
+      // Build query with enhanced filtering
+      let query = `SELECT 
+        id,
+        domain,
+        is_cloudflare as isCloudflare,
+        has_pay_per_crawl as hasPayPerCrawl,
+        price_per_request as pricePerRequest,
+        currency,
+        status,
+        traffic,
+        vertical,
+        category,
+        cpm,
+        claim_status as claimStatus,
+        created_at as createdAt,
+        updated_at as updatedAt,
+        rank
+      FROM domains WHERE 1=1`;
       const params = [];
 
+      // Search filter
       if (search) {
-        query += ' AND domain LIKE ?';
-        params.push(`%${search}%`);
+        query += ' AND (domain LIKE ? OR vertical LIKE ? OR category LIKE ?)';
+        params.push(`%${search}%`, `%${search}%`, `%${search}%`);
       }
 
-      if (category) {
-        query += ' AND category = ?';
-        params.push(category);
+      // Vertical/Category filter
+      if (vertical || category) {
+        query += ' AND (vertical = ? OR category = ?)';
+        const filterValue = vertical || category;
+        params.push(filterValue, filterValue);
       }
 
+      // Rank filters
       if (minRank > 0) {
         query += ' AND rank >= ?';
         params.push(minRank);
@@ -48,45 +71,123 @@ export async function onRequest(context) {
         params.push(maxRank);
       }
 
+      // Enabled filter
       if (enabled !== null) {
         query += ' AND pay_per_crawl_enabled = ?';
         params.push(enabled === 'true');
       }
 
+      // Default to only enabled domains for pricing page
+      if (enabled === null) {
+        query += ' AND pay_per_crawl_enabled = ?';
+        params.push(true);
+      }
+
+      // Sorting with proper field mapping
+      const sortMapping = {
+        'domain': 'domain',
+        'price': 'price_per_request',
+        'cpm': 'cpm',
+        'traffic': 'traffic',
+        'vertical': 'vertical',
+        'rank': 'rank'
+      };
+
+      const sortField = sortMapping[sortBy] || 'rank';
+      const sortDirection = sortOrder.toLowerCase() === 'desc' ? 'DESC' : 'ASC';
+      
+      // Handle NULL values in sorting
+      if (sortField === 'cpm' || sortField === 'traffic') {
+        query += ` ORDER BY ${sortField} IS NULL, ${sortField} ${sortDirection}`;
+      } else {
+        query += ` ORDER BY ${sortField} ${sortDirection}`;
+      }
+
       // Add pagination
-      query += ' ORDER BY rank ASC LIMIT ? OFFSET ?';
+      query += ' LIMIT ? OFFSET ?';
       params.push(limit, offset);
 
       // Execute query
       const stmt = env.DB.prepare(query);
       const results = await stmt.bind(...params).all();
 
-      // Get total count
+      // Get total count with same filters
       let countQuery = 'SELECT COUNT(*) as total FROM domains WHERE 1=1';
-      const countParams = params.slice(0, -2); // Remove limit and offset
-      
-      if (search) countQuery += ' AND domain LIKE ?';
-      if (category) countQuery += ' AND category = ?';
-      if (minRank > 0) countQuery += ' AND rank >= ?';
-      if (maxRank < 1000000) countQuery += ' AND rank <= ?';
-      if (enabled !== null) countQuery += ' AND pay_per_crawl_enabled = ?';
+      const countParams = [];
+
+      if (search) {
+        countQuery += ' AND (domain LIKE ? OR vertical LIKE ? OR category LIKE ?)';
+        countParams.push(`%${search}%`, `%${search}%`, `%${search}%`);
+      }
+
+      if (vertical || category) {
+        countQuery += ' AND (vertical = ? OR category = ?)';
+        const filterValue = vertical || category;
+        countParams.push(filterValue, filterValue);
+      }
+
+      if (minRank > 0) {
+        countQuery += ' AND rank >= ?';
+        countParams.push(minRank);
+      }
+
+      if (maxRank < 1000000) {
+        countQuery += ' AND rank <= ?';
+        countParams.push(maxRank);
+      }
+
+      if (enabled !== null) {
+        countQuery += ' AND pay_per_crawl_enabled = ?';
+        countParams.push(enabled === 'true');
+      } else {
+        countQuery += ' AND pay_per_crawl_enabled = ?';
+        countParams.push(true);
+      }
 
       const countStmt = env.DB.prepare(countQuery);
       const countResult = await countStmt.bind(...countParams).first();
 
+      // Get available filters for the response
+      const verticalQuery = 'SELECT DISTINCT vertical FROM domains WHERE vertical IS NOT NULL AND pay_per_crawl_enabled = ? ORDER BY vertical';
+      const verticalStmt = env.DB.prepare(verticalQuery);
+      const verticalResults = await verticalStmt.bind(true).all();
+      const availableVerticals = verticalResults.results?.map(r => r.vertical) || [];
+
+      // Get category stats
+      const categoryQuery = `
+        SELECT 
+          vertical,
+          COUNT(*) as count,
+          AVG(price_per_request) as avgPrice,
+          AVG(cpm) as avgCPM,
+          AVG(traffic) as avgTraffic
+        FROM domains 
+        WHERE vertical IS NOT NULL AND pay_per_crawl_enabled = ?
+        GROUP BY vertical
+        ORDER BY count DESC
+      `;
+      const categoryStmt = env.DB.prepare(categoryQuery);
+      const categoryResults = await categoryStmt.bind(true).all();
+
       return new Response(JSON.stringify({
         domains: results.results || [],
-        total: countResult?.total || 0,
-        limit,
-        offset,
-        hasMore: offset + limit < (countResult?.total || 0)
+        pagination: {
+          total: countResult?.total || 0,
+          limit,
+          offset,
+          hasMore: offset + limit < (countResult?.total || 0)
+        },
+        filters: {
+          verticals: availableVerticals,
+          categoryStats: categoryResults.results || []
+        }
       }), {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     } catch (error) {
       console.error('Error fetching domains:', error);
       return new Response(
-        JSON.stringify({ error: 'Internal server error' }),
+        JSON.stringify({ error: 'Internal server error', details: error.message }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -95,7 +196,7 @@ export async function onRequest(context) {
   if (request.method === 'POST') {
     try {
       const body = await request.json();
-      const { domain, pricePerRequest, category } = body;
+      const { domain, pricePerRequest, category, vertical, traffic, cpm } = body;
 
       // Validate
       if (!domain) {
@@ -111,15 +212,47 @@ export async function onRequest(context) {
         .first();
 
       if (existing) {
-        // Update existing domain
-        await env.DB.prepare(
-          'UPDATE domains SET price_per_request = ?, category = ?, pay_per_crawl_enabled = ?, updated_at = CURRENT_TIMESTAMP WHERE domain = ?'
-        ).bind(pricePerRequest || 0.001, category || null, true, domain).run();
+        // Update existing domain with enhanced fields
+        await env.DB.prepare(`
+          UPDATE domains SET 
+            price_per_request = ?, 
+            category = ?, 
+            vertical = ?,
+            traffic = ?,
+            cpm = ?,
+            pay_per_crawl_enabled = ?, 
+            updated_at = CURRENT_TIMESTAMP 
+          WHERE domain = ?
+        `).bind(
+          pricePerRequest || 0.001, 
+          category || null, 
+          vertical || category || null,
+          traffic || null,
+          cpm || null,
+          true, 
+          domain
+        ).run();
       } else {
-        // Insert new domain
-        await env.DB.prepare(
-          'INSERT INTO domains (domain, price_per_request, category, pay_per_crawl_enabled) VALUES (?, ?, ?, ?)'
-        ).bind(domain, pricePerRequest || 0.001, category || null, true).run();
+        // Insert new domain with enhanced fields
+        await env.DB.prepare(`
+          INSERT INTO domains (
+            domain, 
+            price_per_request, 
+            category, 
+            vertical,
+            traffic,
+            cpm,
+            pay_per_crawl_enabled
+          ) VALUES (?, ?, ?, ?, ?, ?, ?)
+        `).bind(
+          domain, 
+          pricePerRequest || 0.001, 
+          category || null, 
+          vertical || category || null,
+          traffic || null,
+          cpm || null,
+          true
+        ).run();
       }
 
       return new Response(JSON.stringify({ success: true, domain }), {
@@ -128,7 +261,7 @@ export async function onRequest(context) {
     } catch (error) {
       console.error('Error creating/updating domain:', error);
       return new Response(
-        JSON.stringify({ error: 'Internal server error' }),
+        JSON.stringify({ error: 'Internal server error', details: error.message }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }

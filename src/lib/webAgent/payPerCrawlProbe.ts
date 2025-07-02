@@ -157,69 +157,105 @@ export async function batchProbeFor402(request: BatchProbeRequest): Promise<Prob
 }
 
 /**
- * Get top domains from various sources for probing
+ * Get top domains for probing using discovery engine
  */
-export async function getTopDomainsForProbing(limit: number = 10000): Promise<string[]> {
-  // This would typically integrate with services like:
-  // - Tranco top sites list
-  // - Cloudflare Radar top domains
-  // - BuiltWith Cloudflare usage data
-  
-  // For now, return a sample of known high-traffic domains
-  const sampleDomains = [
-    'cnn.com',
-    'bbc.com',
-    'reuters.com',
-    'nytimes.com',
-    'wsj.com',
-    'bloomberg.com',
-    'techcrunch.com',
-    'theverge.com',
-    'arstechnica.com',
-    'wired.com',
-    'medium.com',
-    'substack.com',
-    'github.com',
-    'stackoverflow.com',
-    'reddit.com',
-    'twitter.com',
-    'linkedin.com',
-    'facebook.com',
-    'instagram.com',
-    'tiktok.com',
-    'youtube.com',
-    'netflix.com',
-    'spotify.com',
-    'amazon.com',
-    'shopify.com',
-    'stripe.com',
-    'paypal.com',
-    'salesforce.com',
-    'hubspot.com',
-    'mailchimp.com',
-    'zendesk.com'
-  ]
-  
-  return sampleDomains.slice(0, Math.min(limit, sampleDomains.length))
+export async function getTopDomainsForProbing(
+  limit: number = 1000,
+  config: {
+    builtWithApiKey?: string
+    sources?: ('builtwith' | 'tranco' | 'manual')[]
+    filters?: {
+      minTrafficRank?: number
+      maxTrafficRank?: number
+    }
+  } = {}
+): Promise<string[]> {
+  try {
+    // Use tech discovery to get Cloudflare domains
+    const { discoverCloudflareZones } = await import('./techLookup')
+    
+    const domains = await discoverCloudflareZones({
+      builtWithApiKey: config.builtWithApiKey,
+      limit,
+      sources: config.sources || ['tranco', 'manual'],
+      filters: config.filters
+    })
+    
+    console.log(`📊 Discovery engine found ${domains.length} Cloudflare domains for probing`)
+    return domains
+  } catch (error) {
+    console.error('Error getting domains for probing:', error)
+    
+    // Fallback to curated list if discovery fails
+    return [
+      'discord.com', 'shopify.com', 'medium.com', 'zendesk.com', 'canva.com',
+      'notion.so', 'figma.com', 'buffer.com', 'typeform.com', 'calendly.com',
+      'intercom.com', 'mailchimp.com', 'dropbox.com', 'atlassian.com', 'hubspot.com',
+      'crunchbase.com', 'producthunt.com', 'dev.to', 'hashnode.com', 'substack.com'
+    ].slice(0, limit)
+  }
 }
 
 /**
- * Continuous probing service to discover new Pay Per Crawl domains
+ * Enhanced Pay Per Crawl Discovery Service
  */
 export class PayPerCrawlDiscoveryService {
   private isRunning = false
-  private probeInterval = 60000 // 1 minute
-  
-  constructor(
-    private onDomainDiscovered: (probe: ProbeResponse) => Promise<void>,
-    private onError: (error: Error) => void = console.error
-  ) {}
+  private probeInterval = 300000 // 5 minutes default
+  private discoveryConfig: {
+    builtWithApiKey?: string
+    sources?: ('builtwith' | 'tranco' | 'manual')[]
+    domainsPerRound?: number
+    filters?: {
+      minTrafficRank?: number
+      maxTrafficRank?: number
+    }
+  }
+  private onDiscovery: (domains: ProbeResponse[]) => void = () => {}
+  private onError: (error: Error) => void = console.error
+
+  constructor(config: {
+    builtWithApiKey?: string
+    sources?: ('builtwith' | 'tranco' | 'manual')[]
+    domainsPerRound?: number
+    probeInterval?: number
+    filters?: {
+      minTrafficRank?: number
+      maxTrafficRank?: number
+    }
+    onDiscovery?: (domains: ProbeResponse[]) => void
+    onError?: (error: Error) => void
+  } = {}) {
+    this.discoveryConfig = {
+      builtWithApiKey: config.builtWithApiKey,
+      sources: config.sources || ['tranco', 'manual'],
+      domainsPerRound: config.domainsPerRound || 100,
+      filters: config.filters,
+    }
+    
+    if (config.probeInterval) {
+      this.probeInterval = config.probeInterval
+    }
+    
+    if (config.onDiscovery) {
+      this.onDiscovery = config.onDiscovery
+    }
+    
+    if (config.onError) {
+      this.onError = config.onError
+    }
+  }
   
   async start() {
     if (this.isRunning) return
     
     this.isRunning = true
-    console.log('Starting Pay Per Crawl discovery service...')
+    console.log('🚀 Starting Pay Per Crawl discovery service...')
+    console.log(`📊 Configuration:`)
+    console.log(`   • Sources: ${this.discoveryConfig.sources?.join(', ')}`)
+    console.log(`   • Domains per round: ${this.discoveryConfig.domainsPerRound}`)
+    console.log(`   • Probe interval: ${this.probeInterval / 1000}s`)
+    console.log(`   • BuiltWith API: ${this.discoveryConfig.builtWithApiKey ? 'Enabled' : 'Disabled'}`)
     
     while (this.isRunning) {
       try {
@@ -234,26 +270,52 @@ export class PayPerCrawlDiscoveryService {
   
   stop() {
     this.isRunning = false
-    console.log('Stopping Pay Per Crawl discovery service...')
+    console.log('⏹️  Stopping Pay Per Crawl discovery service...')
   }
   
   private async runProbeRound() {
-    const domains = await getTopDomainsForProbing(100) // Probe 100 domains per round
-    const probes = await batchProbeFor402({
-      domains,
-      timeout: 10000,
-      concurrency: 10,
-    })
+    console.log('🔍 Starting discovery round...')
     
-    // Process results
-    for (const probe of probes) {
-      if (probe.hasPayPerCrawl) {
-        console.log(`🎯 Found Pay Per Crawl domain: ${probe.domain} (${probe.pricePerRequest} ${probe.currency})`)
-        await this.onDomainDiscovered(probe)
+    const domains = await getTopDomainsForProbing(
+      this.discoveryConfig.domainsPerRound,
+      {
+        builtWithApiKey: this.discoveryConfig.builtWithApiKey,
+        sources: this.discoveryConfig.sources,
+        filters: this.discoveryConfig.filters
       }
+    )
+    
+    if (domains.length === 0) {
+      console.log('⚠️  No domains to probe in this round')
+      return
     }
     
-    console.log(`Probed ${domains.length} domains, found ${probes.filter(p => p.hasPayPerCrawl).length} with Pay Per Crawl`)
+    console.log(`🔍 Probing ${domains.length} domains for Pay Per Crawl...`)
+    
+    const results = await batchProbeFor402({
+      domains,
+      timeout: 8000,
+      concurrency: 10
+    })
+    
+    const payPerCrawlDomains = results.filter(r => r.hasPayPerCrawl)
+    const cloudflareCount = results.filter(r => r.isCloudflare).length
+    const errorCount = results.filter(r => r.error).length
+    
+    console.log(`📊 Round complete:`)
+    console.log(`   • Total probed: ${results.length}`)
+    console.log(`   • Pay Per Crawl found: ${payPerCrawlDomains.length}`)
+    console.log(`   • Cloudflare detected: ${cloudflareCount}`)
+    console.log(`   • Errors: ${errorCount}`)
+    
+    if (payPerCrawlDomains.length > 0) {
+      console.log('�� Discovered Pay Per Crawl domains:')
+      payPerCrawlDomains.forEach(domain => {
+        console.log(`   • ${domain.domain}: ${domain.pricePerRequest} ${domain.currency}`)
+      })
+      
+      this.onDiscovery(payPerCrawlDomains)
+    }
   }
   
   private sleep(ms: number): Promise<void> {

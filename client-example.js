@@ -146,6 +146,70 @@ class AIPayPerCrawlClient {
     const domains = topDomains.slice(0, Math.min(limit, topDomains.length));
     return this.batchProbeDomains(domains);
   }
+
+  // Discovery Engine Methods
+
+  // Run tech discovery to find Cloudflare domains and probe for Pay Per Crawl
+  async runDiscovery(config = {}) {
+    const discoveryConfig = {
+      technology: 'cloudflare',
+      limit: 1000,
+      sources: ['tranco', 'manual'],
+      filters: {},
+      probeForPayPerCrawl: true,
+      storeResults: true,
+      ...config
+    };
+
+    return this.request('/discovery', 'POST', discoveryConfig);
+  }
+
+  // Get discovery engine status and statistics
+  async getDiscoveryStatus() {
+    return this.request('/discovery?action=status');
+  }
+
+  // Get sample of discovered Pay Per Crawl domains
+  async getDiscoveredSample(limit = 20) {
+    return this.request(`/discovery?action=sample&limit=${limit}`);
+  }
+
+  // Get discovery engine capabilities
+  async getDiscoveryCapabilities() {
+    return this.request('/discovery');
+  }
+
+  // Combined discovery and probing workflow
+  async discoverAndProbe(config = {}) {
+    const defaultConfig = {
+      technology: 'cloudflare',
+      limit: 500,
+      sources: ['tranco', 'manual'],
+      probeForPayPerCrawl: true,
+      storeResults: true
+    };
+
+    const finalConfig = { ...defaultConfig, ...config };
+    
+    console.log('🚀 Starting discovery and probe workflow...');
+    console.log(`Config:`, finalConfig);
+
+    const result = await this.runDiscovery(finalConfig);
+    
+    if (result.success) {
+      console.log(`✅ Discovery complete!`);
+      console.log(`📊 Results:`, result.summary);
+      
+      if (result.payPerCrawlDomains?.length > 0) {
+        console.log(`🎉 Found ${result.payPerCrawlDomains.length} Pay Per Crawl domains:`);
+        result.payPerCrawlDomains.forEach(domain => {
+          console.log(`   • ${domain.domain}: ${domain.price} ${domain.currency}`);
+        });
+      }
+    }
+
+    return result;
+  }
 }
 
 // Example usage
