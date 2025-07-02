@@ -75,6 +75,30 @@ CREATE TABLE IF NOT EXISTS analytics_events (
   FOREIGN KEY (request_id) REFERENCES crawl_requests(id)
 );
 
+-- Domain Claims table for TXT verification workflow
+CREATE TABLE IF NOT EXISTS domain_claims (
+  id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+  domain TEXT NOT NULL,
+  email TEXT NOT NULL,
+  contact_name TEXT NOT NULL,
+  organization TEXT,
+  reason TEXT,
+  requested_price REAL DEFAULT 0.01,
+  currency TEXT DEFAULT 'USD',
+  status TEXT NOT NULL DEFAULT 'pending', -- pending, txt_verification, verified, approved, rejected
+  txt_challenge TEXT NOT NULL,
+  txt_record_name TEXT NOT NULL,
+  txt_record_value TEXT NOT NULL,
+  challenge_expires_at TEXT NOT NULL,
+  submitted_at TEXT NOT NULL,
+  verified_at TEXT,
+  approved_at TEXT,
+  rejected_at TEXT,
+  rejection_reason TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+
 -- Create indexes for performance
 CREATE INDEX idx_domains_rank ON domains(rank);
 CREATE INDEX idx_domains_owner ON domains(owner_id);
@@ -83,4 +107,10 @@ CREATE INDEX idx_requests_domain ON crawl_requests(domain_id);
 CREATE INDEX idx_requests_created ON crawl_requests(created_at);
 CREATE INDEX idx_quotes_quote_id ON quotes(quote_id);
 CREATE INDEX idx_analytics_event_type ON analytics_events(event_type);
-CREATE INDEX idx_analytics_timestamp ON analytics_events(timestamp); 
+CREATE INDEX idx_analytics_timestamp ON analytics_events(timestamp);
+
+-- Indexes for domain claims
+CREATE INDEX idx_domain_claims_domain ON domain_claims(domain);
+CREATE INDEX idx_domain_claims_status ON domain_claims(status);
+CREATE INDEX idx_domain_claims_email ON domain_claims(email);
+CREATE INDEX idx_domain_claims_submitted ON domain_claims(submitted_at); 

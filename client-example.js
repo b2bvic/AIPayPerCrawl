@@ -110,6 +110,42 @@ class AIPayPerCrawlClient {
       crawlResult
     };
   }
+
+  // 402 Probing Methods for Pay Per Crawl Discovery
+
+  // Probe a single domain for Pay Per Crawl (402 responses)
+  async probeDomain(domain) {
+    return this.request(`/probe?domain=${encodeURIComponent(domain)}`);
+  }
+
+  // Batch probe multiple domains for Pay Per Crawl
+  async batchProbeDomains(domains, options = {}) {
+    const { timeout = 10000, concurrency = 10 } = options;
+    return this.request('/probe', {
+      method: 'POST',
+      body: JSON.stringify({ domains, timeout, concurrency })
+    });
+  }
+
+  // Get list of discovered Pay Per Crawl domains
+  async getDiscoveredDomains(options = {}) {
+    const { limit = 50, offset = 0 } = options;
+    return this.request(`/probe?discovered=true&limit=${limit}&offset=${offset}`);
+  }
+
+  // Discover Pay Per Crawl domains from a list of top domains
+  async discoverPayPerCrawlDomains(limit = 100) {
+    // This would typically use a service like Tranco or BuiltWith
+    // For demo, we'll use common high-traffic domains
+    const topDomains = [
+      'cnn.com', 'bbc.com', 'reuters.com', 'nytimes.com', 'wsj.com',
+      'bloomberg.com', 'techcrunch.com', 'theverge.com', 'medium.com',
+      'businessinsider.com', 'forbes.com', 'wired.com', 'arstechnica.com'
+    ];
+
+    const domains = topDomains.slice(0, Math.min(limit, topDomains.length));
+    return this.batchProbeDomains(domains);
+  }
 }
 
 // Example usage
