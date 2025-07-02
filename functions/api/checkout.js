@@ -122,38 +122,53 @@ export async function onRequest(context) {
       }
 
       const session = await checkoutSession.json();
+      console.log('Stripe checkout session created successfully:', session.id);
 
       // Create crawl request record
       const crawlRequestId = crypto.randomUUID();
-      await env.DB.prepare(`
-        INSERT INTO crawl_requests 
-        (id, quote_id, stripe_session_id, status, payment_status, total_cost, currency, created_at) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      `).bind(
-        crawlRequestId,
-        quoteId,
-        session.id,
-        'pending',
-        'pending',
-        quote.total_cost,
-        quote.currency,
-        new Date().toISOString()
-      ).run();
+      console.log('Creating crawl request with ID:', crawlRequestId);
+      
+      try {
+        await env.DB.prepare(`
+          INSERT INTO crawl_requests 
+          (id, quote_id, stripe_session_id, status, payment_status, total_cost, currency, created_at) 
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        `).bind(
+          crawlRequestId,
+          quoteId,
+          session.id,
+          'pending',
+          'pending',
+          quote.total_cost,
+          quote.currency,
+          new Date().toISOString()
+        ).run();
+        console.log('Crawl request created successfully');
+      } catch (dbError) {
+        console.error('Database error creating crawl request:', dbError);
+        throw dbError;
+      }
 
       // Track analytics event
-      await env.DB.prepare(
-        'INSERT INTO analytics_events (id, event_type, metadata, timestamp) VALUES (?, ?, ?, ?)'
-      ).bind(
-        crypto.randomUUID(),
-        'checkout_created',
-        JSON.stringify({ 
-          quote_id: quoteId, 
-          crawl_request_id: crawlRequestId,
-          session_id: session.id,
-          amount: totalAmount 
-        }),
-        new Date().toISOString()
-      ).run();
+      try {
+        await env.DB.prepare(
+          'INSERT INTO analytics_events (id, event_type, metadata, timestamp) VALUES (?, ?, ?, ?)'
+        ).bind(
+          crypto.randomUUID(),
+          'checkout_created',
+          JSON.stringify({ 
+            quote_id: quoteId, 
+            crawl_request_id: crawlRequestId,
+            session_id: session.id,
+            amount: totalAmount 
+          }),
+          new Date().toISOString()
+        ).run();
+        console.log('Analytics event created successfully');
+      } catch (analyticsError) {
+        console.error('Analytics error (non-critical):', analyticsError);
+        // Don't throw - analytics failure shouldn't break checkout
+      }
 
       return new Response(JSON.stringify({
         sessionId: session.id,
