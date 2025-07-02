@@ -31,6 +31,20 @@ CREATE TABLE IF NOT EXISTS publishers (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- API Keys table
+CREATE TABLE IF NOT EXISTS api_keys (
+  id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+  user_id TEXT NOT NULL,
+  key_hash TEXT NOT NULL UNIQUE,
+  name TEXT,
+  is_active BOOLEAN DEFAULT true,
+  usage_count INTEGER DEFAULT 0,
+  last_used_at TIMESTAMP,
+  expires_at TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES publishers(id)
+);
+
 -- Crawl Requests table
 CREATE TABLE IF NOT EXISTS crawl_requests (
   id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
