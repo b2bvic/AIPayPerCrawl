@@ -7,9 +7,9 @@
  */
 
 const environment = process.argv[2] || 'local';
-const BASE_URL = environment === 'local' 
+const BASE_URL = process.env.BASE_URL || (environment === 'local' 
   ? 'http://localhost:8788/api' 
-  : 'https://62f72b2a.aipaypercrawl.pages.dev/api';
+  : 'https://a9b6413a.aipaypercrawl.pages.dev/api');
 
 const API_KEY = 'test-api-key-123'; // Replace with your actual API key
 
@@ -172,6 +172,78 @@ async function testCheckout() {
   }
 }
 
+async function testEmail() {
+  console.log('\n📧 Testing Email API...');
+  
+  // Test sending a verification email
+  const emailResponse = await apiCall('/email/send', 'POST', {
+    type: 'publisher_verification',
+    to: 'test@example.com',
+    data: {
+      name: 'Test User',
+      email: 'test@example.com',
+      verificationToken: 'test-token-123'
+    }
+  });
+  
+  if (emailResponse.ok) {
+    console.log(`✅ Email API working - Email ID: ${emailResponse.data.emailId}`);
+    console.log(`   Message: ${emailResponse.data.message}`);
+    return true;
+  } else if (emailResponse.data?.message === 'Email service not configured (development mode)') {
+    console.log('⚠️  Email API working but service not configured (expected for testing)');
+    return true;
+  } else {
+    console.log('❌ Email API failed:', emailResponse.data?.error || emailResponse.error);
+    return false;
+  }
+}
+
+async function testTraffic() {
+  console.log('\n📊 Testing Traffic Data API...');
+  
+  // Test single domain lookup
+  const singleResponse = await apiCall('/traffic?domain=example.com');
+  
+  if (singleResponse.ok) {
+    const data = singleResponse.data.data;
+    console.log(`✅ Single domain lookup working`);
+    console.log(`   Domain: example.com`);
+    console.log(`   Traffic: ${data?.estimated_monthly_visits?.toLocaleString() || 'N/A'} monthly visits`);
+    console.log(`   Global rank: ${data?.global_rank?.toLocaleString() || 'N/A'}`);
+    console.log(`   Data source: ${data?.data_source || 'N/A'}`);
+    console.log(`   Confidence: ${data?.confidence || 'N/A'}`);
+  } else {
+    console.log('❌ Single domain traffic lookup failed:', singleResponse.data?.error || singleResponse.error);
+  }
+  
+  // Test batch domain lookup
+  const testDomains = ['example.com', 'github.com', 'stackoverflow.com'];
+  const batchResponse = await apiCall('/traffic', 'POST', {
+    domains: testDomains
+  });
+  
+  if (batchResponse.ok) {
+    const data = batchResponse.data.data;
+    console.log(`✅ Batch domain lookup working`);
+    console.log(`   Processed ${testDomains.length} domains`);
+    console.log(`   Sources used: ${data.sources_used?.join(', ') || 'none'}`);
+    
+    // Show sample data
+    for (const domain of testDomains) {
+      const domainData = data.domains[domain];
+      if (domainData) {
+        console.log(`   ${domain}: ${domainData.estimated_monthly_visits?.toLocaleString() || 'N/A'} visits (${domainData.confidence})`);
+      }
+    }
+    
+    return true;
+  } else {
+    console.log('❌ Batch domain traffic lookup failed:', batchResponse.data?.error || batchResponse.error);
+    return false;
+  }
+}
+
 async function testAnalytics() {
   console.log('\n📈 Testing Analytics API...');
   
@@ -212,8 +284,10 @@ async function runTests() {
   
   const results = {
     domains: await testDomains(),
+    traffic: await testTraffic(),
     quote: null,
     checkout: await testCheckout(),
+    email: await testEmail(),
     crawl: false,
     analytics: await testAnalytics()
   };

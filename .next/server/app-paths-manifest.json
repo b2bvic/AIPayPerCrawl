@@ -1,11 +1,12 @@
 {
   "/directory/domain-listing/page": "app/directory/domain-listing/page.js",
-  "/page": "app/page.js",
+  "/verify-email/page": "app/verify-email/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
   "/directory/page": "app/directory/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/pricing/page": "app/pricing/page.js",
   "/learn/page": "app/learn/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/page": "app/page.js",
   "/api-docs/page": "app/api-docs/page.js",
   "/directory/[id]/page": "app/directory/[id]/page.js"
 }

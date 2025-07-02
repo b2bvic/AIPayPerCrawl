@@ -41,9 +41,42 @@ export async function onRequest(context) {
 
       // Create publisher
       const publisherId = crypto.randomUUID();
+      const verificationToken = crypto.randomUUID();
+      
       await env.DB.prepare(
         'INSERT INTO publishers (id, email, name, is_verified) VALUES (?, ?, ?, ?)'
       ).bind(publisherId, email, name || null, false).run();
+
+      // Store verification token in cache (expires in 24 hours)
+      await env.CACHE.put(`email_verify:${verificationToken}`, JSON.stringify({
+        publisherId,
+        email,
+        name
+      }), {
+        expirationTtl: 86400 // 24 hours
+      });
+
+      // Send verification email
+      try {
+        await fetch(`${env.NEXT_PUBLIC_APP_URL || 'https://aipaypercrawl.com'}/api/email/send`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            type: 'publisher_verification',
+            to: email,
+            data: {
+              name,
+              email,
+              verificationToken
+            }
+          })
+        });
+      } catch (emailError) {
+        console.error('Failed to send verification email:', emailError);
+        // Continue with registration even if email fails
+      }
 
       // Claim domains if provided
       if (domains && Array.isArray(domains)) {

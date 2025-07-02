@@ -30,12 +30,60 @@ export async function onRequest(context) {
       const items = [];
       let totalCost = 0;
 
-      // Process each URL
+      // Get traffic data for all domains in batch for efficiency
+      const allDomains = [];
+      const urlDomainMap = {};
+      
       for (const url of urls) {
         try {
           const domain = new URL(url).hostname;
+          allDomains.push(domain);
+          urlDomainMap[url] = domain;
+        } catch (error) {
+          urlDomainMap[url] = null;
+        }
+      }
+
+      // Fetch traffic data for all domains at once
+      let trafficDataMap = {};
+      if (allDomains.length > 0) {
+        try {
+          const apiBaseUrl = env.NEXT_PUBLIC_APP_URL || `https://${request.headers.get('host')}`;
+          const trafficResponse = await fetch(`${apiBaseUrl}/api/traffic`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ domains: allDomains })
+          });
           
-          // Query D1 database for domain pricing
+          if (trafficResponse.ok) {
+            const trafficResult = await trafficResponse.json();
+            if (trafficResult.success) {
+              trafficDataMap = trafficResult.data.domains;
+            }
+          }
+        } catch (error) {
+          console.warn('Failed to fetch traffic data for pricing:', error);
+        }
+      }
+
+      // Process each URL with enhanced pricing
+      for (const url of urls) {
+        try {
+          const domain = urlDomainMap[url];
+          
+          if (!domain) {
+            items.push({
+              url,
+              domain: '',
+              pricePerRequest: 0,
+              currency: 'USD',
+              available: false,
+              error: 'Invalid URL'
+            });
+            continue;
+          }
+          
+          // Query D1 database for domain data
           const stmt = env.DB.prepare('SELECT * FROM domains WHERE domain = ?');
           const domainData = await stmt.bind(domain).first();
 
@@ -51,23 +99,66 @@ export async function onRequest(context) {
             continue;
           }
 
+          // Get traffic data for this domain
+          const trafficData = trafficDataMap[domain];
+          const estimatedTraffic = trafficData?.estimated_monthly_visits;
+          const trafficConfidence = trafficData?.confidence || 'unknown';
+
+          // Calculate dynamic pricing based on traffic and market conditions
+          let dynamicPrice = domainData.price_per_request;
+          
+          if (estimatedTraffic) {
+            // Adjust price based on traffic (higher traffic = higher value)
+            const trafficMultiplier = Math.log10(Math.max(estimatedTraffic, 1000)) / 6; // Gentler scaling
+            const confidenceAdjustment = {
+              'high': 1.0,
+              'medium': 0.95,
+              'low': 0.85,
+              'estimated': 0.8,
+              'unknown': 0.9
+            }[trafficConfidence] || 0.9;
+            
+            dynamicPrice = Math.max(
+              domainData.price_per_request * 0.5, // Never go below 50% of base price
+              domainData.price_per_request * trafficMultiplier * confidenceAdjustment
+            );
+          }
+
+          // Apply market demand adjustment (simulated for now)
+          const demandMultiplier = 0.9 + (Math.random() * 0.2); // 0.9 - 1.1 range
+          dynamicPrice *= demandMultiplier;
+
+          // Round to 6 decimal places
+          dynamicPrice = Number(dynamicPrice.toFixed(6));
+
           items.push({
             url,
             domain,
-            pricePerRequest: domainData.price_per_request,
+            pricePerRequest: dynamicPrice,
             currency: domainData.currency || 'USD',
             available: true,
+            trafficData: trafficData ? {
+              estimatedMonthlyVisits: estimatedTraffic,
+              confidence: trafficConfidence,
+              dataSource: trafficData.data_source
+            } : undefined,
+            pricingFactors: {
+              basePrice: domainData.price_per_request,
+              trafficAdjustment: estimatedTraffic ? (dynamicPrice / domainData.price_per_request).toFixed(3) : 'N/A',
+              demandAdjustment: demandMultiplier.toFixed(3)
+            }
           });
 
-          totalCost += domainData.price_per_request;
+          totalCost += dynamicPrice;
         } catch (error) {
+          console.error(`Error processing URL ${url}:`, error);
           items.push({
             url,
-            domain: '',
+            domain: urlDomainMap[url] || '',
             pricePerRequest: 0,
             currency: 'USD',
             available: false,
-            error: 'Invalid URL'
+            error: 'Processing error'
           });
         }
       }
