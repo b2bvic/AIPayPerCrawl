@@ -1,26 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Logo } from '@/components/Logo'
-
-export const metadata: Metadata = {
-  title: 'Forgot Password - AI Pay Per Crawl',
-  description: 'Reset your AI Pay Per Crawl account password. Enter your email address to receive password reset instructions.',
-  openGraph: {
-    title: 'Forgot Password - AI Pay Per Crawl',
-    description: 'Reset your AI Pay Per Crawl account password. Enter your email address to receive password reset instructions.',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Forgot Password - AI Pay Per Crawl',
-    description: 'Reset your AI Pay Per Crawl account password. Enter your email address to receive password reset instructions.',
-  },
-}
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('')

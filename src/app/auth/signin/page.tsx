@@ -3,24 +3,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import type { Metadata } from 'next'
 import { LogoWithText } from '@/components/Logo'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-
-export const metadata: Metadata = {
-  title: 'Sign In - Access Your AI Pay Per Crawl Account',
-  description: 'Sign in to your AI Pay Per Crawl account to manage domains, view analytics, and access the publisher dashboard.',
-  openGraph: {
-    title: 'Sign In - Access Your AI Pay Per Crawl Account',
-    description: 'Sign in to your AI Pay Per Crawl account to manage domains, view analytics, and access the publisher dashboard.',
-    url: 'https://aipaypercrawl.com/auth/signin',
-  },
-  twitter: {
-    title: 'Sign In - Access Your AI Pay Per Crawl Account',
-    description: 'Sign in to your AI Pay Per Crawl account to manage domains and analytics.',
-  },
-}
 
 export default function SignInPage() {
   const router = useRouter()

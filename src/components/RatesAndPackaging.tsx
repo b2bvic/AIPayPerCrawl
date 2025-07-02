@@ -20,7 +20,7 @@ import {
   Info
 } from 'lucide-react'
 import { formatCurrency, formatNumber } from '@/lib/utils'
-import { TrafficMetrics } from '@/components/TrafficMetrics'
+import TrafficMetrics from '@/components/TrafficMetrics'
 
 interface Domain {
   id: string

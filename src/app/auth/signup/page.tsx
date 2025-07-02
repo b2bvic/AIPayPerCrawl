@@ -3,24 +3,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import type { Metadata } from 'next'
 import { LogoWithText } from '@/components/Logo'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
-
-export const metadata: Metadata = {
-  title: 'Sign Up - Join AI Pay Per Crawl',
-  description: 'Create your AI Pay Per Crawl account to start monetizing your domains or accessing premium content for AI training.',
-  openGraph: {
-    title: 'Sign Up - Join AI Pay Per Crawl',
-    description: 'Create your AI Pay Per Crawl account to start monetizing your domains or accessing premium content for AI training.',
-    url: 'https://aipaypercrawl.com/auth/signup',
-  },
-  twitter: {
-    title: 'Sign Up - Join AI Pay Per Crawl',
-    description: 'Create your AI Pay Per Crawl account to start monetizing your domains.',
-  },
-}
 
 export default function SignUpPage() {
   const router = useRouter()
