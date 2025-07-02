@@ -12,14 +12,25 @@ export const metadata: Metadata = {
   description: 'Edit pricing, access controls, and other settings for your domain in the AI Pay Per Crawl dashboard.',
 }
 
-interface EditDomainPageProps {
-  params: {
-    id: string
-  }
+export async function generateStaticParams() {
+  // Generate static params for demo purposes
+  // In a real app, you would fetch these from your database
+  return [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+  ]
 }
 
-export default function EditDomainPage({ params }: EditDomainPageProps) {
-  if (!params.id) {
+interface EditDomainPageProps {
+  params: Promise<{
+    id: string
+  }>
+}
+
+export default async function EditDomainPage({ params }: EditDomainPageProps) {
+  const { id } = await params
+  if (!id) {
     notFound()
   }
 
@@ -63,8 +74,8 @@ export default function EditDomainPage({ params }: EditDomainPageProps) {
             </li>
             <li>/</li>
             <li>
-              <Link href={`/dashboard/domains/${params.id}`} className="hover:text-slate-700 dark:hover:text-slate-300">
-                Domain {params.id}
+              <Link href={`/dashboard/domains/${id}`} className="hover:text-slate-700 dark:hover:text-slate-300">
+                Domain {id}
               </Link>
             </li>
             <li>/</li>
@@ -80,7 +91,7 @@ export default function EditDomainPage({ params }: EditDomainPageProps) {
             Edit Domain Settings
           </h1>
           <p className="text-slate-600 dark:text-slate-300 mt-2">
-            Configure pricing, access controls, and other settings for domain ID: {params.id}
+            Configure pricing, access controls, and other settings for domain ID: {id}
           </p>
         </div>
 
@@ -101,7 +112,7 @@ export default function EditDomainPage({ params }: EditDomainPageProps) {
                     type="text"
                     id="domain-name"
                     name="domain-name"
-                    value={`example-domain-${params.id}.com`}
+                    value={`example-domain-${id}.com`}
                     disabled
                     className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400"
                   />
@@ -267,7 +278,7 @@ export default function EditDomainPage({ params }: EditDomainPageProps) {
 
             {/* Form Actions */}
             <div className="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-slate-700">
-              <Button variant="outline" href={`/dashboard/domains/${params.id}`}>
+              <Button variant="outline" href={`/dashboard/domains/${id}`}>
                 Cancel
               </Button>
               <div className="flex items-center space-x-4">

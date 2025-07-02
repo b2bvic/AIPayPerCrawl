@@ -8,21 +8,32 @@ import { Card } from '@/components/ui/Card'
 import { notFound } from 'next/navigation'
 
 export const metadata: Metadata = {
-  title: 'Domain Details - AI Pay Per Crawl Dashboard',
-  description: 'View detailed analytics and manage settings for your domain in the AI Pay Per Crawl dashboard.',
+  title: 'Domain Dashboard - AI Pay Per Crawl',
+  description: 'View analytics, manage settings, and monitor crawler activity for your domain in the AI Pay Per Crawl dashboard.',
+}
+
+export async function generateStaticParams() {
+  // Generate static params for demo purposes
+  // In a real app, you would fetch these from your database
+  return [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+  ]
 }
 
 interface DomainPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export default function DomainPage({ params }: DomainPageProps) {
-  // In a real implementation, you would fetch domain data based on params.id
+export default async function DomainPage({ params }: DomainPageProps) {
+  // In a real implementation, you would fetch domain data based on id
   // For now, we'll show a placeholder with the ID
+  const { id } = await params
   
-  if (!params.id) {
+  if (!id) {
     notFound()
   }
 
@@ -72,7 +83,7 @@ export default function DomainPage({ params }: DomainPageProps) {
             </li>
             <li>/</li>
             <li className="text-slate-900 dark:text-white font-medium">
-              Domain {params.id}
+              Domain {id}
             </li>
           </ol>
         </nav>
@@ -85,11 +96,11 @@ export default function DomainPage({ params }: DomainPageProps) {
                 Domain Details
               </h1>
               <p className="text-slate-600 dark:text-slate-300 mt-2">
-                Manage settings and view analytics for domain ID: {params.id}
+                Manage settings and view analytics for domain ID: {id}
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="outline" href={`/dashboard/domains/${params.id}/edit`}>
+              <Button variant="outline" href={`/dashboard/domains/${id}/edit`}>
                 Edit Settings
               </Button>
               <Button href="/dashboard">
@@ -152,7 +163,7 @@ export default function DomainPage({ params }: DomainPageProps) {
                 Domain Name
               </label>
               <p className="text-slate-900 dark:text-white">
-                example-domain-{params.id}.com
+                example-domain-{id}.com
               </p>
             </div>
             <div>
@@ -214,17 +225,30 @@ export default function DomainPage({ params }: DomainPageProps) {
                 +$0.05
               </span>
             </div>
+            <div className="flex items-center justify-between py-3 border-b border-slate-200 dark:border-slate-700">
+              <div>
+                <p className="text-slate-900 dark:text-white font-medium">
+                  Crawl request from Google AI
+                </p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">
+                  6 hours ago • $0.05 earned
+                </p>
+              </div>
+              <span className="text-green-600 dark:text-green-400 font-medium">
+                +$0.05
+              </span>
+            </div>
             <div className="flex items-center justify-between py-3">
               <div>
                 <p className="text-slate-900 dark:text-white font-medium">
-                  Price updated
+                  Domain settings updated
                 </p>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  1 day ago • Changed from $0.03 to $0.05
+                  1 day ago • Price changed to $0.05
                 </p>
               </div>
               <span className="text-slate-500 dark:text-slate-400">
-                Updated
+                Settings
               </span>
             </div>
           </div>
