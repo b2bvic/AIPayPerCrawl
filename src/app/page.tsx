@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { LogoWithText } from '@/components/Logo'
 import { Button } from '@/components/ui/Button'
 import { 
@@ -12,6 +13,28 @@ import {
   ArrowRight,
   CheckCircle
 } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'AI Pay Per Crawl - Monetize Your Content with AI Crawlers',
+  description: 'The premier marketplace for Pay Per Crawl domains. Publishers set prices for AI crawler access, AI companies discover and pay for quality content. Join the new economy of AI-driven content monetization.',
+  openGraph: {
+    title: 'AI Pay Per Crawl - Monetize Your Content with AI Crawlers',
+    description: 'The premier marketplace for Pay Per Crawl domains. Publishers set prices for AI crawler access, AI companies discover and pay for quality content.',
+    url: 'https://aipaypercrawl.com',
+    images: [
+      {
+        url: '/og-image-home.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI Pay Per Crawl Homepage',
+      },
+    ],
+  },
+  twitter: {
+    title: 'AI Pay Per Crawl - Monetize Your Content with AI Crawlers',
+    description: 'The premier marketplace for Pay Per Crawl domains. Publishers set prices for AI crawler access.',
+  },
+}
 
 export default function HomePage() {
   return (

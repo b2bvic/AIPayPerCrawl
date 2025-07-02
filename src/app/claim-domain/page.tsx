@@ -1,9 +1,24 @@
 'use client'
 
 import { useState } from 'react'
+import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+
+export const metadata: Metadata = {
+  title: 'Claim Your Domain - Start Monetizing with Pay Per Crawl',
+  description: 'Claim ownership of your domain and join the Pay Per Crawl ecosystem. Set your pricing for AI crawler access and start earning revenue from your content.',
+  openGraph: {
+    title: 'Claim Your Domain - Start Monetizing with Pay Per Crawl',
+    description: 'Claim ownership of your domain and join the Pay Per Crawl ecosystem. Set your pricing for AI crawler access and start earning revenue.',
+    url: 'https://aipaypercrawl.com/claim-domain',
+  },
+  twitter: {
+    title: 'Claim Your Domain - Start Monetizing with Pay Per Crawl',
+    description: 'Claim ownership of your domain and join the Pay Per Crawl ecosystem.',
+  },
+}
 
 interface ClaimFormData {
   domain: string

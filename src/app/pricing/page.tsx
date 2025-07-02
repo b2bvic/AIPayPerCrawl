@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { LogoWithText } from '@/components/Logo'
 import { Button } from '@/components/ui/Button'
 import { 
@@ -16,6 +17,20 @@ import {
   Code2,
   Database
 } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Pricing - Transparent Pay Per Crawl Rates',
+  description: 'Simple, transparent pricing for AI Pay Per Crawl. Start free with 1,000 requests/month. Scale as you grow with Pro and Enterprise plans. No hidden fees.',
+  openGraph: {
+    title: 'Pricing - Transparent Pay Per Crawl Rates',
+    description: 'Simple, transparent pricing for AI Pay Per Crawl. Start free with 1,000 requests/month. Scale as you grow with Pro and Enterprise plans.',
+    url: 'https://aipaypercrawl.com/pricing',
+  },
+  twitter: {
+    title: 'Pricing - Transparent Pay Per Crawl Rates',
+    description: 'Simple, transparent pricing for AI Pay Per Crawl. Start free and scale as you grow.',
+  },
+}
 
 export default function PricingPage() {
   const plans = [
