@@ -65,10 +65,23 @@ export default function ResetPasswordPage() {
 
     try {
       // API call to reset password
-      await new Promise(resolve => setTimeout(resolve, 1500)) // Simulate API call
+      const response = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token: token,
+          password: formData.password
+        })
+      })
       
-      // On success
-      setResetStatus('success')
+      const result = await response.json()
+      
+      if (result.success) {
+        setResetStatus('success')
+      } else {
+        setResetStatus('error')
+        setErrors({ submit: result.error || 'Failed to reset password. Please try again.' })
+      }
     } catch (error) {
       setResetStatus('error')
       setErrors({ submit: 'Failed to reset password. Please try again.' })

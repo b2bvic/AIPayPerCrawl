@@ -55,16 +55,55 @@ export default function AccountSettingsPage() {
     { id: 'preferences', label: 'Preferences', icon: Globe },
   ]
 
-  const handleSaveProfile = (e: React.FormEvent) => {
+  const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle profile update
-    console.log('Saving profile:', formData)
+    try {
+      const response = await fetch('/api/account', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          notifications: formData.notifications,
+          preferences: formData.preferences,
+        })
+      })
+      
+      const result = await response.json()
+      if (result.success) {
+        // Show success message
+        alert('Profile updated successfully!')
+      } else {
+        alert('Error: ' + result.error)
+      }
+    } catch (error) {
+      alert('Failed to update profile')
+    }
   }
 
-  const handleChangePassword = (e: React.FormEvent) => {
+  const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle password change
-    console.log('Changing password')
+    try {
+      const response = await fetch('/api/account', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'change-password',
+          currentPassword: formData.currentPassword,
+          newPassword: formData.newPassword,
+        })
+      })
+      
+      const result = await response.json()
+      if (result.success) {
+        alert('Password changed successfully!')
+        setFormData({ ...formData, currentPassword: '', newPassword: '', confirmPassword: '' })
+      } else {
+        alert('Error: ' + result.error)
+      }
+    } catch (error) {
+      alert('Failed to change password')
+    }
   }
 
   return (

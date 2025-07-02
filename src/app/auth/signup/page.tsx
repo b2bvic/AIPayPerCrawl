@@ -1,6 +1,8 @@
-// [AUTO-GENERATED PAGE: Please review and enrich as needed]
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import type { Metadata } from 'next'
 import { LogoWithText } from '@/components/Logo'
 import { Button } from '@/components/ui/Button'
@@ -21,6 +23,55 @@ export const metadata: Metadata = {
 }
 
 export default function SignUpPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    accountType: 'publisher',
+    agreeToTerms: false
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError('')
+
+    if (!formData.agreeToTerms) {
+      setError('You must agree to the Terms of Service and Privacy Policy')
+      setIsSubmitting(false)
+      return
+    }
+
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          password: formData.password,
+          isPublisher: formData.accountType === 'publisher' || formData.accountType === 'both'
+        })
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        router.push('/auth/signin?message=Account created successfully. Please sign in.')
+      } else {
+        setError(result.error || 'Sign up failed')
+      }
+    } catch (error) {
+      setError('Network error. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -40,7 +91,12 @@ export default function SignUpPage() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <Card className="py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" action="#" method="POST">
+          {error && (
+            <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+              {error}
+            </div>
+          )}
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="first-name" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
@@ -53,6 +109,8 @@ export default function SignUpPage() {
                     type="text"
                     autoComplete="given-name"
                     required
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     className="appearance-none block w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:text-white sm:text-sm"
                     placeholder="First name"
                   />
@@ -70,6 +128,8 @@ export default function SignUpPage() {
                     type="text"
                     autoComplete="family-name"
                     required
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     className="appearance-none block w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:text-white sm:text-sm"
                     placeholder="Last name"
                   />
@@ -88,6 +148,8 @@ export default function SignUpPage() {
                   type="email"
                   autoComplete="email"
                   required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="appearance-none block w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:text-white sm:text-sm"
                   placeholder="Enter your email"
                 />
@@ -105,6 +167,8 @@ export default function SignUpPage() {
                   type="password"
                   autoComplete="new-password"
                   required
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   className="appearance-none block w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:text-white sm:text-sm"
                   placeholder="Create a password"
                 />
@@ -122,6 +186,8 @@ export default function SignUpPage() {
                 <select
                   id="account-type"
                   name="account-type"
+                  value={formData.accountType}
+                  onChange={(e) => setFormData({ ...formData, accountType: e.target.value })}
                   className="appearance-none block w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:text-white sm:text-sm"
                 >
                   <option value="publisher">Publisher - Monetize my domains</option>
@@ -137,6 +203,8 @@ export default function SignUpPage() {
                 name="terms"
                 type="checkbox"
                 required
+                checked={formData.agreeToTerms}
+                onChange={(e) => setFormData({ ...formData, agreeToTerms: e.target.checked })}
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 dark:border-slate-600 rounded"
               />
               <label htmlFor="terms" className="ml-2 block text-sm text-slate-700 dark:text-slate-300">
@@ -152,8 +220,8 @@ export default function SignUpPage() {
             </div>
 
             <div>
-              <Button type="submit" className="w-full">
-                Create account
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? 'Creating account...' : 'Create account'}
               </Button>
             </div>
           </form>
