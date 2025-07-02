@@ -17,4 +17,5 @@ id = "6ec34c4721d34e07adca0d9b0e138e9e"
 
 # Environment variables
 [vars]
-NEXT_PUBLIC_APP_URL = "https://aipaypercrawl.com" 
+NEXT_PUBLIC_APP_URL = "https://aipaypercrawl.com"
+STRIPE_PUBLISHABLE_KEY = "pk_live_51IGCktB3fHcxpjFjhB5kHDfOBxQ2D9efzwKono19CQZj0Iep3z7oVIjbOglzeXUQWnRpP6Oc5DhntLt4YoM0D0Wo00ip05LHcc" 

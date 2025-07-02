@@ -174,6 +174,7 @@ export async function onRequest(context) {
       const response = {
         quoteId,
         totalCost: Number(totalCost.toFixed(6)),
+        totalPrice: Number(totalCost.toFixed(6)), // For backward compatibility
         currency: 'USD',
         items,
         expiresAt,

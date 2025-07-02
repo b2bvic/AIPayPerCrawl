@@ -48,7 +48,12 @@ export async function onRequest(context) {
       }
 
       const items = JSON.parse(quote.items);
-      const totalAmount = Math.round(quote.total_price * 100); // Convert to cents
+      let totalAmount = Math.round(quote.total_cost * 100); // Convert to cents
+      
+      // Stripe requires minimum 50 cents for USD
+      if (totalAmount < 50) {
+        totalAmount = 50; // Set minimum to $0.50
+      }
 
       // Create Stripe checkout session
       const stripeKey = env.STRIPE_SECRET_KEY;
@@ -65,13 +70,13 @@ export async function onRequest(context) {
           currency: quote.currency,
           product_data: {
             name: `Web Crawling - ${item.domain}`,
-            description: `Crawl ${item.urls.length} URL(s) from ${item.domain}`,
+            description: `Crawl 1 URL from ${item.domain}`,
             metadata: {
               domain: item.domain,
-              urls: item.urls.join(',')
+              url: item.url
             }
           },
-          unit_amount: Math.round(item.price * 100), // Convert to cents
+          unit_amount: Math.max(1, Math.round(item.pricePerRequest * 100)), // Convert to cents, minimum 1 cent
         },
         quantity: 1,
       }));
@@ -91,7 +96,7 @@ export async function onRequest(context) {
           'metadata[api_key]': apiKey,
           'line_items[0][price_data][currency]': quote.currency,
           'line_items[0][price_data][product_data][name]': `Web Crawling Quote ${quoteId}`,
-          'line_items[0][price_data][product_data][description]': `Crawl ${items.length} domain(s) with ${items.reduce((sum, item) => sum + item.urls.length, 0)} total URLs`,
+          'line_items[0][price_data][product_data][description]': `Crawl ${items.length} URL(s) from ${items.length} domain(s)`,
           'line_items[0][price_data][unit_amount]': totalAmount,
           'line_items[0][quantity]': '1',
           'payment_intent_data[metadata][quote_id]': quoteId,
@@ -103,7 +108,15 @@ export async function onRequest(context) {
         const error = await checkoutSession.json();
         console.error('Stripe checkout error:', error);
         return new Response(
-          JSON.stringify({ error: 'Failed to create checkout session' }),
+          JSON.stringify({ 
+            error: 'Failed to create checkout session',
+            stripeError: error,
+            debug: {
+              totalAmount,
+              currency: quote.currency,
+              itemsCount: items.length
+            }
+          }),
           { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
@@ -122,7 +135,7 @@ export async function onRequest(context) {
         session.id,
         'pending',
         'pending',
-        quote.total_price,
+        quote.total_cost,
         quote.currency,
         new Date().toISOString()
       ).run();
@@ -147,7 +160,7 @@ export async function onRequest(context) {
         checkoutUrl: session.url,
         crawlRequestId,
         quoteId,
-        totalAmount: quote.total_price,
+        totalAmount: quote.total_cost,
         currency: quote.currency,
         expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() // 24 hours
       }), {
