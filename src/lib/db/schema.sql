@@ -100,17 +100,17 @@ CREATE TABLE IF NOT EXISTS domain_claims (
 );
 
 -- Create indexes for performance
-CREATE INDEX idx_domains_rank ON domains(rank);
-CREATE INDEX idx_domains_owner ON domains(owner_id);
-CREATE INDEX idx_domains_status ON domains(claim_status);
-CREATE INDEX idx_requests_domain ON crawl_requests(domain_id);
-CREATE INDEX idx_requests_created ON crawl_requests(created_at);
-CREATE INDEX idx_quotes_quote_id ON quotes(quote_id);
-CREATE INDEX idx_analytics_event_type ON analytics_events(event_type);
-CREATE INDEX idx_analytics_timestamp ON analytics_events(timestamp);
+CREATE INDEX IF NOT EXISTS idx_domains_rank ON domains(rank);
+CREATE INDEX IF NOT EXISTS idx_domains_owner ON domains(owner_id);
+CREATE INDEX IF NOT EXISTS idx_domains_status ON domains(claim_status);
+CREATE INDEX IF NOT EXISTS idx_requests_domain ON crawl_requests(domain_id);
+CREATE INDEX IF NOT EXISTS idx_requests_created ON crawl_requests(created_at);
+CREATE INDEX IF NOT EXISTS idx_quotes_quote_id ON quotes(quote_id);
+CREATE INDEX IF NOT EXISTS idx_analytics_event_type ON analytics_events(event_type);
+CREATE INDEX IF NOT EXISTS idx_analytics_timestamp ON analytics_events(timestamp);
 
 -- Indexes for domain claims
-CREATE INDEX idx_domain_claims_domain ON domain_claims(domain);
-CREATE INDEX idx_domain_claims_status ON domain_claims(status);
-CREATE INDEX idx_domain_claims_email ON domain_claims(email);
-CREATE INDEX idx_domain_claims_submitted ON domain_claims(submitted_at); 
+CREATE INDEX IF NOT EXISTS idx_domain_claims_domain ON domain_claims(domain);
+CREATE INDEX IF NOT EXISTS idx_domain_claims_status ON domain_claims(status);
+CREATE INDEX IF NOT EXISTS idx_domain_claims_email ON domain_claims(email);
+CREATE INDEX IF NOT EXISTS idx_domain_claims_submitted ON domain_claims(submitted_at); 
