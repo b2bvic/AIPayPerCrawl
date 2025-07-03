@@ -5,6 +5,9 @@ import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/Button'
+import { CloudflareImport } from '@/components/CloudflareImport'
+import { PricingManager } from '@/components/PricingManager'
+import { AnalyticsDashboard } from '@/components/AnalyticsDashboard'
 import { 
   Globe, 
   DollarSign, 
@@ -20,7 +23,9 @@ import {
   Users,
   Clock,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  Cloud,
+  Gift
 } from 'lucide-react'
 import { formatCurrency, formatNumber } from '@/lib/utils'
 
@@ -69,7 +74,7 @@ const mockDomains = [
 ]
 
 export default function PublisherDashboard() {
-  const [activeTab, setActiveTab] = useState<'overview' | 'domains' | 'analytics' | 'settings'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'domains' | 'analytics' | 'pricing' | 'cloudflare' | 'settings'>('overview')
 
   const getStatusBadge = (status: string, claimStatus: string) => {
     if (claimStatus === 'verified') {
@@ -118,6 +123,8 @@ export default function PublisherDashboard() {
               { id: 'overview', label: 'Overview', icon: BarChart3 },
               { id: 'domains', label: 'Domains', icon: Globe },
               { id: 'analytics', label: 'Analytics', icon: TrendingUp },
+              { id: 'pricing', label: 'Pricing & Coupons', icon: DollarSign },
+              { id: 'cloudflare', label: 'Cloudflare Import', icon: Cloud },
               { id: 'settings', label: 'Settings', icon: Settings },
             ].map((tab) => {
               const Icon = tab.icon
@@ -320,29 +327,24 @@ export default function PublisherDashboard() {
         )}
 
         {activeTab === 'analytics' && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
-                Analytics & Insights
-              </h2>
-              <Button variant="outline">
-                <Download className="h-4 w-4 mr-2" />
-                Export Data
-              </Button>
-            </div>
+          <AnalyticsDashboard />
+        )}
 
-            <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
-              <div className="text-center py-12">
-                <BarChart3 className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">
-                  Advanced Analytics Coming Soon
-                </h3>
-                <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto">
-                  We're building comprehensive analytics including revenue trends, 
-                  request patterns, and performance metrics.
-                </p>
-              </div>
+        {activeTab === 'pricing' && (
+          <PricingManager />
+        )}
+
+        {activeTab === 'cloudflare' && (
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-2">
+                Cloudflare Integration
+              </h2>
+              <p className="text-slate-600 dark:text-slate-300">
+                Import your existing Cloudflare domain settings with a single click.
+              </p>
             </div>
+            <CloudflareImport />
           </div>
         )}
 
