@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     'HTTP 402',
     'paid content access'
   ],
-  authors: [{ name: 'AI Pay Per Crawl', url: 'https://aipaypercrawl.com' }],
-  creator: 'AI Pay Per Crawl',
-  publisher: 'AI Pay Per Crawl',
+  authors: [{ name: 'Victor Valentine Romo', url: 'https://victorvalentineromo.com' }],
+  creator: 'Victor Valentine Romo',
+  publisher: 'Scale With Search',
   formatDetection: {
     email: false,
     address: false,
