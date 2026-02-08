@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robots.txt Directives for AI Crawlers: Complete Configuration Guide for GPTBot, Claude-Web, and Google-Extended | AI Pay Per Crawl</title>
+    <meta name="description" content="Comprehensive guide to robots.txt directives for blocking or allowing AI crawlers including GPTBot, Claude-Web, Google-Extended, and Applebot-Extended.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Robots.txt Directives for AI Crawlers: Complete Configuration Guide for GPTBot, Claude-Web, and Google-Extended">
+    <meta property="og:description" content="Comprehensive guide to robots.txt directives for blocking or allowing AI crawlers including GPTBot, Claude-Web, Google-Extended, and Applebot-Extended.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/robots-txt-directives-ai-crawlers">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Robots.txt Directives for AI Crawlers: Complete Configuration Guide for GPTBot, Claude-Web, and Google-Extended">
+    <meta name="twitter:description" content="Comprehensive guide to robots.txt directives for blocking or allowing AI crawlers including GPTBot, Claude-Web, Google-Extended, and Applebot-Extended.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/robots-txt-directives-ai-crawlers">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Robots.txt Directives for AI Crawlers: Complete Configuration Guide for GPTBot, Claude-Web, and Google-Extended",
+  "description": "Comprehensive guide to robots.txt directives for blocking or allowing AI crawlers including GPTBot, Claude-Web, Google-Extended, and Applebot-Extended.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/robots-txt-directives-ai-crawlers"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Robots.txt Directives for AI Crawlers: Complete Configuration Guide for GPTBot, Claude-Web, and Google-Extended",
+      "item": "https://aipaypercrawl.com/articles/robots-txt-directives-ai-crawlers"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Robots.txt Directives for AI Crawlers: Complete Configuration Guide for GPTBot, Claude-Web, and Google-Extended</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 10 min read</span>
+        <h1>Robots.txt Directives for AI Crawlers: Complete Configuration Guide for GPTBot, Claude-Web, and Google-Extended</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Comprehensive guide to robots.txt directives for blocking or allowing AI crawlers including GPTBot, Claude-Web, Google-Extended, and Applebot-Extended.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Robots.txt Directives for AI Crawlers: Complete Configuration Guide for GPTBot, Claude-Web, and Google-Extended</h1>
+<p>Publishers control AI crawler access through <strong>robots.txt directives</strong> that specify which bots can access which content. Unlike blanket blocks that stop all crawlers, targeted directives enable granular control: allow <strong>Googlebot</strong> for search indexing while blocking <strong>GPTBot</strong> from AI training, or permit crawling on public articles while restricting access to proprietary documentation. Configuration precision determines whether publishers preserve search visibility while protecting content from unauthorized AI training.</p>
+<h2>Robots.txt Fundamentals for AI Crawler Control</h2>
+<p><strong>Robots.txt</strong> is a plain text file placed in a website&#39;s root directory (<code>https://example.com/robots.txt</code>) that provides crawling instructions to automated clients. The file uses a simple syntax: <strong>User-agent</strong> declares which crawler the rules apply to, <strong>Disallow</strong> specifies restricted paths, and <strong>Allow</strong> creates exceptions.</p>
+<p>Basic structure:</p>
+<pre><code>User-agent: [crawler name]
+Disallow: [path]
+Allow: [path]
+</code></pre>
+<p>AI crawlers introduced since 2023 include specific user agent identifiers that enable targeted blocking without affecting search engine crawlers essential for organic traffic.</p>
+<h2>Major AI Crawler User Agents</h2>
+<p>Each AI company operates crawlers with distinct user agent strings. Accurate identification ensures directives target the intended crawler.</p>
+<h3>OpenAI - GPTBot</h3>
+<p><strong>User agent:</strong> <code>GPTBot</code></p>
+<p>Introduced August 2023, GPTBot gathers training data for OpenAI&#39;s models including GPT-4 and beyond. The crawler respects robots.txt and provides a feedback mechanism at <code>https://platform.openai.com/gptbot-feedback</code> for publishers experiencing issues.</p>
+<p><strong>To block GPTBot entirely:</strong></p>
+<pre><code>User-agent: GPTBot
+Disallow: /
+</code></pre>
+<p><strong>To allow GPTBot on a specific directory:</strong></p>
+<pre><code>User-agent: GPTBot
+Allow: /public/
+Disallow: /
+</code></pre>
+<p>This configuration blocks GPTBot from the entire site except <code>/public/</code>.</p>
+<h3>Anthropic - Claude-Web</h3>
+<p><strong>User agent:</strong> <code>Claude-Web</code></p>
+<p><strong>Anthropic</strong> introduced Claude-Web in late 2023 for training Claude models. The crawler operates similarly to GPTBot, respecting robots.txt and offering publisher support.</p>
+<p><strong>To block Claude-Web:</strong></p>
+<pre><code>User-agent: Claude-Web
+Disallow: /
+</code></pre>
+<p><strong>To allow only blog content:</strong></p>
+<pre><code>User-agent: Claude-Web
+Allow: /blog/
+Disallow: /
+</code></pre>
+<h3>Google - Google-Extended</h3>
+<p><strong>User agent:</strong> <code>Google-Extended</code></p>
+<p>Launched September 2023, <strong>Google-Extended</strong> is distinct from <strong>Googlebot</strong>. While Googlebot powers Google Search, Google-Extended gathers data for <strong>Bard</strong> (now Gemini) and other AI products. Blocking Google-Extended does not impact search rankings.</p>
+<p><strong>To block Google-Extended while preserving Googlebot:</strong></p>
+<pre><code>User-agent: Google-Extended
+Disallow: /
+
+User-agent: Googlebot
+Allow: /
+</code></pre>
+<p>This preserves search indexing while preventing AI training data collection.</p>
+<h3>Apple - Applebot-Extended</h3>
+<p><strong>User agent:</strong> <code>Applebot-Extended</code></p>
+<p>Announced December 2024, Apple&#39;s AI training crawler supports <strong>Apple Intelligence</strong> features. Like Google-Extended, it&#39;s separate from Apple&#39;s general web crawler.</p>
+<p><strong>To block Applebot-Extended:</strong></p>
+<pre><code>User-agent: Applebot-Extended
+Disallow: /
+</code></pre>
+<h3>Cohere - cohere-ai</h3>
+<p><strong>User agent:</strong> <code>cohere-ai</code></p>
+<p><strong>Cohere</strong> operates crawlers for training its command and embedding models. Compliance rates are lower than tier-1 companies but blocking remains effective.</p>
+<pre><code>User-agent: cohere-ai
+Disallow: /
+</code></pre>
+<h3>Meta - FacebookBot</h3>
+<p><strong>User agent:</strong> <code>FacebookBot</code></p>
+<p>Meta uses FacebookBot for AI training in addition to social media scraping. Blocking FacebookBot prevents content from training Meta&#39;s LLaMA models but may impact Facebook link previews.</p>
+<pre><code>User-agent: FacebookBot
+Disallow: /
+</code></pre>
+<h3>Perplexity - PerplexityBot</h3>
+<p><strong>User agent:</strong> <code>PerplexityBot</code></p>
+<p><strong>Perplexity AI</strong> introduced a named crawler in 2024 following criticism about undeclared scraping. The crawler feeds Perplexity&#39;s real-time answer engine.</p>
+<pre><code>User-agent: PerplexityBot
+Disallow: /
+</code></pre>
+<h3>Common Crawl - CCBot</h3>
+<p><strong>User agent:</strong> <code>CCBot</code></p>
+<p>Common Crawl archives the web for research purposes. Its data feeds numerous AI training pipelines, making it an indirect AI crawler.</p>
+<pre><code>User-agent: CCBot
+Disallow: /
+</code></pre>
+<p>Blocking CCBot prevents your content from entering the Common Crawl archive, which AI companies license for training data.</p>
+<h2>Comprehensive Multi-Crawler Block Configuration</h2>
+<p>Publishers who want to block all major AI crawlers while preserving search engine access can combine directives:</p>
+<pre><code># Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Allow search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+</code></pre>
+<p>This configuration creates a clear separation: AI training crawlers are blocked, traditional search crawlers retain full access.</p>
+<h2>Granular Path-Based Controls</h2>
+<p>Robots.txt supports path-level restrictions, enabling publishers to monetize premium content while keeping general content accessible to AI models.</p>
+<h3>Protecting Premium Content</h3>
+<p>If your site hosts free blog posts and paid courses, allow AI crawlers on blog content while blocking course materials:</p>
+<pre><code>User-agent: GPTBot
+Allow: /blog/
+Disallow: /courses/
+Disallow: /members/
+</code></pre>
+<p>This makes your blog discoverable by AI models (potentially driving awareness) while protecting paid content from unauthorized training use.</p>
+<h3>Excluding User-Generated Content</h3>
+<p>AI training on forums or comments sections creates legal risk if users haven&#39;t consented to their content being used for AI. Block these directories:</p>
+<pre><code>User-agent: GPTBot
+Disallow: /forum/
+Disallow: /comments/
+
+User-agent: Claude-Web
+Disallow: /forum/
+Disallow: /comments/
+</code></pre>
+<h3>API Documentation and Code Blocks</h3>
+<p>Technical publishers often produce API documentation and code examples. These are high-value to AI models training on code. Block selectively:</p>
+<pre><code>User-agent: GPTBot
+Allow: /docs/quickstart/
+Disallow: /docs/api/
+Disallow: /code-examples/
+</code></pre>
+<p>This allows GPTBot to access introductory documentation (marketing benefit) while restricting detailed API references and code samples (licensing opportunity).</p>
+<h2>Crawl-Delay Directives for AI Crawlers</h2>
+<p><strong>Crawl-delay</strong> limits request frequency. While not universally supported, major crawlers including GPTBot and Claude-Web honor it.</p>
+<pre><code>User-agent: GPTBot
+Crawl-delay: 10
+</code></pre>
+<p>This restricts GPTBot to one request every 10 seconds. Crawl-delay doesn&#39;t stop access—it slows it down, reducing server load and creating operational friction that may prompt AI companies to negotiate licensing for faster access.</p>
+<h3>Strategic Use of Crawl-Delay</h3>
+<p>Instead of blocking AI crawlers entirely, apply aggressive crawl-delays:</p>
+<pre><code>User-agent: GPTBot
+Crawl-delay: 60
+
+User-agent: Claude-Web
+Crawl-delay: 60
+</code></pre>
+<p>At one request per minute, crawling a 10,000-page site takes nearly seven days. This makes scraping operationally expensive while keeping the door open for licensing discussions.</p>
+<h2>Sitemap Restrictions for AI Crawlers</h2>
+<p><strong>Sitemap.xml</strong> files tell crawlers which pages exist. Excluding AI crawlers from sitemap directives forces them to discover pages organically (slower, more resource-intensive).</p>
+<p>In robots.txt:</p>
+<pre><code>User-agent: *
+Sitemap: https://example.com/sitemap.xml
+
+User-agent: GPTBot
+Sitemap: none
+</code></pre>
+<p>This provides a sitemap to standard crawlers but denies it to GPTBot, increasing crawling difficulty.</p>
+<h2>Wildcard Blocking for Unknown AI Crawlers</h2>
+<p>Many AI crawlers don&#39;t declare themselves. Wildcard rules create default-deny policies:</p>
+<pre><code>User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+</code></pre>
+<p>This blocks everything by default, then explicitly allows known search crawlers. Any undeclared crawler is automatically blocked. However, this approach also blocks benign bots like accessibility tools and uptime monitors.</p>
+<h2>Testing Robots.txt Configuration</h2>
+<p>Robots.txt syntax errors can inadvertently block all crawlers or fail to block AI crawlers. Test configurations using:</p>
+<h3>Google&#39;s Robots.txt Tester</h3>
+<p><strong>Google Search Console</strong> includes a robots.txt tester that validates syntax and checks whether specific URLs are blocked for Googlebot and Google-Extended.</p>
+<ol>
+<li>Navigate to <strong>Search Console &gt; Crawl &gt; robots.txt Tester</strong></li>
+<li>Edit your robots.txt</li>
+<li>Test URLs against different user agents</li>
+</ol>
+<h3>Technical Validation Tools</h3>
+<p><strong>Robots.txt validator</strong> tools check syntax and simulate crawler behavior. Use:</p>
+<ul>
+<li><strong>Ryte Robots.txt Validator</strong>: <a href="https://en.ryte.com/free-tools/robots-txt/">https://en.ryte.com/free-tools/robots-txt/</a></li>
+<li><strong>Merkle Robots.txt Validator</strong>: <a href="https://technicalseo.com/tools/robots-txt/">https://technicalseo.com/tools/robots-txt/</a></li>
+</ul>
+<h3>Log Analysis Post-Implementation</h3>
+<p>After deploying robots.txt changes, monitor server logs to confirm AI crawlers respect directives. If GPTBot traffic doesn&#39;t drop after implementing a block, either:</p>
+<ol>
+<li>Syntax errors prevent the block from taking effect</li>
+<li>Cached DNS results delay recognition of updated robots.txt</li>
+<li>The crawler is non-compliant</li>
+</ol>
+<p>Crawlers typically re-fetch robots.txt every 24 hours. Allow 48 hours before concluding non-compliance.</p>
+<h2>Common Robots.txt Mistakes That Fail to Block AI Crawlers</h2>
+<h3>Incorrect User Agent Capitalization</h3>
+<p>Robots.txt is case-sensitive for user agents. Writing <code>gptbot</code> instead of <code>GPTBot</code> causes the directive to fail.</p>
+<p><strong>Incorrect:</strong></p>
+<pre><code>User-agent: gptbot
+Disallow: /
+</code></pre>
+<p><strong>Correct:</strong></p>
+<pre><code>User-agent: GPTBot
+Disallow: /
+</code></pre>
+<h3>Trailing Slashes in Disallow Paths</h3>
+<p>Trailing slashes matter. <code>/docs/</code> blocks only the directory itself; <code>/docs</code> blocks all paths starting with <code>/docs</code>.</p>
+<p><strong>To block an entire directory and subdirectories:</strong></p>
+<pre><code>User-agent: GPTBot
+Disallow: /docs
+</code></pre>
+<p><strong>To block only the directory index:</strong></p>
+<pre><code>User-agent: GPTBot
+Disallow: /docs/
+</code></pre>
+<p>Most use cases require blocking the entire directory tree, so omit the trailing slash.</p>
+<h3>Multiple Disallow Directives Per User-Agent</h3>
+<p>Each user agent block should group all directives together. Repeating the user agent creates confusion and may cause parsers to ignore later rules.</p>
+<p><strong>Incorrect:</strong></p>
+<pre><code>User-agent: GPTBot
+Disallow: /admin/
+
+User-agent: GPTBot
+Disallow: /private/
+</code></pre>
+<p><strong>Correct:</strong></p>
+<pre><code>User-agent: GPTBot
+Disallow: /admin/
+Disallow: /private/
+</code></pre>
+<h3>Forgetting Allow Exceptions</h3>
+<p>When blocking a crawler globally but allowing specific paths, the Allow directive must precede the Disallow.</p>
+<p><strong>Correct Order:</strong></p>
+<pre><code>User-agent: GPTBot
+Allow: /blog/
+Disallow: /
+</code></pre>
+<p><strong>Incorrect Order:</strong></p>
+<pre><code>User-agent: GPTBot
+Disallow: /
+Allow: /blog/
+</code></pre>
+<p>The incorrect order blocks everything because the Disallow / is evaluated first.</p>
+<h2>Robots.txt vs. Meta Robots Tags</h2>
+<p><strong>Robots.txt</strong> controls crawler access to pages. <strong>Meta robots tags</strong> control how crawlers handle individual pages after accessing them.</p>
+<p>For AI crawlers, meta tags provide page-level granularity:</p>
+<pre><code class="language-html">&lt;meta name=&quot;robots&quot; content=&quot;noai, noimageai&quot;&gt;
+</code></pre>
+<p>This emerging standard (proposed by <strong>Spawning.ai</strong>) signals that a page shouldn&#39;t be used for AI training. Compliance is voluntary and adoption is nascent, but combining robots.txt with meta tags creates layered protection.</p>
+<h2>Server-Level Enforcement Beyond Robots.txt</h2>
+<p>Robots.txt relies on voluntary compliance. Non-compliant crawlers ignore it. Server configuration enforces blocks:</p>
+<p><strong>Apache .htaccess:</strong></p>
+<pre><code class="language-apache">RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} GPTBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} Claude-Web [NC]
+RewriteRule .* - [F,L]
+</code></pre>
+<p><strong>Nginx:</strong></p>
+<pre><code class="language-nginx">if ($http_user_agent ~* (GPTBot|Claude-Web|Google-Extended)) {
+    return 403;
+}
+</code></pre>
+<p>This converts robots.txt suggestions into hard blocks. Non-compliant crawlers receive 403 errors instead of content.</p>
+<h2>Licensing Exemptions via Robots.txt</h2>
+<p>Publishers who license content to AI companies can create exemption paths:</p>
+<pre><code>User-agent: GPTBot
+Allow: /licensed-content/
+Disallow: /
+</code></pre>
+<p>Then, licensing agreements grant access only to specific directories. This separates monetized content (accessible) from protected content (blocked).</p>
+<h2>Frequently Asked Questions</h2>
+<p><strong>Does blocking GPTBot hurt my search rankings?</strong>
+No. GPTBot is separate from Googlebot. Blocking GPTBot has zero impact on Google Search indexing or rankings.</p>
+<p><strong>Can I block some AI crawlers but allow others?</strong>
+Yes. Each crawler is controlled independently. You can allow GPTBot while blocking Claude-Web, or vice versa.</p>
+<p><strong>What if I block all AI crawlers—can I change my mind later?</strong>
+Yes. Updating robots.txt to remove blocks allows crawlers to resume access. However, AI companies may have already trained on competitors&#39; content during your block period.</p>
+<p><strong>How quickly do AI crawlers recognize updated robots.txt?</strong>
+Most crawlers re-fetch robots.txt every 24 hours. Allow 48 hours for changes to take effect.</p>
+<p><strong>Do AI crawlers respect Allow exceptions within global Disallow rules?</strong>
+Yes. GPTBot, Claude-Web, and Google-Extended support Allow directives that create exceptions to broader Disallow rules.</p>
+<p><strong>Can I block AI crawlers on specific pages rather than entire directories?</strong>
+Robots.txt works at the path level, not individual files. To block specific pages, use directory-level restrictions or implement server-side blocks based on URL patterns.</p>
+<p><strong>What if an AI crawler ignores my robots.txt?</strong>
+Implement server-level blocks via Apache/Nginx configuration to enforce restrictions regardless of crawler compliance. Document violations for potential legal action.</p>
+<p>Publishers who implement precise robots.txt directives control which AI companies access their content, creating leverage for licensing negotiations while preserving search visibility and organic traffic.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

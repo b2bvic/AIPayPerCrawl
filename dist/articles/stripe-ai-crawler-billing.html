@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe AI Crawler Billing Integration: Implementing Usage-Based Payments for Content Licensing at Scale | AI Pay Per Crawl</title>
+    <meta name="description" content="Technical guide to integrating Stripe billing for AI content licensing including metered billing, subscription management, and automated invoice generation.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Stripe AI Crawler Billing Integration: Implementing Usage-Based Payments for Content Licensing at Scale">
+    <meta property="og:description" content="Technical guide to integrating Stripe billing for AI content licensing including metered billing, subscription management, and automated invoice generation.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/stripe-ai-crawler-billing">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stripe AI Crawler Billing Integration: Implementing Usage-Based Payments for Content Licensing at Scale">
+    <meta name="twitter:description" content="Technical guide to integrating Stripe billing for AI content licensing including metered billing, subscription management, and automated invoice generation.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/stripe-ai-crawler-billing">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Stripe AI Crawler Billing Integration: Implementing Usage-Based Payments for Content Licensing at Scale",
+  "description": "Technical guide to integrating Stripe billing for AI content licensing including metered billing, subscription management, and automated invoice generation.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/stripe-ai-crawler-billing"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Stripe AI Crawler Billing Integration: Implementing Usage-Based Payments for Content Licensing at Scale",
+      "item": "https://aipaypercrawl.com/articles/stripe-ai-crawler-billing"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Stripe AI Crawler Billing Integration: Implementing Usage-Based Payments for Content Licensing at Scale</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 9 min read</span>
+        <h1>Stripe AI Crawler Billing Integration: Implementing Usage-Based Payments for Content Licensing at Scale</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Technical guide to integrating Stripe billing for AI content licensing including metered billing, subscription management, and automated invoice generation.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Stripe AI Crawler Billing Integration: Implementing Usage-Based Payments for Content Licensing at Scale</h1>
+<p><strong>Stripe&#39;s metered billing</strong> transforms AI content licensing from manual invoicing to automated, usage-based revenue capture. Publishers implementing crawler licensing portals need billing infrastructure that tracks API requests, converts usage to dollars, and charges customers automatically. <strong>Stripe</strong> provides production-ready solutions: <strong>subscription billing</strong> for fixed-rate licenses, <strong>metered billing</strong> for per-request pricing, and <strong>invoicing</strong> for enterprise deals exceeding $50K annually. Integration requires API key validation, usage tracking, webhook listeners, and customer dashboard interfaces—achievable in 20-40 development hours for functional billing that scales from 10 to 10,000 licensed crawlers without manual intervention.</p>
+<h2>Why Usage-Based Billing for AI Licensing</h2>
+<h3>Fixed vs. Metered Pricing Models</h3>
+<p><strong>Fixed subscription</strong> ($500/month flat fee):</p>
+<ul>
+<li><strong>Pros</strong>: Predictable revenue, simple implementation</li>
+<li><strong>Cons</strong>: Doesn&#39;t scale with usage—heavy users underpay, light users overpay</li>
+</ul>
+<p><strong>Metered billing</strong> ($0.001 per request):</p>
+<ul>
+<li><strong>Pros</strong>: Revenue scales with value delivered, fair pricing</li>
+<li><strong>Cons</strong>: Complex implementation, unpredictable revenue</li>
+</ul>
+<p><strong>Hybrid model</strong> ($100/month base + $0.001 per request over 1,000):</p>
+<ul>
+<li><strong>Pros</strong>: Predictable baseline + scalability</li>
+<li><strong>Cons</strong>: Most complex implementation</li>
+</ul>
+<p>For AI crawler licensing, <strong>hybrid models</strong> perform best. Publishers guarantee minimum revenue while capturing overage fees from aggressive crawlers.</p>
+<h2>Stripe Billing Architecture Overview</h2>
+<h3>Core Components</h3>
+<ol>
+<li><strong>Products and Prices</strong>: Define what you&#39;re selling</li>
+<li><strong>Customers</strong>: Represent licensed AI companies</li>
+<li><strong>Subscriptions</strong>: Ongoing billing relationships</li>
+<li><strong>Usage Records</strong>: Log metered usage for billing</li>
+<li><strong>Invoices</strong>: Generated automatically based on usage</li>
+<li><strong>Webhooks</strong>: Notify your system of billing events</li>
+</ol>
+<h3>Billing Flow</h3>
+<pre><code>1. Customer signs up → Create Stripe Customer
+2. Customer selects tier → Create Subscription with pricing
+3. AI crawler accesses content → Log Usage Record
+4. End of billing period → Stripe generates Invoice
+5. Payment processes → Webhook notifies your system
+6. Failed payment → Webhook triggers retry logic or suspension
+</code></pre>
+<h2>Setting Up Stripe Products and Pricing</h2>
+<h3>Create Product in Stripe Dashboard</h3>
+<ol>
+<li>Navigate to <strong>Products</strong> → <strong>Add Product</strong></li>
+<li><strong>Name</strong>: &quot;AI Content Licensing - Standard Tier&quot;</li>
+<li><strong>Description</strong>: &quot;Access to 10,000 articles with metadata&quot;</li>
+</ol>
+<h3>Define Pricing Models</h3>
+<p><strong>Subscription Pricing (Fixed Monthly Fee)</strong>:</p>
+<ul>
+<li><strong>Billing period</strong>: Monthly</li>
+<li><strong>Price</strong>: $500/month</li>
+<li><strong>Type</strong>: Recurring</li>
+</ul>
+<p><strong>Metered Pricing (Per-Request)</strong>:</p>
+<ul>
+<li><strong>Billing period</strong>: Monthly</li>
+<li><strong>Type</strong>: Metered</li>
+<li><strong>Pricing</strong>: $0.001 per unit</li>
+<li><strong>Aggregation</strong>: Sum (total all usage)</li>
+</ul>
+<p><strong>Hybrid Pricing</strong>:</p>
+<ul>
+<li>Create two prices on one product:<ul>
+<li><strong>Base subscription</strong>: $100/month recurring</li>
+<li><strong>Metered overage</strong>: $0.001 per request (after 1,000 included)</li>
+</ul>
+</li>
+</ul>
+<h2>Implementing Usage Tracking</h2>
+<h3>Logging Requests to Stripe</h3>
+<p>When an AI crawler accesses content, log the usage to Stripe.</p>
+<p><strong>Python example</strong>:</p>
+<pre><code class="language-python">import stripe
+from datetime import datetime
+
+stripe.api_key = &#39;sk_live_...&#39;
+
+def log_crawler_usage(subscription_item_id, quantity):
+    &quot;&quot;&quot;
+    Log usage for metered billing.
+
+    Args:
+        subscription_item_id: Stripe subscription item ID (from customer record)
+        quantity: Number of units consumed (e.g., 1 for 1 request)
+    &quot;&quot;&quot;
+    stripe.SubscriptionItem.create_usage_record(
+        subscription_item_id,
+        quantity=quantity,
+        timestamp=int(datetime.now().timestamp()),
+        action=&#39;increment&#39;  # Add to existing usage
+    )
+
+# Usage in your API endpoint
+@app.route(&#39;/licensed-content/&lt;path:path&gt;&#39;)
+def serve_licensed_content(path):
+    api_key = request.headers.get(&#39;X-API-Key&#39;)
+    customer = validate_api_key(api_key)
+
+    if not customer:
+        return jsonify({&#39;error&#39;: &#39;Invalid API key&#39;}), 403
+
+    # Serve content
+    content = load_content(path)
+
+    # Log usage to Stripe
+    log_crawler_usage(customer[&#39;stripe_subscription_item_id&#39;], quantity=1)
+
+    return jsonify({&#39;content&#39;: content})
+</code></pre>
+<h3>Node.js Implementation</h3>
+<pre><code class="language-javascript">const stripe = require(&#39;stripe&#39;)(&#39;sk_live_...&#39;);
+
+async function logCrawlerUsage(subscriptionItemId, quantity) {
+  await stripe.subscriptionItems.createUsageRecord(
+    subscriptionItemId,
+    {
+      quantity: quantity,
+      timestamp: Math.floor(Date.now() / 1000),
+      action: &#39;increment&#39;
+    }
+  );
+}
+
+// Express route
+app.get(&#39;/licensed-content/:path&#39;, async (req, res) =&gt; {
+  const apiKey = req.headers[&#39;x-api-key&#39;];
+  const customer = await validateApiKey(apiKey);
+
+  if (!customer) {
+    return res.status(403).json({ error: &#39;Invalid API key&#39; });
+  }
+
+  const content = loadContent(req.params.path);
+
+  // Log usage
+  await logCrawlerUsage(customer.stripeSubscriptionItemId, 1);
+
+  res.json({ content });
+});
+</code></pre>
+<h2>Creating Subscriptions for Customers</h2>
+<h3>Subscription Creation Flow</h3>
+<ol>
+<li>Customer signs up via your portal</li>
+<li>Create Stripe Customer</li>
+<li>Create Subscription with selected pricing</li>
+<li>Store subscription ID in your database</li>
+</ol>
+<p><strong>Python example</strong>:</p>
+<pre><code class="language-python">def create_licensing_subscription(customer_email, tier):
+    # Create Stripe customer
+    customer = stripe.Customer.create(
+        email=customer_email,
+        metadata={&#39;tier&#39;: tier}
+    )
+
+    # Define price IDs (created in Stripe Dashboard)
+    PRICE_IDS = {
+        &#39;standard&#39;: {
+            &#39;base&#39;: &#39;price_standard_monthly&#39;,
+            &#39;metered&#39;: &#39;price_standard_metered&#39;
+        },
+        &#39;premium&#39;: {
+            &#39;base&#39;: &#39;price_premium_monthly&#39;,
+            &#39;metered&#39;: &#39;price_premium_metered&#39;
+        }
+    }
+
+    # Create subscription with hybrid pricing
+    subscription = stripe.Subscription.create(
+        customer=customer.id,
+        items=[
+            {&#39;price&#39;: PRICE_IDS[tier][&#39;base&#39;]},  # Fixed monthly fee
+            {&#39;price&#39;: PRICE_IDS[tier][&#39;metered&#39;]}  # Per-request fee
+        ],
+        payment_behavior=&#39;default_incomplete&#39;,
+        expand=[&#39;latest_invoice.payment_intent&#39;]
+    )
+
+    # Store subscription info in your database
+    save_customer_subscription(
+        customer_email=customer_email,
+        stripe_customer_id=customer.id,
+        stripe_subscription_id=subscription.id,
+        stripe_subscription_item_id=subscription[&#39;items&#39;][&#39;data&#39;][1][&#39;id&#39;]  # Metered item
+    )
+
+    return subscription
+</code></pre>
+<h2>Handling Webhooks for Billing Events</h2>
+<p>Stripe sends webhooks when billing events occur (successful payment, failed payment, subscription canceled).</p>
+<h3>Webhook Endpoint Setup</h3>
+<pre><code class="language-python">from flask import Flask, request
+import stripe
+
+app = Flask(__name__)
+
+@app.route(&#39;/webhook/stripe&#39;, methods=[&#39;POST&#39;])
+def stripe_webhook():
+    payload = request.data
+    sig_header = request.headers.get(&#39;Stripe-Signature&#39;)
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, &#39;whsec_...&#39;  # Webhook secret from Stripe Dashboard
+        )
+    except ValueError:
+        return &#39;Invalid payload&#39;, 400
+    except stripe.error.SignatureVerificationError:
+        return &#39;Invalid signature&#39;, 400
+
+    # Handle specific events
+    if event[&#39;type&#39;] == &#39;invoice.payment_succeeded&#39;:
+        handle_payment_success(event[&#39;data&#39;][&#39;object&#39;])
+    elif event[&#39;type&#39;] == &#39;invoice.payment_failed&#39;:
+        handle_payment_failure(event[&#39;data&#39;][&#39;object&#39;])
+    elif event[&#39;type&#39;] == &#39;customer.subscription.deleted&#39;:
+        handle_subscription_canceled(event[&#39;data&#39;][&#39;object&#39;])
+
+    return &#39;&#39;, 200
+
+def handle_payment_success(invoice):
+    customer_id = invoice[&#39;customer&#39;]
+    amount_paid = invoice[&#39;amount_paid&#39;] / 100  # Convert cents to dollars
+
+    # Update your database
+    db.execute(
+        &quot;UPDATE customers SET last_payment_date = NOW(), account_status = &#39;active&#39; WHERE stripe_customer_id = %s&quot;,
+        (customer_id,)
+    )
+
+    # Send confirmation email
+    send_email(
+        to=get_customer_email(customer_id),
+        subject=&#39;Payment Received&#39;,
+        body=f&#39;Your payment of ${amount_paid} was successful.&#39;
+    )
+
+def handle_payment_failure(invoice):
+    customer_id = invoice[&#39;customer&#39;]
+
+    # Suspend API access
+    db.execute(
+        &quot;UPDATE api_keys SET active = FALSE WHERE customer_id = (SELECT id FROM customers WHERE stripe_customer_id = %s)&quot;,
+        (customer_id,)
+    )
+
+    # Notify customer
+    send_email(
+        to=get_customer_email(customer_id),
+        subject=&#39;Payment Failed&#39;,
+        body=&#39;Your recent payment failed. Please update your payment method to restore access.&#39;
+    )
+
+def handle_subscription_canceled(subscription):
+    customer_id = subscription[&#39;customer&#39;]
+
+    # Revoke API access
+    db.execute(
+        &quot;UPDATE api_keys SET active = FALSE WHERE customer_id = (SELECT id FROM customers WHERE stripe_customer_id = %s)&quot;,
+        (customer_id,)
+    )
+</code></pre>
+<h3>Registering Webhooks in Stripe</h3>
+<ol>
+<li><strong>Stripe Dashboard</strong> → <strong>Developers</strong> → <strong>Webhooks</strong> → <strong>Add Endpoint</strong></li>
+<li><strong>Endpoint URL</strong>: <code>https://yourdomain.com/webhook/stripe</code></li>
+<li><strong>Events to listen for</strong>:<ul>
+<li><code>invoice.payment_succeeded</code></li>
+<li><code>invoice.payment_failed</code></li>
+<li><code>customer.subscription.deleted</code></li>
+<li><code>customer.subscription.updated</code></li>
+</ul>
+</li>
+</ol>
+<h2>Customer Dashboard for Usage Monitoring</h2>
+<p>Customers need visibility into their usage and billing.</p>
+<h3>Dashboard Endpoint</h3>
+<pre><code class="language-python">@app.route(&#39;/dashboard&#39;)
+def customer_dashboard():
+    customer_email = get_current_user_email()
+    customer = get_customer_by_email(customer_email)
+
+    # Fetch current period usage from Stripe
+    subscription = stripe.Subscription.retrieve(customer[&#39;stripe_subscription_id&#39;])
+
+    usage_data = []
+    for item in subscription[&#39;items&#39;][&#39;data&#39;]:
+        if item[&#39;price&#39;][&#39;type&#39;] == &#39;metered&#39;:
+            usage_records = stripe.SubscriptionItem.list_usage_record_summaries(
+                item[&#39;id&#39;],
+                limit=1
+            )
+            usage_data.append({
+                &#39;total_usage&#39;: usage_records[&#39;data&#39;][0][&#39;total_usage&#39;] if usage_records[&#39;data&#39;] else 0,
+                &#39;period_start&#39;: subscription[&#39;current_period_start&#39;],
+                &#39;period_end&#39;: subscription[&#39;current_period_end&#39;]
+            })
+
+    return render_template(&#39;dashboard.html&#39;, customer=customer, usage=usage_data)
+</code></pre>
+<h3>Dashboard HTML Template</h3>
+<pre><code class="language-html">&lt;h1&gt;AI Licensing Dashboard&lt;/h1&gt;
+
+&lt;div class=&quot;usage-summary&quot;&gt;
+  &lt;h2&gt;Current Billing Period&lt;/h2&gt;
+  &lt;p&gt;Period: {{ usage.period_start | datetime }} - {{ usage.period_end | datetime }}&lt;/p&gt;
+  &lt;p&gt;Total Requests: {{ usage.total_usage }}&lt;/p&gt;
+  &lt;p&gt;Base Fee: $100/month&lt;/p&gt;
+  &lt;p&gt;Usage Fee: ${{ usage.total_usage * 0.001 }} ({{ usage.total_usage }} × $0.001)&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Estimated Total: ${{ 100 + (usage.total_usage * 0.001) }}&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;api-keys&quot;&gt;
+  &lt;h2&gt;API Keys&lt;/h2&gt;
+  {% for key in customer.api_keys %}
+    &lt;div class=&quot;api-key&quot;&gt;
+      &lt;code&gt;{{ key.key_prefix }}***************&lt;/code&gt;
+      &lt;span class=&quot;status&quot;&gt;{{ key.status }}&lt;/span&gt;
+    &lt;/div&gt;
+  {% endfor %}
+&lt;/div&gt;
+
+&lt;a href=&quot;/billing/update-payment&quot;&gt;Update Payment Method&lt;/a&gt;
+</code></pre>
+<h2>Handling Failed Payments</h2>
+<h3>Retry Logic</h3>
+<p>Stripe automatically retries failed payments based on <strong>Smart Retries</strong> settings.</p>
+<p><strong>Default retry schedule</strong>:</p>
+<ul>
+<li>1st retry: 3 days after failure</li>
+<li>2nd retry: 5 days after failure</li>
+<li>3rd retry: 7 days after failure</li>
+<li>Final attempt: 10 days after failure</li>
+</ul>
+<h3>Grace Period</h3>
+<p>Implement a grace period before suspending access:</p>
+<pre><code class="language-python">def check_account_status(customer_id):
+    customer = db.query(&quot;SELECT * FROM customers WHERE stripe_customer_id = %s&quot;, (customer_id,)).fetchone()
+
+    # If last payment failed but it&#39;s been &lt; 7 days, allow continued access
+    if customer[&#39;account_status&#39;] == &#39;payment_failed&#39;:
+        days_since_failure = (datetime.now() - customer[&#39;last_payment_failure_date&#39;]).days
+
+        if days_since_failure &lt; 7:
+            return &#39;active&#39;  # Grace period
+        else:
+            return &#39;suspended&#39;
+
+    return customer[&#39;account_status&#39;]
+</code></pre>
+<h2>Invoice Generation and Customization</h2>
+<p>Stripe automatically generates invoices at the end of each billing period.</p>
+<h3>Customizing Invoices</h3>
+<p>Add metadata and custom fields:</p>
+<pre><code class="language-python">stripe.Invoice.modify(
+    invoice_id,
+    metadata={&#39;client_type&#39;: &#39;AI company&#39;, &#39;content_tier&#39;: &#39;premium&#39;},
+    footer=&#39;Thank you for licensing our content.&#39;
+)
+</code></pre>
+<h3>Sending Invoices</h3>
+<p>Invoices are emailed automatically to customers. Customize email templates via <strong>Stripe Dashboard</strong> → <strong>Settings</strong> → <strong>Emails</strong>.</p>
+<h2>Testing Billing Integration</h2>
+<h3>Stripe Test Mode</h3>
+<p>Use test API keys for development:</p>
+<ul>
+<li><strong>Publishable key</strong>: <code>pk_test_...</code></li>
+<li><strong>Secret key</strong>: <code>sk_test_...</code></li>
+</ul>
+<h3>Test Credit Cards</h3>
+<p>Stripe provides test card numbers:</p>
+<ul>
+<li><strong>Success</strong>: <code>4242 4242 4242 4242</code></li>
+<li><strong>Decline</strong>: <code>4000 0000 0000 0002</code></li>
+<li><strong>Require authentication</strong>: <code>4000 0025 0000 3155</code></li>
+</ul>
+<h3>Simulating Billing Cycles</h3>
+<p>Use Stripe CLI to advance subscription billing:</p>
+<pre><code class="language-bash">stripe subscriptions update sub_... --billing-cycle-anchor now
+</code></pre>
+<p>This immediately triggers invoice generation for testing.</p>
+<h2>Security Considerations</h2>
+<h3>API Key Protection</h3>
+<p>Store Stripe API keys as environment variables, never in code:</p>
+<pre><code class="language-python">import os
+stripe.api_key = os.environ.get(&#39;STRIPE_SECRET_KEY&#39;)
+</code></pre>
+<h3>Webhook Signature Verification</h3>
+<p>Always verify webhook signatures to prevent spoofed events:</p>
+<pre><code class="language-python">event = stripe.Webhook.construct_event(
+    payload, sig_header, webhook_secret
+)
+</code></pre>
+<h3>PCI Compliance</h3>
+<p>Stripe handles payment processing, eliminating PCI compliance burden. Never store credit card numbers in your database.</p>
+<h2>Frequently Asked Questions</h2>
+<p><strong>How does Stripe charge for metered billing?</strong>
+Stripe charges based on usage records submitted during the billing period. At period end, usage is aggregated and invoiced.</p>
+<p><strong>Can I change pricing mid-subscription?</strong>
+Yes, but changes typically take effect at the next billing period to avoid prorated complexity.</p>
+<p><strong>What happens if a customer exceeds their usage limits?</strong>
+If using metered billing, overage is automatically billed. If using fixed subscriptions with caps, implement rate limiting in your API to enforce limits.</p>
+<p><strong>How do I handle refunds for AI licensing?</strong>
+Use Stripe&#39;s refund API. Refunds typically warrant revoking API access immediately.</p>
+<p><strong>Can I offer annual pricing instead of monthly?</strong>
+Yes. Create annual pricing products in Stripe with 12-month billing intervals.</p>
+<p><strong>Does Stripe support multi-currency billing?</strong>
+Yes. Stripe supports 135+ currencies. Customers are billed in their local currency.</p>
+<p><strong>How do I track usage for multiple API keys per customer?</strong>
+Sum usage across all API keys associated with a single Stripe customer ID before logging to Stripe.</p>
+<p>Implementing Stripe billing for AI crawler licensing automates revenue collection, reduces manual invoicing overhead, and scales from early customers to enterprise contracts, providing production-ready financial infrastructure for publishers monetizing content at scale.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

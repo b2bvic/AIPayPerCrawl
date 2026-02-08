@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Serve Different Content to AI Crawlers vs. Human Visitors: Dynamic Content Delivery for Licensing Strategy | AI Pay Per Crawl</title>
+    <meta name="description" content="Technical implementation guide for detecting AI crawlers and serving customized content including partial text, watermarks, and licensing notices.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="How to Serve Different Content to AI Crawlers vs. Human Visitors: Dynamic Content Delivery for Licensing Strategy">
+    <meta property="og:description" content="Technical implementation guide for detecting AI crawlers and serving customized content including partial text, watermarks, and licensing notices.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/serve-different-content-ai-crawlers">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Serve Different Content to AI Crawlers vs. Human Visitors: Dynamic Content Delivery for Licensing Strategy">
+    <meta name="twitter:description" content="Technical implementation guide for detecting AI crawlers and serving customized content including partial text, watermarks, and licensing notices.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/serve-different-content-ai-crawlers">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Serve Different Content to AI Crawlers vs. Human Visitors: Dynamic Content Delivery for Licensing Strategy",
+  "description": "Technical implementation guide for detecting AI crawlers and serving customized content including partial text, watermarks, and licensing notices.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/serve-different-content-ai-crawlers"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Serve Different Content to AI Crawlers vs. Human Visitors: Dynamic Content Delivery for Licensing Strategy",
+      "item": "https://aipaypercrawl.com/articles/serve-different-content-ai-crawlers"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>How to Serve Different Content to AI Crawlers vs. Human Visitors: Dynamic Content Delivery for Licensing Strategy</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 10 min read</span>
+        <h1>How to Serve Different Content to AI Crawlers vs. Human Visitors: Dynamic Content Delivery for Licensing Strategy</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Technical implementation guide for detecting AI crawlers and serving customized content including partial text, watermarks, and licensing notices.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>How to Serve Different Content to AI Crawlers vs. Human Visitors: Dynamic Content Delivery for Licensing Strategy</h1>
+<p><strong>Dynamic content delivery</strong> enables publishers to serve customized versions of pages based on whether the visitor is human or an AI crawler. Instead of blocking AI crawlers entirely, publishers can serve <strong>watermarked content</strong>, <strong>partial text</strong>, or <strong>licensing-gated versions</strong> while delivering complete articles to human readers. This strategy preserves SEO benefits (full content for Googlebot), maintains user experience (no paywalls for humans), and creates licensing leverage (AI companies receive enough content to recognize value but insufficient content to train effectively without licensing). Implementation requires user agent detection, server-side content modification, and behavioral analysis to prevent crawler spoofing.</p>
+<h2>Why Serve Different Content Instead of Blocking</h2>
+<p><strong>Blocking</strong> AI crawlers (via robots.txt or 403 responses) eliminates exploitation but eliminates negotiation leverage. AI companies train on competitors&#39; content instead. You receive zero compensation and zero visibility into which AI labs value your content.</p>
+<p><strong>Differential serving</strong> creates strategic advantages:</p>
+<ol>
+<li><strong>Value demonstration</strong>: AI crawlers see your content quality, creating demand for licensing</li>
+<li><strong>Negotiation data</strong>: Analytics reveal which AI companies crawl most aggressively</li>
+<li><strong>SEO preservation</strong>: Search engines receive full content; rankings unaffected</li>
+<li><strong>User experience</strong>: Humans get complete articles without barriers</li>
+<li><strong>Legal positioning</strong>: Watermarked or partial content strengthens copyright claims</li>
+</ol>
+<p>Publishers serve AI crawlers a &quot;teaser&quot; that generates licensing interest while withholding complete content that would enable training without compensation.</p>
+<h2>User Agent-Based Content Differentiation</h2>
+<p>The simplest detection method: check the <strong>User-Agent</strong> HTTP header and serve content accordingly.</p>
+<h3>Identifying AI Crawlers</h3>
+<p>Major AI crawlers declare themselves:</p>
+<ul>
+<li><strong>GPTBot/1.0</strong> (OpenAI)</li>
+<li><strong>Claude-Web/1.0</strong> (Anthropic)</li>
+<li><strong>Google-Extended</strong> (Google AI training)</li>
+<li><strong>cohere-ai</strong> (Cohere)</li>
+<li><strong>Applebot-Extended</strong> (Apple)</li>
+</ul>
+<h3>Basic PHP Implementation</h3>
+<pre><code class="language-php">&lt;?php
+function is_ai_crawler() {
+    $user_agent = $_SERVER[&#39;HTTP_USER_AGENT&#39;] ?? &#39;&#39;;
+
+    $ai_crawlers = [
+        &#39;GPTBot&#39;,
+        &#39;Claude-Web&#39;,
+        &#39;Google-Extended&#39;,
+        &#39;cohere-ai&#39;,
+        &#39;Applebot-Extended&#39;,
+        &#39;CCBot&#39;,  // Common Crawl
+        &#39;anthropic-ai&#39;,
+        &#39;Omgilibot&#39;
+    ];
+
+    foreach ($ai_crawlers as $crawler) {
+        if (stripos($user_agent, $crawler) !== false) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// Serve content based on visitor type
+if (is_ai_crawler()) {
+    echo render_partial_content($article);
+} else {
+    echo render_full_content($article);
+}
+?&gt;
+</code></pre>
+<h3>Python/Flask Implementation</h3>
+<pre><code class="language-python">from flask import Flask, request, render_template
+import re
+
+app = Flask(__name__)
+
+AI_CRAWLER_PATTERN = re.compile(
+    r&#39;(GPTBot|Claude-Web|Google-Extended|cohere-ai|Applebot-Extended|CCBot)&#39;,
+    re.IGNORECASE
+)
+
+def is_ai_crawler(user_agent):
+    return bool(AI_CRAWLER_PATTERN.search(user_agent))
+
+@app.route(&#39;/article/&lt;slug&gt;&#39;)
+def article(slug):
+    user_agent = request.headers.get(&#39;User-Agent&#39;, &#39;&#39;)
+    article_data = get_article(slug)
+
+    if is_ai_crawler(user_agent):
+        # Serve partial content with licensing notice
+        return render_template(&#39;article_partial.html&#39;,
+                             article=article_data,
+                             licensing_notice=True)
+    else:
+        # Serve full content
+        return render_template(&#39;article_full.html&#39;,
+                             article=article_data)
+</code></pre>
+<h3>Node.js/Express Implementation</h3>
+<pre><code class="language-javascript">const express = require(&#39;express&#39;);
+const app = express();
+
+const AI_CRAWLERS = [
+  &#39;GPTBot&#39;,
+  &#39;Claude-Web&#39;,
+  &#39;Google-Extended&#39;,
+  &#39;cohere-ai&#39;,
+  &#39;Applebot-Extended&#39;,
+  &#39;CCBot&#39;
+];
+
+function isAICrawler(userAgent) {
+  return AI_CRAWLERS.some(crawler =&gt;
+    userAgent.toLowerCase().includes(crawler.toLowerCase())
+  );
+}
+
+app.get(&#39;/article/:slug&#39;, (req, res) =&gt; {
+  const userAgent = req.headers[&#39;user-agent&#39;] || &#39;&#39;;
+  const article = getArticle(req.params.slug);
+
+  if (isAICrawler(userAgent)) {
+    res.render(&#39;article-partial&#39;, {
+      article: truncateContent(article, 500),
+      licensingNotice: true
+    });
+  } else {
+    res.render(&#39;article-full&#39;, { article });
+  }
+});
+</code></pre>
+<h2>Content Modification Strategies</h2>
+<p>Different serving strategies achieve different objectives.</p>
+<h3>Strategy 1: Partial Text with Licensing Notice</h3>
+<p>Serve the first 20-30% of article content to AI crawlers, followed by a licensing notice.</p>
+<p><strong>For humans:</strong></p>
+<pre><code class="language-html">&lt;article&gt;
+  &lt;h1&gt;Complete Article Title&lt;/h1&gt;
+  &lt;p&gt;Full introduction paragraph...&lt;/p&gt;
+  &lt;p&gt;Second paragraph with complete information...&lt;/p&gt;
+  &lt;!-- 2,500 words of full content --&gt;
+  &lt;p&gt;Conclusion paragraph...&lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+<p><strong>For AI crawlers:</strong></p>
+<pre><code class="language-html">&lt;article&gt;
+  &lt;h1&gt;Complete Article Title&lt;/h1&gt;
+  &lt;p&gt;Full introduction paragraph...&lt;/p&gt;
+  &lt;p&gt;Second paragraph with complete information...&lt;/p&gt;
+  &lt;p&gt;This article continues for 2,000+ words covering [topics].&lt;/p&gt;
+
+  &lt;div class=&quot;licensing-notice&quot;&gt;
+    &lt;h3&gt;AI Training Licensing&lt;/h3&gt;
+    &lt;p&gt;This content is copyrighted. Use for AI training requires licensing.&lt;/p&gt;
+    &lt;p&gt;Contact: licensing@example.com&lt;/p&gt;
+    &lt;p&gt;Rate: $0.002 per article or $500/month subscription&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+<p>This gives AI companies enough to assess content quality while making it clear that full access requires licensing.</p>
+<h3>Strategy 2: Watermarked Full Content</h3>
+<p>Serve complete content to AI crawlers but embed watermarks that survive training and appear in model outputs.</p>
+<pre><code class="language-python">def add_watermark(content, watermark_id):
+    # Insert zero-width characters as watermark
+    watermark = f&quot;\u200B{watermark_id}\u200B&quot;
+
+    # Insert watermark every 500 characters
+    watermarked = &quot;&quot;
+    for i in range(0, len(content), 500):
+        watermarked += content[i:i+500] + watermark
+
+    return watermarked
+
+@app.route(&#39;/article/&lt;slug&gt;&#39;)
+def article(slug):
+    article_data = get_article(slug)
+    user_agent = request.headers.get(&#39;User-Agent&#39;, &#39;&#39;)
+
+    if is_ai_crawler(user_agent):
+        # Serve watermarked version
+        article_data[&#39;content&#39;] = add_watermark(
+            article_data[&#39;content&#39;],
+            f&quot;article-{slug}-ai-crawler&quot;
+        )
+
+    return render_template(&#39;article.html&#39;, article=article_data)
+</code></pre>
+<p>If AI models reproduce watermarked content, you can prove the source.</p>
+<h3>Strategy 3: Synthetic Content Summary</h3>
+<p>Serve AI-generated summaries to AI crawlers instead of original content.</p>
+<pre><code class="language-python">def generate_summary(article_content, length=300):
+    # Use local LLM or API to summarize
+    prompt = f&quot;Summarize this article in {length} words: {article_content}&quot;
+    summary = call_llm_api(prompt)
+    return summary
+
+if is_ai_crawler(user_agent):
+    article_data[&#39;content&#39;] = generate_summary(article_data[&#39;content&#39;])
+</code></pre>
+<p>AI companies train on summaries (less valuable) while humans access original content. This also creates &quot;synthetic content training on synthetic content&quot; recursion issues for AI companies—summaries of summaries degrade quality.</p>
+<h3>Strategy 4: Conditional Full Access with Attribution</h3>
+<p>Serve full content to AI crawlers but inject attribution requirements.</p>
+<pre><code class="language-html">&lt;!-- For AI crawlers --&gt;
+&lt;article&gt;
+  &lt;div class=&quot;ai-attribution-required&quot; data-source=&quot;Example Publishing&quot; data-url=&quot;https://example.com/article-slug&quot;&gt;
+    &lt;h1&gt;Complete Article Title&lt;/h1&gt;
+    &lt;!-- Full content --&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;application/ld+json&quot;&gt;
+  {
+    &quot;@context&quot;: &quot;https://schema.org&quot;,
+    &quot;@type&quot;: &quot;Article&quot;,
+    &quot;headline&quot;: &quot;Article Title&quot;,
+    &quot;license&quot;: &quot;https://example.com/ai-license&quot;,
+    &quot;conditionsOfAccess&quot;: &quot;Attribution required. See https://example.com/ai-license&quot;
+  }
+  &lt;/script&gt;
+&lt;/article&gt;
+</code></pre>
+<p>This signals machine-readable attribution requirements. While not enforceable without legal agreements, it establishes terms.</p>
+<h2>Detecting Crawler Spoofing</h2>
+<p>User agent strings are trivial to fake. Sophisticated detection prevents AI companies from masquerading as browsers.</p>
+<h3>Behavioral Fingerprinting</h3>
+<p>Legitimate users exhibit patterns crawlers don&#39;t:</p>
+<ol>
+<li><strong>JavaScript execution</strong>: Browsers run JavaScript; most crawlers don&#39;t</li>
+<li><strong>Mouse movement</strong>: Humans move mice; crawlers don&#39;t</li>
+<li><strong>Scroll behavior</strong>: Humans scroll; crawlers don&#39;t</li>
+<li><strong>Session duration</strong>: Humans spend 30-300 seconds on articles; crawlers &lt;1 second</li>
+</ol>
+<h3>JavaScript Challenge</h3>
+<p>Require JavaScript execution to access full content:</p>
+<pre><code class="language-html">&lt;div id=&quot;article-content&quot; style=&quot;display:none;&quot;&gt;
+  &lt;!-- Full article content --&gt;
+&lt;/div&gt;
+
+&lt;noscript&gt;
+  &lt;div class=&quot;partial-content&quot;&gt;
+    &lt;!-- Partial content for non-JS clients (likely crawlers) --&gt;
+  &lt;/div&gt;
+&lt;/noscript&gt;
+
+&lt;script&gt;
+// Only execute if JavaScript is enabled
+document.addEventListener(&#39;DOMContentLoaded&#39;, function() {
+    // Verify this is a real browser by checking for browser-specific APIs
+    if (window.navigator &amp;&amp; window.navigator.userAgent &amp;&amp;
+        typeof window.requestAnimationFrame === &#39;function&#39;) {
+
+        // Display full content
+        document.getElementById(&#39;article-content&#39;).style.display = &#39;block&#39;;
+
+        // Hide partial content
+        const noscript = document.querySelector(&#39;noscript + .partial-content&#39;);
+        if (noscript) noscript.style.display = &#39;none&#39;;
+    }
+});
+&lt;/script&gt;
+</code></pre>
+<p>Crawlers without JavaScript engines receive partial content. Browsers display full content.</p>
+<h3>TLS Fingerprinting</h3>
+<p>Each HTTP client has a unique TLS handshake fingerprint. <strong>JA3 fingerprinting</strong> identifies clients:</p>
+<ul>
+<li><strong>Chrome 120</strong>: Specific JA3 hash</li>
+<li><strong>Firefox 115</strong>: Different JA3 hash</li>
+<li><strong>Python requests</strong>: Different hash</li>
+<li><strong>Puppeteer/Playwright</strong>: Similar to Chrome but subtle differences</li>
+</ul>
+<p>Cloudflare and AWS WAF support JA3 filtering. Configure rules:</p>
+<pre><code>If JA3 hash not in [known_browser_hashes]:
+    Serve partial content or challenge
+</code></pre>
+<p>This blocks most automated scrapers, though sophisticated crawlers using headless Chrome may bypass it.</p>
+<h3>Rate-Based Detection</h3>
+<p>Track request patterns:</p>
+<pre><code class="language-python">from collections import defaultdict
+from datetime import datetime, timedelta
+
+request_log = defaultdict(list)
+
+def is_likely_crawler(ip_address):
+    now = datetime.now()
+
+    # Clean old entries
+    request_log[ip_address] = [
+        timestamp for timestamp in request_log[ip_address]
+        if now - timestamp &lt; timedelta(minutes=5)
+    ]
+
+    request_log[ip_address].append(now)
+
+    # If more than 10 requests in 5 minutes, likely a crawler
+    if len(request_log[ip_address]) &gt; 10:
+        return True
+
+    return False
+
+@app.route(&#39;/article/&lt;slug&gt;&#39;)
+def article(slug):
+    ip = request.remote_addr
+    user_agent = request.headers.get(&#39;User-Agent&#39;, &#39;&#39;)
+
+    if is_ai_crawler(user_agent) or is_likely_crawler(ip):
+        # Serve crawler-specific content
+        return serve_partial_content(slug)
+
+    return serve_full_content(slug)
+</code></pre>
+<h2>SEO Considerations: Keeping Googlebot Happy</h2>
+<p>Serving different content to crawlers can trigger <strong>cloaking penalties</strong> if search engines receive better content than users. However, serving AI crawlers <em>less</em> content than users doesn&#39;t violate guidelines.</p>
+<h3>Googlebot vs. Google-Extended</h3>
+<p><strong>Googlebot</strong> (search indexing): Serve full content
+<strong>Google-Extended</strong> (AI training): Serve partial or licensed content</p>
+<pre><code class="language-python">def is_googlebot(user_agent):
+    return &#39;Googlebot&#39; in user_agent and &#39;Google-Extended&#39; not in user_agent
+
+def is_google_extended(user_agent):
+    return &#39;Google-Extended&#39; in user_agent
+
+@app.route(&#39;/article/&lt;slug&gt;&#39;)
+def article(slug):
+    user_agent = request.headers.get(&#39;User-Agent&#39;, &#39;&#39;)
+
+    if is_googlebot(user_agent):
+        # Full content for search indexing
+        return serve_full_content(slug)
+    elif is_google_extended(user_agent):
+        # Partial content for AI training
+        return serve_partial_content(slug)
+    elif is_ai_crawler(user_agent):
+        # Partial content for other AI crawlers
+        return serve_partial_content(slug)
+    else:
+        # Full content for humans
+        return serve_full_content(slug)
+</code></pre>
+<p>This ensures Googlebot indexes full content (preserving SEO) while AI training crawlers receive limited access.</p>
+<h3>Verifying Googlebot Legitimacy</h3>
+<p>Crawlers can claim to be Googlebot. Verify via reverse DNS:</p>
+<pre><code class="language-python">import socket
+
+def verify_googlebot(ip_address):
+    try:
+        # Reverse DNS lookup
+        hostname = socket.gethostbyaddr(ip_address)[0]
+
+        # Googlebot IPs resolve to *.googlebot.com or *.google.com
+        if hostname.endswith(&#39;.googlebot.com&#39;) or hostname.endswith(&#39;.google.com&#39;):
+            # Forward DNS to verify IP matches
+            resolved_ip = socket.gethostbyname(hostname)
+            return resolved_ip == ip_address
+
+    except socket.herror:
+        return False
+
+    return False
+
+@app.route(&#39;/article/&lt;slug&gt;&#39;)
+def article(slug):
+    user_agent = request.headers.get(&#39;User-Agent&#39;, &#39;&#39;)
+    ip = request.remote_addr
+
+    if &#39;Googlebot&#39; in user_agent:
+        if verify_googlebot(ip):
+            return serve_full_content(slug)
+        else:
+            # Fake Googlebot - serve partial content
+            return serve_partial_content(slug)
+
+    # Other logic...
+</code></pre>
+<h2>Content Delivery Network (CDN) Integration</h2>
+<p>CDNs like <strong>Cloudflare</strong> enable edge-based content differentiation without backend logic.</p>
+<h3>Cloudflare Workers for Dynamic Serving</h3>
+<pre><code class="language-javascript">addEventListener(&#39;fetch&#39;, event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const userAgent = request.headers.get(&#39;User-Agent&#39;) || &#39;&#39;;
+
+  const aiCrawlers = [
+    &#39;GPTBot&#39;, &#39;Claude-Web&#39;, &#39;Google-Extended&#39;, &#39;cohere-ai&#39;
+  ];
+
+  const isAICrawler = aiCrawlers.some(crawler =&gt;
+    userAgent.includes(crawler)
+  );
+
+  if (isAICrawler) {
+    // Fetch partial content version from origin
+    return fetch(request.url + &#39;?version=partial&#39;, {
+      headers: request.headers
+    });
+  } else {
+    // Fetch full content
+    return fetch(request);
+  }
+}
+</code></pre>
+<p>This executes at the edge, reducing origin server load.</p>
+<h2>Monitoring and Analytics</h2>
+<p>Track which AI crawlers access content most aggressively to prioritize licensing negotiations.</p>
+<h3>Logging AI Crawler Access</h3>
+<pre><code class="language-python">def log_ai_crawler_access(user_agent, article_slug, ip_address):
+    db.execute(
+        &quot;&quot;&quot;
+        INSERT INTO ai_crawler_logs (user_agent, article_slug, ip_address, timestamp)
+        VALUES (%s, %s, %s, NOW())
+        &quot;&quot;&quot;,
+        (user_agent, article_slug, ip_address)
+    )
+
+@app.route(&#39;/article/&lt;slug&gt;&#39;)
+def article(slug):
+    user_agent = request.headers.get(&#39;User-Agent&#39;, &#39;&#39;)
+
+    if is_ai_crawler(user_agent):
+        log_ai_crawler_access(user_agent, slug, request.remote_addr)
+        return serve_partial_content(slug)
+
+    return serve_full_content(slug)
+</code></pre>
+<h3>Generating Licensing Priority Reports</h3>
+<pre><code class="language-python">def generate_licensing_priority_report():
+    result = db.execute(
+        &quot;&quot;&quot;
+        SELECT
+            CASE
+                WHEN user_agent LIKE &#39;%GPTBot%&#39; THEN &#39;OpenAI&#39;
+                WHEN user_agent LIKE &#39;%Claude-Web%&#39; THEN &#39;Anthropic&#39;
+                WHEN user_agent LIKE &#39;%Google-Extended%&#39; THEN &#39;Google&#39;
+                ELSE &#39;Other&#39;
+            END as company,
+            COUNT(*) as access_count,
+            COUNT(DISTINCT article_slug) as unique_articles
+        FROM ai_crawler_logs
+        WHERE timestamp &gt; NOW() - INTERVAL &#39;30 days&#39;
+        GROUP BY company
+        ORDER BY access_count DESC
+        &quot;&quot;&quot;
+    ).fetchall()
+
+    return result
+</code></pre>
+<p>If Anthropic&#39;s crawler accessed 5,000 articles in 30 days while OpenAI accessed 500, prioritize Anthropic for licensing outreach.</p>
+<h2>Legal and Ethical Considerations</h2>
+<h3>Cloaking vs. Differentiation</h3>
+<p><strong>Cloaking</strong> (showing search engines better content than users) violates search engine guidelines. <strong>Differentiation</strong> (showing AI crawlers less content than users) doesn&#39;t violate guidelines because:</p>
+<ol>
+<li>Search engines receive full content</li>
+<li>Users receive full content</li>
+<li>Only AI training crawlers receive reduced content</li>
+</ol>
+<p>Google&#39;s John Mueller confirmed in 2024 that serving AI crawlers different content than Googlebot is acceptable.</p>
+<h3>Terms of Service Enforcement</h3>
+<p>Include terms in your site&#39;s ToS:</p>
+<pre><code>By accessing this website via automated means (crawlers, scrapers, bots),
+you agree to the following:
+
+1. Content accessed via AI crawlers is subject to licensing
+2. Partial content served indicates licensing is required for full access
+3. Continued access without licensing constitutes breach of these terms
+4. We reserve the right to block or rate-limit automated access
+</code></pre>
+<p>This creates contractual obligations enforceable via breach of contract claims.</p>
+<h2>Frequently Asked Questions</h2>
+<p><strong>Does serving different content to AI crawlers violate Google&#39;s guidelines?</strong>
+No. Serving AI training crawlers less content than search crawlers or human users doesn&#39;t violate guidelines.</p>
+<p><strong>Can AI companies bypass user agent detection by spoofing?</strong>
+Yes, but behavioral fingerprinting (JavaScript challenges, TLS fingerprinting) detects most spoofing attempts.</p>
+<p><strong>Will this affect my SEO if Googlebot sees full content but Google-Extended sees partial?</strong>
+No. Googlebot controls search rankings; Google-Extended is separate.</p>
+<p><strong>Should I serve partial content or watermarked full content?</strong>
+Partial content creates licensing demand. Watermarked full content provides legal evidence. Choose based on priority.</p>
+<p><strong>How do I handle AI companies that request licensing after seeing partial content?</strong>
+This is the goal. Respond with pricing, negotiate terms, issue API keys for full access.</p>
+<p><strong>Can I use this approach for paywalled content?</strong>
+Yes. Serve subscribers full content, AI crawlers partial content, and non-subscribers partial content. Differentiate all three groups.</p>
+<p><strong>What if an AI company trains on my partial content without licensing?</strong>
+Partial content is still copyrighted. Legal action remains available, though damages are lower than for full content training.</p>
+<p>Publishers serving differentiated content to AI crawlers balance exploitation prevention against negotiation leverage, demonstrating content value to AI companies while withholding the complete datasets necessary for effective training without compensation.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
