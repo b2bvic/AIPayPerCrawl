@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Access for AI Bots — Dynamic Crawl Permissions and Usage Quotas | AI Pay Per Crawl</title>
+    <meta name="description" content="Implement sophisticated access control for AI crawlers using token authentication, usage quotas, and tiered content access. Technical patterns for monetizing training data at scale.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Conditional Access for AI Bots — Dynamic Crawl Permissions and Usage Quotas">
+    <meta property="og:description" content="Implement sophisticated access control for AI crawlers using token authentication, usage quotas, and tiered content access. Technical patterns for monetizing training data at scale.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/conditional-access-ai-bots">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Conditional Access for AI Bots — Dynamic Crawl Permissions and Usage Quotas">
+    <meta name="twitter:description" content="Implement sophisticated access control for AI crawlers using token authentication, usage quotas, and tiered content access. Technical patterns for monetizing training data at scale.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/conditional-access-ai-bots">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Conditional Access for AI Bots — Dynamic Crawl Permissions and Usage Quotas",
+  "description": "Implement sophisticated access control for AI crawlers using token authentication, usage quotas, and tiered content access. Technical patterns for monetizing training data at scale.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/conditional-access-ai-bots"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Conditional Access for AI Bots — Dynamic Crawl Permissions and Usage Quotas",
+      "item": "https://aipaypercrawl.com/articles/conditional-access-ai-bots"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Conditional Access for AI Bots — Dynamic Crawl Permissions and Usage Quotas</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 12 min read</span>
+        <h1>Conditional Access for AI Bots — Dynamic Crawl Permissions and Usage Quotas</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Implement sophisticated access control for AI crawlers using token authentication, usage quotas, and tiered content access. Technical patterns for monetizing training data at scale.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Conditional Access for AI Bots — Dynamic Crawl Permissions and Usage Quotas</h1>
+<p>Binary access control—allow all or block all—forfeits revenue optimization. Conditional access implements graduated permissions based on licensing status, usage quotas, content tiers, and temporal constraints, transforming training data from commons into metered infrastructure.</p>
+<p>The architecture parallels API rate limiting but operates at the HTML layer. Licensed crawlers receive higher quotas, access to premium content, and priority bandwidth. Unlicensed crawlers face aggressive throttling, challenge pages, or excerpt-only access.</p>
+<p>This approach balances multiple objectives: maintain SEO visibility for search engines, provide samples to prospective AI lab customers, enforce paid access for bulk consumption, and preserve server resources.</p>
+<h2>Token-Based Authentication</h2>
+<p>License tokens embedded in HTTP headers prove crawler authorization without per-request database lookups.</p>
+<p>Standard implementation pattern:</p>
+<pre><code>X-Crawler-License: Bearer sk_live_abc123xyz
+</code></pre>
+<p>Crawlers include this header in every request. Your server validates the token against an allowlist, applying appropriate access policies.</p>
+<p><strong>Server-side validation (Node.js):</strong></p>
+<pre><code class="language-javascript">const LICENSED_TOKENS = {
+  &#39;sk_live_abc123xyz&#39;: { client: &#39;OpenAI&#39;, tier: &#39;premium&#39;, quota: 100000 },
+  &#39;sk_live_def456uvw&#39;: { client: &#39;Anthropic&#39;, tier: &#39;standard&#39;, quota: 50000 }
+}
+
+async function authenticateCrawler(req, res, next) {
+  const authHeader = req.headers[&#39;x-crawler-license&#39;]
+
+  if (!authHeader?.startsWith(&#39;Bearer &#39;)) {
+    return handleUnlicensedCrawler(req, res)
+  }
+
+  const token = authHeader.slice(7)
+  const license = LICENSED_TOKENS[token]
+
+  if (!license) {
+    return res.status(403).send(&#39;Invalid license token&#39;)
+  }
+
+  // Check quota
+  const usageKey = `usage:${token}`
+  const currentUsage = await redis.get(usageKey) || 0
+
+  if (currentUsage &gt;= license.quota) {
+    return res.status(429).send(&#39;Quota exceeded&#39;)
+  }
+
+  await redis.incr(usageKey)
+  req.crawlerLicense = license
+  next()
+}
+</code></pre>
+<p>This middleware:</p>
+<ol>
+<li>Extracts token from authorization header</li>
+<li>Validates against licensed token registry</li>
+<li>Checks usage quota via Redis counter</li>
+<li>Increments usage atomically</li>
+<li>Attaches license metadata to request for downstream logic</li>
+</ol>
+<p><strong>Security considerations:</strong></p>
+<p>Tokens grant access to potentially millions of pages. Treat them like API keys:</p>
+<ul>
+<li><strong>Generate cryptographically random tokens</strong> — Use <code>crypto.randomBytes(32).toString(&#39;hex&#39;)</code></li>
+<li><strong>Store hashed versions</strong> — Database stores SHA-256 hashes, not plaintext tokens</li>
+<li><strong>Rotate periodically</strong> — Issue new tokens quarterly, deprecate old ones</li>
+<li><strong>Scope by domain</strong> — Tokens valid only for specific content domains if licensing multiple properties</li>
+<li><strong>Audit trails</strong> — Log all token usage for billing validation and abuse detection</li>
+</ul>
+<h2>Tiered Content Access</h2>
+<p>Different license tiers unlock different content categories. Premium licenses access proprietary research; standard licenses access general articles; free samples access public blog posts.</p>
+<p><strong>URL-based access control:</strong></p>
+<pre><code class="language-javascript">const CONTENT_TIERS = {
+  public: [&#39;/blog/&#39;, &#39;/news/&#39;],
+  standard: [&#39;/articles/&#39;, &#39;/guides/&#39;],
+  premium: [&#39;/research/&#39;, &#39;/analysis/&#39;, &#39;/data/&#39;]
+}
+
+function authorizeContent(req, res, next) {
+  const licenseTier = req.crawlerLicense?.tier || &#39;public&#39;
+  const requestPath = req.path
+
+  // Check if path matches licensed tier or below
+  const allowedPaths = Object.entries(CONTENT_TIERS)
+    .filter(([tier]) =&gt; getTierLevel(tier) &lt;= getTierLevel(licenseTier))
+    .flatMap(([_, paths]) =&gt; paths)
+
+  const isAuthorized = allowedPaths.some(path =&gt; requestPath.startsWith(path))
+
+  if (!isAuthorized) {
+    return res.status(403).send(`Content requires ${getRequiredTier(requestPath)} license`)
+  }
+
+  next()
+}
+
+function getTierLevel(tier) {
+  const levels = { public: 0, standard: 1, premium: 2 }
+  return levels[tier] || 0
+}
+</code></pre>
+<p>This maps URL paths to access tiers, allowing only appropriately licensed crawlers through.</p>
+<p><strong>Metadata-based access control:</strong></p>
+<p>For content management systems where URLs don&#39;t reflect content value, embed tier metadata:</p>
+<pre><code class="language-javascript">// Article metadata in CMS
+{
+  title: &quot;Advanced SEO Techniques&quot;,
+  tier: &quot;premium&quot;,
+  unique_score: 0.92
+}
+
+// Runtime check
+if (article.tier === &#39;premium&#39; &amp;&amp; licenseTier !== &#39;premium&#39;) {
+  return serveExcerpt(article)
+}
+</code></pre>
+<p>This checks article metadata rather than URL patterns, enabling flexible content classification.</p>
+<h2>Usage Quotas and Metering</h2>
+<p>License agreements specify monthly or annual quotas measured in requests, pages, or data volume. Server-side metering enforces these limits.</p>
+<p><strong>Redis-based request counting:</strong></p>
+<pre><code class="language-javascript">async function checkQuota(token, license) {
+  const usageKey = `usage:${token}:${getCurrentMonth()}`
+  const currentUsage = parseInt(await redis.get(usageKey) || &#39;0&#39;)
+
+  if (currentUsage &gt;= license.quota) {
+    return { allowed: false, remaining: 0 }
+  }
+
+  await redis.incr(usageKey)
+  await redis.expire(usageKey, 60 * 60 * 24 * 31) // Expire after 31 days
+
+  return { allowed: true, remaining: license.quota - currentUsage - 1 }
+}
+</code></pre>
+<p>This increments per-token counters with monthly resets. The <code>expire</code> call ensures counters don&#39;t accumulate indefinitely.</p>
+<p><strong>Data volume metering:</strong></p>
+<p>For licenses billed by data transfer rather than request count:</p>
+<pre><code class="language-javascript">async function meterBandwidth(token, responseSize) {
+  const bandwidthKey = `bandwidth:${token}:${getCurrentMonth()}`
+  await redis.incrby(bandwidthKey, responseSize)
+  await redis.expire(bandwidthKey, 60 * 60 * 24 * 31)
+
+  const totalBandwidth = parseInt(await redis.get(bandwidthKey))
+  return totalBandwidth
+}
+
+// After sending response
+res.on(&#39;finish&#39;, () =&gt; {
+  const size = res.get(&#39;Content-Length&#39;)
+  meterBandwidth(req.crawlerLicense.token, size)
+})
+</code></pre>
+<p>This tracks cumulative bandwidth consumption per license token.</p>
+<p><strong>Quota exhaustion handling:</strong></p>
+<p>When crawlers exceed quotas, provide clear feedback:</p>
+<pre><code class="language-javascript">if (!quota.allowed) {
+  res.status(429).json({
+    error: &#39;Quota exceeded&#39;,
+    current_usage: currentUsage,
+    quota_limit: license.quota,
+    reset_date: getNextMonthDate(),
+    contact: &#39;licensing@yourdomain.com&#39;
+  })
+}
+</code></pre>
+<p>Include renewal information to encourage quota upgrades.</p>
+<h2>Temporal Access Windows</h2>
+<p>License agreements may restrict crawling to specific time windows—off-peak hours to reduce origin load, or delayed access (content available 7 days post-publication).</p>
+<p><strong>Time-based gating:</strong></p>
+<pre><code class="language-javascript">function checkTimeWindow(license) {
+  const hour = new Date().getUTCHours()
+
+  // Off-peak hours: 00:00-06:00 UTC
+  if (license.tier === &#39;standard&#39; &amp;&amp; (hour &lt; 0 || hour &gt;= 6)) {
+    return { allowed: false, reason: &#39;Standard licenses permit access 00:00-06:00 UTC only&#39; }
+  }
+
+  return { allowed: true }
+}
+</code></pre>
+<p><strong>Content freshness gating:</strong></p>
+<pre><code class="language-javascript">function checkContentAge(article, license) {
+  const publishedAt = new Date(article.published_at)
+  const ageInDays = (Date.now() - publishedAt) / (1000 * 60 * 60 * 24)
+
+  if (license.tier === &#39;standard&#39; &amp;&amp; ageInDays &lt; 7) {
+    return { allowed: false, reason: &#39;Content available to standard licenses after 7 days&#39; }
+  }
+
+  return { allowed: true }
+}
+</code></pre>
+<p>This enforces embargo periods, preserving real-time content value for premium licenses while offering delayed access to lower tiers.</p>
+<h2>Graduated Throttling</h2>
+<p>Rather than binary allow/block, implement progressive rate limiting based on license status and quota consumption.</p>
+<p><strong>Progressive rate limits:</strong></p>
+<pre><code class="language-javascript">function getRateLimit(license, quotaUsage) {
+  const quotaPercentage = quotaUsage / license.quota
+
+  if (!license) {
+    return 2 // Unlicensed: 2 requests per minute
+  }
+
+  if (quotaPercentage &gt; 0.9) {
+    return 10 // Near quota: slow down
+  } else if (quotaPercentage &gt; 0.7) {
+    return 50
+  } else {
+    return license.tier === &#39;premium&#39; ? 200 : 100
+  }
+}
+</code></pre>
+<p>As licensed crawlers approach quota exhaustion, rate limits decrease gradually rather than hitting hard stop.</p>
+<p><strong>Implementation with token bucket algorithm:</strong></p>
+<pre><code class="language-javascript">async function checkRateLimit(token, maxRate) {
+  const bucketKey = `ratelimit:${token}`
+  const now = Date.now()
+
+  const bucket = await redis.get(bucketKey)
+  let tokens, lastRefill
+
+  if (bucket) {
+    [tokens, lastRefill] = JSON.parse(bucket).split(&#39;,&#39;).map(Number)
+  } else {
+    tokens = maxRate
+    lastRefill = now
+  }
+
+  // Refill tokens based on time elapsed
+  const elapsed = (now - lastRefill) / 1000 / 60 // Minutes
+  tokens = Math.min(maxRate, tokens + elapsed * maxRate)
+
+  if (tokens &lt; 1) {
+    return { allowed: false, retryAfter: (1 - tokens) / maxRate * 60 }
+  }
+
+  tokens -= 1
+  await redis.setex(bucketKey, 3600, `${tokens},${now}`)
+
+  return { allowed: true, remaining: Math.floor(tokens) }
+}
+</code></pre>
+<p>This implements token bucket rate limiting with refill logic, enabling burst capacity while enforcing long-term rate constraints.</p>
+<h2>Challenge Pages for Unlicensed Crawlers</h2>
+<p>Unlicensed crawlers should receive informational challenges rather than silent 403 errors. This converts enforcement into lead generation.</p>
+<p><strong>Challenge page HTML:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Content Licensing Required&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;AI Training Data Licensing&lt;/h1&gt;
+  &lt;p&gt;This content is available for licensed AI training purposes.&lt;/p&gt;
+
+  &lt;h2&gt;License Tiers&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Standard:&lt;/strong&gt; 50,000 pages/month, $2,500/month&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Premium:&lt;/strong&gt; 100,000 pages/month, full access, $5,000/month&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Contact: &lt;a href=&quot;mailto:licensing@yourdomain.com&quot;&gt;licensing@yourdomain.com&lt;/a&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    // JavaScript challenge to distinguish browsers from headless crawlers
+    const token = btoa(&#39;unlicensed:&#39; + Date.now());
+    fetch(&#39;/log-unlicensed-access&#39;, {
+      method: &#39;POST&#39;,
+      body: JSON.stringify({
+        user_agent: navigator.userAgent,
+        url: window.location.href
+      })
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>This:</p>
+<ol>
+<li>Explains licensing options clearly</li>
+<li>Provides contact information for sales</li>
+<li>Includes JavaScript that logs crawler attempts (browsers execute, headless crawlers don&#39;t)</li>
+</ol>
+<p>The logging endpoint captures lead data for follow-up outreach.</p>
+<h2>Geographic Access Control</h2>
+<p>License agreements may restrict crawling by geography—US-based training only, or international training requiring separate licenses.</p>
+<p><strong>IP geolocation validation:</strong></p>
+<pre><code class="language-javascript">const geoip = require(&#39;geoip-lite&#39;)
+
+function checkGeography(req, license) {
+  const ip = req.headers[&#39;x-forwarded-for&#39;] || req.connection.remoteAddress
+  const geo = geoip.lookup(ip)
+
+  if (!geo) {
+    return { allowed: false, reason: &#39;Unable to determine location&#39; }
+  }
+
+  const allowedCountries = license.allowed_countries || [&#39;US&#39;]
+
+  if (!allowedCountries.includes(geo.country)) {
+    return {
+      allowed: false,
+      reason: `License restricted to ${allowedCountries.join(&#39;, &#39;)}`
+    }
+  }
+
+  return { allowed: true }
+}
+</code></pre>
+<p>This validates crawler IP addresses against license geographic restrictions.</p>
+<p><strong>Caveat:</strong> VPNs and cloud infrastructure complicate geographic enforcement. Crawlers can route through permitted regions. Use geography as one signal among multiple validation factors rather than sole criterion.</p>
+<h2>Content Watermarking for Licensed Access</h2>
+<p>Embed invisible identifiers in content served to licensed crawlers, enabling forensic tracking if content appears in unauthorized contexts.</p>
+<p><strong>Server-side watermark injection:</strong></p>
+<pre><code class="language-javascript">function injectWatermark(htmlContent, license) {
+  const watermark = generateWatermark(license)
+  const watermarkedContent = htmlContent.replace(
+    &#39;&lt;/body&gt;&#39;,
+    `&lt;!-- ${watermark} --&gt;&lt;/body&gt;`
+  )
+  return watermarkedContent
+}
+
+function generateWatermark(license) {
+  const payload = `${license.client}:${license.token}:${Date.now()}`
+  const signature = crypto
+    .createHmac(&#39;sha256&#39;, process.env.WATERMARK_SECRET)
+    .update(payload)
+    .digest(&#39;hex&#39;)
+  return `WM:${Buffer.from(payload).toString(&#39;base64&#39;)}:${signature}`
+}
+</code></pre>
+<p>This embeds HTML comment containing Base64-encoded license metadata and cryptographic signature.</p>
+<p>If licensed content appears in unauthorized training datasets (discovered via audit or legal discovery), watermarks provide evidence of license breach.</p>
+<p><strong>Limitation:</strong> AI labs can strip HTML comments during preprocessing. More robust watermarking embeds patterns in text content itself—subtle word choice variations, sentence structure, or punctuation that survive extraction.</p>
+<h2>Excerpt-Only Access for Unlicensed Crawlers</h2>
+<p>Provide partial content to unlicensed crawlers, demonstrating value while withholding bulk training utility.</p>
+<p><strong>Excerpt generation:</strong></p>
+<pre><code class="language-javascript">function serveExcerpt(article, maxWords = 200) {
+  const words = article.content.split(/\s+/)
+  const excerpt = words.slice(0, maxWords).join(&#39; &#39;)
+
+  return {
+    title: article.title,
+    excerpt: excerpt + &#39;...&#39;,
+    full_content_available: false,
+    licensing_contact: &#39;licensing@yourdomain.com&#39;
+  }
+}
+
+// Middleware logic
+if (!req.crawlerLicense || req.crawlerLicense.tier === &#39;sample&#39;) {
+  return res.json(serveExcerpt(article))
+}
+</code></pre>
+<p>Unlicensed crawlers receive 200-word excerpts. Licensed crawlers receive full articles.</p>
+<p>This strategy:</p>
+<ul>
+<li>Maintains some SEO value (excerpts still indexable)</li>
+<li>Provides samples for evaluation</li>
+<li>Prevents bulk harvesting</li>
+<li>Signals monetization intent</li>
+</ul>
+<h2>Dynamic Pricing Based on Content Value</h2>
+<p>Vary access costs based on content quality metrics—uniqueness scores, production cost, traffic value.</p>
+<p><strong>Content scoring:</strong></p>
+<pre><code class="language-javascript">function calculateContentValue(article) {
+  let score = 0
+
+  // Uniqueness (plagiarism detection)
+  score += article.uniqueness_score * 30
+
+  // Word count (longer = more value)
+  score += Math.min(article.word_count / 100, 20)
+
+  // Domain authority (high-authority content = premium)
+  score += article.domain_authority / 10
+
+  // Traffic value (popular content = higher training value)
+  score += Math.log10(article.monthly_pageviews + 1) * 10
+
+  return Math.min(score, 100)
+}
+
+function getContentPrice(article) {
+  const value = calculateContentValue(article)
+
+  if (value &gt; 80) return 0.10 // Premium: $0.10 per article
+  if (value &gt; 50) return 0.05 // Standard: $0.05
+  return 0.01 // Basic: $0.01
+}
+</code></pre>
+<p>This scores content across multiple dimensions, mapping scores to per-article pricing.</p>
+<p>Expose pricing via API so AI labs can estimate licensing costs before committing:</p>
+<pre><code class="language-javascript">app.get(&#39;/api/pricing-estimate&#39;, async (req, res) =&gt; {
+  const sampleArticles = await db.query(&#39;SELECT * FROM articles LIMIT 100&#39;)
+  const averagePrice = sampleArticles.reduce((sum, a) =&gt; sum + getContentPrice(a), 0) / 100
+
+  res.json({
+    average_price_per_article: averagePrice,
+    total_articles: totalArticleCount,
+    estimated_full_access: averagePrice * totalArticleCount
+  })
+})
+</code></pre>
+<h2>Monitoring and Analytics</h2>
+<p>Conditional access generates valuable telemetry about crawler behavior and licensing demand.</p>
+<p><strong>Metrics to track:</strong></p>
+<p><strong>Quota utilization</strong> — What percentage of licensed quota do crawlers consume? Under-utilization suggests over-provisioned licenses; consistent exhaustion indicates upsell opportunity.</p>
+<p><strong>Content tier access patterns</strong> — Which content categories attract most crawler requests? Informs future content investment and tier pricing.</p>
+<p><strong>Geographic distribution</strong> — Where do licensed crawlers originate? Reveals international licensing opportunities.</p>
+<p><strong>Challenge page conversion</strong> — How many unlicensed crawlers visit challenge pages and subsequently initiate licensing discussions? Measures lead generation effectiveness.</p>
+<p><strong>Implementation (Node.js + Prometheus):</strong></p>
+<pre><code class="language-javascript">const prometheus = require(&#39;prom-client&#39;)
+
+const crawlerRequests = new prometheus.Counter({
+  name: &#39;crawler_requests_total&#39;,
+  help: &#39;Total requests from crawlers&#39;,
+  labelNames: [&#39;license_tier&#39;, &#39;content_tier&#39;, &#39;country&#39;]
+})
+
+const quotaExhaustion = new prometheus.Gauge({
+  name: &#39;crawler_quota_usage_percentage&#39;,
+  help: &#39;Percentage of quota consumed&#39;,
+  labelNames: [&#39;client&#39;]
+})
+
+// Middleware logging
+crawlerRequests.inc({
+  license_tier: req.crawlerLicense?.tier || &#39;unlicensed&#39;,
+  content_tier: getContentTier(req.path),
+  country: geoip.lookup(req.ip)?.country || &#39;unknown&#39;
+})
+</code></pre>
+<p>Export metrics to <strong>Grafana</strong> or <strong>Datadog</strong> for dashboard visualization.</p>
+<h2>FAQ</h2>
+<p><strong>How do AI labs obtain license tokens?</strong></p>
+<p>During contract negotiation, you generate tokens and provide them securely (encrypted email, password-protected document). Labs configure their crawlers to include tokens in request headers.</p>
+<p><strong>What prevents token sharing between AI labs?</strong></p>
+<p>Contractual terms prohibit sharing. Technical enforcement includes rate limiting (shared tokens hit quotas faster), usage pattern analysis (multiple distinct crawlers using same token), and watermarking (forensic evidence of unauthorized use).</p>
+<p><strong>Can crawlers circumvent token requirements by rotating user agents?</strong></p>
+<p>Token authentication operates independently of user agents. Even if crawlers spoof user agents, lack of valid token results in restricted access. Combine token checks with behavioral analysis for robust detection.</p>
+<p><strong>How do I handle token leakage?</strong></p>
+<p>Revoke compromised tokens immediately, issue replacement tokens, review access logs for unauthorized usage, and bill for overages if license terms specify.</p>
+<p><strong>Should I offer free sample tiers?</strong></p>
+<p>Yes. Sample access lets AI labs evaluate content quality before licensing. Restrict samples to low-value content or short excerpts to preserve licensing incentive.</p>
+<p><strong>How do I migrate existing crawlers to token-based access?</strong></p>
+<p>Announce transition timeline (e.g., 90 days), maintain backward compatibility during migration, monitor for unlicensed traffic post-deadline, enforce restrictions.</p>
+<p><strong>What&#39;s optimal quota sizing for licenses?</strong></p>
+<p>Analyze historical crawler behavior (request volume, content accessed) to estimate needs. Offer tiered quotas (50K, 100K, 500K requests/month) with overflow pricing for excess usage.</p>
+<p><strong>Can I implement conditional access without custom code?</strong></p>
+<p>Partially. <strong>Cloudflare Workers</strong> enable token validation and rate limiting. Origin server still requires logic for content tier checks and watermarking.</p>
+<p><strong>How do I prevent licensed crawlers from sharing downloaded content?</strong></p>
+<p>Contractual terms prohibit redistribution. Watermarking provides forensic evidence if violations occur. Perfect prevention isn&#39;t possible; focus on detection and legal recourse.</p>
+<p><strong>Should I charge per request, per page, or per data volume?</strong></p>
+<p>Depends on cost structure and content type. High-value, long-form content suits per-page pricing. High-traffic, short-form content suits per-request pricing. Sites with rich media suit data volume pricing.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
