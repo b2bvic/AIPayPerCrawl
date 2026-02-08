@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELK Stack for AI Bot Monitoring: Complete Setup Guide for Real-Time Crawler Analytics | AI Pay Per Crawl</title>
+    <meta name="description" content="Build a production-ready ELK Stack deployment to monitor AI crawler activity with Elasticsearch, Logstash, and Kibana—from installation to advanced dashboards.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ELK Stack for AI Bot Monitoring: Complete Setup Guide for Real-Time Crawler Analytics">
+    <meta property="og:description" content="Build a production-ready ELK Stack deployment to monitor AI crawler activity with Elasticsearch, Logstash, and Kibana—from installation to advanced dashboards.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/elk-stack-ai-bot-monitoring">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ELK Stack for AI Bot Monitoring: Complete Setup Guide for Real-Time Crawler Analytics">
+    <meta name="twitter:description" content="Build a production-ready ELK Stack deployment to monitor AI crawler activity with Elasticsearch, Logstash, and Kibana—from installation to advanced dashboards.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/elk-stack-ai-bot-monitoring">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "ELK Stack for AI Bot Monitoring: Complete Setup Guide for Real-Time Crawler Analytics",
+  "description": "Build a production-ready ELK Stack deployment to monitor AI crawler activity with Elasticsearch, Logstash, and Kibana—from installation to advanced dashboards.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/elk-stack-ai-bot-monitoring"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "ELK Stack for AI Bot Monitoring: Complete Setup Guide for Real-Time Crawler Analytics",
+      "item": "https://aipaypercrawl.com/articles/elk-stack-ai-bot-monitoring"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>ELK Stack for AI Bot Monitoring: Complete Setup Guide for Real-Time Crawler Analytics</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 13 min read</span>
+        <h1>ELK Stack for AI Bot Monitoring: Complete Setup Guide for Real-Time Crawler Analytics</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Build a production-ready ELK Stack deployment to monitor AI crawler activity with Elasticsearch, Logstash, and Kibana—from installation to advanced dashboards.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>ELK Stack for AI Bot Monitoring: Complete Setup Guide for Real-Time Crawler Analytics</h1>
+<p>The <strong>ELK Stack</strong> (<strong>Elasticsearch</strong>, <strong>Logstash</strong>, <strong>Kibana</strong>) provides enterprise-grade log analytics infrastructure capable of ingesting millions of server requests daily, identifying AI crawler patterns through complex queries, and surfacing insights via real-time dashboards. For publishers serious about AI crawler monitoring and monetization, ELK transforms reactive log grepping into proactive intelligence gathering that enables data-driven access policies and licensing negotiations.</p>
+<p>This guide provides complete implementation instructions for deploying ELK Stack specifically optimized for AI bot monitoring—from initial installation through production configuration, with battle-tested Logstash pipelines, Elasticsearch index templates, and pre-built Kibana visualizations that answer critical questions: which AI companies are crawling, how much it&#39;s costing, and whether your blocking policies actually work.</p>
+<h2>ELK Stack Architecture for Crawler Monitoring</h2>
+<p><strong>Component roles</strong>:</p>
+<ol>
+<li><strong>Logstash</strong>: Ingests server logs (Nginx, Apache, CDN), parses them into structured JSON, enriches with GeoIP/ASN data, and forwards to Elasticsearch</li>
+<li><strong>Elasticsearch</strong>: Stores parsed logs in optimized time-series indices, enabling fast queries across billions of log entries</li>
+<li><strong>Kibana</strong>: Visualizes data through dashboards, enables ad-hoc querying, and provides alerting capabilities</li>
+</ol>
+<p><strong>Data flow</strong>:</p>
+<pre><code>Web Servers → Filebeat → Logstash → Elasticsearch → Kibana
+     ↓                       ↓             ↓            ↓
+  access.log          Parse/Enrich    Store/Index   Visualize/Alert
+</code></pre>
+<p><strong>Infrastructure sizing</strong> (for mid-sized publisher with 5M requests/month):</p>
+<ul>
+<li><strong>Elasticsearch</strong>: 3-node cluster, 16GB RAM per node, 500GB SSD storage per node</li>
+<li><strong>Logstash</strong>: 2 nodes, 8GB RAM each (load balancing, redundancy)</li>
+<li><strong>Kibana</strong>: Single node, 4GB RAM (lightweight, no heavy processing)</li>
+<li><strong>Filebeat</strong>: Runs on each web server (minimal resource consumption)</li>
+</ul>
+<p><strong>Cost estimate</strong>: $200-400/month for self-hosted VPS infrastructure, or $800-1,500/month via managed <strong>Elastic Cloud</strong>.</p>
+<h2>Installation: Docker Compose Deployment</h2>
+<p>For rapid deployment and easy management, use <strong>Docker Compose</strong> to orchestrate all ELK components.</p>
+<h3>Prerequisites</h3>
+<pre><code class="language-bash"># Install Docker and Docker Compose
+curl -fsSL https://get.docker.com | sh
+sudo systemctl enable docker
+sudo systemctl start docker
+
+# Install Docker Compose
+sudo curl -L &quot;https://github.com/docker/compose/releases/download/v2.24.0/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<h3>Docker Compose Configuration</h3>
+<p>Create <code>docker-compose.yml</code>:</p>
+<pre><code class="language-yaml">version: &#39;3.8&#39;
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - &quot;ES_JAVA_OPTS=-Xms4g -Xmx4g&quot;
+      - xpack.security.enabled=false
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    ports:
+      - &quot;9200:9200&quot;
+    networks:
+      - elk
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.12.0
+    container_name: logstash
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - /var/log/nginx:/var/log/nginx:ro
+    ports:
+      - &quot;5044:5044&quot;
+      - &quot;9600:9600&quot;
+    environment:
+      - &quot;LS_JAVA_OPTS=-Xms2g -Xmx2g&quot;
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.12.0
+    container_name: kibana
+    ports:
+      - &quot;5601:5601&quot;
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+volumes:
+  es_data:
+    driver: local
+
+networks:
+  elk:
+    driver: bridge
+</code></pre>
+<p><strong>Deploy</strong>:</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<p><strong>Verify</strong>:</p>
+<pre><code class="language-bash"># Check Elasticsearch
+curl http://localhost:9200
+# Should return cluster info JSON
+
+# Access Kibana
+# Open browser: http://your-server-ip:5601
+</code></pre>
+<h2>Logstash Pipeline Configuration</h2>
+<p>Logstash parses raw logs, identifies AI crawlers, and enriches with metadata. This is where the intelligence happens.</p>
+<h3>Pipeline File: AI Crawler Detection</h3>
+<p>Create <code>logstash/pipeline/ai-crawlers.conf</code>:</p>
+<pre><code class="language-ruby">input {
+  file {
+    path =&gt; &quot;/var/log/nginx/access.log&quot;
+    start_position =&gt; &quot;beginning&quot;
+    sincedb_path =&gt; &quot;/dev/null&quot;
+    codec =&gt; &quot;json&quot;
+  }
+}
+
+filter {
+  # Parse timestamp
+  date {
+    match =&gt; [ &quot;time_local&quot;, &quot;dd/MMM/yyyy:HH:mm:ss Z&quot; ]
+    target =&gt; &quot;@timestamp&quot;
+  }
+
+  # Extract request details
+  grok {
+    match =&gt; { &quot;request&quot; =&gt; &quot;%{WORD:method} %{URIPATHPARAM:uri} HTTP/%{NUMBER:http_version}&quot; }
+  }
+
+  # Parse query parameters
+  kv {
+    source =&gt; &quot;uri&quot;
+    field_split =&gt; &quot;&amp;?&quot;
+    target =&gt; &quot;query_params&quot;
+  }
+
+  # Identify AI crawlers by user-agent
+  if [http_user_agent] =~ /GPTBot|ClaudeBot|Google-Extended|CCBot|anthropic-ai|Bytespider|Applebot-Extended|facebookbot|Diffbot|cohere-ai|PerplexityBot|YouBot|Timpibot|Omgilibot|PetalBot/ {
+    mutate {
+      add_field =&gt; { &quot;bot_type&quot; =&gt; &quot;ai_crawler&quot; }
+    }
+  } else if [http_user_agent] =~ /Googlebot|Bingbot|Slurp|DuckDuckBot/ {
+    mutate {
+      add_field =&gt; { &quot;bot_type&quot; =&gt; &quot;search_engine&quot; }
+    }
+  } else {
+    mutate {
+      add_field =&gt; { &quot;bot_type&quot; =&gt; &quot;human_or_unknown&quot; }
+    }
+  }
+
+  # Classify AI vendors
+  if [bot_type] == &quot;ai_crawler&quot; {
+    if [http_user_agent] =~ /GPTBot/ {
+      mutate { add_field =&gt; { &quot;ai_vendor&quot; =&gt; &quot;OpenAI&quot; } }
+    } else if [http_user_agent] =~ /ClaudeBot/ {
+      mutate { add_field =&gt; { &quot;ai_vendor&quot; =&gt; &quot;Anthropic&quot; } }
+    } else if [http_user_agent] =~ /Google-Extended/ {
+      mutate { add_field =&gt; { &quot;ai_vendor&quot; =&gt; &quot;Google&quot; } }
+    } else if [http_user_agent] =~ /CCBot/ {
+      mutate { add_field =&gt; { &quot;ai_vendor&quot; =&gt; &quot;Common Crawl&quot; } }
+    } else if [http_user_agent] =~ /Bytespider/ {
+      mutate { add_field =&gt; { &quot;ai_vendor&quot; =&gt; &quot;ByteDance&quot; } }
+    } else if [http_user_agent] =~ /facebookbot/ {
+      mutate { add_field =&gt; { &quot;ai_vendor&quot; =&gt; &quot;Meta&quot; } }
+    } else if [http_user_agent] =~ /Applebot-Extended/ {
+      mutate { add_field =&gt; { &quot;ai_vendor&quot; =&gt; &quot;Apple&quot; } }
+    } else if [http_user_agent] =~ /PerplexityBot/ {
+      mutate { add_field =&gt; { &quot;ai_vendor&quot; =&gt; &quot;Perplexity&quot; } }
+    } else {
+      mutate { add_field =&gt; { &quot;ai_vendor&quot; =&gt; &quot;Unknown&quot; } }
+    }
+  }
+
+  # GeoIP enrichment
+  geoip {
+    source =&gt; &quot;remote_addr&quot;
+    target =&gt; &quot;geoip&quot;
+    database =&gt; &quot;/usr/share/logstash/GeoLite2-City.mmdb&quot;
+  }
+
+  # ASN lookup (hosting provider identification)
+  geoip {
+    source =&gt; &quot;remote_addr&quot;
+    target =&gt; &quot;geoip&quot;
+    database =&gt; &quot;/usr/share/logstash/GeoLite2-ASN.mmdb&quot;
+  }
+
+  # Calculate estimated cost
+  ruby {
+    code =&gt; &#39;
+      bytes = event.get(&quot;body_bytes_sent&quot;).to_i
+      time = event.get(&quot;request_time&quot;).to_f
+
+      # Cost model: $0.12/GB bandwidth + $0.008/CPU-second
+      bandwidth_cost = (bytes / 1_073_741_824.0) * 0.12
+      compute_cost = time * 0.008
+      total_cost = bandwidth_cost + compute_cost
+
+      event.set(&quot;cost_bandwidth&quot;, bandwidth_cost)
+      event.set(&quot;cost_compute&quot;, compute_cost)
+      event.set(&quot;cost_total&quot;, total_cost)
+    &#39;
+  }
+
+  # Calculate crawl rate (requires stateful tracking)
+  # This is simplified; production would use Logstash aggregate filter
+  ruby {
+    code =&gt; &#39;
+      remote_ip = event.get(&quot;remote_addr&quot;)
+      # In production, maintain time-window request counts
+      # For demo, just flag high-volume IPs
+    &#39;
+  }
+
+  # Content classification
+  ruby {
+    code =&gt; &#39;
+      uri = event.get(&quot;uri&quot;)
+      if uri =~ /\/(blog|article)/
+        event.set(&quot;content_type&quot;, &quot;editorial&quot;)
+      elsif uri =~ /\/(product|shop|catalog)/
+        event.set(&quot;content_type&quot;, &quot;ecommerce&quot;)
+      elsif uri =~ /\/(docs|help|tutorial)/
+        event.set(&quot;content_type&quot;, &quot;documentation&quot;)
+      elsif uri =~ /\/(api|json|xml)/
+        event.set(&quot;content_type&quot;, &quot;api&quot;)
+      else
+        event.set(&quot;content_type&quot;, &quot;other&quot;)
+      end
+    &#39;
+  }
+}
+
+output {
+  if [bot_type] == &quot;ai_crawler&quot; {
+    elasticsearch {
+      hosts =&gt; [&quot;elasticsearch:9200&quot;]
+      index =&gt; &quot;ai-crawlers-%{+YYYY.MM.dd}&quot;
+    }
+  }
+
+  # Optional: Output all logs to separate index
+  elasticsearch {
+    hosts =&gt; [&quot;elasticsearch:9200&quot;]
+    index =&gt; &quot;web-logs-%{+YYYY.MM.dd}&quot;
+  }
+
+  # Debug output (disable in production)
+  # stdout { codec =&gt; rubydebug }
+}
+</code></pre>
+<p><strong>Install GeoIP databases</strong>:</p>
+<pre><code class="language-bash"># Download MaxMind GeoLite2 databases (free, requires registration)
+mkdir -p logstash/geoip
+cd logstash/geoip
+wget https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&amp;suffix=tar.gz
+wget https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&amp;suffix=tar.gz
+
+# Extract .mmdb files
+tar -xzf GeoLite2-City*.tar.gz --strip-components=1
+tar -xzf GeoLite2-ASN*.tar.gz --strip-components=1
+
+# Move to Logstash container volume
+docker cp GeoLite2-City.mmdb logstash:/usr/share/logstash/
+docker cp GeoLite2-ASN.mmdb logstash:/usr/share/logstash/
+</code></pre>
+<p><strong>Restart Logstash</strong>:</p>
+<pre><code class="language-bash">docker-compose restart logstash
+</code></pre>
+<h2>Elasticsearch Index Templates</h2>
+<p>Index templates define field mappings and optimize storage/query performance.</p>
+<h3>AI Crawler Index Template</h3>
+<pre><code class="language-json">PUT _index_template/ai-crawler-template
+{
+  &quot;index_patterns&quot;: [&quot;ai-crawlers-*&quot;],
+  &quot;template&quot;: {
+    &quot;settings&quot;: {
+      &quot;number_of_shards&quot;: 2,
+      &quot;number_of_replicas&quot;: 1,
+      &quot;refresh_interval&quot;: &quot;30s&quot;,
+      &quot;index.lifecycle.name&quot;: &quot;ai-crawler-policy&quot;
+    },
+    &quot;mappings&quot;: {
+      &quot;properties&quot;: {
+        &quot;@timestamp&quot;: { &quot;type&quot;: &quot;date&quot; },
+        &quot;remote_addr&quot;: { &quot;type&quot;: &quot;ip&quot; },
+        &quot;method&quot;: { &quot;type&quot;: &quot;keyword&quot; },
+        &quot;uri&quot;: { &quot;type&quot;: &quot;keyword&quot; },
+        &quot;status&quot;: { &quot;type&quot;: &quot;short&quot; },
+        &quot;body_bytes_sent&quot;: { &quot;type&quot;: &quot;long&quot; },
+        &quot;request_time&quot;: { &quot;type&quot;: &quot;float&quot; },
+        &quot;http_user_agent&quot;: {
+          &quot;type&quot;: &quot;text&quot;,
+          &quot;fields&quot;: {
+            &quot;keyword&quot;: { &quot;type&quot;: &quot;keyword&quot; }
+          }
+        },
+        &quot;bot_type&quot;: { &quot;type&quot;: &quot;keyword&quot; },
+        &quot;ai_vendor&quot;: { &quot;type&quot;: &quot;keyword&quot; },
+        &quot;content_type&quot;: { &quot;type&quot;: &quot;keyword&quot; },
+        &quot;cost_bandwidth&quot;: { &quot;type&quot;: &quot;float&quot; },
+        &quot;cost_compute&quot;: { &quot;type&quot;: &quot;float&quot; },
+        &quot;cost_total&quot;: { &quot;type&quot;: &quot;float&quot; },
+        &quot;geoip&quot;: {
+          &quot;properties&quot;: {
+            &quot;country_name&quot;: { &quot;type&quot;: &quot;keyword&quot; },
+            &quot;city_name&quot;: { &quot;type&quot;: &quot;keyword&quot; },
+            &quot;location&quot;: { &quot;type&quot;: &quot;geo_point&quot; },
+            &quot;asn&quot;: { &quot;type&quot;: &quot;long&quot; },
+            &quot;as_org&quot;: { &quot;type&quot;: &quot;keyword&quot; }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>Apply via Kibana <strong>Dev Tools</strong> or curl:</p>
+<pre><code class="language-bash">curl -X PUT &quot;http://localhost:9200/_index_template/ai-crawler-template&quot; \
+  -H &#39;Content-Type: application/json&#39; \
+  -d @template.json
+</code></pre>
+<h3>Index Lifecycle Management</h3>
+<p>Automatically delete old data to control storage costs:</p>
+<pre><code class="language-json">PUT _ilm/policy/ai-crawler-policy
+{
+  &quot;policy&quot;: {
+    &quot;phases&quot;: {
+      &quot;hot&quot;: {
+        &quot;min_age&quot;: &quot;0ms&quot;,
+        &quot;actions&quot;: {
+          &quot;rollover&quot;: {
+            &quot;max_size&quot;: &quot;30GB&quot;,
+            &quot;max_age&quot;: &quot;1d&quot;
+          }
+        }
+      },
+      &quot;warm&quot;: {
+        &quot;min_age&quot;: &quot;7d&quot;,
+        &quot;actions&quot;: {
+          &quot;shrink&quot;: {
+            &quot;number_of_shards&quot;: 1
+          },
+          &quot;forcemerge&quot;: {
+            &quot;max_num_segments&quot;: 1
+          }
+        }
+      },
+      &quot;delete&quot;: {
+        &quot;min_age&quot;: &quot;90d&quot;,
+        &quot;actions&quot;: {
+          &quot;delete&quot;: {}
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p><strong>Effect</strong>: Data older than 90 days automatically deletes, saving storage costs.</p>
+<h2>Kibana Dashboard Configuration</h2>
+<p>Build visualizations that answer key questions about AI crawler activity.</p>
+<h3>Dashboard 1: Real-Time Activity Overview</h3>
+<p><strong>Panel 1: Request Rate (Line Chart)</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler</code></li>
+<li><strong>Metric</strong>: Count</li>
+<li><strong>X-axis</strong>: Date histogram, 5-minute intervals</li>
+<li><strong>Split series</strong>: By <code>ai_vendor.keyword</code></li>
+</ul>
+<p><strong>Panel 2: Top AI Crawlers (Bar Chart)</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler AND @timestamp:[now-24h TO now]</code></li>
+<li><strong>Metric</strong>: Count</li>
+<li><strong>Bucket</strong>: Terms aggregation on <code>ai_vendor.keyword</code></li>
+<li><strong>Size</strong>: Top 10</li>
+</ul>
+<p><strong>Panel 3: Geographic Heatmap</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler AND @timestamp:[now-7d TO now]</code></li>
+<li><strong>Metric</strong>: Count</li>
+<li><strong>Geohash grid</strong>: On <code>geoip.location</code></li>
+</ul>
+<p><strong>Panel 4: Cost Accumulator (Metric)</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler AND @timestamp:[now-30d TO now]</code></li>
+<li><strong>Metric</strong>: Sum of <code>cost_total</code></li>
+<li><strong>Format</strong>: Currency ($)</li>
+</ul>
+<p><strong>Panel 5: Bandwidth Consumption (Area Chart)</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler</code></li>
+<li><strong>Metric</strong>: Sum of <code>body_bytes_sent</code>, converted to GB</li>
+<li><strong>X-axis</strong>: Date histogram, 1-hour intervals</li>
+<li><strong>Split series</strong>: By <code>ai_vendor.keyword</code></li>
+</ul>
+<h3>Dashboard 2: Content Intelligence</h3>
+<p><strong>Panel 1: Content Type Distribution (Pie Chart)</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler AND @timestamp:[now-7d TO now]</code></li>
+<li><strong>Metric</strong>: Count</li>
+<li><strong>Slice by</strong>: <code>content_type.keyword</code></li>
+</ul>
+<p>Shows which content types crawlers target most (editorial, ecommerce, docs, etc.).</p>
+<p><strong>Panel 2: Top Crawled URLs (Data Table)</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler AND @timestamp:[now-24h TO now]</code></li>
+<li><strong>Rows</strong>: Terms on <code>uri.keyword</code>, top 100</li>
+<li><strong>Metrics</strong>:<ul>
+<li>Count (requests)</li>
+<li>Sum of <code>body_bytes_sent</code> (bandwidth)</li>
+<li>Unique count of <code>remote_addr</code> (distinct crawlers)</li>
+</ul>
+</li>
+</ul>
+<p>Identifies most-scraped pages—candidates for additional protection.</p>
+<p><strong>Panel 3: Status Code Distribution (Bar Chart)</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler</code></li>
+<li><strong>X-axis</strong>: Terms on <code>status</code></li>
+<li><strong>Metric</strong>: Count</li>
+</ul>
+<p>Track how many crawlers get blocked (403), rate-limited (429), or succeed (200).</p>
+<h3>Dashboard 3: Compliance Monitoring</h3>
+<p><strong>Panel 1: Robots.txt Compliance (Gauge)</strong></p>
+<p>Requires additional logic to check if crawlers accessed disallowed paths. Simplified version:</p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler AND uri:/robots.txt</code></li>
+<li><strong>Metric</strong>: Count</li>
+</ul>
+<p>Shows how many crawlers checked robots.txt before crawling (compliant behavior).</p>
+<p><strong>Panel 2: Blocked Requests Over Time (Line Chart)</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler AND (status:403 OR status:429)</code></li>
+<li><strong>Metric</strong>: Count</li>
+<li><strong>X-axis</strong>: Date histogram, 1-hour intervals</li>
+</ul>
+<p>Visualizes enforcement effectiveness—spikes indicate crawlers hitting rate limits or blocks.</p>
+<p><strong>Panel 3: Unknown Crawlers (Data Table)</strong></p>
+<ul>
+<li><strong>Query</strong>: <code>bot_type:ai_crawler AND ai_vendor:Unknown</code></li>
+<li><strong>Columns</strong>:<ul>
+<li><code>http_user_agent.keyword</code></li>
+<li><code>remote_addr</code></li>
+<li>Count</li>
+</ul>
+</li>
+</ul>
+<p>Surfaces new/undocumented crawlers for investigation.</p>
+<h2>Alerting Configuration</h2>
+<p><strong>Kibana Alerting</strong> (formerly Watcher) enables proactive notifications when crawler behavior exceeds thresholds.</p>
+<h3>Alert 1: High-Volume Crawler Spike</h3>
+<pre><code class="language-json">POST _watcher/watch/ai-crawler-spike
+{
+  &quot;trigger&quot;: {
+    &quot;schedule&quot;: { &quot;interval&quot;: &quot;5m&quot; }
+  },
+  &quot;input&quot;: {
+    &quot;search&quot;: {
+      &quot;request&quot;: {
+        &quot;indices&quot;: [&quot;ai-crawlers-*&quot;],
+        &quot;body&quot;: {
+          &quot;query&quot;: {
+            &quot;bool&quot;: {
+              &quot;must&quot;: [
+                { &quot;match&quot;: { &quot;bot_type&quot;: &quot;ai_crawler&quot; } },
+                { &quot;range&quot;: { &quot;@timestamp&quot;: { &quot;gte&quot;: &quot;now-5m&quot; } } }
+              ]
+            }
+          },
+          &quot;aggs&quot;: {
+            &quot;by_vendor&quot;: {
+              &quot;terms&quot;: { &quot;field&quot;: &quot;ai_vendor.keyword&quot; },
+              &quot;aggs&quot;: {
+                &quot;request_count&quot;: { &quot;value_count&quot;: { &quot;field&quot;: &quot;_id&quot; } }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;condition&quot;: {
+    &quot;script&quot;: {
+      &quot;source&quot;: &quot;return ctx.payload.aggregations.by_vendor.buckets.stream().anyMatch(bucket -&gt; bucket.request_count.value &gt; 2000)&quot;
+    }
+  },
+  &quot;actions&quot;: {
+    &quot;email_admin&quot;: {
+      &quot;email&quot;: {
+        &quot;to&quot;: &quot;admin@yoursite.com&quot;,
+        &quot;subject&quot;: &quot;AI Crawler Traffic Spike Detected&quot;,
+        &quot;body&quot;: {
+          &quot;text&quot;: &quot;One or more AI crawlers exceeded 2,000 requests in the past 5 minutes. Check the dashboard: http://your-kibana:5601/app/dashboards&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<h3>Alert 2: New Unknown Crawler Detection</h3>
+<pre><code class="language-json">POST _watcher/watch/new-unknown-crawler
+{
+  &quot;trigger&quot;: {
+    &quot;schedule&quot;: { &quot;interval&quot;: &quot;1h&quot; }
+  },
+  &quot;input&quot;: {
+    &quot;search&quot;: {
+      &quot;request&quot;: {
+        &quot;indices&quot;: [&quot;ai-crawlers-*&quot;],
+        &quot;body&quot;: {
+          &quot;query&quot;: {
+            &quot;bool&quot;: {
+              &quot;must&quot;: [
+                { &quot;match&quot;: { &quot;ai_vendor&quot;: &quot;Unknown&quot; } },
+                { &quot;range&quot;: { &quot;@timestamp&quot;: { &quot;gte&quot;: &quot;now-1h&quot; } } }
+              ]
+            }
+          },
+          &quot;size&quot;: 0,
+          &quot;aggs&quot;: {
+            &quot;new_user_agents&quot;: {
+              &quot;terms&quot;: {
+                &quot;field&quot;: &quot;http_user_agent.keyword&quot;,
+                &quot;size&quot;: 10,
+                &quot;order&quot;: { &quot;_count&quot;: &quot;desc&quot; }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;condition&quot;: {
+    &quot;compare&quot;: {
+      &quot;ctx.payload.hits.total.value&quot;: { &quot;gt&quot;: 100 }
+    }
+  },
+  &quot;actions&quot;: {
+    &quot;slack_notification&quot;: {
+      &quot;webhook&quot;: {
+        &quot;url&quot;: &quot;https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK&quot;,
+        &quot;body&quot;: &quot;New unknown crawler detected with 100+ requests in past hour. Investigate: {{ctx.payload.aggregations.new_user_agents.buckets}}&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<h2>Advanced Queries for Investigation</h2>
+<p><strong>Query 1: Calculate AI crawler percentage of total traffic</strong></p>
+<pre><code>GET ai-crawlers-*/_search
+{
+  &quot;size&quot;: 0,
+  &quot;query&quot;: {
+    &quot;range&quot;: { &quot;@timestamp&quot;: { &quot;gte&quot;: &quot;now-30d&quot; } }
+  },
+  &quot;aggs&quot;: {
+    &quot;total_requests&quot;: { &quot;value_count&quot;: { &quot;field&quot;: &quot;_id&quot; } },
+    &quot;crawler_requests&quot;: {
+      &quot;filter&quot;: { &quot;term&quot;: { &quot;bot_type&quot;: &quot;ai_crawler&quot; } },
+      &quot;aggs&quot;: {
+        &quot;count&quot;: { &quot;value_count&quot;: { &quot;field&quot;: &quot;_id&quot; } }
+      }
+    }
+  }
+}
+</code></pre>
+<p><strong>Query 2: Identify IPs with crawler user-agents but human-like request rates</strong></p>
+<p>Potential scrapers disguising themselves:</p>
+<pre><code>GET ai-crawlers-*/_search
+{
+  &quot;size&quot;: 0,
+  &quot;query&quot;: {
+    &quot;bool&quot;: {
+      &quot;must&quot;: [
+        { &quot;match&quot;: { &quot;bot_type&quot;: &quot;ai_crawler&quot; } },
+        { &quot;range&quot;: { &quot;@timestamp&quot;: { &quot;gte&quot;: &quot;now-24h&quot; } } }
+      ]
+    }
+  },
+  &quot;aggs&quot;: {
+    &quot;by_ip&quot;: {
+      &quot;terms&quot;: { &quot;field&quot;: &quot;remote_addr&quot;, &quot;size&quot;: 100 },
+      &quot;aggs&quot;: {
+        &quot;request_count&quot;: { &quot;value_count&quot;: { &quot;field&quot;: &quot;_id&quot; } },
+        &quot;rate_bucket&quot;: {
+          &quot;bucket_script&quot;: {
+            &quot;buckets_path&quot;: { &quot;count&quot;: &quot;request_count&quot; },
+            &quot;script&quot;: &quot;params.count / 1440&quot;
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>IPs with 1-5 requests/minute are suspicious—too slow for typical crawlers, possibly throttling to evade detection.</p>
+<p><strong>Query 3: Cost per AI vendor</strong></p>
+<pre><code>GET ai-crawlers-*/_search
+{
+  &quot;size&quot;: 0,
+  &quot;query&quot;: {
+    &quot;range&quot;: { &quot;@timestamp&quot;: { &quot;gte&quot;: &quot;now-30d&quot; } }
+  },
+  &quot;aggs&quot;: {
+    &quot;cost_by_vendor&quot;: {
+      &quot;terms&quot;: { &quot;field&quot;: &quot;ai_vendor.keyword&quot; },
+      &quot;aggs&quot;: {
+        &quot;total_cost&quot;: { &quot;sum&quot;: { &quot;field&quot;: &quot;cost_total&quot; } },
+        &quot;total_bandwidth_gb&quot;: {
+          &quot;sum&quot;: {
+            &quot;field&quot;: &quot;body_bytes_sent&quot;,
+            &quot;script&quot;: { &quot;source&quot;: &quot;_value / 1073741824&quot; }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>Provides exact dollar cost per AI company—ammunition for licensing negotiations.</p>
+<h2>Production Hardening</h2>
+<p><strong>Security</strong>:</p>
+<ul>
+<li>Enable Elasticsearch security (xpack.security) with authentication</li>
+<li>Use TLS for Elasticsearch cluster communication</li>
+<li>Restrict Kibana access via reverse proxy with authentication</li>
+<li>Firewall rules: Only allow Logstash → Elasticsearch, Kibana → Elasticsearch</li>
+</ul>
+<p><strong>Performance</strong>:</p>
+<ul>
+<li>Scale Elasticsearch horizontally (add nodes) as data volume grows</li>
+<li>Use dedicated master nodes for clusters &gt;3 nodes</li>
+<li>Monitor JVM heap usage (keep &lt;75% to avoid garbage collection pauses)</li>
+<li>Implement index sharding strategy (2-3 shards per node for optimal distribution)</li>
+</ul>
+<p><strong>Reliability</strong>:</p>
+<ul>
+<li>Run Elasticsearch with replication factor ≥1 (data durability)</li>
+<li>Use <strong>Filebeat</strong> instead of Logstash file input (better reliability, backpressure handling)</li>
+<li>Implement Logstash dead letter queue for failed parsing</li>
+<li>Monitor with <strong>Elastic Stack Monitoring</strong> or <strong>Prometheus exporters</strong></li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<p><strong>Q: Can ELK Stack handle logs from multiple web servers?</strong></p>
+<p>Yes. Install <strong>Filebeat</strong> on each server, configure all to forward to your Logstash instance(s). Logstash aggregates and processes. Elasticsearch stores centrally.</p>
+<p><strong>Q: How much storage do I need for 10M requests/month?</strong></p>
+<p>Approximately 50-100GB per month for raw logs after compression. With 90-day retention = 150-300GB total. Add 50% overhead for indices and replication = 225-450GB cluster storage.</p>
+<p><strong>Q: Can I use ELK Stack with CDN logs (Cloudflare, Fastly)?</strong></p>
+<p>Yes. Configure Cloudflare Logpush or Fastly Real-Time Log Streaming to send logs to Logstash HTTP input or directly to Elasticsearch. Parsing logic may need adjustment based on CDN log format.</p>
+<p><strong>Q: What&#39;s the difference between ELK and Splunk for this use case?</strong></p>
+<p><strong>Splunk</strong>: Commercial, expensive ($150+/GB ingested), superior UI/UX, better built-in alerting. <strong>ELK</strong>: Open-source, free (infrastructure costs only), more flexible, steeper learning curve. For AI crawler monitoring specifically, ELK provides 90% of Splunk&#39;s value at 10% of the cost.</p>
+<p><strong>Q: Can I integrate ELK alerts with access control systems (automatically block abusive crawlers)?</strong></p>
+<p>Yes. Configure alerts to call webhook endpoints that trigger firewall updates. Example: Alert detects crawler spike → Webhook to custom script → Script adds IP to iptables block list. Requires custom integration code but fully feasible.</p>
+<p><strong>Q: How do I upgrade ELK Stack versions without data loss?</strong></p>
+<p>Perform rolling upgrades: Upgrade Elasticsearch nodes one at a time (cluster remains operational). Upgrade Kibana after Elasticsearch. Upgrade Logstash independently (it buffers data during downtime). Always backup data before major version upgrades using Elasticsearch snapshots.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

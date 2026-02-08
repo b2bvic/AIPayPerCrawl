@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Detect AI Crawlers in Server Logs: Identifying GPTBot, ClaudeBot, and Hidden Scrapers | AI Pay Per Crawl</title>
+    <meta name="description" content="Master server log analysis to identify AI training crawlers by user-agent patterns, behavioral signatures, and IP ranges—including bots that disguise themselves as legitimate traffic.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="How to Detect AI Crawlers in Server Logs: Identifying GPTBot, ClaudeBot, and Hidden Scrapers">
+    <meta property="og:description" content="Master server log analysis to identify AI training crawlers by user-agent patterns, behavioral signatures, and IP ranges—including bots that disguise themselves as legitimate traffic.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/detect-ai-crawlers-server-logs">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Detect AI Crawlers in Server Logs: Identifying GPTBot, ClaudeBot, and Hidden Scrapers">
+    <meta name="twitter:description" content="Master server log analysis to identify AI training crawlers by user-agent patterns, behavioral signatures, and IP ranges—including bots that disguise themselves as legitimate traffic.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/detect-ai-crawlers-server-logs">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Detect AI Crawlers in Server Logs: Identifying GPTBot, ClaudeBot, and Hidden Scrapers",
+  "description": "Master server log analysis to identify AI training crawlers by user-agent patterns, behavioral signatures, and IP ranges—including bots that disguise themselves as legitimate traffic.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/detect-ai-crawlers-server-logs"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Detect AI Crawlers in Server Logs: Identifying GPTBot, ClaudeBot, and Hidden Scrapers",
+      "item": "https://aipaypercrawl.com/articles/detect-ai-crawlers-server-logs"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>How to Detect AI Crawlers in Server Logs: Identifying GPTBot, ClaudeBot, and Hidden Scrapers</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 15 min read</span>
+        <h1>How to Detect AI Crawlers in Server Logs: Identifying GPTBot, ClaudeBot, and Hidden Scrapers</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Master server log analysis to identify AI training crawlers by user-agent patterns, behavioral signatures, and IP ranges—including bots that disguise themselves as legitimate traffic.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>How to Detect AI Crawlers in Server Logs: Identifying GPTBot, ClaudeBot, and Hidden Scrapers</h1>
+<p>Your server logs contain a complete accounting of who accesses your content—search engines, legitimate users, monitoring services, and <strong>AI training crawlers</strong> extracting data to build language models. The difference between these categories isn&#39;t always obvious. While <strong>Google&#39;s Googlebot</strong> prominently identifies itself, AI crawlers operate along a spectrum from fully transparent (<strong>OpenAI&#39;s GPTBot</strong>) to deliberately obfuscated (scrapers rotating through residential proxy networks with forged browser fingerprints).</p>
+<p>Detection is the prerequisite to monetization. You can&#39;t negotiate licensing deals, enforce access controls, or calculate infrastructure costs without first answering: which requests in my logs represent AI training activity? This guide provides the complete methodology for identifying AI crawlers in server logs, from simple user-agent matching to sophisticated behavioral analysis that catches crawlers attempting to hide.</p>
+<h2>Understanding Server Log Structure</h2>
+<p>Before identifying AI crawlers, you need baseline literacy in log format and field interpretation. Most web servers output logs in <strong>Common Log Format (CLF)</strong> or <strong>Combined Log Format</strong>, with optional JSON variants.</p>
+<p><strong>Combined Log Format example:</strong></p>
+<pre><code>203.0.113.45 - - [08/Feb/2026:14:23:17 +0000] &quot;GET /blog/ai-training-data HTTP/1.1&quot; 200 15234 &quot;-&quot; &quot;GPTBot/1.0 (+https://openai.com/gptbot)&quot;
+</code></pre>
+<p><strong>Field breakdown:</strong></p>
+<ol>
+<li><strong>203.0.113.45</strong>: Client IP address</li>
+<li><strong>-</strong>: RFC 1413 identity (usually unused, shown as <code>-</code>)</li>
+<li><strong>-</strong>: HTTP auth username (if any)</li>
+<li><strong>[08/Feb/2026:14:23:17 +0000]</strong>: Request timestamp in bracket notation</li>
+<li><strong>&quot;GET /blog/ai-training-data HTTP/1.1&quot;</strong>: Request method, URL path, HTTP version</li>
+<li><strong>200</strong>: HTTP status code returned</li>
+<li><strong>15234</strong>: Response size in bytes</li>
+<li><strong>&quot;-&quot;</strong>: Referrer URL (or <code>-</code> if none)</li>
+<li><strong>&quot;GPTBot/1.0 (+<a href="https://openai.com/gptbot">https://openai.com/gptbot</a>)&quot;</strong>: User-agent string</li>
+</ol>
+<p>The <strong>user-agent string</strong> (field 9) is your primary detection signal for well-behaved AI crawlers. It identifies the client software making the request—browsers send detailed version info, search engines send crawler identifiers, and compliant AI bots send documented user-agent strings.</p>
+<h2>Detecting Documented AI Crawlers by User-Agent</h2>
+<p>The easiest category: AI companies that publicly document their crawlers and use consistent user-agent strings. These bots <em>want</em> to be identified so publishers can apply appropriate policies via robots.txt or server configuration.</p>
+<h3>Known AI Crawler User-Agent Patterns</h3>
+<p><strong>Major AI training crawlers (as of February 2026):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>User-Agent String</th>
+<th>Documentation URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenAI</td>
+<td><code>GPTBot/1.0</code></td>
+<td>openai.com/gptbot</td>
+</tr>
+<tr>
+<td>Anthropic</td>
+<td><code>ClaudeBot/1.0</code></td>
+<td>anthropic.com/claudebot</td>
+</tr>
+<tr>
+<td>Google</td>
+<td><code>Google-Extended/1.0</code></td>
+<td>developers.google.com/search/docs/crawling-indexing/google-extended</td>
+</tr>
+<tr>
+<td>Common Crawl</td>
+<td><code>CCBot/2.0</code></td>
+<td>commoncrawl.org/ccbot</td>
+</tr>
+<tr>
+<td>Cohere</td>
+<td><code>cohere-ai</code></td>
+<td>docs.cohere.com/docs/crawler</td>
+</tr>
+<tr>
+<td>Meta</td>
+<td><code>FacebookBot</code> (AI training subset)</td>
+<td>developers.facebook.com/docs/sharing/bot</td>
+</tr>
+<tr>
+<td>Apple</td>
+<td><code>Applebot-Extended/1.0</code></td>
+<td>support.apple.com/en-us/119829</td>
+</tr>
+<tr>
+<td>Perplexity</td>
+<td><code>PerplexityBot/1.0</code></td>
+<td>perplexity.ai/bot</td>
+</tr>
+<tr>
+<td>You.com</td>
+<td><code>YouBot/1.0</code></td>
+<td>you.com/bot</td>
+</tr>
+<tr>
+<td>Diffbot</td>
+<td><code>Diffbot/2.0</code></td>
+<td>diffbot.com/bot</td>
+</tr>
+<tr>
+<td>ByteDance</td>
+<td><code>Bytespider</code></td>
+<td>bytedance.com/en/crawler</td>
+</tr>
+<tr>
+<td>Timescale</td>
+<td><code>Timpibot</code></td>
+<td>timescale.com/bot</td>
+</tr>
+<tr>
+<td>Omgili</td>
+<td><code>Omgilibot/1.0</code></td>
+<td>omgili.com/crawler</td>
+</tr>
+<tr>
+<td>Huawei</td>
+<td><code>PetalBot</code></td>
+<td>aspiegel.com/petalbot</td>
+</tr>
+</tbody></table>
+<h3>Bash Script for Basic User-Agent Detection</h3>
+<p>Extract all AI crawler requests from Nginx or Apache access logs:</p>
+<pre><code class="language-bash">#!/bin/bash
+# detect-ai-crawlers.sh
+
+LOGFILE=&quot;/var/log/nginx/access.log&quot;
+AI_PATTERNS=&quot;GPTBot|ClaudeBot|Google-Extended|CCBot|anthropic-ai|Bytespider|Applebot-Extended|FacebookBot|Diffbot|cohere-ai|PerplexityBot|YouBot|Timpibot|Omgilibot|PetalBot&quot;
+
+echo &quot;AI Crawler Requests in Last 24 Hours:&quot;
+echo &quot;======================================&quot;
+
+grep -E &quot;$AI_PATTERNS&quot; &quot;$LOGFILE&quot; | \
+  awk -F&#39;&quot;&#39; &#39;{print $6}&#39; | \
+  sort | uniq -c | sort -rn
+
+echo &quot;&quot;
+echo &quot;Total AI Crawler Requests:&quot;
+grep -E &quot;$AI_PATTERNS&quot; &quot;$LOGFILE&quot; | wc -l
+
+echo &quot;&quot;
+echo &quot;Breakdown by Crawler:&quot;
+for pattern in GPTBot ClaudeBot Google-Extended CCBot Bytespider; do
+  count=$(grep -c &quot;$pattern&quot; &quot;$LOGFILE&quot;)
+  if [ $count -gt 0 ]; then
+    echo &quot;$pattern: $count requests&quot;
+  fi
+done
+</code></pre>
+<p>Run this script to get instant visibility into documented AI crawler activity:</p>
+<pre><code class="language-bash">chmod +x detect-ai-crawlers.sh
+./detect-ai-crawlers.sh
+</code></pre>
+<p><strong>Output example:</strong></p>
+<pre><code>AI Crawler Requests in Last 24 Hours:
+======================================
+    1247 GPTBot/1.0 (+https://openai.com/gptbot)
+     892 ClaudeBot/1.0 (+https://anthropic.com/claudebot)
+     634 Google-Extended/1.0 (compatible; Googlebot/2.1)
+     421 CCBot/2.0 (https://commoncrawl.org/faq/)
+     189 Bytespider (https://bytedance.com/crawler)
+
+Total AI Crawler Requests: 3383
+
+Breakdown by Crawler:
+GPTBot: 1247 requests
+ClaudeBot: 892 requests
+Google-Extended: 634 requests
+CCBot: 421 requests
+Bytespider: 189 requests
+</code></pre>
+<p>This immediately answers: &quot;Which AI companies are crawling my site, and how aggressively?&quot;</p>
+<h2>Behavioral Detection: Catching Crawlers That Hide</h2>
+<p>Documented crawlers are straightforward. The real challenge is <strong>undocumented scrapers</strong>—commercial data brokers, competitors, or AI startups that don&#39;t publicize their bots and actively disguise traffic as human browsers.</p>
+<p>These scrapers employ several evasion techniques:</p>
+<ol>
+<li><strong>Generic browser user-agents</strong>: Mimicking Chrome, Firefox, or Safari</li>
+<li><strong>User-agent rotation</strong>: Cycling through hundreds of different strings</li>
+<li><strong>Residential proxy networks</strong>: Distributing requests across thousands of IP addresses</li>
+<li><strong>Request timing randomization</strong>: Adding artificial delays to avoid rate limit triggers</li>
+<li><strong>Behavior mimicry</strong>: Simulating human browsing patterns (following links, loading images/CSS)</li>
+</ol>
+<p>User-agent matching fails against these tactics. You need behavioral analysis.</p>
+<h3>Characteristic 1: Ignoring Robots.txt</h3>
+<p>Legitimate browsers don&#39;t check robots.txt—humans can visit any public URL. Search engines and documented crawlers always fetch <code>/robots.txt</code> before crawling to respect publisher directives. Undocumented scrapers often skip this step to avoid leaving obvious crawler signatures.</p>
+<p><strong>Detection method</strong>: Cross-reference IPs making content requests against IPs that fetched robots.txt.</p>
+<pre><code class="language-bash">#!/bin/bash
+# detect-no-robots-check.sh
+
+LOGFILE=&quot;/var/log/nginx/access.log&quot;
+
+# Get IPs that fetched robots.txt
+grep &quot;GET /robots.txt&quot; &quot;$LOGFILE&quot; | \
+  awk &#39;{print $1}&#39; | sort | uniq &gt; /tmp/robots-ips.txt
+
+# Get IPs making 50+ requests
+awk &#39;{print $1}&#39; &quot;$LOGFILE&quot; | \
+  sort | uniq -c | sort -rn | \
+  awk &#39;$1 &gt;= 50 {print $2}&#39; &gt; /tmp/heavy-requesters.txt
+
+# Find heavy requesters who never checked robots.txt
+echo &quot;IPs with 50+ requests but no robots.txt check:&quot;
+comm -23 /tmp/heavy-requesters.txt /tmp/robots-ips.txt | head -20
+
+rm /tmp/robots-ips.txt /tmp/heavy-requesters.txt
+</code></pre>
+<p>An IP making 500 requests without ever fetching robots.txt is highly suspicious—legitimate crawlers always check directives first.</p>
+<h3>Characteristic 2: Unusual Request Patterns</h3>
+<p>Human users navigate sites by clicking links, spending time reading, and following semantic relationships between pages. Scrapers exhibit different patterns:</p>
+<ul>
+<li><strong>Sequential URL traversal</strong>: Requesting <code>/page-1</code>, <code>/page-2</code>, <code>/page-3</code> in perfect sequence</li>
+<li><strong>Lack of referrer diversity</strong>: All requests show the same referrer or no referrer</li>
+<li><strong>No static resource requests</strong>: Fetching HTML but never CSS, JavaScript, or images</li>
+<li><strong>Uniform timing</strong>: Requests spaced at precisely regular intervals (every 2.0 seconds)</li>
+</ul>
+<p><strong>Detection script for sequential pattern:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# detect-sequential-crawling.sh
+
+LOGFILE=&quot;/var/log/nginx/access.log&quot;
+
+# Extract requests to paginated URLs
+awk -F&#39;&quot;&#39; &#39;/\/page-[0-9]+/ {print $2}&#39; &quot;$LOGFILE&quot; | \
+  awk &#39;{print $2}&#39; | \
+  sort | uniq -c | sort -rn | head -20
+
+echo &quot;&quot;
+echo &quot;IPs requesting 5+ sequential pages:&quot;
+
+# Find IPs hitting multiple sequential pages
+for ip in $(awk &#39;{print $1}&#39; &quot;$LOGFILE&quot; | sort | uniq); do
+  pages=$(grep &quot;$ip&quot; &quot;$LOGFILE&quot; | grep -oE &#39;\/page-[0-9]+&#39; | sort -u | wc -l)
+  if [ &quot;$pages&quot; -ge 5 ]; then
+    total=$(grep -c &quot;$ip&quot; &quot;$LOGFILE&quot;)
+    echo &quot;$ip: $pages unique pages, $total total requests&quot;
+  fi
+done | sort -t&#39;:&#39; -k2 -rn | head -10
+</code></pre>
+<p>An IP requesting <code>/page-1</code> through <code>/page-50</code> with no other navigation is almost certainly a scraper, regardless of user-agent string.</p>
+<h3>Characteristic 3: No JavaScript Execution</h3>
+<p>Modern websites rely heavily on JavaScript for functionality. Real browsers execute JavaScript; simple HTTP scrapers don&#39;t. You can detect this by logging JavaScript-initiated requests that genuine browsers would make but scrapers wouldn&#39;t.</p>
+<p><strong>Implementation</strong>: Add a JavaScript beacon to your pages:</p>
+<pre><code class="language-html">&lt;script&gt;
+  // Fire beacon request when page loads
+  fetch(&#39;/beacon.gif?js=1&amp;page=&#39; + encodeURIComponent(window.location.pathname));
+&lt;/script&gt;
+</code></pre>
+<p>Then analyze logs for page views without corresponding beacon fires:</p>
+<pre><code class="language-bash">#!/bin/bash
+# detect-no-js-execution.sh
+
+LOGFILE=&quot;/var/log/nginx/access.log&quot;
+
+# Get IPs that triggered JS beacon
+grep &quot;GET /beacon.gif&quot; &quot;$LOGFILE&quot; | \
+  awk &#39;{print $1}&#39; | sort | uniq &gt; /tmp/js-ips.txt
+
+# Get IPs that viewed pages
+grep -v &quot;/beacon.gif&quot; &quot;$LOGFILE&quot; | \
+  grep &quot;GET.*200&quot; | \
+  awk &#39;{print $1}&#39; | sort | uniq -c | \
+  awk &#39;$1 &gt;= 20 {print $2}&#39; &gt; /tmp/page-view-ips.txt
+
+# Find page viewers who never triggered JS beacon
+echo &quot;IPs with 20+ page views but no JavaScript execution:&quot;
+comm -23 /tmp/page-view-ips.txt /tmp/js-ips.txt | head -20
+
+rm /tmp/js-ips.txt /tmp/page-view-ips.txt
+</code></pre>
+<p>An IP viewing 100 pages without a single JavaScript beacon trigger is definitively not a real browser—it&#39;s a scraper using a simple HTTP client.</p>
+<h3>Characteristic 4: High Request Rates from Single Sources</h3>
+<p>Human users generate 1-5 requests per minute during active browsing. Search engines crawl at 1-10 requests per minute per IP. Aggressive scrapers generate 60+ requests per minute—far beyond human capability.</p>
+<p><strong>Detection via request rate analysis:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# detect-high-rate-requesters.sh
+
+LOGFILE=&quot;/var/log/nginx/access.log&quot;
+
+echo &quot;Top Request Rates (requests per minute, avg over last hour):&quot;
+echo &quot;===========================================================&quot;
+
+# Get requests from last hour
+awk -v cutoff=&quot;$(date -d &#39;1 hour ago&#39; &#39;+%d/%b/%Y:%H:%M&#39;)&quot; \
+  &#39;$4 &gt; &quot;[&quot;cutoff&#39; &quot;$LOGFILE&quot; | \
+  awk &#39;{print $1}&#39; | sort | uniq -c | \
+  awk &#39;{print $2 &quot; &quot; $1}&#39; | \
+  while read ip count; do
+    rpm=$(echo &quot;scale=1; $count / 60&quot; | bc)
+    echo &quot;$ip: $rpm req/min ($count total in last hour)&quot;
+  done | sort -t&#39;:&#39; -k2 -rn | head -20
+</code></pre>
+<p><strong>Output interpretation:</strong></p>
+<ul>
+<li><strong>&lt;1 req/min</strong>: Typical human user</li>
+<li><strong>1-10 req/min</strong>: Normal crawler or active human user</li>
+<li><strong>10-50 req/min</strong>: Aggressive crawler</li>
+<li><strong>50+ req/min</strong>: Almost certainly a scraper</li>
+</ul>
+<p>Combine this with user-agent analysis. If an IP showing &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/121.0.0.0&quot; generates 80 requests per minute, it&#39;s a scraper forging a browser user-agent.</p>
+<h2>IP Range Analysis: Identifying Crawler Infrastructure</h2>
+<p>AI companies operate crawler infrastructure from specific hosting providers and IP ranges. Identifying these patterns helps detect both documented crawlers (verifying they match claimed IP ranges) and undocumented ones (discovering new crawler operations).</p>
+<h3>GeoIP and ASN Lookup</h3>
+<p><strong>GeoIP</strong> databases map IP addresses to geographic locations and <strong>ASN (Autonomous System Number)</strong> databases map them to hosting providers or ISPs.</p>
+<p>Install <strong>MaxMind GeoIP</strong> tools:</p>
+<pre><code class="language-bash"># Install geoip CLI tool
+sudo apt-get install geoip-bin geoip-database
+
+# Download free ASN database
+wget https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&amp;suffix=tar.gz
+</code></pre>
+<p>Analyze top requesters by hosting provider:</p>
+<pre><code class="language-bash">#!/bin/bash
+# analyze-crawler-asn.sh
+
+LOGFILE=&quot;/var/log/nginx/access.log&quot;
+
+echo &quot;Top Requesting ASNs (Hosting Providers):&quot;
+echo &quot;========================================&quot;
+
+awk &#39;{print $1}&#39; &quot;$LOGFILE&quot; | sort | uniq -c | sort -rn | head -50 | \
+  while read count ip; do
+    asn=$(geoiplookup &quot;$ip&quot; | grep &quot;ASN&quot; | awk -F&#39;: &#39; &#39;{print $2}&#39;)
+    echo &quot;$count requests from $ip [$asn]&quot;
+  done | \
+  awk -F&#39;[&#39; &#39;{print $2}&#39; | \
+  awk -F&#39;]&#39; &#39;{print $1}&#39; | \
+  sort | uniq -c | sort -rn
+</code></pre>
+<p><strong>Common AI crawler hosting patterns:</strong></p>
+<ul>
+<li><strong>AWS (Amazon Web Services)</strong>: ASN 16509, 14618 — Used by OpenAI, Anthropic, many others</li>
+<li><strong>Google Cloud</strong>: ASN 15169, 396982 — Google-Extended crawlers</li>
+<li><strong>Microsoft Azure</strong>: ASN 8075 — Used by various AI companies</li>
+<li><strong>Hetzner</strong>: ASN 24940 — Popular with European AI startups</li>
+<li><strong>OVH</strong>: ASN 16276 — French hosting used by some scrapers</li>
+</ul>
+<p>If you see massive traffic from AWS us-east-1 with generic browser user-agents, investigate further—likely an AI crawler attempting to blend in.</p>
+<h3>Known AI Crawler IP Ranges</h3>
+<p>Some AI companies publish IP ranges their crawlers use. Maintain a reference list:</p>
+<p><strong>OpenAI GPTBot</strong> (example ranges, verify current documentation):</p>
+<ul>
+<li>20.171.0.0/16</li>
+<li>23.98.142.0/24</li>
+<li>40.80.0.0/16</li>
+</ul>
+<p><strong>Anthropic ClaudeBot</strong> (example ranges):</p>
+<ul>
+<li>160.79.104.0/23</li>
+<li>23.94.0.0/16</li>
+</ul>
+<p><strong>Verification script:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# verify-claimed-crawler.sh
+
+IP=&quot;$1&quot;
+CRAWLER_NAME=&quot;$2&quot;
+
+case &quot;$CRAWLER_NAME&quot; in
+  gptbot)
+    ranges=(&quot;20.171.0.0/16&quot; &quot;23.98.142.0/24&quot;)
+    ;;
+  claudebot)
+    ranges=(&quot;160.79.104.0/23&quot; &quot;23.94.0.0/16&quot;)
+    ;;
+  *)
+    echo &quot;Unknown crawler. Supported: gptbot, claudebot&quot;
+    exit 1
+    ;;
+esac
+
+for range in &quot;${ranges[@]}&quot;; do
+  if ipcalc -c &quot;$IP&quot; &quot;$range&quot; 2&gt;/dev/null; then
+    echo &quot;✓ $IP is within documented $CRAWLER_NAME range $range&quot;
+    exit 0
+  fi
+done
+
+echo &quot;✗ $IP is NOT in documented $CRAWLER_NAME ranges (possible impersonation)&quot;
+exit 1
+</code></pre>
+<p>Usage:</p>
+<pre><code class="language-bash">./verify-claimed-crawler.sh 20.171.45.123 gptbot
+# Output: ✓ 20.171.45.123 is within documented gptbot range 20.171.0.0/16
+</code></pre>
+<p>If a request claims to be GPTBot but originates from an IP outside documented ranges, it&#39;s either an undocumented crawler impersonating GPTBot or an error in the crawler&#39;s configuration.</p>
+<h2>Reverse DNS Verification</h2>
+<p>Legitimate crawlers often maintain proper <strong>reverse DNS (PTR)</strong> records identifying their organization. Scrapers typically don&#39;t bother with this operational detail.</p>
+<p><strong>Lookup reverse DNS:</strong></p>
+<pre><code class="language-bash"># Check PTR record for an IP
+dig -x 20.171.45.123 +short
+
+# Output for legitimate GPTBot:
+# gptbot-123-45.openai.com
+</code></pre>
+<p><strong>Automated verification:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# verify-reverse-dns.sh
+
+LOGFILE=&quot;/var/log/nginx/access.log&quot;
+
+echo &quot;Reverse DNS Check for Claimed AI Crawlers:&quot;
+echo &quot;===========================================&quot;
+
+grep -E &quot;GPTBot|ClaudeBot|Google-Extended&quot; &quot;$LOGFILE&quot; | \
+  awk &#39;{print $1}&#39; | sort | uniq | \
+  while read ip; do
+    user_agent=$(grep &quot;$ip&quot; &quot;$LOGFILE&quot; | grep -oE &quot;GPTBot|ClaudeBot|Google-Extended&quot; | head -1)
+    ptr=$(dig -x &quot;$ip&quot; +short | head -1)
+
+    if [ -z &quot;$ptr&quot; ]; then
+      echo &quot;⚠ $ip claims to be $user_agent but has no PTR record&quot;
+    else
+      echo &quot;✓ $ip ($user_agent): $ptr&quot;
+    fi
+  done
+</code></pre>
+<p><strong>Expected patterns:</strong></p>
+<ul>
+<li><strong>GPTBot</strong>: PTR contains <code>openai.com</code></li>
+<li><strong>ClaudeBot</strong>: PTR contains <code>anthropic.com</code> or <code>claude.ai</code></li>
+<li><strong>Google-Extended</strong>: PTR contains <code>google.com</code> or <code>googlebot.com</code></li>
+</ul>
+<p>A request claiming to be GPTBot with a PTR record pointing to <code>generic-cloud-host-12345.provider.com</code> is fraudulent.</p>
+<h2>Aggregating Detection Signals: Scoring Suspicious Activity</h2>
+<p>Individual detection methods produce false positives. The IP that didn&#39;t check robots.txt might be a mobile app. The high request rate might be an aggressive but legitimate API integration. Combining signals yields higher confidence.</p>
+<p><strong>Scoring framework:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Points</th>
+<th>Threshold</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>No robots.txt check (50+ requests)</td>
+<td>+3</td>
+<td>High suspicion</td>
+</tr>
+<tr>
+<td>Request rate &gt;20/min</td>
+<td>+2</td>
+<td>Moderate suspicion</td>
+</tr>
+<tr>
+<td>No JS beacon (20+ page views)</td>
+<td>+3</td>
+<td>High suspicion</td>
+</tr>
+<tr>
+<td>Sequential URL pattern</td>
+<td>+2</td>
+<td>Moderate suspicion</td>
+</tr>
+<tr>
+<td>Generic browser UA with cloud hosting ASN</td>
+<td>+2</td>
+<td>Moderate suspicion</td>
+</tr>
+<tr>
+<td>Claimed crawler UA, wrong IP range</td>
+<td>+4</td>
+<td>Very high suspicion</td>
+</tr>
+<tr>
+<td>No reverse DNS or mismatched PTR</td>
+<td>+2</td>
+<td>Moderate suspicion</td>
+</tr>
+</tbody></table>
+<p><strong>Total score interpretation:</strong></p>
+<ul>
+<li><strong>0-2 points</strong>: Likely legitimate</li>
+<li><strong>3-5 points</strong>: Investigate further</li>
+<li><strong>6+ points</strong>: Very likely scraper</li>
+</ul>
+<p><strong>Implementation script:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# score-suspicious-ips.sh
+
+LOGFILE=&quot;/var/log/nginx/access.log&quot;
+ROBOTS_IPS=&quot;/tmp/robots-ips.txt&quot;
+JS_IPS=&quot;/tmp/js-ips.txt&quot;
+
+# Prepare reference lists
+grep &quot;GET /robots.txt&quot; &quot;$LOGFILE&quot; | awk &#39;{print $1}&#39; | sort | uniq &gt; &quot;$ROBOTS_IPS&quot;
+grep &quot;GET /beacon.gif&quot; &quot;$LOGFILE&quot; | awk &#39;{print $1}&#39; | sort | uniq &gt; &quot;$JS_IPS&quot;
+
+echo &quot;Suspicious IP Scoring:&quot;
+echo &quot;======================&quot;
+
+# Analyze each IP with 20+ requests
+awk &#39;{print $1}&#39; &quot;$LOGFILE&quot; | sort | uniq -c | awk &#39;$1 &gt;= 20 {print $2,$1}&#39; | \
+  while read ip count; do
+    score=0
+    reasons=&quot;&quot;
+
+    # Check robots.txt
+    if ! grep -q &quot;^$ip$&quot; &quot;$ROBOTS_IPS&quot;; then
+      score=$((score + 3))
+      reasons=&quot;$reasons [No robots.txt check]&quot;
+    fi
+
+    # Check request rate
+    rpm=$(echo &quot;scale=1; $count / 60&quot; | bc)
+    if (( $(echo &quot;$rpm &gt; 20&quot; | bc -l) )); then
+      score=$((score + 2))
+      reasons=&quot;$reasons [High rate: ${rpm}/min]&quot;
+    fi
+
+    # Check JS execution
+    page_views=$(grep &quot;$ip&quot; &quot;$LOGFILE&quot; | grep -v &quot;/beacon.gif&quot; | wc -l)
+    if [ &quot;$page_views&quot; -ge 20 ] &amp;&amp; ! grep -q &quot;^$ip$&quot; &quot;$JS_IPS&quot;; then
+      score=$((score + 3))
+      reasons=&quot;$reasons [No JS execution]&quot;
+    fi
+
+    # Report if score &gt;= 3
+    if [ &quot;$score&quot; -ge 3 ]; then
+      echo &quot;Score $score: $ip ($count requests) $reasons&quot;
+    fi
+  done | sort -rn
+
+rm &quot;$ROBOTS_IPS&quot; &quot;$JS_IPS&quot;
+</code></pre>
+<p>This script outputs a prioritized list of IPs exhibiting multiple suspicious behaviors, ranked by suspicion score.</p>
+<h2>Integrating Detection with Access Control</h2>
+<p>Detection without action is reconnaissance, not defense. Once you&#39;ve identified AI crawlers—documented or undocumented—integrate findings into access control systems.</p>
+<h3>Auto-Blocking Based on Behavioral Scores</h3>
+<p>For IPs scoring 6+ on the suspicion scale, implement automatic temporary blocking:</p>
+<pre><code class="language-bash">#!/bin/bash
+# auto-block-suspicious.sh
+
+# Run scoring script and extract high-score IPs
+./score-suspicious-ips.sh | awk &#39;/^Score [6-9]|^Score [0-9][0-9]/ {print $3}&#39; | \
+  while read ip; do
+    # Block via iptables (temporary, expires on reboot)
+    iptables -A INPUT -s &quot;$ip&quot; -j DROP
+    echo &quot;Blocked $ip (suspicion score &gt;= 6) at $(date)&quot; &gt;&gt; /var/log/auto-blocked.log
+
+    # Alert admin
+    echo &quot;Auto-blocked suspicious IP $ip&quot; | mail -s &quot;Crawler Auto-Block Alert&quot; admin@yoursite.com
+  done
+</code></pre>
+<p>Run this via cron every hour to maintain active defense against undocumented scrapers.</p>
+<h3>Allow-Listing Documented Crawlers</h3>
+<p>For known AI crawlers you want to allow (perhaps you&#39;re in licensing negotiations), create explicit allow rules:</p>
+<pre><code class="language-nginx"># /etc/nginx/conf.d/ai-crawler-allowlist.conf
+
+# Allow documented AI crawlers
+geo $crawler_allowed {
+    default 0;
+
+    # OpenAI GPTBot ranges
+    20.171.0.0/16 1;
+    23.98.142.0/24 1;
+
+    # Anthropic ClaudeBot ranges
+    160.79.104.0/23 1;
+    23.94.0.0/16 1;
+}
+
+server {
+    location / {
+        if ($crawler_allowed = 0) {
+            # Apply strict rate limiting to non-allowed crawlers
+            limit_req zone=strict_limit burst=5 nodelay;
+        }
+    }
+}
+</code></pre>
+<p>This allows documented crawlers normal access while rate-limiting everything else.</p>
+<h2>Frequently Asked Questions</h2>
+<p><strong>Q: Can AI crawlers rotate user-agent strings to evade detection?</strong></p>
+<p>Yes. Sophisticated scrapers cycle through hundreds of user-agent strings. This is why behavioral detection (request patterns, JavaScript execution, robots.txt checks) is essential—behavior is harder to disguise than user-agent strings.</p>
+<p><strong>Q: How often should I re-run detection analysis?</strong></p>
+<p>For active defense: hourly automated detection with daily manual review of flagged IPs. For licensing negotiations: weekly analysis to track trends. For infrastructure monitoring: real-time dashboards (see custom monitoring dashboard guide) with alerting when new crawler patterns emerge.</p>
+<p><strong>Q: What if I block an IP that turns out to be legitimate?</strong></p>
+<p>Implement graduated enforcement: first, log suspicious IPs without blocking. After 24 hours, apply rate limiting. After 48 hours of continued suspicious behavior, block entirely. This creates a grace period for investigating false positives before taking hard enforcement action. Always maintain a manual override process for restoring access if legitimate users get caught.</p>
+<p><strong>Q: Are there privacy implications of logging and analyzing IP addresses?</strong></p>
+<p>Yes. IP addresses are considered personal data under <strong>GDPR</strong> and similar regulations. Ensure your privacy policy discloses log collection for security and abuse prevention purposes. Implement retention limits (delete logs after 90 days unless needed for active investigations). For detailed analysis, consider anonymizing IP addresses by masking the last octet (203.0.113.45 becomes 203.0.113.0).</p>
+<p><strong>Q: How do I differentiate between AI training crawlers and AI-powered search engines?</strong></p>
+<p>Increasingly difficult. <strong>Perplexity</strong>, <strong>You.com</strong>, and similar AI search engines crawl content for real-time retrieval, not just training data. If they generate referral traffic back to your site (users clicking sources), that&#39;s search-like behavior worth allowing. If they never send referrals but only extract content, they&#39;re functionally training crawlers. Analyze referrer patterns in your logs to distinguish use cases.</p>
+<p><strong>Q: Can I use this data in licensing negotiations?</strong></p>
+<p>Absolutely. Documented crawler activity (request volumes, bandwidth consumption, infrastructure costs) provides concrete negotiation leverage: &quot;Your GPTBot crawler generated 2.3M requests last quarter, consuming $4,200 in infrastructure resources. Our licensing proposal reflects this demonstrated value and usage pattern.&quot; Export detection script results as CSV and include in your data room.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

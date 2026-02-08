@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS-Level AI Crawler Blocking: Preventing Training Bots at the Network Edge | AI Pay Per Crawl</title>
+    <meta name="description" content="Implement DNS filtering and edge network controls to block AI crawlers before they reach your origin servers, reducing infrastructure costs and enforcing access policies at scale.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="DNS-Level AI Crawler Blocking: Preventing Training Bots at the Network Edge">
+    <meta property="og:description" content="Implement DNS filtering and edge network controls to block AI crawlers before they reach your origin servers, reducing infrastructure costs and enforcing access policies at scale.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/dns-level-ai-crawler-blocking">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DNS-Level AI Crawler Blocking: Preventing Training Bots at the Network Edge">
+    <meta name="twitter:description" content="Implement DNS filtering and edge network controls to block AI crawlers before they reach your origin servers, reducing infrastructure costs and enforcing access policies at scale.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/dns-level-ai-crawler-blocking">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "DNS-Level AI Crawler Blocking: Preventing Training Bots at the Network Edge",
+  "description": "Implement DNS filtering and edge network controls to block AI crawlers before they reach your origin servers, reducing infrastructure costs and enforcing access policies at scale.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/dns-level-ai-crawler-blocking"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "DNS-Level AI Crawler Blocking: Preventing Training Bots at the Network Edge",
+      "item": "https://aipaypercrawl.com/articles/dns-level-ai-crawler-blocking"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>DNS-Level AI Crawler Blocking: Preventing Training Bots at the Network Edge</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 15 min read</span>
+        <h1>DNS-Level AI Crawler Blocking: Preventing Training Bots at the Network Edge</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Implement DNS filtering and edge network controls to block AI crawlers before they reach your origin servers, reducing infrastructure costs and enforcing access policies at scale.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>DNS-Level AI Crawler Blocking: Preventing Training Bots at the Network Edge</h1>
+<p>Web server rate limiting and robots.txt directives operate at the application layer—AI crawlers reach your infrastructure, consume bandwidth, generate logs, and only then encounter access controls. By that point, they&#39;ve already imposed costs. <strong>DNS-level blocking</strong> intervenes earlier, preventing unwanted bot traffic from ever reaching your servers by returning non-routable responses or blocking resolution entirely for identified crawler IP ranges.</p>
+<p>This approach is particularly effective for publishers using <strong>CDN (Content Delivery Network)</strong> infrastructure or managing their own authoritative DNS servers. By filtering AI crawler traffic at the network edge, you eliminate infrastructure costs entirely for blocked requests, reduce log noise, and enforce policies consistently across all properties without per-server configuration.</p>
+<p>This guide explains DNS-based blocking mechanisms, implementation strategies for major platforms (<strong>Cloudflare</strong>, <strong>AWS Route53</strong>, <strong>self-hosted DNS</strong>), and the trade-offs between aggressive blocking and preserving licensing negotiation flexibility.</p>
+<h2>Understanding DNS Resolution and Traffic Flow</h2>
+<p>When an AI crawler attempts to access your website, several layers of networking infrastructure come into play before the request reaches your origin servers:</p>
+<p><strong>Standard resolution flow:</strong></p>
+<ol>
+<li><strong>Crawler queries DNS</strong>: GPTBot queries DNS for <code>example.com</code></li>
+<li><strong>DNS server responds</strong>: Returns IP address <code>203.0.113.50</code></li>
+<li><strong>Crawler connects to IP</strong>: Opens TCP connection to <code>203.0.113.50:443</code></li>
+<li><strong>Request reaches server</strong>: Your web server processes the HTTP request</li>
+</ol>
+<p>DNS-level blocking intercepts this flow at step 2—manipulating the DNS response to prevent crawlers from ever connecting to your infrastructure.</p>
+<h3>DNS Response Manipulation Strategies</h3>
+<p><strong>Strategy 1: Return NXDOMAIN</strong></p>
+<p>The DNS server responds with &quot;Non-Existent Domain&quot; error, claiming the domain doesn&#39;t exist.</p>
+<p><strong>Effect</strong>: Crawler receives an error before attempting connection. Most crawlers will retry periodically but won&#39;t hammer your servers if DNS consistently returns NXDOMAIN.</p>
+<p><strong>Limitation</strong>: This is an aggressive tactic that can appear suspicious (why does a legitimate domain suddenly not exist?). Use only for completely unwanted crawlers, not those you might negotiate with later.</p>
+<p><strong>Strategy 2: Return localhost (127.0.0.1)</strong></p>
+<p>The DNS server returns <code>127.0.0.1</code>, redirecting the crawler to its own machine.</p>
+<p><strong>Effect</strong>: Crawler attempts to connect to itself, fails, and typically backs off without further resource consumption on your end.</p>
+<p><strong>Advantage</strong>: Less suspicious than NXDOMAIN—the domain &quot;exists&quot; but happens to resolve to localhost.</p>
+<p><strong>Strategy 3: Return blackhole IP</strong></p>
+<p>The DNS server returns an IP address that routes to nowhere—a reserved non-routable address like <code>0.0.0.0</code> or a sinkhole you control.</p>
+<p><strong>Effect</strong>: Crawler connects to a null endpoint. Connection times out or hangs indefinitely.</p>
+<p><strong>Advantage</strong>: You can log connection attempts to the sinkhole for monitoring purposes while imposing maximum cost on the crawler (connection timeouts waste their resources).</p>
+<p><strong>Strategy 4: Selective resolution based on client IP</strong></p>
+<p>The DNS server identifies the requester&#39;s IP address and returns different responses based on allow/block lists.</p>
+<p><strong>Effect</strong>: Legitimate users and desired bots (search engines) get real IP addresses. Blocked AI crawlers get localhost or NXDOMAIN.</p>
+<p><strong>Advantage</strong>: Granular control—block specific bots while allowing others.</p>
+<p><strong>Technical requirement</strong>: Requires DNS server that supports client subnet awareness and conditional responses (most modern authoritative DNS servers support this).</p>
+<h2>Implementing DNS-Level Blocking on Cloudflare</h2>
+<p><strong>Cloudflare</strong> is the most popular edge network provider for mid-to-large publishers, handling DNS resolution and CDN caching. Their firewall rules and DNS policies enable sophisticated bot blocking without touching origin servers.</p>
+<h3>Method 1: Cloudflare Firewall Rules</h3>
+<p>Cloudflare&#39;s firewall operates after DNS resolution but before requests reach your origin—technically not DNS-level but &quot;edge-level,&quot; achieving similar traffic filtering effects.</p>
+<p><strong>Implementation:</strong></p>
+<ol>
+<li>Log into Cloudflare dashboard</li>
+<li>Navigate to <strong>Security &gt; WAF &gt; Firewall rules</strong></li>
+<li>Create rule with these parameters:</li>
+</ol>
+<p><strong>Rule name</strong>: Block AI Training Crawlers</p>
+<p><strong>Expression</strong>:</p>
+<pre><code>(http.user_agent contains &quot;GPTBot&quot;) or
+(http.user_agent contains &quot;ClaudeBot&quot;) or
+(http.user_agent contains &quot;Google-Extended&quot;) or
+(http.user_agent contains &quot;CCBot&quot;) or
+(http.user_agent contains &quot;Bytespider&quot;)
+</code></pre>
+<p><strong>Action</strong>: Block (or Challenge with CAPTCHA)</p>
+<p><strong>Result</strong>: Crawler receives 403 Forbidden or CAPTCHA challenge without reaching your origin servers.</p>
+<p><strong>Cost savings</strong>: Cloudflare doesn&#39;t bill for blocked requests—you pay only for successful requests that reach your origin.</p>
+<h3>Method 2: Cloudflare DNS Firewall (Enterprise Feature)</h3>
+<p>For Enterprise customers, Cloudflare offers DNS-level filtering that blocks resolution entirely.</p>
+<p><strong>Implementation</strong>:</p>
+<ol>
+<li>Contact Cloudflare support to enable DNS Firewall</li>
+<li>Upload list of IP ranges associated with unwanted AI crawlers</li>
+<li>Configure resolution policy: Return NXDOMAIN or custom IP for blocked IPs</li>
+</ol>
+<p><strong>Advantage</strong>: Blocks traffic before any HTTP processing, minimizing edge network load.</p>
+<p><strong>Limitation</strong>: Requires Enterprise plan (typically $200+/month minimum).</p>
+<h3>Method 3: Cloudflare Workers for Conditional DNS Responses</h3>
+<p>For advanced use cases, deploy a <strong>Cloudflare Worker</strong> that intercepts requests and implements custom blocking logic.</p>
+<p><strong>Worker script example</strong>:</p>
+<pre><code class="language-javascript">addEventListener(&#39;fetch&#39;, event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const userAgent = request.headers.get(&#39;User-Agent&#39;) || &#39;&#39;
+  const clientIP = request.headers.get(&#39;CF-Connecting-IP&#39;)
+
+  // Block known AI training crawlers
+  const blockedBots = [
+    &#39;GPTBot&#39;, &#39;ClaudeBot&#39;, &#39;Google-Extended&#39;,
+    &#39;CCBot&#39;, &#39;Bytespider&#39;, &#39;anthropic-ai&#39;
+  ]
+
+  for (const bot of blockedBots) {
+    if (userAgent.includes(bot)) {
+      return new Response(&#39;Access Denied&#39;, {
+        status: 403,
+        statusText: &#39;Forbidden&#39;,
+        headers: {
+          &#39;Content-Type&#39;: &#39;text/plain&#39;,
+          &#39;X-Block-Reason&#39;: &#39;AI Training Crawler&#39;
+        }
+      })
+    }
+  }
+
+  // If not blocked, fetch from origin
+  return fetch(request)
+}
+</code></pre>
+<p><strong>Deployment</strong>:</p>
+<ol>
+<li>Create Worker in Cloudflare dashboard</li>
+<li>Deploy script above</li>
+<li>Add Worker route: <code>*example.com/*</code></li>
+</ol>
+<p><strong>Result</strong>: Worker executes before every request, blocking crawlers at the edge with custom logic.</p>
+<p><strong>Cost</strong>: Workers pricing starts at $5/month for 10M requests.</p>
+<h2>Implementing DNS-Level Blocking on AWS Route53</h2>
+<p><strong>AWS Route53</strong> provides authoritative DNS with granular control over resolution policies. For publishers hosting on AWS infrastructure, Route53 enables sophisticated geo-based and subnet-based routing.</p>
+<h3>Method 1: Route53 Geolocation Routing + Blackhole</h3>
+<p><strong>Concept</strong>: AI crawlers typically operate from specific cloud provider networks (AWS, GCP, Azure data centers). Use Route53&#39;s geolocation routing to return blackhole IPs for requests originating from known crawler IP ranges.</p>
+<p><strong>Implementation</strong>:</p>
+<ol>
+<li>Create Route53 hosted zone for your domain</li>
+<li>Create multiple A records for the same hostname with different geolocation policies</li>
+</ol>
+<p><strong>A Record 1 (Default)</strong>:</p>
+<ul>
+<li><strong>Name</strong>: <code>www.example.com</code></li>
+<li><strong>Type</strong>: A</li>
+<li><strong>Value</strong>: <code>203.0.113.50</code> (your real server)</li>
+<li><strong>Routing policy</strong>: Default</li>
+</ul>
+<p><strong>A Record 2 (AI Crawler ASNs)</strong>:</p>
+<ul>
+<li><strong>Name</strong>: <code>www.example.com</code></li>
+<li><strong>Type</strong>: A</li>
+<li><strong>Value</strong>: <code>127.0.0.1</code> (localhost blackhole)</li>
+<li><strong>Routing policy</strong>: Geoproximity or Custom (requires Advanced configuration)</li>
+</ul>
+<p><strong>Limitation</strong>: Route53 doesn&#39;t natively support routing based on ASN (Autonomous System Number). You need to approximate using geolocation—route requests from specific AWS regions to blackhole IPs.</p>
+<h3>Method 2: Route53 + AWS WAF</h3>
+<p>More sophisticated: Combine Route53 with <strong>AWS WAF (Web Application Firewall)</strong> for subnet-aware filtering.</p>
+<p><strong>Architecture</strong>:</p>
+<ol>
+<li>Route53 resolves to <strong>CloudFront distribution</strong></li>
+<li>CloudFront uses <strong>AWS WAF</strong> to filter requests by IP, user-agent, or rate limits</li>
+<li>Only allowed traffic reaches your <strong>ALB (Application Load Balancer)</strong> or <strong>EC2 instances</strong></li>
+</ol>
+<p><strong>AWS WAF Rule Configuration</strong>:</p>
+<pre><code class="language-json">{
+  &quot;Name&quot;: &quot;BlockAICrawlers&quot;,
+  &quot;Priority&quot;: 1,
+  &quot;Statement&quot;: {
+    &quot;OrStatement&quot;: {
+      &quot;Statements&quot;: [
+        {
+          &quot;ByteMatchStatement&quot;: {
+            &quot;FieldToMatch&quot;: { &quot;Type&quot;: &quot;HEADER&quot;, &quot;Data&quot;: &quot;User-Agent&quot; },
+            &quot;TextTransformations&quot;: [{ &quot;Priority&quot;: 0, &quot;Type&quot;: &quot;LOWERCASE&quot; }],
+            &quot;PositionalConstraint&quot;: &quot;CONTAINS&quot;,
+            &quot;SearchString&quot;: &quot;gptbot&quot;
+          }
+        },
+        {
+          &quot;ByteMatchStatement&quot;: {
+            &quot;FieldToMatch&quot;: { &quot;Type&quot;: &quot;HEADER&quot;, &quot;Data&quot;: &quot;User-Agent&quot; },
+            &quot;SearchString&quot;: &quot;claudebot&quot;
+          }
+        },
+        {
+          &quot;IPSetReferenceStatement&quot;: {
+            &quot;Arn&quot;: &quot;arn:aws:wafv2:us-east-1:123456789012:regional/ipset/ai-crawler-ips/a1b2c3d4&quot;
+          }
+        }
+      ]
+    }
+  },
+  &quot;Action&quot;: { &quot;Block&quot;: {} }
+}
+</code></pre>
+<p><strong>IP Set</strong>: Maintain an IP Set containing known AI crawler IP ranges (obtain from crawler documentation or community-maintained lists).</p>
+<p><strong>Result</strong>: Requests matching user-agent patterns or IP sets get blocked at the edge before consuming CloudFront bandwidth.</p>
+<p><strong>Cost</strong>: AWS WAF pricing is $5/month per rule + $1 per million requests evaluated. For high-traffic sites, this can become expensive; weigh against bandwidth savings.</p>
+<h2>Self-Hosted DNS Blocking with BIND</h2>
+<p>Publishers running their own authoritative DNS servers (typically via <strong>BIND</strong>, <strong>PowerDNS</strong>, or <strong>Knot DNS</strong>) have maximum control over resolution behavior.</p>
+<h3>BIND Configuration for Conditional Responses</h3>
+<p><strong>BIND (Berkeley Internet Name Domain)</strong> is the most common open-source DNS server. Configure it to return different responses based on client IP addresses.</p>
+<p><strong>BIND configuration example</strong> (<code>/etc/bind/named.conf.local</code>):</p>
+<pre><code>// Define ACL for AI crawler IP ranges
+acl &quot;ai_crawlers&quot; {
+    20.171.0.0/16;     // OpenAI GPTBot
+    160.79.104.0/23;   // Anthropic ClaudeBot
+    23.98.0.0/16;      // Additional ranges
+};
+
+// Zone for your domain
+zone &quot;example.com&quot; {
+    type master;
+    file &quot;/etc/bind/zones/db.example.com&quot;;
+
+    // Alternate view for AI crawlers
+    allow-query { !ai_crawlers; any; };
+};
+
+// Separate view returning blackhole for crawlers
+view &quot;blocked_crawlers&quot; {
+    match-clients { ai_crawlers; };
+
+    zone &quot;example.com&quot; {
+        type master;
+        file &quot;/etc/bind/zones/db.example.com.blackhole&quot;;
+    };
+};
+
+view &quot;default&quot; {
+    match-clients { any; };
+
+    zone &quot;example.com&quot; {
+        type master;
+        file &quot;/etc/bind/zones/db.example.com&quot;;
+    };
+};
+</code></pre>
+<p><strong>Blackhole zone file</strong> (<code>/etc/bind/zones/db.example.com.blackhole</code>):</p>
+<pre><code>$TTL 300
+@   IN  SOA  ns1.example.com. admin.example.com. (
+        2026020801 ; Serial
+        3600       ; Refresh
+        1800       ; Retry
+        604800     ; Expire
+        300 )      ; Negative Cache TTL
+
+@       IN  NS   ns1.example.com.
+@       IN  A    127.0.0.1
+www     IN  A    127.0.0.1
+*       IN  A    127.0.0.1
+</code></pre>
+<p><strong>Effect</strong>: AI crawlers querying DNS receive <code>127.0.0.1</code> for all subdomains. Legitimate users receive real IP addresses from the standard zone file.</p>
+<p><strong>Maintenance burden</strong>: You must keep the <code>ai_crawlers</code> ACL updated with current IP ranges—monitor crawler documentation and community sources.</p>
+<h3>Response Policy Zones (RPZ) for Dynamic Blocking</h3>
+<p><strong>RPZ</strong> is a BIND feature that allows dynamic DNS filtering based on real-time threat feeds.</p>
+<p><strong>Implementation</strong>:</p>
+<ol>
+<li>Create RPZ zone file listing blocked domains/IPs</li>
+<li>Configure BIND to apply RPZ policies</li>
+</ol>
+<p><strong>BIND RPZ configuration</strong>:</p>
+<pre><code>options {
+    response-policy {
+        zone &quot;rpz.example.com&quot;;
+    };
+};
+
+zone &quot;rpz.example.com&quot; {
+    type master;
+    file &quot;/etc/bind/zones/db.rpz.example.com&quot;;
+};
+</code></pre>
+<p><strong>RPZ zone file</strong> (<code>/etc/bind/zones/db.rpz.example.com</code>):</p>
+<pre><code>$TTL 300
+@   IN  SOA  ns1.example.com. admin.example.com. (
+        2026020801 ; Serial
+        3600       ; Refresh
+        1800       ; Retry
+        604800     ; Expire
+        300 )      ; Negative Cache TTL
+
+@       IN  NS   ns1.example.com.
+
+// Block resolution for specific client IPs (crawler ranges)
+32.20.171.0.0.rpz-client-ip     CNAME   rpz-drop.
+32.160.79.104.0.rpz-client-ip   CNAME   rpz-drop.
+</code></pre>
+<p><strong>Result</strong>: DNS queries from IPs in the specified ranges receive no response (dropped), causing crawler timeouts.</p>
+<p><strong>Advantage</strong>: RPZ zones can be updated dynamically without reloading entire BIND configuration—ideal for responding to new crawler IPs quickly.</p>
+<h2>DNS Sinkholing: Honeypot Alternative</h2>
+<p>Instead of blocking outright, route AI crawler traffic to a <strong>sinkhole server</strong> that logs requests and returns minimal responses without actual content.</p>
+<p><strong>Architecture</strong>:</p>
+<ol>
+<li>DNS returns sinkhole IP (<code>192.0.2.1</code> - documentation range, non-routable)</li>
+<li>Sinkhole server listens on that IP, logs connections, returns generic 200 OK with minimal HTML</li>
+<li>Crawler receives &quot;successful&quot; response with no useful content</li>
+</ol>
+<p><strong>Sinkhole server (Nginx)</strong>:</p>
+<pre><code class="language-nginx">server {
+    listen 192.0.2.1:80;
+    listen 192.0.2.1:443 ssl;
+
+    ssl_certificate /path/to/dummy-cert.pem;
+    ssl_certificate_key /path/to/dummy-key.pem;
+
+    access_log /var/log/nginx/sinkhole-access.log;
+
+    location / {
+        default_type text/html;
+        return 200 &#39;&lt;html&gt;&lt;body&gt;Content Unavailable&lt;/body&gt;&lt;/html&gt;&#39;;
+    }
+}
+</code></pre>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li><strong>Intelligence gathering</strong>: Log crawler behavior without exposing real content</li>
+<li><strong>Less aggressive</strong>: Crawler doesn&#39;t perceive it&#39;s being blocked (no errors), may not escalate evasion tactics</li>
+<li><strong>Detection</strong>: If crawler persists despite receiving no useful content, confirms it&#39;s not a legitimate bot</li>
+</ul>
+<p><strong>Disadvantages</strong>:</p>
+<ul>
+<li>Requires maintaining sinkhole infrastructure</li>
+<li>Doesn&#39;t eliminate all costs (minimal server resources consumed)</li>
+</ul>
+<h2>Trade-Offs: Aggressive Blocking vs. Licensing Optionality</h2>
+<p>DNS-level blocking is a strong signal: &quot;We don&#39;t want your crawlers here.&quot; This creates strategic considerations for licensing negotiations.</p>
+<h3>Scenario 1: Complete Block (NXDOMAIN, Localhost)</h3>
+<p><strong>Message sent</strong>: &quot;Your bots are unwelcome. We will not provide training data.&quot;</p>
+<p><strong>Negotiation position</strong>: Strong if you have high-value, unique content. You&#39;re demonstrating willingness to withhold access entirely, forcing the AI company to negotiate licensing terms.</p>
+<p><strong>Risk</strong>: If they don&#39;t value your content enough to negotiate, you&#39;ve eliminated any monetization pathway. Also may poison future relationships—AI companies could retaliate by deprioritizing your content in model outputs or excluding you from partnership opportunities.</p>
+<h3>Scenario 2: Rate Limiting (Slow Response, Not Block)</h3>
+<p><strong>Message sent</strong>: &quot;Access is allowed but constrained. We&#39;re managing infrastructure costs and preserving licensing optionality.&quot;</p>
+<p><strong>Negotiation position</strong>: Moderate. You&#39;ve demonstrated you control access and track usage, but haven&#39;t taken adversarial stance. Room for constructive licensing discussions.</p>
+<p><strong>Implementation</strong>: DNS returns real IP, but web server applies aggressive rate limiting via nginx or firewall rules (covered in <a href="#">crawl-delay directives guide</a>).</p>
+<h3>Scenario 3: Tiered Access (Allow Some Bots, Block Others)</h3>
+<p><strong>Message sent</strong>: &quot;We differentiate between documented, respectful crawlers and aggressive/undocumented scrapers.&quot;</p>
+<p><strong>Negotiation position</strong>: Most flexible. You maintain relationships with major AI companies (OpenAI, Anthropic, Google) while protecting against indiscriminate scraping.</p>
+<p><strong>Implementation</strong>: DNS-level allow-list for known crawler IP ranges, block everything else.</p>
+<p><strong>Recommended strategy for most publishers</strong>: Start with tiered access, escalate to complete blocking only for non-compliant crawlers or if licensing negotiations fail.</p>
+<h2>Monitoring DNS-Level Blocking Effectiveness</h2>
+<p>Implementing blocks is half the battle. Verifying they work and don&#39;t inadvertently block legitimate traffic requires monitoring.</p>
+<h3>BIND Query Logging</h3>
+<p>Enable BIND&#39;s query log to track blocked resolution attempts:</p>
+<p><strong>BIND configuration</strong>:</p>
+<pre><code>logging {
+    channel query_log {
+        file &quot;/var/log/bind/query.log&quot; versions 5 size 10m;
+        severity info;
+        print-time yes;
+        print-category yes;
+    };
+
+    category queries { query_log; };
+};
+</code></pre>
+<p><strong>Analyzing logs</strong>:</p>
+<pre><code class="language-bash"># Extract queries from AI crawler IPs
+grep -E &quot;20\.171\.|160\.79\.104\.&quot; /var/log/bind/query.log | \
+  awk &#39;{print $1, $2, $3}&#39; | \
+  sort | uniq -c
+
+# Output shows how many blocked queries occurred
+</code></pre>
+<h3>Cloudflare Analytics</h3>
+<p>Cloudflare dashboard provides bot traffic analytics:</p>
+<ol>
+<li>Navigate to <strong>Analytics &gt; Traffic</strong></li>
+<li>Filter by <strong>Bot traffic</strong> category</li>
+<li>Review <strong>Blocked requests</strong> breakdown by user-agent</li>
+</ol>
+<p><strong>Key metrics</strong>:</p>
+<ul>
+<li><strong>Total blocked requests</strong>: Volume of traffic you&#39;re not paying for</li>
+<li><strong>Bandwidth saved</strong>: Calculate as (blocked requests × avg response size)</li>
+<li><strong>Top blocked bots</strong>: Identify which crawlers are most aggressive</li>
+</ul>
+<h3>Testing DNS Resolution</h3>
+<p>Verify your DNS blocking works correctly for specific IPs:</p>
+<p><strong>Command-line test</strong>:</p>
+<pre><code class="language-bash"># Test resolution from your IP (should return real IP)
+dig @your-dns-server.com example.com +short
+
+# Test resolution as if from GPTBot IP (should return localhost or NXDOMAIN)
+dig @your-dns-server.com example.com +subnet=20.171.45.0/24 +short
+</code></pre>
+<p>The <code>+subnet</code> flag simulates queries from specific client subnets (requires EDNS Client Subnet support).</p>
+<p><strong>Expected results</strong>:</p>
+<ul>
+<li>Your IP: <code>203.0.113.50</code> (real server)</li>
+<li>GPTBot IP: <code>127.0.0.1</code> (blackhole) or <code>NXDOMAIN</code> error</li>
+</ul>
+<h2>False Positive Risk Management</h2>
+<p>DNS-level blocking is blunt. Misconfiguration can block legitimate traffic. Safeguards:</p>
+<h3>1. Exempt Critical Services</h3>
+<p>Never block IP ranges that might include:</p>
+<ul>
+<li><strong>Search engine crawlers</strong>: Googlebot, Bingbot (separate from Google-Extended)</li>
+<li><strong>Monitoring services</strong>: Uptime monitors, your own synthetic testing</li>
+<li><strong>CDN health checks</strong>: If using a CDN, their health check IPs must resolve correctly</li>
+</ul>
+<p><strong>Implementation</strong>: Maintain allow-list that overrides block-list.</p>
+<p><strong>BIND example</strong>:</p>
+<pre><code>acl &quot;critical_allow_list&quot; {
+    66.249.64.0/19;   // Googlebot
+    207.46.0.0/16;    // Bingbot
+    // Add your monitoring services
+};
+
+view &quot;critical_services&quot; {
+    match-clients { critical_allow_list; };
+    // Always return real IPs
+};
+</code></pre>
+<h3>2. Staged Rollout</h3>
+<p>Don&#39;t deploy DNS blocking globally immediately:</p>
+<ol>
+<li><strong>Week 1</strong>: Log only (track what would be blocked)</li>
+<li><strong>Week 2</strong>: Block unknown crawlers, allow documented AI bots</li>
+<li><strong>Week 3</strong>: Add documented AI bots to block list if desired</li>
+<li><strong>Monitor throughout</strong>: Watch for unintended traffic drops</li>
+</ol>
+<h3>3. Escape Hatch</h3>
+<p>Maintain a bypass mechanism for emergency access restoration:</p>
+<ul>
+<li><strong>Special header</strong>: <code>X-DNS-Bypass: secret-key</code> bypasses blocking</li>
+<li><strong>Temporary allow-list</strong>: Quickly add IPs if legitimate service gets blocked</li>
+<li><strong>DNS TTL</strong>: Keep TTL low (300 seconds) during rollout so changes propagate quickly</li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<p><strong>Q: Can AI crawlers evade DNS-level blocking by using alternative DNS resolvers?</strong></p>
+<p>Partially. If you block at your authoritative DNS server, crawlers can&#39;t evade by using different recursive resolvers—all resolvers ultimately query your authoritative server. However, crawlers could cache previous resolutions or hard-code your IP addresses to bypass DNS entirely. This requires more sophistication but is possible.</p>
+<p><strong>Q: Will DNS blocking hurt my SEO?</strong></p>
+<p>Not if implemented correctly. Ensure you explicitly allow Googlebot, Bingbot, and other search crawler IP ranges. DNS blocking targets specific AI training crawlers, not search engines. If you accidentally block search crawlers, your site will disappear from search results within days—monitor carefully during rollout.</p>
+<p><strong>Q: How do I keep AI crawler IP ranges updated?</strong></p>
+<p><strong>Option 1</strong>: Subscribe to community-maintained blocklists (GitHub repositories tracking AI crawler IPs). <strong>Option 2</strong>: Automate scraping of AI company documentation pages where they publish IP ranges. <strong>Option 3</strong>: Maintain your own list based on server log analysis (identify IPs with AI crawler user-agents, add to block list).</p>
+<p><strong>Q: Can I use DNS blocking and robots.txt together?</strong></p>
+<p>Yes, they&#39;re complementary. <strong>Robots.txt</strong> signals policy (&quot;we prefer you don&#39;t crawl&quot;), <strong>DNS blocking</strong> enforces it (&quot;you physically cannot reach our servers&quot;). Start with robots.txt as a courtesy; escalate to DNS blocking if ignored.</p>
+<p><strong>Q: What&#39;s the cost difference between DNS blocking and server-side rate limiting?</strong></p>
+<p><strong>DNS blocking</strong>: Zero per-request cost (blocked requests don&#39;t reach your infrastructure). <strong>Server-side rate limiting</strong>: Still consumes bandwidth for connection establishment, SSL handshake, and request processing before being rate-limited. For high-volume crawler traffic, DNS blocking can save hundreds or thousands of dollars monthly in CDN/bandwidth costs.</p>
+<p><strong>Q: Does DNS blocking create legal liability for discriminatory access restrictions?</strong></p>
+<p>Unlikely. Website owners generally have the right to control access to their property. Blocking specific bots is not discriminatory in a legal sense (bots aren&#39;t a protected class). However, blocking based on geographic regions could trigger international trade or anti-discrimination concerns in some jurisdictions. Consult counsel if blocking by country/region.</p>
+<p><strong>Q: Can I temporarily block AI crawlers during licensing negotiations as leverage?</strong></p>
+<p>Yes, and this is a common negotiation tactic. Block crawler access, then approach the AI company: &quot;We&#39;ve implemented access restrictions. We&#39;re open to discussing licensing terms that would restore access.&quot; This demonstrates you control a resource they want, strengthening your position. However, use carefully—overly aggressive tactics can sour relationships.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
