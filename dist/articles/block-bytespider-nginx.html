@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block ByteSpider with Nginx: Stop TikTok&#39;s Aggressive AI Crawler | AI Pay Per Crawl</title>
+    <meta name="description" content="Complete Nginx configuration guide to block ByteDance&#39;s ByteSpider crawler. Includes user-agent rules, IP blocking, and behavioral detection for spoofed requests.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Block ByteSpider with Nginx: Stop TikTok&#39;s Aggressive AI Crawler">
+    <meta property="og:description" content="Complete Nginx configuration guide to block ByteDance&#39;s ByteSpider crawler. Includes user-agent rules, IP blocking, and behavioral detection for spoofed requests.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/block-bytespider-nginx">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Block ByteSpider with Nginx: Stop TikTok&#39;s Aggressive AI Crawler">
+    <meta name="twitter:description" content="Complete Nginx configuration guide to block ByteDance&#39;s ByteSpider crawler. Includes user-agent rules, IP blocking, and behavioral detection for spoofed requests.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/block-bytespider-nginx">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Block ByteSpider with Nginx: Stop TikTok's Aggressive AI Crawler",
+  "description": "Complete Nginx configuration guide to block ByteDance's ByteSpider crawler. Includes user-agent rules, IP blocking, and behavioral detection for spoofed requests.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/block-bytespider-nginx"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Block ByteSpider with Nginx: Stop TikTok's Aggressive AI Crawler",
+      "item": "https://aipaypercrawl.com/articles/block-bytespider-nginx"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Block ByteSpider with Nginx: Stop TikTok&#39;s Aggressive AI Crawler</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 12 min read</span>
+        <h1>Block ByteSpider with Nginx: Stop TikTok&#39;s Aggressive AI Crawler</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Complete Nginx configuration guide to block ByteDance&#39;s ByteSpider crawler. Includes user-agent rules, IP blocking, and behavioral detection for spoofed requests.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Block ByteSpider with Nginx: Stop TikTok&#39;s Aggressive AI Crawler</h1>
+<p><strong>ByteSpider</strong> operates as <strong>ByteDance&#39;s</strong> web crawler, feeding training data to the <strong>Doubao</strong> large language model and <strong>TikTok</strong> AI features. The crawler stands out for three characteristics: massive volume, routine robots.txt non-compliance, and zero publisher compensation.</p>
+<p>Publishers report <strong>ByteSpider</strong> generating 3-5x the request volume of <a href="/articles/gptbot-behavior-analysis.html">GPTBot</a> while respecting none of the courtesies other AI crawlers observe. It <a href="/articles/bytespider-ignores-robots-txt.html">ignores robots.txt</a>, spoofs user agents, and rotates through IP ranges to evade static blocks.</p>
+<p><strong>Nginx</strong>-based blocking provides the most effective defense. Configuration combines user-agent detection, IP range blocking, rate limiting, and behavioral analysis. No single mechanism stops <strong>ByteSpider</strong> entirely. Layered defenses catch 90-95% of requests.</p>
+<hr>
+<h2>Why Nginx-Level Blocking Matters for ByteSpider</h2>
+<h3>robots.txt Alone Fails (ByteSpider Ignores Directives)</h3>
+<p>The <a href="/articles/robots-txt-ai-crawlers-template.html">robots.txt protocol</a> depends on voluntary compliance. <strong>ByteSpider</strong> doesn&#39;t volunteer.</p>
+<p>Publishers document consistent <strong>ByteSpider</strong> crawling after implementing:</p>
+<pre><code>User-agent: Bytespider
+Disallow: /
+</code></pre>
+<p>Server logs show request volume unchanged. <strong>ByteSpider</strong> either doesn&#39;t check robots.txt or checks and proceeds anyway.</p>
+<p><strong>Compliance comparison:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Crawler</th>
+<th>robots.txt Compliance Rate</th>
+<th>Publisher Reports</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPTBot</td>
+<td>~99%</td>
+<td>Consistent compliance</td>
+</tr>
+<tr>
+<td>ClaudeBot</td>
+<td>~99%</td>
+<td>Consistent compliance</td>
+</tr>
+<tr>
+<td>Googlebot</td>
+<td>~99%</td>
+<td>Consistent compliance</td>
+</tr>
+<tr>
+<td>Bytespider</td>
+<td>~5%</td>
+<td>Routine violations</td>
+</tr>
+</tbody></table>
+<p>The 5% <strong>ByteSpider</strong> &quot;compliance&quot; represents requests that stopped for other reasons (IP blocks, firewall rules) rather than robots.txt respect.</p>
+<p>robots.txt should still be implemented for legal documentation purposes. The directive establishes that you expressly prohibited access. But enforcement requires server-level blocking.</p>
+<h3>Server-Level Enforcement Prevents Resource Consumption</h3>
+<p><strong>Nginx</strong> blocking stops requests at the web server layer before they reach application code. Benefits:</p>
+<p><strong>Resource protection:</strong></p>
+<ul>
+<li>No PHP/Python/Ruby execution</li>
+<li>No database queries</li>
+<li>No CMS page generation</li>
+<li>No framework overhead</li>
+</ul>
+<p><strong>Cost savings:</strong></p>
+<ul>
+<li>Reduced bandwidth consumption</li>
+<li>Lower server CPU utilization</li>
+<li>Decreased memory usage</li>
+<li>Minimal log storage growth</li>
+</ul>
+<p><strong>Performance preservation:</strong></p>
+<ul>
+<li>Legitimate user requests get full resources</li>
+<li>No crawler-induced slowdowns</li>
+<li>Shared hosting limits preserved</li>
+</ul>
+<p>For sites on metered hosting or experiencing <strong>ByteSpider</strong> volumes in thousands of requests daily, server-level blocking directly reduces infrastructure costs.</p>
+<h3>Nginx Performance (Minimal Overhead)</h3>
+<p><strong>Nginx</strong> processes blocks at the request handling layer with negligible performance impact. The server evaluates user-agent strings and IP ranges before any application code executes.</p>
+<p><strong>Performance characteristics:</strong></p>
+<ul>
+<li>User-agent string matching: microseconds per request</li>
+<li>IP range checking: microseconds per request</li>
+<li>No database lookups required</li>
+<li>No external service calls</li>
+<li>Minimal memory allocation</li>
+</ul>
+<p>Sites serving millions of requests daily can implement comprehensive <strong>ByteSpider</strong> blocking without measurable performance degradation.</p>
+<hr>
+<h2>Basic Nginx Configuration</h2>
+<h3>User-Agent Based Blocking</h3>
+<p>The foundation of <strong>ByteSpider</strong> blocking:</p>
+<pre><code class="language-nginx">map $http_user_agent $block_bytespider {
+    default 0;
+    ~*Bytespider 1;
+    ~*bytedance 1;
+}
+
+server {
+    listen 80;
+    server_name yourdomain.com;
+
+    if ($block_bytespider) {
+        return 403;
+    }
+
+    # Rest of your configuration
+}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><code>map</code> directive creates variable <code>$block_bytespider</code></li>
+<li>Default value: 0 (don&#39;t block)</li>
+<li>If user-agent contains &quot;Bytespider&quot; (case-insensitive): set to 1</li>
+<li>If user-agent contains &quot;bytedance&quot; (case-insensitive): set to 1</li>
+<li>In server block, return 403 Forbidden when variable equals 1</li>
+</ul>
+<p><strong>Reload Nginx:</strong></p>
+<pre><code class="language-bash">sudo nginx -t
+sudo systemctl reload nginx
+</code></pre>
+<h3>Match Multiple ByteDance Variants</h3>
+<p><strong>ByteSpider</strong> appears with multiple user-agent formats:</p>
+<pre><code class="language-nginx">map $http_user_agent $block_bytespider {
+    default 0;
+    ~*Bytespider 1;
+    ~*bytedance 1;
+    ~*ByteSpider 1;
+    ~*BYTESPIDER 1;
+}
+</code></pre>
+<p>The <code>~*</code> regex operator provides case-insensitive matching, but multiple entries ensure maximum coverage across variant capitalizations.</p>
+<h3>Return 403 vs. 444 (Connection Drop)</h3>
+<p>Two response strategies:</p>
+<p><strong>403 Forbidden (explicit rejection):</strong></p>
+<pre><code class="language-nginx">if ($block_bytespider) {
+    return 403;
+}
+</code></pre>
+<p><strong>Nginx 444 (connection drop without response):</strong></p>
+<pre><code class="language-nginx">if ($block_bytespider) {
+    return 444;
+}
+</code></pre>
+<p><strong>Trade-offs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Response</th>
+<th>Behavior</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>403</td>
+<td>HTTP error page</td>
+<td>Clear signal to legitimate analysis</td>
+<td>ByteSpider sees failure</td>
+</tr>
+<tr>
+<td>444</td>
+<td>Connection dropped</td>
+<td>ByteSpider gets no response</td>
+<td>Harder to debug issues</td>
+</tr>
+</tbody></table>
+<p><strong>Recommendation:</strong> Use 403 during initial implementation for debugging visibility. Switch to 444 after confirming block effectiveness if you want to give <strong>ByteSpider</strong> no feedback.</p>
+<hr>
+<h2>IP-Based Blocking</h2>
+<h3>Known ByteDance IP Ranges</h3>
+<p><strong>ByteDance</strong> operates from documented IP ranges. Block at network level:</p>
+<pre><code class="language-nginx">geo $bytedance_ip {
+    default 0;
+
+    # Known ByteDance ranges
+    220.243.135.0/24 1;
+    220.243.136.0/24 1;
+    111.225.148.0/24 1;
+    111.225.149.0/24 1;
+    110.249.201.0/24 1;
+    110.249.202.0/24 1;
+    60.8.123.0/24 1;
+    60.8.124.0/24 1;
+}
+
+server {
+    if ($bytedance_ip) {
+        return 403;
+    }
+}
+</code></pre>
+<p><strong>Geo</strong> directive evaluates client IP against defined ranges. Matches set <code>$bytedance_ip</code> to 1.</p>
+<h3>ASN-Based Blocking (AS396986, AS138294)</h3>
+<p>Block entire <strong>ByteDance</strong> Autonomous System Numbers:</p>
+<p><strong>Requires GeoIP2 module</strong> (standard in modern Nginx builds):</p>
+<pre><code class="language-nginx">map $geoip2_data_asn $block_bytedance_asn {
+    default 0;
+    396986 1;  # ByteDance Inc.
+    138294 1;  # ByteDance
+}
+
+server {
+    if ($block_bytedance_asn) {
+        return 403;
+    }
+}
+</code></pre>
+<p>ASN blocking catches all IP ranges associated with <strong>ByteDance</strong>, including new allocations that static IP lists miss.</p>
+<p><strong>Install GeoIP2 if needed:</strong></p>
+<pre><code class="language-bash">sudo apt-get install libnginx-mod-http-geoip2
+# Or
+sudo yum install nginx-mod-http-geoip2
+</code></pre>
+<h3>Combine User-Agent and IP Blocking</h3>
+<p>Maximum coverage through layered detection:</p>
+<pre><code class="language-nginx">map $http_user_agent $ua_block {
+    default 0;
+    ~*Bytespider 1;
+    ~*bytedance 1;
+}
+
+geo $ip_block {
+    default 0;
+    220.243.135.0/24 1;
+    220.243.136.0/24 1;
+    # Additional ranges...
+}
+
+map $ua_block$ip_block $block_bytespider_combined {
+    default 0;
+    ~1 1;  # Block if either UA or IP matches
+}
+
+server {
+    if ($block_bytespider_combined) {
+        return 403;
+    }
+}
+</code></pre>
+<p>This blocks requests matching user-agent <strong>or</strong> IP range criteria. Catches spoofed user-agents (identified by IP) and IP rotation (identified by user-agent).</p>
+<hr>
+<h2>Advanced Behavioral Detection</h2>
+<h3>Rate Limiting Suspicious Patterns</h3>
+<p><strong>ByteSpider</strong> generates high request volumes. Rate limiting catches aggressive crawling even when user-agent and IP are spoofed:</p>
+<pre><code class="language-nginx">limit_req_zone $binary_remote_addr zone=crawler_limit:10m rate=10r/m;
+
+server {
+    location / {
+        limit_req zone=crawler_limit burst=20;
+
+        # Rest of location config
+    }
+}
+</code></pre>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li>Creates rate limit zone: 10 requests per minute per IP</li>
+<li>Burst allowance: 20 requests (accommodates legitimate traffic spikes)</li>
+<li>Exceeding limits returns 503 (Service Unavailable)</li>
+</ul>
+<p><strong>ByteSpider</strong> hitting hundreds of requests per minute gets throttled. Legitimate users stay under limits.</p>
+<h3>Detect Absence of Common Browser Behaviors</h3>
+<p>Real browsers load CSS, JavaScript, and images. Crawlers request only HTML:</p>
+<pre><code class="language-nginx">map $http_user_agent $suspicious_crawler {
+    default 0;
+    &quot;~*Mozilla.*Windows.*Chrome&quot; 1;  # Claims to be browser
+}
+
+map $request_uri $static_resource {
+    default 0;
+    ~*\.(css|js|jpg|png|gif|ico)$ 1;
+}
+
+log_format crawler_check &#39;$remote_addr - $http_user_agent - Static: $static_resource&#39;;
+access_log /var/log/nginx/crawler_analysis.log crawler_check;
+</code></pre>
+<p><strong>Analysis process:</strong></p>
+<ol>
+<li>Log requests with user-agent and static resource flag</li>
+<li>Periodically analyze: IPs claiming browser identity but never requesting static resources</li>
+<li>Add confirmed spoofed IPs to block list</li>
+</ol>
+<p><strong>Weekly analysis script:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# Find IPs claiming browser identity but only requesting HTML
+awk &#39;/Mozilla.*Chrome/ &amp;&amp; /Static: 0/ {print $1}&#39; /var/log/nginx/crawler_analysis.log | sort | uniq -c | sort -nr | head -20
+</code></pre>
+<p>IPs appearing thousands of times without static resource requests are likely spoofed <strong>ByteSpider</strong>.</p>
+<h3>Challenge-Based Detection</h3>
+<p>Serve challenge pages to suspected crawlers:</p>
+<pre><code class="language-nginx">map $http_user_agent $maybe_fake_browser {
+    default 0;
+    ~*Mozilla 1;
+}
+
+geo $suspicious_network {
+    default 0;
+    220.0.0.0/8 1;  # Chinese IP ranges where ByteDance operates
+}
+
+server {
+    if ($maybe_fake_browser &amp;&amp; $suspicious_network) {
+        rewrite ^(.*)$ /challenge.html break;
+    }
+}
+</code></pre>
+<p><strong>Challenge page</strong> (<code>/challenge.html</code>):</p>
+<ul>
+<li>Simple JavaScript that redirects to original URL</li>
+<li>Crawlers without JavaScript execution capability can&#39;t pass</li>
+<li>Real browsers from Chinese networks proceed normally</li>
+</ul>
+<p><strong>Trade-off:</strong> Adds friction for legitimate Chinese users. Appropriate if your audience is primarily non-Chinese or if <strong>ByteSpider</strong> volume justifies regional challenges.</p>
+<hr>
+<h2>Configuration Best Practices</h2>
+<h3>Centralized Configuration File</h3>
+<p>Maintain <strong>ByteSpider</strong> rules in separate include file:</p>
+<p><strong>/etc/nginx/conf.d/block-bytespider.conf:</strong></p>
+<pre><code class="language-nginx"># ByteSpider user-agent blocking
+map $http_user_agent $block_bytespider_ua {
+    default 0;
+    ~*Bytespider 1;
+    ~*bytedance 1;
+}
+
+# ByteDance IP ranges
+geo $block_bytespider_ip {
+    default 0;
+    220.243.135.0/24 1;
+    220.243.136.0/24 1;
+    111.225.148.0/24 1;
+    111.225.149.0/24 1;
+    # Additional ranges...
+}
+
+# Combined blocking variable
+map $block_bytespider_ua$block_bytespider_ip $block_bytespider {
+    default 0;
+    ~1 1;
+}
+</code></pre>
+<p><strong>Main configuration:</strong></p>
+<pre><code class="language-nginx">include /etc/nginx/conf.d/block-bytespider.conf;
+
+server {
+    if ($block_bytespider) {
+        return 403;
+    }
+    # Rest of server config
+}
+</code></pre>
+<p>Benefits:</p>
+<ul>
+<li>Single source of truth for block rules</li>
+<li>Easy updates without editing main config</li>
+<li>Reusable across multiple server blocks</li>
+<li>Version control friendly</li>
+</ul>
+<h3>Testing Before Production Deployment</h3>
+<p>Test configuration changes before deploying:</p>
+<pre><code class="language-bash"># Test syntax
+sudo nginx -t
+
+# If successful, reload
+sudo systemctl reload nginx
+</code></pre>
+<p><strong>Nginx</strong> syntax checker catches configuration errors before they cause service interruption.</p>
+<p><strong>Staged deployment:</strong></p>
+<ol>
+<li>Deploy to staging/development environment</li>
+<li>Verify <strong>ByteSpider</strong> requests are blocked</li>
+<li>Confirm legitimate traffic unaffected</li>
+<li>Deploy to production</li>
+</ol>
+<h3>Logging Blocked Requests</h3>
+<p>Track block effectiveness:</p>
+<pre><code class="language-nginx">map $http_user_agent $block_bytespider {
+    default 0;
+    ~*Bytespider 1;
+    ~*bytedance 1;
+}
+
+server {
+    if ($block_bytespider) {
+        access_log /var/log/nginx/bytespider_blocked.log combined;
+        return 403;
+    }
+}
+</code></pre>
+<p>Dedicated log file captures all blocked <strong>ByteSpider</strong> requests. Weekly analysis reveals:</p>
+<ul>
+<li>Block success rate</li>
+<li>New IP ranges requiring addition to block list</li>
+<li>Spoofing patterns</li>
+<li>Volume trends</li>
+</ul>
+<hr>
+<h2>Monitoring and Maintenance</h2>
+<h3>Weekly Log Analysis</h3>
+<p>Verify blocks remain effective:</p>
+<pre><code class="language-bash"># Count ByteSpider requests (should be low/zero)
+grep &quot;Bytespider&quot; /var/log/nginx/access.log | wc -l
+
+# Count blocked requests
+wc -l /var/log/nginx/bytespider_blocked.log
+
+# Identify new IP ranges
+grep &quot;Bytespider&quot; /var/log/nginx/access.log | awk &#39;{print $1}&#39; | sort | uniq -c | sort -nr
+</code></pre>
+<p><strong>Alert thresholds:</strong></p>
+<ul>
+<li>More than 50 <strong>ByteSpider</strong> requests per week reaching content pages: indicates block failure</li>
+<li>New IP ranges not in block list: requires config update</li>
+<li>Sudden volume spikes: investigate new crawler variants</li>
+</ul>
+<h3>Update IP Ranges Quarterly</h3>
+<p><strong>ByteDance</strong> infrastructure evolves. Quarterly updates prevent block list decay:</p>
+<p><strong>Update process:</strong></p>
+<ol>
+<li>Research current <strong>ByteDance</strong> IP allocations (RIPE, ARIN databases)</li>
+<li>Cross-reference with community-maintained lists</li>
+<li>Add new ranges to geo block</li>
+<li>Test configuration</li>
+<li>Deploy updates</li>
+</ol>
+<p><strong>Community resources:</strong></p>
+<ul>
+<li><a href="https://github.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker">https://github.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker</a></li>
+<li>Publisher forums discussing <strong>ByteSpider</strong> activity</li>
+<li>Network operator mailing lists</li>
+</ul>
+<h3>Alert on Block Failures</h3>
+<p>Automated alerting for unusual <strong>ByteSpider</strong> activity:</p>
+<pre><code class="language-bash">#!/bin/bash
+# Alert if ByteSpider bypasses blocks
+
+LOG=&quot;/var/log/nginx/access.log&quot;
+THRESHOLD=50
+COUNT=$(grep &quot;Bytespider&quot; &quot;$LOG&quot; | grep -v &quot;403&quot; | wc -l)
+
+if [ $COUNT -gt $THRESHOLD ]; then
+    echo &quot;ByteSpider block failure: $COUNT successful requests detected&quot; | mail -s &quot;Nginx Alert&quot; admin@yourdomain.com
+fi
+</code></pre>
+<p>Run via cron daily or weekly.</p>
+<hr>
+<h2>Performance Impact Assessment</h2>
+<h3>Nginx Block Overhead</h3>
+<p>Measure blocking impact:</p>
+<p><strong>Benchmark without blocks:</strong></p>
+<pre><code class="language-bash">ab -n 1000 -c 10 https://yourdomain.com/
+</code></pre>
+<p><strong>Benchmark with blocks:</strong></p>
+<pre><code class="language-bash">ab -n 1000 -c 10 https://yourdomain.com/
+</code></pre>
+<p><strong>Expected result:</strong> No measurable difference. <strong>Nginx</strong> user-agent and IP evaluation adds microseconds per request. Application-level processing dominates response time.</p>
+<p><strong>Real-world impact:</strong> Blocking reduces total request volume, improving overall performance by freeing resources for legitimate traffic.</p>
+<h3>Monitor Server Resource Utilization</h3>
+<p>Track CPU and memory before/after implementation:</p>
+<pre><code class="language-bash"># Before
+top -b -n 1 | head -20
+
+# After
+top -b -n 1 | head -20
+</code></pre>
+<p><strong>Expected outcome:</strong> CPU and memory utilization decrease as <strong>ByteSpider</strong> requests are rejected before resource-intensive processing.</p>
+<hr>
+<h2>Complete Production Configuration Example</h2>
+<p>Full-featured <strong>ByteSpider</strong> blocking configuration:</p>
+<pre><code class="language-nginx"># /etc/nginx/conf.d/bytespider-block.conf
+
+# User-agent detection
+map $http_user_agent $block_bytespider_ua {
+    default 0;
+    ~*Bytespider 1;
+    ~*bytedance 1;
+}
+
+# IP range blocking
+geo $block_bytespider_ip {
+    default 0;
+    220.243.135.0/24 1;
+    220.243.136.0/24 1;
+    111.225.148.0/24 1;
+    111.225.149.0/24 1;
+    110.249.201.0/24 1;
+    110.249.202.0/24 1;
+    60.8.123.0/24 1;
+    60.8.124.0/24 1;
+}
+
+# Combined blocking logic
+map $block_bytespider_ua$block_bytespider_ip $block_bytespider {
+    default 0;
+    ~1 1;
+}
+
+# Rate limiting for aggressive crawlers
+limit_req_zone $binary_remote_addr zone=bytespider_limit:10m rate=10r/m;
+</code></pre>
+<p><strong>Main server config:</strong></p>
+<pre><code class="language-nginx">server {
+    listen 443 ssl http2;
+    server_name yourdomain.com;
+
+    # Include ByteSpider blocks
+    include /etc/nginx/conf.d/bytespider-block.conf;
+
+    # Block ByteSpider
+    if ($block_bytespider) {
+        access_log /var/log/nginx/bytespider_blocked.log combined;
+        return 403 &quot;Access denied&quot;;
+    }
+
+    # Apply rate limiting
+    location / {
+        limit_req zone=bytespider_limit burst=20 nodelay;
+
+        # Rest of location config
+        try_files $uri $uri/ =404;
+    }
+}
+</code></pre>
+<p>This configuration provides:</p>
+<ul>
+<li>User-agent blocking (catches honest <strong>ByteSpider</strong>)</li>
+<li>IP blocking (catches spoofed user-agents)</li>
+<li>Rate limiting (catches IP rotation)</li>
+<li>Dedicated logging (monitoring and analysis)</li>
+<li>Minimal performance overhead</li>
+</ul>
+<hr>
+<h2>Frequently Asked Questions</h2>
+<h3>Does Nginx blocking work if ByteSpider spoofs user-agents?</h3>
+<p>User-agent blocking alone doesn&#39;t catch spoofed requests. Layered defense combining user-agent detection <strong>and</strong> IP range blocking catches both honest <strong>ByteSpider</strong> (user-agent) and spoofed <strong>ByteSpider</strong> (IP). Add rate limiting to catch sophisticated spoofing that evades both.</p>
+<h3>Will blocking ByteSpider affect my TikTok presence?</h3>
+<p>No. <strong>ByteSpider</strong> web crawling is separate from <strong>TikTok</strong> social platform features. Blocking <strong>ByteSpider</strong> doesn&#39;t affect how your content appears in <strong>TikTok</strong> search, link previews, or social sharing. These use different infrastructure.</p>
+<h3>Can I use Nginx blocking if I&#39;m on shared hosting?</h3>
+<p>Shared hosting typically doesn&#39;t provide <strong>Nginx</strong> configuration access. Use <a href="/articles/block-bytespider-robots-txt.html">robots.txt</a> (minimal effectiveness) or <a href="/articles/cloudflare-bot-management-ai.html">Cloudflare WAF rules</a> (more effective). If you have VPS or dedicated server with <strong>Nginx</strong>, server-level blocking is optimal.</p>
+<h3>How do I verify my Nginx blocks are working?</h3>
+<p>Check server logs for <strong>ByteSpider</strong> requests: <code>grep &quot;Bytespider&quot; /var/log/nginx/access.log</code>. After implementing blocks, you should see only 403 responses or near-zero requests. Monitor weekly to confirm sustained effectiveness.</p>
+<h3>Should I return 403 or 444 for blocked requests?</h3>
+<p>403 Forbidden provides explicit rejection visible in logs and helpful for debugging. 444 (connection drop) gives <strong>ByteSpider</strong> no feedback. Use 403 initially for visibility. Switch to 444 after confirming blocks work if you want to provide zero feedback to crawler.</p>
+<h3>Does blocking ByteSpider violate any regulations?</h3>
+<p>No. Publishers control access to their content. robots.txt protocol is voluntary. You&#39;re not required to allow any crawler access. Blocking <strong>ByteSpider</strong> is legal, ethical, and increasingly common among publishers tired of uncompensated extraction.</p>
+<h3>How often should I update ByteDance IP ranges?</h3>
+<p>Quarterly updates balance maintenance overhead with coverage effectiveness. <strong>ByteDance</strong> infrastructure evolves but not constantly. Set calendar reminder to review and update IP ranges every 90 days.</p>
+<h3>Can ByteSpider bypass Nginx blocks entirely?</h3>
+<p>Sophisticated crawlers can rotate IPs, spoof user-agents, and mimic browser behavior. Layered defenses (user-agent + IP + rate limiting + behavioral detection) catch 90-95% of requests. Perfect blocking is impossible against determined adversaries, but comprehensive <strong>Nginx</strong> configuration stops the vast majority of <strong>ByteSpider</strong> activity.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

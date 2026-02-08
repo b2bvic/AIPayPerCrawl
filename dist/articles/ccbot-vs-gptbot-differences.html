@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCBot vs GPTBot Differences: Comparing Common Crawl and OpenAI Training Data Collection | AI Pay Per Crawl</title>
+    <meta name="description" content="CCBot harvests for public dataset archives while GPTBot targets proprietary OpenAI training pipelines, creating distinct monetization strategies and blocking considerations.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="CCBot vs GPTBot Differences: Comparing Common Crawl and OpenAI Training Data Collection">
+    <meta property="og:description" content="CCBot harvests for public dataset archives while GPTBot targets proprietary OpenAI training pipelines, creating distinct monetization strategies and blocking considerations.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/ccbot-vs-gptbot-differences">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CCBot vs GPTBot Differences: Comparing Common Crawl and OpenAI Training Data Collection">
+    <meta name="twitter:description" content="CCBot harvests for public dataset archives while GPTBot targets proprietary OpenAI training pipelines, creating distinct monetization strategies and blocking considerations.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/ccbot-vs-gptbot-differences">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "CCBot vs GPTBot Differences: Comparing Common Crawl and OpenAI Training Data Collection",
+  "description": "CCBot harvests for public dataset archives while GPTBot targets proprietary OpenAI training pipelines, creating distinct monetization strategies and blocking considerations.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/ccbot-vs-gptbot-differences"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "CCBot vs GPTBot Differences: Comparing Common Crawl and OpenAI Training Data Collection",
+      "item": "https://aipaypercrawl.com/articles/ccbot-vs-gptbot-differences"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>CCBot vs GPTBot Differences: Comparing Common Crawl and OpenAI Training Data Collection</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 13 min read</span>
+        <h1>CCBot vs GPTBot Differences: Comparing Common Crawl and OpenAI Training Data Collection</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">CCBot harvests for public dataset archives while GPTBot targets proprietary OpenAI training pipelines, creating distinct monetization strategies and blocking considerations.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>CCBot vs GPTBot Differences: Comparing Common Crawl and OpenAI Training Data Collection</h1>
+<p>Web publishers encountering AI training crawlers often conflate <strong>CCBot</strong> and <strong>GPTBot</strong> as equivalent threats to content monetization. This misreading obscures fundamental differences in purpose, governance, and commercial implications. <strong>CCBot</strong> operates as data collection infrastructure for <strong>Common Crawl</strong>, a nonprofit providing open web archives. <strong>GPTBot</strong> serves <strong>OpenAI&#39;s</strong> proprietary training pipelines for models like GPT-4 and ChatGPT.</p>
+<p>Understanding CCBot vs GPTBot differences determines optimal response strategies. Blocking one but not the other may align with your commercial interests. Licensing terms differ based on whether content feeds public datasets or closed commercial models. The crawlers exhibit distinct behavioral patterns, compliance records, and organizational accountability structures.</p>
+<h2>Organizational Context</h2>
+<h3>Common Crawl and CCBot</h3>
+<p><strong>Common Crawl</strong> is a 501(c)(3) nonprofit organization founded in 2007, providing open repository of web crawl data. Their mission: make web data accessible for research, education, and innovation. <strong>CCBot</strong> is their crawler, operating continuously to build monthly snapshots of the web.</p>
+<p><strong>Governance</strong>: Nonprofit board, no commercial profit motive, funded by donations and grants.</p>
+<p><strong>Data Access</strong>: Crawl archives are publicly available via Amazon S3. Anyone can download petabytes of web data without payment or licensing.</p>
+<p><strong>Use Cases</strong>: Academic research, language model training (multiple organizations use Common Crawl data), search engine development, web analytics.</p>
+<p><strong>Transparency</strong>: Publishes detailed crawl statistics, respects robots.txt consistently, provides opt-out mechanisms, documents infrastructure openly.</p>
+<h3>OpenAI and GPTBot</h3>
+<p><strong>OpenAI</strong> is a for-profit AI research company valued at $80+ billion, developing commercial language models. <strong>GPTBot</strong> crawls web content exclusively for training <strong>OpenAI</strong> models used in paid products (<strong>ChatGPT Plus</strong>, API access, enterprise solutions).</p>
+<p><strong>Governance</strong>: For-profit corporation with equity investors, revenue-driven incentives.</p>
+<p><strong>Data Access</strong>: Crawled content becomes proprietary training data. Not published, not shared, used solely for <strong>OpenAI</strong> competitive advantage.</p>
+<p><strong>Use Cases</strong>: Training GPT-series models, improving <strong>ChatGPT</strong> responses, expanding knowledge domains for commercial applications.</p>
+<p><strong>Transparency</strong>: Provides robots.txt opt-out, publishes limited information about crawler operation, engages in some publisher partnerships, but training datasets remain closed.</p>
+<p>This structural difference is foundational. <strong>Common Crawl</strong> operates as public infrastructure; <strong>OpenAI</strong> operates as commercial entity extracting value for private benefit.</p>
+<h2>Crawler Behavior Patterns</h2>
+<h3>Request Volume and Frequency</h3>
+<p><strong>CCBot</strong> crawls broadly at moderate intensity:</p>
+<ul>
+<li><strong>Frequency</strong>: Revisits sites monthly for snapshot updates</li>
+<li><strong>Volume</strong>: Averages 50-150 requests per site per crawl cycle</li>
+<li><strong>Distribution</strong>: Spreads requests across entire site (homepage, subpages, assets)</li>
+<li><strong>Politeness</strong>: Implements crawl delays, respects server response times</li>
+</ul>
+<p><strong>GPTBot</strong> exhibits more targeted behavior:</p>
+<ul>
+<li><strong>Frequency</strong>: Irregular, focused on specific content types</li>
+<li><strong>Volume</strong>: Highly variable—might request 20 pages from one site, 500 from another</li>
+<li><strong>Distribution</strong>: Prioritizes long-form content, skips thin pages</li>
+<li><strong>Politeness</strong>: Generally respectful but less predictable than <strong>CCBot</strong></li>
+</ul>
+<p>Case study comparison from technical blog (800 articles, 50K monthly pageviews):</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>CCBot</th>
+<th>GPTBot</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Monthly Requests</td>
+<td>1,240</td>
+<td>680</td>
+</tr>
+<tr>
+<td>Pages Accessed</td>
+<td>85% of site</td>
+<td>35% of site</td>
+</tr>
+<tr>
+<td>Bandwidth Consumed</td>
+<td>52 MB</td>
+<td>38 MB</td>
+</tr>
+<tr>
+<td>Average Time Between Requests</td>
+<td>4.2 seconds</td>
+<td>2.8 seconds</td>
+</tr>
+</tbody></table>
+<p><strong>CCBot</strong> crawls comprehensively but slowly. <strong>GPTBot</strong> is selective and faster within its target subset.</p>
+<h3>Content Targeting</h3>
+<p><strong>CCBot</strong> is indiscriminate—treats all publicly accessible content as crawlable:</p>
+<ul>
+<li>Homepage, About pages, contact forms</li>
+<li>Blog posts, articles, documentation</li>
+<li>Product catalogs, FAQ sections</li>
+<li>User comments, forum threads</li>
+<li>JavaScript, CSS, images (captures everything for archive fidelity)</li>
+</ul>
+<p><strong>GPTBot</strong> prioritizes training-valuable content:</p>
+<ul>
+<li>Long-form articles (&gt;1,000 words preferred)</li>
+<li>Technical documentation</li>
+<li>Educational resources</li>
+<li>Original research</li>
+<li>Conversational content (Q&amp;A, discussions)</li>
+</ul>
+<p>Skips or lightly samples:</p>
+<ul>
+<li>Thin affiliate pages</li>
+<li>Duplicate content</li>
+<li>Navigation elements</li>
+<li>Commercial transaction pages</li>
+<li>Pure multimedia (images/video without substantial text)</li>
+</ul>
+<p>This selectivity reflects different missions. <strong>Common Crawl</strong> preserves web snapshot; <strong>OpenAI</strong> extracts training signal.</p>
+<h2>Robots.txt Compliance</h2>
+<p>Both crawlers respect robots.txt but exhibit different compliance patterns:</p>
+<h3>CCBot Compliance</h3>
+<p><strong>Consistency</strong>: Extremely high. Reports of <strong>CCBot</strong> ignoring robots.txt directives are rare (&lt;0.1% of publisher complaints).</p>
+<p><strong>Implementation</strong>: Fetches robots.txt before every crawl session, caches directives, honors disallow/allow with precise matching.</p>
+<p><strong>Example disallow</strong>:</p>
+<pre><code>User-agent: CCBot
+Disallow: /
+</code></pre>
+<p><strong>Expected result</strong>: Zero <strong>CCBot</strong> requests after implementation.</p>
+<p><strong>Actual result</strong>: Typically 100% compliance. Residual requests usually stem from already-in-flight crawls at time robots.txt changed (clears within 24-48 hours).</p>
+<h3>GPTBot Compliance</h3>
+<p><strong>Consistency</strong>: High but not perfect. <strong>GPTBot</strong> respects robots.txt in vast majority of cases but occasional violations are documented.</p>
+<p><strong>Implementation</strong>: Fetches robots.txt, honors disallow, but some publishers report sporadic continued access. This may reflect:</p>
+<ul>
+<li>Distributed crawling infrastructure with directive propagation lag</li>
+<li>Separate crawlers for different purposes (research vs. production training)</li>
+<li>Edge cases in path matching logic</li>
+</ul>
+<p><strong>Example disallow</strong>:</p>
+<pre><code>User-agent: GPTBot
+Disallow: /
+</code></pre>
+<p><strong>Expected result</strong>: Near-zero requests with possible brief lag for propagation.</p>
+<p><strong>Actual result</strong>: Typically 98-99% compliance. Some publishers report 1-5% residual traffic that eventually ceases.</p>
+<p><strong>OpenAI</strong> has stronger compliance than <strong>ByteSpider</strong> (which ignores robots.txt frequently) but slightly weaker than <strong>CCBot</strong> (which is near-perfect).</p>
+<h2>Commercial Implications</h2>
+<p>The nonprofit vs. for-profit distinction creates different monetization dynamics:</p>
+<h3>Common Crawl / CCBot</h3>
+<p><strong>Licensing Challenges</strong>: <strong>Common Crawl</strong> doesn&#39;t pay for content because it&#39;s a nonprofit providing public infrastructure. Attempting to license content to <strong>Common Crawl</strong> is like trying to license to <strong>Google Scholar</strong>—they don&#39;t operate on commercial terms.</p>
+<p><strong>Blocking Rationale</strong>: Block <strong>CCBot</strong> if you want to prevent your content from appearing in public training datasets used by multiple AI companies. Since <strong>Common Crawl</strong> archives are freely available, any organization (including competitors) can train on data containing your content.</p>
+<p><strong>Allowing Rationale</strong>: Allow <strong>CCBot</strong> if you support open research infrastructure, want academic exposure, or believe open datasets benefit the ecosystem. Some publishers see <strong>Common Crawl</strong> as public good equivalent to <strong>Internet Archive</strong>.</p>
+<p><strong>Monetization Path</strong>: None directly. Indirectly, presence in <strong>Common Crawl</strong> increases visibility in research citations, which may drive reputation and consulting opportunities.</p>
+<h3>OpenAI / GPTBot</h3>
+<p><strong>Licensing Opportunities</strong>: <strong>OpenAI</strong> is for-profit, well-funded ($13B+ raised), and has established content licensing partnerships. They&#39;re viable licensing customer.</p>
+<p><strong>Blocking Rationale</strong>: Block <strong>GPTBot</strong> if you want to negotiate licensing fees rather than provide free training data to commercial entity. Blocking creates scarcity that improves negotiating position.</p>
+<p><strong>Allowing Rationale</strong>: Allow <strong>GPTBot</strong> if you believe exposure via <strong>ChatGPT</strong> citations drives traffic, want to support AI development, or don&#39;t see commercial value in your content.</p>
+<p><strong>Monetization Path</strong>: Direct licensing. <strong>OpenAI</strong> has signed deals with publishers including <strong>Associated Press</strong>, <strong>Axel Springer</strong>, and others. Terms are confidential but reportedly range from low six figures to seven figures annually for major content libraries.</p>
+<h2>Strategic Response Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Your Goal</th>
+<th>CCBot Strategy</th>
+<th>GPTBot Strategy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Monetize training data</td>
+<td>Block (no payment possible)</td>
+<td>Block + outreach to license</td>
+</tr>
+<tr>
+<td>Support open research</td>
+<td>Allow</td>
+<td>Block (distinguish open vs. proprietary)</td>
+</tr>
+<tr>
+<td>Maximize commercial leverage</td>
+<td>Block both (tightest control)</td>
+<td>Block both initially, then license</td>
+</tr>
+<tr>
+<td>Drive traffic via AI citations</td>
+<td>Allow</td>
+<td>Allow</td>
+</tr>
+<tr>
+<td>Prevent unauthorized use</td>
+<td>Block</td>
+<td>Block</td>
+</tr>
+</tbody></table>
+<p><strong>Example</strong>: Academic publisher might allow <strong>CCBot</strong> (supports research) but block <strong>GPTBot</strong> (commercializes content without compensation).</p>
+<p><strong>Example</strong>: Commercial blog might block both initially, then offer <strong>OpenAI</strong> licensing at $500/month while keeping <strong>CCBot</strong> blocked (content has commercial value, not donating to public commons).</p>
+<h2>Technical Differentiation</h2>
+<h3>User Agent Strings</h3>
+<p><strong>CCBot</strong>:</p>
+<pre><code>CCBot/2.0 (https://commoncrawl.org/faq/)
+</code></pre>
+<p>Simple, consistent, rarely spoofed. Points to FAQ with crawler information.</p>
+<p><strong>GPTBot</strong>:</p>
+<pre><code>Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.0; +https://openai.com/gptbot)
+</code></pre>
+<p>More complex, mimics browser user agent structure. Link provides documentation.</p>
+<h3>IP Ranges</h3>
+<p><strong>CCBot</strong> originates from documented IP ranges:</p>
+<ul>
+<li>Primary: Amazon EC2 (Common Crawl uses AWS infrastructure)</li>
+<li>ASN: AS16509 (Amazon)</li>
+<li>Published IP lists available from <strong>Common Crawl</strong> documentation</li>
+</ul>
+<p><strong>GPTBot</strong> also uses cloud infrastructure:</p>
+<ul>
+<li>Primarily: Microsoft Azure (OpenAI partnership)</li>
+<li>ASN: AS8075 (Microsoft)</li>
+<li>Some requests from other cloud providers (GCP, AWS)</li>
+</ul>
+<p>Both use major cloud hosts, making IP-based blocking less reliable than user agent detection unless you block entire ASN ranges (which also blocks legitimate traffic).</p>
+<h3>Validation Methods</h3>
+<p>Verify claimed <strong>CCBot</strong> identity:</p>
+<pre><code class="language-bash"># Reverse DNS lookup
+host 3.236.15.123
+# Should return: ec2-3-236-15-123.compute-1.amazonaws.com
+</code></pre>
+<p><strong>Common Crawl</strong> provides IP range lists for validation. Legitimate <strong>CCBot</strong> requests originate from published ranges.</p>
+<p>Verify <strong>GPTBot</strong>:</p>
+<pre><code class="language-bash"># Reverse DNS lookup
+host 20.15.240.64
+# Should return: Azure hostname containing &quot;openai&quot; or similar identifier
+</code></pre>
+<p><strong>OpenAI</strong> has published some IP ranges but documentation is less comprehensive than <strong>Common Crawl</strong>. User agent detection combined with ASN checking is more reliable.</p>
+<h2>Data Usage Transparency</h2>
+<h3>Common Crawl</h3>
+<p><strong>Dataset Availability</strong>: Anyone can download <strong>Common Crawl</strong> archives from Amazon S3. See your own site in crawl data:</p>
+<pre><code class="language-bash">aws s3 ls s3://commoncrawl/crawl-data/CC-MAIN-2024-10/ --no-sign-request
+</code></pre>
+<p>Archives are organized by crawl date. Each monthly snapshot is ~5-6 PB compressed.</p>
+<p><strong>Attribution</strong>: Crawl data includes original URLs, so your content remains attributed even in derivative datasets.</p>
+<p><strong>Who Uses It</strong>: Research shows <strong>Common Crawl</strong> data is used to train:</p>
+<ul>
+<li><strong>GPT-3</strong> (OpenAI acknowledged using it for initial training)</li>
+<li><strong>LLaMA</strong> (Meta)</li>
+<li><strong>BLOOM</strong> (BigScience)</li>
+<li><strong>Falcon</strong> (TII)</li>
+<li>Numerous academic research projects</li>
+</ul>
+<p>If you allow <strong>CCBot</strong>, your content likely ends up training multiple models beyond <strong>Common Crawl&#39;s</strong> direct control.</p>
+<h3>OpenAI</h3>
+<p><strong>Dataset Privacy</strong>: <strong>OpenAI</strong> does not publish training datasets. No public access to what <strong>GPTBot</strong> crawled.</p>
+<p><strong>Attribution</strong>: <strong>ChatGPT</strong> sometimes cites sources but inconsistently. Models trained on your content don&#39;t reliably attribute it.</p>
+<p><strong>Exclusive Use</strong>: Content crawled by <strong>GPTBot</strong> exclusively benefits <strong>OpenAI</strong> products. Not shared with competitors or research community (unlike <strong>Common Crawl</strong>).</p>
+<p>This difference is crucial. <strong>Common Crawl</strong> data proliferates across ecosystem; <strong>GPTBot</strong> data remains <strong>OpenAI</strong>-exclusive.</p>
+<h2>Legal and Ethical Considerations</h2>
+<h3>Common Crawl Justification</h3>
+<p><strong>Common Crawl</strong> positions itself as digital library infrastructure equivalent to <strong>Internet Archive</strong>. Legal arguments:</p>
+<p><strong>Transformative Use</strong>: Archiving for research constitutes fair use (not commercial exploitation).</p>
+<p><strong>Public Benefit</strong>: Nonprofit status and open access serve societal good.</p>
+<p><strong>Preservation</strong>: Web content is ephemeral; archiving preserves cultural record.</p>
+<p>Courts haven&#39;t definitively ruled on whether web archiving for AI training qualifies as fair use, but nonprofit context strengthens defense.</p>
+<h3>OpenAI Legal Position</h3>
+<p><strong>OpenAI</strong> argues training on publicly accessible content is transformative fair use:</p>
+<p><strong>Transformation</strong>: Models learn statistical patterns, don&#39;t reproduce content verbatim.</p>
+<p><strong>No Market Substitute</strong>: Model outputs don&#39;t substitute for original content (debatable).</p>
+<p><strong>Public Access</strong>: If content is openly accessible, crawling is permissible under HiQ v. LinkedIn precedent.</p>
+<p>However, <strong>OpenAI</strong> faces class-action lawsuits from authors and publishers challenging these claims. Legal landscape is unsettled.</p>
+<h3>Ethical Distinction</h3>
+<p>Some publishers draw ethical lines:</p>
+<p><strong>Acceptable</strong>: Allowing <strong>CCBot</strong> because open research benefits society.</p>
+<p><strong>Unacceptable</strong>: Allowing <strong>GPTBot</strong> because <strong>OpenAI</strong> commercializes free content.</p>
+<p>Others see no distinction—both harvest content without compensation. Your ethical framework determines which (if either) you permit.</p>
+<h2>Licensing Negotiations</h2>
+<h3>Common Crawl Approach</h3>
+<p><strong>Common Crawl</strong> doesn&#39;t negotiate licenses—they&#39;re nonprofit relying on fair use doctrine. If you want to monetize, target organizations using <strong>Common Crawl</strong> data:</p>
+<ol>
+<li>Identify AI companies listing <strong>Common Crawl</strong> in their training data sources</li>
+<li>Issue notices that your content appears in <strong>Common Crawl</strong> archives</li>
+<li>Demand licensing terms for future use or retroactive compensation</li>
+</ol>
+<p>This is legally uncertain but establishes position for settlements.</p>
+<h3>OpenAI Approach</h3>
+<p><strong>OpenAI</strong> has established licensing program. Outreach strategy:</p>
+<p><strong>Step 1 — Evidence</strong>: Document <strong>GPTBot</strong> crawling your site. Server logs showing user agent, request frequency, URLs accessed.</p>
+<p><strong>Step 2 — Blocking</strong>: Implement robots.txt block to create urgency:</p>
+<pre><code>User-agent: GPTBot
+Disallow: /
+</code></pre>
+<p><strong>Step 3 — Outreach</strong>: Contact <strong>OpenAI</strong> data partnerships team via:</p>
+<ul>
+<li>Email: <a href="mailto:partnerships@openai.com">partnerships@openai.com</a></li>
+<li>LinkedIn: Search &quot;OpenAI data partnerships&quot; or &quot;content licensing&quot;</li>
+</ul>
+<p><strong>Pitch Template</strong>:</p>
+<p>Subject: Training Data Licensing — [Your Domain]</p>
+<p>Body:
+We operate [domain], a content library focused on [topic] with [X] articles. Our logs show GPTBot accessed our content [Y] times monthly prior to our recent block.</p>
+<p>We offer structured licensing:</p>
+<ul>
+<li>Archive access: $[amount]</li>
+<li>Ongoing updates: $[amount]/month</li>
+</ul>
+<p>This provides clear usage rights without legal ambiguity.</p>
+<p>Documentation attached.</p>
+<p>Available for call this week.</p>
+<p>[Your contact info]</p>
+<p><strong>Pricing Guidance</strong>: $200-$800/month for small-to-medium sites (300-1,000 articles), $2,000-$10,000 for large or specialized libraries.</p>
+<h2>Decision Framework</h2>
+<p>Determine your approach using this flowchart logic:</p>
+<p><strong>Question 1</strong>: Does your content have commercial training value?</p>
+<ul>
+<li><strong>Yes</strong>: Proceed to Q2</li>
+<li><strong>No</strong>: Allow both (no monetization opportunity anyway)</li>
+</ul>
+<p><strong>Question 2</strong>: Do you support open research infrastructure?</p>
+<ul>
+<li><strong>Yes</strong>: Allow <strong>CCBot</strong>, proceed to Q3 for <strong>GPTBot</strong></li>
+<li><strong>No</strong>: Block <strong>CCBot</strong>, proceed to Q3</li>
+</ul>
+<p><strong>Question 3</strong>: Can you invest time in licensing negotiations?</p>
+<ul>
+<li><strong>Yes</strong>: Block <strong>GPTBot</strong>, initiate licensing discussions</li>
+<li><strong>No</strong>: Allow <strong>GPTBot</strong> (effort exceeds likely return)</li>
+</ul>
+<p><strong>Question 4</strong>: Do you want tightest possible control?</p>
+<ul>
+<li><strong>Yes</strong>: Block both, pursue licensing with <strong>OpenAI</strong> and companies using <strong>Common Crawl</strong> data</li>
+<li><strong>No</strong>: Use decisions from Q1-Q3</li>
+</ul>
+<p><strong>Example Application</strong>:</p>
+<p><strong>Scenario A — Hobbyist Blog</strong>: Content has low commercial value, can&#39;t invest time in licensing.
+<strong>Decision</strong>: Allow both (minimal benefit from blocking).</p>
+<p><strong>Scenario B — Professional Tech Blog</strong>: 500 quality articles, commercial value, willing to negotiate.
+<strong>Decision</strong>: Allow <strong>CCBot</strong> (supports research), block <strong>GPTBot</strong> and pursue licensing ($400/month achievable).</p>
+<p><strong>Scenario C — Enterprise Content Library</strong>: 10,000+ articles, high specialization, legal resources.
+<strong>Decision</strong>: Block both, pursue licensing with <strong>OpenAI</strong> ($50K+/year possible) and issue demands to <strong>Common Crawl</strong> data users.</p>
+<h2>Monitoring and Enforcement</h2>
+<p>Track both crawlers independently:</p>
+<h3>Log Analysis</h3>
+<p><strong>Parse for CCBot</strong>:</p>
+<pre><code class="language-bash">grep &quot;CCBot&quot; /var/log/nginx/access.log | wc -l
+</code></pre>
+<p><strong>Parse for GPTBot</strong>:</p>
+<pre><code class="language-bash">grep &quot;GPTBot&quot; /var/log/nginx/access.log | wc -l
+</code></pre>
+<p><strong>Monthly trends</strong>:</p>
+<pre><code class="language-bash">grep &quot;CCBot\|GPTBot&quot; /var/log/nginx/access.log | \
+awk &#39;{print $4}&#39; | cut -d: -f1 | sort | uniq -c
+</code></pre>
+<p>This reveals crawl frequency patterns. <strong>CCBot</strong> should show consistent monthly spikes (snapshot cycles). <strong>GPTBot</strong> may be more erratic.</p>
+<h3>Compliance Verification</h3>
+<p>After implementing robots.txt blocks, verify:</p>
+<p><strong>Week 1</strong>: Check for immediate drop in requests (both crawlers should reduce 90%+)</p>
+<p><strong>Week 4</strong>: Confirm sustained compliance (<strong>CCBot</strong> should be zero, <strong>GPTBot</strong> near-zero)</p>
+<p><strong>Week 12</strong>: Verify no resurgence (especially important for <strong>GPTBot</strong> which some publishers report returns after initial compliance)</p>
+<p>Non-compliance indicates either:</p>
+<ul>
+<li>Robots.txt not properly formatted</li>
+<li>Crawler infrastructure lag</li>
+<li>Intentional violation (rare for <strong>CCBot</strong>, occasional for <strong>GPTBot</strong>)</li>
+</ul>
+<h2>FAQ</h2>
+<p><strong>Q: Can I block GPTBot while allowing CCBot?</strong>
+Yes. Use separate user-agent directives:</p>
+<pre><code>User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Allow: /
+</code></pre>
+<p>This blocks <strong>OpenAI</strong> specifically while permitting <strong>Common Crawl</strong> access.</p>
+<p><strong>Q: If I allow CCBot, can OpenAI still access my content via Common Crawl archives?</strong>
+Yes. <strong>Common Crawl</strong> data is publicly available. Any organization (including <strong>OpenAI</strong>) can download archives containing your content. Blocking <strong>CCBot</strong> prevents future inclusion; doesn&#39;t remove already-archived content.</p>
+<p><strong>Q: Which crawler should I prioritize blocking if I can only manage one?</strong>
+Block <strong>GPTBot</strong>. It feeds proprietary commercial systems. <strong>CCBot</strong> serves open research which may provide indirect benefits (citations, visibility). If you must choose, stop the for-profit extraction first.</p>
+<p><strong>Q: Does Common Crawl compensate publishers in any way?</strong>
+No. They&#39;re nonprofit operating under fair use doctrine. No payment mechanism exists. If you want compensation, target companies using <strong>Common Crawl</strong> data, not <strong>Common Crawl</strong> itself.</p>
+<p><strong>Q: How do I know if my content is already in Common Crawl archives?</strong>
+Search <strong>Common Crawl</strong> index by domain:</p>
+<pre><code class="language-bash">curl -s &quot;https://index.commoncrawl.org/CC-MAIN-2024-10-index?url=yourdomain.com&amp;output=json&quot; | jq .
+</code></pre>
+<p>This returns URLs from your domain in that crawl snapshot.</p>
+<p><strong>Q: Can I request Common Crawl delete my archived content?</strong>
+No formal deletion process exists. You can block future crawling but past archives remain available. <strong>Common Crawl&#39;s</strong> legal position is that public web archiving is fair use.</p>
+<p><strong>Q: Does GPTBot ever ignore robots.txt like ByteSpider does?</strong>
+Rarely. <strong>GPTBot</strong> has strong compliance record (98-99%). Occasional continued access typically resolves within days. This differs from <strong>ByteSpider</strong> which systematically violates directives.</p>
+<p><strong>Q: If I licensed content to OpenAI, should I still allow GPTBot?</strong>
+Depends on license terms. If agreement grants perpetual training rights, <strong>GPTBot</strong> access may be redundant. If subscription-based (ongoing access to new content), continue allowing <strong>GPTBot</strong> with API key authentication to track usage against contract quotas.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

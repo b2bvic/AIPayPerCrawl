@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Cohere Crawler: Prevent AI Training Data Extraction | AI Pay Per Crawl</title>
+    <meta name="description" content="Complete guide to blocking Cohere&#39;s cohere-ai crawler using robots.txt, server rules, and CDN configurations. Includes verification and monitoring strategies.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Block Cohere Crawler: Prevent AI Training Data Extraction">
+    <meta property="og:description" content="Complete guide to blocking Cohere&#39;s cohere-ai crawler using robots.txt, server rules, and CDN configurations. Includes verification and monitoring strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/block-cohere-crawler">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Block Cohere Crawler: Prevent AI Training Data Extraction">
+    <meta name="twitter:description" content="Complete guide to blocking Cohere&#39;s cohere-ai crawler using robots.txt, server rules, and CDN configurations. Includes verification and monitoring strategies.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/block-cohere-crawler">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Block Cohere Crawler: Prevent AI Training Data Extraction",
+  "description": "Complete guide to blocking Cohere's cohere-ai crawler using robots.txt, server rules, and CDN configurations. Includes verification and monitoring strategies.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/block-cohere-crawler"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Block Cohere Crawler: Prevent AI Training Data Extraction",
+      "item": "https://aipaypercrawl.com/articles/block-cohere-crawler"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Block Cohere Crawler: Prevent AI Training Data Extraction</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 11 min read</span>
+        <h1>Block Cohere Crawler: Prevent AI Training Data Extraction</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Complete guide to blocking Cohere&#39;s cohere-ai crawler using robots.txt, server rules, and CDN configurations. Includes verification and monitoring strategies.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Block Cohere Crawler: Prevent AI Training Data Extraction</h1>
+<p><strong>Cohere</strong> operates a web crawler to collect training data for its enterprise-focused large language models. The <strong>cohere-ai</strong> crawler scrapes content from publisher domains without compensation, licensing agreements, or traffic reciprocity.</p>
+<p><strong>Cohere&#39;s</strong> business model targets enterprise AI deployments — custom models for corporations, embedding services for search applications, and specialized AI tools for business workflows. Your content trains models that <strong>Cohere</strong> sells to enterprise customers for tens of thousands of dollars annually.</p>
+<p>Publishers receive nothing. No licensing fees. No referral traffic. No attribution in AI responses. The extraction is purely one-directional.</p>
+<p>Blocking <strong>Cohere&#39;s</strong> crawler prevents this free data collection. Configuration is straightforward: robots.txt directives, server-level rules, or CDN blocks all work. <strong>Cohere</strong> respects robots.txt directives more consistently than <a href="/articles/bytespider-ignores-robots-txt.html">ByteSpider</a> but less reliably than <a href="/articles/gptbot-behavior-analysis.html">GPTBot</a>.</p>
+<hr>
+<h2>Understanding Cohere&#39;s Crawler</h2>
+<h3>cohere-ai User-Agent</h3>
+<p><strong>Cohere&#39;s</strong> crawler identifies as:</p>
+<pre><code>cohere-ai
+</code></pre>
+<p>Some requests include extended format:</p>
+<pre><code>Mozilla/5.0 (compatible; cohere-ai)
+</code></pre>
+<p>The minimal user-agent string contrasts with more verbose identifiers from <a href="/articles/gptbot-behavior-analysis.html">GPTBot</a> or <a href="/articles/claudebot-crawler-profile.html">ClaudeBot</a>. <strong>Cohere</strong> provides basic identification without documentation URLs or contact information in the user-agent string itself.</p>
+<p>Documentation exists at <strong>Cohere&#39;s</strong> website but isn&#39;t linked from the crawler identifier. This makes troubleshooting less convenient than crawlers that embed documentation links.</p>
+<h3>Crawl Behavior and Volume</h3>
+<p><strong>Cohere&#39;s</strong> crawler operates at moderate volume relative to other AI crawlers:</p>
+<table>
+<thead>
+<tr>
+<th>Publisher Size</th>
+<th>Daily Cohere Requests</th>
+<th>vs. GPTBot</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Small (under 100K PV)</td>
+<td>10-50</td>
+<td>~20%</td>
+</tr>
+<tr>
+<td>Medium (100K-1M PV)</td>
+<td>50-200</td>
+<td>~25%</td>
+</tr>
+<tr>
+<td>Large (1M-10M PV)</td>
+<td>200-1,000</td>
+<td>~20%</td>
+</tr>
+<tr>
+<td>Enterprise (10M+ PV)</td>
+<td>1,000-5,000</td>
+<td>~15%</td>
+</tr>
+</tbody></table>
+<p><strong>Cohere</strong> crawls less aggressively than market leaders, reflecting its enterprise focus rather than consumer-scale deployment. The company prioritizes quality over quantity — targeted crawling of business and technical content rather than broad web scraping.</p>
+<h3>No Licensing or Payment Infrastructure</h3>
+<p><strong>Cohere</strong> doesn&#39;t participate in content licensing marketplaces:</p>
+<ul>
+<li>No <a href="/articles/cloudflare-pay-per-crawl-setup.html">Cloudflare Pay-Per-Crawl</a> integration</li>
+<li>No <a href="/articles/rsl-protocol-implementation-guide.html">RSL protocol</a> support</li>
+<li>No public publisher licensing deals announced</li>
+<li>No API for negotiating content access terms</li>
+</ul>
+<p>The absence of payment infrastructure indicates <strong>Cohere</strong> intends to extract training data without compensation. Enterprise AI companies with revenue-generating products can afford licensing. <strong>Cohere</strong> chooses not to build those systems.</p>
+<hr>
+<h2>robots.txt Blocking</h2>
+<h3>Basic Directive</h3>
+<p>The simplest <strong>Cohere</strong> block:</p>
+<pre><code>User-agent: cohere-ai
+Disallow: /
+</code></pre>
+<p>This instructs the crawler to avoid all paths on your domain. <strong>Cohere</strong> checks robots.txt before crawling and honors explicit disallow directives in most cases.</p>
+<p><strong>Compliance rate:</strong> Publisher reports suggest <strong>Cohere</strong> respects robots.txt approximately 85-90% of the time. Better than <strong>ByteSpider</strong> (near-zero compliance) but worse than <strong>GPTBot</strong> (99%+ compliance).</p>
+<h3>Complete robots.txt Example</h3>
+<p>Comprehensive crawler management:</p>
+<pre><code># Block Cohere AI training
+User-agent: cohere-ai
+Disallow: /
+
+# Block other AI crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+# Allow search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+</code></pre>
+<p>This blocks AI training crawlers while preserving search engine access for traffic generation.</p>
+<h3>Selective Directory Access</h3>
+<p>Grant <strong>Cohere</strong> access to commodity content while protecting premium material:</p>
+<pre><code>User-agent: cohere-ai
+Allow: /blog/
+Allow: /news/
+Disallow: /research/
+Disallow: /premium/
+Disallow: /data/
+Disallow: /
+</code></pre>
+<p>Explicit <code>Allow:</code> directives override the final <code>Disallow: /</code> for specific paths.</p>
+<p><strong>Strategic use case:</strong> Public marketing content benefits from AI distribution. Proprietary research, premium articles, and datasets warrant protection. Selective access captures both objectives.</p>
+<hr>
+<h2>Server-Level Enforcement</h2>
+<h3>Nginx Configuration</h3>
+<p>Enforce blocks at web server layer:</p>
+<pre><code class="language-nginx">map $http_user_agent $block_cohere {
+    default 0;
+    ~*cohere-ai 1;
+    ~*cohere 1;
+}
+
+server {
+    if ($block_cohere) {
+        return 403;
+    }
+
+    # Rest of configuration
+}
+</code></pre>
+<p>This returns 403 Forbidden for <strong>Cohere</strong> crawler requests regardless of robots.txt compliance.</p>
+<p><strong>Reload Nginx:</strong></p>
+<pre><code class="language-bash">sudo nginx -t
+sudo systemctl reload nginx
+</code></pre>
+<h3>Apache .htaccess</h3>
+<p>Block <strong>Cohere</strong> via <code>.htaccess</code> file:</p>
+<pre><code class="language-apache">RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} cohere-ai [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} cohere [NC]
+RewriteRule .* - [F,L]
+</code></pre>
+<p>The <code>[NC]</code> flag enables case-insensitive matching. The <code>[F]</code> flag returns 403 Forbidden. The <code>[L]</code> flag stops processing additional rules.</p>
+<p><strong>Verify syntax:</strong></p>
+<pre><code class="language-bash">apachectl configtest
+</code></pre>
+<p>Changes take effect immediately without server restart.</p>
+<h3>WordPress Plugin Method</h3>
+<p>WordPress users without server access can block via plugins:</p>
+<p><strong>iThemes Security:</strong></p>
+<ol>
+<li>Install plugin</li>
+<li>Navigate to <strong>Security &gt; Settings &gt; User Agents</strong></li>
+<li>Add <code>cohere-ai</code> to banned list</li>
+<li>Save configuration</li>
+</ol>
+<p><strong>Wordfence:</strong></p>
+<ol>
+<li>Install plugin</li>
+<li>Navigate to <strong>Firewall &gt; Rate Limiting</strong></li>
+<li>Create rule: Block user-agents containing &quot;cohere&quot;</li>
+<li>Save and deploy</li>
+</ol>
+<p>Plugin-based blocking works but adds overhead compared to server-level rules. Prefer server configuration when available.</p>
+<hr>
+<h2>CDN and Cloud Blocking</h2>
+<h3>Cloudflare Custom Rules</h3>
+<p>Block at CDN edge for maximum efficiency:</p>
+<ol>
+<li>Navigate to <strong>Security &gt; WAF &gt; Custom Rules</strong></li>
+<li>Create rule: <code>(http.user_agent contains &quot;cohere-ai&quot;) or (http.user_agent contains &quot;cohere&quot;)</code></li>
+<li>Action: Block</li>
+<li>Deploy globally</li>
+</ol>
+<p><strong>Cloudflare</strong> edge blocking stops requests before they reach origin servers. Zero bandwidth consumed at origin. Zero server resources spent.</p>
+<h3>Fastly VCL Configuration</h3>
+<p><strong>Fastly</strong> users can block via VCL:</p>
+<pre><code class="language-vcl">if (req.http.User-Agent ~ &quot;(?i)cohere&quot;) {
+    error 403 &quot;Forbidden&quot;;
+}
+</code></pre>
+<p>The <code>(?i)</code> flag enables case-insensitive matching.</p>
+<h3>AWS CloudFront</h3>
+<p><strong>CloudFront</strong> users configure via Lambda@Edge or CloudFront Functions:</p>
+<p><strong>CloudFront Function:</strong></p>
+<pre><code class="language-javascript">function handler(event) {
+    var request = event.request;
+    var userAgent = request.headers[&#39;user-agent&#39;].value.toLowerCase();
+
+    if (userAgent.includes(&#39;cohere&#39;)) {
+        return {
+            statusCode: 403,
+            statusDescription: &#39;Forbidden&#39;
+        };
+    }
+
+    return request;
+}
+</code></pre>
+<p>Deploy to <strong>Viewer Request</strong> event. All <strong>Cohere</strong> requests get blocked at edge locations before reaching origin.</p>
+<hr>
+<h2>IP-Based Blocking</h2>
+<h3>Cohere IP Ranges</h3>
+<p><strong>Cohere</strong> doesn&#39;t publish official IP ranges. Community-maintained lists compiled from publisher logs provide partial coverage:</p>
+<pre><code>35.203.0.0/16
+35.247.0.0/16
+34.102.0.0/16
+</code></pre>
+<p>These represent <strong>Google Cloud Platform</strong> ranges where <strong>Cohere</strong> operates infrastructure. IP blocking supplements user-agent detection but can&#39;t replace it entirely.</p>
+<p><strong>Nginx IP blocking:</strong></p>
+<pre><code class="language-nginx">geo $cohere_ip {
+    default 0;
+    35.203.0.0/16 1;
+    35.247.0.0/16 1;
+    34.102.0.0/16 1;
+}
+
+server {
+    if ($cohere_ip &amp;&amp; $block_cohere) {
+        return 403;
+    }
+}
+</code></pre>
+<p><strong>Caveat:</strong> These ranges host many services beyond <strong>Cohere</strong>. IP-only blocking risks false positives. Combine IP detection with user-agent verification.</p>
+<h3>Verify Legitimate Cohere Crawler</h3>
+<p>Confirm requests claiming <strong>Cohere</strong> identity actually originate from <strong>Cohere</strong>:</p>
+<pre><code class="language-bash"># Reverse DNS lookup
+host 35.203.123.45
+# Should resolve to google.com or googleapis.com domain
+
+# Forward verification
+dig +short &lt;reversed-hostname&gt;
+# Should return original IP
+</code></pre>
+<p><strong>Cohere</strong> operates on <strong>GCP</strong>. Legitimate requests resolve to Google infrastructure. Spoofed requests fail verification.</p>
+<hr>
+<h2>Verification and Monitoring</h2>
+<h3>Check Server Logs</h3>
+<p>Verify block effectiveness through log analysis:</p>
+<p><strong>Nginx:</strong></p>
+<pre><code class="language-bash">grep &quot;cohere&quot; /var/log/nginx/access.log | tail -50
+</code></pre>
+<p><strong>Apache:</strong></p>
+<pre><code class="language-bash">grep &quot;cohere&quot; /var/log/apache2/access.log | tail -50
+</code></pre>
+<p><strong>Expected result after blocking:</strong> Zero successful (200) responses to content pages. Occasional robots.txt checks are normal. All content requests should show 403 responses.</p>
+<h3>Test robots.txt Compliance</h3>
+<p>Verify <strong>Cohere</strong> honors your robots.txt:</p>
+<pre><code class="language-bash">curl -A &quot;cohere-ai&quot; https://yourdomain.com/test-page
+</code></pre>
+<p>If blocking works, this returns 403 (if server-level blocking) or empty response (if robots.txt-only and <strong>Cohere</strong> complies).</p>
+<p>If you receive 200 and page content, blocks failed. Investigate:</p>
+<ul>
+<li>robots.txt syntax errors</li>
+<li>Server config not loaded</li>
+<li>CDN rules not deployed</li>
+</ul>
+<h3>Monitor Crawl Activity Weekly</h3>
+<p>Track <strong>Cohere</strong> crawler activity over time:</p>
+<pre><code class="language-bash">#!/bin/bash
+# Count Cohere requests last 7 days
+grep &quot;cohere&quot; /var/log/nginx/access.log | wc -l
+</code></pre>
+<p><strong>Alert threshold:</strong> More than 10 successful requests per week after implementing blocks suggests compliance failure or new crawler variants.</p>
+<p><strong>Cloudflare Analytics:</strong> Navigate to <strong>Security &gt; Events</strong> and filter for &quot;cohere&quot; in user-agent string. Review request counts and block success rates.</p>
+<hr>
+<h2>Why Block Cohere Specifically</h2>
+<h3>Enterprise AI Revenue Without Publisher Compensation</h3>
+<p><strong>Cohere</strong> sells enterprise AI products at premium prices. <strong>Command</strong> language models, embedding services, and custom AI deployments generate millions in revenue. Training data extracted from publisher domains enables these products.</p>
+<p>Publishers subsidize <strong>Cohere&#39;s</strong> enterprise sales. Your content trains models that corporations license for $50,000+ annually. <strong>Cohere</strong> captures that revenue. Publishers receive nothing.</p>
+<h3>No Referral Traffic or Attribution</h3>
+<p><strong>Cohere&#39;s</strong> products don&#39;t generate publisher traffic:</p>
+<ul>
+<li>Enterprise AI deployments operate behind corporate firewalls</li>
+<li>Embedding services power internal search — no public referrals</li>
+<li>Custom models serve private applications — no external links</li>
+</ul>
+<p>Unlike search engines (which crawl and return traffic), <strong>Cohere</strong> crawls without reciprocal value. The extraction is purely one-way.</p>
+<h3>Competitive Harm to Publishers Building AI Products</h3>
+<p>Publishers developing their own AI capabilities compete for training data. <strong>Cohere</strong> extracting your content for free creates competitive asymmetry:</p>
+<p><strong>Your costs:</strong></p>
+<ul>
+<li>Infrastructure for content production</li>
+<li>Editorial staff salaries</li>
+<li>Content quality control</li>
+<li>Platform operation and hosting</li>
+</ul>
+<p><strong>Cohere&#39;s costs:</strong></p>
+<ul>
+<li>Zero (they extract your content for free)</li>
+</ul>
+<p><strong>Cohere</strong> then competes with AI products you might build using the content you paid to create. Blocking prevents this competitive disadvantage.</p>
+<hr>
+<h2>Strategic Considerations</h2>
+<h3>Enterprise Focus May Justify Differentiated Approach</h3>
+<p><strong>Cohere</strong> targets enterprise customers rather than consumers. Some publishers conclude this warrants different treatment than consumer-focused AI companies.</p>
+<p><strong>Arguments for allowing Cohere:</strong></p>
+<ul>
+<li>Enterprise AI adoption might increase B2B content demand</li>
+<li>Corporate users discovering your content through AI tools could lead to enterprise subscriptions</li>
+<li><strong>Cohere</strong> might be more amenable to licensing conversations than consumer-focused companies</li>
+</ul>
+<p><strong>Arguments for blocking Cohere:</strong></p>
+<ul>
+<li>Enterprise revenue makes licensing even more affordable for <strong>Cohere</strong></li>
+<li>No evidence <strong>Cohere</strong> will voluntarily compensate publishers</li>
+<li>Enterprise AI abstracts content behind corporate walls — even less traffic than consumer AI</li>
+</ul>
+<p>Most publishers conclude that enterprise focus strengthens the case for blocking, not weakens it. Enterprise AI companies can afford to license. Their refusal to do so is strategic choice, not financial constraint.</p>
+<h3>Cohere May Build Licensing Systems</h3>
+<p>Some AI companies initially avoided licensing, then built payment systems after publisher pressure. <strong>OpenAI</strong> and <strong>Anthropic</strong> now participate in <a href="/articles/ai-content-licensing-models-comparison.html">licensing marketplaces</a>.</p>
+<p><strong>Cohere</strong> might follow. Publishers blocking now establish that content access requires negotiation. Publishers allowing free access establish precedent <strong>Cohere</strong> may expect to continue.</p>
+<p><strong>Strategic positioning:</strong> Block now, negotiate later. When <strong>Cohere</strong> builds licensing infrastructure, you&#39;re positioned to participate from a &quot;content protection&quot; stance rather than appearing to reverse previously granted access.</p>
+<hr>
+<h2>Frequently Asked Questions</h2>
+<h3>Does Cohere respect robots.txt directives?</h3>
+<p>Mostly. Publisher reports indicate <strong>Cohere</strong> compliance rates around 85-90%. Better than <strong>ByteSpider</strong> (routine violations) but less reliable than <strong>GPTBot</strong> (near-perfect compliance). Server-level enforcement provides stronger protection than robots.txt alone.</p>
+<h3>Will blocking Cohere affect my search engine rankings?</h3>
+<p>No. <strong>Cohere</strong> operates a specialized AI training crawler, not a search engine. Blocking <strong>cohere-ai</strong> doesn&#39;t affect <strong>Google</strong>, <strong>Bing</strong>, or other search crawlers. Your search rankings remain unchanged.</p>
+<h3>Can I monetize Cohere crawler access through Pay-Per-Crawl?</h3>
+<p>Not currently. <strong>Cohere</strong> doesn&#39;t integrate with <a href="/articles/cloudflare-pay-per-crawl-setup.html">Cloudflare Pay-Per-Crawl</a> or <a href="/articles/rsl-protocol-implementation-guide.html">RSL protocol</a> systems. You can allow or block — monetization isn&#39;t an option with existing <strong>Cohere</strong> infrastructure.</p>
+<h3>How do I verify blocked Cohere crawler requests?</h3>
+<p>Check server logs for <strong>Cohere</strong> user-agent strings: <code>grep &quot;cohere&quot; /var/log/nginx/access.log</code>. After implementing blocks, you should see only 403 (forbidden) responses or near-zero requests. Weekly monitoring confirms sustained effectiveness.</p>
+<h3>What&#39;s Cohere&#39;s crawler volume compared to GPTBot?</h3>
+<p><strong>Cohere</strong> generates approximately 15-25% of <strong>GPTBot&#39;s</strong> request volume. The crawler is less aggressive, reflecting <strong>Cohere&#39;s</strong> enterprise focus rather than consumer-scale deployment. Lower volume doesn&#39;t reduce strategic importance of blocking — enterprise AI products still extract significant value from training data.</p>
+<h3>Should I block Cohere if I allow OpenAI or Anthropic?</h3>
+<p>If you license to <strong>OpenAI</strong> or <strong>Anthropic</strong> through <a href="/articles/cloudflare-pay-per-crawl-setup.html">Pay-Per-Crawl systems</a>, those crawlers compensate your content access. <strong>Cohere</strong> doesn&#39;t participate in payment systems. Consistent strategy: allow crawlers that pay, block crawlers that don&#39;t.</p>
+<h3>Does blocking affect Cohere&#39;s embedding or search products?</h3>
+<p>Blocking prevents <strong>Cohere</strong> from training models on your content. If enterprises use <strong>Cohere</strong> embedding services to power internal search, those services won&#39;t surface your content unless their corporate users access it directly (not through <strong>Cohere</strong> crawling). Your content remains available to direct human access and compensating crawlers.</p>
+<h3>Can Cohere bypass blocks by spoofing user-agents?</h3>
+<p>Theoretically possible but less common for established AI companies than for aggressive crawlers like <strong>ByteSpider</strong>. <strong>Cohere</strong> operates as a venture-backed enterprise AI company with reputation to maintain. Systematic robots.txt violations or user-agent spoofing creates legal and reputational risk they&#39;re unlikely to accept. Blocking through user-agent detection is generally effective for <strong>Cohere</strong>.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

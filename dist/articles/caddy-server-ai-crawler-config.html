@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caddy Server AI Crawler Config: Monetizing Training Data with Modern Web Server Architecture | AI Pay Per Crawl</title>
+    <meta name="description" content="Caddy&#39;s automatic HTTPS, native JSON handling, and modular middleware enable sophisticated AI crawler management and conditional access licensing without Nginx complexity.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Caddy Server AI Crawler Config: Monetizing Training Data with Modern Web Server Architecture">
+    <meta property="og:description" content="Caddy&#39;s automatic HTTPS, native JSON handling, and modular middleware enable sophisticated AI crawler management and conditional access licensing without Nginx complexity.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/caddy-server-ai-crawler-config">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Caddy Server AI Crawler Config: Monetizing Training Data with Modern Web Server Architecture">
+    <meta name="twitter:description" content="Caddy&#39;s automatic HTTPS, native JSON handling, and modular middleware enable sophisticated AI crawler management and conditional access licensing without Nginx complexity.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/caddy-server-ai-crawler-config">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Caddy Server AI Crawler Config: Monetizing Training Data with Modern Web Server Architecture",
+  "description": "Caddy's automatic HTTPS, native JSON handling, and modular middleware enable sophisticated AI crawler management and conditional access licensing without Nginx complexity.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/caddy-server-ai-crawler-config"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Caddy Server AI Crawler Config: Monetizing Training Data with Modern Web Server Architecture",
+      "item": "https://aipaypercrawl.com/articles/caddy-server-ai-crawler-config"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Caddy Server AI Crawler Config: Monetizing Training Data with Modern Web Server Architecture</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 12 min read</span>
+        <h1>Caddy Server AI Crawler Config: Monetizing Training Data with Modern Web Server Architecture</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Caddy&#39;s automatic HTTPS, native JSON handling, and modular middleware enable sophisticated AI crawler management and conditional access licensing without Nginx complexity.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Caddy Server AI Crawler Config: Monetizing Training Data with Modern Web Server Architecture</h1>
+<p><strong>Caddy</strong> represents next-generation web server design—automatic HTTPS, zero-config TLS, human-readable configuration, and native JSON APIs. These characteristics make it ideal infrastructure for AI crawler monetization strategies that require conditional access, usage metering, and license validation. Where <strong>Nginx</strong> demands complex regex and location blocks, <strong>Caddy</strong> achieves equivalent functionality through declarative configuration.</p>
+<p>Publishers implementing AI training data licensing need technical infrastructure that distinguishes crawler types, validates API keys, meters usage, and serves appropriate content versions. <strong>Caddy&#39;s</strong> architecture handles these requirements without external dependencies. This guide demonstrates Caddy server AI crawler config for publishers</p>
+<p> monetizing access to <strong>GPTBot</strong>, <strong>ClaudeBot</strong>, <strong>ByteSpider</strong>, and other training data harvesters.</p>
+<h2>Caddy Architecture Advantages</h2>
+<p>Traditional web servers (<strong>Apache</strong>, <strong>Nginx</strong>) evolved from 1990s design patterns. <strong>Caddy</strong> began in 2015 with modern requirements:</p>
+<p><strong>Automatic HTTPS</strong>: TLS certificates via <strong>Let&#39;s Encrypt</strong> with zero configuration. Traditional servers require separate certificate management infrastructure.</p>
+<p><strong>Native Reverse Proxy</strong>: Built-in load balancing, health checks, and upstream failover without third-party modules.</p>
+<p><strong>JSON Configuration</strong>: Machine-readable config enables dynamic updates without parser ambiguity.</p>
+<p><strong>Middleware Pipeline</strong>: Request handling flows through modular middleware (authentication, logging, rewriting) with clear ordering.</p>
+<p><strong>Single Binary</strong>: No separate processes or daemons. Single executable handles all functionality.</p>
+<p>For AI crawler monetization, these features enable:</p>
+<ol>
+<li>Secure API key transmission over HTTPS (automatic certificates)</li>
+<li>Dynamic licensing logic without config file reloads (JSON API)</li>
+<li>Usage logging with structured data (native JSON logging)</li>
+<li>Request middleware for crawler detection and validation (modular pipeline)</li>
+</ol>
+<p><strong>Nginx</strong> achieves similar outcomes but requires <strong>Lua</strong>, <strong>OpenResty</strong>, or external auth services. <strong>Caddy</strong> handles it natively.</p>
+<h2>Basic Crawler Detection Configuration</h2>
+<p>Start with identifying AI training crawlers and routing them differently than search engines or human visitors.</p>
+<p><strong>Caddyfile syntax</strong> (human-readable):</p>
+<pre><code class="language-caddy">example.com {
+    @ai_crawlers {
+        header User-Agent *GPTBot*
+        header User-Agent *ClaudeBot*
+        header User-Agent *cohere-ai*
+        header User-Agent *Bytespider*
+        header User-Agent *CCBot*
+    }
+
+    @search_engines {
+        header User-Agent *Googlebot*
+        header User-Agent *Bingbot*
+        header User-Agent *Slurp*
+    }
+
+    # Search engines get full access
+    handle @search_engines {
+        file_server
+        root * /var/www/html
+    }
+
+    # AI crawlers get special handling
+    handle @ai_crawlers {
+        respond &quot;AI crawler detected. Licensing required.&quot; 403
+    }
+
+    # Regular traffic
+    handle {
+        file_server
+        root * /var/www/html
+    }
+}
+</code></pre>
+<p>This configuration creates matchers for crawler types. The <code>@ai_crawlers</code> matcher triggers on user agents associated with training data collection. The <code>@search_engines</code> matcher permits legitimate search indexing. Each handle block defines different behavior.</p>
+<p>Currently AI crawlers receive 403 responses. Next step: replace with licensing logic.</p>
+<h2>API Key Validation Middleware</h2>
+<p>Monetizing crawler access requires authentication. Implement API key validation:</p>
+<p><strong>Enhanced Caddyfile</strong>:</p>
+<pre><code class="language-caddy">example.com {
+    @ai_crawlers {
+        header User-Agent *GPTBot*
+        header User-Agent *ClaudeBot*
+        header User-Agent *cohere-ai*
+        header User-Agent *Bytespider*
+    }
+
+    @licensed_crawler {
+        header User-Agent *GPTBot*
+        header User-Agent *ClaudeBot*
+        header User-Agent *cohere-ai*
+        header User-Agent *Bytespider*
+        header X-API-Key *
+    }
+
+    # Licensed crawlers with valid keys
+    handle @licensed_crawler {
+        reverse_proxy localhost:8080 {
+            header_up X-Crawler-Type {http.request.header.User-Agent}
+            header_up X-API-Key {http.request.header.X-API-Key}
+        }
+    }
+
+    # Unlicensed AI crawlers get preview
+    handle @ai_crawlers {
+        rewrite * /preview{path}
+        file_server
+        root * /var/www/preview
+    }
+
+    # Regular traffic
+    handle {
+        file_server
+        root * /var/www/html
+    }
+}
+</code></pre>
+<p>This setup:</p>
+<ol>
+<li><strong>@licensed_crawler</strong> matcher requires both AI user agent AND X-API-Key header</li>
+<li>Licensed requests reverse proxy to backend application (port 8080) that validates key against database</li>
+<li>Unlicensed crawler requests serve from <code>/var/www/preview</code> (truncated content)</li>
+<li>Human traffic serves from <code>/var/www/html</code> (full content)</li>
+</ol>
+<p>The backend application receives crawler type and API key via headers, validates license status, logs usage, and returns appropriate content.</p>
+<h2>Backend Validation Service</h2>
+<p><strong>Caddy</strong> handles routing; backend service validates keys and enforces quotas. Example <strong>Python/Flask</strong> implementation:</p>
+<pre><code class="language-python">from flask import Flask, request, jsonify, send_from_directory
+import sqlite3
+from datetime import datetime
+
+app = Flask(__name__)
+
+def validate_api_key(key):
+    &quot;&quot;&quot;Check if API key is valid and active&quot;&quot;&quot;
+    conn = sqlite3.connect(&#39;/var/data/licenses.db&#39;)
+    cursor = conn.cursor()
+
+    cursor.execute(&#39;&#39;&#39;
+        SELECT license_id, status, quota_limit, quota_used, expires_at
+        FROM licenses
+        WHERE api_key = ?
+    &#39;&#39;&#39;, (key,))
+
+    result = cursor.fetchone()
+    conn.close()
+
+    if not result:
+        return None
+
+    license_id, status, quota_limit, quota_used, expires_at = result
+
+    if status != &#39;active&#39;:
+        return None
+
+    if datetime.fromisoformat(expires_at) &lt; datetime.now():
+        return None
+
+    if quota_limit and quota_used &gt;= quota_limit:
+        return None
+
+    return {
+        &#39;license_id&#39;: license_id,
+        &#39;quota_remaining&#39;: quota_limit - quota_used if quota_limit else None
+    }
+
+def log_access(license_id, user_agent, url, bytes_served):
+    &quot;&quot;&quot;Record crawler access for billing&quot;&quot;&quot;
+    conn = sqlite3.connect(&#39;/var/data/licenses.db&#39;)
+    cursor = conn.cursor()
+
+    cursor.execute(&#39;&#39;&#39;
+        INSERT INTO access_logs (license_id, user_agent, url, bytes_served, timestamp)
+        VALUES (?, ?, ?, ?, ?)
+    &#39;&#39;&#39;, (license_id, user_agent, url, bytes_served, datetime.now().isoformat()))
+
+    # Update quota usage
+    cursor.execute(&#39;&#39;&#39;
+        UPDATE licenses
+        SET quota_used = quota_used + ?
+        WHERE license_id = ?
+    &#39;&#39;&#39;, (bytes_served, license_id))
+
+    conn.commit()
+    conn.close()
+
+@app.route(&#39;/&lt;path:filepath&gt;&#39;)
+def serve_content(filepath):
+    api_key = request.headers.get(&#39;X-API-Key&#39;)
+    user_agent = request.headers.get(&#39;X-Crawler-Type&#39;)
+
+    license_info = validate_api_key(api_key)
+
+    if not license_info:
+        return jsonify({&#39;error&#39;: &#39;Invalid or expired API key&#39;}), 403
+
+    # Serve full content
+    try:
+        response = send_from_directory(&#39;/var/www/html&#39;, filepath)
+        bytes_served = len(response.get_data())
+        log_access(license_info[&#39;license_id&#39;], user_agent, filepath, bytes_served)
+        return response
+    except FileNotFoundError:
+        return jsonify({&#39;error&#39;: &#39;Not found&#39;}), 404
+
+if __name__ == &#39;__main__&#39;:
+    app.run(host=&#39;127.0.0.1&#39;, port=8080)
+</code></pre>
+<p>Database schema:</p>
+<pre><code class="language-sql">CREATE TABLE licenses (
+    license_id TEXT PRIMARY KEY,
+    api_key TEXT UNIQUE NOT NULL,
+    customer_name TEXT,
+    status TEXT DEFAULT &#39;active&#39;,
+    quota_limit INTEGER,  -- bytes, NULL for unlimited
+    quota_used INTEGER DEFAULT 0,
+    expires_at TEXT,  -- ISO datetime
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE access_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    license_id TEXT,
+    user_agent TEXT,
+    url TEXT,
+    bytes_served INTEGER,
+    timestamp TEXT,
+    FOREIGN KEY (license_id) REFERENCES licenses(license_id)
+);
+</code></pre>
+<p>This architecture:</p>
+<ul>
+<li><strong>Caddy</strong> handles TLS, routing, and request classification</li>
+<li><strong>Python service</strong> validates keys, enforces quotas, logs usage</li>
+<li><strong>SQLite</strong> stores license data (use <strong>PostgreSQL</strong> for production scale)</li>
+</ul>
+<p>Separation of concerns: web server does web serving, application logic stays in application layer.</p>
+<h2>Rate Limiting Configuration</h2>
+<p>Even licensed crawlers need rate limits to prevent abuse:</p>
+<pre><code class="language-caddy">example.com {
+    @ai_crawlers header User-Agent *GPTBot* *ClaudeBot* *cohere-ai*
+
+    # Rate limit: 10 requests per second per crawler
+    rate_limit @ai_crawlers {
+        zone ai_crawlers 10m
+        rate 10
+        burst 20
+        key {http.request.header.X-API-Key}
+    }
+
+    handle @ai_crawlers {
+        reverse_proxy localhost:8080 {
+            header_up X-Crawler-Type {http.request.header.User-Agent}
+            header_up X-API-Key {http.request.header.X-API-Key}
+        }
+    }
+}
+</code></pre>
+<p><strong>Note</strong>: Rate limiting requires <strong>Caddy</strong> plugin. Install via:</p>
+<pre><code class="language-bash">xcaddy build --with github.com/mholt/caddy-ratelimit
+</code></pre>
+<p>Rate limit parameters:</p>
+<ul>
+<li><strong>zone</strong>: Memory allocation for tracking (10MB)</li>
+<li><strong>rate</strong>: Requests per second</li>
+<li><strong>burst</strong>: Temporary excess allowed</li>
+<li><strong>key</strong>: What to track (API key means per-license limiting)</li>
+</ul>
+<p>Licensed crawlers can request 10/second sustained, up to 20/second briefly. Exceeding triggers 429 (Too Many Requests) response.</p>
+<h2>ASN-Based Blocking</h2>
+<p>Some crawlers ignore user agent restrictions. Block by autonomous system number (ASN):</p>
+<pre><code class="language-caddy">example.com {
+    @bytedance_asn {
+        remote_ip 110.249.200.0/21 118.184.176.0/20 161.117.0.0/16
+    }
+
+    @bytedance_crawler {
+        header User-Agent *Bytespider*
+    }
+
+    # Block ByteDance ASN unless licensed
+    handle @bytedance_asn {
+        @has_license header X-API-Key *
+
+        handle @has_license {
+            reverse_proxy localhost:8080
+        }
+
+        handle {
+            respond &quot;Access denied. Licensing required for ByteDance crawlers.&quot; 403
+        }
+    }
+
+    # Also catch ByteSpider user agent from other IPs
+    handle @bytedance_crawler {
+        respond &quot;ByteSpider must license access.&quot; 403
+    }
+}
+</code></pre>
+<p>This configuration:</p>
+<ol>
+<li>Identifies <strong>ByteDance</strong> IP ranges</li>
+<li>Blocks unless valid API key present</li>
+<li>Also catches <strong>ByteSpider</strong> user agent from non-ByteDance IPs (spoofed)</li>
+</ol>
+<p>Maintain IP range list from <strong>ByteDance</strong> ASN data (AS138997, AS209243, AS134705, AS396986).</p>
+<h2>Geographic Restrictions</h2>
+<p>Some publishers want to restrict AI training to specific regions:</p>
+<pre><code class="language-caddy">example.com {
+    @ai_crawlers header User-Agent *GPTBot* *ClaudeBot*
+
+    @us_requests {
+        maxmind_geolite2 {
+            database_path /usr/share/GeoIP/GeoLite2-Country.mmdb
+            lookup_field country_code
+        }
+        expression {maxmind_geolite2.country_code} == &quot;US&quot;
+    }
+
+    @eu_requests {
+        maxmind_geolite2 {
+            database_path /usr/share/GeoIP/GeoLite2-Country.mmdb
+            lookup_field country_code
+        }
+        expression {maxmind_geolite2.country_code} in [&quot;DE&quot;, &quot;FR&quot;, &quot;GB&quot;, &quot;IT&quot;, &quot;ES&quot;]
+    }
+
+    # US crawlers allowed
+    handle @ai_crawlers @us_requests {
+        reverse_proxy localhost:8080
+    }
+
+    # EU crawlers require premium license
+    handle @ai_crawlers @eu_requests {
+        @premium_license header X-License-Tier &quot;premium&quot;
+
+        handle @premium_license {
+            reverse_proxy localhost:8080
+        }
+
+        handle {
+            respond &quot;EU crawling requires premium license tier.&quot; 402
+        }
+    }
+
+    # Other regions blocked
+    handle @ai_crawlers {
+        respond &quot;AI crawling not available in your region.&quot; 451
+    }
+}
+</code></pre>
+<p><strong>MaxMind GeoLite2</strong> integration enables country-level restrictions. Use cases:</p>
+<ul>
+<li>GDPR compliance (different terms for EU entities)</li>
+<li>Market prioritization (license to domestic companies first)</li>
+<li>Data sovereignty (exclude certain jurisdictions)</li>
+</ul>
+<h2>Structured Logging for Billing</h2>
+<p>Usage-based billing requires detailed access logs:</p>
+<pre><code class="language-caddy">example.com {
+    log {
+        output file /var/log/caddy/crawler_access.log {
+            roll_size 100mb
+            roll_keep 10
+        }
+
+        format json {
+            time_format iso8601
+            message_key msg
+        }
+
+        level INFO
+    }
+
+    handle @ai_crawlers {
+        reverse_proxy localhost:8080 {
+            header_up X-Crawler-Type {http.request.header.User-Agent}
+            header_up X-API-Key {http.request.header.X-API-Key}
+
+            # Log upstream response details
+            @success status 200
+            handle_response @success {
+                header X-Bytes-Served {http.response.header.Content-Length}
+            }
+        }
+    }
+}
+</code></pre>
+<p>Log format includes:</p>
+<ul>
+<li>Timestamp (ISO8601)</li>
+<li>Client IP</li>
+<li>User agent (crawler type)</li>
+<li>API key</li>
+<li>Requested URL</li>
+<li>Response status</li>
+<li>Bytes served</li>
+<li>Processing time</li>
+</ul>
+<p>Parse logs monthly for billing:</p>
+<pre><code class="language-python">import json
+from collections import defaultdict
+
+def calculate_usage(log_file):
+    usage_by_license = defaultdict(lambda: {&#39;requests&#39;: 0, &#39;bytes&#39;: 0})
+
+    with open(log_file) as f:
+        for line in f:
+            log_entry = json.loads(line)
+
+            api_key = log_entry.get(&#39;request&#39;, {}).get(&#39;headers&#39;, {}).get(&#39;X-Api-Key&#39;, [&#39;&#39;])[0]
+            bytes_served = int(log_entry.get(&#39;size&#39;, 0))
+
+            if api_key:
+                usage_by_license[api_key][&#39;requests&#39;] += 1
+                usage_by_license[api_key][&#39;bytes&#39;] += bytes_served
+
+    return usage_by_license
+
+usage = calculate_usage(&#39;/var/log/caddy/crawler_access.log&#39;)
+
+for api_key, metrics in usage.items():
+    print(f&quot;License {api_key}: {metrics[&#39;requests&#39;]} requests, {metrics[&#39;bytes&#39;]/1024/1024:.2f} MB&quot;)
+</code></pre>
+<p>This generates billing data from access logs without separate database queries.</p>
+<h2>Dynamic Configuration Updates</h2>
+<p><strong>Caddy</strong> supports zero-downtime configuration updates via JSON API:</p>
+<pre><code class="language-bash"># Add new licensed crawler
+curl -X POST http://localhost:2019/config/apps/http/servers/srv0/routes \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{
+    &quot;match&quot;: [{
+      &quot;header&quot;: {&quot;X-API-Key&quot;: [&quot;new_license_key_abc123&quot;]}
+    }],
+    &quot;handle&quot;: [{
+      &quot;handler&quot;: &quot;reverse_proxy&quot;,
+      &quot;upstreams&quot;: [{&quot;dial&quot;: &quot;localhost:8080&quot;}]
+    }]
+  }&#39;
+
+# Remove expired license
+curl -X DELETE http://localhost:2019/config/apps/http/servers/srv0/routes/3
+</code></pre>
+<p>This enables automated license provisioning:</p>
+<ol>
+<li>Customer signs up via web form</li>
+<li>Payment processed via <strong>Stripe</strong></li>
+<li>Backend generates API key</li>
+<li>Script calls <strong>Caddy</strong> API to add routing rule</li>
+<li>Customer receives API key via email</li>
+</ol>
+<p>No manual Caddyfile editing or server reloads required.</p>
+<h2>Content Versioning for Crawlers</h2>
+<p>Serve different content versions to human visitors versus crawlers:</p>
+<pre><code class="language-caddy">example.com {
+    @ai_crawlers header User-Agent *GPTBot* *ClaudeBot*
+
+    # Crawlers get Markdown
+    handle @ai_crawlers {
+        @licensed header X-API-Key *
+
+        handle @licensed {
+            rewrite * /content/markdown{path}.md
+            file_server
+            root * /var/www/
+        }
+
+        handle {
+            rewrite * /content/preview{path}.md
+            file_server
+            root * /var/www/
+        }
+    }
+
+    # Humans get HTML
+    handle {
+        file_server
+        root * /var/www/content/html
+        try_files {path}.html {path}
+    }
+}
+</code></pre>
+<p>Directory structure:</p>
+<pre><code>/var/www/
+├── content/
+│   ├── html/           # Styled web pages for humans
+│   ├── markdown/       # Full content for licensed crawlers
+│   └── preview/        # Truncated samples for unlicensed crawlers
+</code></pre>
+<p>This allows:</p>
+<ul>
+<li>Humans see designed website</li>
+<li>Licensed AI crawlers download clean Markdown</li>
+<li>Unlicensed crawlers sample truncated previews</li>
+</ul>
+<p>Markdown format is optimal for training—no HTML noise, pure structured text. Serving native Markdown reduces crawler bandwidth consumption and improves training data quality.</p>
+<h2>API Endpoint for Bulk Access</h2>
+<p>Some AI companies prefer bulk downloads over incremental crawling:</p>
+<pre><code class="language-caddy">example.com {
+    # Regular website traffic
+    handle / {
+        file_server
+        root * /var/www/html
+    }
+
+    # Bulk API for licensed crawlers
+    handle /api/v1/content* {
+        @authenticated {
+            header Authorization &quot;Bearer *&quot;
+        }
+
+        handle @authenticated {
+            reverse_proxy localhost:8080 {
+                header_up X-API-Key {http.request.header.Authorization}
+            }
+        }
+
+        handle {
+            respond &quot;Authentication required&quot; 401
+        }
+    }
+}
+</code></pre>
+<p>Backend API implementation:</p>
+<pre><code class="language-python">@app.route(&#39;/api/v1/content&#39;)
+def list_content():
+    &quot;&quot;&quot;Return catalog of available content&quot;&quot;&quot;
+    api_key = request.headers.get(&#39;Authorization&#39;, &#39;&#39;).replace(&#39;Bearer &#39;, &#39;&#39;)
+
+    if not validate_api_key(api_key):
+        return jsonify({&#39;error&#39;: &#39;Invalid API key&#39;}), 401
+
+    # Return JSON listing all articles
+    articles = get_article_catalog()
+    return jsonify({&#39;articles&#39;: articles, &#39;total&#39;: len(articles)})
+
+@app.route(&#39;/api/v1/content/&lt;article_id&gt;&#39;)
+def get_article(article_id):
+    &quot;&quot;&quot;Return specific article content&quot;&quot;&quot;
+    api_key = request.headers.get(&#39;Authorization&#39;, &#39;&#39;).replace(&#39;Bearer &#39;, &#39;&#39;)
+    license_info = validate_api_key(api_key)
+
+    if not license_info:
+        return jsonify({&#39;error&#39;: &#39;Invalid API key&#39;}), 401
+
+    article_data = get_article_by_id(article_id)
+    log_api_access(license_info[&#39;license_id&#39;], article_id)
+
+    return jsonify(article_data)
+</code></pre>
+<p>API provides cleaner integration than HTML scraping. Customers make standard HTTP requests, receive structured JSON responses.</p>
+<h2>Monitoring and Alerts</h2>
+<p>Track crawler behavior and license usage:</p>
+<pre><code class="language-caddy">example.com {
+    handle /metrics {
+        @internal {
+            remote_ip 127.0.0.1
+        }
+
+        handle @internal {
+            metrics
+        }
+
+        handle {
+            respond &quot;Access denied&quot; 403
+        }
+    }
+}
+</code></pre>
+<p><strong>Caddy</strong> exposes Prometheus-compatible metrics at <code>/metrics</code> endpoint (restricted to localhost). Metrics include:</p>
+<ul>
+<li>Request counts by user agent</li>
+<li>Response times</li>
+<li>Bytes transferred</li>
+<li>Error rates</li>
+</ul>
+<p>Integrate with monitoring:</p>
+<pre><code class="language-yaml"># prometheus.yml
+scrape_configs:
+  - job_name: &#39;caddy&#39;
+    static_configs:
+      - targets: [&#39;localhost:2019&#39;]
+</code></pre>
+<p>Set alerts:</p>
+<pre><code class="language-yaml"># alertmanager.yml
+groups:
+  - name: crawler_alerts
+    rules:
+      - alert: ExcessiveCrawlerTraffic
+        expr: rate(caddy_http_requests_total{user_agent=~&quot;.*GPTBot.*&quot;}[5m]) &gt; 100
+        annotations:
+          summary: &quot;GPTBot exceeding rate limits&quot;
+
+      - alert: UnlicensedCrawlingSpike
+        expr: rate(caddy_http_response_status{status=&quot;403&quot;,user_agent=~&quot;.*Bot.*&quot;}[1h]) &gt; 500
+        annotations:
+          summary: &quot;High volume of unlicensed crawler attempts&quot;
+</code></pre>
+<p>This provides visibility into crawler activity and automated alerting for anomalies.</p>
+<h2>FAQ</h2>
+<p><strong>Q: Why use Caddy instead of Nginx for AI crawler management?</strong>
+<strong>Caddy</strong> offers automatic HTTPS, simpler configuration syntax, native JSON APIs for dynamic updates, and zero-dependency operation. <strong>Nginx</strong> requires <strong>Lua</strong> or <strong>OpenResty</strong> for equivalent functionality. For publishers without DevOps teams, <strong>Caddy</strong> reduces complexity significantly.</p>
+<p><strong>Q: How do I migrate existing Nginx crawler config to Caddy?</strong>
+<strong>Caddy</strong> translates <strong>Nginx</strong> location blocks to handle directives, rewrite rules stay similar, and upstream blocks become reverse_proxy. Most <strong>Nginx</strong> configs port directly. Complex <strong>Lua</strong> logic requires rewriting as separate backend service.</p>
+<p><strong>Q: Can Caddy handle high traffic volumes from aggressive crawlers?</strong>
+Yes. <strong>Caddy</strong> is production-ready, powering sites with millions of requests daily. For extreme scale (10K+ requests/second), consider load balancing across multiple <strong>Caddy</strong> instances or using <strong>Caddy</strong> as frontend with backend <strong>Golang</strong> services.</p>
+<p><strong>Q: Does Caddy support IP allowlisting for specific crawler IPs?</strong>
+Yes via <code>remote_ip</code> matcher. Example: <code>@openai_ips remote_ip 20.15.240.0/23 13.65.240.0/23</code> matches known <strong>OpenAI</strong> ranges. Combine with user agent checks for defense-in-depth.</p>
+<p><strong>Q: How do I serve different content to crawlers without duplicating files?</strong>
+Use templating at application layer. Backend service receives crawler type header, renders appropriate content version from single source. Alternatively, use <strong>Caddy</strong> templates with conditionals based on user agent.</p>
+<p><strong>Q: Can Caddy validate API keys against external services like Auth0?</strong>
+Yes via <code>forward_auth</code> directive:</p>
+<pre><code class="language-caddy">handle @ai_crawlers {
+    forward_auth localhost:9000 {
+        uri /validate
+        copy_headers X-API-Key
+    }
+    reverse_proxy localhost:8080
+}
+</code></pre>
+<p>External auth service at port 9000 validates keys, returns 200 (authorized) or 403 (denied).</p>
+<p><strong>Q: What&#39;s the performance overhead of per-request API key validation?</strong>
+Minimal if validation is fast. SQLite lookups take &lt;1ms, in-memory caches (Redis) take &lt;0.1ms. For reference, TLS handshake overhead is 50-100ms. Key validation adds negligible latency compared to network transport.</p>
+<p><strong>Q: How do I prevent API key theft via crawler logs or man-in-the-middle attacks?</strong>
+Require HTTPS (automatic in <strong>Caddy</strong>), rotate keys quarterly, implement rate limiting per key (abnormal usage patterns suggest compromise), and hash keys in logs (log first 8 characters only). Never transmit keys in URLs—use headers exclusively.</p>
+<p><strong>Q: Can Caddy automatically provision API keys when customers sign up?</strong>
+Not directly, but integrate with payment processor webhooks. <strong>Stripe</strong> webhook triggers your script → generates key → stores in database → calls <strong>Caddy</strong> API to add routing rule. Entire flow automated.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

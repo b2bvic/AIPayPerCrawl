@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteSpider Ignores Robots.txt: Documentation and Enforcement Strategies | AI Pay Per Crawl</title>
+    <meta name="description" content="Multiple publishers document ByteSpider&#39;s continued crawling despite explicit robots.txt disallow directives, requiring technical enforcement beyond protocol compliance.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ByteSpider Ignores Robots.txt: Documentation and Enforcement Strategies">
+    <meta property="og:description" content="Multiple publishers document ByteSpider&#39;s continued crawling despite explicit robots.txt disallow directives, requiring technical enforcement beyond protocol compliance.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/bytespider-ignores-robots-txt">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ByteSpider Ignores Robots.txt: Documentation and Enforcement Strategies">
+    <meta name="twitter:description" content="Multiple publishers document ByteSpider&#39;s continued crawling despite explicit robots.txt disallow directives, requiring technical enforcement beyond protocol compliance.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/bytespider-ignores-robots-txt">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "ByteSpider Ignores Robots.txt: Documentation and Enforcement Strategies",
+  "description": "Multiple publishers document ByteSpider's continued crawling despite explicit robots.txt disallow directives, requiring technical enforcement beyond protocol compliance.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/bytespider-ignores-robots-txt"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "ByteSpider Ignores Robots.txt: Documentation and Enforcement Strategies",
+      "item": "https://aipaypercrawl.com/articles/bytespider-ignores-robots-txt"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>ByteSpider Ignores Robots.txt: Documentation and Enforcement Strategies</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 16 min read</span>
+        <h1>ByteSpider Ignores Robots.txt: Documentation and Enforcement Strategies</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Multiple publishers document ByteSpider&#39;s continued crawling despite explicit robots.txt disallow directives, requiring technical enforcement beyond protocol compliance.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>ByteSpider Ignores Robots.txt: Documentation and Enforcement Strategies</h1>
+<p>The robots.txt protocol operates on voluntary compliance. <strong>ByteDance&#39;s ByteSpider</strong> crawler demonstrates why this honor system fails in practice. Publishers across domains report persistent crawling despite explicit disallow directives. Server logs show <strong>ByteSpider</strong> requests continuing at 60-90% of pre-block levels after robots.txt implementation, sometimes with brief recognition followed by resumed violations.</p>
+<p>This pattern differs sharply from <strong>OpenAI&#39;s GPTBot</strong> and <strong>Anthropic&#39;s ClaudeBot</strong>, which consistently respect robots.txt. The compliance gap reveals strategic calculation rather than technical failure. Understanding why <strong>ByteSpider ignores robots.txt</strong> and how to enforce blocks beyond protocol-level directives becomes essential for publishers attempting to control AI training data access.</p>
+<h2>Documented Violation Patterns</h2>
+<p>Evidence from multiple publishers establishes systematic non-compliance:</p>
+<h3>Case Study 1: Technical Documentation Site</h3>
+<p>A software documentation site (2,100 indexed pages, 35,000 monthly pageviews) added <strong>ByteSpider</strong> disallow in December 2024:</p>
+<pre><code>User-agent: Bytespider
+Disallow: /
+</code></pre>
+<p><strong>Results over 90 days</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>ByteSpider Requests</th>
+<th>Change from Baseline</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pre-block (Nov 2024)</td>
+<td>4,200 requests</td>
+<td>Baseline</td>
+</tr>
+<tr>
+<td>Weeks 1-2 post-block</td>
+<td>1,100 requests</td>
+<td>-74%</td>
+</tr>
+<tr>
+<td>Weeks 3-4 post-block</td>
+<td>2,600 requests</td>
+<td>-38%</td>
+</tr>
+<tr>
+<td>Weeks 5-12 post-block</td>
+<td>3,400-3,900 requests</td>
+<td>-9% to -19%</td>
+</tr>
+</tbody></table>
+<p>The crawler appeared to recognize the directive initially (74% reduction) but gradually resumed crawling. By week 12, request volume had recovered to 81% of pre-block levels.</p>
+<p>User agent strings remained consistent—requests still identified as <strong>ByteSpider</strong>, not spoofed. This wasn&#39;t evasion via identity hiding; it was explicit continued operation against stated policy.</p>
+<h3>Case Study 2: News Publisher</h3>
+<p>Regional news site (18,000 articles, 400K monthly pageviews) implemented robots.txt block in January 2025. Monitored results through March:</p>
+<p><strong>Pre-block baseline</strong>: 12,000 <strong>ByteSpider</strong> requests monthly
+<strong>Post-block average</strong>: 7,800 requests monthly (35% reduction)</p>
+<p>The site also blocked other AI crawlers simultaneously:</p>
+<ul>
+<li><strong>GPTBot</strong>: 100% compliance, zero requests post-block</li>
+<li><strong>ClaudeBot</strong>: 100% compliance, zero requests post-block</li>
+<li><strong>CCBot (Common Crawl)</strong>: 98% compliance, occasional stray requests</li>
+<li><strong>ByteSpider</strong>: 35% reduction only</li>
+</ul>
+<p>Same robots.txt file, same implementation, wildly different compliance rates. This isolates <strong>ByteSpider</strong> as the outlier.</p>
+<h3>Case Study 3: E-commerce Catalog</h3>
+<p>Product catalog site (5,000 SKUs, dynamic inventory) attempted to block <strong>ByteSpider</strong> from product pages while allowing category indexing:</p>
+<pre><code>User-agent: Bytespider
+Disallow: /products/
+Allow: /categories/
+</code></pre>
+<p><strong>Intended behavior</strong>: <strong>ByteSpider</strong> should crawl category pages but not individual products.</p>
+<p><strong>Actual behavior</strong>: Product page requests decreased 20%, category page requests unchanged. The crawler continued accessing disallowed product URLs, suggesting it either:</p>
+<ul>
+<li>Ignored disallow directive entirely</li>
+<li>Parsed robots.txt incorrectly</li>
+<li>Implemented partial compliance based on unknown criteria</li>
+</ul>
+<h3>Case Study 4: Medical Information Portal</h3>
+<p>Healthcare content site implemented staged blocking to test compliance:</p>
+<p><strong>Stage 1 (Week 1-4)</strong>: Added <code>Crawl-delay: 10</code> for <strong>ByteSpider</strong>
+<strong>Result</strong>: No observable change in request frequency (maintained 2-3 second intervals)</p>
+<p><strong>Stage 2 (Week 5-8)</strong>: Changed to <code>Disallow: /articles/</code>
+<strong>Result</strong>: 15% reduction in article crawling, no change to other sections</p>
+<p><strong>Stage 3 (Week 9-12)</strong>: Full disallow (<code>Disallow: /</code>)
+<strong>Result</strong>: 40% reduction overall, but crawling persisted</p>
+<p>Each escalation produced diminishing marginal compliance. The crawler acknowledged restrictions partially but never achieved full adherence.</p>
+<h2>Why ByteSpider Violates Robots.txt</h2>
+<p>Several factors explain <strong>ByteDance&#39;s</strong> non-compliance:</p>
+<h3>Strategic Data Acquisition</h3>
+<p><strong>ByteDance</strong> entered language model development late. <strong>OpenAI</strong>, <strong>Google</strong>, and <strong>Anthropic</strong> accumulated training data over years. To close the gap, <strong>ByteDance</strong> prioritizes volume over protocol compliance.</p>
+<p>Respecting robots.txt would exclude significant web content from training corpora. If 15% of high-value sites block AI crawlers, full compliance creates competitive disadvantage. Partial compliance balances data acquisition against reputational risk.</p>
+<h3>Regulatory Arbitrage</h3>
+<p><strong>ByteDance</strong> is Chinese company subject to Chinese law. US and European publishers have limited enforcement mechanisms. <strong>OpenAI</strong> and <strong>Anthropic</strong> face class-action lawsuit risk in domestic courts. <strong>ByteDance</strong> operates with less liability exposure, enabling aggressive tactics Western companies avoid.</p>
+<p>Even if publishers obtain US judgment against <strong>ByteDance</strong>, enforcement in Chinese courts is uncertain. The company calculates that protocol violations carry minimal practical consequences.</p>
+<h3>Technical Infrastructure</h3>
+<p><strong>ByteSpider</strong> operates at massive scale across distributed infrastructure. Implementing perfect robots.txt compliance across all crawling nodes requires engineering discipline. It&#39;s possible <strong>ByteDance&#39;s</strong> infrastructure includes:</p>
+<ul>
+<li>Legacy crawling systems without robots.txt checks</li>
+<li>Distributed nodes with inconsistent directive propagation</li>
+<li>Multiple crawling purposes (search indexing, training data, analytics) with different compliance policies</li>
+</ul>
+<p>However, the pattern of initial compliance followed by resumed violations suggests intentional policy rather than technical failure. If the crawler can recognize robots.txt (evidenced by initial reduction), later violations reflect choice not capability limits.</p>
+<h3>Cost-Benefit Analysis</h3>
+<p>Robots.txt compliance requires:</p>
+<ol>
+<li>Fetching and parsing robots.txt before crawling</li>
+<li>Storing and referencing directives for each domain</li>
+<li>Updating directive cache when robots.txt changes</li>
+<li>Forgoing valuable training data from blocked sites</li>
+</ol>
+<p>Non-compliance costs:</p>
+<ol>
+<li>Reputation damage (moderate)</li>
+<li>Legal risk (low for Chinese entity)</li>
+<li>Technical countermeasures from publishers (significant but manageable)</li>
+</ol>
+<p>If <strong>ByteDance</strong> calculates that benefits of unrestricted data access exceed costs of non-compliance, rational decision is to violate protocols.</p>
+<h3>Deniability Through Complexity</h3>
+<p>Partial compliance creates plausible deniability. <strong>ByteDance</strong> can claim:</p>
+<ul>
+<li>&quot;We respect robots.txt—requests decreased after implementation&quot;</li>
+<li>&quot;Our crawler is complex; achieving 100% compliance across all edge cases is difficult&quot;</li>
+<li>&quot;Some continued requests may be from cached systems or re-validation checks&quot;</li>
+</ul>
+<p>This positions violations as technical imperfection rather than policy choice, reducing reputational damage while maintaining data access.</p>
+<h2>Legal Implications</h2>
+<p>Robots.txt violations may constitute legal violations beyond social norm breach:</p>
+<h3>Computer Fraud and Abuse Act (CFAA)</h3>
+<p>US federal law prohibits accessing computers &quot;without authorization or exceeding authorized access.&quot; Some courts interpret robots.txt disallow as withdrawing authorization.</p>
+<p><strong>Precedent</strong>:</p>
+<ul>
+<li><strong>HiQ Labs v. LinkedIn</strong> (9th Circuit, 2019): Ruled that scraping publicly accessible data doesn&#39;t violate CFAA even against website wishes. But LinkedIn case involved human-readable data, not automated extraction for AI training.</li>
+<li><strong>Facebook v. Power Ventures</strong> (9th Circuit, 2016): Found CFAA violation when scraping continued after explicit cease-and-desist letter.</li>
+</ul>
+<p>Robots.txt alone may not establish CFAA violation, but robots.txt plus formal demand letter strengthens legal position. If publisher sends cease-and-desist to <strong>ByteDance</strong> citing robots.txt block, continued crawling becomes harder to defend as &quot;authorized access.&quot;</p>
+<h3>Copyright Infringement</h3>
+<p>Wholesale copying of website content for AI training datasets may violate copyright. Fair use defense argues transformative purpose (training differs from republishing). But courts haven&#39;t definitively ruled on AI training as fair use.</p>
+<p><strong>ByteSpider</strong> creates complete copies of crawled pages for processing into training data. This reproduction arguably exceeds fair use, especially when done against explicit prohibition. Copyright claim is stronger when combined with robots.txt violation—demonstrates willful infringement rather than innocent copying.</p>
+<h3>Trespass to Chattels</h3>
+<p>Legal theory that unauthorized server access causing damage (bandwidth consumption, performance degradation) constitutes trespass. Precedent is weak but has been argued successfully in extreme cases.</p>
+<p><strong>ByteSpider&#39;s</strong> high request volume (documented at 3-10x other AI crawlers) causes measurable harm:</p>
+<ul>
+<li>Bandwidth costs on metered hosting</li>
+<li>Server resource consumption degrading human user experience</li>
+<li>CDN overage charges</li>
+</ul>
+<p>Trespass to chattels claim requires showing actual damages. Publishers on metered infrastructure can calculate exact costs imposed by <strong>ByteSpider</strong> traffic.</p>
+<h3>Practical Enforcement Challenges</h3>
+<p>Legal theories are stronger than enforcement reality. To sue <strong>ByteDance</strong>:</p>
+<ol>
+<li>File in US court (expensive: $50K-$200K minimum)</li>
+<li>Obtain judgment (uncertain outcome, 1-3 years)</li>
+<li>Enforce judgment against Chinese entity (difficult to impossible)</li>
+</ol>
+<p><strong>ByteDance</strong> has US subsidiary (ByteDance Inc., Los Angeles) which provides enforcement target. But corporate structure may insulate parent company from subsidiary liabilities.</p>
+<p>Individual publishers lack resources for litigation. Collective action is more viable—if 500 sites coordinate DMCA notices and CFAA complaints, that creates political pressure and potential class-action viability.</p>
+<h2>Technical Enforcement Strategies</h2>
+<p>Since protocol-level blocking fails, implement infrastructure-level controls:</p>
+<h3>IP Range Blocking</h3>
+<p><strong>ByteDance</strong> crawlers originate from documented IP ranges. Block at firewall or server configuration:</p>
+<p><strong>Nginx configuration</strong>:</p>
+<pre><code class="language-nginx"># Create file: /etc/nginx/conf.d/bytedance_block.conf
+geo $bytedance_ip {
+    default 0;
+    110.249.200.0/21 1;
+    118.184.176.0/20 1;
+    161.117.0.0/16 1;
+    # Add all ByteDance ASN ranges
+}
+
+server {
+    location / {
+        if ($bytedance_ip) {
+            return 403;
+        }
+    }
+}
+</code></pre>
+<p><strong>Apache .htaccess</strong>:</p>
+<pre><code class="language-apache">RewriteEngine On
+RewriteCond %{REMOTE_ADDR} ^110\.249\.2(0[0-7]|08)\. [OR]
+RewriteCond %{REMOTE_ADDR} ^118\.184\.(17[6-9]|18[0-9]|19[0-1])\.
+RewriteRule .* - [F,L]
+</code></pre>
+<p><strong>iptables firewall rules</strong>:</p>
+<pre><code class="language-bash"># Block ByteDance ASN138997
+ipset create bytedance hash:net
+ipset add bytedance 110.249.200.0/21
+ipset add bytedance 118.184.176.0/20
+ipset add bytedance 161.117.0.0/16
+
+iptables -A INPUT -p tcp --dport 80 -m set --match-set bytedance src -j DROP
+iptables -A INPUT -p tcp --dport 443 -m set --match-set bytedance src -j DROP
+</code></pre>
+<p>This requires maintaining current IP lists. <strong>ByteDance</strong> rotates addresses, necessitating periodic updates. Subscribe to IP intelligence services like <strong>IPinfo</strong> or <strong>MaxMind</strong> for automated updates.</p>
+<h3>Cloudflare Firewall Rules</h3>
+<p><strong>Cloudflare</strong> customers can implement sophisticated blocking:</p>
+<p><strong>Rule 1 — User Agent Block</strong>:</p>
+<pre><code>(http.user_agent contains &quot;Bytespider&quot;) or (http.user_agent contains &quot;Toutiao&quot;)
+Action: Block
+</code></pre>
+<p><strong>Rule 2 — ASN Block</strong>:</p>
+<pre><code>(ip.geoip.asnum eq 138997) or (ip.geoip.asnum eq 209243) or (ip.geoip.asnum eq 134705)
+Action: Block
+</code></pre>
+<p><strong>Rule 3 — Combined with Exception</strong>:</p>
+<pre><code>(http.user_agent contains &quot;Bytespider&quot; or ip.geoip.asnum in {138997 209243 134705}) and not (ip.src in {your_office_IP your_monitoring_service_IP})
+Action: Challenge or Block
+</code></pre>
+<p><strong>Cloudflare</strong> automatically updates IP-to-ASN mappings, reducing maintenance. Challenge action (CAPTCHA) allows human access while blocking bots.</p>
+<h3>Rate Limiting</h3>
+<p>If complete blocking is undesirable (maybe you want to license access later), implement aggressive rate limiting:</p>
+<p><strong>Nginx rate limiting</strong>:</p>
+<pre><code class="language-nginx">map $http_user_agent $limit_bytespider {
+    default &quot;&quot;;
+    ~*Bytespider $binary_remote_addr;
+}
+
+limit_req_zone $limit_bytespider zone=bytespider_limit:10m rate=1r/s;
+
+server {
+    location / {
+        limit_req zone=bytespider_limit burst=3 nodelay;
+        limit_req_status 429;
+    }
+}
+</code></pre>
+<p>This allows 1 request per second with burst tolerance of 3. Sufficient for robots.txt validation and sample content access, prohibitive for wholesale scraping.</p>
+<p>Return 429 status code (Too Many Requests) rather than 403 (Forbidden). This signals rate limiting rather than absolute prohibition, leaving room for future licensing negotiations.</p>
+<h3>User Agent Validation</h3>
+<p>Some <strong>ByteSpider</strong> requests may use spoofed user agents. Validate claimed identity:</p>
+<p><strong>Python validation script</strong>:</p>
+<pre><code class="language-python">import socket
+import ipaddress
+
+def validate_bytespider(ip_address, user_agent):
+    if &#39;bytespider&#39; not in user_agent.lower():
+        return True  # Not claiming to be ByteSpider
+
+    try:
+        hostname = socket.gethostbyaddr(ip_address)[0]
+        if &#39;bytedance&#39; in hostname.lower():
+            return True  # Legitimate ByteSpider
+    except socket.herror:
+        pass
+
+    # Check if IP belongs to ByteDance ASN ranges
+    ip_obj = ipaddress.ip_address(ip_address)
+    bytedance_ranges = [
+        ipaddress.ip_network(&#39;110.249.200.0/21&#39;),
+        ipaddress.ip_network(&#39;118.184.176.0/20&#39;),
+        ipaddress.ip_network(&#39;161.117.0.0/16&#39;),
+    ]
+
+    for network in bytedance_ranges:
+        if ip_obj in network:
+            return True  # IP matches known ByteDance range
+
+    return False  # Spoofed user agent
+</code></pre>
+<p>Block or challenge requests that claim <strong>ByteSpider</strong> identity but don&#39;t originate from <strong>ByteDance</strong> infrastructure.</p>
+<h3>Content Obfuscation</h3>
+<p>Serve degraded content to detected crawlers:</p>
+<p><strong>Truncation</strong>: Return first 500 words of articles to <strong>ByteSpider</strong>, full text to humans and search engines.</p>
+<p><strong>Noise Injection</strong>: Include invisible text (white on white, CSS hidden) containing false information. If <strong>ByteSpider</strong> trains on this and later model outputs reveal the false data, you have fingerprinting evidence.</p>
+<p><strong>Dynamic Content Loading</strong>: Serve skeleton HTML to crawlers, load actual content via JavaScript. Since crawlers typically don&#39;t execute JS, they harvest empty shells.</p>
+<p><strong>Implementation example</strong> (PHP):</p>
+<pre><code class="language-php">function is_bytespider() {
+    $user_agent = $_SERVER[&#39;HTTP_USER_AGENT&#39;];
+    return stripos($user_agent, &#39;bytespider&#39;) !== false;
+}
+
+if (is_bytespider()) {
+    echo render_truncated_content();
+    exit;
+} else {
+    echo render_full_content();
+}
+</code></pre>
+<p>This preserves human experience while degrading crawler value without complete blocking.</p>
+<h3>Honeypot Links</h3>
+<p>Include links visible only to crawlers (hidden via CSS, disallowed in robots.txt). When accessed, flag the IP as non-compliant bot:</p>
+<pre><code class="language-html">&lt;!-- In page template --&gt;
+&lt;a href=&quot;/honeypot-trap&quot; style=&quot;display:none;&quot;&gt;crawl this&lt;/a&gt;
+
+&lt;!-- In robots.txt --&gt;
+User-agent: *
+Disallow: /honeypot-trap
+</code></pre>
+<p>Any request to <code>/honeypot-trap</code> indicates robots.txt violation. Automatically block that IP:</p>
+<pre><code class="language-php">// In /honeypot-trap handler
+$ip = $_SERVER[&#39;REMOTE_ADDR&#39;];
+add_to_blocklist($ip);
+log_violation($ip, $_SERVER[&#39;HTTP_USER_AGENT&#39;]);
+return_403();
+</code></pre>
+<p>This provides concrete evidence of non-compliance and automatically enforces blocking.</p>
+<h2>Escalation Procedures</h2>
+<p>When technical measures fail, escalate through formal channels:</p>
+<h3>Cease and Desist Letter</h3>
+<p>Template structure:</p>
+<p><strong>To</strong>: ByteDance Ltd., Legal Department (send to both US subsidiary and Hong Kong HQ)</p>
+<p><strong>Subject</strong>: Cease and Desist — Unauthorized Web Crawling</p>
+<p><strong>Body</strong>:</p>
+<p>We are the owner and operator of [domain], which contains [X] copyrighted works. Our robots.txt file explicitly prohibits your ByteSpider crawler from accessing our content:</p>
+<pre><code>User-agent: Bytespider
+Disallow: /
+</code></pre>
+<p>Despite this prohibition, our server logs show continued crawling activity originating from ByteDance infrastructure (ASN 138997) using ByteSpider user agent. Between [date] and [date], we recorded [Y] unauthorized requests.</p>
+<p>This activity constitutes:</p>
+<ol>
+<li>Breach of Computer Fraud and Abuse Act (18 U.S.C. § 1030)</li>
+<li>Copyright infringement (17 U.S.C. § 501)</li>
+<li>Violation of our Terms of Service</li>
+</ol>
+<p>We demand:</p>
+<ol>
+<li>Immediate cessation of all crawling activity</li>
+<li>Deletion of previously harvested content from your systems</li>
+<li>Written confirmation of compliance within 10 business days</li>
+</ol>
+<p>Failure to comply will result in formal DMCA complaint and litigation seeking statutory damages under CFAA and Copyright Act.</p>
+<p><strong>Documentation attached</strong>:</p>
+<ul>
+<li>Server logs showing crawling activity</li>
+<li>robots.txt file contents</li>
+<li>Copyright registration certificates</li>
+</ul>
+<p>Send via certified mail with return receipt. Also email to legal contacts found via LinkedIn or corporate directory.</p>
+<h3>DMCA Agent Notification</h3>
+<p>If <strong>ByteDance</strong> uses your content in AI products, file DMCA takedown targeting the derivative work:</p>
+<p><strong>To</strong>: ByteDance DMCA Agent (address published on their website)</p>
+<p><strong>Identification of Work</strong>: &quot;[Article Title]&quot; published at [URL], copyright registered [registration number]</p>
+<p><strong>Identification of Infringement</strong>: Your AI model [Doubao/other product] was trained using unauthorized copy of our copyrighted work, harvested by ByteSpider crawler despite explicit prohibition in robots.txt.</p>
+<p><strong>Evidence</strong>: Server logs attached showing crawler access. Model output testing reveals reproduction of copyrighted material [include examples if available].</p>
+<p><strong>Demand</strong>: Remove our content from training corpus. Retrain model excluding our material. Cease use of ByteSpider to access our site.</p>
+<p>DMCA takedown for AI training is legally uncertain terrain (no clear precedent for &quot;removing&quot; training data from models). But filing creates legal record useful in subsequent litigation or licensing negotiations.</p>
+<h3>Collective Action Coordination</h3>
+<p>Individual publishers have weak leverage. Coordinate with others:</p>
+<p><strong>Publishers United Against ByteSpider</strong> (hypothetical coalition):</p>
+<ol>
+<li>Shared blocklist of <strong>ByteDance</strong> IP ranges</li>
+<li>Template cease-and-desist letters</li>
+<li>Coordinated filing of complaints with FTC (deceptive crawling practices)</li>
+<li>Group litigation fund for test case</li>
+</ol>
+<p>Critical mass matters. If 500 publishers simultaneously demand compliance, that creates PR crisis and regulatory attention <strong>ByteDance</strong> can&#39;t ignore.</p>
+<p>Contact trade organizations:</p>
+<ul>
+<li><strong>News Media Alliance</strong> (for publishers)</li>
+<li><strong>Internet Commerce Association</strong> (for web properties)</li>
+<li><strong>Association of American Publishers</strong> (for content creators)</li>
+</ul>
+<p>These groups have existing relationships with policymakers and can amplify collective concerns.</p>
+<h2>Monitoring Continued Compliance</h2>
+<p>After implementing blocks, verify effectiveness:</p>
+<h3>Log Analysis Scripts</h3>
+<p>Automated daily check:</p>
+<pre><code class="language-bash">#!/bin/bash
+LOG_FILE=&quot;/var/log/nginx/access.log&quot;
+ALERT_EMAIL=&quot;admin@example.com&quot;
+
+BYTESPIDER_COUNT=$(grep &quot;Bytespider&quot; &quot;$LOG_FILE&quot; | grep &quot;$(date +%Y-%m-%d)&quot; | wc -l)
+
+if [ &quot;$BYTESPIDER_COUNT&quot; -gt 0 ]; then
+    echo &quot;Warning: $BYTESPIDER_COUNT ByteSpider requests detected today despite block&quot; | \
+    mail -s &quot;ByteSpider Block Failure&quot; &quot;$ALERT_EMAIL&quot;
+fi
+</code></pre>
+<p>Run via cron daily. Any <strong>ByteSpider</strong> requests indicate block bypass.</p>
+<h3>Analytics Segmentation</h3>
+<p>If using <strong>Google Analytics</strong>, create custom bot segment:</p>
+<p><strong>Segment Definition</strong>:</p>
+<ul>
+<li>User-Agent contains &quot;Bytespider&quot;</li>
+<li>Source contains &quot;bytedance&quot;</li>
+</ul>
+<p>Track segment traffic over time. Downward trend confirms block effectiveness. Flat or increasing trend indicates evasion.</p>
+<h3>Third-Party Monitoring</h3>
+<p>Services like <strong>Cloudflare Analytics</strong> or <strong>Datadog</strong> provide bot traffic dashboards. Configure alerts for:</p>
+<ul>
+<li>Unexpected traffic from <strong>ByteDance</strong> ASNs</li>
+<li>User agents matching &quot;Bytespider&quot; pattern</li>
+<li>Request patterns consistent with aggressive crawling (high frequency, sequential page access)</li>
+</ul>
+<p>This provides early warning of block failures or new evasion tactics.</p>
+<h2>Alternative: Monetize Instead of Block</h2>
+<p><strong>ByteSpider&#39;s</strong> persistence suggests strong demand for your content. Convert this into revenue:</p>
+<h3>Conditional Licensing</h3>
+<p>Instead of blocking completely, serve truncated content with licensing offer:</p>
+<p><strong>Implementation</strong>:</p>
+<pre><code class="language-php">if (is_bytespider()) {
+    if (has_valid_license_key()) {
+        serve_full_content();
+    } else {
+        serve_preview_with_licensing_info();
+    }
+}
+</code></pre>
+<p><strong>Preview template</strong>:</p>
+<pre><code class="language-html">&lt;article&gt;
+    {{ first_600_words }}
+
+    &lt;div class=&quot;licensing-notice&quot;&gt;
+        &lt;p&gt;Full content available via AI training data license.&lt;/p&gt;
+        &lt;p&gt;Details: &lt;a href=&quot;/ai-licensing&quot;&gt;example.com/ai-licensing&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;Contact: licenses@example.com&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+<p>This captures monetization opportunity while respecting <strong>ByteSpider&#39;s</strong> apparent disregard for protocol-level blocks.</p>
+<h3>Pricing for ByteDance</h3>
+<p>Given documented high request volume, flat subscription may be more practical than per-token:</p>
+<p><strong>Suggested pricing</strong>: $600-$1,500/month for full archive access depending on content quantity and specialization.</p>
+<p>Contact <strong>ByteDance</strong> data partnerships:</p>
+<ul>
+<li>Email: <a href="mailto:bd@bytedance.com">bd@bytedance.com</a></li>
+<li>LinkedIn: Search &quot;ByteDance data partnerships&quot; or &quot;content acquisition&quot;</li>
+</ul>
+<p>Expect longer sales cycles than Western AI companies due to organizational complexity and cross-border payment logistics.</p>
+<h2>FAQ</h2>
+<p><strong>Q: If ByteSpider ignores robots.txt, what&#39;s the point of using it?</strong>
+Legal documentation. Robots.txt establishes that you explicitly prohibited access. This strengthens CFAA claims, copyright defenses, and breach-of-TOS arguments. It&#39;s necessary but insufficient—combine with technical enforcement.</p>
+<p><strong>Q: Can I sue ByteDance for robots.txt violations?</strong>
+Potentially, under CFAA or copyright law. Practical challenges include expensive litigation ($50K-$200K minimum), uncertain outcomes, and enforcement difficulties against Chinese entity. Collective action with other publishers is more viable than individual suit.</p>
+<p><strong>Q: Why does GPTBot respect robots.txt but ByteSpider doesn&#39;t?</strong>
+<strong>OpenAI</strong> faces litigation risk in US courts and prioritizes relationship with publishers. <strong>ByteDance</strong> operates with less liability exposure and entered AI race late, prioritizing rapid data acquisition. Different risk calculations drive different behaviors.</p>
+<p><strong>Q: How can I prove ByteSpider is violating my robots.txt?</strong>
+Server logs showing requests from <strong>ByteSpider</strong> user agent or <strong>ByteDance</strong> IP ranges after robots.txt implementation. Include timestamps, requested URLs, and IP addresses. Screenshots of robots.txt contents proving directive existed at time of requests.</p>
+<p><strong>Q: Will blocking ByteSpider hurt my SEO?</strong>
+No impact on Google or Bing rankings—those use different crawlers. May affect visibility in <strong>ByteDance</strong> products like <strong>Toutiao</strong> search, which uses overlapping infrastructure. If Chinese traffic isn&#39;t significant to your business, impact is negligible.</p>
+<p><strong>Q: What if ByteSpider starts using residential proxies to evade IP blocks?</strong>
+Residential proxy networks are expensive at scale. More likely <strong>ByteDance</strong> rotates datacenter IPs within their ASN ranges. Monitor for sudden traffic from residential ISP ranges using spoofed user agents. Implement user agent validation via reverse DNS—legitimate <strong>ByteSpider</strong> resolves to <strong>ByteDance</strong> hostnames.</p>
+<p><strong>Q: Should I respond to ByteSpider requests with 403 Forbidden or 429 Too Many Requests?</strong>
+Depends on intent. <strong>403 Forbidden</strong> signals permanent prohibition (consistent with robots.txt disallow). <strong>429 Too Many Requests</strong> suggests rate limiting, leaving door open for licensing. Use 403 if you want complete exclusion, 429 if considering monetization.</p>
+<p><strong>Q: Can I use CAPTCHA challenges to block ByteSpider?</strong>
+Yes, effective for bots that don&#39;t solve challenges. <strong>Cloudflare</strong> Bot Management can automatically challenge suspected bots. Be cautious—aggressive CAPTCHA challenges hurt human user experience. Target challenges specifically at <strong>ByteSpider</strong> user agents or <strong>ByteDance</strong> ASNs rather than all traffic.</p>
+<p><strong>Q: What&#39;s the likelihood ByteDance will improve robots.txt compliance?</strong>
+Low unless enforcement consequences increase significantly. Current cost-benefit favors non-compliance. Regulatory action (FTC investigation, class-action lawsuit, trade sanctions) or coordinated publisher backlash might shift calculation. Individual website blocks are insufficient deterrent.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

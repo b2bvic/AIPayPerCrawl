@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Block Amazonbot in robots.txt: Complete Configuration Guide | AI Pay Per Crawl</title>
+    <meta name="description" content="Block Amazon&#39;s Amazonbot crawler with robots.txt directives. Includes verification methods, IP ranges, and alternative blocking strategies for publishers.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="How to Block Amazonbot in robots.txt: Complete Configuration Guide">
+    <meta property="og:description" content="Block Amazon&#39;s Amazonbot crawler with robots.txt directives. Includes verification methods, IP ranges, and alternative blocking strategies for publishers.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/block-amazonbot-robots-txt">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Block Amazonbot in robots.txt: Complete Configuration Guide">
+    <meta name="twitter:description" content="Block Amazon&#39;s Amazonbot crawler with robots.txt directives. Includes verification methods, IP ranges, and alternative blocking strategies for publishers.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/block-amazonbot-robots-txt">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Block Amazonbot in robots.txt: Complete Configuration Guide",
+  "description": "Block Amazon's Amazonbot crawler with robots.txt directives. Includes verification methods, IP ranges, and alternative blocking strategies for publishers.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/block-amazonbot-robots-txt"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Block Amazonbot in robots.txt: Complete Configuration Guide",
+      "item": "https://aipaypercrawl.com/articles/block-amazonbot-robots-txt"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>How to Block Amazonbot in robots.txt: Complete Configuration Guide</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 13 min read</span>
+        <h1>How to Block Amazonbot in robots.txt: Complete Configuration Guide</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Block Amazon&#39;s Amazonbot crawler with robots.txt directives. Includes verification methods, IP ranges, and alternative blocking strategies for publishers.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>How to Block Amazonbot in robots.txt: Complete Configuration Guide</h1>
+<p><strong>Amazon</strong> operates <strong>Amazonbot</strong> to crawl web content for <strong>Alexa</strong> voice responses, product search improvements, and AI model training. The crawler scrapes content from millions of domains daily without payment or licensing agreements.</p>
+<p>Publishers receive nothing in return. <strong>Amazonbot</strong> doesn&#39;t drive referral traffic like search engine crawlers. It doesn&#39;t generate advertising revenue. It extracts content value for <strong>Amazon&#39;s</strong> commercial products while leaving publishers with bandwidth bills and server load.</p>
+<p>Blocking <strong>Amazonbot</strong> prevents this extraction. The robots.txt protocol provides the standard mechanism. When implemented correctly, <strong>Amazonbot</strong> honors the directive and stops crawling your domain.</p>
+<p>This guide covers robots.txt configuration, verification methods, IP-based blocking for additional enforcement, and monitoring to confirm blocks remain effective over time.</p>
+<hr>
+<h2>Why Block Amazonbot</h2>
+<h3>No Referral Traffic (Unlike Googlebot or Bingbot)</h3>
+<p><strong>Googlebot</strong> crawls your site and sends traffic through search results. Every crawl represents potential future visitors. The value exchange works: <strong>Google</strong> crawls, you receive traffic.</p>
+<p><strong>Amazonbot</strong> crawls your site and sends nothing. <strong>Alexa</strong> voice responses don&#39;t include attribution or referral links. Product search results pull from <strong>Amazon&#39;s</strong> catalog, not your pages. AI training data incorporated into <strong>Amazon</strong> models generates zero traffic back to source publishers.</p>
+<table>
+<thead>
+<tr>
+<th>Crawler</th>
+<th>Crawls Per Day</th>
+<th>Referral Visits Generated</th>
+<th>Value Exchange</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Googlebot</td>
+<td>1,000</td>
+<td>5,000+</td>
+<td>Positive</td>
+</tr>
+<tr>
+<td>Bingbot</td>
+<td>200</td>
+<td>500+</td>
+<td>Positive</td>
+</tr>
+<tr>
+<td>Amazonbot</td>
+<td>500</td>
+<td>0</td>
+<td>Negative</td>
+</tr>
+</tbody></table>
+<p>The asymmetry justifies blocking. <strong>Amazonbot</strong> consumes resources without reciprocal value.</p>
+<h3>Bandwidth and Server Resource Consumption</h3>
+<p>Every <strong>Amazonbot</strong> request costs money. Bandwidth isn&#39;t free. Server processing isn&#39;t free. For sites on metered hosting or CDN plans, <strong>Amazonbot</strong> appears on invoices.</p>
+<p><strong>Cost calculation for mid-sized publisher:</strong></p>
+<ul>
+<li>Daily <strong>Amazonbot</strong> requests: 500</li>
+<li>Average page size: 200KB</li>
+<li>Daily bandwidth consumed: 100MB</li>
+<li>Monthly bandwidth: ~3GB</li>
+<li>Cost at $0.08/GB: $0.24/month</li>
+</ul>
+<p>Individual costs are small. Multiplied across thousands of publishers, <strong>Amazon</strong> extracts millions of dollars in infrastructure costs monthly while compensating no one.</p>
+<p>Shared hosting environments face additional pressure. <strong>Amazonbot</strong> activity contributes to resource limits that trigger throttling or service degradation. Publishers share server resources with other sites — <strong>Amazonbot</strong> crawling your site affects performance for others on the same infrastructure.</p>
+<h3>No Content Licensing or Payment Infrastructure</h3>
+<p><strong>Amazon</strong> doesn&#39;t participate in content licensing marketplaces. No <a href="/articles/cloudflare-pay-per-crawl-setup.html">Cloudflare Pay-Per-Crawl</a> integration. No <a href="/articles/rsl-protocol-implementation-guide.html">RSL protocol</a> support. No direct licensing negotiations with publishers.</p>
+<p><strong>OpenAI</strong> pays. <strong>Anthropic</strong> pays. <strong>Google</strong> negotiates deals. <strong>Amazon</strong> extracts without compensation.</p>
+<p>The absence of payment infrastructure signals corporate intent. Companies that plan to license content build systems to facilitate licensing. <strong>Amazon</strong> hasn&#39;t built those systems. The strategic message: <strong>Amazon</strong> intends to crawl web content for free indefinitely.</p>
+<p>Publishers have two options: accept free extraction or block <strong>Amazonbot</strong> entirely. No third option exists where <strong>Amazon</strong> compensates crawling.</p>
+<hr>
+<h2>robots.txt Configuration</h2>
+<h3>Basic Block Directive</h3>
+<p>The simplest <strong>Amazonbot</strong> block:</p>
+<pre><code>User-agent: Amazonbot
+Disallow: /
+</code></pre>
+<p>This directive instructs <strong>Amazonbot</strong> to avoid crawling any path on your domain. Place it in your <code>robots.txt</code> file at <code>yourdomain.com/robots.txt</code>.</p>
+<p><strong>Amazonbot</strong> checks robots.txt before crawling. When it encounters <code>Disallow: /</code>, crawling stops. Your logs should show <strong>Amazonbot</strong> requests drop to near-zero within 24-48 hours of implementation.</p>
+<h3>Full Example robots.txt with Multiple Crawlers</h3>
+<p>Complete robots.txt managing multiple AI crawlers:</p>
+<pre><code># Block Amazon crawler
+User-agent: Amazonbot
+Disallow: /
+
+# Block Common Crawl (feeds multiple AI companies)
+User-agent: CCBot
+Disallow: /
+
+# Block ByteDance crawler
+User-agent: Bytespider
+Disallow: /
+
+# Block Anthropic crawler (unless licensing)
+User-agent: ClaudeBot
+Disallow: /
+
+# Block OpenAI crawler (unless licensing)
+User-agent: GPTBot
+Disallow: /
+
+# Allow Google search
+User-agent: Googlebot
+Allow: /
+
+# Allow Bing search
+User-agent: Bingbot
+Allow: /
+
+# Block all unspecified crawlers by default
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+</code></pre>
+<p>This configuration blocks AI crawlers that don&#39;t compensate while allowing search engine crawlers that drive traffic.</p>
+<h3>Selective Directory Access (Allow Some Paths, Block Others)</h3>
+<p>Grant <strong>Amazonbot</strong> access to commodity content while protecting premium material:</p>
+<pre><code>User-agent: Amazonbot
+Allow: /blog/
+Allow: /news/
+Disallow: /research/
+Disallow: /premium/
+Disallow: /data/
+Disallow: /
+</code></pre>
+<p>The <code>Disallow: /</code> at the end blocks all unspecified paths. Explicit <code>Allow:</code> directives override for specific directories.</p>
+<p><strong>Use case:</strong> Public-facing marketing content benefits from wide distribution. Proprietary research, premium articles, and data products warrant protection. Selective blocking captures both objectives.</p>
+<h3>Crawl-Delay Directive (Rate Limiting)</h3>
+<p>Slow <strong>Amazonbot</strong> crawling instead of blocking entirely:</p>
+<pre><code>User-agent: Amazonbot
+Crawl-delay: 10
+</code></pre>
+<p>This requests a 10-second delay between requests. <strong>Amazonbot</strong> will crawl but at reduced frequency.</p>
+<p><strong>When to use crawl-delay instead of blocking:</strong></p>
+<ul>
+<li>Testing <strong>Amazonbot</strong> value before permanent block</li>
+<li>Organizational mandate to remain accessible to all crawlers</li>
+<li>Wanting <strong>Amazon</strong> indexing for future products without current load</li>
+</ul>
+<p><strong>Crawl-delay limitations:</strong></p>
+<ul>
+<li>Not all crawlers respect the directive</li>
+<li>Requires ongoing monitoring to verify compliance</li>
+<li>Doesn&#39;t reduce crawling to zero — only slows it</li>
+</ul>
+<p>For maximum protection, <code>Disallow: /</code> outperforms <code>Crawl-delay</code>. Use crawl-delay as moderation tool, not security measure.</p>
+<hr>
+<h2>Verification and Testing</h2>
+<h3>Check Amazonbot Compliance in Server Logs</h3>
+<p>After implementing robots.txt blocks, verify compliance through log analysis.</p>
+<p><strong>Nginx access log check:</strong></p>
+<pre><code class="language-bash">grep &quot;Amazonbot&quot; /var/log/nginx/access.log | tail -50
+</code></pre>
+<p>This displays the 50 most recent <strong>Amazonbot</strong> requests. After block implementation, you should see:</p>
+<ul>
+<li>Requests drop dramatically within 24 hours</li>
+<li>Remaining requests primarily to <code>robots.txt</code> (checking for directive changes)</li>
+<li>No 200 (success) responses to content pages</li>
+<li>All content requests return 403 (forbidden) if server-level blocking supplements robots.txt</li>
+</ul>
+<p><strong>Apache access log check:</strong></p>
+<pre><code class="language-bash">grep &quot;Amazonbot&quot; /var/log/apache2/access.log | tail -50
+</code></pre>
+<h3>robots.txt Testing Tools</h3>
+<p>Verify your robots.txt syntax before deployment:</p>
+<p><strong>Google Search Console robots.txt Tester:</strong></p>
+<ul>
+<li>Navigate to <strong>Coverage &gt; robots.txt Tester</strong></li>
+<li>Enter <strong>Amazonbot</strong> as user-agent</li>
+<li>Test specific URLs</li>
+<li>Confirms whether directives block access correctly</li>
+</ul>
+<p><strong>Online robots.txt validators:</strong></p>
+<ul>
+<li><a href="https://www.google.com/webmasters/tools/robots-testing-tool">https://www.google.com/webmasters/tools/robots-testing-tool</a> (requires Google account)</li>
+<li><a href="https://technicalseo.com/tools/robots-txt/">https://technicalseo.com/tools/robots-txt/</a> (public tool)</li>
+</ul>
+<p>These tools parse robots.txt and simulate crawler behavior. They catch syntax errors that could leave your site unprotected despite directive presence.</p>
+<h3>Monitor Crawl Activity Over Time</h3>
+<p>Implement ongoing monitoring to detect:</p>
+<ul>
+<li><strong>Amazonbot</strong> compliance failures</li>
+<li>New user-agent strings Amazon introduces</li>
+<li>Sudden crawl volume spikes indicating block failures</li>
+</ul>
+<p><strong>Weekly monitoring script:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# Count Amazonbot requests in last 7 days
+grep &quot;Amazonbot&quot; /var/log/nginx/access.log | wc -l
+</code></pre>
+<p><strong>Alert threshold:</strong> If <strong>Amazonbot</strong> requests exceed 10 per week after blocking (allowing for robots.txt checks), investigate potential compliance failure or new crawler variants.</p>
+<p><strong>Cloudflare users:</strong> Configure <a href="/articles/cloudflare-bot-management-ai.html">Firewall Events</a> filters for <strong>Amazonbot</strong> and set email alerts when requests exceed expected baseline.</p>
+<hr>
+<h2>Alternative Blocking Methods</h2>
+<h3>Server-Level Blocking (Nginx)</h3>
+<p>Supplement robots.txt with server-level enforcement:</p>
+<pre><code class="language-nginx">map $http_user_agent $block_amazonbot {
+    default 0;
+    ~*Amazonbot 1;
+    ~*Amazon-Route53 1;
+}
+
+server {
+    if ($block_amazonbot) {
+        return 403;
+    }
+}
+</code></pre>
+<p>Server-level blocks provide enforcement regardless of robots.txt compliance. <strong>Amazonbot</strong> requests receive immediate 403 (Forbidden) responses without consuming page generation resources.</p>
+<p>Place this configuration in your Nginx <code>http</code> block and reload:</p>
+<pre><code class="language-bash">sudo nginx -t
+sudo systemctl reload nginx
+</code></pre>
+<h3>Apache .htaccess Blocking</h3>
+<p><strong>Apache</strong> sites without Nginx access can block via <code>.htaccess</code>:</p>
+<pre><code class="language-apache">RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} Amazonbot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} Amazon-Route53 [NC]
+RewriteRule .* - [F,L]
+</code></pre>
+<p>Place this in your site root <code>.htaccess</code> file. The <code>[F]</code> flag returns 403 Forbidden. The <code>[L]</code> flag stops processing additional rewrite rules.</p>
+<p><strong>Verify syntax:</strong></p>
+<pre><code class="language-bash">apachectl configtest
+</code></pre>
+<p>If successful, changes take effect immediately without server reload.</p>
+<h3>IP Range Blocking (Cloudflare, Firewall Rules)</h3>
+<p><strong>Amazon</strong> doesn&#39;t publish official <strong>Amazonbot</strong> IP ranges. Community-maintained lists compiled from server logs provide partial coverage:</p>
+<pre><code>52.94.0.0/16
+52.119.0.0/16
+54.239.0.0/16
+</code></pre>
+<p><strong>Cloudflare firewall rule blocking Amazon IP ranges:</strong></p>
+<ol>
+<li>Navigate to <strong>Security &gt; WAF &gt; Custom Rules</strong></li>
+<li>Create rule: <code>(ip.src in {52.94.0.0/16 52.119.0.0/16 54.239.0.0/16})</code></li>
+<li>Action: Block</li>
+<li>Deploy</li>
+</ol>
+<p><strong>Caveat:</strong> <strong>Amazon</strong> operates massive AWS infrastructure with thousands of IP ranges. Some <strong>Amazonbot</strong> traffic originates from ranges not yet documented in community lists. IP blocking supplements but doesn&#39;t replace user-agent-based blocking.</p>
+<h3>CDN-Level Blocking (Fastest, Most Comprehensive)</h3>
+<p>Deploy blocking at CDN edge for maximum effectiveness:</p>
+<p><strong>Cloudflare:</strong></p>
+<ul>
+<li>Navigate to <strong>Security &gt; WAF &gt; Custom Rules</strong></li>
+<li>Create rule: <code>(http.user_agent contains &quot;Amazonbot&quot;) or (http.user_agent contains &quot;Amazon-Route53&quot;)</code></li>
+<li>Action: Block</li>
+<li>Deploy globally</li>
+</ul>
+<p><strong>Fastly VCL configuration:</strong></p>
+<pre><code class="language-vcl">if (req.http.User-Agent ~ &quot;Amazonbot|Amazon-Route53&quot;) {
+    error 403 &quot;Forbidden&quot;;
+}
+</code></pre>
+<p><strong>Akamai Property Manager:</strong></p>
+<ul>
+<li>Add Match rule: User-Agent header contains &quot;Amazonbot&quot;</li>
+<li>Action: Deny Request</li>
+<li>Deploy to staging then production</li>
+</ul>
+<p>CDN edge blocking stops requests before they reach origin servers. Zero bandwidth consumed at origin. Zero server resources spent. Blocked requests are handled at whatever edge node receives them.</p>
+<hr>
+<h2>Amazonbot Variants and Detection</h2>
+<h3>Amazonbot User-Agent Strings</h3>
+<p><strong>Primary identifier:</strong></p>
+<pre><code>Mozilla/5.0 (compatible; Amazonbot/0.1; +https://developer.amazon.com/amazonbot)
+</code></pre>
+<p><strong>Alternate formats observed:</strong></p>
+<pre><code>Amazonbot/0.1 (+https://developer.amazon.com/amazonbot)
+Mozilla/5.0 (compatible; Amazonbot/1.0)
+</code></pre>
+<p>The version number changes (0.1, 1.0, etc.) but &quot;Amazonbot&quot; appears consistently. Blocking rules should use substring matching rather than exact string comparison:</p>
+<p><strong>Nginx:</strong> <code>~*Amazonbot</code> (case-insensitive substring)
+<strong>Apache:</strong> <code>Amazonbot [NC]</code> (no-case flag)</p>
+<h3>Amazon-Route53 Health Checks</h3>
+<p><strong>Amazon Route53</strong> (AWS DNS service) performs health checks that identify as:</p>
+<pre><code>Amazon-Route53-Health-Check-Service (ref &lt;reference-id&gt;)
+</code></pre>
+<p>These aren&#39;t <strong>Amazonbot</strong> but share similar non-reciprocal characteristics: <strong>Amazon</strong> services accessing your infrastructure without providing value. Many publishers block both:</p>
+<pre><code>User-agent: Amazonbot
+Disallow: /
+
+User-agent: Amazon-Route53-Health-Check-Service
+Disallow: /
+</code></pre>
+<p><strong>Caveat:</strong> If you use <strong>Route53</strong> for your own DNS management, these health checks may be legitimate monitoring. Verify your infrastructure before blocking.</p>
+<h3>Spoofing Detection</h3>
+<p>Malicious actors sometimes spoof <strong>Amazonbot</strong> identity to evade generic bot blocks. Verify legitimate <strong>Amazonbot</strong> through reverse DNS:</p>
+<pre><code class="language-bash"># Get IP from request
+IP=&quot;52.94.123.45&quot;
+
+# Reverse DNS lookup
+host $IP
+# Should resolve to amazonaws.com domain
+
+# Forward lookup verification
+dig +short &lt;reversed-hostname&gt;
+# Should return original IP
+</code></pre>
+<p>Legitimate <strong>Amazonbot</strong> requests resolve to <code>amazonaws.com</code> domains and verify bidirectionally. Spoofed requests fail this check.</p>
+<p>For automated verification, implement server-side logic that challenges unverified bot claims:</p>
+<pre><code class="language-nginx">geo $amazonbot_ip_valid {
+    default 0;
+    52.94.0.0/16 1;
+    52.119.0.0/16 1;
+    54.239.0.0/16 1;
+}
+
+map $http_user_agent $claims_amazonbot {
+    default 0;
+    ~*Amazonbot 1;
+}
+
+# Block if claims to be Amazonbot but IP doesn&#39;t match
+if ($claims_amazonbot &amp;&amp; !$amazonbot_ip_valid) {
+    return 403;
+}
+</code></pre>
+<hr>
+<h2>Impact on Amazon Services</h2>
+<h3>Alexa Voice Responses</h3>
+<p>Blocking <strong>Amazonbot</strong> may affect how <strong>Alexa</strong> devices answer questions about your content. When users ask <strong>Alexa</strong> about your industry or topic area, your content won&#39;t inform responses.</p>
+<p><strong>Trade-off assessment:</strong></p>
+<ul>
+<li><strong>Upside of allowing:</strong> <strong>Alexa</strong> citations might increase brand awareness</li>
+<li><strong>Downside of allowing:</strong> Bandwidth costs, no referral traffic, no compensation</li>
+<li><strong>Upside of blocking:</strong> Cost savings, resource protection</li>
+<li><strong>Downside of blocking:</strong> Lost brand visibility in <strong>Alexa</strong> ecosystem</li>
+</ul>
+<p>For most publishers, <strong>Alexa</strong> citations generate negligible traffic. Voice assistant users don&#39;t click through to sources — they accept synthesized answers. Brand awareness value proves difficult to monetize without attribution links or referral mechanisms.</p>
+<p><strong>Strategic recommendation:</strong> Block <strong>Amazonbot</strong> unless you have specific evidence that <strong>Alexa</strong> citations drive measurable business outcomes (subscriptions, leads, sales).</p>
+<h3>Amazon Product Search</h3>
+<p><strong>Amazonbot</strong> may crawl e-commerce sites to improve <strong>Amazon</strong> product search results and recommendations. Blocking potentially affects how <strong>Amazon</strong> represents your products.</p>
+<p><strong>Relevant for:</strong></p>
+<ul>
+<li>Retailers selling on Amazon Marketplace</li>
+<li>Brands managing Amazon presence</li>
+<li>E-commerce sites wanting Amazon traffic</li>
+</ul>
+<p><strong>Not relevant for:</strong></p>
+<ul>
+<li>Publishers without e-commerce</li>
+<li>B2B sites not selling physical products</li>
+<li>Content sites without Amazon inventory</li>
+</ul>
+<p>If you sell through <strong>Amazon</strong>, evaluate whether <strong>Amazonbot</strong> crawling improves product discoverability on <strong>Amazon</strong> platform. Test by implementing block and monitoring <strong>Amazon</strong> traffic changes over 60 days.</p>
+<h3>AWS Service Integration</h3>
+<p><strong>Amazonbot</strong> operates separately from <strong>AWS</strong> infrastructure services. Blocking <strong>Amazonbot</strong> doesn&#39;t affect:</p>
+<ul>
+<li><strong>S3</strong> bucket access</li>
+<li><strong>CloudFront</strong> CDN functionality</li>
+<li><strong>Route53</strong> DNS resolution (except health checks)</li>
+<li><strong>EC2</strong> instance operations</li>
+<li><strong>RDS</strong> database connectivity</li>
+</ul>
+<p>Sites hosted on <strong>AWS</strong> can safely block <strong>Amazonbot</strong> without affecting infrastructure functionality.</p>
+<hr>
+<h2>Monitoring and Maintenance</h2>
+<h3>Log Analysis for Compliance Verification</h3>
+<p>Weekly verification confirms blocks remain effective:</p>
+<pre><code class="language-bash"># Check Amazonbot request count last 7 days
+grep &quot;Amazonbot&quot; /var/log/nginx/access.log | grep -v &quot;robots.txt&quot; | wc -l
+</code></pre>
+<p><strong>Expected result after blocking:</strong> Near-zero requests to content pages. Occasional robots.txt checks (5-10 per week) are normal — crawlers periodically verify directives haven&#39;t changed.</p>
+<p><strong>Alert threshold:</strong> More than 20 content page requests per week suggests compliance failure or new crawler variant evading blocks.</p>
+<h3>Alert Configuration for Block Failures</h3>
+<p><strong>Cloudflare users:</strong></p>
+<ol>
+<li>Navigate to <strong>Analytics &gt; Notifications</strong></li>
+<li>Create notification: <strong>Custom threshold alert</strong></li>
+<li>Condition: <code>http.user_agent contains &quot;Amazonbot&quot;</code></li>
+<li>Threshold: More than 50 requests per hour</li>
+<li>Alert via email/Slack/PagerDuty</li>
+</ol>
+<p><strong>Self-hosted monitoring script:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# Alert if Amazonbot requests exceed threshold
+
+LOG=&quot;/var/log/nginx/access.log&quot;
+THRESHOLD=20
+COUNT=$(grep &quot;Amazonbot&quot; $LOG | grep -v &quot;robots.txt&quot; | wc -l)
+
+if [ $COUNT -gt $THRESHOLD ]; then
+    echo &quot;Amazonbot block failure: $COUNT requests detected&quot; | mail -s &quot;Crawler Alert&quot; admin@yourdomain.com
+fi
+</code></pre>
+<p>Run via cron daily or weekly depending on desired monitoring frequency.</p>
+<h3>Updating Block Rules as Amazon Evolves Crawlers</h3>
+<p><strong>Amazon</strong> may introduce new crawler variants with different user-agent strings. Stay current through:</p>
+<p><strong>Industry monitoring:</strong></p>
+<ul>
+<li>Publisher forums discussing new crawler variants</li>
+<li><a href="/articles/ai-crawler-directory-2026.html">Web crawler directories</a> documenting new identifiers</li>
+<li>Security mailing lists reporting new bot activity</li>
+</ul>
+<p><strong>Log analysis:</strong></p>
+<ul>
+<li>Periodic reviews of unidentified bot traffic</li>
+<li>Investigation of AWS IP ranges not matching known patterns</li>
+<li>Analysis of user-agent strings containing Amazon-related terms</li>
+</ul>
+<p><strong>Quarterly rule updates:</strong></p>
+<ul>
+<li>Review and update blocking rules with newly discovered variants</li>
+<li>Verify existing rules still function</li>
+<li>Test that legitimate traffic isn&#39;t caught by overly broad rules</li>
+</ul>
+<hr>
+<h2>Frequently Asked Questions</h2>
+<h3>Does Amazonbot respect robots.txt directives?</h3>
+<p>Yes. <strong>Amazonbot</strong> consistently honors robots.txt <code>Disallow</code> directives. Publishers report high compliance rates. Unlike <a href="/articles/bytespider-ignores-robots-txt.html">Bytespider</a>, which routinely violates robots.txt, <strong>Amazonbot</strong> stops crawling after encountering blocks.</p>
+<h3>Will blocking Amazonbot hurt my Amazon Marketplace presence?</h3>
+<p>No direct connection exists between <strong>Amazonbot</strong> web crawling and Amazon Marketplace product listings. Products listed on <strong>Amazon</strong> appear in search results through Marketplace catalog systems, not web crawler data. Blocking <strong>Amazonbot</strong> doesn&#39;t affect product visibility for items you sell on <strong>Amazon</strong> platform.</p>
+<h3>Can I allow Amazonbot but charge per crawl?</h3>
+<p><strong>Amazon</strong> doesn&#39;t participate in <a href="/articles/cloudflare-pay-per-crawl-setup.html">Pay-Per-Crawl systems</a> or <a href="/articles/rsl-protocol-implementation-guide.html">RSL protocol</a> licensing. No mechanism exists to bill <strong>Amazon</strong> for crawling. You can allow or block — monetization isn&#39;t an option with current <strong>Amazon</strong> infrastructure.</p>
+<h3>How do I verify Amazonbot is actually from Amazon and not spoofed?</h3>
+<p>Perform reverse DNS verification. Legitimate <strong>Amazonbot</strong> requests originate from <code>amazonaws.com</code> domains. Query the IP address: <code>host &lt;IP&gt;</code> should return an <code>amazonaws.com</code> hostname. Forward lookup that hostname: <code>dig +short &lt;hostname&gt;</code> should return the original IP. Bidirectional verification confirms legitimacy.</p>
+<h3>What&#39;s the difference between Amazonbot and Amazon-Route53?</h3>
+<p><strong>Amazonbot</strong> crawls content for <strong>Alexa</strong>, search, and AI training. <strong>Amazon-Route53</strong> performs health checks for AWS Route53 DNS service. Both originate from <strong>Amazon</strong> infrastructure but serve different functions. Publishers often block both unless they specifically use Route53 health monitoring.</p>
+<h3>Does blocking Amazonbot affect my AWS hosting?</h3>
+<p>No. <strong>Amazonbot</strong> operates independently from <strong>AWS</strong> infrastructure services. Sites hosted on <strong>EC2</strong>, using <strong>S3</strong>, or served through <strong>CloudFront</strong> can block <strong>Amazonbot</strong> without affecting hosting functionality.</p>
+<h3>Will Amazon ever pay for content like OpenAI does?</h3>
+<p><strong>Amazon</strong> hasn&#39;t signaled intent to license publisher content. The company hasn&#39;t joined content licensing marketplaces, hasn&#39;t signed public licensing deals with publishers, and hasn&#39;t built payment infrastructure comparable to competitors. Until <strong>Amazon</strong> demonstrates willingness to compensate content access, blocking is the only way to prevent free extraction.</p>
+<h3>Can I block Amazonbot but allow other AI crawlers?</h3>
+<p>Yes. robots.txt allows granular crawler control. Block <strong>Amazonbot</strong> while allowing <a href="/articles/gptbot-behavior-analysis.html">GPTBot</a>, <a href="/articles/claudebot-crawler-profile.html">ClaudeBot</a>, or others that participate in <a href="/articles/ai-content-licensing-models-comparison.html">licensing systems</a>. Each crawler operates independently — blocking one doesn&#39;t affect others.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

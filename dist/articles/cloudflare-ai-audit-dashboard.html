@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare AI Audit Dashboard: Monitoring and Monetizing AI Crawler Traffic at Scale | AI Pay Per Crawl</title>
+    <meta name="description" content="Cloudflare&#39;s analytics and firewall tools enable publishers to track AI crawler behavior, enforce conditional access, and meter usage for licensing without custom infrastructure.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Cloudflare AI Audit Dashboard: Monitoring and Monetizing AI Crawler Traffic at Scale">
+    <meta property="og:description" content="Cloudflare&#39;s analytics and firewall tools enable publishers to track AI crawler behavior, enforce conditional access, and meter usage for licensing without custom infrastructure.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/cloudflare-ai-audit-dashboard">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cloudflare AI Audit Dashboard: Monitoring and Monetizing AI Crawler Traffic at Scale">
+    <meta name="twitter:description" content="Cloudflare&#39;s analytics and firewall tools enable publishers to track AI crawler behavior, enforce conditional access, and meter usage for licensing without custom infrastructure.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/cloudflare-ai-audit-dashboard">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Cloudflare AI Audit Dashboard: Monitoring and Monetizing AI Crawler Traffic at Scale",
+  "description": "Cloudflare's analytics and firewall tools enable publishers to track AI crawler behavior, enforce conditional access, and meter usage for licensing without custom infrastructure.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/cloudflare-ai-audit-dashboard"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cloudflare AI Audit Dashboard: Monitoring and Monetizing AI Crawler Traffic at Scale",
+      "item": "https://aipaypercrawl.com/articles/cloudflare-ai-audit-dashboard"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Cloudflare AI Audit Dashboard: Monitoring and Monetizing AI Crawler Traffic at Scale</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 11 min read</span>
+        <h1>Cloudflare AI Audit Dashboard: Monitoring and Monetizing AI Crawler Traffic at Scale</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Cloudflare&#39;s analytics and firewall tools enable publishers to track AI crawler behavior, enforce conditional access, and meter usage for licensing without custom infrastructure.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Cloudflare AI Audit Dashboard: Monitoring and Monetizing AI Crawler Traffic at Scale</h1>
+<p>Publishers attempting to monetize AI training data face visibility challenges—understanding which crawlers access content, quantifying bandwidth consumption, and enforcing licensing terms requires infrastructure most don&#39;t possess. <strong>Cloudflare</strong> provides turnkey solutions through analytics dashboards, bot management, and firewall rules that transform AI crawler traffic from invisible overhead to measurable asset.</p>
+<p>A Cloudflare AI audit dashboard consolidates crawler detection, usage metering, access control, and billing data generation without requiring server-side code changes. This guide demonstrates building monitoring and monetization infrastructure entirely within <strong>Cloudflare&#39;s</strong> ecosystem, accessible to publishers on plans ranging from Free to Enterprise.</p>
+<h2>Cloudflare&#39;s Strategic Position</h2>
+<p><strong>Cloudflare</strong> sits between your origin server and visitors, proxying all HTTP/HTTPS traffic. This position enables:</p>
+<p><strong>Visibility</strong>: Every request passes through <strong>Cloudflare</strong>, allowing inspection before reaching your server.</p>
+<p><strong>Control</strong>: Firewall rules block, challenge, or modify requests based on arbitrary criteria.</p>
+<p><strong>Metering</strong>: Analytics track request counts, bandwidth, user agents, geographic origins without server log parsing.</p>
+<p><strong>Zero Server Impact</strong>: Enforcement happens at edge—blocked crawlers never hit your infrastructure.</p>
+<p>For AI crawler management, this architecture is ideal. Implement sophisticated access control without touching origin servers or application code.</p>
+<h2>Analytics Foundation</h2>
+<h3>Bot Management Dashboard</h3>
+<p><strong>Cloudflare Bot Management</strong> (available on Pro plan and above, $20/month) automatically categorizes traffic:</p>
+<p><strong>Bot categories</strong>:</p>
+<ul>
+<li>Verified bots (search engines, monitoring services)</li>
+<li>AI crawlers (<strong>GPTBot</strong>, <strong>ClaudeBot</strong>, <strong>ByteSpider</strong>, etc.)</li>
+<li>Likely automated (suspicious patterns)</li>
+<li>Human traffic</li>
+</ul>
+<p>Navigate to <strong>Analytics → Traffic → Bots</strong> to view:</p>
+<ul>
+<li>Bot vs. human traffic ratios</li>
+<li>Top bot user agents</li>
+<li>Bot traffic by country</li>
+<li>Bandwidth consumed by bots</li>
+<li>Request patterns over time</li>
+</ul>
+<p><strong>AI crawler identification</strong>: <strong>Cloudflare</strong> fingerprints known AI training crawlers and tags them automatically. No manual user agent parsing required.</p>
+<p><strong>Export capability</strong>: Download bot traffic data as CSV for external analysis or billing reconciliation.</p>
+<h3>Security Events Log</h3>
+<p><strong>Firewall → Overview → Activity Log</strong> shows every request that triggered firewall rules:</p>
+<p><strong>Useful for AI crawler tracking</strong>:</p>
+<ul>
+<li>Which user agents hit rate limits</li>
+<li>Which IP addresses were blocked</li>
+<li>Geographic distribution of crawler traffic</li>
+<li>Time-series patterns (identify training cycle spikes)</li>
+</ul>
+<p><strong>Filtering</strong>:</p>
+<pre><code>action:block user_agent:*GPTBot*
+</code></pre>
+<p>This query shows all blocked <strong>GPTBot</strong> requests, useful for verifying enforcement effectiveness.</p>
+<p><strong>Retention</strong>: Logs retained 72 hours (Free/Pro), 30 days (Business), 6 months (Enterprise). For longer retention, export via API to external storage.</p>
+<h3>GraphQL Analytics API</h3>
+<p>Programmatic access to analytics enables custom dashboards:</p>
+<pre><code class="language-graphql">query {
+  viewer {
+    zones(filter: {zoneTag: &quot;your_zone_id&quot;}) {
+      httpRequests1dGroups(
+        filter: {
+          userAgent_like: &quot;%GPTBot%&quot;
+          date_geq: &quot;2024-01-01&quot;
+          date_lt: &quot;2024-02-01&quot;
+        }
+        limit: 1000
+      ) {
+        dimensions {
+          date
+          userAgent
+          clientIP
+          clientCountryName
+        }
+        sum {
+          bytes
+          requests
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>This query retrieves all <strong>GPTBot</strong> traffic for January 2024 with request counts and bandwidth consumption per IP/date.</p>
+<p><strong>Use cases</strong>:</p>
+<ul>
+<li>Monthly billing calculations</li>
+<li>Trend analysis (is <strong>OpenAI</strong> crawling more or less over time?)</li>
+<li>Compliance verification (zero requests after robots.txt block = success)</li>
+</ul>
+<p>API rate limits: 1,200 requests/5 minutes on Free plan, higher on paid tiers.</p>
+<h2>Firewall Rules for Access Control</h2>
+<h3>Basic Crawler Blocking</h3>
+<p>Block all AI training crawlers:</p>
+<p><strong>Rule</strong>: AI Crawler Block
+<strong>Expression</strong>:</p>
+<pre><code>(http.user_agent contains &quot;GPTBot&quot;) or
+(http.user_agent contains &quot;ClaudeBot&quot;) or
+(http.user_agent contains &quot;Bytespider&quot;) or
+(http.user_agent contains &quot;CCBot&quot;) or
+(http.user_agent contains &quot;cohere-ai&quot;) or
+(http.user_agent contains &quot;anthropic-ai&quot;)
+</code></pre>
+<p><strong>Action</strong>: Block
+<strong>Message</strong>: &quot;AI training access requires licensing. Contact: <a href="mailto:licenses@yourdomain.com">licenses@yourdomain.com</a>&quot;</p>
+<p>This stops all identified crawlers. Custom block message informs AI companies how to obtain access.</p>
+<h3>Conditional Access with API Keys</h3>
+<p>Allow licensed crawlers that present valid API keys:</p>
+<p><strong>Rule</strong>: Licensed AI Crawler Access
+<strong>Expression</strong>:</p>
+<pre><code>(http.user_agent contains &quot;GPTBot&quot; and http.request.headers[&quot;x-api-key&quot;][0] eq &quot;openai_prod_key_abc123&quot;) or
+(http.user_agent contains &quot;ClaudeBot&quot; and http.request.headers[&quot;x-api-key&quot;][0] eq &quot;anthropic_prod_key_xyz789&quot;)
+</code></pre>
+<p><strong>Action</strong>: Allow</p>
+<p><strong>Rule</strong>: Unlicensed AI Crawlers
+<strong>Expression</strong>:</p>
+<pre><code>(http.user_agent contains &quot;GPTBot&quot; or http.user_agent contains &quot;ClaudeBot&quot;)
+and not http.request.headers[&quot;x-api-key&quot;][0] in {&quot;openai_prod_key_abc123&quot; &quot;anthropic_prod_key_xyz789&quot;}
+</code></pre>
+<p><strong>Action</strong>: Block</p>
+<p>This creates two-tier system—licensed crawlers (with keys) pass through, unlicensed get blocked.</p>
+<p><strong>API key management</strong>: Store keys in <strong>Cloudflare Workers KV</strong> for dynamic updates without editing firewall rules.</p>
+<h3>Rate Limiting</h3>
+<p>Throttle even licensed crawlers to prevent abuse:</p>
+<p><strong>Rule</strong>: AI Crawler Rate Limit
+<strong>Expression</strong>:</p>
+<pre><code>http.user_agent contains &quot;GPTBot&quot;
+</code></pre>
+<p><strong>Action</strong>: Rate Limit
+<strong>Configuration</strong>:</p>
+<ul>
+<li><strong>Requests</strong>: 100 per 10 minutes</li>
+<li><strong>Counting</strong>: Per visitor (by API key if present, otherwise by IP)</li>
+<li><strong>Action when exceeded</strong>: Block for 1 hour</li>
+</ul>
+<p><strong>Anthropic/OpenAI</strong> specific rates:</p>
+<table>
+<thead>
+<tr>
+<th>Crawler</th>
+<th>Free Tier</th>
+<th>Paid Tier</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPTBot</td>
+<td>10/min</td>
+<td>50/min</td>
+</tr>
+<tr>
+<td>ClaudeBot</td>
+<td>5/min</td>
+<td>30/min</td>
+</tr>
+<tr>
+<td>ByteSpider</td>
+<td>0 (blocked)</td>
+<td>20/min</td>
+</tr>
+</tbody></table>
+<h3>ASN-Based Blocking</h3>
+<p>Block by autonomous system number (useful for <strong>ByteDance</strong> which rotates IPs):</p>
+<p><strong>Rule</strong>: ByteDance ASN Block
+<strong>Expression</strong>:</p>
+<pre><code>(ip.geoip.asnum eq 138997) or
+(ip.geoip.asnum eq 209243) or
+(ip.geoip.asnum eq 134705) or
+(ip.geoip.asnum eq 396986)
+</code></pre>
+<p><strong>Action</strong>: Block (unless valid API key present)</p>
+<p><strong>ByteDance</strong> ASNs cover all their crawler infrastructure. Blocking at ASN level is more reliable than user agent detection (which they sometimes spoof).</p>
+<h3>Geographic Restrictions</h3>
+<p>Restrict AI crawling to specific regions:</p>
+<p><strong>Rule</strong>: US-Only AI Crawling
+<strong>Expression</strong>:</p>
+<pre><code>(http.user_agent contains &quot;GPTBot&quot; or http.user_agent contains &quot;ClaudeBot&quot;)
+and not (ip.geoip.country eq &quot;US&quot;)
+</code></pre>
+<p><strong>Action</strong>: Block</p>
+<p><strong>Use case</strong>: GDPR compliance (different licensing terms for EU entities), market prioritization (license to domestic companies first), or simply reducing traffic to servers.</p>
+<h2>Usage Metering and Billing</h2>
+<h3>Daily Traffic Reports</h3>
+<p>Query <strong>GraphQL</strong> API daily for crawler stats:</p>
+<pre><code class="language-python">import requests
+import json
+from datetime import datetime, timedelta
+
+CLOUDFLARE_EMAIL = &quot;your@email.com&quot;
+CLOUDFLARE_API_KEY = &quot;your_api_key&quot;
+ZONE_ID = &quot;your_zone_id&quot;
+
+query = &quot;&quot;&quot;
+query {
+  viewer {
+    zones(filter: {zoneTag: &quot;%s&quot;}) {
+      httpRequests1dGroups(
+        filter: {
+          date: &quot;%s&quot;
+          userAgent_like: &quot;%%GPTBot%%&quot;
+        }
+      ) {
+        sum {
+          bytes
+          requests
+        }
+      }
+    }
+  }
+}
+&quot;&quot;&quot; % (ZONE_ID, (datetime.now() - timedelta(days=1)).strftime(&quot;%Y-%m-%d&quot;))
+
+response = requests.post(
+    &quot;https://api.cloudflare.com/client/v4/graphql&quot;,
+    headers={
+        &quot;X-Auth-Email&quot;: CLOUDFLARE_EMAIL,
+        &quot;X-Auth-Key&quot;: CLOUDFLARE_API_KEY,
+        &quot;Content-Type&quot;: &quot;application/json&quot;
+    },
+    json={&quot;query&quot;: query}
+)
+
+data = response.json()
+requests_count = data[&#39;data&#39;][&#39;viewer&#39;][&#39;zones&#39;][0][&#39;httpRequests1dGroups&#39;][0][&#39;sum&#39;][&#39;requests&#39;]
+bytes_consumed = data[&#39;data&#39;][&#39;viewer&#39;][&#39;zones&#39;][0][&#39;httpRequests1dGroups&#39;][0][&#39;sum&#39;][&#39;bytes&#39;]
+
+print(f&quot;GPTBot yesterday: {requests_count} requests, {bytes_consumed / 1024 / 1024:.2f} MB&quot;)
+</code></pre>
+<p>Run via cron daily, store results in database for monthly aggregation.</p>
+<h3>Monthly Billing Calculation</h3>
+<p>Aggregate usage per license:</p>
+<pre><code class="language-sql">-- Schema
+CREATE TABLE crawler_usage (
+    date DATE,
+    crawler_name VARCHAR(50),
+    api_key VARCHAR(100),
+    requests INT,
+    bytes_consumed BIGINT
+);
+
+-- Monthly billing query
+SELECT
+    api_key,
+    SUM(requests) as total_requests,
+    SUM(bytes_consumed) / 1024 / 1024 / 1024 as total_gb,
+    CASE
+        WHEN SUM(requests) &lt; 10000 THEN 200
+        WHEN SUM(requests) &lt; 50000 THEN 500
+        ELSE 1000
+    END as monthly_charge
+FROM crawler_usage
+WHERE date &gt;= DATE_TRUNC(&#39;month&#39;, CURRENT_DATE - INTERVAL &#39;1 month&#39;)
+  AND date &lt; DATE_TRUNC(&#39;month&#39;, CURRENT_DATE)
+GROUP BY api_key;
+</code></pre>
+<p>This calculates tiered pricing based on usage—10K requests = $200, 50K = $500, above = $1,000.</p>
+<h3>Automated Invoicing</h3>
+<p>Generate invoices automatically:</p>
+<pre><code class="language-python">import stripe
+
+stripe.api_key = &quot;your_stripe_key&quot;
+
+for customer in get_licensed_customers():
+    usage = calculate_monthly_usage(customer[&#39;api_key&#39;])
+
+    if usage[&#39;total_requests&#39;] &gt; 0:
+        invoice = stripe.Invoice.create(
+            customer=customer[&#39;stripe_id&#39;],
+            auto_advance=True
+        )
+
+        stripe.InvoiceItem.create(
+            customer=customer[&#39;stripe_id&#39;],
+            amount=usage[&#39;monthly_charge&#39;] * 100,  # cents
+            currency=&quot;usd&quot;,
+            description=f&quot;AI Training Data License - {usage[&#39;total_requests&#39;]} requests, {usage[&#39;total_gb&#39;]:.2f} GB&quot;,
+            invoice=invoice.id
+        )
+
+        stripe.Invoice.finalize_invoice(invoice.id)
+        print(f&quot;Invoice {invoice.id} created for {customer[&#39;name&#39;]}&quot;)
+</code></pre>
+<p>Runs first of each month, generates <strong>Stripe</strong> invoices based on <strong>Cloudflare</strong> usage data.</p>
+<h2>Building Custom Dashboards</h2>
+<h3>Cloudflare Workers for Real-Time Metrics</h3>
+<p>Deploy <strong>Worker</strong> that aggregates crawler stats:</p>
+<pre><code class="language-javascript">addEventListener(&#39;fetch&#39;, event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const url = new URL(request.url)
+
+  if (url.pathname === &#39;/api/crawler-stats&#39;) {
+    const stats = await CRAWLER_KV.get(&#39;daily_stats&#39;, &#39;json&#39;) || {
+      gptbot: {requests: 0, bytes: 0},
+      claudebot: {requests: 0, bytes: 0},
+      bytespider: {requests: 0, bytes: 0}
+    }
+
+    return new Response(JSON.stringify(stats), {
+      headers: {&#39;Content-Type&#39;: &#39;application/json&#39;}
+    })
+  }
+
+  // Track crawler requests
+  const userAgent = request.headers.get(&#39;User-Agent&#39;) || &#39;&#39;
+  let crawler = null
+
+  if (userAgent.includes(&#39;GPTBot&#39;)) crawler = &#39;gptbot&#39;
+  else if (userAgent.includes(&#39;ClaudeBot&#39;)) crawler = &#39;claudebot&#39;
+  else if (userAgent.includes(&#39;Bytespider&#39;)) crawler = &#39;bytespider&#39;
+
+  if (crawler) {
+    // Increment stats in KV
+    const stats = await CRAWLER_KV.get(&#39;daily_stats&#39;, &#39;json&#39;) || {}
+    stats[crawler] = stats[crawler] || {requests: 0, bytes: 0}
+    stats[crawler].requests += 1
+    // Estimate bytes (would track actual in production)
+    stats[crawler].bytes += 50000
+
+    await CRAWLER_KV.put(&#39;daily_stats&#39;, JSON.stringify(stats))
+  }
+
+  // Proxy to origin
+  return fetch(request)
+}
+</code></pre>
+<p>This <strong>Worker</strong> intercepts all requests, identifies crawlers, updates counters in <strong>KV</strong> store, then proxies to origin. Provides real-time crawler statistics without origin server involvement.</p>
+<h3>Web Dashboard</h3>
+<p>Frontend for visualizing crawler activity:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;AI Crawler Dashboard&lt;/title&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;AI Crawler Activity&lt;/h1&gt;
+    &lt;canvas id=&quot;crawlerChart&quot;&gt;&lt;/canvas&gt;
+
+    &lt;script&gt;
+    fetch(&#39;/api/crawler-stats&#39;)
+        .then(r =&gt; r.json())
+        .then(data =&gt; {
+            new Chart(document.getElementById(&#39;crawlerChart&#39;), {
+                type: &#39;bar&#39;,
+                data: {
+                    labels: Object.keys(data),
+                    datasets: [{
+                        label: &#39;Requests Today&#39;,
+                        data: Object.values(data).map(c =&gt; c.requests),
+                        backgroundColor: [&#39;#4CAF50&#39;, &#39;#2196F3&#39;, &#39;#F44336&#39;]
+                    }]
+                }
+            })
+        })
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Host on <strong>Cloudflare Pages</strong>, pull data from <strong>Worker</strong> API. Real-time dashboard showing today&#39;s crawler activity.</p>
+<h2>Advanced Patterns</h2>
+<h3>Content Versioning</h3>
+<p>Serve different content to crawlers vs. humans:</p>
+<p><strong>Worker</strong> logic:</p>
+<pre><code class="language-javascript">const userAgent = request.headers.get(&#39;User-Agent&#39;) || &#39;&#39;
+
+if (userAgent.includes(&#39;GPTBot&#39;) || userAgent.includes(&#39;ClaudeBot&#39;)) {
+    const apiKey = request.headers.get(&#39;X-API-Key&#39;)
+
+    if (apiKey &amp;&amp; await validateLicense(apiKey)) {
+        // Serve full Markdown
+        return fetch(request.url.replace(&#39;/html/&#39;, &#39;/markdown/&#39;))
+    } else {
+        // Serve truncated preview
+        return fetch(request.url.replace(&#39;/html/&#39;, &#39;/preview/&#39;))
+    }
+}
+
+// Humans get regular HTML
+return fetch(request)
+</code></pre>
+<p>This routes crawlers to different content variants without origin server changes. Humans see styled website, licensed crawlers get clean Markdown, unlicensed get previews.</p>
+<h3>Dynamic License Provisioning</h3>
+<p>When customer purchases license, automatically update <strong>Cloudflare</strong> rules:</p>
+<pre><code class="language-python">import requests
+
+def provision_license(customer_email, api_key, crawler_type):
+    # Add API key to allowed list in Cloudflare
+    cf_api_endpoint = f&quot;https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/firewall/rules&quot;
+
+    # Get existing rule
+    existing_rules = requests.get(
+        cf_api_endpoint,
+        headers={&quot;X-Auth-Email&quot;: CF_EMAIL, &quot;X-Auth-Key&quot;: CF_KEY}
+    ).json()
+
+    # Find licensed crawler rule
+    licensed_rule = [r for r in existing_rules[&#39;result&#39;] if &#39;Licensed AI Crawler&#39; in r[&#39;description&#39;]][0]
+
+    # Update expression to include new API key
+    licensed_rule[&#39;filter&#39;][&#39;expression&#39;] += f&#39; or (http.user_agent contains &quot;{crawler_type}&quot; and http.request.headers[&quot;x-api-key&quot;][0] eq &quot;{api_key}&quot;)&#39;
+
+    # Push update
+    requests.put(
+        f&quot;{cf_api_endpoint}/{licensed_rule[&#39;id&#39;]}&quot;,
+        headers={&quot;X-Auth-Email&quot;: CF_EMAIL, &quot;X-Auth-Key&quot;: CF_KEY},
+        json=licensed_rule
+    )
+
+    print(f&quot;Licensed {customer_email} for {crawler_type}&quot;)
+</code></pre>
+<p>Integrate with <strong>Stripe</strong> webhooks—when payment succeeds, call this function to instantly provision access.</p>
+<h3>Compliance Monitoring</h3>
+<p>Alert when blocked crawlers persist:</p>
+<pre><code class="language-python">def check_blocked_crawler_attempts():
+    query = &quot;&quot;&quot;
+    query {
+      viewer {
+        zones(filter: {zoneTag: &quot;%s&quot;}) {
+          firewallEventsAdaptiveGroups(
+            filter: {
+              action: &quot;block&quot;
+              datetime_geq: &quot;%s&quot;
+              userAgent_like: &quot;%%GPTBot%%&quot;
+            }
+            limit: 100
+          ) {
+            count
+          }
+        }
+      }
+    }
+    &quot;&quot;&quot; % (ZONE_ID, (datetime.now() - timedelta(hours=24)).strftime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;))
+
+    response = requests.post(
+        &quot;https://api.cloudflare.com/client/v4/graphql&quot;,
+        headers={&quot;X-Auth-Email&quot;: CF_EMAIL, &quot;X-Auth-Key&quot;: CF_KEY},
+        json={&quot;query&quot;: query}
+    )
+
+    blocked_count = response.json()[&#39;data&#39;][&#39;viewer&#39;][&#39;zones&#39;][0][&#39;firewallEventsAdaptiveGroups&#39;][0][&#39;count&#39;]
+
+    if blocked_count &gt; 100:
+        send_alert(f&quot;Warning: {blocked_count} blocked GPTBot attempts in last 24h. Possible robots.txt violation.&quot;)
+</code></pre>
+<p>Run hourly. If <strong>GPTBot</strong> keeps hitting firewall despite robots.txt block, escalate to cease-and-desist.</p>
+<h2>Cost Considerations</h2>
+<p><strong>Cloudflare</strong> plan requirements:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Free</th>
+<th>Pro ($20/mo)</th>
+<th>Business ($200/mo)</th>
+<th>Enterprise (custom)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Firewall Rules</td>
+<td>5</td>
+<td>20</td>
+<td>100</td>
+<td>Unlimited</td>
+</tr>
+<tr>
+<td>Rate Limiting</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Bot Management</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Analytics Retention</td>
+<td>72 hours</td>
+<td>72 hours</td>
+<td>30 days</td>
+<td>6 months</td>
+</tr>
+<tr>
+<td>GraphQL API</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Workers</td>
+<td>100K req/day</td>
+<td>10M req/mo</td>
+<td>10M req/mo</td>
+<td>Custom</td>
+</tr>
+</tbody></table>
+<p><strong>Minimum viable setup</strong>: Pro plan ($20/month) provides bot identification, firewall rules for blocking/conditional access, and 72-hour analytics. Sufficient for small-to-medium publishers.</p>
+<p><strong>Advanced features</strong>: Business plan ($200/month) extends analytics retention to 30 days, useful for monthly billing reconciliation. Also includes advanced DDoS protection if crawler volume becomes abusive.</p>
+<p><strong>ROI calculation</strong>: If you license training data to one AI company at $300/month, Pro plan pays for itself 15x. Even modest licensing success justifies investment.</p>
+<h2>FAQ</h2>
+<p><strong>Q: Does Cloudflare automatically identify all AI crawlers?</strong>
+Most major ones (<strong>GPTBot</strong>, <strong>ClaudeBot</strong>, <strong>CCBot</strong>, <strong>ByteSpider</strong>) are fingerprinted. Lesser-known crawlers require manual user agent matching in firewall rules. Update rules quarterly as new crawlers emerge.</p>
+<p><strong>Q: Can I use Cloudflare for this if I&#39;m on Free plan?</strong>
+Limited. Free plan allows 5 firewall rules (enough for basic blocking) but no Bot Management, rate limiting, or extended analytics. Recommend Pro ($20/month) minimum for serious crawler monetization.</p>
+<p><strong>Q: How do I prevent crawlers from bypassing Cloudflare?</strong>
+Ensure origin server firewall only accepts connections from <strong>Cloudflare</strong> IP ranges. If crawlers can reach origin directly, they bypass <strong>Cloudflare</strong> controls. Use <strong>Cloudflare Authenticated Origin Pulls</strong> for certificate-based validation.</p>
+<p><strong>Q: What if crawler uses residential proxy to hide identity?</strong>
+<strong>Cloudflare Bot Management</strong> uses behavioral fingerprinting beyond just IP/user agent. Detects automated patterns even from residential IPs. Challenge suspicious traffic with CAPTCHA to verify human status.</p>
+<p><strong>Q: Can I bill different rates for different crawlers?</strong>
+Yes. Track usage per crawler type, apply tiered pricing. Example: <strong>GPTBot</strong> = $500/month, <strong>ClaudeBot</strong> = $300/month, <strong>ByteSpider</strong> = $800/month (penalty for poor behavior). Firewall rules enforce per-crawler API keys.</p>
+<p><strong>Q: How accurate is Cloudflare&#39;s bandwidth measurement?</strong>
+Very accurate—<strong>Cloudflare</strong> proxies traffic so it measures actual bytes transferred. More reliable than origin server logs which can miss cached responses or CDN-served content.</p>
+<p><strong>Q: What if AI company refuses to use API keys?</strong>
+Block them. API key requirement is non-negotiable if you&#39;re monetizing access. Companies that won&#39;t authenticate don&#39;t respect commercial terms. Focus on those willing to engage properly.</p>
+<p><strong>Q: Can I use Cloudflare Workers to dynamically rewrite content for crawlers?</strong>
+Yes. <strong>Workers</strong> can modify responses on-the-fly—truncate articles, inject licensing notices, convert HTML to Markdown, etc. Happens at edge without touching origin.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
