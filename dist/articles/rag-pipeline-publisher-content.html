@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How RAG Pipelines Use Publisher Content: Technical Architecture and Licensing Implications | AI Pay Per Crawl</title>
+    <meta name="description" content="Technical breakdown of Retrieval-Augmented Generation systems consuming publisher content. Explains vector databases, embedding generation, retrieval mechanics, and licensing considerations.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="How RAG Pipelines Use Publisher Content: Technical Architecture and Licensing Implications">
+    <meta property="og:description" content="Technical breakdown of Retrieval-Augmented Generation systems consuming publisher content. Explains vector databases, embedding generation, retrieval mechanics, and licensing considerations.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/rag-pipeline-publisher-content">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How RAG Pipelines Use Publisher Content: Technical Architecture and Licensing Implications">
+    <meta name="twitter:description" content="Technical breakdown of Retrieval-Augmented Generation systems consuming publisher content. Explains vector databases, embedding generation, retrieval mechanics, and licensing considerations.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/rag-pipeline-publisher-content">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How RAG Pipelines Use Publisher Content: Technical Architecture and Licensing Implications",
+  "description": "Technical breakdown of Retrieval-Augmented Generation systems consuming publisher content. Explains vector databases, embedding generation, retrieval mechanics, and licensing considerations.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/rag-pipeline-publisher-content"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How RAG Pipelines Use Publisher Content: Technical Architecture and Licensing Implications",
+      "item": "https://aipaypercrawl.com/articles/rag-pipeline-publisher-content"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>How RAG Pipelines Use Publisher Content: Technical Architecture and Licensing Implications</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 16 min read</span>
+        <h1>How RAG Pipelines Use Publisher Content: Technical Architecture and Licensing Implications</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Technical breakdown of Retrieval-Augmented Generation systems consuming publisher content. Explains vector databases, embedding generation, retrieval mechanics, and licensing considerations.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>How RAG Pipelines Use Publisher Content: Technical Architecture and Licensing Implications</h1>
+<p><strong>Retrieval-Augmented Generation (RAG) systems</strong> represent a distinct usage pattern of publisher content compared to pre-training on training datasets. While traditional model training internalizes publisher content into model parameters during the training phase, RAG systems store publisher content in external knowledge bases and dynamically retrieve relevant passages during inference when generating responses.</p>
+<p><strong>This architectural distinction creates different licensing implications</strong>: Training-only licenses permit AI companies to learn from your content but prohibit runtime content retrieval, while RAG licenses explicitly authorize storing your content in vector databases and surfacing it in model responses with or without attribution. Publishers negotiating AI partnerships must understand RAG technical mechanics to structure appropriate licensing terms, pricing models, and attribution requirements.</p>
+<p>This guide dissects RAG pipeline architecture from content ingestion through retrieval and generation, maps each component to publisher content usage patterns, analyzes how different RAG configurations affect licensing economics, and provides contractual language distinguishing training rights from RAG rights.</p>
+<h2>RAG Architecture Overview: Components and Data Flow</h2>
+<p><strong>RAG systems combine</strong> retrieval systems (search over external knowledge bases) with generation systems (language models producing text). When a user queries a RAG system, it retrieves relevant documents from the knowledge base, then provides those documents as context to the language model which generates a response grounded in the retrieved content.</p>
+<p><strong>Five core components</strong> compose production RAG pipelines:</p>
+<p><strong>Component 1: Content Ingestion and Processing</strong>
+Raw publisher content (HTML articles, PDFs, markdown) gets scraped or accessed via API, cleaned (removing navigation elements, ads, JavaScript), chunked into passages (200-1,000 tokens typically), and stored in document database.</p>
+<p><strong>Component 2: Embedding Generation</strong>
+Each content chunk gets encoded into a dense vector representation (embeddings) using embedding models (OpenAI text-embedding-ada-002, Anthropic&#39;s embedding model, open-source alternatives like all-MiniLM-L6-v2). These vectors capture semantic meaning in 1,536-dimension (or similar) numerical space.</p>
+<p><strong>Component 3: Vector Database Storage</strong>
+Embeddings get indexed in vector databases (Pinecone, Weaviate, Milvus, Chroma) optimized for similarity search. Metadata (article URL, title, publication date, publisher attribution) accompanies each vector.</p>
+<p><strong>Component 4: Retrieval System</strong>
+User queries get embedded using the same embedding model, then vector similarity search (typically cosine similarity or inner product) retrieves the top-k most similar content chunks (k=3-20 commonly). Some systems apply re-ranking models to improve relevance.</p>
+<p><strong>Component 5: Generation with Retrieved Context</strong>
+Retrieved chunks get injected into the language model prompt as context:</p>
+<pre><code>You are a helpful assistant. Use the following information to answer the user&#39;s question.
+
+Context:
+[Retrieved Chunk 1: &quot;Publishers facing AI scraping decisions must evaluate...&quot;]
+[Retrieved Chunk 2: &quot;Coalition membership provides cost distribution benefits...&quot;]
+[Retrieved Chunk 3: &quot;Independent negotiations capture 100% of deal value...&quot;]
+
+User Question: Should I join a publisher coalition or negotiate independently?
+
+Assistant Response:
+</code></pre>
+<p>The model generates responses grounded in retrieved content, often directly quoting or paraphrasing passages.</p>
+<p><strong>Data flow sequence</strong>:</p>
+<ol>
+<li>User submits query: &quot;Should I join a publisher coalition?&quot;</li>
+<li>Query gets embedded into vector: [0.23, -0.45, 0.78, ...]</li>
+<li>Vector database performs similarity search, retrieving 5 most relevant chunks</li>
+<li>System constructs prompt with retrieved chunks as context</li>
+<li>Language model generates response incorporating retrieved information</li>
+<li>Response gets returned to user, optionally with source citations</li>
+</ol>
+<h2>Content Ingestion: How RAG Systems Consume Publisher Content</h2>
+<p><strong>RAG content ingestion</strong> differs from training data collection in permanence and structure. Training pipelines scrape content, use it once during training, then may or may not retain it. RAG pipelines scrape content, process it into retrievable format, and store it indefinitely for runtime retrieval.</p>
+<h3>Scraping and API Access</h3>
+<p><strong>RAG systems acquire publisher content</strong> through identical methods as training data collection: web crawling (respecting or ignoring robots.txt), API access (if publisher provides APIs), manual upload (for licensed content partnerships), or third-party data vendors (aggregators selling preprocessed content).</p>
+<p>The key distinction: RAG systems require <strong>continuous content refresh</strong> to maintain currency. Training happens once (or periodically for model updates), but RAG systems need fresh content daily or weekly. This necessitates ongoing crawler access or API polling.</p>
+<p><strong>Technical implementation</strong> typically uses:</p>
+<pre><code class="language-python">import requests
+from bs4 import BeautifulSoup
+from urllib.robotparser import RobotFileParser
+
+def scrape_article(url, respect_robots=True):
+    &quot;&quot;&quot;Scrape article content for RAG ingestion.&quot;&quot;&quot;
+
+    # Check robots.txt if respecting
+    if respect_robots:
+        rp = RobotFileParser()
+        rp.set_url(f&quot;{url.split(&#39;/&#39;)[0]}//{url.split(&#39;/&#39;)[2]}/robots.txt&quot;)
+        rp.read()
+
+        if not rp.can_fetch(&quot;RAGCrawler/1.0&quot;, url):
+            return None  # Blocked by robots.txt
+
+    response = requests.get(url, headers={&#39;User-Agent&#39;: &#39;RAGCrawler/1.0&#39;})
+    soup = BeautifulSoup(response.content, &#39;html.parser&#39;)
+
+    # Extract article content (remove nav, ads, etc.)
+    article_body = soup.find(&#39;article&#39;) or soup.find(&#39;div&#39;, class_=&#39;content&#39;)
+
+    return {
+        &#39;url&#39;: url,
+        &#39;title&#39;: soup.find(&#39;h1&#39;).text if soup.find(&#39;h1&#39;) else &#39;&#39;,
+        &#39;content&#39;: article_body.get_text() if article_body else &#39;&#39;,
+        &#39;published_date&#39;: soup.find(&#39;meta&#39;, property=&#39;article:published_time&#39;)[&#39;content&#39;]
+            if soup.find(&#39;meta&#39;, property=&#39;article:published_time&#39;) else None
+    }
+</code></pre>
+<p><strong>Licensing consideration</strong>: Training-only licenses prohibit this ongoing scraping for RAG purposes. Publishers must explicitly grant &quot;content hosting and retrieval rights&quot; separate from training rights.</p>
+<h3>Content Processing and Chunking</h3>
+<p><strong>RAG systems chunk</strong> content into passages because language models have context window limits (4K-128K tokens) and retrieval performs better on focused passages than full articles.</p>
+<p><strong>Chunking strategies</strong> include:</p>
+<p><strong>Fixed-size chunking</strong>: Split text every N tokens (200, 500, 1,000) with optional overlap (50-100 tokens) to prevent context loss at boundaries.</p>
+<pre><code class="language-python">def chunk_text(text, chunk_size=500, overlap=50):
+    &quot;&quot;&quot;Split text into overlapping chunks.&quot;&quot;&quot;
+    tokens = text.split()  # Simplified tokenization
+    chunks = []
+
+    for i in range(0, len(tokens), chunk_size - overlap):
+        chunk = &#39; &#39;.join(tokens[i:i + chunk_size])
+        chunks.append(chunk)
+
+    return chunks
+</code></pre>
+<p><strong>Semantic chunking</strong>: Split at natural boundaries (paragraphs, section headings) to preserve semantic coherence.</p>
+<p><strong>Sentence-window chunking</strong>: Store individual sentences but retrieve surrounding context window (±3 sentences) during retrieval.</p>
+<p><strong>Licensing consideration</strong>: Chunking creates derivative works (new segmentations of original content). Publishers may specify permitted chunking methodologies in licenses (e.g., &quot;semantic chunking preserving attribution context&quot; versus &quot;no granular chunking below paragraph level&quot;).</p>
+<h3>Metadata Preservation and Attribution Linking</h3>
+<p><strong>RAG systems store metadata</strong> alongside content chunks:</p>
+<ul>
+<li>Source URL (enables citation generation)</li>
+<li>Publisher name (attribution)</li>
+<li>Publication date (temporal grounding)</li>
+<li>Author name (creator attribution)</li>
+<li>Article title (context)</li>
+<li>Content category/topic tags (filtering)</li>
+</ul>
+<p>This metadata serves two purposes:</p>
+<ol>
+<li><strong>Runtime attribution</strong>: Systems can cite sources by including URLs in responses</li>
+<li><strong>Filtering</strong>: Users can restrict retrieval to specific publishers or date ranges</li>
+</ol>
+<p><strong>Publishers negotiating RAG licenses</strong> should require:</p>
+<ul>
+<li>Metadata preservation (all attribution information stored)</li>
+<li>Citation requirements (sources must be linked in generated responses)</li>
+<li>Metadata accuracy (no misattribution, URLs must link to actual source)</li>
+</ul>
+<p><strong>Technical implementation</strong>:</p>
+<pre><code class="language-python">{
+    &quot;chunk_id&quot;: &quot;abc123&quot;,
+    &quot;content&quot;: &quot;Publishers facing AI scraping decisions must evaluate...&quot;,
+    &quot;metadata&quot;: {
+        &quot;source_url&quot;: &quot;https://aipayper crawl.com/articles/decision-framework.html&quot;,
+        &quot;publisher&quot;: &quot;AIPayPerCrawl&quot;,
+        &quot;title&quot;: &quot;Publisher Decision Framework: Block, Monetize, or Allow&quot;,
+        &quot;author&quot;: &quot;Victor Valentine Romo&quot;,
+        &quot;published_date&quot;: &quot;2026-02-08&quot;,
+        &quot;content_type&quot;: &quot;article&quot;
+    },
+    &quot;embedding&quot;: [0.23, -0.45, 0.78, ...]  # 1536-dimensional vector
+}
+</code></pre>
+<h2>Embedding Generation and Vector Database Storage</h2>
+<p><strong>Embedding models</strong> convert text into dense vector representations capturing semantic meaning. Similar concepts map to nearby points in vector space, enabling semantic search (finding conceptually related content regardless of exact keyword matches).</p>
+<h3>Embedding Model Selection</h3>
+<p><strong>RAG systems choose</strong> between proprietary embeddings (OpenAI, Anthropic, Cohere) and open-source models (Sentence Transformers, instructor models).</p>
+<p><strong>OpenAI text-embedding-ada-002</strong> (1,536 dimensions, $0.10 per 1M tokens) dominates commercial RAG deployments due to quality and API ease.</p>
+<p><strong>Anthropic embedding models</strong> (announced 2025) offer competitive quality with improved licensing terms for publisher content.</p>
+<p><strong>Open-source models</strong> (all-MiniLM-L6-v2, instructor-large) enable self-hosted embedding generation, eliminating per-token costs and providing data privacy.</p>
+<p><strong>Licensing consideration</strong>: Some embedding models&#39; terms of service prohibit using them on unlicensed content. Publishers can negotiate that RAG systems use only embedding models whose ToS permit licensed content usage.</p>
+<h3>Vector Database Architecture</h3>
+<p><strong>Vector databases</strong> specialize in storing high-dimensional vectors and performing fast similarity search. Production RAG systems use:</p>
+<p><strong>Pinecone</strong> (fully managed, $70-$1,000/month depending on index size): Handles billions of vectors, millisecond query latency, supports metadata filtering.</p>
+<p><strong>Weaviate</strong> (open-source or cloud, $0-$500/month): Combines vector search with traditional database features, supports hybrid search (vector + keyword).</p>
+<p><strong>Milvus</strong> (open-source): Self-hosted option for enterprises requiring on-premise deployment.</p>
+<p><strong>Chroma</strong> (open-source): Simple vector database for smaller RAG applications (&lt;100M vectors).</p>
+<p><strong>Storage calculation</strong>: A publisher with 10,000 articles, each chunked into 10 passages, creates 100,000 chunks. At 1,536-dimensional embeddings using 4 bytes per dimension, storage requires:</p>
+<pre><code>100,000 chunks × 1,536 dimensions × 4 bytes = 614 MB raw vector storage
++ metadata (URLs, text snippets) ≈ 200 MB
+= ~800 MB total
+</code></pre>
+<p>This scales linearly: 100,000 articles = 8 GB storage.</p>
+<p><strong>Licensing consideration</strong>: Publishers may require AI companies to:</p>
+<ul>
+<li>Disclose which vector database they use (on-premise vs. cloud impacts data security)</li>
+<li>Delete embeddings upon license termination (not just deactivate access)</li>
+<li>Implement backup retention policies (prevent unauthorized vector database archival)</li>
+</ul>
+<h2>Retrieval Mechanics: Query Processing and Content Selection</h2>
+<p><strong>Retrieval systems</strong> determine which publisher content chunks get surfaced in AI responses. Understanding retrieval mechanics reveals how frequently your content appears and how it gets contextualized.</p>
+<h3>Query Embedding and Similarity Search</h3>
+<p><strong>User queries</strong> get embedded using the same embedding model that embedded the content chunks:</p>
+<pre><code class="language-python">import openai
+
+def embed_query(query):
+    &quot;&quot;&quot;Embed user query for vector similarity search.&quot;&quot;&quot;
+    response = openai.Embedding.create(
+        model=&quot;text-embedding-ada-002&quot;,
+        input=query
+    )
+    return response[&#39;data&#39;][0][&#39;embedding&#39;]
+</code></pre>
+<p><strong>Vector similarity calculation</strong> (typically cosine similarity) measures distance between query vector and all content chunk vectors:</p>
+<pre><code class="language-python">import numpy as np
+
+def cosine_similarity(vec1, vec2):
+    &quot;&quot;&quot;Calculate cosine similarity between two vectors.&quot;&quot;&quot;
+    return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
+
+# Example retrieval
+query_vector = embed_query(&quot;Should I join a publisher coalition?&quot;)
+
+similarities = []
+for chunk in vector_database:
+    sim = cosine_similarity(query_vector, chunk[&#39;embedding&#39;])
+    similarities.append((chunk, sim))
+
+# Retrieve top 5 most similar chunks
+top_chunks = sorted(similarities, key=lambda x: x[1], reverse=True)[:5]
+</code></pre>
+<p><strong>Licensing consideration</strong>: Publishers may negotiate:</p>
+<ul>
+<li>Minimum similarity thresholds (only retrieve chunks with &gt;0.7 similarity, preventing tangential content association)</li>
+<li>Maximum retrieval count (cap at k=10 chunks per query, preventing excessive content extraction)</li>
+<li>Query filtering (permit retrieval only for queries within licensed content topics)</li>
+</ul>
+<h3>Hybrid Search and Re-ranking</h3>
+<p><strong>Advanced RAG systems</strong> combine vector search with keyword search (hybrid search) to improve precision:</p>
+<pre><code class="language-python">def hybrid_search(query, vector_db, traditional_db, alpha=0.5):
+    &quot;&quot;&quot;Combine vector similarity search with keyword search.&quot;&quot;&quot;
+
+    # Vector search
+    query_vector = embed_query(query)
+    vector_results = vector_similarity_search(query_vector, vector_db, top_k=20)
+
+    # Keyword search
+    keyword_results = traditional_search(query, traditional_db, top_k=20)
+
+    # Combine scores
+    combined_scores = {}
+    for chunk, score in vector_results:
+        combined_scores[chunk[&#39;id&#39;]] = alpha * score
+
+    for chunk, score in keyword_results:
+        combined_scores[chunk[&#39;id&#39;]] = combined_scores.get(chunk[&#39;id&#39;], 0) + (1 - alpha) * score
+
+    # Rank by combined score
+    ranked_chunks = sorted(combined_scores.items(), key=lambda x: x[1], reverse=True)[:5]
+    return [vector_db.get_chunk(chunk_id) for chunk_id, score in ranked_chunks]
+</code></pre>
+<p><strong>Re-ranking models</strong> (Cohere rerank, cross-encoders) refine initial retrieval results by scoring query-chunk relevance more accurately than cosine similarity:</p>
+<pre><code class="language-python">import cohere
+
+def rerank_results(query, initial_results, top_n=5):
+    &quot;&quot;&quot;Re-rank retrieval results for improved relevance.&quot;&quot;&quot;
+    co = cohere.Client(&#39;YOUR_API_KEY&#39;)
+
+    docs = [chunk[&#39;content&#39;] for chunk in initial_results]
+
+    rerank_response = co.rerank(
+        model=&#39;rerank-english-v2.0&#39;,
+        query=query,
+        documents=docs,
+        top_n=top_n
+    )
+
+    return [initial_results[result.index] for result in rerank_response]
+</code></pre>
+<p><strong>Licensing consideration</strong>: Re-ranking processes chunks multiple times. Publishers may negotiate per-retrieval or per-token-processed pricing that accounts for re-ranking overhead.</p>
+<h2>Generation: How Retrieved Content Appears in Responses</h2>
+<p><strong>Language models</strong> receive retrieved chunks as prompt context and generate responses incorporating that information. The degree of direct reproduction versus paraphrasing varies by system design.</p>
+<h3>Prompt Construction with Retrieved Context</h3>
+<p><strong>RAG systems construct prompts</strong> injecting retrieved chunks:</p>
+<pre><code class="language-python">def construct_rag_prompt(query, retrieved_chunks):
+    &quot;&quot;&quot;Build prompt with retrieved context for generation.&quot;&quot;&quot;
+
+    context = &quot;\n\n&quot;.join([
+        f&quot;Source: {chunk[&#39;metadata&#39;][&#39;title&#39;]} ({chunk[&#39;metadata&#39;][&#39;source_url&#39;]})\n{chunk[&#39;content&#39;]}&quot;
+        for chunk in retrieved_chunks
+    ])
+
+    prompt = f&quot;&quot;&quot;You are a helpful assistant. Use the following information to answer the user&#39;s question. Cite sources by including URLs in your response.
+
+Context:
+{context}
+
+User Question: {query}
+
+Assistant Response:&quot;&quot;&quot;
+
+    return prompt
+</code></pre>
+<p><strong>Key parameters</strong>:</p>
+<ul>
+<li>Number of chunks included (3-20 typical)</li>
+<li>Chunk ordering (relevance-ranked, chronologically, publisher-grouped)</li>
+<li>Citation instructions (explicit URL requirement, inline citations, footnotes)</li>
+<li>Paraphrasing emphasis (&quot;answer in your own words&quot; versus &quot;quote relevant passages&quot;)</li>
+</ul>
+<p><strong>Licensing consideration</strong>: Publishers should require:</p>
+<ul>
+<li>Explicit citation instructions in prompts (enforce attribution)</li>
+<li>Limits on context window utilization (prevent entire articles&#39; worth of chunks appearing together)</li>
+<li>Paraphrasing requirements (prohibit verbatim quote chains exceeding X words)</li>
+</ul>
+<h3>Attribution Implementation</h3>
+<p><strong>Citation quality</strong> varies dramatically across RAG implementations:</p>
+<p><strong>Strong attribution</strong> (Perplexity-style): Inline numbered citations linking to sources</p>
+<pre><code>Publishers can join coalitions for collective bargaining[1] or negotiate independently to capture full deal value[2].
+
+[1] https://aipayper crawl.com/articles/coalition-ai-scraping.html
+[2] https://aipayper crawl.com/articles/position-publication-ai-deal.html
+</code></pre>
+<p><strong>Weak attribution</strong> (ChatGPT Browse-style): Sources listed at end without clear mapping to specific claims</p>
+<pre><code>Publishers can join coalitions for collective bargaining or negotiate independently to capture full deal value.
+
+Sources:
+- Publisher Coalitions vs. Independent Licensing
+- How to Position Your Publication for an AI Deal
+</code></pre>
+<p><strong>No attribution</strong> (internal RAG tools): Content incorporated without any source indication</p>
+<p><strong>Publishers licensing RAG usage</strong> must contractually specify attribution requirements:</p>
+<ul>
+<li>Citation format (inline links, footnotes, bibliography)</li>
+<li>Citation frequency (minimum citations per response)</li>
+<li>Link functionality (must hyperlink to source URL, not just display text)</li>
+<li>Misattribution penalties (financial penalties for incorrect or missing attribution)</li>
+</ul>
+<h3>Direct Quotation vs. Paraphrasing</h3>
+<p><strong>Language models</strong> trained to follow instructions vary in reproduction fidelity. Some paraphrase heavily, others quote extensively when instructed.</p>
+<p><strong>Example query</strong>: &quot;What are the benefits of coalition membership?&quot;</p>
+<p><strong>High reproduction response</strong> (problematic for publishers):</p>
+<pre><code>According to AIPayPerCrawl, &quot;Coalition membership delivers negotiating leverage through aggregated content libraries, shares legal costs across members, and provides market intelligence from peer publishers. Coalitions consistently secure 20-35% higher per-publication compensation than comparable individual publishers negotiating alone.&quot;
+</code></pre>
+<p>(This reproduces 30+ consecutive words verbatim)</p>
+<p><strong>Paraphrased response</strong> (more transformative):</p>
+<pre><code>Publisher coalitions offer several advantages. They provide stronger negotiating positions by combining many publications into larger content libraries that AI companies value. Legal expenses get distributed across members, reducing individual costs. Members also share market intelligence about deals and AI company behavior. Research shows coalitions typically achieve 20-35% better compensation than solo publishers.
+</code></pre>
+<p><strong>Licensing consideration</strong>: Publishers can negotiate paraphrasing requirements:</p>
+<ul>
+<li>Maximum consecutive verbatim words (e.g., no more than 15 consecutive words directly quoted)</li>
+<li>Transformation requirements (responses must substantially differ from source prose)</li>
+<li>Fair use compliance (RAG usage must satisfy transformative use standards)</li>
+</ul>
+<h2>Licensing Framework: Training vs. RAG Rights</h2>
+<p><strong>Publishers negotiating AI partnerships</strong> must distinguish training rights from RAG rights, as these represent different usage patterns with different economics and risks.</p>
+<h3>Training Rights Definition</h3>
+<p><strong>Training rights</strong> authorize AI companies to:</p>
+<ul>
+<li>Access content via crawling or API</li>
+<li>Process content into training data format</li>
+<li>Use content to train/fine-tune language models</li>
+<li>Store intermediate training artifacts (embeddings, processed datasets)</li>
+<li>Update models periodically with refreshed training data</li>
+</ul>
+<p><strong>Training rights typically prohibit</strong>:</p>
+<ul>
+<li>Storing content for runtime retrieval (RAG)</li>
+<li>Directly reproducing content in model outputs</li>
+<li>Sublicensing training data to third parties</li>
+<li>Using content for retrieval systems or search products</li>
+</ul>
+<p><strong>Contractual language</strong>:</p>
+<pre><code>Licensor grants Licensee non-exclusive, worldwide rights to access and use Licensed
+Content for training artificial intelligence models, including but not limited to:
+(a) crawling or API access to retrieve Licensed Content;
+(b) processing Licensed Content into training data formats;
+(c) training, fine-tuning, and updating Licensee&#39;s language models using Licensed Content;
+(d) storing intermediate artifacts required for training.
+
+Licensee shall NOT use Licensed Content for:
+(a) retrieval-augmented generation (RAG) or similar runtime retrieval systems;
+(b) direct content reproduction in model outputs exceeding fair use;
+(c) sublicensing or resale of Licensed Content or derivatives thereof.
+</code></pre>
+<h3>RAG Rights Definition</h3>
+<p><strong>RAG rights</strong> authorize AI companies to:</p>
+<ul>
+<li>All training rights (above)</li>
+<li>PLUS: Store content in vector databases</li>
+<li>PLUS: Retrieve and display content chunks during inference</li>
+<li>PLUS: Generate responses directly quoting or paraphrasing content</li>
+<li>PLUS: Implement search or answer products utilizing content</li>
+</ul>
+<p><strong>RAG rights require additional provisions</strong>:</p>
+<ul>
+<li>Attribution requirements (citation format, frequency)</li>
+<li>Content update obligations (refresh content weekly/monthly)</li>
+<li>Direct quotation limits (maximum consecutive words)</li>
+<li>Traffic referral requirements (AI company drives X monthly visits to Licensor)</li>
+</ul>
+<p><strong>Contractual language</strong>:</p>
+<pre><code>Licensor grants Licensee all Training Rights PLUS Retrieval-Augmented Generation Rights:
+
+(a) Store Licensed Content in vector databases and knowledge bases for runtime retrieval;
+(b) Retrieve relevant Licensed Content passages during model inference;
+(c) Generate responses incorporating Retrieved Licensed Content;
+(d) Display Licensed Content chunks to end users with proper attribution.
+
+Attribution Requirements:
+- Licensee shall cite Licensor as source for all retrieved Licensed Content
+- Citations shall include hyperlinks to original source URLs
+- Minimum one citation per 200 words of generated response incorporating Licensed Content
+
+Content Update:
+- Licensee shall refresh Licensed Content in retrieval systems [weekly/monthly]
+
+Direct Quotation Limits:
+- Licensee shall not directly quote more than [50/100/200] consecutive words from any single article without explicit quotation attribution
+
+Traffic Referral:
+- Licensee shall drive minimum [X] monthly referral visits to Licensor&#39;s website via source links
+</code></pre>
+<h3>Pricing Differential: Training vs. RAG</h3>
+<p><strong>RAG rights command 40-80% premiums</strong> over training-only rights because:</p>
+<ol>
+<li>RAG systems store content permanently (ongoing hosting costs)</li>
+<li>Content appears directly in user-facing outputs (higher visibility)</li>
+<li>Attribution provides brand exposure (marketing value to publisher)</li>
+<li>RAG usage measurable per-query (pricing can scale with usage)</li>
+</ol>
+<p><strong>Pricing structures</strong>:</p>
+<p><strong>Training-only license</strong>:</p>
+<ul>
+<li>Fixed annual fee: $100K-$500K (typical mid-sized publisher)</li>
+<li>Based on: Content volume, specialization, historical archive depth</li>
+<li>Payment schedule: Quarterly or annual</li>
+</ul>
+<p><strong>RAG license</strong>:</p>
+<ul>
+<li>Fixed annual fee: $140K-$900K (40-80% premium over training-only)</li>
+<li>OR consumption-based: $0.02-$0.05 per retrieval event</li>
+<li>OR hybrid: $80K base + $0.03 per retrieval exceeding 1M monthly threshold</li>
+</ul>
+<p><strong>Hybrid model example</strong> (training + RAG):</p>
+<ul>
+<li>Training baseline: $150K annually</li>
+<li>RAG premium: $90K annually (60% premium)</li>
+<li>Total: $240K annually</li>
+<li>Plus usage overage: $0.04 per retrieval exceeding 2M monthly</li>
+</ul>
+<h3>Content Deletion and Retention</h3>
+<p><strong>License termination</strong> triggers content deletion obligations:</p>
+<p><strong>Training-only licenses</strong>: Content may remain embedded in model parameters (practically irrevocable) but AI company cannot retain training datasets or continue crawling.</p>
+<p><strong>RAG licenses</strong>: Content must be deleted from vector databases within [30/60/90] days of termination. AI company cannot retrieve content after deletion effective date.</p>
+<p><strong>Contractual language</strong>:</p>
+<pre><code>Upon termination or expiration of this Agreement:
+
+(a) Training Rights: Licensee shall immediately cease accessing Licensed Content for training purposes and shall delete training datasets within 90 days. Content embedded in existing model parameters may remain but Licensee shall not train new models on Licensed Content.
+
+(b) RAG Rights: Licensee shall delete all Licensed Content from vector databases, knowledge bases, and retrieval systems within 30 days. Licensee shall not retrieve or display Licensed Content after deletion effective date.
+
+(c) Verification: Licensor may request written certification of deletion, and Licensee shall cooperate with third-party audits to verify compliance.
+</code></pre>
+<p>Publishers structuring AI partnerships must explicitly negotiate training versus RAG rights separately, with pricing, attribution, and deletion terms tailored to each usage pattern&#39;s distinct technical implementation and business implications.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
