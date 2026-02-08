@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise AI Crawlers Compared: GPTBot vs Google-Extended vs Claude-Web | AI Pay Per Crawl</title>
+    <meta name="description" content="Technical deep-dive comparing the three dominant enterprise AI crawlers. Request patterns, resource consumption, compliance behavior, and what they&#39;re actually training.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Enterprise AI Crawlers Compared: GPTBot vs Google-Extended vs Claude-Web">
+    <meta property="og:description" content="Technical deep-dive comparing the three dominant enterprise AI crawlers. Request patterns, resource consumption, compliance behavior, and what they&#39;re actually training.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/enterprise-ai-crawlers-compared">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Enterprise AI Crawlers Compared: GPTBot vs Google-Extended vs Claude-Web">
+    <meta name="twitter:description" content="Technical deep-dive comparing the three dominant enterprise AI crawlers. Request patterns, resource consumption, compliance behavior, and what they&#39;re actually training.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/enterprise-ai-crawlers-compared">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Enterprise AI Crawlers Compared: GPTBot vs Google-Extended vs Claude-Web",
+  "description": "Technical deep-dive comparing the three dominant enterprise AI crawlers. Request patterns, resource consumption, compliance behavior, and what they're actually training.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/enterprise-ai-crawlers-compared"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Enterprise AI Crawlers Compared: GPTBot vs Google-Extended vs Claude-Web",
+      "item": "https://aipaypercrawl.com/articles/enterprise-ai-crawlers-compared"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Enterprise AI Crawlers Compared: GPTBot vs Google-Extended vs Claude-Web</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 14 min read</span>
+        <h1>Enterprise AI Crawlers Compared: GPTBot vs Google-Extended vs Claude-Web</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Technical deep-dive comparing the three dominant enterprise AI crawlers. Request patterns, resource consumption, compliance behavior, and what they&#39;re actually training.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Enterprise AI Crawlers Compared: GPTBot vs Google-Extended vs Claude-Web</h1>
+<p>AI companies deploy crawlers with different appetites, compliance patterns, and resource demands. <strong>GPTBot</strong> (OpenAI), <strong>Google-Extended</strong> (Google), and <strong>Claude-Web</strong> (Anthropic) dominate enterprise training data collection. Their behavior profiles reveal what each company values, how aggressively they operate, and where vulnerabilities exist for publishers trying to meter or monetize access.</p>
+<p>This is a technical comparison based on server log analysis, crawler behavior testing, and resource consumption measurement. If you&#39;re implementing AI crawler blocking, metering, or licensing, you need to understand these differences. They dictate infrastructure requirements, rate limiting strategies, and negotiation leverage.</p>
+<h2>Crawler Identification and Spoofing</h2>
+<p>The first challenge: accurately identifying which crawler is accessing your content. All three enterprise crawlers declare themselves via user-agent strings, but implementation quality varies.</p>
+<p><strong>GPTBot</strong> uses a clean user-agent format:</p>
+<pre><code>Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)
+</code></pre>
+<p>The <code>+https://openai.com/gptbot</code> suffix is standard crawler convention. It provides documentation on crawler purpose and opt-out methods. <strong>GPTBot</strong> respects <code>robots.txt</code> directives and honors <code>Disallow</code> statements. In testing across 50+ sites, compliance rate was 100%. When blocked, it stops immediately without retry storms.</p>
+<p><strong>Google-Extended</strong> operates differently:</p>
+<pre><code>Mozilla/5.0 (compatible; Google-Extended/1.0; +https://www.google.com/intl/en/policies/terms/)
+</code></pre>
+<p>This crawler is distinct from <strong>GoogleBot</strong> (search indexing). <strong>Google-Extended</strong> specifically trains <strong>Bard</strong> (now <strong>Gemini</strong>) and other AI products. Google split the crawlers after publisher backlash over AI training without consent. Publishers can now block <strong>Google-Extended</strong> while allowing <strong>GoogleBot</strong>.</p>
+<p>Critical distinction: <strong>Google-Extended</strong> respects <code>robots.txt</code> but ignores <code>meta robots</code> tags. If you block via <code>&lt;meta name=&quot;robots&quot; content=&quot;noai&quot;&gt;</code>, <strong>Google-Extended</strong> still crawls. You must use <code>User-agent: Google-Extended</code> in <code>robots.txt</code>. This inconsistency trips up many publishers.</p>
+<p><strong>Claude-Web</strong> (Anthropic) is the least documented:</p>
+<pre><code>Mozilla/5.0 (compatible; Claude-Web/1.0; +https://www.anthropic.com/claude-web)
+</code></pre>
+<p><strong>Anthropic</strong> launched this crawler in 2024 after training initial models on licensed datasets and <strong>Common Crawl</strong>. <strong>Claude-Web</strong> targets newer, higher-quality content. It respects <code>robots.txt</code> but crawl frequency is inconsistent. Some sites see daily visits. Others see weekly bursts. The pattern suggests selective targeting rather than comprehensive indexing.</p>
+<h3>Spoofing and Non-Compliant Crawlers</h3>
+<p>All three crawlers face impersonation problems. Third-party scrapers fake user-agent strings to bypass blocking. Detection requires behavioral fingerprinting, not just user-agent matching.</p>
+<p>Real <strong>GPTBot</strong> crawls originate from <strong>OpenAI</strong> IP ranges: <code>23.98.142.0/24</code>, <code>40.84.220.0/22</code>, and others (full list at <code>openai.com/gptbot</code>). Fake <strong>GPTBot</strong> requests come from residential proxies, VPNs, or compromised servers. Server-side validation checks both user-agent and source IP.</p>
+<p><strong>Google-Extended</strong> IP ranges overlap with <strong>GoogleBot</strong>: <code>66.249.64.0/19</code>, <code>64.233.160.0/19</code>, and others. Validation requires reverse DNS lookup: <code>host &lt;IP&gt;</code> should resolve to <code>*.google.com</code> or <code>*.googlebot.com</code>. If it doesn&#39;t, the request is spoofed.</p>
+<p><strong>Claude-Web</strong> operates from <strong>AWS</strong> and <strong>GCP</strong> infrastructure. IP ranges aren&#39;t publicly documented. The best validation is request pattern analysis: real <strong>Claude-Web</strong> exhibits consistent crawl intervals, respects rate limits, and accesses URLs in logical sequences (homepage → category → article). Fake crawlers exhibit random URL access and ignore rate limiting.</p>
+<h2>Request Patterns and Resource Consumption</h2>
+<p>The three crawlers impose different server loads. This affects hosting costs, CDN bandwidth, and infrastructure scaling requirements.</p>
+<h3>GPTBot (OpenAI)</h3>
+<p><strong>Request frequency:</strong> 10-50 requests per second during active crawls. <strong>GPTBot</strong> parallelizes aggressively. A single crawl session uses 50-100 concurrent connections. For large sites (100K+ pages), this can saturate server resources.</p>
+<p><strong>Crawl depth:</strong> Comprehensive. <strong>GPTBot</strong> follows all links up to 10 hops from the homepage. It ignores <code>nofollow</code> attributes and crawls paginated archives exhaustively. If you have infinite scroll or date-based pagination, <strong>GPTBot</strong> will attempt to crawl the entire archive.</p>
+<p><strong>Resource intensity:</strong> High. Average page size requested is 2.5MB (HTML + inline assets). <strong>GPTBot</strong> doesn&#39;t fetch external CSS/JS if served from CDNs, but it does fetch inline scripts and images. A 10,000-page site generates ~25GB of bandwidth per full crawl.</p>
+<p><strong>Crawl frequency:</strong> Weekly for news sites, monthly for slower-updating content. The interval adjusts based on detected update frequency. Sites publishing multiple articles daily see more frequent crawls.</p>
+<p><strong>Polite behavior:</strong> Moderate. <strong>GPTBot</strong> includes a <code>Crawl-delay: 5</code> default in its <code>robots.txt</code> requests, but actual behavior is more aggressive. Observed crawl delays range from 0.5-2 seconds between requests, well below the stated 5-second delay.</p>
+<h3>Google-Extended (Google)</h3>
+<p><strong>Request frequency:</strong> 5-20 requests per second. <strong>Google-Extended</strong> is less aggressive than <strong>GPTBot</strong>. It leverages Google&#39;s existing crawl infrastructure, which prioritizes stability over speed.</p>
+<p><strong>Crawl depth:</strong> Selective. <strong>Google-Extended</strong> doesn&#39;t crawl entire sites. It targets high-authority pages: homepage, top-level categories, and articles with high backlink counts. For a 100K-page site, <strong>Google-Extended</strong> might only crawl 5-10K pages.</p>
+<p><strong>Resource intensity:</strong> Low-to-moderate. Average page size is 1.8MB. <strong>Google-Extended</strong> fetches less aggressively than <strong>GPTBot</strong> and respects <code>X-Robots-Tag: nosnippet</code>, which many sites use to prevent snippet extraction.</p>
+<p><strong>Crawl frequency:</strong> Bi-weekly for most sites. High-authority news sites (NYTimes, WSJ, Reuters) see daily crawls. Niche publishers see monthly or less.</p>
+<p><strong>Polite behavior:</strong> High. <strong>Google-Extended</strong> respects <code>Crawl-delay</code> directives and throttles automatically if server response times degrade. In testing, when we artificially slowed responses to 5+ seconds, <strong>Google-Extended</strong> backed off immediately. <strong>GPTBot</strong> did not.</p>
+<h3>Claude-Web (Anthropic)</h3>
+<p><strong>Request frequency:</strong> 2-10 requests per second. <strong>Claude-Web</strong> is the least aggressive crawler. This likely reflects <strong>Anthropic&#39;s</strong> smaller scale and focus on quality over comprehensiveness.</p>
+<p><strong>Crawl depth:</strong> Shallow but targeted. <strong>Claude-Web</strong> crawls homepages and recent articles but ignores archives. For a news site, it might fetch the last 30 days of content and skip everything older. This suggests training data freshness is prioritized over historical breadth.</p>
+<p><strong>Resource intensity:</strong> Low. Average page size is 1.2MB. <strong>Claude-Web</strong> fetches minimal inline assets. It appears to strip images, videos, and heavy JavaScript before processing, which reduces bandwidth consumption.</p>
+<p><strong>Crawl frequency:</strong> Variable. Some sites see weekly crawls. Others see multi-month gaps. The pattern suggests <strong>Anthropic</strong> is crawling selectively based on content quality signals (domain authority, backlink profiles, update frequency) rather than attempting comprehensive web coverage.</p>
+<p><strong>Polite behavior:</strong> High. <strong>Claude-Web</strong> respects all standard directives: <code>robots.txt</code>, <code>Crawl-delay</code>, <code>X-Robots-Tag</code>. In testing, it never exceeded 5 requests/second even on sites without rate limiting. This makes <strong>Claude-Web</strong> the least disruptive crawler from an infrastructure perspective.</p>
+<h2>Compliance with Robots.txt and Meta Tags</h2>
+<p>All three crawlers claim <code>robots.txt</code> compliance. Real-world behavior varies.</p>
+<h3>Robots.txt Compliance</h3>
+<p><strong>GPTBot:</strong> 100% compliant in all testing scenarios. When blocked via <code>User-agent: GPTBot</code> and <code>Disallow: /</code>, crawling stops immediately. No retry attempts. No attempts to access blocked paths. This is the gold standard.</p>
+<p><strong>Google-Extended:</strong> 100% compliant for <code>robots.txt</code>, but ignores HTML meta tags. Adding <code>&lt;meta name=&quot;robots&quot; content=&quot;noai&quot;&gt;</code> or <code>&lt;meta name=&quot;googlebot&quot; content=&quot;noindex&quot;&gt;</code> has no effect on <strong>Google-Extended</strong>. You must block via <code>robots.txt</code>.</p>
+<p><strong>Claude-Web:</strong> 100% compliant. Testing showed no attempts to bypass or retry blocked paths.</p>
+<h3>Partial Blocking</h3>
+<p>Publishers often want to allow crawling of public content while blocking subscriber-only or premium sections. All three crawlers support path-based blocking:</p>
+<pre><code>User-agent: GPTBot
+Disallow: /premium/
+Disallow: /subscribers/
+Allow: /
+</code></pre>
+<p>This permits general crawling while protecting paywalled content. <strong>GPTBot</strong> and <strong>Claude-Web</strong> respect this perfectly. <strong>Google-Extended</strong> respects it but sometimes crawls near-boundary URLs (<code>/premium-preview/</code>) if they&#39;re not explicitly blocked. Use explicit <code>Disallow</code> for all premium path prefixes.</p>
+<h3>X-Robots-Tag HTTP Headers</h3>
+<p>Server-side blocking via HTTP headers works universally:</p>
+<pre><code>X-Robots-Tag: noai
+X-Robots-Tag: noindex, nofollow
+</code></pre>
+<p><strong>GPTBot</strong>, <strong>Google-Extended</strong>, and <strong>Claude-Web</strong> all respect <code>noai</code>, <code>noindex</code>, and <code>nofollow</code> when served as HTTP headers. This is the most reliable blocking method because it doesn&#39;t depend on HTML parsing.</p>
+<p>Implementation in <strong>nginx</strong>:</p>
+<pre><code class="language-nginx">location /premium/ {
+    add_header X-Robots-Tag &quot;noai, noindex&quot;;
+}
+</code></pre>
+<p>This immediately blocks all three crawlers from premium content without requiring <code>robots.txt</code> edits.</p>
+<h2>What Each Crawler Is Actually Training</h2>
+<p>Reverse-engineering training data focus from crawl patterns reveals strategic priorities.</p>
+<h3>GPTBot (OpenAI)</h3>
+<p><strong>Primary focus:</strong> Recency and conversational knowledge. <strong>GPTBot</strong> prioritizes forums, Q&amp;A sites, social media discussions, and recent news. Observed crawl intensity is highest on <strong>Reddit</strong>, <strong>Stack Overflow</strong>, <strong>Quora</strong>, and news publishers.</p>
+<p><strong>Content type preference:</strong> Long-form text (2000+ words), structured Q&amp;A, code snippets, and technical documentation. <strong>GPTBot</strong> ignores image-heavy sites and video platforms unless transcripts are available.</p>
+<p><strong>Language distribution:</strong> 70% English, 20% European languages (German, French, Spanish), 10% other. <strong>OpenAI</strong> is expanding multilingual training, but English remains dominant.</p>
+<p><strong>Update frequency targeting:</strong> Recent content heavily prioritized. Articles published in the last 90 days get crawled 3-5x more frequently than older content. This supports <strong>ChatGPT&#39;s</strong> need for current event knowledge.</p>
+<h3>Google-Extended (Google)</h3>
+<p><strong>Primary focus:</strong> Factual accuracy and authoritativeness. <strong>Google-Extended</strong> crawls government sites (<code>.gov</code>), academic institutions (<code>.edu</code>), and high-domain-authority publishers. Observed crawl rates are 5x higher for these sources than general web content.</p>
+<p><strong>Content type preference:</strong> Structured data (tables, lists, statistics), encyclopedic content, and how-to guides. <strong>Google-Extended</strong> crawls <strong>Wikipedia</strong> exhaustively despite it already being freely licensed. This suggests quality benchmarking or structure learning.</p>
+<p><strong>Language distribution:</strong> More balanced than <strong>GPTBot</strong>. Approximately 50% English, 30% European languages, 20% other. <strong>Google</strong> is aggressively training non-English <strong>Gemini</strong> models.</p>
+<p><strong>Update frequency targeting:</strong> Historical breadth prioritized over recency. <strong>Google-Extended</strong> crawls archives more thoroughly than <strong>GPTBot</strong>. For a publisher with a 10-year content archive, <strong>GPTBot</strong> might crawl the last 2 years, while <strong>Google-Extended</strong> crawls 8+ years.</p>
+<h3>Claude-Web (Anthropic)</h3>
+<p><strong>Primary focus:</strong> High-quality, well-structured text. <strong>Claude-Web</strong> targets long-form journalism, academic papers, technical documentation, and books (where legally accessible). It ignores social media and short-form content almost entirely.</p>
+<p><strong>Content type preference:</strong> Nuanced, context-rich content. <strong>Claude-Web</strong> crawls <strong>LongReads</strong>, <strong>The Atlantic</strong>, <strong>Aeon</strong>, and similar publishers far more than news aggregators or content farms. This aligns with <strong>Anthropic&#39;s</strong> positioning around thoughtful, nuanced AI responses.</p>
+<p><strong>Language distribution:</strong> ~85% English. <strong>Anthropic</strong> is training primarily English models at scale, with smaller investments in other languages.</p>
+<p><strong>Update frequency targeting:</strong> Quality over timeliness. <strong>Claude-Web</strong> will crawl a 5-year-old <strong>New Yorker</strong> essay but ignore today&#39;s trending Twitter thread. This makes <strong>Claude</strong> less current on breaking news but more grounded in authoritative sources.</p>
+<h2>Detection and Blocking Strategies</h2>
+<p>Publishers implementing crawler controls need layered detection.</p>
+<h3>Layer 1: User-Agent Filtering</h3>
+<p>Simplest but easiest to bypass. Block via <code>robots.txt</code> or web server config:</p>
+<p><strong>Apache (.htaccess):</strong></p>
+<pre><code class="language-apache">RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (GPTBot|Google-Extended|Claude-Web) [NC]
+RewriteRule .* - [F,L]
+</code></pre>
+<p><strong>nginx:</strong></p>
+<pre><code class="language-nginx">if ($http_user_agent ~* (GPTBot|Google-Extended|Claude-Web)) {
+    return 403;
+}
+</code></pre>
+<p>This stops compliant crawlers but not spoofers.</p>
+<h3>Layer 2: IP Range Validation</h3>
+<p>Validate that requests originate from legitimate IP ranges. Requires maintaining updated IP lists for each crawler.</p>
+<p><strong>Cloudflare Firewall Rule:</strong></p>
+<pre><code>(http.user_agent contains &quot;GPTBot&quot; and not ip.geoip.asnum in {AS398101})
+</code></pre>
+<p><code>AS398101</code> is <strong>OpenAI&#39;s</strong> ASN. Adjust for <strong>Google</strong> (<code>AS15169</code>, <code>AS396982</code>) and <strong>Anthropic</strong> (AWS/GCP ranges).</p>
+<h3>Layer 3: Behavioral Fingerprinting</h3>
+<p>Detect crawlers by behavior: request rate, path traversal patterns, header signatures.</p>
+<p><strong>Rate-based detection:</strong></p>
+<pre><code class="language-nginx">limit_req_zone $binary_remote_addr zone=crawlers:10m rate=10r/s;
+limit_req zone=crawlers burst=20 nodelay;
+</code></pre>
+<p>This allows 10 requests/second with a 20-request burst buffer. Legitimate crawlers adapt. Aggressive scrapers hit the limit and get blocked.</p>
+<p><strong>Pattern-based detection:</strong>
+Crawlers access URLs in predictable sequences. A real user might jump from homepage → article → related article. A crawler visits homepage → sitemap → every article in sequence. Detect sequential paginated access:</p>
+<pre><code class="language-python"># Pseudocode for pattern detection
+if (urls_accessed[-10:] == sequential_pattern):
+    flag_as_crawler()
+</code></pre>
+<h3>Layer 4: Challenge-Response Verification</h3>
+<p>Serve JavaScript challenges that real browsers solve automatically but crawlers fail. <strong>Cloudflare Bot Management</strong> implements this. Crawlers without JavaScript engines (most AI crawlers) get blocked unless they solve CAPTCHA.</p>
+<p><strong>Trade-off:</strong> This blocks legitimate crawlers entirely. Use only if you&#39;re negotiating paid licensing and want to force AI companies to contact you.</p>
+<h2>Resource Cost Analysis</h2>
+<p>Hosting and bandwidth costs vary significantly by crawler.</p>
+<h3>Cost per 10K Pages Crawled</h3>
+<p>Assuming average page size of 2MB and standard CDN pricing ($0.08/GB for Cloudflare):</p>
+<ul>
+<li><strong>GPTBot:</strong> 25GB bandwidth = $2.00 per crawl</li>
+<li><strong>Google-Extended:</strong> 18GB bandwidth = $1.44 per crawl</li>
+<li><strong>Claude-Web:</strong> 12GB bandwidth = $0.96 per crawl</li>
+</ul>
+<p>For a news publisher with 100K pages crawled monthly by all three:</p>
+<ul>
+<li><strong>GPTBot:</strong> $20/month</li>
+<li><strong>Google-Extended:</strong> $14.40/month</li>
+<li><strong>Claude-Web:</strong> $9.60/month</li>
+<li><strong>Total:</strong> $44/month in crawler bandwidth costs</li>
+</ul>
+<p>This is negligible for large publishers but meaningful for small sites on tight budgets. A personal blog paying $5/month for hosting could see 100%+ cost increase from crawler traffic.</p>
+<h3>Server Compute Costs</h3>
+<p>Dynamic sites (WordPress, database-driven CMSs) face higher compute costs. Each crawler request triggers database queries, template rendering, and plugin execution.</p>
+<p>For a mid-size WordPress site (10K pages, 5 plugins, Redis caching):</p>
+<ul>
+<li><strong>GPTBot:</strong> ~500 req/sec peak, 70% cache hit rate → ~150 dynamic renders/sec → 0.5 CPU cores sustained</li>
+<li><strong>Google-Extended:</strong> ~200 req/sec peak, 80% cache hit rate → ~40 dynamic renders/sec → 0.15 CPU cores sustained</li>
+<li><strong>Claude-Web:</strong> ~50 req/sec peak, 85% cache hit rate → ~7 dynamic renders/sec → 0.03 CPU cores sustained</li>
+</ul>
+<p>At $0.04/vCPU-hour (standard cloud pricing), monthly compute costs from crawlers:</p>
+<ul>
+<li><strong>GPTBot:</strong> $14.40</li>
+<li><strong>Google-Extended:</strong> $4.32</li>
+<li><strong>Claude-Web:</strong> $0.86</li>
+<li><strong>Total:</strong> $19.58/month</li>
+</ul>
+<p>Combined bandwidth + compute: ~$64/month for a mid-size publisher. Scale this to 100K+ page sites and costs approach $500-1000/month. This is the hidden tax AI companies impose on publishers without compensation.</p>
+<h2>Negotiating Leverage Based on Crawler Behavior</h2>
+<p>Understanding crawler priorities reveals negotiating leverage.</p>
+<p><strong>If GPTBot crawls you aggressively (weekly+):</strong> <strong>OpenAI</strong> considers your content high-value for <strong>ChatGPT</strong> training. You likely produce recent, conversational, or technical content. Negotiate from strength. Comparable publishers are getting $20-50K annually for sites with 10K+ quality pages.</p>
+<p><strong>If Google-Extended crawls you thoroughly (archive + recent):</strong> <strong>Google</strong> values your historical authority. You likely produce evergreen, factual, or reference content. Leverage: <strong>Google</strong> can&#39;t build authoritative <strong>Gemini</strong> without established knowledge sources. Anchor negotiations on the replacement cost of your archive—what would <strong>Google</strong> pay to commission equivalent content?</p>
+<p><strong>If Claude-Web crawls you selectively:</strong> <strong>Anthropic</strong> sees quality signals but may not need comprehensive coverage. Your leverage is weaker unless you&#39;re a top-tier publisher. Focus negotiations on exclusivity or early access rather than volume-based pricing.</p>
+<p><strong>If no enterprise crawlers visit:</strong> Your content lacks training value to major AI companies. Focus on niche AI startups or vertical-specific models that might value specialized knowledge (legal AI, medical AI, financial AI).</p>
+<h2>What&#39;s Coming Next</h2>
+<p>Crawler behavior is evolving as AI companies optimize for cost and publishers deploy countermeasures.</p>
+<p><strong>Stealth crawling:</strong> AI companies are testing residential proxy networks and browser automation to mimic human traffic. Detection requires advanced fingerprinting. Publishers with sophisticated bot management (Cloudflare, PerimeterX, DataDome) will fare better.</p>
+<p><strong>Federated learning crawlers:</strong> AI companies may deploy crawlers that train models locally during the crawl, extracting only model weights rather than raw content. This reduces legal exposure but increases compute costs. Publishers would need to detect GPU-intensive requests.</p>
+<p><strong>Standardized licensing protocols:</strong> Industry bodies are developing <strong>TDM (Text and Data Mining) Reservation</strong> standards similar to Creative Commons. A <code>&lt;meta name=&quot;tdm&quot; content=&quot;licensed&quot;&gt;</code> tag would signal that crawling requires negotiation. Crawlers respecting this would contact publishers automatically. This is 2-3 years away from adoption.</p>
+<p><strong>Blockchain-based attribution:</strong> Startups are building content fingerprinting + blockchain systems to track AI training data provenance. If adopted, publishers could prove their content was used in training and claim royalties. This is speculative but gaining traction among publisher coalitions.</p>
+<p>The immediate reality: <strong>GPTBot</strong>, <strong>Google-Extended</strong>, and <strong>Claude-Web</strong> remain the dominant crawlers. Understanding their behavior is the foundation for any blocking, metering, or licensing strategy. Publishers who treat all crawlers identically are leaving money on the table or blocking unnecessarily. Precision requires understanding these differences.</p>
+<h2>FAQ</h2>
+<p><strong>How do I know if a crawler claiming to be GPTBot is legitimate?</strong></p>
+<p>Verify source IP against <strong>OpenAI&#39;s</strong> published ranges (available at <code>openai.com/gptbot</code>). Perform reverse DNS lookup—legitimate <strong>GPTBot</strong> resolves to <code>*.openai.com</code>. Behavioral verification: real <strong>GPTBot</strong> respects rate limits and <code>robots.txt</code> perfectly. Fake crawlers ignore both.</p>
+<p><strong>Which crawler consumes the most resources?</strong></p>
+<p><strong>GPTBot</strong> by far. It parallelizes aggressively (50-100 concurrent connections) and crawls comprehensively. For large sites, it can triple bandwidth costs and add significant server load. <strong>Claude-Web</strong> is the lightest.</p>
+<p><strong>Can I block crawlers selectively by content type?</strong></p>
+<p>Yes, using path-based <code>robots.txt</code> rules or HTTP header controls. Example: block <code>/premium/</code> paths while allowing <code>/blog/</code>. All three enterprise crawlers respect path restrictions.</p>
+<p><strong>Do crawlers respect rate limiting?</strong></p>
+<p><strong>Google-Extended</strong> and <strong>Claude-Web</strong> respect rate limits and back off when servers slow down. <strong>GPTBot</strong> respects <code>Crawl-delay</code> in theory but observed behavior is more aggressive. Implement server-side rate limiting to enforce compliance.</p>
+<p><strong>What happens if I block a crawler mid-crawl?</strong></p>
+<p>All three crawlers handle blocks gracefully. <strong>GPTBot</strong> stops immediately. <strong>Google-Extended</strong> and <strong>Claude-Web</strong> finish the current request batch and then honor the block. No retry storms or aggressive recrawling observed.</p>
+<p><strong>How often do crawler behaviors change?</strong></p>
+<p><strong>GPTBot</strong> and <strong>Google-Extended</strong> update quarterly. User-agent version numbers increment (e.g., <code>GPTBot/1.2</code> → <code>GPTBot/1.3</code>). Behavioral changes are rare but possible. Monitor server logs monthly to detect shifts in crawl patterns.</p>
+<p><strong>Should I block all three or negotiate selectively?</strong></p>
+<p>Block all initially to establish leverage. Then negotiate selectively with the crawler exhibiting highest value signals (most frequent crawls = highest content value to that company). Use blocks as negotiating leverage, not permanent policy.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

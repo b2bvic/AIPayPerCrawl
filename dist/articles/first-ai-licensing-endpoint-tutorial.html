@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Your First AI Licensing Endpoint in 30 Minutes | AI Pay Per Crawl</title>
+    <meta name="description" content="Step-by-step tutorial to implement HTTP 402 payment-required responses for AI crawlers. From basic nginx config to production-ready metering.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Building Your First AI Licensing Endpoint in 30 Minutes">
+    <meta property="og:description" content="Step-by-step tutorial to implement HTTP 402 payment-required responses for AI crawlers. From basic nginx config to production-ready metering.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/first-ai-licensing-endpoint-tutorial">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building Your First AI Licensing Endpoint in 30 Minutes">
+    <meta name="twitter:description" content="Step-by-step tutorial to implement HTTP 402 payment-required responses for AI crawlers. From basic nginx config to production-ready metering.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/first-ai-licensing-endpoint-tutorial">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Building Your First AI Licensing Endpoint in 30 Minutes",
+  "description": "Step-by-step tutorial to implement HTTP 402 payment-required responses for AI crawlers. From basic nginx config to production-ready metering.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/first-ai-licensing-endpoint-tutorial"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Building Your First AI Licensing Endpoint in 30 Minutes",
+      "item": "https://aipaypercrawl.com/articles/first-ai-licensing-endpoint-tutorial"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Building Your First AI Licensing Endpoint in 30 Minutes</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 11 min read</span>
+        <h1>Building Your First AI Licensing Endpoint in 30 Minutes</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Step-by-step tutorial to implement HTTP 402 payment-required responses for AI crawlers. From basic nginx config to production-ready metering.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Building Your First AI Licensing Endpoint in 30 Minutes</h1>
+<p>Blocking AI crawlers via <code>robots.txt</code> establishes that your content isn&#39;t free. But it doesn&#39;t generate revenue. To monetize access, you need an <strong>AI licensing endpoint</strong>—infrastructure that detects crawler requests, validates credentials, meters usage, and returns <strong>HTTP 402 (Payment Required)</strong> when licensing terms aren&#39;t met.</p>
+<p>This tutorial walks through implementing a production-ready licensing endpoint from scratch. We&#39;ll use <strong>nginx</strong> (the most common web server), but the principles apply to <strong>Apache</strong>, <strong>Cloudflare Workers</strong>, or <strong>AWS Lambda@Edge</strong>.</p>
+<p>By the end, you&#39;ll have a system that:</p>
+<ul>
+<li>Detects AI crawler requests</li>
+<li>Validates API keys or returns 402</li>
+<li>Meters usage per client</li>
+<li>Logs all access for billing</li>
+</ul>
+<p>Time required: 30 minutes. Prerequisites: root access to your web server, basic command-line familiarity.</p>
+<h2>The Architecture Overview</h2>
+<p>An AI licensing endpoint sits between the internet and your content. It intercepts every request, inspects the user agent and headers, and decides whether to serve content or demand payment.</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>AI crawler requests <code>yoursite.com/article.html</code></li>
+<li>nginx intercepts request before reaching your application</li>
+<li>Middleware checks for valid API key in <code>Authorization</code> header</li>
+<li>If key is valid and quota remains, serve content</li>
+<li>If key is invalid or quota depleted, return 402 with licensing endpoint URL</li>
+<li>Log all requests for billing</li>
+</ol>
+<p><strong>Why this works:</strong> AI crawlers are programmatic. They can handle 402 responses, programmatically fetch credentials, and retry. Human users never see this flow—they access your site normally.</p>
+<h2>Step 1: Install nginx (If You Don&#39;t Have It)</h2>
+<p>Most servers run Apache or nginx. We&#39;ll use nginx for its simplicity and performance.</p>
+<h3>Ubuntu/Debian</h3>
+<pre><code class="language-bash">sudo apt update
+sudo apt install nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+</code></pre>
+<h3>CentOS/RHEL</h3>
+<pre><code class="language-bash">sudo yum install epel-release
+sudo yum install nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+</code></pre>
+<p>Verify it&#39;s running:</p>
+<pre><code class="language-bash">curl http://localhost
+</code></pre>
+<p>You should see the nginx welcome page.</p>
+<h2>Step 2: Create the Licensing Middleware</h2>
+<p>We&#39;ll use <strong>Lua</strong> (embedded in nginx via <strong>lua-nginx-module</strong>) for request processing. This avoids external dependencies and keeps everything fast.</p>
+<p>Install OpenResty (nginx + Lua):</p>
+<pre><code class="language-bash">wget https://openresty.org/package/ubuntu/openresty.gpg.key
+sudo apt-key add openresty.gpg.key
+sudo add-apt-repository &quot;deb http://openresty.org/package/ubuntu $(lsb_release -sc) main&quot;
+sudo apt update
+sudo apt install openresty
+</code></pre>
+<p>Now we have nginx with Lua support.</p>
+<h2>Step 3: Detect AI Crawlers</h2>
+<p>Create <code>/etc/nginx/ai-licensing.lua</code>:</p>
+<pre><code class="language-lua">-- AI Licensing Middleware
+
+local user_agent = ngx.var.http_user_agent or &quot;&quot;
+
+-- List of AI crawlers to meter
+local ai_crawlers = {
+    &quot;GPTBot&quot;,
+    &quot;Google-Extended&quot;,
+    &quot;Claude-Web&quot;,
+    &quot;CCBot&quot;,
+    &quot;anthropic-ai&quot;,
+    &quot;cohere-ai&quot;
+}
+
+-- Check if request is from AI crawler
+local function is_ai_crawler()
+    for _, crawler in ipairs(ai_crawlers) do
+        if string.find(user_agent, crawler, 1, true) then
+            return true
+        end
+    end
+    return false
+end
+
+-- Main logic
+if is_ai_crawler() then
+    -- Continue to API key validation (next step)
+    ngx.log(ngx.INFO, &quot;AI crawler detected: &quot; .. user_agent)
+else
+    -- Not an AI crawler, serve content normally
+    return
+end
+</code></pre>
+<p>This detects AI crawlers by user agent. Next, we add API key validation.</p>
+<h2>Step 4: Validate API Keys</h2>
+<p>Extend <code>/etc/nginx/ai-licensing.lua</code>:</p>
+<pre><code class="language-lua">-- API Key Validation
+
+local auth_header = ngx.var.http_authorization or &quot;&quot;
+local api_key = string.match(auth_header, &quot;Bearer%s+(.+)&quot;)
+
+-- Check if API key is valid
+local function validate_api_key(key)
+    -- In production, query Redis or database
+    -- For this tutorial, we&#39;ll use a simple file-based lookup
+
+    local valid_keys = {
+        [&quot;test-key-123&quot;] = { quota = 1000, used = 0 },
+        [&quot;openai-key-456&quot;] = { quota = 10000, used = 500 }
+    }
+
+    return valid_keys[key]
+end
+
+if not api_key then
+    -- No API key provided
+    ngx.status = ngx.HTTP_PAYMENT_REQUIRED
+    ngx.header[&quot;Content-Type&quot;] = &quot;application/json&quot;
+    ngx.header[&quot;WWW-Authenticate&quot;] = &#39;Bearer realm=&quot;AI Content Licensing&quot;&#39;
+    ngx.say(&#39;{&quot;error&quot;: &quot;API key required&quot;, &quot;licensing_url&quot;: &quot;https://yoursite.com/api-licensing&quot;}&#39;)
+    return ngx.exit(ngx.HTTP_PAYMENT_REQUIRED)
+end
+
+local key_data = validate_api_key(api_key)
+
+if not key_data then
+    -- Invalid API key
+    ngx.status = ngx.HTTP_FORBIDDEN
+    ngx.header[&quot;Content-Type&quot;] = &quot;application/json&quot;
+    ngx.say(&#39;{&quot;error&quot;: &quot;Invalid API key&quot;}&#39;)
+    return ngx.exit(ngx.HTTP_FORBIDDEN)
+end
+
+-- Check quota
+if key_data.used &gt;= key_data.quota then
+    -- Quota exceeded
+    ngx.status = ngx.HTTP_PAYMENT_REQUIRED
+    ngx.header[&quot;Content-Type&quot;] = &quot;application/json&quot;
+    ngx.say(&#39;{&quot;error&quot;: &quot;Quota exceeded&quot;, &quot;used&quot;: &#39; .. key_data.used .. &#39;, &quot;quota&quot;: &#39; .. key_data.quota .. &#39;}&#39;)
+    return ngx.exit(ngx.HTTP_PAYMENT_REQUIRED)
+end
+
+-- Valid key with remaining quota, allow access
+ngx.log(ngx.INFO, &quot;Valid API key, serving content&quot;)
+</code></pre>
+<p>This validates API keys and checks quotas. In production, replace the hardcoded <code>valid_keys</code> table with <strong>Redis</strong> or database lookups.</p>
+<h2>Step 5: Meter Usage</h2>
+<p>Add usage tracking to <code>/etc/nginx/ai-licensing.lua</code>:</p>
+<pre><code class="language-lua">-- Usage Metering
+
+local function increment_usage(key)
+    -- In production, increment Redis counter
+    -- For tutorial, we&#39;ll just log
+
+    ngx.log(ngx.INFO, &quot;Incrementing usage for key: &quot; .. key)
+
+    -- Pseudocode for Redis:
+    -- local redis = require &quot;resty.redis&quot;
+    -- local red = redis:new()
+    -- red:connect(&quot;127.0.0.1&quot;, 6379)
+    -- red:incr(&quot;usage:&quot; .. key)
+end
+
+-- After validating key and quota, increment usage
+increment_usage(api_key)
+
+-- Continue serving content
+</code></pre>
+<p>This logs usage. In production, use <strong>Redis</strong> to track real-time usage:</p>
+<pre><code class="language-lua">local redis = require &quot;resty.redis&quot;
+local red = redis:new()
+red:set_timeout(1000) -- 1 second
+
+local ok, err = red:connect(&quot;127.0.0.1&quot;, 6379)
+if not ok then
+    ngx.log(ngx.ERR, &quot;Failed to connect to Redis: &quot;, err)
+    return
+end
+
+local count, err = red:incr(&quot;usage:&quot; .. api_key)
+if not count then
+    ngx.log(ngx.ERR, &quot;Failed to increment usage: &quot;, err)
+end
+
+-- Check if over quota
+local quota = 1000 -- Fetch from Redis or config
+if count &gt; quota then
+    ngx.status = ngx.HTTP_PAYMENT_REQUIRED
+    ngx.say(&#39;{&quot;error&quot;: &quot;Quota exceeded&quot;}&#39;)
+    return ngx.exit(ngx.HTTP_PAYMENT_REQUIRED)
+end
+</code></pre>
+<h2>Step 6: Configure nginx to Use the Middleware</h2>
+<p>Edit <code>/etc/nginx/nginx.conf</code>:</p>
+<pre><code class="language-nginx">http {
+    # Load Lua module
+    lua_package_path &quot;/etc/nginx/?.lua;;&quot;;
+
+    # Shared dict for caching API key validations
+    lua_shared_dict api_keys 10m;
+
+    server {
+        listen 80;
+        server_name yoursite.com;
+
+        # Apply licensing middleware to all requests
+        location / {
+            access_by_lua_file /etc/nginx/ai-licensing.lua;
+
+            # If middleware allows, serve content
+            root /var/www/html;
+            index index.html;
+        }
+
+        # Exclude admin paths from licensing
+        location /wp-admin/ {
+            # No middleware, serve normally
+            root /var/www/html;
+        }
+    }
+}
+</code></pre>
+<p>Reload nginx:</p>
+<pre><code class="language-bash">sudo nginx -t  # Test config
+sudo systemctl reload nginx
+</code></pre>
+<h2>Step 7: Test the Endpoint</h2>
+<p>Test with <strong>curl</strong>:</p>
+<h3>Test 1: AI Crawler Without API Key</h3>
+<pre><code class="language-bash">curl -A &quot;GPTBot/1.0&quot; http://yoursite.com/article.html
+</code></pre>
+<p><strong>Expected response:</strong></p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;API key required&quot;,
+  &quot;licensing_url&quot;: &quot;https://yoursite.com/api-licensing&quot;
+}
+</code></pre>
+<p><strong>Status code:</strong> 402 Payment Required</p>
+<h3>Test 2: AI Crawler With Valid API Key</h3>
+<pre><code class="language-bash">curl -A &quot;GPTBot/1.0&quot; -H &quot;Authorization: Bearer test-key-123&quot; http://yoursite.com/article.html
+</code></pre>
+<p><strong>Expected response:</strong> The actual article content</p>
+<p><strong>Status code:</strong> 200 OK</p>
+<h3>Test 3: Non-AI User Agent</h3>
+<pre><code class="language-bash">curl -A &quot;Mozilla/5.0 (Chrome)&quot; http://yoursite.com/article.html
+</code></pre>
+<p><strong>Expected response:</strong> The actual article content (no licensing check)</p>
+<p><strong>Status code:</strong> 200 OK</p>
+<h2>Step 8: Set Up Redis for Production</h2>
+<p>The tutorial uses hardcoded keys. Production needs <strong>Redis</strong> for real-time usage tracking.</p>
+<p>Install Redis:</p>
+<pre><code class="language-bash">sudo apt install redis-server
+sudo systemctl enable redis
+sudo systemctl start redis
+</code></pre>
+<p>Install Lua Redis module:</p>
+<pre><code class="language-bash">sudo apt install lua-resty-redis
+</code></pre>
+<p>Update the Lua script to use Redis (see Step 5 for code).</p>
+<h2>Step 9: Create a Licensing Page</h2>
+<p>AI companies need a way to purchase API keys. Create <code>/var/www/html/api-licensing/index.html</code>:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;AI Content Licensing&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;API Access for AI Training&lt;/h1&gt;
+    &lt;p&gt;To access our content for AI training, please license via API key.&lt;/p&gt;
+
+    &lt;h2&gt;Pricing&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Basic: $500/month - 100K pages&lt;/li&gt;
+        &lt;li&gt;Pro: $2,000/month - 500K pages&lt;/li&gt;
+        &lt;li&gt;Enterprise: Custom pricing&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;How to License&lt;/h2&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Contact licensing@yoursite.com&lt;/li&gt;
+        &lt;li&gt;We&#39;ll provide an API key&lt;/li&gt;
+        &lt;li&gt;Include key in Authorization header: &lt;code&gt;Bearer YOUR_KEY&lt;/code&gt;&lt;/li&gt;
+        &lt;li&gt;Monitor usage via dashboard (link provided after purchase)&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;h2&gt;Technical Documentation&lt;/h2&gt;
+    &lt;p&gt;Include the API key in every request:&lt;/p&gt;
+    &lt;code&gt;
+    curl -H &quot;Authorization: Bearer YOUR_KEY&quot; https://yoursite.com/content.html
+    &lt;/code&gt;
+
+    &lt;p&gt;When quota is exceeded, you&#39;ll receive HTTP 402 with renewal instructions.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>AI companies encountering 402 responses will follow the <code>licensing_url</code> and see this page.</p>
+<h2>Step 10: Add Logging for Billing</h2>
+<p>Track all licensed accesses for billing reports. Add to the Lua script:</p>
+<pre><code class="language-lua">-- Logging for Billing
+
+local function log_access(key, url, user_agent)
+    local log_file = io.open(&quot;/var/log/nginx/ai-licensing.log&quot;, &quot;a&quot;)
+    local timestamp = os.date(&quot;%Y-%m-%d %H:%M:%S&quot;)
+    local log_entry = string.format(&quot;%s | %s | %s | %s\n&quot;, timestamp, key, url, user_agent)
+    log_file:write(log_entry)
+    log_file:close()
+end
+
+-- After validating and allowing access
+log_access(api_key, ngx.var.request_uri, user_agent)
+</code></pre>
+<p>This creates a log file:</p>
+<pre><code>2026-02-08 10:15:32 | test-key-123 | /article1.html | GPTBot/1.0
+2026-02-08 10:15:45 | test-key-123 | /article2.html | GPTBot/1.0
+2026-02-08 10:16:02 | openai-key-456 | /archive/2025/post.html | GPTBot/1.0
+</code></pre>
+<p>Process this log monthly for billing:</p>
+<pre><code class="language-bash"># Count requests per API key
+awk &#39;{print $3}&#39; /var/log/nginx/ai-licensing.log | sort | uniq -c
+</code></pre>
+<p>Output:</p>
+<pre><code>  245 test-key-123
+  1523 openai-key-456
+</code></pre>
+<p>Bill accordingly: <code>245 × $0.01 = $2.45</code> for test-key-123.</p>
+<h2>Production Enhancements</h2>
+<p>The tutorial implementation works but needs hardening for production.</p>
+<h3>Enhancement 1: Rate Limiting Per Key</h3>
+<p>Prevent abuse by limiting requests per second per API key:</p>
+<pre><code class="language-lua">local limit_req = require &quot;resty.limit.req&quot;
+local lim, err = limit_req.new(&quot;api_keys&quot;, 10, 5)  -- 10 req/sec, burst 5
+
+if not lim then
+    ngx.log(ngx.ERR, &quot;Failed to instantiate rate limiter: &quot;, err)
+    return ngx.exit(500)
+end
+
+local key = &quot;rate_limit:&quot; .. api_key
+local delay, err = lim:incoming(key, true)
+
+if not delay then
+    if err == &quot;rejected&quot; then
+        ngx.status = ngx.HTTP_TOO_MANY_REQUESTS
+        ngx.say(&#39;{&quot;error&quot;: &quot;Rate limit exceeded&quot;}&#39;)
+        return ngx.exit(ngx.HTTP_TOO_MANY_REQUESTS)
+    end
+end
+</code></pre>
+<p>This limits each API key to 10 requests/second.</p>
+<h3>Enhancement 2: API Key Rotation</h3>
+<p>Allow customers to rotate keys for security:</p>
+<pre><code class="language-lua">local function rotate_key(old_key, new_key)
+    local redis = require &quot;resty.redis&quot;
+    local red = redis:new()
+    red:connect(&quot;127.0.0.1&quot;, 6379)
+
+    -- Copy quota and usage to new key
+    local usage = red:get(&quot;usage:&quot; .. old_key)
+    local quota = red:get(&quot;quota:&quot; .. old_key)
+
+    red:set(&quot;usage:&quot; .. new_key, usage)
+    red:set(&quot;quota:&quot; .. new_key, quota)
+
+    -- Delete old key
+    red:del(&quot;usage:&quot; .. old_key)
+    red:del(&quot;quota:&quot; .. old_key)
+end
+</code></pre>
+<h3>Enhancement 3: Webhook Notifications</h3>
+<p>Alert AI companies when they approach quota limits:</p>
+<pre><code class="language-lua">local function check_quota_threshold(key, used, quota)
+    local percentage = (used / quota) * 100
+
+    if percentage &gt;= 80 and not_already_notified(key) then
+        -- Send webhook
+        local http = require &quot;resty.http&quot;
+        local httpc = http.new()
+
+        local res, err = httpc:request_uri(&quot;https://ai-company.com/webhook&quot;, {
+            method = &quot;POST&quot;,
+            body = &#39;{&quot;api_key&quot;: &quot;&#39; .. key .. &#39;&quot;, &quot;usage_percent&quot;: &#39; .. percentage .. &#39;}&#39;,
+            headers = { [&quot;Content-Type&quot;] = &quot;application/json&quot; }
+        })
+
+        mark_as_notified(key)
+    end
+end
+</code></pre>
+<h3>Enhancement 4: Dashboard for Customers</h3>
+<p>Build a simple usage dashboard customers can access:</p>
+<pre><code class="language-html">&lt;!-- /var/www/html/dashboard.html --&gt;
+&lt;script&gt;
+async function fetchUsage() {
+    const apiKey = document.getElementById(&#39;api-key&#39;).value;
+    const response = await fetch(`/api/usage?key=${apiKey}`);
+    const data = await response.json();
+    document.getElementById(&#39;usage&#39;).innerText = `${data.used} / ${data.quota} pages`;
+}
+&lt;/script&gt;
+
+&lt;input id=&quot;api-key&quot; type=&quot;text&quot; placeholder=&quot;Enter API Key&quot;&gt;
+&lt;button onclick=&quot;fetchUsage()&quot;&gt;Check Usage&lt;/button&gt;
+&lt;div id=&quot;usage&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>Backend endpoint in nginx:</p>
+<pre><code class="language-lua">-- /api/usage endpoint
+location /api/usage {
+    content_by_lua_block {
+        local args = ngx.req.get_uri_args()
+        local key = args.key
+
+        local redis = require &quot;resty.redis&quot;
+        local red = redis:new()
+        red:connect(&quot;127.0.0.1&quot;, 6379)
+
+        local used = red:get(&quot;usage:&quot; .. key) or 0
+        local quota = red:get(&quot;quota:&quot; .. key) or 0
+
+        ngx.say(&#39;{&quot;used&quot;: &#39; .. used .. &#39;, &quot;quota&quot;: &#39; .. quota .. &#39;}&#39;)
+    }
+}
+</code></pre>
+<h2>Alternative: Cloudflare Workers Implementation</h2>
+<p>If you use <strong>Cloudflare</strong>, you can implement this as a <strong>Worker</strong> instead of nginx:</p>
+<pre><code class="language-javascript">addEventListener(&#39;fetch&#39;, event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const userAgent = request.headers.get(&#39;User-Agent&#39;) || &#39;&#39;
+
+  // Check if AI crawler
+  const aiCrawlers = [&#39;GPTBot&#39;, &#39;Google-Extended&#39;, &#39;Claude-Web&#39;, &#39;CCBot&#39;]
+  const isAICrawler = aiCrawlers.some(bot =&gt; userAgent.includes(bot))
+
+  if (!isAICrawler) {
+    // Not an AI crawler, fetch content normally
+    return fetch(request)
+  }
+
+  // Check for API key
+  const apiKey = request.headers.get(&#39;Authorization&#39;)?.replace(&#39;Bearer &#39;, &#39;&#39;)
+
+  if (!apiKey) {
+    return new Response(JSON.stringify({
+      error: &#39;API key required&#39;,
+      licensing_url: &#39;https://yoursite.com/api-licensing&#39;
+    }), {
+      status: 402,
+      headers: { &#39;Content-Type&#39;: &#39;application/json&#39; }
+    })
+  }
+
+  // Validate API key (query KV store)
+  const keyData = await KEYS.get(apiKey, { type: &#39;json&#39; })
+
+  if (!keyData || keyData.used &gt;= keyData.quota) {
+    return new Response(JSON.stringify({
+      error: &#39;Invalid or exceeded quota&#39;
+    }), {
+      status: 402,
+      headers: { &#39;Content-Type&#39;: &#39;application/json&#39; }
+    })
+  }
+
+  // Increment usage
+  keyData.used += 1
+  await KEYS.put(apiKey, JSON.stringify(keyData))
+
+  // Fetch and return content
+  return fetch(request)
+}
+</code></pre>
+<p>Deploy via Cloudflare dashboard. This runs at the edge, reducing latency.</p>
+<h2>FAQ</h2>
+<p><strong>How much does this infrastructure cost?</strong></p>
+<p>Minimal. nginx + Redis on a $5/month VPS (DigitalOcean, Linode) handles 10M requests/month easily. Cloudflare Workers are free up to 100K requests/day.</p>
+<p><strong>Can AI companies bypass this by spoofing user agents?</strong></p>
+<p>Yes, if they hide as regular users. Add behavioral detection (rate patterns, sequential access) to catch spoofers. See the Fail2Ban article for implementation.</p>
+<p><strong>What if an AI company refuses to pay?</strong></p>
+<p>Block them via firewall at IP level. Most AI companies crawl from identifiable IP ranges (OpenAI, Google, Anthropic publish theirs). If they use proxies, they&#39;re clearly acting in bad faith—document and pursue legal action.</p>
+<p><strong>How do I handle free trials?</strong></p>
+<p>Issue temporary API keys with 7-day expiration and lower quotas (e.g., 1000 pages). After trial, customers must purchase full licenses. Implement this via Redis TTL:</p>
+<pre><code class="language-lua">red:setex(&quot;usage:&quot; .. trial_key, 604800, 0)  -- Expires in 7 days
+</code></pre>
+<p><strong>Should I charge per page or per token?</strong></p>
+<p>Per page is simpler for customers to understand. Per token is more precise (reflects actual data transferred). Start with per-page, offer per-token pricing for enterprise customers who want granular billing.</p>
+<p><strong>How often should quotas reset?</strong></p>
+<p>Monthly is standard (aligns with billing cycles). Implement via Redis expiration or monthly cron job that resets usage counters:</p>
+<pre><code class="language-bash"># Reset all usage counters first day of month
+0 0 1 * * redis-cli KEYS &quot;usage:*&quot; | xargs redis-cli DEL
+</code></pre>
+<p><strong>Can I offer unlimited licenses?</strong></p>
+<p>Yes, for enterprise customers. Set quota to a very high number (e.g., 1 billion pages) or skip quota check entirely for specific keys. Flag these keys as &quot;unlimited&quot; in your database.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
