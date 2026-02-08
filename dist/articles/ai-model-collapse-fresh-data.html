@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Model Collapse and Fresh Data: Why OpenAI, Anthropic Need Continuous Content Licensing to Prevent Training Degradation | AI Pay Per Crawl</title>
+    <meta name="description" content="Understand model collapse—the degradation of AI systems trained on synthetic data—and why fresh, human-authored content licensing is critical for model quality.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="AI Model Collapse and Fresh Data: Why OpenAI, Anthropic Need Continuous Content Licensing to Prevent Training Degradation">
+    <meta property="og:description" content="Understand model collapse—the degradation of AI systems trained on synthetic data—and why fresh, human-authored content licensing is critical for model quality.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/ai-model-collapse-fresh-data">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Model Collapse and Fresh Data: Why OpenAI, Anthropic Need Continuous Content Licensing to Prevent Training Degradation">
+    <meta name="twitter:description" content="Understand model collapse—the degradation of AI systems trained on synthetic data—and why fresh, human-authored content licensing is critical for model quality.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/ai-model-collapse-fresh-data">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AI Model Collapse and Fresh Data: Why OpenAI, Anthropic Need Continuous Content Licensing to Prevent Training Degradation",
+  "description": "Understand model collapse—the degradation of AI systems trained on synthetic data—and why fresh, human-authored content licensing is critical for model quality.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/ai-model-collapse-fresh-data"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Model Collapse and Fresh Data: Why OpenAI, Anthropic Need Continuous Content Licensing to Prevent Training Degradation",
+      "item": "https://aipaypercrawl.com/articles/ai-model-collapse-fresh-data"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>AI Model Collapse and Fresh Data: Why OpenAI, Anthropic Need Continuous Content Licensing to Prevent Training Degradation</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 15 min read</span>
+        <h1>AI Model Collapse and Fresh Data: Why OpenAI, Anthropic Need Continuous Content Licensing to Prevent Training Degradation</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Understand model collapse—the degradation of AI systems trained on synthetic data—and why fresh, human-authored content licensing is critical for model quality.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>AI Model Collapse and Fresh Data: Why OpenAI, Anthropic Need Continuous Content Licensing to Prevent Training Degradation</h1>
+<p><strong>Model collapse</strong>—the progressive quality degradation when AI systems train on recursively generated synthetic content—creates structural demand for fresh human-authored training data, transforming publisher-AI relationships from one-time transactions to ongoing licensing subscriptions. Research published in <em>Nature</em> (2023) demonstrated that <strong>GPT models trained primarily on GPT-generated text</strong> lose coherence within 3-5 generation cycles, while <strong>Oxford and Cambridge studies</strong> (2024) confirmed similar degradation in image generation models. By 2026, as the open web increasingly fills with AI-generated content (estimated 40-60% of new text by some measures), <strong>OpenAI</strong>, <strong>Anthropic</strong>, and <strong>Google</strong> face acute pressure to secure continuous access to verified human content—making publisher licensing deals essential infrastructure, not optional data sourcing.</p>
+<h2>Understanding Model Collapse</h2>
+<p>Model collapse occurs when generative AI systems train on outputs from previous AI generations, creating feedback loops that amplify errors and reduce diversity.</p>
+<h3>The Mechanism of Collapse</h3>
+<p><strong>Generation 0 (Baseline):</strong>
+AI model trains on human-authored content. Outputs reflect human knowledge distribution, creativity, and error patterns.</p>
+<p><strong>Generation 1 (First Synthetic Loop):</strong>
+New AI model trains on mix of human content + Generation 0 AI outputs. Model learns human patterns plus AI-specific artifacts (formulaic phrasing, hallucination patterns, statistical quirks).</p>
+<p><strong>Generation 2 (Accelerating Degradation):</strong>
+Model trains on human content + Gen 0 outputs + Gen 1 outputs. AI artifacts compound—quirky phrasings become dominant patterns, rare concepts disappear (model averages toward synthetic median), factual errors propagate.</p>
+<p><strong>Generation 3-5 (Collapse):</strong>
+Model produces increasingly homogeneous, error-prone outputs. Long-tail knowledge vanishes. Hallucinations become normative. Creative diversity narrows. Text quality deteriorates into recognizable &quot;AI slop.&quot;</p>
+<p><strong>Mathematical Framing:</strong>
+If each generation introduces X% error and reduces diversity by Y%, cumulative degradation follows exponential decay. After N generations:</p>
+<pre><code>Quality_N = Quality_0 × (1 - X)^N
+Diversity_N = Diversity_0 × (1 - Y)^N
+</code></pre>
+<p>Real-world observed values: X ≈ 5-10%, Y ≈ 10-15% per generation.</p>
+<h3>Empirical Evidence of Model Collapse</h3>
+<p><strong>Nature Study (2023):</strong>
+Researchers trained GPT-2 variants iteratively on their own outputs. By Generation 5, models produced repetitive, incoherent text. Semantic coherence scores dropped 60%; lexical diversity decreased 70%.</p>
+<p><strong>Oxford/Cambridge Collaboration (2024):</strong>
+Image generation models (Stable Diffusion variants) trained on AI-generated images progressively lost detail, color accuracy, and compositional creativity. By Generation 4, all outputs converged toward gray, blurry averages.</p>
+<p><strong>Real-World Observations:</strong></p>
+<ul>
+<li><strong>Reddit:</strong> Subreddits infiltrated by AI-generated comments show declining discussion quality (2024-2025 moderator reports)</li>
+<li><strong>Academic Papers:</strong> ArXiv preprints increasingly show AI-generated text patterns; journals implementing AI detection (2025)</li>
+<li><strong>News Aggregators:</strong> Sites publishing AI-summarized news degrade source credibility (2024-2026 trend)</li>
+</ul>
+<p><strong>Web Content Pollution:</strong>
+Estimates suggest 40-60% of new web text in 2025-2026 is AI-generated (press releases, blog posts, product descriptions, social media). If AI companies scrape indiscriminately, training corpus pollution accelerates model collapse.</p>
+<h3>Why Fresh Human Data Prevents Collapse</h3>
+<p><strong>Human Content as Ground Truth:</strong>
+Human authors introduce genuine novelty—new ideas, observations, creative expressions. Fresh human content &quot;resets&quot; the distribution, preventing convergence toward synthetic median.</p>
+<p><strong>Temporal Grounding:</strong>
+Current events, new scientific discoveries, cultural shifts—human content captures real-world evolution. AI-generated text recycles past patterns; humans inject new information.</p>
+<p><strong>Error Correction:</strong>
+Human editorial processes (fact-checking, peer review, editorial standards) filter errors. AI-generated content lacks this curation, accumulating hallucinations.</p>
+<p><strong>Diversity Preservation:</strong>
+Human cognitive diversity (regional dialects, professional jargon, subculture languages) maintains training corpus variance. Synthetic content homogenizes toward statistical averages.</p>
+<p><strong>Mathematical Necessity:</strong>
+If training dataset is P% human-generated and (100-P)% AI-generated, model collapse probability increases as P decreases. Industry consensus: <strong>P &gt; 70%</strong> required to maintain quality. Below 50%, collapse accelerates.</p>
+<h2>Implications for Content Licensing Economics</h2>
+<p>Model collapse transforms AI companies&#39; data needs from &quot;scrape once&quot; to &quot;license continuously.&quot;</p>
+<h3>From One-Time Scraping to Subscription Licensing</h3>
+<p><strong>Pre-Collapse Awareness (2021-2023):</strong>
+AI companies scraped Common Crawl, built models, deployed. Training data treated as fixed asset—acquire once, use indefinitely.</p>
+<p><strong>Post-Collapse Recognition (2024-2026):</strong>
+AI companies realize:</p>
+<ol>
+<li>Models degrade without fresh data</li>
+<li>Web content increasingly polluted with AI outputs</li>
+<li>High-quality human content becomes scarce</li>
+<li>Must secure continuous access to verified human sources</li>
+</ol>
+<p><strong>Licensing Model Shift:</strong></p>
+<ul>
+<li><strong>Old Model:</strong> One-time dataset purchase or scrape</li>
+<li><strong>New Model:</strong> Annual subscriptions with continuous content refresh</li>
+</ul>
+<p><strong>Impact on Publisher Revenue:</strong>
+Recurring licensing deals (multi-year contracts, annual renewals) become standard. Publishers transition from &quot;sell archives once&quot; to &quot;subscription content as a service.&quot;</p>
+<p><strong>News Corp&#39;s OpenAI Deal Structure (Example):</strong>
+$250M over 5 years = $50M/year. Contract includes:</p>
+<ul>
+<li>Historical archive access (one-time)</li>
+<li><strong>Continuous new article access</strong> (daily ingest, ongoing)</li>
+<li>Re-crawl rights for evergreen content updates</li>
+</ul>
+<p>The &quot;continuous access&quot; component addresses model collapse—<strong>OpenAI</strong> needs fresh Wall Street Journal articles to prevent <strong>GPT-4.5</strong> degradation.</p>
+<h3>Premium Pricing for Verified Human Content</h3>
+<p>As AI-generated content pollutes the web, <strong>verified human authorship</strong> commands premium.</p>
+<p><strong>Authentication Mechanisms:</strong></p>
+<ul>
+<li><strong>Work-for-hire employment:</strong> Publisher controls content, guarantees human authorship</li>
+<li><strong>Contributor verification:</strong> Byline standards, author credentials</li>
+<li><strong>Editorial oversight:</strong> Fact-checking, editorial review (signals quality)</li>
+<li><strong>Content provenance:</strong> Blockchain timestamping, cryptographic signatures (emerging)</li>
+</ul>
+<p><strong>Pricing Premium:</strong>
+Publishers proving content is human-authored (not AI-generated) can charge 20-50% premium over undifferentiated web scrapes.</p>
+<p><strong>Example Calculation:</strong></p>
+<ul>
+<li>Generic news article (unverified source): $0.10 licensing fee</li>
+<li>Verified human byline + editorial review: $0.15 licensing fee (50% premium)</li>
+</ul>
+<p><strong>Market Trend:</strong>
+As AI companies implement content authentication checks (detecting AI slop in training data), premium for verified human content grows. Publishers investing in provenance infrastructure capture value.</p>
+<h3>Freshness as Competitive Moat</h3>
+<p>Publishers producing daily fresh content gain negotiation leverage.</p>
+<p><strong>Freshness Metrics:</strong></p>
+<ul>
+<li><strong>Real-time news:</strong> Published &lt;24 hours ago (highest freshness premium)</li>
+<li><strong>Weekly updates:</strong> Blog posts, analysis (moderate freshness)</li>
+<li><strong>Monthly updates:</strong> Long-form, research (some freshness value)</li>
+<li><strong>Static archives:</strong> Historical content (low freshness premium, still valuable for breadth)</li>
+</ul>
+<p><strong>Licensing Price Multipliers:</strong></p>
+<ul>
+<li>Real-time news access: 2-3x base rate</li>
+<li>Weekly fresh content: 1.5-2x base rate</li>
+<li>Monthly updates: 1.2-1.5x base rate</li>
+<li>Static archives: 1x base rate</li>
+</ul>
+<p><strong>Why AI Companies Pay Freshness Premiums:</strong>
+<strong>GPT-4.5</strong> knowledge cutoff (April 2025) means AI can&#39;t answer &quot;What happened in June 2025?&quot; without fresh training. Licensing real-time news enables continuous knowledge updates, preventing obsolescence.</p>
+<p><strong>The Atlantic&#39;s Deal (Example):</strong>
+Licensing includes 5,000+ new articles/year. <strong>OpenAI</strong> pays premium specifically for <strong>continuous production</strong>—not just 167-year archive. This addresses model collapse via ongoing human content injection.</p>
+<h2>Content Categories Most Valuable for Preventing Collapse</h2>
+<p>Not all content equally prevents model collapse. Certain types disproportionately preserve model quality.</p>
+<h3>High-Signal Content (Maximum Collapse Prevention)</h3>
+<p><strong>Original Reporting and Investigative Journalism:</strong></p>
+<ul>
+<li><strong>Why Valuable:</strong> Contains novel information not available elsewhere. Reduces training corpus redundancy.</li>
+<li><strong>Examples:</strong> Wall Street Journal exclusives, ProPublica investigations</li>
+<li><strong>Licensing Premium:</strong> 2-5x baseline news pricing</li>
+</ul>
+<p><strong>Primary Research and Data Analysis:</strong></p>
+<ul>
+<li><strong>Why Valuable:</strong> Introduces new empirical data (surveys, studies, experiments). AI can&#39;t generate new facts—only humans can.</li>
+<li><strong>Examples:</strong> Academic journals, market research reports, scientific papers</li>
+<li><strong>Licensing Premium:</strong> 3-10x baseline (journals charge $1-5/article vs. $0.10 news)</li>
+</ul>
+<p><strong>Expert Analysis and Commentary:</strong></p>
+<ul>
+<li><strong>Why Valuable:</strong> Credentialed expertise, nuanced reasoning. AI-generated analysis regresses to median takes—human experts provide outlier perspectives.</li>
+<li><strong>Examples:</strong> Financial Times analysis, legal scholarship, medical guidelines</li>
+<li><strong>Licensing Premium:</strong> 2-4x baseline</li>
+</ul>
+<p><strong>Technical Documentation (Updated):</strong></p>
+<ul>
+<li><strong>Why Valuable:</strong> Reflects evolving software/hardware. Static docs become obsolete; continuous updates prevent model knowledge decay.</li>
+<li><strong>Examples:</strong> API documentation, technical specifications, how-to guides</li>
+<li><strong>Licensing Premium:</strong> 1.5-3x baseline</li>
+</ul>
+<p><strong>Real-Time Event Coverage:</strong></p>
+<ul>
+<li><strong>Why Valuable:</strong> Temporal grounding. AI models trained on 2024 data can&#39;t discuss 2025 events without fresh ingestion.</li>
+<li><strong>Examples:</strong> Breaking news, live event coverage, earnings calls</li>
+<li><strong>Licensing Premium:</strong> 2-4x baseline (real-time access)</li>
+</ul>
+<h3>Low-Signal Content (Minimal Collapse Prevention)</h3>
+<p><strong>Aggregated/Syndicated Content:</strong></p>
+<ul>
+<li><strong>Why Low Value:</strong> Already widely available (Common Crawl, other sources). Redundant.</li>
+<li><strong>Examples:</strong> Wire service reposts, content farms</li>
+<li><strong>Licensing Value:</strong> Near zero (AI companies scrape freely)</li>
+</ul>
+<p><strong>AI-Generated or AI-Assisted Content:</strong></p>
+<ul>
+<li><strong>Why Low Value:</strong> Contributes to collapse, doesn&#39;t prevent it. May actively harm training quality.</li>
+<li><strong>Examples:</strong> AI-written blog posts, ChatGPT-generated product descriptions</li>
+<li><strong>Licensing Value:</strong> Negative (publishers should exclude from licensed corpus)</li>
+</ul>
+<p><strong>Low-Quality User-Generated Content:</strong></p>
+<ul>
+<li><strong>Why Low Value:</strong> High noise-to-signal ratio. Errors, spam, off-topic content.</li>
+<li><strong>Examples:</strong> Unmoderated forum posts, YouTube comment sections</li>
+<li><strong>Licensing Value:</strong> Minimal unless highly curated</li>
+</ul>
+<p><strong>Outdated Evergreen Content (Unchanged):</strong></p>
+<ul>
+<li><strong>Why Low Value:</strong> Static information available in existing training data. Doesn&#39;t address freshness needs.</li>
+<li><strong>Examples:</strong> 10-year-old how-to articles never updated</li>
+<li><strong>Licensing Value:</strong> Low (1x baseline or less)</li>
+</ul>
+<h2>Strategic Implications for Publishers</h2>
+<p>Model collapse creates leverage—publishers holding fresh, verified human content become essential AI infrastructure.</p>
+<h3>Positioning Content as Collapse-Prevention Service</h3>
+<p><strong>Value Proposition:</strong>
+&quot;Our licensing partnership guarantees your models maintain quality and avoid synthetic content pollution. We provide verified human authorship, continuous fresh content, and editorial integrity—preserving model performance as the web degrades.&quot;</p>
+<p><strong>Contract Language:</strong>
+Include clauses emphasizing freshness and authenticity:</p>
+<ul>
+<li>&quot;Publisher warrants all licensed content is human-authored and editorially reviewed.&quot;</li>
+<li>&quot;License includes continuous access to new content published during contract term at minimum rate of [X] articles per month.&quot;</li>
+<li>&quot;Licensee may audit content authenticity; Publisher must provide author verification upon request.&quot;</li>
+</ul>
+<p><strong>Marketing to AI Companies:</strong>
+Frame licensing deals as <strong>model quality insurance</strong>, not just data acquisition. AI companies facing model collapse risk pay premium for collapse-prevention services.</p>
+<h3>Building Content Provenance Infrastructure</h3>
+<p>To justify premium pricing for verified human content, invest in provenance systems:</p>
+<p><strong>Author Verification:</strong></p>
+<ul>
+<li>Require bylines with author bios</li>
+<li>Validate author identity (LinkedIn profiles, professional credentials)</li>
+<li>Timestamp content creation (cryptographic proof of publication date)</li>
+</ul>
+<p><strong>Editorial Process Documentation:</strong></p>
+<ul>
+<li>Track editorial workflow (draft → review → fact-check → publish)</li>
+<li>Maintain audit trail (proves human involvement, not AI generation)</li>
+</ul>
+<p><strong>Content Authenticity Signals:</strong></p>
+<ul>
+<li>Implement Content Credentials (Adobe, AP standard for image provenance)</li>
+<li>Add metadata: &quot;Human-authored: Yes, Editorial review: Yes, AI-assistance: None&quot;</li>
+<li>Consider blockchain notarization (permanent authenticity record)</li>
+</ul>
+<p><strong>AI Detection Screening:</strong></p>
+<ul>
+<li>Run published content through AI detection tools (Originality.ai, GPTZero)</li>
+<li>Flag and remove AI-generated content before licensing to AI companies</li>
+<li>Maintain quality standards preventing corpus pollution</li>
+</ul>
+<p><strong>ROI:</strong>
+Provenance infrastructure costs $10K-$50K (one-time setup) + $5K-$15K/year (ongoing). If it justifies 20-30% licensing premium, breaks even at $50K-$150K annual AI revenue.</p>
+<h3>Optimizing Content Freshness Cadence</h3>
+<p>Balance content production costs against freshness premiums.</p>
+<p><strong>Daily Publication (Maximum Premium):</strong></p>
+<ul>
+<li><strong>Ideal For:</strong> News publishers, real-time market coverage</li>
+<li><strong>Premium Multiplier:</strong> 2-3x</li>
+<li><strong>Investment:</strong> Requires newsroom staff, continuous operations</li>
+</ul>
+<p><strong>Weekly Publication (Moderate Premium):</strong></p>
+<ul>
+<li><strong>Ideal For:</strong> Analysis, commentary, niche verticals</li>
+<li><strong>Premium Multiplier:</strong> 1.5-2x</li>
+<li><strong>Investment:</strong> Mid-sized editorial team</li>
+</ul>
+<p><strong>Monthly Publication (Lower Premium):</strong></p>
+<ul>
+<li><strong>Ideal For:</strong> Long-form, research, specialty content</li>
+<li><strong>Premium Multiplier:</strong> 1.2-1.5x</li>
+<li><strong>Investment:</strong> Smaller team, fewer publications</li>
+</ul>
+<p><strong>Archive-Only (Baseline):</strong></p>
+<ul>
+<li><strong>Ideal For:</strong> Historical content, completed series</li>
+<li><strong>Premium Multiplier:</strong> 1x</li>
+<li><strong>Investment:</strong> Minimal (one-time licensing)</li>
+</ul>
+<p><strong>Decision Framework:</strong>
+If daily production increases costs by 3x but licensing premium is only 2x, not economically optimal. If weekly production increases costs 1.5x and premium is 1.8x, profitable.</p>
+<h3>Negotiating Continuous Access Terms</h3>
+<p>Structure contracts emphasizing ongoing freshness value.</p>
+<p><strong>Baseline Access (Historical Archive):</strong></p>
+<ul>
+<li>One-time licensing fee for archive (e.g., $1M for 10 years of content)</li>
+</ul>
+<p><strong>Freshness Subscription (Ongoing Production):</strong></p>
+<ul>
+<li>Annual fee for continuous new content (e.g., $500K/year for 5,000 new articles/year)</li>
+<li>Alternatively: per-article pricing ($0.10/article × 5,000 = $500K)</li>
+</ul>
+<p><strong>Re-Crawl Rights (Evergreen Updates):</strong></p>
+<ul>
+<li>Allow AI companies to re-crawl updated articles (news articles get facts corrected, how-tos updated)</li>
+<li>Bundle into annual fee or charge per re-crawl</li>
+</ul>
+<p><strong>Escalation Clauses:</strong></p>
+<ul>
+<li>Build in annual increases reflecting content value appreciation as web quality degrades</li>
+<li>&quot;Annual fee increases by greater of 5% or CPI inflation rate&quot;</li>
+</ul>
+<p><strong>Exclusivity Windows:</strong></p>
+<ul>
+<li>Offer first-access exclusivity (AI company gets new content 30 days before competitors)</li>
+<li>Commands 30-50% premium over non-exclusive</li>
+</ul>
+<p><strong>Example Contract Structure:</strong></p>
+<pre><code>Base Fee: $1M (historical archive, one-time)
+Annual Subscription: $750K/year (5,000 new articles/year + re-crawl rights)
+Escalation: 7% annually
+Term: 3 years, auto-renewing
+Total 3-Year Value: $1M + $750K + $802.5K + $859K = $3.4M
+</code></pre>
+<h2>AI Company Strategies to Mitigate Collapse</h2>
+<p>Understanding how AI companies respond to collapse risk informs publisher strategy.</p>
+<h3>Synthetic Data Filtering</h3>
+<p><strong>OpenAI</strong>, <strong>Anthropic</strong>, <strong>Google</strong> implementing filters to detect and exclude AI-generated content from training.</p>
+<p><strong>Detection Methods:</strong></p>
+<ul>
+<li>Statistical analysis (AI text has recognizable patterns—low perplexity, predictable token sequences)</li>
+<li>Watermarking (some AI companies embed watermarks in generated text for later filtering)</li>
+<li>Temporal analysis (content published after model release date, if matches model style, likely AI-generated)</li>
+<li>Source verification (prefer content from known human publishers)</li>
+</ul>
+<p><strong>Publisher Advantage:</strong>
+Verified human content bypasses filters—guaranteed inclusion in training corpus. Unverified web scrapes increasingly filtered out—reducing effective training data supply.</p>
+<h3>Curated High-Quality Datasets</h3>
+<p>AI companies building proprietary datasets of verified high-quality content.</p>
+<p><strong>OpenAI&#39;s Approach:</strong></p>
+<ul>
+<li>License from premium publishers (News Corp, Financial Times, The Atlantic)</li>
+<li>Build internal content authenticity scoring (prioritize high-trust sources)</li>
+<li>Reduce reliance on Common Crawl (too polluted)</li>
+</ul>
+<p><strong>Anthropic&#39;s Approach:</strong></p>
+<ul>
+<li>Emphasize &quot;constitutional AI&quot; (training on high-quality, ethically sourced content)</li>
+<li><a href="anthropic-publisher-licensing-strategy.html">Publisher licensing strategy</a> focuses on editorial standards, fact-checking</li>
+<li>Smaller training corpus, higher quality per token</li>
+</ul>
+<p><strong>Google&#39;s Approach:</strong></p>
+<ul>
+<li>Leverage YouTube, Google Books, Google Scholar (owned/controlled high-quality sources)</li>
+<li>License news content via Google News Showcase partnerships</li>
+<li>Reduce open web scraping</li>
+</ul>
+<p><strong>Publisher Implication:</strong>
+AI companies shifting budgets from infrastructure (scraping) to licensing (buying quality). Market for publisher content grows.</p>
+<h3>Continuous Training Paradigm Shift</h3>
+<p>Traditional AI training: periodic batch updates (GPT-3 → GPT-4 → GPT-5).
+Emerging paradigm: continuous training (daily/weekly incremental updates).</p>
+<p><strong>Why Continuous Training:</strong></p>
+<ul>
+<li>Prevents obsolescence (model always current)</li>
+<li>Mitigates collapse (constant fresh data injection)</li>
+<li>Improves user experience (AI knows about recent events)</li>
+</ul>
+<p><strong>Publisher Opportunity:</strong>
+Continuous training requires <strong>streaming content access</strong>, not one-time datasets. Publishers offering real-time feeds (APIs, RSS) + licensing become preferred partners.</p>
+<p><strong>Pricing Shift:</strong></p>
+<ul>
+<li>Batch model: Pay per dataset ($1M for 100K articles, use forever)</li>
+<li>Continuous model: Pay per time period ($1M/year for ongoing access)</li>
+</ul>
+<p>Publishers benefit from shift to recurring revenue.</p>
+<h2>Long-Term Market Dynamics</h2>
+<p>Model collapse doesn&#39;t disappear—it&#39;s permanent structural feature of AI ecosystems. Implications compound over time.</p>
+<h3>2027-2030 Projections</h3>
+<p><strong>Scenario 1: Collapse Accelerates (Pessimistic for AI, Optimistic for Publishers)</strong></p>
+<ul>
+<li>Web content &gt;70% AI-generated by 2028</li>
+<li>Open web becomes unusable for training (too polluted)</li>
+<li>AI companies <strong>must</strong> license from verified human publishers</li>
+<li>Publisher licensing revenue grows 5-10x (2025: $800M → 2030: $4-8B)</li>
+</ul>
+<p><strong>Scenario 2: Collapse Managed (Balanced)</strong></p>
+<ul>
+<li>AI companies successfully filter synthetic content</li>
+<li>Licensing grows but slowly (2025: $800M → 2030: $2-3B)</li>
+<li>Equilibrium: AI companies pay publishers for quality, scrape supplements</li>
+</ul>
+<p><strong>Scenario 3: Collapse Mitigated by Regulation (Regulatory-Driven)</strong></p>
+<ul>
+<li>Governments mandate content provenance (EU AI Act, US legislation)</li>
+<li>Unlicensed AI training becomes legally risky</li>
+<li>Licensing becomes default, market grows to $5-10B by 2030</li>
+</ul>
+<h3>Publisher Strategic Positioning</h3>
+<p><strong>Invest Now in Collapse Prevention:</strong></p>
+<ul>
+<li>Build content authenticity infrastructure</li>
+<li>Increase production frequency (freshness premium)</li>
+<li>Secure multi-year licensing deals (lock in recurring revenue)</li>
+</ul>
+<p><strong>Differentiate on Quality:</strong></p>
+<ul>
+<li>Premium editorial standards (fact-checking, expert authors)</li>
+<li>Niche expertise (irreplaceable domains)</li>
+<li>Original reporting (novel information)</li>
+</ul>
+<p><strong>Avoid Polluting Your Corpus:</strong></p>
+<ul>
+<li>Don&#39;t publish AI-generated content (degrades your licensing value)</li>
+<li>If using AI-assistance, maintain human editorial control and disclose AI involvement</li>
+<li>Audit archives for AI slop, exclude from licensed corpus</li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<h3>How do AI companies detect whether content is AI-generated when licensing?</h3>
+<p>AI companies use <strong>statistical fingerprinting</strong> (AI text exhibits low perplexity, predictable token sequences), <strong>watermark detection</strong> (some AI outputs embed invisible markers), <strong>temporal analysis</strong> (content published after model X&#39;s release matching model X&#39;s style is suspect), and <strong>source verification</strong> (prefer publishers with known human editorial processes). Publishers should implement <strong>author bylines</strong>, <strong>editorial oversight documentation</strong>, and <strong>AI detection screening</strong> to prove content authenticity. Some publishers add metadata tags: &quot;Human-authored: Yes, AI-assist: None.&quot;</p>
+<h3>Will model collapse make my old archived content more or less valuable?</h3>
+<p><strong>More valuable in aggregate, less valuable per-article.</strong> Model collapse increases demand for any verified human content—including archives—because AI companies need diverse, non-synthetic data. However, <strong>fresh content commands 2-3x premium</strong> over archives due to temporal grounding needs. Strategy: license archives at baseline rates ($0.10/article) while charging premium for continuous fresh content ($0.25-$0.50/article). Combined, total revenue increases even if per-archive-article value stays flat.</p>
+<h3>Should I stop using AI writing tools if I want to maximize licensing revenue?</h3>
+<p>Depends on use case and transparency. <strong>Fully AI-generated content</strong> has <strong>negative licensing value</strong>—contributes to model collapse, AI companies may filter it out. <strong>AI-assisted content with substantial human editing</strong> may retain value if you disclose AI involvement and maintain editorial standards. Best practice: (1) Use AI for drafting, humans for final editing and fact-checking, (2) Maintain clear editorial oversight, (3) Disclose AI assistance in author notes, (4) Run AI detection on final outputs to ensure human voice dominates. <strong>Never</strong> publish raw AI outputs as your content—it poisons your licensing corpus.</p>
+<h3>How does model collapse affect pricing negotiations with AI companies?</h3>
+<p>Model collapse strengthens publisher leverage. Frame negotiations as: &quot;Your models degrade without our fresh, verified human content. As web quality declines, our value increases.&quot; Justify premium pricing via: (1) <strong>Freshness guarantees</strong> (X articles/month continuously), (2) <strong>Authenticity verification</strong> (provenance infrastructure), (3) <strong>Editorial quality</strong> (fact-checking, expert authors), (4) <strong>Exclusive access</strong> (we won&#39;t license to your competitor). If AI company resists premium pricing, cite model collapse research (Nature, Oxford studies) demonstrating degradation from synthetic content. Position yourself as <strong>model quality insurance</strong>, not commodity data.</p>
+<h3>What happens to licensing deals if AI companies solve model collapse technologically?</h3>
+<p>Unlikely collapse is fully &quot;solved&quot;—it&#39;s fundamental to autoregressive models trained on recursively generated data. However, if AI companies develop robust synthetic data filtering or alternative training paradigms (reinforcement learning from human feedback, synthetic data with perfect ground truth), demand for raw web content may decrease. <strong>Publisher hedge:</strong> Focus on <strong>unique information content</strong> (original reporting, primary research, expert analysis) rather than commodity text. Even with perfect collapse prevention, AI companies still need <strong>new information</strong> humans generate. Licensing transitions from &quot;prevent collapse&quot; to &quot;supply novel knowledge&quot;—still valuable, different framing.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

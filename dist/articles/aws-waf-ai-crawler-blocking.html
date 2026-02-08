@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS WAF AI Crawler Blocking: Technical Implementation Guide for Publisher Content Protection | AI Pay Per Crawl</title>
+    <meta name="description" content="Deploy AWS WAF rules to block GPTBot, ClaudeBot, and other AI crawlers from harvesting content—preserving licensing leverage through technical access control.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="AWS WAF AI Crawler Blocking: Technical Implementation Guide for Publisher Content Protection">
+    <meta property="og:description" content="Deploy AWS WAF rules to block GPTBot, ClaudeBot, and other AI crawlers from harvesting content—preserving licensing leverage through technical access control.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/aws-waf-ai-crawler-blocking">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AWS WAF AI Crawler Blocking: Technical Implementation Guide for Publisher Content Protection">
+    <meta name="twitter:description" content="Deploy AWS WAF rules to block GPTBot, ClaudeBot, and other AI crawlers from harvesting content—preserving licensing leverage through technical access control.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/aws-waf-ai-crawler-blocking">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AWS WAF AI Crawler Blocking: Technical Implementation Guide for Publisher Content Protection",
+  "description": "Deploy AWS WAF rules to block GPTBot, ClaudeBot, and other AI crawlers from harvesting content—preserving licensing leverage through technical access control.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/aws-waf-ai-crawler-blocking"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AWS WAF AI Crawler Blocking: Technical Implementation Guide for Publisher Content Protection",
+      "item": "https://aipaypercrawl.com/articles/aws-waf-ai-crawler-blocking"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>AWS WAF AI Crawler Blocking: Technical Implementation Guide for Publisher Content Protection</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 10 min read</span>
+        <h1>AWS WAF AI Crawler Blocking: Technical Implementation Guide for Publisher Content Protection</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Deploy AWS WAF rules to block GPTBot, ClaudeBot, and other AI crawlers from harvesting content—preserving licensing leverage through technical access control.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>AWS WAF AI Crawler Blocking: Technical Implementation Guide for Publisher Content Protection</h1>
+<p>robots.txt is a gentleman&#39;s agreement. <strong>GPTBot</strong> and <strong>ClaudeBot</strong> claim to honor it, but enforcement is voluntary. <strong>PerplexityBot</strong> reportedly ignored robots.txt directives in 2024, scraping blocked sites anyway. Publishers serious about content protection need technical enforcement: AWS WAF (Web Application Firewall) blocks AI crawlers at the infrastructure level before requests reach origin servers.</p>
+<p>AWS WAF operates at CloudFront or Application Load Balancer layers, inspecting HTTP headers (user agents, IP addresses) and rejecting requests matching block rules. Unlike robots.txt (which asks crawlers to self-regulate), WAF enforcement is absolute—blocked crawlers receive HTTP 403 responses regardless of compliance intentions. This transforms content licensing from &quot;hoping AI companies pay&quot; to &quot;forcing them to negotiate because they physically cannot access content otherwise.&quot;</p>
+<p>Implementation is straightforward for publishers on AWS infrastructure: create WAF WebACL, define rules matching AI crawler user agents, attach WebACL to CloudFront distribution or ALB. Non-AWS publishers can use Cloudflare WAF, Nginx rate limiting, or third-party CDN firewall features. The technical mechanisms differ but the principle is identical: enforce access control at network edge, not application layer.</p>
+<h2>Why AWS WAF vs. Application-Level Blocking</h2>
+<h3>Performance Advantages</h3>
+<p><strong>Application-level blocking</strong> (e.g., WordPress plugins, CMS middleware) processes every request through the full stack:</p>
+<ol>
+<li>Request hits web server</li>
+<li>Web server invokes application (PHP, Node.js)</li>
+<li>Application checks user agent against block list</li>
+<li>Application returns 403 if blocked</li>
+</ol>
+<p>This consumes server resources even for blocked requests. Under aggressive AI crawler activity (100+ requests/second), application-level blocking stresses servers.</p>
+<p><strong>WAF-level blocking</strong> rejects requests at edge before they reach origin:</p>
+<ol>
+<li>Request hits CloudFront edge location</li>
+<li>WAF evaluates rules (user agent, IP, rate limits)</li>
+<li>WAF returns 403 if blocked—request never reaches origin server</li>
+</ol>
+<p>Origin servers remain unaware of blocked traffic, eliminating performance impact.</p>
+<h3>Comprehensive Coverage</h3>
+<p>Application-level blocking requires modifications to each application (WordPress, Drupal, custom CMS). If you run multiple apps or migrate platforms, block lists must be updated everywhere.</p>
+<p>WAF operates at infrastructure layer. One WebACL protects all origins behind CloudFront or ALB—WordPress, static sites, APIs, microservices. Changes propagate instantly across entire infrastructure.</p>
+<h3>Evasion Resistance</h3>
+<p>Sophisticated crawlers attempt evasion:</p>
+<ul>
+<li>Rotating user agents (pretending to be Chrome, Firefox)</li>
+<li>Distributed crawling (many IPs simultaneously)</li>
+<li>Slow scraping (staying below rate limits)</li>
+</ul>
+<p>WAF rules can combine multiple signals (user agent + IP reputation + request rate + geographic origin) making evasion exponentially harder.</p>
+<h2>AWS WAF Architecture for AI Crawler Blocking</h2>
+<h3>Core Components</h3>
+<p><strong>1. WebACL (Web Access Control List)</strong></p>
+<p>Container for WAF rules. Attached to CloudFront distributions or ALBs. Defines default action (allow or block) and ordered rule list.</p>
+<p><strong>2. Rules</strong></p>
+<p>Logic determining request fate:</p>
+<ul>
+<li><strong>Match statements</strong>: Conditions to evaluate (user agent contains &quot;GPTBot&quot;)</li>
+<li><strong>Action</strong>: Allow, block, count (log only), or rate-limit</li>
+<li><strong>Priority</strong>: Lower numbers evaluated first</li>
+</ul>
+<p><strong>3. Rule Groups</strong></p>
+<p>Collections of rules for reusability. AWS provides managed rule groups (AWS Managed Rules) and custom rule groups.</p>
+<p><strong>4. Logging</strong></p>
+<p>WAF logs to S3, CloudWatch, or Kinesis for audit/analysis.</p>
+<h3>Traffic Flow</h3>
+<pre><code>User Request
+↓
+CloudFront Edge Location
+↓
+AWS WAF WebACL Evaluation
+↓ (if blocked)
+403 Forbidden Response
+↓ (if allowed)
+Origin Server (EC2, S3, ALB)
+↓
+Response to User
+</code></pre>
+<h2>Implementation Step-by-Step</h2>
+<h3>Step 1: Create WebACL</h3>
+<p><strong>Via AWS Console</strong>:</p>
+<ol>
+<li>Navigate to AWS WAF → Web ACLs</li>
+<li>Click &quot;Create web ACL&quot;</li>
+<li>Name: <code>PublisherAICrawlerBlock</code></li>
+<li>Resource type: CloudFront distributions (or Regional for ALB)</li>
+<li>Add CloudFront distribution or ALB as protected resource</li>
+<li>Default action: Allow (block only AI crawlers, allow normal traffic)</li>
+</ol>
+<p><strong>Via AWS CLI</strong>:</p>
+<pre><code class="language-bash">aws wafv2 create-web-acl \
+  --name PublisherAICrawlerBlock \
+  --scope CLOUDFRONT \
+  --default-action Allow={} \
+  --region us-east-1
+</code></pre>
+<p>Note: CloudFront WAFs must be created in <code>us-east-1</code> regardless of distribution region.</p>
+<h3>Step 2: Create Rule to Block AI Crawlers</h3>
+<p><strong>User Agent String Match Rule</strong>:</p>
+<p>Block requests with user agents matching known AI crawlers:</p>
+<pre><code class="language-json">{
+  &quot;Name&quot;: &quot;BlockAICrawlers&quot;,
+  &quot;Priority&quot;: 1,
+  &quot;Statement&quot;: {
+    &quot;ByteMatchStatement&quot;: {
+      &quot;SearchString&quot;: &quot;GPTBot&quot;,
+      &quot;FieldToMatch&quot;: {
+        &quot;SingleHeader&quot;: {
+          &quot;Name&quot;: &quot;user-agent&quot;
+        }
+      },
+      &quot;TextTransformations&quot;: [
+        {
+          &quot;Priority&quot;: 0,
+          &quot;Type&quot;: &quot;LOWERCASE&quot;
+        }
+      ],
+      &quot;PositionalConstraint&quot;: &quot;CONTAINS&quot;
+    }
+  },
+  &quot;Action&quot;: {
+    &quot;Block&quot;: {}
+  },
+  &quot;VisibilityConfig&quot;: {
+    &quot;SampledRequestsEnabled&quot;: true,
+    &quot;CloudWatchMetricsEnabled&quot;: true,
+    &quot;MetricName&quot;: &quot;BlockAICrawlers&quot;
+  }
+}
+</code></pre>
+<p>This blocks any request where user-agent header contains &quot;gptbot&quot; (case-insensitive).</p>
+<h3>Step 3: Create Regex Pattern Set for Multiple Crawlers</h3>
+<p>Instead of separate rules per crawler, use regex to match all:</p>
+<p><strong>Create Pattern Set</strong>:</p>
+<pre><code class="language-bash">aws wafv2 create-regex-pattern-set \
+  --name AICrawlerPatterns \
+  --scope CLOUDFRONT \
+  --region us-east-1 \
+  --regular-expression-list \
+    &#39;{&quot;RegexString&quot;: &quot;(?i)(gptbot|claudebot|chatgpt-user|bytespider|perplexitybot|anthropic-ai|cohere-ai|googlebot-extended|applebot-extended|ccbot|omgilibot|facebookbot|amazonbot)&quot;}&#39;
+</code></pre>
+<p>Regex pattern <code>(?i)</code> makes case-insensitive, <code>|</code> separates crawler names.</p>
+<p><strong>Create Rule Using Pattern Set</strong>:</p>
+<pre><code class="language-json">{
+  &quot;Name&quot;: &quot;BlockAICrawlerPatterns&quot;,
+  &quot;Priority&quot;: 1,
+  &quot;Statement&quot;: {
+    &quot;RegexPatternSetReferenceStatement&quot;: {
+      &quot;ARN&quot;: &quot;arn:aws:wafv2:us-east-1:ACCOUNT_ID:global/regexpatternset/AICrawlerPatterns/UUID&quot;,
+      &quot;FieldToMatch&quot;: {
+        &quot;SingleHeader&quot;: {
+          &quot;Name&quot;: &quot;user-agent&quot;
+        }
+      },
+      &quot;TextTransformations&quot;: [
+        {
+          &quot;Priority&quot;: 0,
+          &quot;Type&quot;: &quot;LOWERCASE&quot;
+        }
+      ]
+    }
+  },
+  &quot;Action&quot;: {
+    &quot;Block&quot;: {}
+  }
+}
+</code></pre>
+<p>This single rule blocks all AI crawlers matching regex pattern.</p>
+<h3>Step 4: Add IP-Based Blocking (Optional)</h3>
+<p>Some crawlers rotate user agents to evade detection. Block known AI company IP ranges:</p>
+<p><strong>Create IP Set</strong>:</p>
+<pre><code class="language-bash">aws wafv2 create-ip-set \
+  --name OpenAIIPRanges \
+  --scope CLOUDFRONT \
+  --region us-east-1 \
+  --ip-address-version IPV4 \
+  --addresses \
+    20.15.240.0/24 \
+    20.15.241.0/24 \
+    20.15.242.0/24
+</code></pre>
+<p>Replace with actual IP ranges identified via <a href="audit-ai-crawler-revenue-leakage.html">audit-ai-crawler-revenue-leakage</a>.</p>
+<p><strong>Create IP Block Rule</strong>:</p>
+<pre><code class="language-json">{
+  &quot;Name&quot;: &quot;BlockOpenAIIPs&quot;,
+  &quot;Priority&quot;: 2,
+  &quot;Statement&quot;: {
+    &quot;IPSetReferenceStatement&quot;: {
+      &quot;ARN&quot;: &quot;arn:aws:wafv2:us-east-1:ACCOUNT_ID:global/ipset/OpenAIIPRanges/UUID&quot;
+    }
+  },
+  &quot;Action&quot;: {
+    &quot;Block&quot;: {}
+  }
+}
+</code></pre>
+<h3>Step 5: Implement Rate Limiting</h3>
+<p>Block IPs making excessive requests (prevents distributed scraping):</p>
+<pre><code class="language-json">{
+  &quot;Name&quot;: &quot;RateLimitAICrawlers&quot;,
+  &quot;Priority&quot;: 3,
+  &quot;Statement&quot;: {
+    &quot;RateBasedStatement&quot;: {
+      &quot;Limit&quot;: 100,
+      &quot;AggregateKeyType&quot;: &quot;IP&quot;
+    }
+  },
+  &quot;Action&quot;: {
+    &quot;Block&quot;: {}
+  }
+}
+</code></pre>
+<p>Blocks any IP exceeding 100 requests per 5-minute window. Adjust limit based on legitimate traffic patterns.</p>
+<h3>Step 6: Enable Logging</h3>
+<p><strong>Create S3 Bucket</strong> for logs:</p>
+<pre><code class="language-bash">aws s3 mb s3://publisher-waf-logs-ACCOUNT_ID
+</code></pre>
+<p><strong>Enable WAF Logging</strong>:</p>
+<pre><code class="language-bash">aws wafv2 put-logging-configuration \
+  --logging-configuration \
+    ResourceArn=arn:aws:wafv2:us-east-1:ACCOUNT_ID:global/webacl/PublisherAICrawlerBlock/UUID,\
+    LogDestinationConfigs=arn:aws:s3:::publisher-waf-logs-ACCOUNT_ID
+</code></pre>
+<p>Logs every blocked request with user agent, IP, timestamp for audit.</p>
+<h3>Step 7: Test and Monitor</h3>
+<p><strong>Test blocking</strong>:</p>
+<pre><code class="language-bash">curl -A &quot;GPTBot/1.0&quot; https://yoursite.com/test-article
+</code></pre>
+<p>Should return 403 Forbidden.</p>
+<p><strong>Monitor CloudWatch Metrics</strong>:</p>
+<ul>
+<li>Navigate to CloudWatch → Metrics → WAF</li>
+<li>View <code>BlockedRequests</code> metric for WebACL</li>
+<li>Set alarms if blocked requests spike (indicates aggressive crawling attempts)</li>
+</ul>
+<p><strong>Review S3 Logs</strong>:</p>
+<pre><code class="language-bash">aws s3 cp s3://publisher-waf-logs-ACCOUNT_ID/AWSLogs/ . --recursive
+</code></pre>
+<p>Analyze logs to identify evasion attempts (new user agents, IP ranges).</p>
+<h2>Advanced Configurations</h2>
+<h3>Selective Blocking: Allow Licensed AI Companies</h3>
+<p>After licensing deal with Anthropic, whitelist ClaudeBot while blocking others:</p>
+<p><strong>Create Allow Rule</strong> (priority 0, before block rules):</p>
+<pre><code class="language-json">{
+  &quot;Name&quot;: &quot;AllowLicensedAnthropic&quot;,
+  &quot;Priority&quot;: 0,
+  &quot;Statement&quot;: {
+    &quot;ByteMatchStatement&quot;: {
+      &quot;SearchString&quot;: &quot;ClaudeBot&quot;,
+      &quot;FieldToMatch&quot;: {
+        &quot;SingleHeader&quot;: {
+          &quot;Name&quot;: &quot;user-agent&quot;
+        }
+      },
+      &quot;TextTransformations&quot;: [{&quot;Priority&quot;: 0, &quot;Type&quot;: &quot;LOWERCASE&quot;}],
+      &quot;PositionalConstraint&quot;: &quot;CONTAINS&quot;
+    }
+  },
+  &quot;Action&quot;: {
+    &quot;Allow&quot;: {}
+  }
+}
+</code></pre>
+<p>Rule priority determines evaluation order. Allow rules (priority 0) execute before block rules (priority 1+), permitting licensed crawlers.</p>
+<h3>Geographic Restrictions</h3>
+<p>Block AI company traffic from specific regions (e.g., non-US crawling operations):</p>
+<pre><code class="language-json">{
+  &quot;Name&quot;: &quot;BlockNonUSAICrawlers&quot;,
+  &quot;Priority&quot;: 4,
+  &quot;Statement&quot;: {
+    &quot;AndStatement&quot;: {
+      &quot;Statements&quot;: [
+        {
+          &quot;RegexPatternSetReferenceStatement&quot;: {
+            &quot;ARN&quot;: &quot;arn:aws:wafv2:us-east-1:ACCOUNT_ID:global/regexpatternset/AICrawlerPatterns/UUID&quot;,
+            &quot;FieldToMatch&quot;: {&quot;SingleHeader&quot;: {&quot;Name&quot;: &quot;user-agent&quot;}},
+            &quot;TextTransformations&quot;: [{&quot;Priority&quot;: 0, &quot;Type&quot;: &quot;LOWERCASE&quot;}]
+          }
+        },
+        {
+          &quot;NotStatement&quot;: {
+            &quot;Statement&quot;: {
+              &quot;GeoMatchStatement&quot;: {
+                &quot;CountryCodes&quot;: [&quot;US&quot;]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  &quot;Action&quot;: {
+    &quot;Block&quot;: {}
+  }
+}
+</code></pre>
+<p>This blocks AI crawler user agents originating outside the US.</p>
+<h3>Honeypot Trap Rule</h3>
+<p>Block IPs accessing honeypot URLs (content never publicly linked):</p>
+<p><strong>Create String Match Set</strong> with honeypot paths:</p>
+<pre><code class="language-bash">aws wafv2 create-regex-pattern-set \
+  --name HoneypotPaths \
+  --scope CLOUDFRONT \
+  --region us-east-1 \
+  --regular-expression-list \
+    &#39;{&quot;RegexString&quot;: &quot;/secret-test-article-12345|/zorblax-protocol-test&quot;}&#39;
+</code></pre>
+<p><strong>Create Honeypot Rule</strong>:</p>
+<pre><code class="language-json">{
+  &quot;Name&quot;: &quot;BlockHoneypotAccess&quot;,
+  &quot;Priority&quot;: 5,
+  &quot;Statement&quot;: {
+    &quot;RegexPatternSetReferenceStatement&quot;: {
+      &quot;ARN&quot;: &quot;arn:aws:wafv2:us-east-1:ACCOUNT_ID:global/regexpatternset/HoneypotPaths/UUID&quot;,
+      &quot;FieldToMatch&quot;: {
+        &quot;UriPath&quot;: {}
+      },
+      &quot;TextTransformations&quot;: [{&quot;Priority&quot;: 0, &quot;Type&quot;: &quot;NONE&quot;}]
+    }
+  },
+  &quot;Action&quot;: {
+    &quot;Block&quot;: {
+      &quot;CustomResponse&quot;: {
+        &quot;ResponseCode&quot;: 403,
+        &quot;CustomResponseBodyKey&quot;: &quot;HoneypotDetected&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>Any request to honeypot URLs gets permanently blocked (add IP to block list via Lambda automation).</p>
+<h2>Cost Considerations</h2>
+<p>AWS WAF pricing (as of 2026):</p>
+<ul>
+<li><strong>WebACL</strong>: $5/month per ACL</li>
+<li><strong>Rules</strong>: $1/month per rule</li>
+<li><strong>Requests</strong>: $0.60 per million requests evaluated</li>
+</ul>
+<p><strong>Example publisher cost</strong>:</p>
+<ul>
+<li>1 WebACL = $5</li>
+<li>5 rules (crawler patterns, rate limit, IP blocks, geo filter, honeypot) = $5</li>
+<li>50M requests/month × $0.60/million = $30</li>
+<li><strong>Total</strong>: $40/month</li>
+</ul>
+<p>For publishers losing $50K-500K annually to free AI scraping, $480/year for WAF protection is negligible.</p>
+<p><strong>Cost optimization</strong>:</p>
+<ul>
+<li>Use regex pattern sets to consolidate multiple crawler blocks into single rule ($1 vs. $10+ for separate rules)</li>
+<li>Apply WAF only to content routes (not static assets like CSS, images) to reduce request charges</li>
+</ul>
+<h2>Non-AWS Alternatives</h2>
+<h3>Cloudflare WAF</h3>
+<p>Similar functionality via Cloudflare Firewall Rules:</p>
+<ul>
+<li>Navigate to Cloudflare Dashboard → Security → WAF</li>
+<li>Create Custom Rule: <code>(http.user_agent contains &quot;GPTBot&quot;) or (http.user_agent contains &quot;ClaudeBot&quot;)</code></li>
+<li>Action: Block</li>
+</ul>
+<p><strong>Pros</strong>: Simpler UI, often cheaper for small sites.
+<strong>Cons</strong>: Less granular control than AWS WAF.</p>
+<h3>Nginx Rate Limiting and User Agent Blocking</h3>
+<p>For self-hosted publishers:</p>
+<p><strong>Block User Agents</strong>:</p>
+<pre><code class="language-nginx">if ($http_user_agent ~* (GPTBot|ClaudeBot|Bytespider|PerplexityBot)) {
+  return 403;
+}
+</code></pre>
+<p><strong>Rate Limit</strong>:</p>
+<pre><code class="language-nginx">limit_req_zone $binary_remote_addr zone=crawler_limit:10m rate=10r/m;
+
+location / {
+  limit_req zone=crawler_limit burst=5 nodelay;
+}
+</code></pre>
+<p>See <a href="block-bytespider-nginx.html">block-bytespider-nginx</a> for detailed Nginx configurations.</p>
+<h2>Monitoring and Evasion Detection</h2>
+<h3>CloudWatch Alarms</h3>
+<p>Set alerts for unusual blocking activity:</p>
+<pre><code class="language-bash">aws cloudwatch put-metric-alarm \
+  --alarm-name HighAICrawlerBlocking \
+  --metric-name BlockedRequests \
+  --namespace AWS/WAFV2 \
+  --statistic Sum \
+  --period 300 \
+  --evaluation-periods 2 \
+  --threshold 10000 \
+  --comparison-operator GreaterThanThreshold \
+  --alarm-actions arn:aws:sns:us-east-1:ACCOUNT_ID:waf-alerts
+</code></pre>
+<p>Alerts if &gt;10,000 blocks in 10 minutes (indicates aggressive crawling attempt).</p>
+<h3>Log Analysis for Evasion</h3>
+<p>AI companies evade via:</p>
+<ul>
+<li><strong>User agent rotation</strong>: Pretending to be legitimate browsers</li>
+<li><strong>Distributed IPs</strong>: Coordinated scraping from hundreds of IPs</li>
+<li><strong>Slow crawling</strong>: Staying below rate limits</li>
+</ul>
+<p><strong>Detection script</strong> (Python):</p>
+<pre><code class="language-python">import boto3, json
+
+s3 = boto3.client(&#39;s3&#39;)
+logs = s3.get_object(Bucket=&#39;publisher-waf-logs-ACCOUNT_ID&#39;, Key=&#39;log-file.json&#39;)
+log_data = json.loads(logs[&#39;Body&#39;].read())
+
+suspicious_ips = {}
+for log in log_data:
+    ip = log[&#39;httpRequest&#39;][&#39;clientIp&#39;]
+    uri = log[&#39;httpRequest&#39;][&#39;uri&#39;]
+    if ip not in suspicious_ips:
+        suspicious_ips[ip] = []
+    suspicious_ips[ip].append(uri)
+
+for ip, uris in suspicious_ips.items():
+    if len(uris) &gt; 100:  # IP accessed &gt;100 articles
+        print(f&quot;Suspicious: {ip} accessed {len(uris)} articles&quot;)
+</code></pre>
+<p>Identify IPs exhibiting scraping patterns, add to IP block list.</p>
+<h2>FAQ: AWS WAF AI Crawler Blocking</h2>
+<p><strong>Q: Will blocking AI crawlers hurt my SEO?</strong></p>
+<p>A: No. Block only AI training crawlers (GPTBot, ClaudeBot), not Googlebot (SEO crawler). They use different user agents. WAF rules distinguish between them.</p>
+<p><strong>Q: What if AI companies change user agents to evade blocking?</strong></p>
+<p>A: Monitor logs for new suspicious user agents, update regex patterns. Combine user agent blocking with IP blocks and rate limits (harder to evade multiple signals). Honeypot URLs detect evasion attempts.</p>
+<p><strong>Q: Can I block some crawlers and allow others (licensed partners)?</strong></p>
+<p>A: Yes. Use rule priority: allow rules (priority 0-10) before block rules (priority 11+). Allow ClaudeBot (licensed), block GPTBot (unlicensed).</p>
+<p><strong>Q: How do I verify WAF is working?</strong></p>
+<p>A: Test with curl: <code>curl -A &quot;GPTBot/1.0&quot; https://yoursite.com</code> should return 403. Review CloudWatch metrics for <code>BlockedRequests</code> count. Analyze S3 logs to confirm blocked crawler attempts.</p>
+<p><strong>Q: What if my site isn&#39;t on AWS?</strong></p>
+<p>A: Use Cloudflare WAF, Nginx blocking, or other CDN firewalls. Principles are identical—block based on user agent, IP, and rate limits. Implementation details vary by platform. See <a href="block-perplexitybot-robots-txt.html">block-perplexitybot-robots-txt</a> for multi-platform approaches.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
