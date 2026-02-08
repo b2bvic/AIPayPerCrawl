@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete AI Crawler Audit: Step-by-Step for Any Website | AI Pay Per Crawl</title>
+    <meta name="description" content="Comprehensive AI crawler audit methodology. Detect all bots scraping your site, measure traffic impact, identify licensing gaps, and build enforcement strategy.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Complete AI Crawler Audit: Step-by-Step for Any Website">
+    <meta property="og:description" content="Comprehensive AI crawler audit methodology. Detect all bots scraping your site, measure traffic impact, identify licensing gaps, and build enforcement strategy.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/ai-crawler-audit-walkthrough">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Complete AI Crawler Audit: Step-by-Step for Any Website">
+    <meta name="twitter:description" content="Comprehensive AI crawler audit methodology. Detect all bots scraping your site, measure traffic impact, identify licensing gaps, and build enforcement strategy.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/ai-crawler-audit-walkthrough">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Complete AI Crawler Audit: Step-by-Step for Any Website",
+  "description": "Comprehensive AI crawler audit methodology. Detect all bots scraping your site, measure traffic impact, identify licensing gaps, and build enforcement strategy.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-07",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/ai-crawler-audit-walkthrough"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Complete AI Crawler Audit: Step-by-Step for Any Website",
+      "item": "https://aipaypercrawl.com/articles/ai-crawler-audit-walkthrough"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Complete AI Crawler Audit: Step-by-Step for Any Website</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 14 min read</span>
+        <h1>Complete AI Crawler Audit: Step-by-Step for Any Website</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Comprehensive AI crawler audit methodology. Detect all bots scraping your site, measure traffic impact, identify licensing gaps, and build enforcement strategy.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Complete AI Crawler Audit: Step-by-Step for Any Website</h1>
+<p>You don&#39;t know which AI bots scrape your site until you audit. Server logs hold the evidence—<strong>GPTBot</strong>, <strong>ClaudeBot</strong>, <strong>PerplexityBot</strong>, unknown crawlers—but logs alone don&#39;t reveal patterns, licensing exposure, or revenue opportunities.</p>
+<p>An audit transforms raw data into strategic intelligence. How much bandwidth do AI crawlers consume? Which articles attract scraping? Are bots respecting robots.txt? Do licensing deals cover actual crawler activity? Is revenue leaving through unlicensed scraping?</p>
+<p>Publishers running audits discover <strong>30-40% of AI crawler traffic comes from unlicensed bots</strong>. Money walking out the door. Others find licensed crawlers exceeding agreed request quotas by 300%+. Breach of contract invisible without audit.</p>
+<p>This walkthrough builds complete audit methodology: server log analysis, crawler identification and verification, traffic impact quantification, licensing gap detection, and strategic recommendations based on findings.</p>
+<h2>Pre-Audit Preparation</h2>
+<h3>Gathering Data Sources</h3>
+<p><strong>Minimum required:</strong></p>
+<ul>
+<li><strong>Server access logs</strong> (30+ days for statistical significance)</li>
+<li><strong>Robots.txt file</strong> (current and historical if available)</li>
+<li><strong>Licensing agreements</strong> (if any AI companies licensed content)</li>
+</ul>
+<p><strong>Recommended additional sources:</strong></p>
+<ul>
+<li><strong>Web analytics</strong> (Google Analytics, Matomo)</li>
+<li><strong>CDN logs</strong> (Cloudflare, Fastly—if using CDN)</li>
+<li><strong>Firewall/WAF logs</strong> (bot management rules, blocks)</li>
+<li><strong>Application logs</strong> (if content served via API)</li>
+</ul>
+<p><strong>Access log location (common paths):</strong></p>
+<ul>
+<li><strong>Apache:</strong> <code>/var/log/apache2/access.log</code> or <code>/var/log/httpd/access_log</code></li>
+<li><strong>Nginx:</strong> <code>/var/log/nginx/access.log</code></li>
+<li><strong>IIS:</strong> <code>C:\inetpub\logs\LogFiles\</code></li>
+</ul>
+<p><strong>Export logs:</strong></p>
+<pre><code class="language-bash"># Copy last 30 days of logs to analysis directory
+find /var/log/nginx -name &quot;access.log*&quot; -mtime -30 -exec cp {} /tmp/audit/ \;
+
+# If logs are compressed
+gunzip /tmp/audit/*.gz
+</code></pre>
+<p><strong>Size warning:</strong> 30 days of logs for high-traffic site can reach 10-50GB. Ensure adequate storage for analysis workspace.</p>
+<h3>Setting Audit Scope</h3>
+<p><strong>Define questions audit must answer:</strong></p>
+<ol>
+<li><strong>Which AI crawlers are accessing content?</strong></li>
+<li><strong>What volume of traffic does each bot generate?</strong></li>
+<li><strong>Are crawlers respecting robots.txt directives?</strong></li>
+<li><strong>Which content attracts most scraping?</strong></li>
+<li><strong>Do licensing agreements cover actual crawler activity?</strong></li>
+<li><strong>What&#39;s the bandwidth cost of AI scraping?</strong></li>
+<li><strong>Are there unlicensed crawlers we should monetize?</strong></li>
+</ol>
+<p><strong>Scope boundaries:</strong></p>
+<p><strong>Time period:</strong> Last 30 days (standard). Extend to 90 days for trend analysis.</p>
+<p><strong>Bot types:</strong> AI training crawlers only, or include AI-powered search/answer engines? (Recommend: all AI-related bots.)</p>
+<p><strong>Geographic focus:</strong> All traffic or specific regions? (U.S.-only for DMCA coverage vs. global for EU copyright analysis.)</p>
+<p><strong>Content types:</strong> All pages or specific sections? (Article pages vs. homepage/navigation.)</p>
+<p><strong>Output format:</strong> Executive summary for leadership, technical appendix for engineering, legal analysis for counsel.</p>
+<h2>Crawler Identification Phase</h2>
+<h3>Extracting AI Bot Traffic from Logs</h3>
+<p><strong>Goal:</strong> Isolate all requests from AI-related user agents.</p>
+<p><strong>Known AI crawler user agent patterns:</strong></p>
+<pre><code>GPTBot
+ChatGPT-User
+ClaudeBot
+Claude-Web
+PerplexityBot
+Perplexity
+Google-Extended
+Amazonbot
+CCBot
+anthropic-ai
+cohere-ai
+FacebookBot (Meta AI)
+Applebot-Extended
+Bytespider (TikTok)
+YouBot
+</code></pre>
+<p><strong>Extraction command:</strong></p>
+<pre><code class="language-bash"># Grep all AI crawler requests
+grep -E &quot;GPTBot|ClaudeBot|PerplexityBot|Google-Extended|CCBot|Amazonbot|anthropic-ai|Applebot-Extended&quot; /var/log/nginx/access.log &gt; ai_crawlers.log
+
+# Count requests per bot
+awk -F&#39;&quot;&#39; &#39;{print $6}&#39; ai_crawlers.log | sort | uniq -c | sort -rn
+</code></pre>
+<p><strong>Output example:</strong></p>
+<pre><code>45231 GPTBot/1.0
+28456 ClaudeBot/1.0
+15234 PerplexityBot/1.0
+9821  Google-Extended/1.0
+5432  CCBot/2.0
+</code></pre>
+<p><strong>Unknown bots:</strong> Many crawlers don&#39;t identify as AI-specific but are AI-powered.</p>
+<p><strong>Heuristic detection:</strong></p>
+<pre><code class="language-bash"># Find non-standard user agents making high request volumes
+awk -F&#39;&quot;&#39; &#39;{print $6}&#39; /var/log/nginx/access.log | \
+grep -v &quot;Mozilla&quot; | \
+grep -v &quot;Chrome&quot; | \
+grep -v &quot;Safari&quot; | \
+grep &quot;bot\|crawl\|spider&quot; -i | \
+sort | uniq -c | sort -rn | head -20
+</code></pre>
+<p><strong>Investigate candidates:</strong> Google user agents, verify if AI-related.</p>
+<h3>Verifying Crawler Legitimacy</h3>
+<p><strong>Problem:</strong> User agents can be spoofed. <code>GPTBot/1.0</code> might be malicious scraper.</p>
+<p><strong>Verification method 1: DNS reverse lookup</strong></p>
+<p><strong>Process:</strong></p>
+<ol>
+<li>Extract IP addresses from crawler requests</li>
+<li>Perform reverse DNS lookup</li>
+<li>Verify domain matches expected crawler owner</li>
+</ol>
+<p><strong>Example (verify GPTBot):</strong></p>
+<pre><code class="language-bash"># Extract GPTBot IPs
+grep &quot;GPTBot&quot; ai_crawlers.log | awk &#39;{print $1}&#39; | sort -u &gt; gptbot_ips.txt
+
+# Reverse DNS lookup
+while read ip; do
+    host $ip
+done &lt; gptbot_ips.txt
+</code></pre>
+<p><strong>Expected output for legitimate GPTBot:</strong></p>
+<pre><code>34.216.144.5.in-addr.arpa domain name pointer crawl-34-216-144-5.ptr.openai.com.
+</code></pre>
+<p><strong>Red flag:</strong> If domain doesn&#39;t match <code>openai.com</code>, IP is spoofed.</p>
+<p><strong>Verification method 2: IP range check</strong></p>
+<p>AI companies publish official IP ranges. Verify crawler IPs fall within published ranges.</p>
+<p><strong>Example (check against OpenAI&#39;s ranges):</strong></p>
+<p>See <a href="ai-crawler-ip-verification.html">ai-crawler-ip-verification.html</a> for IP range verification scripts.</p>
+<p><strong>Verification method 3: Challenge-response test</strong></p>
+<p>If crawler&#39;s legitimacy is questionable, serve different content to that user agent and monitor AI company&#39;s product.</p>
+<p><strong>Example:</strong> Serve unique phrase to suspected spoofed bot. Query ChatGPT/Claude to see if phrase appears in training data (requires time—training cycles are months long). Impractical for immediate audit but useful for long-term monitoring.</p>
+<h3>Building Crawler Inventory</h3>
+<p><strong>Output:</strong> Complete list of all AI crawlers found, categorized and verified.</p>
+<p><strong>Template:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bot Name</th>
+<th>User Agent String</th>
+<th>Owner</th>
+<th>Verified?</th>
+<th>Request Count</th>
+<th>Licensed?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPTBot</td>
+<td>GPTBot/1.0</td>
+<td>OpenAI</td>
+<td>Yes (DNS)</td>
+<td>45,231</td>
+<td>No</td>
+</tr>
+<tr>
+<td>ClaudeBot</td>
+<td>ClaudeBot/1.0</td>
+<td>Anthropic</td>
+<td>Yes (IP)</td>
+<td>28,456</td>
+<td>No</td>
+</tr>
+<tr>
+<td>PerplexityBot</td>
+<td>PerplexityBot/1.0</td>
+<td>Perplexity</td>
+<td>Yes (DNS)</td>
+<td>15,234</td>
+<td>No</td>
+</tr>
+<tr>
+<td>CCBot</td>
+<td>CCBot/2.0</td>
+<td>Common Crawl</td>
+<td>Yes</td>
+<td>5,432</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>UnknownAI</td>
+<td>MyBot/1.0</td>
+<td>Unknown</td>
+<td>No (suspicious)</td>
+<td>12,500</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<p><strong>Categorize by purpose:</strong></p>
+<ul>
+<li><strong>Training bots:</strong> GPTBot, CCBot (ingest content for model training)</li>
+<li><strong>Answer engines:</strong> PerplexityBot (real-time retrieval for user queries)</li>
+<li><strong>Search indexing:</strong> Google-Extended (AI-powered search features)</li>
+<li><strong>Suspicious/unknown:</strong> Unverified bots</li>
+</ul>
+<p><strong>Flag high-priority targets:</strong> Unlicensed bots with high traffic = licensing opportunities.</p>
+<h2>Traffic Analysis Phase</h2>
+<h3>Quantifying Request Volume</h3>
+<p><strong>Aggregate metrics to calculate:</strong></p>
+<p><strong>Total AI crawler requests (30 days):</strong></p>
+<pre><code class="language-bash">wc -l ai_crawlers.log
+</code></pre>
+<p><strong>Per-bot daily average:</strong></p>
+<pre><code class="language-bash"># Count requests per bot per day
+awk -F&#39;[: ]&#39; &#39;{print $1&quot; &quot;$2&quot; &quot;$3, $NF}&#39; ai_crawlers.log | \
+awk &#39;{date=$1&quot; &quot;$2&quot; &quot;$3; bot=$NF; count[date,bot]++}
+     END {for (key in count) print key, count[key]}&#39; | \
+sort
+</code></pre>
+<p><strong>Requests per hour (detect peak scraping times):</strong></p>
+<pre><code class="language-bash">awk -F&#39;[: ]&#39; &#39;{print $2&quot;:&quot;$3, $NF}&#39; ai_crawlers.log | \
+awk &#39;{hour=$1; bot=$2; count[hour,bot]++}
+     END {for (key in count) print key, count[key]}&#39; | \
+sort
+</code></pre>
+<p><strong>Example output:</strong></p>
+<pre><code>10:00 GPTBot/1.0 2341
+11:00 GPTBot/1.0 2456
+12:00 GPTBot/1.0 2198
+</code></pre>
+<p><strong>Visualization:</strong> Plot hourly request volume to identify scraping patterns.</p>
+<p><strong>Peak hours = higher server load.</strong> If scraping coincides with peak user traffic, consider rate limiting to preserve performance for human visitors.</p>
+<h3>Measuring Bandwidth Consumption</h3>
+<p><strong>Calculate data transferred to each bot:</strong></p>
+<pre><code class="language-bash"># Sum bytes transferred per bot
+awk -F&#39;&quot;&#39; &#39;{split($1, a, &quot; &quot;); bot=$6; bytes=a[10]; total[bot]+=bytes}
+     END {for (b in total) print b, total[b]}&#39; ai_crawlers.log
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>GPTBot/1.0 125834729472
+ClaudeBot/1.0 87234561920
+</code></pre>
+<p><strong>Convert bytes to GB:</strong></p>
+<pre><code class="language-bash">awk &#39;{print $1, $2/1024/1024/1024 &quot; GB&quot;}&#39; bot_bandwidth.txt
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>GPTBot/1.0 117.2 GB
+ClaudeBot/1.0 81.3 GB
+</code></pre>
+<p><strong>Cost calculation:</strong></p>
+<p>If hosting costs $0.08/GB bandwidth:</p>
+<ul>
+<li>GPTBot: 117.2 GB × $0.08 = $9.38</li>
+<li>ClaudeBot: 81.3 GB × $0.08 = $6.50</li>
+</ul>
+<p><strong>Monthly total AI bandwidth cost:</strong> ~$15.88</p>
+<p><strong>For large publishers:</strong> Bandwidth can reach terabytes. Cost becomes significant.</p>
+<p><strong>Strategic question:</strong> Are you subsidizing AI training (free bandwidth) when you could be charging licensing fees?</p>
+<h3>Content Targeting Analysis</h3>
+<p><strong>Which articles attract most AI scraping?</strong></p>
+<pre><code class="language-bash"># Extract URLs requested by AI crawlers
+awk &#39;{print $7}&#39; ai_crawlers.log | sort | uniq -c | sort -rn | head -20
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>4523 /article/ai-copyright-lawsuits-2026
+3821 /article/chatgpt-enterprise-features
+3214 /article/anthropic-constitutional-ai
+2987 /article/google-bard-vs-chatgpt
+</code></pre>
+<p><strong>Insights:</strong></p>
+<p><strong>Topic patterns:</strong> AI-related content attracts AI crawlers (self-referential). Legal analysis, technical guides, industry news = high scraping value.</p>
+<p><strong>Evergreen vs. breaking news:</strong> Check if scraped content is recent or archival. Training bots scrape archives. Answer engines scrape breaking news.</p>
+<p><strong>Commercial value:</strong> Articles on pricing, product comparisons, buying guides = monetizable. If AI answers user queries with your analysis, you&#39;re providing free competitive intelligence.</p>
+<p><strong>Cross-reference with licensing agreements:</strong> If license covers &quot;current news only&quot; but bot scrapes 5-year-old archives, breach of terms.</p>
+<h3>Robots.txt Compliance Check</h3>
+<p><strong>Test whether bots respect your scraping directives.</strong></p>
+<p><strong>Your robots.txt:</strong></p>
+<pre><code>User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /premium/
+
+User-agent: *
+Allow: /
+</code></pre>
+<p><strong>Audit logic:</strong></p>
+<ol>
+<li>Extract all GPTBot requests</li>
+<li>Check if any requested paths are disallowed</li>
+<li>Calculate compliance rate</li>
+</ol>
+<p><strong>Implementation:</strong></p>
+<pre><code class="language-python">import re
+
+robots_rules = {
+    &#39;GPTBot&#39;: {&#39;disallow&#39;: [&#39;/&#39;]},
+    &#39;CCBot&#39;: {&#39;disallow&#39;: [&#39;/premium/&#39;]}
+}
+
+def is_allowed(bot, path, rules):
+    if bot not in rules:
+        return True  # No restrictions
+    for disallow_path in rules[bot][&#39;disallow&#39;]:
+        if path.startswith(disallow_path):
+            return False
+    return True
+
+# Parse log
+violations = []
+with open(&#39;ai_crawlers.log&#39;) as f:
+    for line in f:
+        parts = line.split()
+        path = parts[6]
+        user_agent = parts[-1].strip(&#39;&quot;&#39;)
+
+        bot_name = extract_bot_name(user_agent)  # Extract &quot;GPTBot&quot; from user agent string
+
+        if not is_allowed(bot_name, path, robots_rules):
+            violations.append((bot_name, path))
+
+print(f&quot;Total violations: {len(violations)}&quot;)
+</code></pre>
+<p><strong>Results interpretation:</strong></p>
+<ul>
+<li><strong>0 violations:</strong> Bot respects robots.txt. Good actor.</li>
+<li><strong>&lt;1% violations:</strong> Likely edge cases (caching, crawler version discrepancies). Acceptable.</li>
+<li><strong>&gt;5% violations:</strong> Systematic non-compliance. Evidence for licensing negotiation or legal action.</li>
+</ul>
+<p><strong>Document violations:</strong> Include in audit report. If licensing deal exists, present violations as leverage for better terms.</p>
+<h2>Licensing Gap Analysis</h2>
+<h3>Comparing Crawler Activity to License Scope</h3>
+<p><strong>If you have licensing agreements, audit coverage:</strong></p>
+<p><strong>Example scenario:</strong></p>
+<p>You licensed content to <strong>OpenAI</strong> with terms:</p>
+<ul>
+<li>Content scope: Articles published 2025-present</li>
+<li>Request quota: 10,000 requests/month</li>
+<li>Purpose: Training GPT models</li>
+</ul>
+<p><strong>Audit findings:</strong></p>
+<ul>
+<li><strong>GPTBot requests (30 days):</strong> 45,231 (150% over quota)</li>
+<li><strong>Content scraped:</strong> Includes articles from 2018-2024 (outside license scope)</li>
+<li><strong>User agent:</strong> Both GPTBot and ChatGPT-User (license covered only GPTBot)</li>
+</ul>
+<p><strong>Gaps identified:</strong></p>
+<ol>
+<li><strong>Quota breach:</strong> 35,231 excess requests</li>
+<li><strong>Scope breach:</strong> 12,450 requests to pre-2025 content</li>
+<li><strong>User agent ambiguity:</strong> Secondary crawler not covered by agreement</li>
+</ol>
+<p><strong>Leverage:</strong> Renegotiate terms. Demand higher fees or retroactive payment for excess usage.</p>
+<h3>Identifying Unlicensed High-Volume Crawlers</h3>
+<p><strong>Target:</strong> Bots scraping heavily without licensing deals.</p>
+<p><strong>Audit output from earlier:</strong> ClaudeBot (28,456 requests), PerplexityBot (15,234 requests), Amazonbot (9,821 requests).</p>
+<p><strong>Action matrix:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bot</th>
+<th>Requests/Month</th>
+<th>Licensed?</th>
+<th>Strategy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ClaudeBot</td>
+<td>28,456</td>
+<td>No</td>
+<td>High priority—Anthropic has capital, licenses content from FT and others. Initiate licensing negotiation.</td>
+</tr>
+<tr>
+<td>PerplexityBot</td>
+<td>15,234</td>
+<td>No</td>
+<td>Medium priority—Perplexity monetizes via subscriptions. Licensing feasible.</td>
+</tr>
+<tr>
+<td>Amazonbot</td>
+<td>9,821</td>
+<td>No</td>
+<td>Low priority (Alexa training). Amazon less active in licensing, harder to monetize. Consider blocking.</td>
+</tr>
+</tbody></table>
+<p><strong>Prioritize by:</strong></p>
+<ol>
+<li><strong>Request volume</strong> (higher = more leverage)</li>
+<li><strong>Company funding</strong> (well-funded companies can afford licenses)</li>
+<li><strong>Licensing precedent</strong> (companies already licensing elsewhere are likely to license from you)</li>
+</ol>
+<p><strong>Outreach template:</strong></p>
+<blockquote>
+<p>&quot;Our audit identified [Bot Name] accessing our content at [X requests/month]. We license our content to AI companies for training and retrieval use. Let&#39;s discuss licensing terms that benefit both parties.&quot;</p>
+</blockquote>
+<h2>Strategic Recommendations Phase</h2>
+<h3>Blocking vs. Licensing Decision Framework</h3>
+<p><strong>For each unlicensed crawler, choose:</strong></p>
+<p><strong>Option 1: Block (robots.txt + firewall)</strong></p>
+<p><strong>When to block:</strong></p>
+<ul>
+<li>Bot has no licensing precedent (unlikely to pay)</li>
+<li>Request volume is low (&lt;5,000/month)</li>
+<li>Company is adversarial (ignores ToS, doesn&#39;t respond to outreach)</li>
+<li>Strategic choice to withhold content from specific AI products</li>
+</ul>
+<p><strong>How:</strong></p>
+<pre><code>User-agent: UnwantedBot
+Disallow: /
+</code></pre>
+<p>Plus firewall rules if bot ignores robots.txt.</p>
+<p><strong>Option 2: License (negotiate terms)</strong></p>
+<p><strong>When to license:</strong></p>
+<ul>
+<li>Bot has high volume (&gt;10,000/month)</li>
+<li>Company has capital and licensing history</li>
+<li>Your content is differentiated/valuable to AI product</li>
+<li>Revenue potential outweighs strategic withholding</li>
+</ul>
+<p><strong>Licensing leverage:</strong> Audit data strengthens negotiation. &quot;You scraped 28,000 articles last month. Let&#39;s formalize this with fair compensation.&quot;</p>
+<p><strong>Option 3: Monitor (defer decision)</strong></p>
+<p><strong>When to wait:</strong></p>
+<ul>
+<li>Uncertain commercial value of bot&#39;s AI product</li>
+<li>Early-stage startup (may fail or get acquired)</li>
+<li>Low strategic importance</li>
+</ul>
+<p><strong>Review quarterly:</strong> Reassess as bot traffic or company trajectory changes.</p>
+<h3>Bandwidth Optimization Opportunities</h3>
+<p><strong>Finding:</strong> AI crawlers consumed 500GB last month, costing $40 in bandwidth.</p>
+<p><strong>Optimization strategies:</strong></p>
+<p><strong>1. Implement rate limiting</strong></p>
+<p>Slow crawlers to reduce concurrent load:</p>
+<pre><code class="language-nginx">limit_req_zone $http_user_agent zone=ai_crawlers:10m rate=5r/s;
+
+location / {
+    if ($http_user_agent ~* &quot;GPTBot|ClaudeBot&quot;) {
+        limit_req zone=ai_crawlers burst=10;
+    }
+}
+</code></pre>
+<p><strong>Effect:</strong> Spreads requests over time, reduces peak bandwidth usage.</p>
+<p><strong>2. Serve lightweight content to bots</strong></p>
+<p>Deliver text-only (no images/CSS/JS) to AI crawlers:</p>
+<pre><code class="language-nginx">location / {
+    if ($http_user_agent ~* &quot;GPTBot&quot;) {
+        rewrite ^ /bot-friendly/$uri;
+    }
+}
+</code></pre>
+<p><code>/bot-friendly/</code> serves minimal HTML. Bandwidth per request drops from 150KB to 15KB.</p>
+<p><strong>3. Require crawlers to use API instead of scraping</strong></p>
+<p>Negotiate API access for licensed crawlers. API responses (JSON) are more efficient than HTML scraping.</p>
+<p><strong>Bandwidth savings:</strong> 50-80% reduction vs. serving full web pages.</p>
+<p><strong>4. Block unlicensed crawlers entirely</strong></p>
+<p>Zero bandwidth cost for bots you&#39;ve decided not to serve.</p>
+<h3>Enforcement and Monitoring Plan</h3>
+<p><strong>Audit is point-in-time snapshot.</strong> Ongoing monitoring detects changes.</p>
+<p><strong>Recommendations:</strong></p>
+<p><strong>1. Set up automated alerts</strong></p>
+<p>See <a href="ai-crawler-alerts-notifications.html">ai-crawler-alerts-notifications.html</a> for alert configuration.</p>
+<p><strong>Alert triggers:</strong></p>
+<ul>
+<li>New unknown bot detected</li>
+<li>Licensed bot exceeds quota</li>
+<li>Bot violates robots.txt (&gt;1% non-compliance)</li>
+</ul>
+<p><strong>2. Monthly mini-audits</strong></p>
+<p>Repeat core analysis (request counts, bandwidth, compliance) monthly. Track trends.</p>
+<p><strong>3. Quarterly licensing reviews</strong></p>
+<p>Assess whether blocked bots should be reconsidered for licensing. Revisit licensing terms with existing partners if traffic patterns shift.</p>
+<p><strong>4. Legal compliance tracking</strong></p>
+<p>Document all violations. If litigation becomes necessary (e.g., persistent robots.txt violations), audit trail provides evidence.</p>
+<h2>Audit Report Structure</h2>
+<h3>Executive Summary Template</h3>
+<p><strong>1-page overview for leadership:</strong></p>
+<p><strong>Key Findings:</strong></p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> AI crawlers identified, consuming [Y] GB bandwidth/month</li>
+<li>[Z]% of crawler traffic is unlicensed</li>
+<li>Licensing revenue opportunity: $[estimated annual value]</li>
+<li>[N] licensing agreements have scope/quota breaches</li>
+</ul>
+<p><strong>Recommendations:</strong></p>
+<ol>
+<li>Initiate licensing negotiations with [Bot A, Bot B]</li>
+<li>Block [Bot C] (low monetization potential)</li>
+<li>Enforce quota limits for [Licensed Bot D]</li>
+</ol>
+<p><strong>Financial Impact:</strong></p>
+<ul>
+<li>Current bandwidth cost: $[X]/month</li>
+<li>Projected licensing revenue: $[Y]/year</li>
+<li>Net benefit: $[Y - 12X]</li>
+</ul>
+<h3>Technical Appendix</h3>
+<p><strong>Full data for engineering teams:</strong></p>
+<p><strong>Crawler inventory table</strong> (as built earlier)</p>
+<p><strong>Traffic analysis:</strong></p>
+<ul>
+<li>Request volume charts (daily, hourly)</li>
+<li>Bandwidth consumption per bot</li>
+<li>Geographic distribution of crawler IPs</li>
+<li>Content targeting heatmaps</li>
+</ul>
+<p><strong>Compliance results:</strong></p>
+<ul>
+<li>Robots.txt violation counts</li>
+<li>License quota adherence</li>
+</ul>
+<p><strong>Raw data access:</strong> Link to log files, analysis scripts, database exports.</p>
+<h3>Legal Analysis Supplement</h3>
+<p><strong>For counsel to evaluate enforcement options:</strong></p>
+<p><strong>Robots.txt violations:</strong> Document frequency, paths accessed, evidence of willful non-compliance.</p>
+<p><strong>License breaches:</strong> Specific contract clauses violated, quantified excess usage.</p>
+<p><strong>Copyright considerations:</strong> Analysis of fair use factors if litigation is contemplated.</p>
+<p><strong>Recommended actions:</strong> Cease-and-desist letters, licensing demands, litigation strategy.</p>
+<h2>FAQ</h2>
+<h3>How long should an initial AI crawler audit take?</h3>
+<p><strong>Small site</strong> (&lt;100K monthly visitors, &lt;10GB logs): 4-8 hours. <strong>Medium site</strong> (100K-1M visitors, 10-100GB logs): 1-2 days. <strong>Large site</strong> (1M+ visitors, 100GB+ logs): 3-5 days. Time depends on log complexity, scripting automation, and depth of analysis. Pre-built scripts (provided in this guide) accelerate process. First audit takes longer (setting up infrastructure). Subsequent monthly audits take 25% of initial time.</p>
+<h3>What if I find unknown bots I can&#39;t verify?</h3>
+<p><strong>Document thoroughly:</strong> IP ranges, user agent strings, request patterns. <strong>Attempt verification:</strong> DNS lookups, WHOIS on IP ownership. <strong>Monitor behavior:</strong> Does bot respect robots.txt? Does traffic pattern match training (archive scraping) or real-time retrieval? <strong>Conservative approach:</strong> Block unknown bots until verified. Whitelist if verification succeeds. Many &quot;unknown&quot; bots are malicious scrapers, not legitimate AI companies.</p>
+<h3>Should I share audit findings with AI companies during licensing negotiations?</h3>
+<p><strong>Strategically yes.</strong> Audit data strengthens leverage (&quot;You scraped 45,000 articles last month—let&#39;s discuss fair compensation&quot;). But <strong>don&#39;t overshare granular details</strong> that reveal monitoring capabilities or detection blind spots. Share aggregates (request counts, bandwidth), not detection methodology. Use findings to justify licensing fees, not educate AI companies on evading detection.</p>
+<h3>How do I audit bots that don&#39;t identify in user agent strings?</h3>
+<p><strong>Behavioral analysis:</strong> Identify traffic patterns characteristic of bots (rapid sequential requests, no referrer, no JavaScript execution). <strong>IP clustering:</strong> Group requests from related IP ranges, investigate ownership. <strong>Honeypot traps:</strong> Hidden links that only bots follow (<a href="ai-crawler-honeypots.html">ai-crawler-honeypots.html</a>). <strong>Browser fingerprinting:</strong> Legitimate users have complex fingerprints (screen size, fonts, plugins). Bots often have generic fingerprints. <strong>Challenge-response:</strong> Serve CAPTCHA or JavaScript challenges to suspicious traffic. Bots fail, reveal themselves.</p>
+<h3>What should I do if audit reveals a licensed bot is violating terms?</h3>
+<p><strong>1. Document violations precisely.</strong> Quote contract clauses, show breach evidence (quota exceeded by X%, content outside scope = Y requests). <strong>2. Internal review:</strong> Confirm violations aren&#39;t due to your infrastructure issues (CDN caching, log duplication). <strong>3. Formal notice:</strong> Email AI company&#39;s partnership/legal contact citing violations, requesting remedy. <strong>4. Negotiate cure:</strong> Most companies will fix issues if presented with data (adjust crawler behavior, compensate for excess usage). <strong>5. Escalate if unresolved:</strong> Breach of contract claim, license termination, damages demand. Use violation as leverage for better terms (higher fees, stronger attribution clauses).</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

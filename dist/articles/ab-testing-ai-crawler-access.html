@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B Testing AI Crawler Access: Measuring Revenue Impact | AI Pay Per Crawl</title>
+    <meta name="description" content="Design experiments to measure AI crawler monetization vs. blocking. Statistical methods, traffic segmentation, and revenue attribution for publishers.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="A/B Testing AI Crawler Access: Measuring Revenue Impact">
+    <meta property="og:description" content="Design experiments to measure AI crawler monetization vs. blocking. Statistical methods, traffic segmentation, and revenue attribution for publishers.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/ab-testing-ai-crawler-access">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A/B Testing AI Crawler Access: Measuring Revenue Impact">
+    <meta name="twitter:description" content="Design experiments to measure AI crawler monetization vs. blocking. Statistical methods, traffic segmentation, and revenue attribution for publishers.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/ab-testing-ai-crawler-access">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "A/B Testing AI Crawler Access: Measuring Revenue Impact",
+  "description": "Design experiments to measure AI crawler monetization vs. blocking. Statistical methods, traffic segmentation, and revenue attribution for publishers.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-07",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/ab-testing-ai-crawler-access"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "A/B Testing AI Crawler Access: Measuring Revenue Impact",
+      "item": "https://aipaypercrawl.com/articles/ab-testing-ai-crawler-access"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>A/B Testing AI Crawler Access: Measuring Revenue Impact</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 17 min read</span>
+        <h1>A/B Testing AI Crawler Access: Measuring Revenue Impact</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Design experiments to measure AI crawler monetization vs. blocking. Statistical methods, traffic segmentation, and revenue attribution for publishers.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>A/B Testing AI Crawler Access: Measuring Revenue Impact</h1>
+<p>Publishers choosing between blocking AI crawlers and monetizing access face conflicting incentives. Block them: protect archives, preserve negotiating leverage. Allow them: generate licensing revenue, potentially capture traffic from AI-generated citations. The optimal choice depends on economics specific to your publication.</p>
+<p><strong>A/B testing</strong> resolves the question empirically. Split your content. Allow AI crawler access to segment A. Block access to segment B. Measure revenue differential across both direct monetization (licensing payments, per-crawl fees) and indirect effects (traffic from AI citations, audience engagement changes, crawler bandwidth costs).</p>
+<p>The testing framework here is adapted from pharmaceutical clinical trials and e-commerce conversion optimization. Methodological rigor matters because the stakes are high — publishers are making decisions that affect millions in potential revenue based on incomplete data. Testing surfaces ground truth.</p>
+<p>This guide walks through experimental design, statistical significance calculations, revenue attribution models, and decision frameworks. The goal: replace speculation with measurement. Know what AI crawler access is actually worth to your publication, not what industry articles claim it should be worth.</p>
+<h2>Why A/B Testing Matters (Intuition Fails at Scale)</h2>
+<h3>Publishers Are Making Multi-Million-Dollar Decisions Based on Guesses</h3>
+<p><strong>News Corp</strong> negotiated a <strong>$250 million OpenAI deal</strong>. But before negotiations started, they blocked AI crawlers entirely. Was that the right sequence? Would starting with limited access and measuring value have strengthened their negotiating position with concrete usage data?</p>
+<p><strong>Medium</strong> blocked AI crawlers in 2024, then reversed the decision three months later. Why? Their initial intuition — protecting member content preserves subscription value — collided with observed reality. AI citations drove meaningful referral traffic. The block reduced a valuable discovery channel.</p>
+<p>Both decisions were made without controlled experiments. <strong>News Corp&#39;s</strong> bet paid off. <strong>Medium&#39;s</strong> didn&#39;t, requiring reversal and credibility cost. Testing would have reduced uncertainty in both cases.</p>
+<h3>Direct Revenue vs. Indirect Traffic Value</h3>
+<p>AI crawler monetization has two revenue channels:</p>
+<p><strong>Direct:</strong> Per-crawl fees (via <a href="ai-crawler-revenue-calculator.html">Cloudflare Pay-Per-Crawl</a> or similar), flat licensing deals, training data sales.</p>
+<p><strong>Indirect:</strong> Traffic from AI system citations (<strong>ChatGPT</strong> citing your article, <strong>Claude</strong> referencing your research), SEO benefits from AI-driven discovery, brand authority from being cited by AI systems users trust.</p>
+<p>Intuition suggests these channels conflict. Allow crawlers, earn direct revenue but train AI to compete with you. Block crawlers, protect differentiation but lose citation traffic. Testing reveals whether the conflict is real or perceived.</p>
+<h3>Bandwidth and Server Costs Create Hidden Variables</h3>
+<p>AI crawlers consume server resources. <strong>OpenAI&#39;s GPTBot</strong> averages <strong>3-5 requests per second</strong> on heavily crawled publications. <strong>Google-Extended</strong> can spike to <strong>10+ requests per second</strong> during intensive collection periods. For a 50-million-pageview publication, AI crawler bandwidth can represent <strong>15-20% of total server load</strong>.</p>
+<p>If you&#39;re paying for bandwidth or CPU cycles, crawler activity has costs. Those costs offset revenue. Testing needs to capture both sides of the ledger.</p>
+<h2>Experimental Design Framework</h2>
+<h3>Choosing What to Split (URL-Level, Directory-Level, or Subdomain)</h3>
+<p>Your experimental unit determines what you can measure and how cleanly you can isolate effects.</p>
+<p><strong>URL-level splitting:</strong> Block AI crawlers from 50% of articles randomly selected. Allow crawlers to access the other 50%. Most granular. Requires programmatic robots.txt generation or server-level request filtering.</p>
+<p><strong>Directory-level splitting:</strong> If your content is organized in logical directories (<code>/industry-news/</code>, <code>/analysis/</code>, <code>/tutorials/</code>), block crawlers from specific directories. Allow access to others. Easier implementation. Less statistical power if directories have systematically different content quality.</p>
+<p><strong>Subdomain splitting:</strong> Create <code>test.yoursite.com</code> as a crawler-allowed zone. Keep <code>www.yoursite.com</code> blocked. Cleanest separation. Requires duplicate content hosting. Introduces confounds (subdomains may rank differently in search, may have different audiences).</p>
+<p><strong>Recommendation:</strong> URL-level splitting offers the best internal validity if you have technical capacity. Directory-level splitting is pragmatic for publishers without engineering resources.</p>
+<h3>Sample Size Calculations (How Many Articles Minimum)</h3>
+<p>Statistical power depends on effect size and variance. AI crawler revenue effects are typically large (100%+ difference between blocked and allowed states) but traffic variance is high.</p>
+<p><strong>Minimum viable sample:</strong> 200 articles per group (400 total) for detecting a 20% revenue difference with 80% power at p&lt;0.05 significance. This assumes typical publication traffic variance (coefficient of variation around 1.5).</p>
+<p><strong>Optimal sample:</strong> 500-1,000 articles per group. Increases power to detect smaller effects (10-15% differences) and allows subgroup analysis by content type.</p>
+<p><strong>Duration:</strong> 90 days minimum. AI crawler behavior is episodic. Training runs happen monthly or quarterly. Short tests miss variance. 180-day tests capture seasonal effects and multiple training cycles.</p>
+<h3>Randomization Methods to Avoid Selection Bias</h3>
+<p>Poor randomization undermines experiments. If your &quot;blocked&quot; group contains systematically different content than your &quot;allowed&quot; group, you&#39;re measuring content quality differences, not crawler access effects.</p>
+<p><strong>Simple random assignment:</strong> List all eligible articles. Assign each a random number. Sort. Top 50% = allowed, bottom 50% = blocked. This works if article quality is uncorrelated with any other factor.</p>
+<p><strong>Stratified randomization:</strong> Group articles by publication date, topic category, historical traffic tier. Randomly assign within each stratum. This ensures balanced representation. If your &quot;allowed&quot; group has proportionally more high-traffic articles by chance, results are confounded.</p>
+<p><strong>Matched pairs:</strong> Pair similar articles (same topic, similar historical traffic, same publication timeframe). Randomize treatment within each pair. Most rigorous. Requires sufficient article volume to create meaningful pairs.</p>
+<p><strong>Implementation verification:</strong> After randomization, check balance. Calculate mean traffic, mean word count, mean publication recency for both groups. If groups differ significantly on observables, re-randomize. You want groups that are statistically identical before treatment.</p>
+<h3>Control Group Setup (What &quot;Blocked&quot; Really Means)</h3>
+<p>&quot;Blocked&quot; needs precise definition:</p>
+<p><strong>Full block via robots.txt:</strong> Add AI crawler user-agents to Disallow list for blocked content. Relies on crawler compliance. Non-compliant crawlers introduce measurement error.</p>
+<p><strong>IP-based firewall block:</strong> Block AI crawler IP ranges at server level. More reliable enforcement. Requires maintaining current IP lists (crawlers change IPs periodically).</p>
+<p><strong>Honeypot verification:</strong> Deploy <a href="ai-crawler-honeypots.html">crawler honeypots</a> to detect whether blocked content is being accessed anyway. Non-compliance detection is crucial for interpreting results.</p>
+<p><strong>Crawl rate limiting instead of full block:</strong> Some publishers test crawler throttling rather than binary block. Allow 10% of normal crawler request rate. This tests whether reduced access affects revenue proportionally or whether there&#39;s a threshold effect.</p>
+<h2>Revenue Attribution Model</h2>
+<h3>Direct Monetization Tracking (Per-Crawl Fees, Licensing Payments)</h3>
+<p>If you&#39;re using <strong>Cloudflare Pay-Per-Crawl</strong> or similar, revenue attribution is straightforward. The platform tracks which URLs crawlers access and bills accordingly.</p>
+<p><strong>Measurement:</strong></p>
+<ul>
+<li>Revenue from allowed segment = sum of all per-crawl fees for URLs in treatment group</li>
+<li>Revenue from blocked segment = zero (by definition)</li>
+<li>Differential = treatment group revenue</li>
+</ul>
+<p><strong>Complications:</strong></p>
+<ul>
+<li><strong>Cloudflare</strong> charges platform fees (~15% of gross). Net revenue is what matters.</li>
+<li>Crawlers may cluster on high-value content. Revenue per article varies. Median revenue is often more informative than mean.</li>
+<li>Training data licensing deals (flat fees for archive access) require allocation. If <strong>Anthropic</strong> pays $50,000 for archive access and 60% of your archive was in the allowed group, attribute $30,000 to treatment.</li>
+</ul>
+<h3>Indirect Traffic Attribution (AI Citation Referrals)</h3>
+<p>AI systems that cite sources generate referral traffic. <strong>ChatGPT</strong> now includes clickable citations. <strong>Perplexity</strong> shows source links for every claim. If your content is cited, users may click through.</p>
+<p><strong>Measurement:</strong></p>
+<ul>
+<li>Tag URLs in your experiment groups with UTM parameters or unique identifiers</li>
+<li>Filter analytics for referral traffic from AI domains (<code>chat.openai.com</code>, <code>perplexity.ai</code>, <code>claude.ai</code>, etc.)</li>
+<li>Compare referral volume for allowed vs. blocked groups</li>
+</ul>
+<p><strong>Expected effect:</strong> Allowed content should receive AI referral traffic. Blocked content should not (AI systems can&#39;t cite what they can&#39;t access).</p>
+<p><strong>Confounds:</strong></p>
+<ul>
+<li>AI systems may cache content even after you block future access. <strong>ChatGPT</strong> trained on pre-block data can still cite you. Measure incremental citations, not absolute citations.</li>
+<li>Users may reference your content in prompts (&quot;What does [Your Publication] say about X?&quot;). AI systems retrieve publicly available content in real-time. This isn&#39;t training data access, but it generates traffic.</li>
+</ul>
+<h3>Bandwidth Cost Measurement</h3>
+<p>Server logs reveal crawler resource consumption.</p>
+<p><strong>Data collection:</strong></p>
+<ol>
+<li>Export 90 days of server logs</li>
+<li>Filter for AI crawler user-agents accessing allowed content</li>
+<li>Sum total bytes transferred, request count, server processing time</li>
+<li>Calculate cost using your hosting provider&#39;s pricing ($/GB bandwidth, $/CPU hour)</li>
+</ol>
+<p><strong>Example calculation:</strong></p>
+<ul>
+<li><strong>GPTBot</strong> made 45,000 requests to allowed URLs</li>
+<li>Average response size: 850 KB</li>
+<li>Total bandwidth: 38.25 GB</li>
+<li>Hosting cost: $0.05/GB = $1.91</li>
+<li>Crawl revenue from <strong>GPTBot</strong>: $67.50 (at $0.0015/request)</li>
+<li>Net revenue: $65.59</li>
+</ul>
+<p>For high-traffic sites on metered hosting, crawler bandwidth costs can approach 20-30% of crawler revenue. Testing needs to capture net revenue, not gross.</p>
+<h3>SEO Impact Measurement (Does Allowing Crawlers Help Rankings?)</h3>
+<p>Speculative theory: Allowing AI crawlers improves search rankings because AI-generated content links to you more often, creating backlinks and citation signals <strong>Google</strong> values.</p>
+<p><strong>Testing this hypothesis:</strong></p>
+<p><strong>Pre-test baseline:</strong> Record search rankings for target keywords associated with both allowed and blocked content. Use rank tracking tools (<strong>Ahrefs</strong>, <strong>SEMrush</strong>, <strong>Serpstat</strong>) to capture daily position data.</p>
+<p><strong>During test:</strong> Monitor ranking changes for allowed vs. blocked content over 90-180 days.</p>
+<p><strong>Analysis:</strong> If allowed content shows statistically significant ranking improvements vs. blocked content, the hypothesis is supported. If no difference, the AI citation → SEO benefit link doesn&#39;t exist (or the effect size is too small to detect in your sample).</p>
+<p><strong>Confounding factors:</strong> Search algorithm updates, competitor behavior, seasonal search volume changes. Mitigate by using matched pairs (similar content, only difference is crawler access) and differencing out time trends.</p>
+<h2>Statistical Significance Testing</h2>
+<h3>Calculating Confidence Intervals</h3>
+<p>Raw revenue differences aren&#39;t enough. You need to know whether observed differences are signal or noise.</p>
+<p><strong>Method: Two-sample t-test</strong></p>
+<p>Compare mean revenue per article between allowed and blocked groups.</p>
+<p><strong>Null hypothesis:</strong> Crawler access has no effect on revenue (mean difference = 0)
+<strong>Alternative hypothesis:</strong> Crawler access affects revenue (mean difference ≠ 0)</p>
+<p><strong>Formula:</strong></p>
+<pre><code>t = (mean_allowed - mean_blocked) / sqrt((var_allowed/n_allowed) + (var_blocked/n_blocked))
+</code></pre>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>If |t| &gt; 1.96 (for 95% confidence), reject null hypothesis. The effect is statistically significant.</li>
+<li>Calculate confidence interval: mean difference ± 1.96 * standard error</li>
+<li>If the confidence interval excludes zero, you have evidence of real effect</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Allowed group: 500 articles, mean revenue $4.20/article, std dev $12.50</li>
+<li>Blocked group: 500 articles, mean revenue $0.15/article (from citations despite block), std dev $2.30</li>
+<li>Difference: $4.05</li>
+<li>Standard error: sqrt((12.50²/500) + (2.30²/500)) = $0.567</li>
+<li>95% CI: $4.05 ± $1.11 = [$2.94, $5.16]</li>
+</ul>
+<p>Interpretation: Allowing crawler access generates between $2.94 and $5.16 additional revenue per article with 95% confidence.</p>
+<h3>Accounting for Traffic Variance (High-Performing Articles Skew Results)</h3>
+<p>Publishing traffic follows a power law distribution. A small percentage of articles generate disproportionate traffic and crawler attention.</p>
+<p><strong>Problem:</strong> If your randomization unluckily assigns more viral articles to the allowed group, you&#39;ll overestimate crawler value. The revenue difference comes from article quality, not crawler access.</p>
+<p><strong>Solution 1: Winsorization</strong></p>
+<p>Cap extreme outliers. Replace revenue values above the 95th percentile with the 95th percentile value. This limits the influence of a few viral articles on group means.</p>
+<p><strong>Solution 2: Log transformation</strong></p>
+<p>Revenue per article spans orders of magnitude ($0.01 to $100+). Take logarithms before statistical testing. This reduces the leverage of extreme values.</p>
+<p><strong>Solution 3: Rank-based tests</strong></p>
+<p>Use the <strong>Mann-Whitney U test</strong> instead of t-test. This compares rank orderings rather than raw values. Less sensitive to outliers.</p>
+<p><strong>Best practice:</strong> Report results using multiple methods. If all three approaches reach the same conclusion, your finding is robust.</p>
+<h3>Detecting Statistical Significance vs. Practical Significance</h3>
+<p>A result can be statistically significant (p &lt; 0.05) but practically meaningless.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Allowed group revenue: $2.15/article</li>
+<li>Blocked group revenue: $2.08/article</li>
+<li>Difference: $0.07</li>
+<li>With 5,000 articles per group, this might reach statistical significance</li>
+<li>But $0.07/article × 10,000 articles = $700 annual revenue difference</li>
+<li>Is $700 worth the implementation effort and ongoing monitoring?</li>
+</ul>
+<p><strong>Decision rule:</strong> Set a minimum practical significance threshold before testing. &quot;We&#39;ll only change strategy if the revenue difference exceeds $2/article&quot; or &quot;We need at least $10,000 annual impact to justify implementation.&quot;</p>
+<p>Statistical significance tells you the effect is real. Practical significance tells you whether you should care.</p>
+<h2>Implementing the Test Infrastructure</h2>
+<h3>robots.txt Conditional Logic (Serving Different Files to Different URLs)</h3>
+<p>Standard robots.txt is static. Dynamic experiments require programmatic generation.</p>
+<p><strong>Approach 1: Server-side script</strong></p>
+<p>Generate robots.txt on-demand based on URL access patterns.</p>
+<pre><code class="language-python"># Pseudocode
+allowed_urls = load_treatment_group()
+blocked_urls = load_control_group()
+
+if request.path in blocked_urls:
+    return &quot;User-agent: GPTBot\nDisallow: /&quot;
+else:
+    return &quot;User-agent: GPTBot\nAllow: /&quot;
+</code></pre>
+<p>This works but robots.txt is cached aggressively by crawlers. Changes may not propagate for 24-48 hours.</p>
+<p><strong>Approach 2: URL parameter discrimination</strong></p>
+<p>Use query parameters to segment groups. Allowed content lives at <code>/article?version=A</code>. Blocked content at <code>/article?version=B</code>. Set robots.txt accordingly.</p>
+<p>Drawback: Duplicate content issues. Search engines see two versions of the same article.</p>
+<p><strong>Approach 3: Request-time blocking</strong></p>
+<p>Allow all content in robots.txt. Block programmatically at request time based on user-agent and URL.</p>
+<pre><code class="language-python">if user_agent == &quot;GPTBot&quot; and url in blocked_group:
+    return 403  # Forbidden
+</code></pre>
+<p>This bypasses robots.txt entirely. More reliable enforcement. Requires server-side logic.</p>
+<h3>Server-Side Logging Configuration</h3>
+<p>You need granular logs to measure effects.</p>
+<p><strong>Minimum log data:</strong></p>
+<ul>
+<li>Timestamp</li>
+<li>URL accessed</li>
+<li>User-agent string</li>
+<li>Bytes transferred</li>
+<li>Processing time</li>
+<li>HTTP status code</li>
+</ul>
+<p><strong>Enhanced logging for experiments:</strong></p>
+<ul>
+<li>Treatment group assignment (allowed/blocked)</li>
+<li>Revenue attribution (if using per-crawl pricing, log the fee charged)</li>
+<li>Geographic origin (crawler IP → data center location)</li>
+</ul>
+<p><strong>Log retention:</strong> 180 days minimum. Longer if you&#39;re running extended tests.</p>
+<p><strong>Analysis pipeline:</strong> Export logs to a data warehouse (<strong>BigQuery</strong>, <strong>Snowflake</strong>, <strong>Redshift</strong>) for SQL-based analysis. CSV exports work for smaller datasets but don&#39;t scale.</p>
+<h3>Dashboard Setup for Real-Time Monitoring</h3>
+<p>Build monitoring dashboards before launching experiments. You need to detect anomalies quickly.</p>
+<p><strong>Key metrics to surface:</strong></p>
+<p><strong>Crawler activity volume:</strong> Requests per day by crawler, segmented by allowed vs. blocked groups. Sharp drops in allowed group activity = crawler stopped respecting robots.txt.</p>
+<p><strong>Revenue accrual:</strong> Cumulative revenue by group. If allowed group revenue flatlines, investigate.</p>
+<p><strong>Bandwidth consumption:</strong> Bytes transferred per day. Spikes indicate intensive crawling or potential DDoS.</p>
+<p><strong>HTTP status code distribution:</strong> Blocked group should show high 403/404 rates for crawler requests. If you see 200 OK responses, enforcement failed.</p>
+<p><strong>Tools:</strong></p>
+<ul>
+<li><strong>Google Data Studio</strong> / <strong>Looker Studio</strong> (free, connects to BigQuery)</li>
+<li><strong>Grafana</strong> (open source, powerful but requires setup)</li>
+<li><strong>Datadog</strong> (commercial, expensive, excellent anomaly detection)</li>
+</ul>
+<p><strong>Alert thresholds:</strong></p>
+<ul>
+<li>Crawler volume drops &gt;50% week-over-week → investigate crawler compliance</li>
+<li>Blocked group revenue &gt;$0 → enforcement failure, crawlers accessing blocked content</li>
+<li>Bandwidth costs exceed revenue → pricing model needs adjustment</li>
+</ul>
+<h2>Interpreting Results</h2>
+<h3>When to Conclude &quot;Allowing Crawlers Increases Revenue&quot;</h3>
+<p>Clear positive result: Allowed group generates significantly more revenue, effect size exceeds practical significance threshold, effect persists across multiple measurement windows.</p>
+<p><strong>Evidence checklist:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Statistical significance: p &lt; 0.05 on primary revenue metric</li>
+<li><input disabled="" type="checkbox"> Practical significance: Revenue difference ≥ predefined threshold</li>
+<li><input disabled="" type="checkbox"> Robustness: Effect holds under winsorization, log transformation, and rank-based tests</li>
+<li><input disabled="" type="checkbox"> Persistence: Effect present in each 30-day sub-period, not driven by single event</li>
+<li><input disabled="" type="checkbox"> Mechanism clarity: Direct revenue (licensing fees) or indirect revenue (citations) is primary driver</li>
+</ul>
+<p><strong>Decision:</strong> Scale up. Expand allowed access to more content. Negotiate higher per-crawl rates based on demonstrated value. Pursue direct licensing deals with usage data as evidence of demand.</p>
+<h3>When to Conclude &quot;Blocking Crawlers Is More Valuable&quot;</h3>
+<p>Negative or null result: No significant revenue difference, or blocked group shows better performance on holistic metrics (traffic retention, subscription conversions, brand authority).</p>
+<p><strong>Scenarios where blocking wins:</strong></p>
+<p><strong>Training AI competitors:</strong> Your revenue model depends on information scarcity. AI systems trained on your data compete directly. Revenue from crawler fees doesn&#39;t offset competitive displacement. (Specialized research firms, proprietary financial analysis.)</p>
+<p><strong>Negotiating leverage:</strong> Blocking creates scarcity. <strong>News Corp</strong> blocked, then negotiated a $250M deal. The block established that access wasn&#39;t free. (Large publishers with unique archives.)</p>
+<p><strong>Bandwidth costs exceed revenue:</strong> Crawlers consume resources faster than they generate revenue. Net economics are negative. (High-traffic sites on metered hosting.)</p>
+<p><strong>Evidence checklist:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Allowed group revenue doesn&#39;t cover costs (bandwidth, monitoring, infrastructure)</li>
+<li><input disabled="" type="checkbox"> Blocked group maintains traffic and engagement despite no crawler access</li>
+<li><input disabled="" type="checkbox"> Licensing inquiries increase after blocking (scarcity creates demand)</li>
+<li><input disabled="" type="checkbox"> Brand survey data shows audience values exclusivity</li>
+</ul>
+<p><strong>Decision:</strong> Maintain blocks. Use scarcity to pursue direct licensing negotiations. Alternatively, implement <a href="ai-crawler-monetization-strategies.html">tiered access</a>: block by default, whitelist crawlers willing to pay premium rates.</p>
+<h3>Null Results (No Significant Difference)</h3>
+<p>Null results are informative. They mean crawler access doesn&#39;t materially affect your economics at current pricing and traffic levels.</p>
+<p><strong>Possible interpretations:</strong></p>
+<p><strong>Insufficient sample size:</strong> Your test lacked statistical power. Extend duration or expand sample.</p>
+<p><strong>Effect heterogeneity:</strong> Overall null masks opposing effects. High-traffic articles show positive impact, low-traffic articles show negative. Subgroup analysis reveals this.</p>
+<p><strong>Pricing misalignment:</strong> Per-crawl rates are too low to generate measurable revenue. Test higher pricing tiers.</p>
+<p><strong>Crawler non-compliance:</strong> Blocked group is being accessed anyway (crawlers ignoring robots.txt). Enforcement failure creates measurement error.</p>
+<p><strong>Decision:</strong> Don&#39;t conclude &quot;crawlers don&#39;t matter.&quot; Conclude &quot;current test setup can&#39;t detect effects.&quot; Refine and re-test.</p>
+<h2>Case Study: Hypothetical Publisher 90-Day Test</h2>
+<h3>Test Design</h3>
+<p><strong>Publisher:</strong> B2B trade publication, cybersecurity industry, 8 million monthly pageviews, 2,500 articles in archive.</p>
+<p><strong>Sample:</strong> 1,000 articles (500 allowed, 500 blocked). Stratified randomization by publication date (25% per year from 2020-2024) and traffic tier (25% per quartile).</p>
+<p><strong>Metrics:</strong></p>
+<ul>
+<li>Primary: Direct revenue from per-crawl fees</li>
+<li>Secondary: Referral traffic from AI citations, bandwidth costs</li>
+</ul>
+<p><strong>Duration:</strong> 90 days (July-September 2025)</p>
+<h3>Revenue Results</h3>
+<p><strong>Allowed group:</strong></p>
+<ul>
+<li>Total revenue: $2,847</li>
+<li>Mean revenue per article: $5.69</li>
+<li>Median revenue per article: $2.10</li>
+<li>90th percentile: $18.50</li>
+</ul>
+<p><strong>Blocked group:</strong></p>
+<ul>
+<li>Total revenue: $134 (residual citations from pre-block training data)</li>
+<li>Mean revenue per article: $0.27</li>
+<li>Median revenue per article: $0.00</li>
+</ul>
+<p><strong>Difference:</strong></p>
+<ul>
+<li>Mean difference: $5.42 per article</li>
+<li>95% CI: [$4.18, $6.66]</li>
+<li>t-statistic: 8.92, p &lt; 0.001</li>
+</ul>
+<p><strong>Interpretation:</strong> Allowing crawler access generates $5.42 additional revenue per article with high confidence.</p>
+<p><strong>Annualized projection:</strong> 2,500 articles × $5.42 = $13,550 annual revenue from crawler monetization.</p>
+<h3>Traffic Impact</h3>
+<p><strong>AI referral traffic:</strong></p>
+<ul>
+<li>Allowed group: 1,247 referrals from <code>chat.openai.com</code>, <code>claude.ai</code>, <code>perplexity.ai</code></li>
+<li>Blocked group: 89 referrals (from cached citations)</li>
+</ul>
+<p><strong>Conversion to subscribers:</strong></p>
+<ul>
+<li>Allowed group referrals: 3.2% conversion to free newsletter signup</li>
+<li>Blocked group referrals: 2.8% conversion</li>
+</ul>
+<p><strong>Interpretation:</strong> AI citations generate meaningful referral volume. Conversion rates are comparable to other referral sources.</p>
+<h3>Bandwidth Costs</h3>
+<p><strong>Crawler consumption:</strong></p>
+<ul>
+<li>Total requests from AI crawlers to allowed content: 127,000 over 90 days</li>
+<li>Average response size: 680 KB</li>
+<li>Total bandwidth: 84.4 GB</li>
+<li>Hosting cost: $4.22 (at $0.05/GB)</li>
+</ul>
+<p><strong>Net revenue:</strong> $2,847 - $4.22 = $2,842.78</p>
+<p><strong>Interpretation:</strong> Bandwidth costs are negligible relative to revenue. Not a constraining factor.</p>
+<h3>Decision</h3>
+<p><strong>Publisher chose:</strong> Expand allowed access to full archive. Pursue direct licensing conversations with <strong>Anthropic</strong> and <strong>OpenAI</strong> using test data as proof of content value.</p>
+<p><strong>Outcome 6 months later:</strong> Closed a $45,000 annual flat-fee licensing deal with <strong>Anthropic</strong> for archive access plus real-time feed. Per-crawl revenue from other crawlers continues at ~$1,200/month.</p>
+<h2>FAQ</h2>
+<h3>How long should I run an A/B test before making a decision?</h3>
+<p>90 days minimum. AI crawlers don&#39;t operate on daily cycles. Training runs happen monthly or quarterly. Short tests miss episodic variance. Extend to 180 days if you&#39;re testing during a known high-variance period (major news events, product launches in your industry).</p>
+<h3>Can I test multiple crawler pricing tiers simultaneously?</h3>
+<p>Yes. Create three groups: blocked, low-price allowed ($0.001/crawl), high-price allowed ($0.01/crawl). This tests price sensitivity. Warning: requires larger sample sizes (300+ articles per group) to maintain statistical power.</p>
+<h3>What if my content is too niche to generate meaningful crawler activity?</h3>
+<p>Test feasibility first. Check <a href="publisher-ai-revenue-dashboard.html">server logs for existing crawler activity</a>. If you see &lt;100 crawler requests per month, A/B testing won&#39;t generate statistically significant results in reasonable timeframes. Consider qualitative approaches instead (contact AI companies directly, ask about licensing interest).</p>
+<h3>Should I test all AI crawlers or just one?</h3>
+<p>Start with the most active crawler (usually <strong>GPTBot</strong> or <strong>ClaudeBot</strong> depending on your niche). Once you have results, extend testing to other crawlers. Different crawlers may have different value profiles. <strong>Google-Extended</strong> might generate more citation traffic than revenue. <strong>ClaudeBot</strong> might generate more licensing interest.</p>
+<h3>How do I handle articles published during the test period?</h3>
+<p>Pre-assign them to treatment groups using the same randomization scheme. New articles about cybersecurity threats → check topic stratification, assign to maintain balance. This prevents time-based confounds (all new articles in one group creates recency bias).</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

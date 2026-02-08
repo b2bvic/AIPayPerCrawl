@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How AI Companies Bypass Paywalls: Technical Methods and Countermeasures | AI Pay Per Crawl</title>
+    <meta name="description" content="Technical analysis of paywall bypass methods AI crawlers use. Detection techniques, prevention strategies, and enforcement mechanisms for publishers.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="How AI Companies Bypass Paywalls: Technical Methods and Countermeasures">
+    <meta property="og:description" content="Technical analysis of paywall bypass methods AI crawlers use. Detection techniques, prevention strategies, and enforcement mechanisms for publishers.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/ai-companies-bypass-paywalls">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How AI Companies Bypass Paywalls: Technical Methods and Countermeasures">
+    <meta name="twitter:description" content="Technical analysis of paywall bypass methods AI crawlers use. Detection techniques, prevention strategies, and enforcement mechanisms for publishers.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/ai-companies-bypass-paywalls">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How AI Companies Bypass Paywalls: Technical Methods and Countermeasures",
+  "description": "Technical analysis of paywall bypass methods AI crawlers use. Detection techniques, prevention strategies, and enforcement mechanisms for publishers.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-07",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/ai-companies-bypass-paywalls"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How AI Companies Bypass Paywalls: Technical Methods and Countermeasures",
+      "item": "https://aipaypercrawl.com/articles/ai-companies-bypass-paywalls"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>How AI Companies Bypass Paywalls: Technical Methods and Countermeasures</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 15 min read</span>
+        <h1>How AI Companies Bypass Paywalls: Technical Methods and Countermeasures</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Technical analysis of paywall bypass methods AI crawlers use. Detection techniques, prevention strategies, and enforcement mechanisms for publishers.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>How AI Companies Bypass Paywalls: Technical Methods and Countermeasures</h1>
+<p>AI crawlers encountering paywalls face a choice: respect access controls or bypass them. Evidence from server log analysis, crawler behavior research, and publisher reports reveals that bypass attempts are common. Some crawlers probe aggressively. Others employ sophisticated evasion techniques that exploit gaps in paywall implementation.</p>
+<p>This isn&#39;t universally hostile. <strong>OpenAI</strong> and <strong>Anthropic</strong> generally respect paywall signals when properly implemented. But technical debt in legacy paywall systems, inconsistent authentication enforcement, and deliberate probing by less scrupulous crawlers create vulnerabilities publishers must address.</p>
+<p>The stakes are significant. Paywalled content represents publishers&#39; most valuable assets — subscriber-exclusive analysis, premium research, member-only archives. If AI companies train models on this content without permission or payment, publishers lose twice: licensing revenue foregone and competitive advantage eroded (the AI system becomes a substitute for the subscription).</p>
+<p>This analysis covers bypass methods across five categories: client-side paywall exploitation, authentication system weaknesses, robots.txt non-compliance, metadata leakage, and social engineering tactics. For each method, countermeasures are provided with implementation difficulty ratings and effectiveness assessments.</p>
+<h2>Client-Side Paywall Vulnerabilities</h2>
+<h3>JavaScript Paywall Overlays</h3>
+<p>Many publishers implement paywalls as JavaScript overlays. The full article HTML loads, then JavaScript injects a &quot;subscribe to continue&quot; modal that obscures content. The content is present in the DOM, just visually hidden.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<p>Crawlers don&#39;t execute JavaScript by default. They request HTML, parse it, extract text content. JavaScript-based paywalls never execute. The crawler sees the full article text that exists in the underlying HTML.</p>
+<p><strong>Example implementation:</strong></p>
+<pre><code class="language-html">&lt;article class=&quot;full-content&quot;&gt;
+  [Complete article text here...]
+&lt;/article&gt;
+&lt;script&gt;
+  if (!isSubscriber) {
+    showPaywallModal();
+  }
+&lt;/script&gt;
+</code></pre>
+<p>The crawler ignores the script tag, reads the <code>&lt;article&gt;</code> content directly.</p>
+<p><strong>Detection:</strong></p>
+<ul>
+<li>Compare crawler-accessed content to subscriber-accessed content</li>
+<li>Log which content fragments crawlers extract</li>
+<li>If crawlers access paywalled paragraphs, client-side paywall is compromised</li>
+</ul>
+<p><strong>Countermeasure:</strong>
+<strong>Server-side content truncation.</strong> Don&#39;t send full content in initial HTML. Serve only preview paragraphs. Deliver full content only after authentication validation.</p>
+<pre><code class="language-html">&lt;!-- For non-subscribers: --&gt;
+&lt;article class=&quot;preview&quot;&gt;
+  [First 3 paragraphs...]
+  &lt;div class=&quot;paywall-boundary&quot;&gt;
+    &lt;!-- Full content NOT in HTML --&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+<p>Full content loaded via authenticated API call after subscription verification.</p>
+<p><strong>Implementation difficulty:</strong> Medium. Requires refactoring content delivery.</p>
+<p><strong>Effectiveness:</strong> High. Crawlers can&#39;t access content that isn&#39;t served.</p>
+<h3>Cookie-Based Authentication</h3>
+<p>Some paywalls set cookies on subscription. Pages check for valid cookie, display full content if present. Crawlers that don&#39;t maintain cookie state see the paywalled version. But crawlers can maintain cookies.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<ol>
+<li>Crawler subscribes to your publication (or uses a compromised subscriber account)</li>
+<li>Receives authentication cookie</li>
+<li>Includes cookie in all subsequent crawler requests</li>
+<li>Accesses full paywalled archive as &quot;authenticated subscriber&quot;</li>
+</ol>
+<p><strong>Evidence this happens:</strong></p>
+<p>Publishers report crawler activity originating from subscriber session cookies. User-agent strings (<strong>GPTBot</strong>, <strong>ClaudeBot</strong>) combined with valid subscriber cookies in the same request. The crawler is authenticated.</p>
+<p><strong>Detection:</strong></p>
+<ul>
+<li>Cross-reference crawler user-agent with subscriber session cookies</li>
+<li>Flag sessions where user-agent is known crawler AND authentication cookie is valid</li>
+<li>Audit subscriber accounts for unusual access patterns (scraping entire archive in 24 hours)</li>
+</ul>
+<p><strong>Countermeasure 1: User-agent filtering despite authentication</strong></p>
+<p>Block crawler user-agents even if authenticated. Subscription grants human access, not bot access.</p>
+<pre><code class="language-python">if user_agent in AI_CRAWLER_LIST:
+    return 403  # Forbidden, even if cookie is valid
+</code></pre>
+<p>Terms of service should explicitly prohibit automated access by bots, even for paid subscribers.</p>
+<p><strong>Countermeasure 2: Rate limiting on authenticated sessions</strong></p>
+<p>Legitimate subscribers don&#39;t access 1,000 articles per hour. Crawlers do.</p>
+<pre><code class="language-python">if authenticated and request_rate &gt; threshold:
+    challenge_captcha()  # or temporary block
+</code></pre>
+<p><strong>Implementation difficulty:</strong> Low. Standard web application firewall rules.</p>
+<p><strong>Effectiveness:</strong> High for compliant crawlers. Ineffective against determined bypass (crawlers can slow down, use distributed requests).</p>
+<h3>Metered Paywalls (N Free Articles)</h3>
+<p>Publishers offering &quot;5 free articles per month&quot; typically track this client-side (cookies) or IP-based. Crawlers exploit the free allowance, then rotate IPs or clear cookies to reset the counter.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<p><strong>IP rotation:</strong> Crawler uses proxy network or cloud infrastructure. Each request from different IP. Publisher sees &quot;first article&quot; for each IP, grants free access.</p>
+<p><strong>Cookie clearing:</strong> Crawler deletes tracking cookies between requests. Publisher can&#39;t track previous article views, resets counter.</p>
+<p><strong>User-agent spoofing:</strong> Crawler impersonates regular browser, accesses free articles without triggering crawler detection.</p>
+<p><strong>Detection:</strong></p>
+<p><strong>Abnormal access patterns:</strong></p>
+<ul>
+<li>Same content accessed from 500 different IPs in one hour (distributed crawling)</li>
+<li>Crawler user-agent accessing &quot;free preview&quot; articles at high volume</li>
+</ul>
+<p><strong>Content accessed ratio:</strong></p>
+<ul>
+<li>Legitimate users access mix of old/new articles</li>
+<li>Crawlers systematically access entire archive chronologically</li>
+</ul>
+<p><strong>Countermeasure 1: Server-side tracking</strong></p>
+<p>Track article view counts server-side tied to session, not just cookies.</p>
+<pre><code class="language-python">session_store[session_id][&#39;articles_viewed&#39;] += 1
+if session_store[session_id][&#39;articles_viewed&#39;] &gt; FREE_LIMIT:
+    redirect_to_paywall()
+</code></pre>
+<p>Session ID tied to IP + user-agent fingerprint. Harder to reset than cookies.</p>
+<p><strong>Countermeasure 2: Fingerprinting beyond cookies</strong></p>
+<p>Use canvas fingerprinting, font detection, browser feature detection. Create stable fingerprint that persists across cookie deletion.</p>
+<p>Crawlers typically have minimal fingerprint (no canvas, limited fonts, basic HTTP features). Fingerprint identifies crawler even if user-agent is spoofed.</p>
+<p><strong>Implementation difficulty:</strong> Medium-high. Requires fingerprinting library integration.</p>
+<p><strong>Effectiveness:</strong> Medium. Sophisticated crawlers can emulate full browser fingerprints. Defense becomes arms race.</p>
+<h2>Authentication System Weaknesses</h2>
+<h3>Referrer Header Manipulation</h3>
+<p>Some paywalls grant access if referrer header indicates traffic from approved source (Google News, social media). Intent: improve content discoverability without full paywall bypass.</p>
+<p>Crawlers exploit this by setting fake referrer headers.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<pre><code class="language-http">GET /premium-article HTTP/1.1
+Host: publisher.com
+User-Agent: GPTBot/1.0
+Referer: https://news.google.com/article-link
+</code></pre>
+<p>Paywall sees Google News referrer, grants access. Crawler reads full content.</p>
+<p><strong>Detection:</strong></p>
+<p>Cross-reference referrer header with actual traffic source. If user-agent is <strong>GPTBot</strong> but referrer claims <strong>news.google.com</strong>, the referrer is spoofed (Google News doesn&#39;t route traffic via <strong>GPTBot</strong>).</p>
+<p><strong>Countermeasure:</strong></p>
+<p>Validate referrer origin server-side. Check that traffic actually originates from claimed referrer IP ranges.</p>
+<pre><code class="language-python">if referrer == &quot;news.google.com&quot;:
+    if request_ip not in GOOGLE_NEWS_IP_RANGES:
+        return 403  # Spoofed referrer
+</code></pre>
+<p>Or eliminate referrer-based bypass entirely. Use direct Google News integration that doesn&#39;t rely on client-provided headers.</p>
+<p><strong>Implementation difficulty:</strong> Low.</p>
+<p><strong>Effectiveness:</strong> High. Crawlers can&#39;t fake IP origin.</p>
+<h3>Search Engine Cloaking Exploitation</h3>
+<p>Publishers often serve full content to search engine crawlers (for SEO indexing) while paywalling human visitors. Crawlers impersonate search engines to access this content.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<pre><code class="language-http">User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)
+</code></pre>
+<p>Publisher sees &quot;Googlebot,&quot; serves full content for indexing. Actual requester is AI crawler.</p>
+<p><strong>Detection:</strong></p>
+<p><strong>Reverse DNS verification.</strong> Legitimate <strong>Googlebot</strong> requests originate from IPs that reverse-resolve to <code>google.com</code> domains. Verify:</p>
+<pre><code class="language-python">ip = request.remote_addr
+hostname = reverse_dns_lookup(ip)
+if &quot;googlebot&quot; in user_agent:
+    if not hostname.endswith(&quot;.googlebot.com&quot;):
+        return 403  # Spoofed Googlebot
+</code></pre>
+<p><strong>Google IP range verification:</strong> Maintain list of Google&#39;s published IP ranges. Verify requester IP is in those ranges.</p>
+<p><strong>Countermeasure:</strong></p>
+<p>Enforce IP verification for all search crawler user-agents. Do not grant cloaking access based solely on user-agent string.</p>
+<p><strong>Implementation difficulty:</strong> Low. Libraries exist for reverse DNS and IP validation.</p>
+<p><strong>Effectiveness:</strong> Very high. IP spoofing is difficult. Crawlers can&#39;t fake Google&#39;s infrastructure.</p>
+<h3>Archive.org and Cached Content</h3>
+<p>Publishers may grant access to web archives (<strong>Internet Archive</strong>, <strong>Google Cache</strong>) for preservation purposes. AI crawlers access historical versions through these services.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<p>Instead of requesting <code>publisher.com/article</code> (paywalled), crawler requests <code>web.archive.org/*/publisher.com/article</code> and accesses archived snapshots.</p>
+<p><strong>Archive.org</strong> saved full content before paywall was implemented, or captured cloaked version served to search crawlers. Crawler harvests this.</p>
+<p><strong>Detection:</strong></p>
+<p>Monitor archive services for your paywalled URLs. Check what content is available.</p>
+<p><strong>Countermeasure 1: Exclude from archiving</strong></p>
+<p>Use <code>X-Robots-Tag</code> header or meta tag to prevent archiving:</p>
+<pre><code class="language-html">&lt;meta name=&quot;robots&quot; content=&quot;noarchive&quot;&gt;
+</code></pre>
+<p>or</p>
+<pre><code class="language-http">X-Robots-Tag: noarchive
+</code></pre>
+<p><strong>Archive.org</strong> respects this (though historical snapshots persist).</p>
+<p><strong>Countermeasure 2: Request removal of paywalled content</strong></p>
+<p>Contact <strong>Archive.org</strong> to remove specific URLs from their index. They comply for paywalled content if requested.</p>
+<p><strong>Implementation difficulty:</strong> Low (header addition), Medium (removal requests require manual process).</p>
+<p><strong>Effectiveness:</strong> Medium. Historical data persists. Future archiving prevented.</p>
+<h2>robots.txt Non-Compliance</h2>
+<h3>Crawlers Ignoring Disallow Directives</h3>
+<p>robots.txt is voluntary. Crawlers can ignore it.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<p>Publisher robots.txt:</p>
+<pre><code>User-agent: GPTBot
+Disallow: /premium/
+</code></pre>
+<p>Crawler ignores directive, accesses <code>/premium/</code> anyway.</p>
+<p><strong>Detection:</strong></p>
+<p>Server logs showing crawler requests to disallowed paths:</p>
+<pre><code>198.252.206.25 - - [07/Feb/2026:10:23:45] &quot;GET /premium/article HTTP/1.1&quot; 200 GPTBot/1.0
+</code></pre>
+<p><strong>GPTBot</strong> accessed <code>/premium/article</code> despite robots.txt disallow.</p>
+<p><strong>Countermeasure:</strong></p>
+<p>Enforce at server level, not via robots.txt honor system.</p>
+<pre><code class="language-python">if user_agent == &quot;GPTBot&quot; and path.startswith(&quot;/premium/&quot;):
+    return 403
+</code></pre>
+<p>Return HTTP 403 Forbidden. Crawler can&#39;t bypass server-enforced rules like it can bypass robots.txt.</p>
+<p><strong>Implementation difficulty:</strong> Low.</p>
+<p><strong>Effectiveness:</strong> High. Non-compliance becomes irrelevant when access is blocked at server.</p>
+<h3>User-Agent Spoofing</h3>
+<p>Crawler changes user-agent to avoid robots.txt blocks.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<p>Publisher blocks <strong>GPTBot</strong>. Crawler changes user-agent to <strong>Mozilla/5.0</strong> (generic browser). Publisher&#39;s robots.txt doesn&#39;t apply, grants access.</p>
+<p><strong>Detection:</strong></p>
+<p>Behavioral analysis. Browser user-agents accompanied by:</p>
+<ul>
+<li>Rapid sequential requests (100+ articles/hour)</li>
+<li>No JavaScript execution (tracking scripts don&#39;t fire)</li>
+<li>Unusual request headers (missing common browser headers)</li>
+<li>Access patterns (chronological archive scraping)</li>
+</ul>
+<p><strong>Countermeasure:</strong></p>
+<p>Behavioral fingerprinting and bot detection:</p>
+<pre><code class="language-python">if looks_like_bot_behavior(request) and not is_known_good_bot(user_agent):
+    challenge_with_captcha()
+</code></pre>
+<p>Use tools like <strong>Cloudflare Bot Management</strong>, <strong>DataDome</strong>, <strong>PerimeterX</strong> that analyze behavior beyond user-agent.</p>
+<p><strong>Implementation difficulty:</strong> Medium. Requires third-party bot detection service or custom ML models.</p>
+<p><strong>Effectiveness:</strong> High. Catches spoofed crawlers that genuine browsers wouldn&#39;t trigger.</p>
+<h2>Metadata Leakage Vulnerabilities</h2>
+<h3>OpenGraph and Schema.org Tags</h3>
+<p>Publishers embed full article summaries or excerpts in metadata for social sharing.</p>
+<pre><code class="language-html">&lt;meta property=&quot;og:description&quot; content=&quot;Full article summary revealing key findings...&quot;&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Detailed preview of paywalled content...&quot;&gt;
+</code></pre>
+<p>Crawlers extract metadata without accessing paywalled content body.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<p>Even if article body is paywalled, meta tags are in page <code>&lt;head&gt;</code> and always served. Crawler collects descriptions across 100,000 articles, aggregates into training corpus.</p>
+<p>Not a full bypass, but significant value extraction.</p>
+<p><strong>Detection:</strong></p>
+<p>Analyze whether meta descriptions reveal excessive paywalled content. Check if summaries contain premium insights.</p>
+<p><strong>Countermeasure:</strong></p>
+<p>Limit metadata richness for paywalled content:</p>
+<pre><code class="language-html">&lt;!-- Paywalled article: --&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Exclusive analysis for subscribers. Subscribe to read.&quot;&gt;
+
+&lt;!-- Public article: --&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Detailed summary of article findings...&quot;&gt;
+</code></pre>
+<p>Serve rich metadata only for non-paywalled content.</p>
+<p><strong>Implementation difficulty:</strong> Low.</p>
+<p><strong>Effectiveness:</strong> Medium. Reduces value extraction but doesn&#39;t eliminate it (titles alone provide training value).</p>
+<h3>RSS Feeds with Full Content</h3>
+<p>Some publishers include full article text in RSS feeds for subscriber convenience.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<p>Subscribe to RSS feed. Parse feed entries. Extract full content without ever visiting website or respecting paywall.</p>
+<p><strong>Detection:</strong></p>
+<p>RSS feed access logs showing unusual consumption patterns:</p>
+<ul>
+<li>Feed reader user-agents accessing feeds hundreds of times per hour</li>
+<li>IPs polling every RSS feed endpoint sequentially</li>
+</ul>
+<p><strong>Countermeasure 1: Truncate RSS content</strong></p>
+<p>Include only summaries in public RSS. Require authentication for full-content feeds.</p>
+<p><strong>Countermeasure 2: Authenticated RSS feeds</strong></p>
+<p>Use unique feed URLs per subscriber:</p>
+<pre><code>https://publisher.com/feed?token=UNIQUE_SUBSCRIBER_TOKEN
+</code></pre>
+<p>Track usage per token. Revoke if abused.</p>
+<p><strong>Implementation difficulty:</strong> Low.</p>
+<p><strong>Effectiveness:</strong> High. Eliminates anonymous RSS scraping.</p>
+<h3>API Endpoints Without Authentication</h3>
+<p>Publishers may expose APIs for internal use (mobile apps, partner integrations) without proper authentication.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<p>Discover API endpoint via:</p>
+<ul>
+<li>JavaScript file inspection (mobile app reverse engineering)</li>
+<li>Trial and error (<code>/api/articles</code>, <code>/v1/content</code>)</li>
+<li>Third-party API documentation leaks</li>
+</ul>
+<p>Request content directly from API, bypassing web paywall entirely.</p>
+<p><strong>Detection:</strong></p>
+<p>Monitor API access logs for:</p>
+<ul>
+<li>Unauthenticated requests to content endpoints</li>
+<li>Unusual user-agents on API paths</li>
+<li>High-volume API usage from IPs not associated with legitimate mobile apps</li>
+</ul>
+<p><strong>Countermeasure:</strong></p>
+<p><strong>Require authentication on all API endpoints:</strong></p>
+<pre><code class="language-python">@require_api_key
+def get_article(article_id):
+    return article_content
+</code></pre>
+<p>Validate API keys server-side. Rate limit per key. Revoke keys exhibiting scraping behavior.</p>
+<p><strong>Implementation difficulty:</strong> Medium.</p>
+<p><strong>Effectiveness:</strong> Very high. Unauthenticated APIs are immediate vulnerability.</p>
+<h2>Social Engineering and Account Compromise</h2>
+<h3>Compromised Subscriber Accounts</h3>
+<p>Attackers purchase or compromise subscriber accounts, use credentials for systematic scraping.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<ol>
+<li>Purchase subscriber account from credential marketplace</li>
+<li>Or phish legitimate subscriber for credentials</li>
+<li>Authenticate as that subscriber</li>
+<li>Scrape entire archive</li>
+</ol>
+<p>Publisher sees authenticated subscriber access, doesn&#39;t recognize it as bot activity.</p>
+<p><strong>Detection:</strong></p>
+<p><strong>Account behavior anomalies:</strong></p>
+<ul>
+<li>Account accesses 5,000 articles in 24 hours (normal subscriber reads 5-10/month)</li>
+<li>Geographic inconsistency (account normally in New York, suddenly accessing from Amazon AWS data center)</li>
+<li>User-agent switching (account accessed via Chrome on Mac for months, suddenly curl requests)</li>
+</ul>
+<p><strong>Countermeasure 1: Anomaly detection</strong></p>
+<p>Flag accounts with unusual activity for review:</p>
+<pre><code class="language-python">if account_article_views &gt; 100 * median_subscriber_views:
+    flag_for_review(account)
+</code></pre>
+<p><strong>Countermeasure 2: Device/IP consistency checks</strong></p>
+<p>Challenge authentication from new IPs or devices:</p>
+<pre><code class="language-python">if login_ip not in account.historical_ips:
+    require_two_factor_auth()
+</code></pre>
+<p><strong>Countermeasure 3: Concurrent session limits</strong></p>
+<p>Prevent same account from being used in 100 simultaneous crawler threads:</p>
+<pre><code class="language-python">if active_sessions_for_account &gt; 3:
+    terminate_oldest_sessions()
+</code></pre>
+<p><strong>Implementation difficulty:</strong> Medium.</p>
+<p><strong>Effectiveness:</strong> High. Catches most automated abuse of compromised accounts.</p>
+<h3>Academic Access Exploitation</h3>
+<p>University IP ranges often have full access to paywalled content via institutional subscriptions.</p>
+<p><strong>How crawlers bypass:</strong></p>
+<p>AI company routes crawler traffic through university proxy or VPN. Publisher sees university IP, grants full access.</p>
+<p><strong>Detection:</strong></p>
+<p><strong>Usage pattern analysis:</strong></p>
+<ul>
+<li>University IP accessing 50,000 articles/day (typical institutional usage: 500-2,000/day)</li>
+<li>Access concentrated on specific user-agent (<strong>GPTBot</strong>, <strong>ClaudeBot</strong>)</li>
+<li>No referrer diversity (real institutional access comes from library portals, research databases; crawler has no referrer or fake referrer)</li>
+</ul>
+<p><strong>Countermeasure:</strong></p>
+<p><strong>Per-institution rate limiting:</strong></p>
+<pre><code class="language-python">institutional_access[institution_id][&#39;daily_requests&#39;] += 1
+if institutional_access[institution_id][&#39;daily_requests&#39;] &gt; threshold:
+    require_individual_authentication()
+</code></pre>
+<p>Or contact institution to investigate. Legitimate institutional use doesn&#39;t involve AI crawler user-agents.</p>
+<p><strong>Implementation difficulty:</strong> Medium.</p>
+<p><strong>Effectiveness:</strong> High. Universities don&#39;t authorize AI training on institutional access.</p>
+<h2>Advanced Countermeasure Systems</h2>
+<h3>Honeypot Content for Crawler Detection</h3>
+<p>Embed invisible content designed to catch crawlers.</p>
+<p><strong>Implementation:</strong></p>
+<p>Create fake premium articles visible to crawlers but not humans:</p>
+<pre><code class="language-html">&lt;div style=&quot;display:none;&quot;&gt;
+  &lt;a href=&quot;/trap-article-xyz123&quot;&gt;Exclusive subscriber analysis&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+<p>CSS hides it from browsers. Crawlers see the link, follow it. Accessing the trap URL identifies the requester as a bot.</p>
+<p><strong>Detection:</strong></p>
+<p>Any access to <code>/trap-article-xyz123</code> confirms crawler activity. Log IP and user-agent.</p>
+<p><strong>Response:</strong></p>
+<p>Block IP, block user-agent, or serve degraded content to that requester going forward.</p>
+<p><strong>Implementation difficulty:</strong> Low.</p>
+<p><strong>Effectiveness:</strong> Very high for identifying crawlers. Doesn&#39;t prevent initial access but enables subsequent blocking.</p>
+<h3>Real-Time Behavioral Analysis</h3>
+<p>Monitor request patterns in real-time, block when bot behavior is detected.</p>
+<p><strong>Signals:</strong></p>
+<ul>
+<li>Request rate (&gt;10 articles/minute)</li>
+<li>No JavaScript execution (tracking pixels don&#39;t fire)</li>
+<li>Missing browser fingerprint components</li>
+<li>Sequential article access (article IDs accessed in numeric order)</li>
+<li>No user interaction (scroll depth zero, time-on-page zero)</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<p>Use <strong>Cloudflare Bot Management</strong>, <strong>Akamai Bot Manager</strong>, or custom ML models trained on legitimate vs. bot traffic.</p>
+<p><strong>Effectiveness:</strong> Very high. Adapts to new crawler patterns without manual updates.</p>
+<p><strong>Cost:</strong> $200-2,000/month depending on traffic volume and service tier.</p>
+<h3>Legal and ToS Enforcement</h3>
+<p>Technical measures are defense. Legal measures are offense.</p>
+<p><strong>Terms of Service:</strong></p>
+<p>Explicitly prohibit:</p>
+<ul>
+<li>Automated access by bots, scrapers, crawlers</li>
+<li>Commercial use without licensing agreement</li>
+<li>AI training on paywalled content</li>
+</ul>
+<p><strong>Enforcement:</strong></p>
+<p>When crawler bypass is detected:</p>
+<ol>
+<li>Identify crawler operator (reverse IP lookup, user-agent research)</li>
+<li>Send cease-and-desist</li>
+<li>Offer licensing agreement</li>
+<li>Litigation if non-compliance continues</li>
+</ol>
+<p><strong>OpenAI</strong> and <strong>Anthropic</strong> typically comply when violations are documented. Smaller or overseas crawlers may not.</p>
+<p><strong>Effectiveness:</strong> High for major AI companies (reputational risk matters). Low for anonymous/offshore crawlers.</p>
+<h2>Case Study: Financial Times Paywall Protection</h2>
+<p><strong>Financial Times</strong> has sophisticated paywall implementation with minimal bypass success.</p>
+<p><strong>Their approach:</strong></p>
+<p><strong>Server-side rendering:</strong> Paywalled content never sent to client in initial HTML. Content loaded via authenticated API after subscription verification.</p>
+<p><strong>IP + behavioral analysis:</strong> <strong>Cloudflare Bot Management</strong> + custom rules. High-volume access from any IP triggers challenge.</p>
+<p><strong>Strict robots.txt + enforcement:</strong> Block AI crawlers in robots.txt. Also block at server level regardless of robots.txt compliance.</p>
+<p><strong>API authentication:</strong> All content APIs require JWT tokens. Tokens expire, can&#39;t be reused across sessions.</p>
+<p><strong>University access monitoring:</strong> Per-institution rate limits. Universities exceeding thresholds receive alerts.</p>
+<p><strong>Result:</strong> <strong>FT</strong> successfully negotiated licensing deals with <strong>Anthropic</strong> and others. Crawlers couldn&#39;t bypass paywalls effectively, forcing them to license rather than scrape.</p>
+<p><strong>Estimated implementation cost:</strong> $100,000-$500,000 (engineering time, Cloudflare enterprise subscription, ongoing monitoring).</p>
+<p><strong>Revenue from licensing:</strong> Reportedly $15-30 million annually from AI content deals.</p>
+<p><strong>ROI:</strong> Investment paid back in months.</p>
+<h2>FAQ</h2>
+<h3>Do all AI companies attempt paywall bypass?</h3>
+<p>No. <strong>OpenAI</strong>, <strong>Anthropic</strong>, and <strong>Google</strong> generally respect well-implemented paywalls and prefer licensing. Smaller AI companies, especially those based in jurisdictions with weak copyright enforcement, are more likely to attempt bypass. Evidence suggests compliance correlates with company size and reputational risk.</p>
+<h3>Is blocking AI crawlers via robots.txt enough to protect paywalled content?</h3>
+<p>No. robots.txt is voluntary. Paywalls must be enforced server-side. Even compliant crawlers may test whether paywalls are bypassable (probing for misconfigurations). Use robots.txt as signal of intent, but enforce access control at the server level with authentication checks.</p>
+<h3>What&#39;s the most common paywall bypass method?</h3>
+<p>Client-side JavaScript paywalls where full content is in HTML but visually obscured. Crawlers parse HTML without executing JavaScript, accessing hidden content. This accounts for an estimated 60-70% of successful bypasses. Solution: server-side content gating. Don&#39;t send paywalled content in initial response.</p>
+<h3>Can crawlers bypass paywalls using headless browsers?</h3>
+<p>Yes. Headless browsers (<strong>Puppeteer</strong>, <strong>Playwright</strong>) execute JavaScript like real browsers. If paywall requires JavaScript execution but doesn&#39;t validate authentication properly, headless browser crawlers bypass it. Defense: Require server-validated authentication tokens that can&#39;t be spoofed through browser automation.</p>
+<h3>Should publishers sue AI companies that bypass paywalls?</h3>
+<p>Legal action is viable when bypass is documented and damages are quantifiable. <strong>New York Times</strong> sued <strong>OpenAI</strong> partly over alleged paywall bypass. Litigation is expensive ($500K-$5M+) but can result in settlements that include licensing deals. Smaller publishers may prefer cease-and-desist + licensing offer rather than immediate litigation. Major publishers use litigation as negotiating leverage for better licensing terms.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

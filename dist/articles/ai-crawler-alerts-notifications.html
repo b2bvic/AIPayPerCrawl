@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting Up AI Crawler Alerts: Get Notified When Bots Spike | AI Pay Per Crawl</title>
+    <meta name="description" content="Real-time AI crawler monitoring alerts detect traffic surges, unauthorized scraping, and crawl pattern changes. Build notification systems that surface anomalies.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Setting Up AI Crawler Alerts: Get Notified When Bots Spike">
+    <meta property="og:description" content="Real-time AI crawler monitoring alerts detect traffic surges, unauthorized scraping, and crawl pattern changes. Build notification systems that surface anomalies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/ai-crawler-alerts-notifications">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Setting Up AI Crawler Alerts: Get Notified When Bots Spike">
+    <meta name="twitter:description" content="Real-time AI crawler monitoring alerts detect traffic surges, unauthorized scraping, and crawl pattern changes. Build notification systems that surface anomalies.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/ai-crawler-alerts-notifications">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Setting Up AI Crawler Alerts: Get Notified When Bots Spike",
+  "description": "Real-time AI crawler monitoring alerts detect traffic surges, unauthorized scraping, and crawl pattern changes. Build notification systems that surface anomalies.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-07",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/ai-crawler-alerts-notifications"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Setting Up AI Crawler Alerts: Get Notified When Bots Spike",
+      "item": "https://aipaypercrawl.com/articles/ai-crawler-alerts-notifications"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Setting Up AI Crawler Alerts: Get Notified When Bots Spike</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 14 min read</span>
+        <h1>Setting Up AI Crawler Alerts: Get Notified When Bots Spike</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Real-time AI crawler monitoring alerts detect traffic surges, unauthorized scraping, and crawl pattern changes. Build notification systems that surface anomalies.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Setting Up AI Crawler Alerts: Get Notified When Bots Spike</h1>
+<p>Your server logs record every AI crawler hit. 23,000 <strong>GPTBot</strong> requests yesterday. 14,500 <strong>ClaudeBot</strong> requests. 8,200 <strong>PerplexityBot</strong> hits. The data exists but sits dormant unless you build systems to surface anomalies.</p>
+<p>AI crawler traffic fluctuates. New model training cycles trigger scraping surges. <strong>OpenAI</strong> releases GPT-5, crawler frequency quadruples overnight. You discover the spike two weeks later reviewing analytics. Opportunity lost—licensing leverage weakened because you didn&#39;t notice when it mattered.</p>
+<p>Or worse: <strong>An unauthorized crawler</strong> hammers your site. User agent spoofs legitimate identity but IP ranges don&#39;t match. You&#39;re being scraped by entity violating your license terms or scraping without permission. You don&#39;t know until the damage is done.</p>
+<p><strong>Real-time monitoring eliminates blind spots.</strong> Alerts notify you when crawler behavior changes: traffic spikes, new bots appear, known bots violate rate limits, scraping patterns suggest commercial use beyond licensing scope.</p>
+<p>This guide builds alert systems from server log monitoring, sets thresholds that distinguish signal from noise, integrates notifications across tools (<strong>Slack</strong>, <strong>email</strong>, <strong>dashboards</strong>), and creates automated responses to anomalies.</p>
+<h2>Alert System Architecture</h2>
+<h3>What Triggers Crawler Alerts</h3>
+<p><strong>Volume spikes:</strong> Daily requests from specific bot exceed rolling 30-day average by 200%+.</p>
+<p><strong>Example:</strong> GPTBot averaged 5,000 requests/day for last month. Today hits 17,000. Alert fires.</p>
+<p><strong>New bot detection:</strong> User agent appears that doesn&#39;t match known AI crawler database.</p>
+<p><strong>Example:</strong> <code>Mozilla/5.0 (compatible; UnknownBot/1.0)</code> appears in logs. Not in crawler directory. Alert fires.</p>
+<p><strong>Rate limit violations:</strong> Crawler exceeds negotiated request frequency.</p>
+<p><strong>Example:</strong> License agreement limits OpenAI to 10 requests/second. Logs show 45 requests/second sustained for 5 minutes. Alert fires.</p>
+<p><strong>IP mismatch:</strong> User agent claims to be known bot but requests originate from IP outside published ranges.</p>
+<p><strong>Example:</strong> <code>GPTBot/1.0</code> requests from IP <code>192.0.2.1</code>. OpenAI&#39;s published ranges don&#39;t include that IP. Potential spoofing. Alert fires.</p>
+<p><strong>Behavioral anomalies:</strong> Crawl patterns suggest scraping depth inconsistent with licensed use.</p>
+<p><strong>Example:</strong> Bot requests every article published 2010-2025 (complete archive scrape). License covers only current-year content. Alert fires.</p>
+<p><strong>Blocked bot retry attempts:</strong> Crawler disallowed by robots.txt continues requesting.</p>
+<p><strong>Example:</strong> You disallow <code>CCBot</code>. Logs show 3,000+ CCBot requests today despite block. Alert fires.</p>
+<h3>Monitoring Layers</h3>
+<p><strong>Layer 1: Server log watchers</strong></p>
+<p>Scripts parse web server access logs in real-time. Detect crawler patterns as they occur.</p>
+<p><strong>Technology:</strong> <code>tail -f</code>, log aggregation tools (<strong>Logstash</strong>, <strong>Fluentd</strong>), custom scripts.</p>
+<p><strong>Layer 2: Analytics integration</strong></p>
+<p>Web analytics (<strong>Google Analytics</strong>, <strong>Matomo</strong>) segment crawler traffic. Dashboard alerts flag anomalies.</p>
+<p><strong>Technology:</strong> Analytics API queries, custom reports with threshold alerts.</p>
+<p><strong>Layer 3: CDN/firewall monitoring</strong></p>
+<p><strong>Cloudflare</strong>, <strong>Fastly</strong>, <strong>Akamai</strong> detect bot traffic at edge. Configure alerts for scraping surges before traffic reaches origin servers.</p>
+<p><strong>Technology:</strong> CDN dashboards, WAF rule triggers, bot management alerts.</p>
+<p><strong>Layer 4: Application-level tracking</strong></p>
+<p>Backend application logs API access patterns. If AI company licenses via API, track requests against quotas.</p>
+<p><strong>Technology:</strong> Application logging (<strong>Winston</strong>, <strong>Bunyan</strong>), APM tools (<strong>Datadog</strong>, <strong>New Relic</strong>).</p>
+<p><strong>Ideal setup:</strong> All four layers. Redundant monitoring catches issues missed by single-layer systems.</p>
+<h2>Building Log-Based Alerts</h2>
+<h3>Parsing Server Logs for Crawler Patterns</h3>
+<p>Typical access log entry (Apache/Nginx format):</p>
+<pre><code>93.184.216.34 - - [07/Feb/2026:10:23:45 +0000] &quot;GET /article/ai-training-data HTTP/1.1&quot; 200 15234 &quot;-&quot; &quot;GPTBot/1.0&quot;
+</code></pre>
+<p><strong>Fields:</strong> IP, timestamp, HTTP method, URL, status code, bytes transferred, user agent.</p>
+<p><strong>Extraction script (bash + awk):</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# Extract AI crawler requests from access log
+
+LOG_FILE=&quot;/var/log/nginx/access.log&quot;
+CRAWLER_PATTERN=&quot;GPTBot|ClaudeBot|PerplexityBot|CCBot|Google-Extended&quot;
+
+grep -E &quot;$CRAWLER_PATTERN&quot; &quot;$LOG_FILE&quot; | \
+awk &#39;{
+    print $1, $4, $7, $12
+}&#39; | \
+while read ip timestamp url user_agent; do
+    echo &quot;IP: $ip | Time: $timestamp | URL: $url | Bot: $user_agent&quot;
+done
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>IP: 93.184.216.34 | Time: [07/Feb/2026:10:23:45 | URL: /article/ai-training-data | Bot: &quot;GPTBot/1.0&quot;
+IP: 104.28.1.5 | Time: [07/Feb/2026:10:24:12 | URL: /article/nyt-openai-lawsuit | Bot: &quot;ClaudeBot/1.0&quot;
+</code></pre>
+<p><strong>Count requests per bot:</strong></p>
+<pre><code class="language-bash">grep -E &quot;$CRAWLER_PATTERN&quot; &quot;$LOG_FILE&quot; | \
+awk -F&#39;&quot;&#39; &#39;{print $6}&#39; | \
+sort | uniq -c | sort -rn
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>23487 GPTBot/1.0
+14502 ClaudeBot/1.0
+8234 PerplexityBot/1.0
+5621 CCBot/1.0
+</code></pre>
+<h3>Threshold Configuration</h3>
+<p><strong>Naive approach:</strong> Alert if requests exceed absolute number (e.g., 10,000/day).</p>
+<p><strong>Problem:</strong> Normal traffic varies. 10,000 might be baseline for large site, massive spike for small site.</p>
+<p><strong>Better approach:</strong> Alert when current traffic deviates significantly from historical baseline.</p>
+<p><strong>Implementation:</strong></p>
+<ol>
+<li>Calculate 30-day rolling average for each bot</li>
+<li>Calculate standard deviation</li>
+<li>Alert if today&#39;s count exceeds (average + 2 × stddev)</li>
+</ol>
+<p><strong>Python example:</strong></p>
+<pre><code class="language-python">import statistics
+
+# Historical daily request counts for GPTBot (last 30 days)
+historical = [4800, 5200, 4900, 5100, 4950, ...]  # 30 values
+
+average = statistics.mean(historical)
+stddev = statistics.stdev(historical)
+
+threshold = average + (2 * stddev)
+
+today_count = 17000
+
+if today_count &gt; threshold:
+    send_alert(f&quot;GPTBot traffic spike: {today_count} requests (baseline: {average:.0f})&quot;)
+</code></pre>
+<p><strong>Threshold levels:</strong></p>
+<ul>
+<li><strong>Warning (1.5 × stddev above mean):</strong> Mild anomaly, log for review</li>
+<li><strong>Alert (2 × stddev):</strong> Significant spike, send notification</li>
+<li><strong>Critical (3 × stddev):</strong> Severe anomaly, page on-call engineer</li>
+</ul>
+<p><strong>Tuning:</strong> Adjust multipliers based on false positive rate. More alerts = lower threshold. Fewer alerts = higher threshold.</p>
+<h3>Real-Time Log Monitoring with Tail</h3>
+<p><strong>Goal:</strong> Monitor logs as they&#39;re written, trigger alerts instantly.</p>
+<p><strong>Tool:</strong> <code>tail -f</code> pipes log stream to analysis script.</p>
+<p><strong>Implementation:</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# Real-time crawler alert script
+
+LOG_FILE=&quot;/var/log/nginx/access.log&quot;
+ALERT_THRESHOLD=50  # Alert if bot hits exceed 50 req/minute
+
+tail -f &quot;$LOG_FILE&quot; | \
+grep -E &quot;GPTBot|ClaudeBot&quot; | \
+awk &#39;{print $4, $12}&#39; | \
+while read timestamp user_agent; do
+    # Count requests in last minute
+    minute_count=$(grep -c &quot;$user_agent&quot; &lt;(tail -n 1000 &quot;$LOG_FILE&quot;))
+
+    if [ &quot;$minute_count&quot; -gt &quot;$ALERT_THRESHOLD&quot; ]; then
+        echo &quot;ALERT: $user_agent exceeded threshold ($minute_count req/min)&quot;
+        # Send notification (email, Slack, etc.)
+        curl -X POST https://hooks.slack.com/... \
+            -d &quot;{\&quot;text\&quot;: \&quot;AI crawler alert: $user_agent - $minute_count req/min\&quot;}&quot;
+    fi
+done
+</code></pre>
+<p><strong>Runs continuously.</strong> Monitors log, calculates per-minute request rate, fires alert when exceeded.</p>
+<p><strong>Production use:</strong> Deploy as systemd service or supervisor-managed process. Ensure restart on failure.</p>
+<h2>Integration with Notification Systems</h2>
+<h3>Slack Webhooks for Instant Alerts</h3>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Create Slack incoming webhook: Settings → Apps → Incoming Webhooks</li>
+<li>Generate webhook URL: <code>https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXX</code></li>
+<li>Send JSON payloads to webhook</li>
+</ol>
+<p><strong>Basic alert:</strong></p>
+<pre><code class="language-bash">curl -X POST https://hooks.slack.com/services/YOUR/WEBHOOK/URL \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39;{
+    &quot;text&quot;: &quot;GPTBot traffic spike: 17,000 requests today (avg: 5,000)&quot;,
+    &quot;username&quot;: &quot;Crawler Monitor&quot;,
+    &quot;icon_emoji&quot;: &quot;:robot_face:&quot;
+  }&#39;
+</code></pre>
+<p><strong>Rich formatting:</strong></p>
+<pre><code class="language-json">{
+  &quot;text&quot;: &quot;AI Crawler Alert&quot;,
+  &quot;attachments&quot;: [
+    {
+      &quot;color&quot;: &quot;danger&quot;,
+      &quot;title&quot;: &quot;GPTBot Traffic Spike Detected&quot;,
+      &quot;fields&quot;: [
+        {&quot;title&quot;: &quot;Requests Today&quot;, &quot;value&quot;: &quot;17,000&quot;, &quot;short&quot;: true},
+        {&quot;title&quot;: &quot;30-Day Avg&quot;, &quot;value&quot;: &quot;5,000&quot;, &quot;short&quot;: true},
+        {&quot;title&quot;: &quot;Deviation&quot;, &quot;value&quot;: &quot;+240%&quot;, &quot;short&quot;: true},
+        {&quot;title&quot;: &quot;Status&quot;, &quot;value&quot;: &quot;CRITICAL&quot;, &quot;short&quot;: true}
+      ],
+      &quot;footer&quot;: &quot;Crawler Monitoring System&quot;,
+      &quot;ts&quot;: 1707307425
+    }
+  ]
+}
+</code></pre>
+<p><strong>Appears in Slack:</strong></p>
+<blockquote>
+<p><strong>Crawler Monitor</strong> (robot emoji)
+AI Crawler Alert
+<strong>GPTBot Traffic Spike Detected</strong>
+Requests Today: 17,000 | 30-Day Avg: 5,000
+Deviation: +240% | Status: CRITICAL</p>
+</blockquote>
+<p><strong>Actionable alerts:</strong> Include links to dashboards, suggested actions.</p>
+<pre><code class="language-json">{
+  &quot;text&quot;: &quot;New unknown bot detected: `MysteryBot/1.0`&quot;,
+  &quot;attachments&quot;: [
+    {
+      &quot;actions&quot;: [
+        {&quot;type&quot;: &quot;button&quot;, &quot;text&quot;: &quot;View Logs&quot;, &quot;url&quot;: &quot;https://yoursite.com/admin/logs&quot;},
+        {&quot;type&quot;: &quot;button&quot;, &quot;text&quot;: &quot;Block Bot&quot;, &quot;url&quot;: &quot;https://yoursite.com/admin/block/MysteryBot&quot;}
+      ]
+    }
+  ]
+}
+</code></pre>
+<h3>Email Alerts via SMTP</h3>
+<p><strong>When to use email:</strong></p>
+<ul>
+<li>High-severity alerts requiring immediate attention</li>
+<li>Daily/weekly summary reports</li>
+<li>Stakeholders without Slack access</li>
+</ul>
+<p><strong>Python SMTP example:</strong></p>
+<pre><code class="language-python">import smtplib
+from email.mime.text import MIMEText
+
+def send_crawler_alert(bot_name, request_count, threshold):
+    msg = MIMEText(f&quot;&quot;&quot;
+    AI Crawler Alert
+
+    Bot: {bot_name}
+    Requests Today: {request_count}
+    Threshold: {threshold}
+    Deviation: {((request_count/threshold - 1) * 100):.1f}%
+
+    Review logs: https://yoursite.com/admin/logs
+    &quot;&quot;&quot;)
+
+    msg[&#39;Subject&#39;] = f&#39;ALERT: {bot_name} traffic spike&#39;
+    msg[&#39;From&#39;] = &#39;alerts@yoursite.com&#39;
+    msg[&#39;To&#39;] = &#39;admin@yoursite.com&#39;
+
+    with smtplib.SMTP(&#39;smtp.gmail.com&#39;, 587) as server:
+        server.starttls()
+        server.login(&#39;alerts@yoursite.com&#39;, &#39;your-password&#39;)
+        server.send_message(msg)
+
+# Trigger
+send_crawler_alert(&#39;GPTBot&#39;, 17000, 5000)
+</code></pre>
+<p><strong>Rate limiting:</strong> Don&#39;t spam email on every threshold breach. Aggregate alerts:</p>
+<pre><code class="language-python">alert_buffer = []
+
+def buffer_alert(bot_name, count):
+    alert_buffer.append((bot_name, count))
+
+    # Send digest every 30 minutes
+    if len(alert_buffer) &gt;= 10 or time_since_last_send &gt; 1800:
+        send_digest_email(alert_buffer)
+        alert_buffer.clear()
+</code></pre>
+<h3>Dashboard Visualization</h3>
+<p><strong>Real-time monitoring dashboard</strong> surfaces crawler activity visually.</p>
+<p><strong>Tools:</strong></p>
+<ul>
+<li><strong>Grafana</strong> (open-source dashboard, integrates with Prometheus, InfluxDB)</li>
+<li><strong>Kibana</strong> (Elasticsearch ecosystem)</li>
+<li><strong>Datadog</strong> (commercial APM/monitoring)</li>
+<li><strong>Custom</strong> (D3.js, Chart.js)</li>
+</ul>
+<p><strong>Key metrics to visualize:</strong></p>
+<ol>
+<li><strong>Requests per bot over time</strong> (line chart)</li>
+<li><strong>Request distribution by bot</strong> (pie chart)</li>
+<li><strong>Hourly request heatmap</strong> (identify peak scraping times)</li>
+<li><strong>Geographic distribution of crawler IPs</strong> (map visualization)</li>
+<li><strong>Alert history</strong> (timeline of triggered alerts)</li>
+</ol>
+<p><strong>Grafana example:</strong></p>
+<p><strong>Panel 1:</strong> Time series graph showing GPTBot, ClaudeBot, PerplexityBot request counts (last 7 days).</p>
+<p><strong>Panel 2:</strong> Stat panel showing current deviation from baseline (red if &gt;2σ, yellow if &gt;1.5σ, green otherwise).</p>
+<p><strong>Panel 3:</strong> Table listing recent alerts with timestamps, bot names, deviation percentages.</p>
+<p><strong>Alert annotations:</strong> Mark spikes directly on graphs. Grafana supports alert annotations—when threshold breached, vertical line appears on time series chart.</p>
+<h2>Advanced Detection Techniques</h2>
+<h3>IP Range Verification</h3>
+<p><strong>Problem:</strong> User agents can be spoofed. Bot claims to be GPTBot but might be malicious scraper.</p>
+<p><strong>Solution:</strong> Verify requests originate from legitimate IP ranges.</p>
+<p><strong>OpenAI publishes GPTBot IP ranges:</strong></p>
+<p><a href="ai-crawler-ip-verification.html">See ai-crawler-ip-verification.html</a> for verification methods.</p>
+<p><strong>Alert logic:</strong></p>
+<pre><code class="language-python">GPTBOT_IP_RANGES = [&#39;20.163.0.0/16&#39;, &#39;40.84.180.0/22&#39;, ...]
+
+def is_legitimate_gptbot(ip_address):
+    import ipaddress
+    ip = ipaddress.ip_address(ip_address)
+
+    for range_str in GPTBOT_IP_RANGES:
+        if ip in ipaddress.ip_network(range_str):
+            return True
+    return False
+
+# In alert script
+if user_agent == &#39;GPTBot/1.0&#39;:
+    if not is_legitimate_gptbot(request_ip):
+        send_alert(f&quot;Spoofed GPTBot detected from {request_ip}&quot;)
+</code></pre>
+<p><strong>Automated blocking:</strong> If IP verification fails, firewall blocks suspicious IP automatically.</p>
+<h3>Behavioral Anomaly Detection</h3>
+<p><strong>Pattern 1: Complete archive scrapes</strong></p>
+<p>Legitimate crawlers typically focus on recent content. Scraping entire 10-year archive suggests bulk data collection.</p>
+<p><strong>Detection:</strong></p>
+<pre><code class="language-python">def detect_archive_scrape(requests):
+    # Analyze URLs requested
+    years = set()
+    for req in requests:
+        # Extract year from URL (e.g., /2018/article-title)
+        match = re.search(r&#39;/(\d{4})/&#39;, req.url)
+        if match:
+            years.add(int(match.group(1)))
+
+    # If bot requests content spanning 5+ years in single session
+    if len(years) &gt;= 5:
+        return True
+    return False
+</code></pre>
+<p><strong>Alert:</strong> &quot;GPTBot appears to be scraping historical archives (2015-2025). License covers current-year only. Investigate.&quot;</p>
+<p><strong>Pattern 2: Rapid sequential requests</strong></p>
+<p>Human-like browsing has pauses. Bots scraping at maximum speed hit URLs sequentially with millisecond gaps.</p>
+<p><strong>Detection:</strong></p>
+<pre><code class="language-python">def detect_sequential_scrape(timestamps):
+    # Calculate inter-request intervals
+    intervals = []
+    for i in range(1, len(timestamps)):
+        delta = (timestamps[i] - timestamps[i-1]).total_seconds()
+        intervals.append(delta)
+
+    # If 90%+ of requests occur within 0.5 seconds of previous request
+    rapid_requests = sum(1 for d in intervals if d &lt; 0.5)
+    if rapid_requests / len(intervals) &gt; 0.9:
+        return True
+    return False
+</code></pre>
+<p><strong>Alert:</strong> &quot;ClaudeBot exhibiting rapid sequential scraping (avg 0.2s/request). Rate limit enforcement recommended.&quot;</p>
+<h3>Honeypot Trap Links</h3>
+<p><strong>Technique:</strong> Insert hidden links in pages that legitimate users never see but crawlers follow.</p>
+<p><strong>Implementation:</strong></p>
+<pre><code class="language-html">&lt;!-- Visible content --&gt;
+&lt;article&gt;Your actual content here&lt;/article&gt;
+
+&lt;!-- Hidden honeypot link (CSS hides from users, visible to bots) --&gt;
+&lt;a href=&quot;/honeypot-trap-ai-crawler&quot; style=&quot;display:none;&quot;&gt;Hidden Link&lt;/a&gt;
+</code></pre>
+<p><strong>Server-side tracking:</strong></p>
+<pre><code class="language-python">@app.route(&#39;/honeypot-trap-ai-crawler&#39;)
+def honeypot():
+    ip = request.remote_addr
+    user_agent = request.headers.get(&#39;User-Agent&#39;)
+
+    # Log honeypot access
+    log_honeypot_hit(ip, user_agent)
+
+    # Alert
+    send_alert(f&quot;Honeypot triggered by {user_agent} from {ip}&quot;)
+
+    # Optional: Block IP automatically
+    add_to_blocklist(ip)
+
+    return &quot;Not Found&quot;, 404
+</code></pre>
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Detect crawlers ignoring robots.txt</li>
+<li>Identify scrapers not honoring license terms</li>
+<li>Catch bots spoofing legitimate user agents</li>
+</ul>
+<p><strong>Ethics:</strong> Clearly documented honeypots are defensible. Tricky legal ground if used to entrap otherwise compliant bots.</p>
+<h2>Automated Response Actions</h2>
+<h3>Dynamic Rate Limiting</h3>
+<p><strong>Scenario:</strong> GPTBot exceeds licensed request rate (10 req/sec allowed, currently 45 req/sec).</p>
+<p><strong>Automated response:</strong> Nginx rate limiting module throttles bot in real-time.</p>
+<p><strong>Configuration:</strong></p>
+<pre><code class="language-nginx">http {
+    # Define rate limit zone (100 req/sec for GPTBot)
+    limit_req_zone $http_user_agent zone=gptbot_limit:10m rate=10r/s;
+
+    server {
+        location / {
+            if ($http_user_agent ~* &quot;GPTBot&quot;) {
+                limit_req zone=gptbot_limit burst=20;
+            }
+        }
+    }
+}
+</code></pre>
+<p><strong>Effect:</strong> Requests beyond 10/sec queued (up to 20 burst). Further requests return 429 Too Many Requests.</p>
+<p><strong>Alert integration:</strong> When rate limit triggers, send notification:</p>
+<pre><code class="language-nginx">location / {
+    if ($http_user_agent ~* &quot;GPTBot&quot;) {
+        limit_req zone=gptbot_limit burst=20;
+        # Log rate limit trigger
+        access_log /var/log/nginx/rate_limit.log rate_limit;
+    }
+}
+</code></pre>
+<p><strong>Monitor rate limit log:</strong></p>
+<pre><code class="language-bash">tail -f /var/log/nginx/rate_limit.log | while read line; do
+    echo &quot;$line&quot; | grep &quot;limiting requests&quot; &amp;&amp; \
+        send_alert &quot;GPTBot rate limited&quot;
+done
+</code></pre>
+<h3>Temporary Blocks for Violation</h3>
+<p><strong>Scenario:</strong> Unknown bot hammers site, violates ToS.</p>
+<p><strong>Automated response:</strong> Firewall blocks IP for 24 hours.</p>
+<p><strong>Implementation (iptables):</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# Block IP temporarily
+
+IP_TO_BLOCK=$1
+DURATION=86400  # 24 hours in seconds
+
+# Add block rule
+iptables -A INPUT -s &quot;$IP_TO_BLOCK&quot; -j DROP
+
+# Schedule rule removal
+echo &quot;iptables -D INPUT -s $IP_TO_BLOCK -j DROP&quot; | at now + 24 hours
+</code></pre>
+<p><strong>Trigger from monitoring script:</strong></p>
+<pre><code class="language-python">if is_violation(ip, user_agent):
+    subprocess.run([&#39;./block_ip.sh&#39;, ip])
+    send_alert(f&quot;Blocked {ip} ({user_agent}) for 24h due to violation&quot;)
+</code></pre>
+<p><strong>Cloudflare alternative:</strong> Use Cloudflare API to add IP to blocklist:</p>
+<pre><code class="language-python">import requests
+
+def block_ip_cloudflare(ip):
+    url = f&quot;https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/firewall/access_rules/rules&quot;
+    headers = {
+        &#39;Authorization&#39;: f&#39;Bearer {CF_API_TOKEN}&#39;,
+        &#39;Content-Type&#39;: &#39;application/json&#39;
+    }
+    data = {
+        &#39;mode&#39;: &#39;block&#39;,
+        &#39;configuration&#39;: {&#39;target&#39;: &#39;ip&#39;, &#39;value&#39;: ip},
+        &#39;notes&#39;: &#39;Automated block: crawler violation&#39;
+    }
+    requests.post(url, headers=headers, json=data)
+</code></pre>
+<h2>Monitoring Frequency and Alert Fatigue</h2>
+<h3>Setting Review Cadences</h3>
+<p><strong>Real-time alerts:</strong> Critical issues only (spoofed bots, severe rate violations).</p>
+<p><strong>Hourly digests:</strong> Traffic spikes, new bot detection.</p>
+<p><strong>Daily summaries:</strong> Overall crawler activity, trends, compliance status.</p>
+<p><strong>Weekly reports:</strong> Strategic overview for stakeholders (executives, legal, partnerships).</p>
+<p><strong>Monthly deep dives:</strong> Analyze crawler ROI, licensing effectiveness, long-term patterns.</p>
+<p><strong>Avoid:</strong> Every threshold breach = instant notification. Alert fatigue causes important alerts to be ignored.</p>
+<p><strong>Best practice:</strong> Three-tier alert system.</p>
+<p><strong>Tier 1 (Critical):</strong> Immediate Slack/email ping. Requires action within hours.</p>
+<p><strong>Tier 2 (Warning):</strong> Hourly digest. Review during business hours.</p>
+<p><strong>Tier 3 (Info):</strong> Daily/weekly reports. Informational only.</p>
+<h3>Reducing False Positives</h3>
+<p><strong>Common false positive:</strong> Legitimate traffic spike during major news event.</p>
+<p><strong>Example:</strong> You publish breaking investigative report. GPTBot traffic quadruples as users query AI systems about your story. Alert fires. But this is expected, not violation.</p>
+<p><strong>Solution:</strong> Context-aware thresholds.</p>
+<pre><code class="language-python">def should_alert(bot, count, baseline):
+    # Check if traffic spike correlates with viral content
+    if recent_viral_article_published():
+        # Raise threshold temporarily
+        baseline *= 2
+
+    return count &gt; (baseline * 2)
+</code></pre>
+<p><strong>Another approach:</strong> Alert only if spike persists beyond single day.</p>
+<pre><code class="language-python">if count &gt; threshold:
+    # Don&#39;t alert immediately
+    if count_yesterday &gt; threshold and count_2_days_ago &gt; threshold:
+        # Three consecutive days above threshold = real anomaly
+        send_alert()
+</code></pre>
+<p><strong>Whitelist legitimate spikes:</strong> Manually mark known events.</p>
+<pre><code class="language-python">KNOWN_EVENTS = [
+    {&#39;date&#39;: &#39;2026-02-05&#39;, &#39;reason&#39;: &#39;Breaking investigation published&#39;},
+    {&#39;date&#39;: &#39;2026-01-20&#39;, &#39;reason&#39;: &#39;OpenAI announced GPT-5 training&#39;}
+]
+
+def is_known_event(date):
+    return any(e[&#39;date&#39;] == date for e in KNOWN_EVENTS)
+
+if count &gt; threshold and not is_known_event(today):
+    send_alert()
+</code></pre>
+<h2>FAQ</h2>
+<h3>How quickly should alerts fire after detecting anomalies?</h3>
+<p>Depends on severity. <strong>Critical violations</strong> (spoofed bots, unauthorized scraping): instant (seconds to minutes). <strong>Traffic spikes</strong>: hourly digest acceptable unless spike exceeds 500% of baseline (then instant). <strong>New bot detection</strong>: hourly is fine (unlikely to cause immediate harm). Configure alerts to match threat urgency. Over-alerting creates fatigue and ignored notifications.</p>
+<h3>What alert threshold should I set for crawler traffic spikes?</h3>
+<p>Start with <strong>2 standard deviations above 30-day rolling average</strong>. Tune based on false positive rate. If receiving 5+ false positives per week, raise to 2.5 or 3 standard deviations. If missing real anomalies, lower to 1.5. Site-specific. Large publishers with stable traffic can use tighter thresholds. Small sites with volatile traffic need looser thresholds. Monitor for 2-4 weeks, adjust based on signal quality.</p>
+<h3>Should I alert on every new bot that appears in logs?</h3>
+<p>No. Too noisy. Many legitimate bots exist (<strong>SEO crawlers</strong>, research bots, monitoring services). Alert only if: (1) User agent includes AI/ML keywords but isn&#39;t in your known crawler database, (2) Request volume exceeds 100/day, or (3) Bot disregards robots.txt. Otherwise, log new bots for weekly review. Investigate manually rather than instant alert for every unknown user agent.</p>
+<h3>Can I automate blocking decisions or should I review manually first?</h3>
+<p><strong>Automate blocking for clear violations:</strong> IP verification failures, honeypot triggers, severe rate limit abuse (10x licensed rate). <strong>Manual review for ambiguous cases:</strong> Traffic spikes (might be legitimate), new unknown bots (might be benign), borderline rate violations. Balance automation (fast response) with human judgment (avoid false positives). Start conservative (alert only), expand automation as you gain confidence in detection accuracy.</p>
+<h3>How do I prevent alert fatigue while maintaining security?</h3>
+<p>Use tiered alerts. <strong>Critical tier</strong> (immediate action required): spoofing, severe violations, licensing breaches. <strong>Warning tier</strong> (review within 24h): traffic spikes, new bots, minor rate issues. <strong>Info tier</strong> (weekly review): trends, summaries, non-urgent patterns. Send critical alerts to Slack/SMS. Send warnings to email digest. Send info to dashboard only. Tune thresholds aggressively—better to miss 1 anomaly than drown in 100 false positives. Review alert effectiveness monthly, prune low-value alerts.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

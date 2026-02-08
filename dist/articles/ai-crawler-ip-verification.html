@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Crawler IP Ranges: Verification Methods for GPTBot, ClaudeBot, and More | AI Pay Per Crawl</title>
+    <meta name="description" content="Complete IP range verification guide for AI crawlers. Validate GPTBot, ClaudeBot, PerplexityBot, and other bots through IP matching, DNS lookup, and ASN analysis.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="AI Crawler IP Ranges: Verification Methods for GPTBot, ClaudeBot, and More">
+    <meta property="og:description" content="Complete IP range verification guide for AI crawlers. Validate GPTBot, ClaudeBot, PerplexityBot, and other bots through IP matching, DNS lookup, and ASN analysis.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/ai-crawler-ip-verification">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Crawler IP Ranges: Verification Methods for GPTBot, ClaudeBot, and More">
+    <meta name="twitter:description" content="Complete IP range verification guide for AI crawlers. Validate GPTBot, ClaudeBot, PerplexityBot, and other bots through IP matching, DNS lookup, and ASN analysis.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/ai-crawler-ip-verification">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AI Crawler IP Ranges: Verification Methods for GPTBot, ClaudeBot, and More",
+  "description": "Complete IP range verification guide for AI crawlers. Validate GPTBot, ClaudeBot, PerplexityBot, and other bots through IP matching, DNS lookup, and ASN analysis.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-07",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/ai-crawler-ip-verification"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Crawler IP Ranges: Verification Methods for GPTBot, ClaudeBot, and More",
+      "item": "https://aipaypercrawl.com/articles/ai-crawler-ip-verification"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>AI Crawler IP Ranges: Verification Methods for GPTBot, ClaudeBot, and More</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 12 min read</span>
+        <h1>AI Crawler IP Ranges: Verification Methods for GPTBot, ClaudeBot, and More</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Complete IP range verification guide for AI crawlers. Validate GPTBot, ClaudeBot, PerplexityBot, and other bots through IP matching, DNS lookup, and ASN analysis.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>AI Crawler IP Ranges: Verification Methods for GPTBot, ClaudeBot, and More</h1>
+<p>User agent strings lie. Request claims <code>GPTBot/1.0</code> but originates from residential ISP in Romania. Another says <code>ClaudeBot/1.0</code> from IP range owned by budget hosting provider. <strong>Spoofed identities. Malicious scrapers pretending to be legitimate AI crawlers.</strong></p>
+<p><strong>Why spoof?</strong> Bypass robots.txt blocks. Evade rate limits. Access paywalled content. Publishers trust GPTBot, might serve content they&#39;d block from unknown scrapers. Bad actors exploit this.</p>
+<p><strong>IP verification exposes spoofing.</strong> AI companies publish official IP ranges for their crawlers. <strong>OpenAI</strong> operates GPTBot from specific Azure data center subnets. <strong>Anthropic</strong> runs ClaudeBot from AWS ranges. <strong>Perplexity</strong> uses Google Cloud IPs. If request claims to be GPTBot but IP isn&#39;t in OpenAI&#39;s published ranges, <strong>it&#39;s fake</strong>.</p>
+<p>Verification isn&#39;t optional. Publishers blocking &quot;GPTBot&quot; by user agent alone might block legitimate OpenAI while missing the 15 spoofed scrapers using same user agent from unauthorized IPs. Conversely, allowing &quot;GPTBot&quot; without IP verification grants access to imposters.</p>
+<p>This guide provides complete IP verification methodology: published range databases, DNS reverse lookup validation, ASN analysis, and automated verification systems that distinguish real AI crawlers from frauds.</p>
+<h2>Published IP Ranges by Company</h2>
+<h3>OpenAI (GPTBot, ChatGPT-User)</h3>
+<p><strong>Official documentation:</strong> <a href="https://platform.openai.com/docs/gptbot">https://platform.openai.com/docs/gptbot</a></p>
+<p><strong>GPTBot IP ranges (as of February 2026):</strong></p>
+<pre><code>20.15.240.64/28
+20.15.240.80/28
+20.15.240.96/28
+20.15.240.176/28
+20.15.241.0/28
+20.15.242.128/28
+20.15.242.144/28
+20.15.242.192/28
+40.83.2.64/28
+</code></pre>
+<p><strong>Additional ranges (ChatGPT-User for real-time browsing):</strong></p>
+<pre><code>13.64.0.0/11
+13.96.0.0/13
+20.33.0.0/16
+20.34.0.0/15
+...
+(Broader Azure ranges—consult OpenAI docs for complete list)
+</code></pre>
+<p><strong>Network:</strong> Microsoft Azure (OpenAI infrastructure hosted on Azure)</p>
+<p><strong>ASN:</strong> AS8075 (Microsoft Corporation)</p>
+<p><strong>Verification script:</strong></p>
+<pre><code class="language-python">import ipaddress
+
+GPTBOT_RANGES = [
+    &#39;20.15.240.64/28&#39;,
+    &#39;20.15.240.80/28&#39;,
+    &#39;20.15.240.96/28&#39;,
+    &#39;20.15.240.176/28&#39;,
+    &#39;20.15.241.0/28&#39;,
+    &#39;20.15.242.128/28&#39;,
+    &#39;20.15.242.144/28&#39;,
+    &#39;20.15.242.192/28&#39;,
+    &#39;40.83.2.64/28&#39;,
+]
+
+def is_legitimate_gptbot(ip_address):
+    ip = ipaddress.ip_address(ip_address)
+    for range_str in GPTBOT_RANGES:
+        if ip in ipaddress.ip_network(range_str):
+            return True
+    return False
+
+# Test
+print(is_legitimate_gptbot(&#39;20.15.240.75&#39;))  # True
+print(is_legitimate_gptbot(&#39;192.0.2.1&#39;))     # False
+</code></pre>
+<p><strong>Update frequency:</strong> OpenAI occasionally expands ranges (infrastructure growth). Check official docs quarterly.</p>
+<h3>Anthropic (ClaudeBot, Claude-Web)</h3>
+<p><strong>Official documentation:</strong> <a href="https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web">https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web</a></p>
+<p><strong>ClaudeBot IP ranges:</strong></p>
+<pre><code>160.79.104.0/23
+160.79.106.0/24
+</code></pre>
+<p><strong>Network:</strong> AWS (Amazon Web Services)</p>
+<p><strong>ASN:</strong> AS16509 (Amazon.com)</p>
+<p><strong>Verification:</strong></p>
+<pre><code class="language-python">CLAUDEBOT_RANGES = [
+    &#39;160.79.104.0/23&#39;,
+    &#39;160.79.106.0/24&#39;,
+]
+
+def is_legitimate_claudebot(ip_address):
+    ip = ipaddress.ip_address(ip_address)
+    for range_str in CLAUDEBOT_RANGES:
+        if ip in ipaddress.ip_network(range_str):
+            return True
+    return False
+</code></pre>
+<p><strong>Additional verification: DNS reverse lookup</strong> (see section below).</p>
+<p><strong>Update:</strong> Anthropic published ranges in 2024. Monitor for expansions as Claude traffic grows.</p>
+<h3>Perplexity (PerplexityBot)</h3>
+<p><strong>Official IP ranges:</strong> Not comprehensively published (as of Feb 2026).</p>
+<p><strong>Verification method:</strong> DNS reverse lookup (see <a href="verify-claudebot-ip-dns.html">verify-claudebot-ip-dns.html</a> for methodology).</p>
+<p><strong>Known IPs observed (community-sourced):</strong></p>
+<p>Primarily Google Cloud Platform ranges (AS15169).</p>
+<p><strong>Partial list:</strong></p>
+<pre><code>34.117.0.0/16 (GCP us-central1)
+35.185.0.0/16 (GCP us-east4)
+</code></pre>
+<p><strong>Recommendation:</strong> Use DNS verification instead of IP ranges for PerplexityBot (more reliable until official ranges published).</p>
+<h3>Google (Google-Extended, GoogleOther)</h3>
+<p><strong>Google-Extended:</strong> Separate from Googlebot, used for Bard/Gemini training.</p>
+<p><strong>IP ranges:</strong> Same as Googlebot (extensive Google ASNs).</p>
+<p><strong>Primary ASN:</strong> AS15169 (GOOGLE)</p>
+<p><strong>IP blocks (subset):</strong></p>
+<pre><code>66.249.64.0/19
+66.102.0.0/20
+64.233.160.0/19
+...
+(Hundreds of ranges—see Google&#39;s official ASN listings)
+</code></pre>
+<p><strong>Verification:</strong> DNS reverse lookup more practical than maintaining Google&#39;s massive IP list.</p>
+<p><strong>Command:</strong></p>
+<pre><code class="language-bash">host 66.249.64.1
+</code></pre>
+<p><strong>Expected output:</strong></p>
+<pre><code>1.64.249.66.in-addr.arpa domain name pointer crawl-66-249-64-1.googlebot.com.
+</code></pre>
+<p>Domain <code>googlebot.com</code> confirms legitimacy.</p>
+<h3>Common Crawl (CCBot)</h3>
+<p><strong>No official IP range publication.</strong></p>
+<p><strong>Verification:</strong> DNS lookup or ASN analysis.</p>
+<p><strong>Observed ASNs:</strong> Various (Common Crawl uses multiple cloud providers).</p>
+<p><strong>Strategy:</strong> Less critical to verify (Common Crawl is non-commercial research project). If blocking CCBot, block by user agent; verification optional.</p>
+<h2>Verification Methodologies</h2>
+<h3>Direct IP Range Matching</h3>
+<p><strong>Simplest method:</strong> Check if request IP falls within published ranges.</p>
+<p><strong>Full implementation:</strong></p>
+<pre><code class="language-python">import ipaddress
+
+# Comprehensive range database
+AI_CRAWLER_RANGES = {
+    &#39;GPTBot&#39;: [
+        &#39;20.15.240.64/28&#39;,
+        &#39;20.15.240.80/28&#39;,
+        &#39;20.15.240.96/28&#39;,
+        &#39;20.15.240.176/28&#39;,
+        &#39;20.15.241.0/28&#39;,
+        &#39;20.15.242.128/28&#39;,
+        &#39;20.15.242.144/28&#39;,
+        &#39;20.15.242.192/28&#39;,
+        &#39;40.83.2.64/28&#39;,
+    ],
+    &#39;ClaudeBot&#39;: [
+        &#39;160.79.104.0/23&#39;,
+        &#39;160.79.106.0/24&#39;,
+    ],
+}
+
+def verify_bot_ip(ip_address, claimed_bot):
+    if claimed_bot not in AI_CRAWLER_RANGES:
+        return None  # No published ranges for this bot
+
+    ip = ipaddress.ip_address(ip_address)
+    for range_str in AI_CRAWLER_RANGES[claimed_bot]:
+        if ip in ipaddress.ip_network(range_str):
+            return True  # IP verified
+    return False  # IP doesn&#39;t match published ranges
+
+# Usage in request handler
+user_agent = request.headers.get(&#39;User-Agent&#39;)
+ip = request.remote_addr
+
+if &#39;GPTBot&#39; in user_agent:
+    if not verify_bot_ip(ip, &#39;GPTBot&#39;):
+        log_spoofing_attempt(ip, user_agent)
+        return &quot;403 Forbidden&quot;, 403
+</code></pre>
+<p><strong>Nginx implementation (Cloudflare-style):</strong></p>
+<pre><code class="language-nginx"># Define GPTBot allowed IPs
+geo $gptbot_allowed {
+    default 0;
+    20.15.240.64/28 1;
+    20.15.240.80/28 1;
+    20.15.240.96/28 1;
+    20.15.240.176/28 1;
+    20.15.241.0/28 1;
+    20.15.242.128/28 1;
+    20.15.242.144/28 1;
+    20.15.242.192/28 1;
+    40.83.2.64/28 1;
+}
+
+# Block GPTBot user agent from non-allowed IPs
+location / {
+    if ($http_user_agent ~* &quot;GPTBot&quot;) {
+        set $is_gptbot 1;
+    }
+
+    if ($gptbot_allowed = 0) {
+        set $is_gptbot &quot;${is_gptbot}0&quot;;
+    }
+
+    if ($is_gptbot = &quot;10&quot;) {
+        # GPTBot user agent but IP not in allowed ranges
+        return 403;
+    }
+}
+</code></pre>
+<p><strong>Benefits:</strong> Fast (no DNS lookup latency), precise.</p>
+<p><strong>Drawbacks:</strong> Requires maintaining IP range database, ranges change over time.</p>
+<h3>DNS Reverse Lookup Verification</h3>
+<p><strong>Method:</strong> Resolve IP to hostname, verify domain matches AI company.</p>
+<p><strong>Process:</strong></p>
+<ol>
+<li>Extract IP from request</li>
+<li>Perform reverse DNS lookup</li>
+<li>Check if hostname contains expected domain</li>
+<li>(Optional) Forward DNS verify hostname resolves back to original IP</li>
+</ol>
+<p><strong>Example (OpenAI GPTBot):</strong></p>
+<pre><code class="language-bash"># Reverse lookup
+host 20.15.240.75
+
+# Expected output format
+75.240.15.20.in-addr.arpa domain name pointer crawler-20-15-240-75.ptr.openai.com.
+</code></pre>
+<p>Domain <code>openai.com</code> confirms legitimate GPTBot.</p>
+<p><strong>Python implementation:</strong></p>
+<pre><code class="language-python">import socket
+
+def verify_bot_by_dns(ip, expected_domain):
+    try:
+        # Reverse DNS lookup
+        hostname = socket.gethostbyaddr(ip)[0]
+
+        # Check if expected domain in hostname
+        if expected_domain in hostname:
+            # Optional: Forward verify
+            forward_ip = socket.gethostbyname(hostname)
+            if forward_ip == ip:
+                return True
+    except socket.herror:
+        return False  # DNS lookup failed
+    return False
+
+# Usage
+if &#39;GPTBot&#39; in user_agent:
+    if not verify_bot_by_dns(request.remote_addr, &#39;openai.com&#39;):
+        block_request()
+</code></pre>
+<p><strong>Anthropic ClaudeBot verification:</strong></p>
+<p>See <a href="verify-claudebot-ip-dns.html">verify-claudebot-ip-dns.html</a> for ClaudeBot-specific DNS verification.</p>
+<p><strong>Expected hostname patterns:</strong></p>
+<ul>
+<li><strong>OpenAI:</strong> <code>crawler-*.ptr.openai.com</code></li>
+<li><strong>Anthropic:</strong> <code>*.anthropic.com</code> or AWS hostnames (less specific)</li>
+<li><strong>Perplexity:</strong> <code>*.perplexity.ai</code></li>
+<li><strong>Google:</strong> <code>*.googlebot.com</code> or <code>*.google.com</code></li>
+</ul>
+<p><strong>Benefits:</strong> Works when IP ranges not published, harder to spoof (requires DNS control).</p>
+<p><strong>Drawbacks:</strong> Adds latency (DNS lookup per request), some IPs lack reverse DNS.</p>
+<h3>ASN (Autonomous System Number) Analysis</h3>
+<p><strong>ASN:</strong> Identifies network owner. AI companies use specific ASNs for infrastructure.</p>
+<p><strong>Common AI crawler ASNs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>ASN</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenAI</td>
+<td>AS8075</td>
+<td>Microsoft (Azure)</td>
+</tr>
+<tr>
+<td>Anthropic</td>
+<td>AS16509</td>
+<td>Amazon (AWS)</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>AS15169</td>
+<td>Google LLC</td>
+</tr>
+<tr>
+<td>Perplexity</td>
+<td>AS15169</td>
+<td>Google (GCP)</td>
+</tr>
+</tbody></table>
+<p><strong>Verification strategy:</strong></p>
+<p>Even if specific IP ranges unknown, verify ASN matches expected provider.</p>
+<p><strong>Example:</strong> ClaudeBot should originate from AWS (AS16509). If request claims ClaudeBot from AS8075 (Azure), suspicious.</p>
+<p><strong>Lookup ASN for IP:</strong></p>
+<pre><code class="language-bash">whois -h whois.cymru.com &quot; -v 20.15.240.75&quot;
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>AS      | IP               | AS Name
+8075    | 20.15.240.75     | MICROSOFT-CORP-MSN-AS-BLOCK
+</code></pre>
+<p><strong>Python with GeoIP database:</strong></p>
+<pre><code class="language-python">import geoip2.database
+
+reader = geoip2.database.Reader(&#39;/path/to/GeoLite2-ASN.mmdb&#39;)
+
+def verify_bot_by_asn(ip, expected_asn):
+    try:
+        response = reader.asn(ip)
+        return response.autonomous_system_number == expected_asn
+    except:
+        return False
+
+# Usage
+if &#39;GPTBot&#39; in user_agent:
+    if not verify_bot_by_asn(request.remote_addr, 8075):  # Microsoft ASN
+        suspicious_request()
+</code></pre>
+<p><strong>Benefits:</strong> Broad verification (don&#39;t need exact IP ranges), stable (ASNs change rarely).</p>
+<p><strong>Drawbacks:</strong> Less precise (entire Azure = AS8075, not just OpenAI).</p>
+<h2>Automated Verification Systems</h2>
+<h3>Middleware-Based Verification</h3>
+<p><strong>Insert verification layer into request pipeline.</strong></p>
+<p><strong>Flask example:</strong></p>
+<pre><code class="language-python">from flask import Flask, request, abort
+
+app = Flask(__name__)
+
+# Bot verification middleware
+@app.before_request
+def verify_ai_crawler():
+    user_agent = request.headers.get(&#39;User-Agent&#39;, &#39;&#39;)
+    ip = request.remote_addr
+
+    # Check if request claims to be AI bot
+    for bot_name, bot_patterns in AI_BOTS.items():
+        if any(pattern in user_agent for pattern in bot_patterns):
+            # Verify IP
+            if not verify_bot_ip(ip, bot_name):
+                # Log spoofing attempt
+                app.logger.warning(f&quot;Spoofed {bot_name} from {ip}&quot;)
+                # Block request
+                abort(403, f&quot;Unauthorized use of {bot_name} user agent&quot;)
+
+AI_BOTS = {
+    &#39;GPTBot&#39;: [&#39;GPTBot&#39;, &#39;ChatGPT-User&#39;],
+    &#39;ClaudeBot&#39;: [&#39;ClaudeBot&#39;, &#39;Claude-Web&#39;, &#39;anthropic-ai&#39;],
+    &#39;PerplexityBot&#39;: [&#39;PerplexityBot&#39;, &#39;Perplexity&#39;],
+}
+</code></pre>
+<p><strong>Every request</strong> checked. Spoofed bots blocked before reaching application logic.</p>
+<h3>Cloudflare Firewall Rules</h3>
+<p><strong>Cloudflare Workers can enforce IP verification at edge.</strong></p>
+<p><strong>Rule structure:</strong></p>
+<pre><code>(http.user_agent contains &quot;GPTBot&quot;) and
+(not ip.src in {20.15.240.64/28 20.15.240.80/28 20.15.240.96/28 20.15.240.176/28 20.15.241.0/28 20.15.242.128/28 20.15.242.144/28 20.15.242.192/28 40.83.2.64/28})
+</code></pre>
+<p><strong>Action:</strong> Block or Challenge</p>
+<p><strong>Effect:</strong> Spoofed GPTBot requests never reach origin server (blocked at CDN edge).</p>
+<p><strong>Benefits:</strong> Zero origin load from spoofed bots, Cloudflare maintains rule (no server config needed).</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Cloudflare dashboard → Security → WAF</li>
+<li>Create Firewall Rule</li>
+<li>Expression: (above rule)</li>
+<li>Action: Block</li>
+<li>Deploy</li>
+</ol>
+<p><strong>For multiple bots:</strong></p>
+<pre><code>(
+  (http.user_agent contains &quot;GPTBot&quot; and not ip.src in {[GPTBot ranges]})
+  or
+  (http.user_agent contains &quot;ClaudeBot&quot; and not ip.src in {[ClaudeBot ranges]})
+  or
+  (http.user_agent contains &quot;PerplexityBot&quot; and not [DNS verification logic])
+)
+</code></pre>
+<p><strong>Action:</strong> Block</p>
+<h3>Cache-Based Verification</h3>
+<p><strong>Problem:</strong> DNS lookup on every request adds latency.</p>
+<p><strong>Solution:</strong> Cache verification results (Redis, Memcached).</p>
+<p><strong>Implementation:</strong></p>
+<pre><code class="language-python">import redis
+import socket
+
+redis_client = redis.Redis(host=&#39;localhost&#39;, port=6379, decode_responses=True)
+
+def verify_bot_cached(ip, user_agent):
+    # Check cache
+    cache_key = f&quot;bot_verify:{ip}&quot;
+    cached_result = redis_client.get(cache_key)
+
+    if cached_result:
+        return cached_result == &#39;legitimate&#39;
+
+    # Perform verification
+    is_legitimate = verify_bot_by_dns(ip, get_expected_domain(user_agent))
+
+    # Cache result (24-hour TTL)
+    redis_client.setex(cache_key, 86400, &#39;legitimate&#39; if is_legitimate else &#39;spoofed&#39;)
+
+    return is_legitimate
+
+def get_expected_domain(user_agent):
+    if &#39;GPTBot&#39; in user_agent:
+        return &#39;openai.com&#39;
+    elif &#39;ClaudeBot&#39; in user_agent:
+        return &#39;anthropic.com&#39;
+    elif &#39;PerplexityBot&#39; in user_agent:
+        return &#39;perplexity.ai&#39;
+    return None
+</code></pre>
+<p><strong>First request:</strong> DNS lookup (slow). <strong>Subsequent requests:</strong> Cache hit (fast).</p>
+<p><strong>Cache invalidation:</strong> 24-hour TTL handles IP changes gracefully.</p>
+<h2>Handling Verification Failures</h2>
+<h3>Logging Spoofing Attempts</h3>
+<p><strong>Don&#39;t just block—collect intelligence.</strong></p>
+<p><strong>Log structure:</strong></p>
+<pre><code class="language-python">def log_spoofing_attempt(ip, user_agent, claimed_bot):
+    log_entry = {
+        &#39;timestamp&#39;: datetime.utcnow().isoformat(),
+        &#39;ip&#39;: ip,
+        &#39;user_agent&#39;: user_agent,
+        &#39;claimed_bot&#39;: claimed_bot,
+        &#39;verification_method&#39;: &#39;ip_range&#39;,
+        &#39;result&#39;: &#39;failed&#39;,
+        &#39;action_taken&#39;: &#39;blocked&#39;
+    }
+
+    # Log to file
+    with open(&#39;/var/log/bot-spoofing.log&#39;, &#39;a&#39;) as f:
+        f.write(json.dumps(log_entry) + &#39;\n&#39;)
+
+    # Alert if pattern detected (multiple IPs using same spoofed UA)
+    if detect_spoofing_campaign(log_entry):
+        send_alert(&quot;Coordinated spoofing campaign detected&quot;)
+</code></pre>
+<p><strong>Analysis:</strong></p>
+<pre><code class="language-bash"># Find most spoofed bot identities
+jq -r &#39;.claimed_bot&#39; /var/log/bot-spoofing.log | sort | uniq -c | sort -rn
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>87 GPTBot
+45 ClaudeBot
+23 GoogleBot
+</code></pre>
+<p><strong>Insight:</strong> GPTBot most frequently spoofed (attackers assume publishers allow it).</p>
+<h3>Graduated Response Strategies</h3>
+<p><strong>Don&#39;t immediately block on verification failure.</strong> Tiered approach:</p>
+<p><strong>Tier 1: First failure</strong></p>
+<ul>
+<li>Log attempt</li>
+<li>Allow request (might be legitimate bot from new IP not yet in published ranges)</li>
+<li>Set flag for monitoring</li>
+</ul>
+<p><strong>Tier 2: Second failure (same IP within 24h)</strong></p>
+<ul>
+<li>Rate limit severely (1 request/minute)</li>
+<li>Challenge with CAPTCHA (if bot can&#39;t solve, confirm it&#39;s automated)</li>
+</ul>
+<p><strong>Tier 3: Third failure or egregious pattern</strong></p>
+<ul>
+<li>Block IP for 24 hours</li>
+<li>Alert security team</li>
+<li>Add to permanent blocklist if campaign detected</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<pre><code class="language-python">def handle_verification_failure(ip, user_agent):
+    # Track failure count (Redis)
+    key = f&quot;verify_fail:{ip}&quot;
+    failures = redis_client.incr(key)
+    redis_client.expire(key, 86400)  # 24-hour window
+
+    if failures == 1:
+        # First failure: log and allow
+        log_spoofing_attempt(ip, user_agent, &#39;GPTBot&#39;)
+        return &#39;allow&#39;
+
+    elif failures == 2:
+        # Second failure: rate limit
+        apply_rate_limit(ip, rate=&#39;1r/m&#39;)
+        return &#39;rate_limit&#39;
+
+    else:
+        # Third+ failure: block
+        block_ip(ip, duration=86400)
+        return &#39;block&#39;
+</code></pre>
+<h3>Reporting to AI Companies</h3>
+<p><strong>If spoofing is widespread, notify AI company.</strong></p>
+<p><strong>OpenAI contact:</strong> Abuse reports to <a href="mailto:security@openai.com">security@openai.com</a></p>
+<p><strong>Anthropic contact:</strong> <a href="mailto:support@anthropic.com">support@anthropic.com</a></p>
+<p><strong>Report content:</strong></p>
+<ul>
+<li>Evidence (log excerpts showing spoofed user agent + IP verification failure)</li>
+<li>Volume (number of spoofing attempts detected)</li>
+<li>Request (ask if IP ranges have expanded, request clarification)</li>
+</ul>
+<p><strong>AI companies benefit from reports:</strong> Helps them identify unauthorized use of their crawler identities, potential trademark violations, or misconfigured third-party services claiming to be their bots.</p>
+<h2>Maintaining IP Range Databases</h2>
+<h3>Update Frequency</h3>
+<p><strong>AI companies expand infrastructure.</strong> IP ranges grow over time.</p>
+<p><strong>Recommended check frequency:</strong></p>
+<ul>
+<li><strong>Monthly:</strong> Review official documentation for updates</li>
+<li><strong>Quarterly:</strong> Full audit of IP database accuracy</li>
+<li><strong>On alert:</strong> If verification starts failing frequently, check for range changes</li>
+</ul>
+<p><strong>Automated update script:</strong></p>
+<pre><code class="language-python">import requests
+
+def fetch_latest_gptbot_ranges():
+    # OpenAI publishes ranges in JSON format (hypothetical API)
+    url = &quot;https://openai.com/api/crawler-ips.json&quot;
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        new_ranges = data.get(&#39;gptbot_ranges&#39;, [])
+
+        # Update local database
+        update_ip_database(&#39;GPTBot&#39;, new_ranges)
+
+# Run weekly via cron
+</code></pre>
+<p><strong>Community resources:</strong></p>
+<ul>
+<li>GitHub repos tracking AI crawler IPs (community-maintained)</li>
+<li>Publisher forums sharing observed IP changes</li>
+<li><a href="ai-crawler-directory-2026.html">ai-crawler-directory-2026.html</a> (periodically updated directory)</li>
+</ul>
+<h3>Version Control for IP Databases</h3>
+<p><strong>Track changes to IP ranges.</strong></p>
+<p><strong>Git repository structure:</strong></p>
+<pre><code>/ip-ranges/
+  gptbot.txt
+  claudebot.txt
+  perplexitybot.txt
+  CHANGELOG.md
+</code></pre>
+<p><strong>Commit when ranges update:</strong></p>
+<pre><code class="language-bash">git add ip-ranges/gptbot.txt
+git commit -m &quot;Update GPTBot ranges: Added 20.15.243.0/28&quot;
+git push
+</code></pre>
+<p><strong>Benefits:</strong> Audit trail (know when ranges changed), rollback capability (if update breaks verification), collaboration (team can review changes).</p>
+<h2>FAQ</h2>
+<h3>How often do AI companies update their IP ranges?</h3>
+<p><strong>Varies by company.</strong> <strong>OpenAI</strong> (GPTBot) has expanded ranges 3-4 times since launch (2023-2026), roughly quarterly as infrastructure scales. <strong>Anthropic</strong> (ClaudeBot) published initial ranges in 2024, no major updates yet (smaller scale than OpenAI). <strong>Perplexity</strong> hasn&#39;t published comprehensive ranges (growing company, IP allocation in flux). <strong>Recommendation:</strong> Check official docs monthly, subscribe to company blogs/changelogs for announcements.</p>
+<h3>What if legitimate bot requests come from IPs outside published ranges?</h3>
+<p><strong>Happens occasionally.</strong> <strong>Causes:</strong> (1) AI company launched new infrastructure not yet in docs, (2) Bot uses proxy/CDN temporarily (rare), (3) Documentation lag (company updated infrastructure but hasn&#39;t published new ranges). <strong>Response:</strong> Don&#39;t immediately block on first failure. Use graduated response (see section above). If persistent failures from specific IP, manually investigate (reverse DNS lookup, contact AI company). <strong>Long-term:</strong> Combine IP verification with other signals (behavioral analysis, user agent details) for holistic bot validation.</p>
+<h3>Can I rely solely on DNS reverse lookup without IP range verification?</h3>
+<p><strong>Yes, if ASN matches and DNS is properly configured.</strong> DNS verification is <strong>more reliable for bots without published IP ranges</strong> (Perplexity, smaller crawlers). <strong>Advantages:</strong> Works when ranges unavailable, harder to spoof (requires DNS control). <strong>Disadvantages:</strong> Adds latency (DNS query per request—mitigate with caching), some IPs lack reverse DNS. <strong>Best practice:</strong> Use DNS lookup as primary method when IP ranges unavailable, cache results aggressively (24h TTL).</p>
+<h3>How do I verify bots that use multiple ASNs or cloud providers?</h3>
+<p><strong>Check company&#39;s infrastructure documentation.</strong> Example: <strong>Google</strong> operates on AS15169 (primary) but also uses AS19425, AS36384, AS36385 (YouTube, Google Fiber, etc.). <strong>OpenAI</strong> primarily AS8075 (Azure) but may expand to other providers. <strong>Approach:</strong> Maintain list of known ASNs per company, accept request if ASN matches any. <strong>Fallback:</strong> DNS verification works across ASN changes (as long as company maintains reverse DNS records). <strong>Risk:</strong> Broad ASN allowlisting reduces precision (entire Azure might be allowed for GPTBot, catches legitimate OpenAI but also other Azure users spoofing UA).</p>
+<h3>Should I block requests that fail IP verification or just log them?</h3>
+<p><strong>Depends on security posture and false positive tolerance.</strong> <strong>High-security sites (paywalls, premium content):</strong> Block verification failures (protect revenue). <strong>Open sites (public content):</strong> Log failures, rate-limit suspicious traffic, challenge with CAPTCHA (balance security with access). <strong>Enterprise publishers:</strong> Implement graduated response (log first failure, rate-limit second, block third). <strong>Never auto-block on first failure</strong> (legitimate bot from new IP might be caught). <strong>Review logs weekly</strong> to identify patterns—if 95% of failures are malicious, tighten policy. If 30% seem legitimate (new IPs), loosen restrictions.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

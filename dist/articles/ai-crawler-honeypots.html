@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Crawler Honeypots: Detecting Undisclosed Bots Scraping Your Content | AI Pay Per Crawl</title>
+    <meta name="description" content="Honeypot traps detect AI crawlers that hide identity, ignore robots.txt, or violate access controls. Build trap links, fake content, and monitoring systems.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="AI Crawler Honeypots: Detecting Undisclosed Bots Scraping Your Content">
+    <meta property="og:description" content="Honeypot traps detect AI crawlers that hide identity, ignore robots.txt, or violate access controls. Build trap links, fake content, and monitoring systems.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/ai-crawler-honeypots">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Crawler Honeypots: Detecting Undisclosed Bots Scraping Your Content">
+    <meta name="twitter:description" content="Honeypot traps detect AI crawlers that hide identity, ignore robots.txt, or violate access controls. Build trap links, fake content, and monitoring systems.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/ai-crawler-honeypots">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AI Crawler Honeypots: Detecting Undisclosed Bots Scraping Your Content",
+  "description": "Honeypot traps detect AI crawlers that hide identity, ignore robots.txt, or violate access controls. Build trap links, fake content, and monitoring systems.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-07",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/ai-crawler-honeypots"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Crawler Honeypots: Detecting Undisclosed Bots Scraping Your Content",
+      "item": "https://aipaypercrawl.com/articles/ai-crawler-honeypots"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>AI Crawler Honeypots: Detecting Undisclosed Bots Scraping Your Content</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 13 min read</span>
+        <h1>AI Crawler Honeypots: Detecting Undisclosed Bots Scraping Your Content</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Honeypot traps detect AI crawlers that hide identity, ignore robots.txt, or violate access controls. Build trap links, fake content, and monitoring systems.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>AI Crawler Honeypots: Detecting Undisclosed Bots Scraping Your Content</h1>
+<p>Polite AI crawlers announce themselves. <strong>GPTBot</strong> identifies via user agent. <strong>ClaudeBot</strong> respects robots.txt. <strong>PerplexityBot</strong> includes contact information.</p>
+<p>Then there are the others. No user agent string. Generic Mozilla headers. Residential proxy IPs. They scrape your content, train models, monetize outputs—without permission, attribution, or compensation. <strong>You don&#39;t know they exist</strong> because they deliberately hide.</p>
+<p>Honeypots expose them. The concept is simple: create trap that only bots trigger. Hidden link invisible to humans. Fake valuable content (API keys, admin panels) that legitimate users never access. Disallowed paths in robots.txt that compliant crawlers avoid. <strong>When trap is accessed, you&#39;ve caught a bot.</strong></p>
+<p><strong>The evidence is irrefutable.</strong> Human user can&#39;t click invisible link. Polite bot can&#39;t access disallowed path. Only bad actors—scrapers violating access controls, bots ignoring robots.txt, crawlers with spoofed identities—trigger honeypots.</p>
+<p>This guide builds comprehensive honeypot system: hidden link traps, behavioral traps, fake content traps, robots.txt-based detection, and automated response mechanisms that block, alert, or fingerprint violators.</p>
+<h2>Honeypot Fundamentals</h2>
+<h3>How Crawler Honeypots Work</h3>
+<p><strong>Basic mechanism:</strong></p>
+<ol>
+<li><strong>Create trap</strong> (content that legitimate traffic never accesses)</li>
+<li><strong>Make trap invisible to humans</strong> (CSS hiding, disallow in robots.txt)</li>
+<li><strong>Make trap visible to bots</strong> (include in HTML, link from sitemap)</li>
+<li><strong>Monitor trap access</strong> (server logs, dedicated endpoint)</li>
+<li><strong>Respond to violations</strong> (block IP, alert team, fingerprint bot)</li>
+</ol>
+<p><strong>Why bots fall for traps:</strong></p>
+<p><strong>Crawlers parse HTML systematically.</strong> They see <code>&lt;a href=&quot;/trap&quot;&gt;</code> tag, follow link—regardless of CSS hiding it.</p>
+<p><strong>Aggressive scrapers ignore robots.txt.</strong> If robots.txt says <code>Disallow: /trap</code>, polite bot skips it. Bad bot requests it anyway.</p>
+<p><strong>Scrapers seek valuable data.</strong> Link labeled &quot;admin-api-keys.txt&quot; attracts bots hunting credentials even if fake.</p>
+<p><strong>Automated tools lack human judgment.</strong> Humans spot suspicious links (&quot;Why would admin credentials be publicly linked?&quot;). Bots don&#39;t evaluate plausibility.</p>
+<h3>Ethical Considerations</h3>
+<p><strong>Is honeypot entrapment?</strong></p>
+<p><strong>Legal perspective:</strong> Honeypots are defensive tools (detect unauthorized access). Not entrapment if:</p>
+<ol>
+<li><strong>Trap is clearly disallowed</strong> (robots.txt explicitly blocks it)</li>
+<li><strong>No deceptive inducement</strong> (not tricking bots into violations they wouldn&#39;t otherwise commit)</li>
+<li><strong>Purpose is detection, not entrapment for lawsuit</strong></li>
+</ol>
+<p><strong>Example of ethical honeypot:</strong></p>
+<pre><code># robots.txt
+User-agent: *
+Disallow: /crawler-trap
+
+# Trap clearly labeled as off-limits
+# Bots accessing it are knowingly violating directives
+</code></pre>
+<p><strong>Example of questionable practice:</strong></p>
+<p>Creating fake &quot;Terms of Service&quot; page that bots must accept before scraping, then suing for ToS violations when they don&#39;t.</p>
+<p><strong>Best practice:</strong> Honeypots should detect actual violations (ignoring robots.txt, excessive scraping), not manufacture violations for legal advantage.</p>
+<h3>Legal Framework for Trap-Based Detection</h3>
+<p><strong>CFAA (Computer Fraud and Abuse Act) considerations:</strong></p>
+<p>Honeypots themselves don&#39;t violate CFAA. You&#39;re monitoring your own system. But <strong>prosecution of honeypot violators is complex.</strong></p>
+<p><strong>hiQ Labs v. LinkedIn (2022):</strong> Scraping publicly accessible data doesn&#39;t violate CFAA even if against ToS. <strong>But:</strong> Circumventing technical barriers might.</p>
+<p><strong>Application to honeypots:</strong></p>
+<p>If honeypot is publicly accessible (no authentication), catching scraper in trap may not support CFAA claim.</p>
+<p>If honeypot is behind access control (login required) and bot circumvents it, stronger CFAA argument.</p>
+<p><strong>Use honeypots for:</strong></p>
+<ul>
+<li><strong>Detection</strong> (identify unauthorized scrapers)</li>
+<li><strong>Monitoring</strong> (understand scraping patterns)</li>
+<li><strong>Licensing leverage</strong> (evidence to demand deals)</li>
+</ul>
+<p><strong>Not primarily for:</strong></p>
+<ul>
+<li><strong>Litigation</strong> (honeypot evidence supports claims but alone may be insufficient)</li>
+</ul>
+<p><strong>Consult legal counsel</strong> before using honeypot data in legal actions.</p>
+<h2>Hidden Link Traps</h2>
+<h3>CSS-Based Invisibility</h3>
+<p><strong>Technique:</strong> Link exists in HTML but CSS hides from human view.</p>
+<p><strong>Implementation:</strong></p>
+<pre><code class="language-html">&lt;!-- Regular article content --&gt;
+&lt;article&gt;
+  &lt;h1&gt;Article Title&lt;/h1&gt;
+  &lt;p&gt;Article content visible to humans...&lt;/p&gt;
+
+  &lt;!-- Honeypot link (hidden) --&gt;
+  &lt;a href=&quot;/honeypot-trap-do-not-follow&quot; class=&quot;crawler-trap&quot;&gt;.&lt;/a&gt;
+&lt;/article&gt;
+</code></pre>
+<p><strong>CSS:</strong></p>
+<pre><code class="language-css">.crawler-trap {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
+</code></pre>
+<p><strong>Multiple hiding techniques layered</strong> (display:none, position off-screen, zero dimensions). Ensures invisibility even if bot ignores some CSS properties.</p>
+<p><strong>Placement strategy:</strong></p>
+<ul>
+<li><strong>Footer of every page</strong> (catches systematic crawlers)</li>
+<li><strong>Within article body</strong> (random position, looks like natural link to bot)</li>
+<li><strong>After paginated content</strong> (crawlers following &quot;next page&quot; links)</li>
+</ul>
+<p><strong>Link anchor text:</strong></p>
+<p><strong>Option 1: Innocuous</strong> (&quot;.&quot;, &quot;&quot;, or whitespace—minimal visibility even if CSS fails)</p>
+<p><strong>Option 2: Enticing to bots</strong> (&quot;API Documentation&quot;, &quot;Full Archive&quot;—attracts aggressive scrapers)</p>
+<p><strong>Trade-off:</strong> Innocuous = fewer false positives. Enticing = catches more sophisticated bots but higher risk of accidental clicks if CSS breaks.</p>
+<h3>Accessibility Compliance</h3>
+<p><strong>Problem:</strong> Screen readers parse HTML like bots. Hidden links might be exposed to visually impaired users.</p>
+<p><strong>Solution: ARIA attributes</strong></p>
+<pre><code class="language-html">&lt;a href=&quot;/honeypot-trap&quot; class=&quot;crawler-trap&quot; aria-hidden=&quot;true&quot; role=&quot;presentation&quot;&gt;.&lt;/a&gt;
+</code></pre>
+<p><code>aria-hidden=&quot;true&quot;</code> tells screen readers to ignore element.</p>
+<p><strong>Testing:</strong> Use screen reader software (NVDA, JAWS) to verify trap isn&#39;t announced to users.</p>
+<p><strong>Alternative: NoScript tags</strong></p>
+<pre><code class="language-html">&lt;noscript&gt;
+  &lt;a href=&quot;/honeypot-trap&quot;&gt;Honeypot Link&lt;/a&gt;
+&lt;/noscript&gt;
+</code></pre>
+<p><strong>Only visible if JavaScript disabled.</strong> Legitimate users have JS enabled (99%+ modern web). Bots often don&#39;t execute JS. Catches non-JS crawlers while avoiding accessibility issues.</p>
+<h3>Link Diversity and Rotation</h3>
+<p><strong>Don&#39;t use same trap URL everywhere.</strong> Sophisticated scrapers might blacklist known honeypots.</p>
+<p><strong>Strategy: Generate unique traps per page</strong></p>
+<pre><code class="language-python">import hashlib
+
+def generate_trap_url(page_url, secret_key):
+    # Create unique trap URL per page
+    hash_input = f&quot;{page_url}{secret_key}&quot;.encode()
+    trap_id = hashlib.md5(hash_input).hexdigest()[:12]
+    return f&quot;/trap-{trap_id}&quot;
+
+# Example
+trap_url = generate_trap_url(&quot;/article/ai-copyright&quot;, &quot;secret123&quot;)
+# Result: /trap-f4a5c8e9b2d1
+</code></pre>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Scrapers can&#39;t build trap URL blacklist</li>
+<li>Analyze which pages attract most scraping (trap URLs map back to pages)</li>
+<li>Rotate traps periodically (monthly hash key change invalidates old traps)</li>
+</ul>
+<p><strong>Server-side validation:</strong></p>
+<pre><code class="language-python">@app.route(&#39;/trap-&lt;trap_id&gt;&#39;)
+def honeypot(trap_id):
+    # Verify trap_id is valid (prevents random URL guessing)
+    if not is_valid_trap_id(trap_id):
+        return &quot;404 Not Found&quot;, 404
+
+    # Log trap trigger
+    ip = request.remote_addr
+    user_agent = request.headers.get(&#39;User-Agent&#39;)
+    referer = request.headers.get(&#39;Referer&#39;)
+
+    log_honeypot_trigger(ip, user_agent, referer, trap_id)
+
+    # Optional: fingerprint bot for later identification
+    fingerprint = generate_bot_fingerprint(request)
+    store_fingerprint(ip, fingerprint)
+
+    # Return innocuous response (don&#39;t reveal it&#39;s trap)
+    return &quot;404 Not Found&quot;, 404
+</code></pre>
+<h2>Behavioral Honeypots</h2>
+<h3>Fake Valuable Content</h3>
+<p><strong>Principle:</strong> Create content that appears valuable to bots but humans never access.</p>
+<p><strong>Example 1: Fake API documentation</strong></p>
+<pre><code class="language-html">&lt;!-- In HTML comment or hidden div --&gt;
+&lt;div style=&quot;display:none&quot;&gt;
+  &lt;h2&gt;Internal API Keys&lt;/h2&gt;
+  &lt;p&gt;Development API Key: sk-fake-key-abc123...&lt;/p&gt;
+  &lt;a href=&quot;/api-admin-panel&quot;&gt;Admin Access&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>Bots scraping for credentials</strong> (common scraper goal) will extract this. Humans never see it.</p>
+<p><strong>Trap trigger:</strong> Any request to <code>/api-admin-panel</code>.</p>
+<p><strong>Example 2: Fake sitemap</strong></p>
+<p>Create <code>sitemap-internal.xml</code> (not linked anywhere, disallowed in robots.txt).</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
+  &lt;url&gt;&lt;loc&gt;https://yoursite.com/trap-page-1&lt;/loc&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://yoursite.com/trap-page-2&lt;/loc&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://yoursite.com/admin-console&lt;/loc&gt;&lt;/url&gt;
+&lt;/urlset&gt;
+</code></pre>
+<p><strong>robots.txt:</strong></p>
+<pre><code>Disallow: /sitemap-internal.xml
+</code></pre>
+<p><strong>Aggressive bots:</strong> Ignore robots.txt, discover sitemap (via sitemap guessing or crawling), follow trap links.</p>
+<p><strong>Example 3: Fake login portal</strong></p>
+<p>Page resembling admin login but exists solely as honeypot.</p>
+<pre><code class="language-html">&lt;!-- Accessible at /admin-panel (disallowed in robots.txt) --&gt;
+&lt;form action=&quot;/admin-login&quot; method=&quot;POST&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;Admin Username&quot;&gt;
+  &lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;Password&quot;&gt;
+  &lt;button type=&quot;submit&quot;&gt;Login&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+<p><strong>Any access to <code>/admin-panel</code> = honeypot trigger.</strong></p>
+<p><strong>Advanced:</strong> Accept login attempts, log credentials (reveals if bot is credential-stuffing), but never grant access.</p>
+<h3>Time-Delayed Traps</h3>
+<p><strong>Concept:</strong> Trap activates only after specific time or condition met.</p>
+<p><strong>Use case:</strong> Detect bots scraping archives (accessing old content humans rarely visit).</p>
+<p><strong>Implementation:</strong></p>
+<pre><code class="language-python"># Content published 5 years ago
+if article_age_days &gt; 1825:  # 5 years
+    # Inject honeypot link
+    honeypot_html = &#39;&lt;a href=&quot;/archive-trap-2019&quot; style=&quot;display:none&quot;&gt;Archived Version&lt;/a&gt;&#39;
+</code></pre>
+<p><strong>Human traffic to 5-year-old articles is minimal.</strong> High traffic to these pages suggests bot archive scraping.</p>
+<p><strong>Another approach: Session-based traps</strong></p>
+<p>Track user session. If user views 50+ pages in one session (bot-like behavior), inject honeypot on next page load.</p>
+<pre><code class="language-python">def inject_honeypot_if_suspicious(session):
+    if session[&#39;pages_viewed&#39;] &gt; 50:
+        return True  # Inject trap
+    return False
+</code></pre>
+<p><strong>Human users rarely exceed 50 pages/session.</strong> Bots systematically crawling site will.</p>
+<h3>Robots.txt-Based Detection</h3>
+<p><strong>The direct honeypot:</strong></p>
+<pre><code># robots.txt
+User-agent: *
+Disallow: /do-not-access-crawler-trap
+</code></pre>
+<p><strong>Any request to <code>/do-not-access-crawler-trap</code> = robots.txt violation.</strong></p>
+<p><strong>Implementation:</strong></p>
+<pre><code class="language-nginx">location /do-not-access-crawler-trap {
+    access_log /var/log/nginx/honeypot.log honeypot;
+    return 403;
+}
+</code></pre>
+<p><strong>Separate log file</strong> for trap access. Monitor for violations.</p>
+<p><strong>Analysis:</strong></p>
+<pre><code class="language-bash"># Check which bots violated robots.txt
+awk &#39;{print $NF}&#39; /var/log/nginx/honeypot.log | sort | uniq -c | sort -rn
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>234 &quot;MysteryBot/1.0&quot;
+187 &quot;Mozilla/5.0 (Windows NT 10.0...)&quot;
+56  &quot;Python-urllib/3.8&quot;
+</code></pre>
+<p><strong>Evidence:</strong> 234 requests from MysteryBot despite robots.txt disallow.</p>
+<p><strong>Legal use:</strong> Present violation evidence in licensing negotiations (&quot;Your bot ignored access controls—licensing required to continue&quot;).</p>
+<h2>Advanced Detection Techniques</h2>
+<h3>Multi-Stage Honeypots</h3>
+<p><strong>Layered traps:</strong> Single trap = one data point. Chain of traps = behavioral profile.</p>
+<p><strong>Stage 1:</strong> Hidden link in footer</p>
+<p><strong>Stage 2:</strong> If bot follows Stage 1 link, serve page with 5 more hidden links</p>
+<p><strong>Stage 3:</strong> If bot follows multiple Stage 2 links, serve CAPTCHA challenge</p>
+<p><strong>Bot that passes all stages = highly aggressive, sophisticated scraper.</strong></p>
+<p><strong>Scoring:</strong></p>
+<ul>
+<li>Stage 1 triggered: +25 points (mild violation)</li>
+<li>Stage 2 triggered (multiple links): +50 points (systematic crawling)</li>
+<li>Stage 3 CAPTCHA failed: +100 points (definitely bot)</li>
+</ul>
+<p><strong>Score &gt;100:</strong> Block permanently. <strong>50-100:</strong> Rate limit severely. <strong>&lt;50:</strong> Log for monitoring.</p>
+<h3>Request Pattern Fingerprinting</h3>
+<p><strong>Honeypot access reveals bot fingerprint.</strong></p>
+<p><strong>Captured data:</strong></p>
+<ul>
+<li><strong>IP address</strong> (often residential proxy, won&#39;t match known AI company ranges)</li>
+<li><strong>User agent</strong> (likely spoofed—&quot;Mozilla/5.0&quot; not &quot;GPTBot&quot;)</li>
+<li><strong>HTTP headers</strong> (Accept, Accept-Language, Accept-Encoding)</li>
+<li><strong>TLS fingerprint</strong> (ClientHello properties unique to HTTP client libraries)</li>
+<li><strong>Request timing</strong> (intervals between requests, session duration)</li>
+</ul>
+<p><strong>Build bot profile:</strong></p>
+<pre><code class="language-python">def generate_bot_fingerprint(request):
+    fingerprint = {
+        &#39;ip&#39;: request.remote_addr,
+        &#39;user_agent&#39;: request.headers.get(&#39;User-Agent&#39;),
+        &#39;accept&#39;: request.headers.get(&#39;Accept&#39;),
+        &#39;accept_language&#39;: request.headers.get(&#39;Accept-Language&#39;),
+        &#39;accept_encoding&#39;: request.headers.get(&#39;Accept-Encoding&#39;),
+        &#39;tls_version&#39;: request.environ.get(&#39;SSL_PROTOCOL&#39;),
+        &#39;cipher_suite&#39;: request.environ.get(&#39;SSL_CIPHER&#39;),
+        &#39;headers_order&#39;: list(request.headers.keys())
+    }
+    return fingerprint
+</code></pre>
+<p><strong>Use fingerprint to identify bot across IPs</strong> (if bot rotates IPs but keeps same headers/TLS config).</p>
+<p><strong>Example:</strong> MysteryBot triggers honeypot from IP 192.0.2.1 with specific TLS fingerprint. Next day, requests from 198.51.100.5 with identical fingerprint → same bot, different IP.</p>
+<h3>Honeypot Networks (Cross-Publisher)</h3>
+<p><strong>Idea:</strong> Multiple publishers share honeypot data.</p>
+<p><strong>Scenario:</strong></p>
+<ul>
+<li><strong>Publisher A</strong> catches MysteryBot in honeypot (IP 192.0.2.1, user agent &quot;Mozilla/5.0...&quot;)</li>
+<li><strong>Publisher A</strong> shares fingerprint with network</li>
+<li><strong>Publisher B</strong> pre-emptively blocks MysteryBot before it hits their honeypots</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<p>Decentralized database (shared Google Sheet, GitHub repo, or API) where publishers submit fingerprints.</p>
+<p><strong>Privacy:</strong> Share fingerprints, not content/traffic data.</p>
+<p><strong>Example entry:</strong></p>
+<pre><code class="language-json">{
+  &quot;ip&quot;: &quot;192.0.2.1&quot;,
+  &quot;user_agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64)...&quot;,
+  &quot;violation&quot;: &quot;Robots.txt disallow ignored&quot;,
+  &quot;reported_by&quot;: &quot;Publisher A&quot;,
+  &quot;date&quot;: &quot;2026-02-07&quot;
+}
+</code></pre>
+<p><strong>Publishers query database:</strong> If incoming request matches known violator, apply restrictions.</p>
+<p><strong>Challenges:</strong> False positives (legitimate users flagged if fingerprint collision), maintenance (stale data), legal (data sharing agreements).</p>
+<p><strong>Nascent concept</strong> but could evolve into industry-standard bot blacklist.</p>
+<h2>Automated Response Systems</h2>
+<h3>Immediate Blocking</h3>
+<p><strong>Trigger:</strong> Honeypot access → automatic IP block.</p>
+<p><strong>Implementation (iptables):</strong></p>
+<pre><code class="language-bash">#!/bin/bash
+# honeypot-blocker.sh
+
+IP_TO_BLOCK=$1
+
+# Add firewall rule
+iptables -A INPUT -s &quot;$IP_TO_BLOCK&quot; -j DROP
+
+# Log block
+echo &quot;$(date) - Blocked $IP_TO_BLOCK (honeypot violation)&quot; &gt;&gt; /var/log/honeypot-blocks.log
+</code></pre>
+<p><strong>Call from honeypot endpoint:</strong></p>
+<pre><code class="language-python">@app.route(&#39;/honeypot-trap&#39;)
+def honeypot():
+    ip = request.remote_addr
+    subprocess.run([&#39;./honeypot-blocker.sh&#39;, ip])
+    return &quot;404 Not Found&quot;, 404
+</code></pre>
+<p><strong>Instant effect:</strong> Bot blocked mid-scraping session.</p>
+<p><strong>Risk:</strong> IP might be shared proxy (blocking one bot blocks legitimate traffic).</p>
+<p><strong>Mitigation: Temporary blocks</strong></p>
+<pre><code class="language-bash"># Block for 24 hours instead of permanent
+iptables -A INPUT -s &quot;$IP_TO_BLOCK&quot; -j DROP
+echo &quot;iptables -D INPUT -s $IP_TO_BLOCK -j DROP&quot; | at now + 24 hours
+</code></pre>
+<p><strong>Cloudflare alternative (safer):</strong></p>
+<pre><code class="language-python">def block_ip_cloudflare(ip):
+    url = f&quot;https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/firewall/access_rules/rules&quot;
+    headers = {&#39;Authorization&#39;: f&#39;Bearer {CF_API_TOKEN}&#39;}
+    data = {
+        &#39;mode&#39;: &#39;block&#39;,
+        &#39;configuration&#39;: {&#39;target&#39;: &#39;ip&#39;, &#39;value&#39;: ip},
+        &#39;notes&#39;: &#39;Honeypot violation - auto-blocked&#39;
+    }
+    requests.post(url, headers=headers, json=data)
+</code></pre>
+<h3>Alert Notifications</h3>
+<p><strong>Don&#39;t just block silently—notify team.</strong></p>
+<p><strong>Slack webhook:</strong></p>
+<pre><code class="language-python">def send_honeypot_alert(ip, user_agent, trap_url):
+    webhook_url = &quot;https://hooks.slack.com/services/YOUR/WEBHOOK/URL&quot;
+    message = {
+        &#39;text&#39;: &#39;Honeypot Triggered&#39;,
+        &#39;attachments&#39;: [{
+            &#39;color&#39;: &#39;danger&#39;,
+            &#39;fields&#39;: [
+                {&#39;title&#39;: &#39;IP Address&#39;, &#39;value&#39;: ip, &#39;short&#39;: True},
+                {&#39;title&#39;: &#39;User Agent&#39;, &#39;value&#39;: user_agent, &#39;short&#39;: False},
+                {&#39;title&#39;: &#39;Trap URL&#39;, &#39;value&#39;: trap_url, &#39;short&#39;: True},
+                {&#39;title&#39;: &#39;Action Taken&#39;, &#39;value&#39;: &#39;IP Blocked for 24h&#39;, &#39;short&#39;: True}
+            ]
+        }]
+    }
+    requests.post(webhook_url, json=message)
+</code></pre>
+<p><strong>Email alert (high-severity only):</strong></p>
+<pre><code class="language-python">if is_severe_violation(user_agent, request_count):
+    send_email_alert(
+        to=&#39;security@yoursite.com&#39;,
+        subject=f&#39;Critical: Advanced scraper detected ({ip})&#39;,
+        body=f&#39;Honeypot triggered by sophisticated bot. Fingerprint: {fingerprint}&#39;
+    )
+</code></pre>
+<p><strong>Alert frequency management:</strong></p>
+<p>Don&#39;t spam team with every honeypot hit. Aggregate into hourly digest unless critical.</p>
+<pre><code class="language-python">alert_buffer = []
+
+def buffer_honeypot_alert(data):
+    alert_buffer.append(data)
+
+    # Send digest every hour or if buffer exceeds 20 alerts
+    if len(alert_buffer) &gt;= 20 or time_since_last_digest &gt; 3600:
+        send_digest_email(alert_buffer)
+        alert_buffer.clear()
+</code></pre>
+<h3>Tarpit Response</h3>
+<p><strong>Instead of blocking, slow down bot indefinitely.</strong></p>
+<p><strong>Concept:</strong> Serve trap page slowly (1 byte/second). Bot waits, wastes time, eventually times out.</p>
+<p><strong>Implementation (Nginx):</strong></p>
+<pre><code class="language-nginx">location /honeypot-trap {
+    limit_rate 1;  # 1 byte/sec
+    return 200 &quot;This is a very slow loading page...&quot;;
+}
+</code></pre>
+<p><strong>Effect:</strong> Bot&#39;s request hangs for minutes consuming its connection pool.</p>
+<p><strong>Benefit:</strong> Doesn&#39;t block (avoids false positive harm), but punishes violator.</p>
+<p><strong>Advanced: Infinite tarpit</strong></p>
+<pre><code class="language-python">@app.route(&#39;/honeypot-trap&#39;)
+def tarpit():
+    def generate_infinite_content():
+        while True:
+            yield &quot;&lt;!-- Infinite honeypot --&gt;\n&quot;
+            time.sleep(10)  # 1 line every 10 seconds
+
+    return Response(generate_infinite_content(), mimetype=&#39;text/html&#39;)
+</code></pre>
+<p><strong>Bot receives endless HTML.</strong> Never completes request. Wastes resources until timeout.</p>
+<p><strong>Ethical concern:</strong> Resource consumption on your server too. Use sparingly.</p>
+<h2>FAQ</h2>
+<h3>Can honeypots catch polite AI crawlers that respect robots.txt?</h3>
+<p><strong>No, by design.</strong> Honeypots detect robots.txt violations and aggressive scraping. <strong>Polite bots</strong> (GPTBot, ClaudeBot) that honor <code>Disallow</code> directives won&#39;t trigger properly configured traps. <strong>Use honeypots to find:</strong> (1) Undisclosed scrapers (no user agent), (2) Bots ignoring access controls, (3) Aggressive commercial scrapers. <strong>Polite AI companies</strong> already identifiable via user agents—don&#39;t need honeypots for detection.</p>
+<h3>Are CSS-hidden links accessible to screen readers?</h3>
+<p><strong>Potentially yes, which is accessibility problem.</strong> Screen readers parse HTML like bots—hidden links might be announced. <strong>Solution:</strong> Add <code>aria-hidden=&quot;true&quot;</code> and <code>role=&quot;presentation&quot;</code> to trap links. Test with screen reader software (NVDA, JAWS) to verify invisibility. <strong>Alternative:</strong> Use <code>&lt;noscript&gt;</code> traps (invisible to JS-enabled browsers, which 99%+ of humans use). <strong>Important:</strong> Accessibility compliance isn&#39;t optional—inaccessible honeypots violate ADA/WCAG standards.</p>
+<h3>Can sophisticated bots detect and avoid honeypots?</h3>
+<p><strong>Yes, advanced scrapers can.</strong> <strong>Detection methods bots use:</strong> (1) Check robots.txt for disallowed paths, avoid them (defeats robots.txt-based traps), (2) Render pages with headless browser, ignore CSS-hidden links (defeats display:none traps), (3) Maintain blacklist of known honeypot patterns (<code>/trap</code>, <code>/honeypot</code>, <code>/do-not-access</code>), (4) Analyze link context (suspicious anchor text like &quot;Internal API Keys&quot; flagged). <strong>Countermeasures:</strong> Rotate trap URLs frequently, use diverse trap types (not just hidden links), combine with behavioral detection (honeypots + request pattern analysis), name traps innocuously (generic URLs, not <code>honeypot.html</code>). <strong>Arms race:</strong> As defenses improve, sophisticated bots adapt. Honeypots catch unsophisticated scrapers; advanced scrapers require multi-layered detection.</p>
+<h3>What should I do when honeypot triggers—block immediately or investigate first?</h3>
+<p><strong>Depends on confidence level and risk tolerance.</strong> <strong>High-confidence violations (robots.txt disallow + multiple traps triggered):</strong> Automatic blocking justified. <strong>Low-confidence (single hidden link access, could be CSS rendering bug):</strong> Investigate before blocking. <strong>Recommended tiered response:</strong> (1) <strong>First violation:</strong> Log, don&#39;t block. (2) <strong>Second violation within 24h:</strong> Rate limit (not block). (3) <strong>Third violation or egregious pattern:</strong> Block temporarily (24-48h). (4) <strong>Persistent violations:</strong> Permanent block. <strong>Alternative:</strong> Always challenge with CAPTCHA instead of blocking (distinguishes humans from bots, lower false positive harm).</p>
+<h3>Are there legal risks to running honeypots on my site?</h3>
+<p><strong>Minimal risk if honeypots are purely defensive.</strong> <strong>Legal concerns:</strong> (1) <strong>CFAA implications:</strong> Honeypots don&#39;t violate CFAA (you&#39;re monitoring your own system). But using honeypot evidence for CFAA prosecution is complex (see hiQ v. LinkedIn). (2) <strong>Accessibility laws:</strong> Hidden content must not interfere with assistive technologies (add ARIA attributes). (3) <strong>Entrapment claims:</strong> If honeypot induces violations that wouldn&#39;t otherwise occur (fake &quot;click here to scrape&quot; buttons), questionable ethics/legality. <strong>Safe approach:</strong> Clearly disallow trap paths in robots.txt, use passive detection (not active inducement), consult legal counsel before using honeypot data in litigation. <strong>Purpose:</strong> Detection and monitoring (low risk). Litigation evidence (higher risk, need legal review).</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

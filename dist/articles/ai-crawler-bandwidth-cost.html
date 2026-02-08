@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bandwidth Cost of AI Crawlers: What Scraping Really Costs Publishers | AI Pay Per Crawl</title>
+    <meta name="description" content="AI crawlers consume terabytes of publisher bandwidth. Calculate actual scraping costs, measure infrastructure impact, and determine break-even licensing rates.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="The Bandwidth Cost of AI Crawlers: What Scraping Really Costs Publishers">
+    <meta property="og:description" content="AI crawlers consume terabytes of publisher bandwidth. Calculate actual scraping costs, measure infrastructure impact, and determine break-even licensing rates.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/ai-crawler-bandwidth-cost">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Bandwidth Cost of AI Crawlers: What Scraping Really Costs Publishers">
+    <meta name="twitter:description" content="AI crawlers consume terabytes of publisher bandwidth. Calculate actual scraping costs, measure infrastructure impact, and determine break-even licensing rates.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/ai-crawler-bandwidth-cost">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "The Bandwidth Cost of AI Crawlers: What Scraping Really Costs Publishers",
+  "description": "AI crawlers consume terabytes of publisher bandwidth. Calculate actual scraping costs, measure infrastructure impact, and determine break-even licensing rates.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-07",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/ai-crawler-bandwidth-cost"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Bandwidth Cost of AI Crawlers: What Scraping Really Costs Publishers",
+      "item": "https://aipaypercrawl.com/articles/ai-crawler-bandwidth-cost"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>The Bandwidth Cost of AI Crawlers: What Scraping Really Costs Publishers</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 16 min read</span>
+        <h1>The Bandwidth Cost of AI Crawlers: What Scraping Really Costs Publishers</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">AI crawlers consume terabytes of publisher bandwidth. Calculate actual scraping costs, measure infrastructure impact, and determine break-even licensing rates.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>The Bandwidth Cost of AI Crawlers: What Scraping Really Costs Publishers</h1>
+<p>AI companies scrape for free. Your servers deliver content. Your bandwidth bill increases. They profit. You subsidize.</p>
+<p><strong>The New York Times</strong> serves millions of article pages monthly to <strong>GPTBot</strong>, <strong>ClaudeBot</strong>, <strong>PerplexityBot</strong>. Each request consumes bandwidth. Text, images, embedded media—transferred from NYT&#39;s servers to AI company infrastructure. At scale, this reaches <strong>terabytes of data transferred monthly</strong>.</p>
+<p>Bandwidth isn&#39;t free. Cloud hosting charges $0.05-0.12 per GB. CDN costs add overhead. Server CPU cycles processing bot requests—compute cost beyond raw bandwidth. For publishers operating at thin margins, AI crawler traffic represents <strong>real, quantifiable expense with zero direct revenue</strong>.</p>
+<p><strong>The calculation:</strong> If AI crawlers consume 5TB monthly and bandwidth costs $0.08/GB, monthly cost is $400. Annual: $4,800. Small publishers absorb this as hidden tax. Large publishers face $50K-200K annual crawler bandwidth costs.</p>
+<p>Meanwhile, AI companies monetize that scraped content. <strong>OpenAI</strong> charges $20/month for ChatGPT Plus. <strong>Anthropic</strong> sells Claude Pro at $20/month. <strong>Perplexity</strong> monetizes via $20/month Pro subscriptions. Billions in aggregate revenue built partly on content scraped without compensation.</p>
+<p>This guide quantifies true bandwidth cost of AI scraping, calculates infrastructure impact beyond bandwidth, determines break-even licensing rates, and builds cost-recovery strategies.</p>
+<h2>Bandwidth Fundamentals</h2>
+<h3>How Bandwidth Costs Are Calculated</h3>
+<p><strong>Bandwidth = data transferred from your servers to users/bots.</strong></p>
+<p><strong>Common billing models:</strong></p>
+<p><strong>1. Pay-per-GB (usage-based)</strong></p>
+<p>Cloud providers (<strong>AWS</strong>, <strong>Google Cloud</strong>, <strong>Azure</strong>) charge per GB of data transferred out (&quot;egress&quot;).</p>
+<p><strong>AWS example:</strong></p>
+<ul>
+<li>First 10TB/month: $0.09/GB</li>
+<li>Next 40TB/month: $0.085/GB</li>
+<li>Next 100TB/month: $0.07/GB</li>
+<li>Over 150TB/month: $0.05/GB</li>
+</ul>
+<p><strong>Calculation:</strong> If you transfer 5TB to AI crawlers:</p>
+<p>5,000 GB × $0.09 = $450/month</p>
+<p><strong>2. CDN pricing (geographic tiers)</strong></p>
+<p>CDNs (<strong>Cloudflare</strong>, <strong>Fastly</strong>, <strong>Akamai</strong>) have tiered pricing based on region.</p>
+<p><strong>Cloudflare example:</strong></p>
+<ul>
+<li>North America: $0.04/GB</li>
+<li>Europe: $0.04/GB</li>
+<li>Asia: $0.08/GB</li>
+<li>South America: $0.10/GB</li>
+</ul>
+<p>If AI crawlers are globally distributed, average cost per GB varies.</p>
+<p><strong>3. Included bandwidth (hosting plans)</strong></p>
+<p>Shared hosting or VPS plans include bandwidth allowance (e.g., 10TB/month). Overages billed at premium rates ($0.10-0.20/GB).</p>
+<p><strong>4. Unmetered bandwidth (dedicated servers)</strong></p>
+<p>Some hosts offer &quot;unlimited&quot; bandwidth (actually capped by port speed—1Gbps or 10Gbps). No per-GB charge but server costs more upfront.</p>
+<p><strong>Most publishers fall into categories 1-2:</strong> Cloud or CDN, pay-per-GB.</p>
+<h3>Measuring Bandwidth Consumption</h3>
+<p><strong>Calculate data transferred to AI crawlers from server logs.</strong></p>
+<p><strong>Apache/Nginx access log format:</strong></p>
+<pre><code>93.184.216.34 - - [07/Feb/2026:10:23:45 +0000] &quot;GET /article/ai-training HTTP/1.1&quot; 200 15234 &quot;-&quot; &quot;GPTBot/1.0&quot;
+</code></pre>
+<p><strong>Field 10</strong> (<code>15234</code>) = bytes transferred.</p>
+<p><strong>Aggregate by bot:</strong></p>
+<pre><code class="language-bash"># Extract AI crawler requests with bytes transferred
+grep -E &quot;GPTBot|ClaudeBot|PerplexityBot&quot; /var/log/nginx/access.log | \
+awk &#39;{bot=$NF; bytes=$(NF-3); gsub(/&quot;/, &quot;&quot;, bot); total[bot]+=bytes}
+     END {for (b in total) print b, total[b]/1024/1024/1024 &quot; GB&quot;}&#39;
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>GPTBot/1.0 247.3 GB
+ClaudeBot/1.0 182.5 GB
+PerplexityBot/1.0 94.7 GB
+</code></pre>
+<p><strong>Total AI crawler bandwidth (30 days):</strong> 524.5 GB</p>
+<p><strong>Extrapolate to annual:</strong></p>
+<p>524.5 GB/month × 12 = 6,294 GB/year (~6.3 TB)</p>
+<p><strong>Cost calculation (AWS pricing at $0.09/GB):</strong></p>
+<p>6,294 GB × $0.09 = $566.46/year</p>
+<p><strong>CDN bandwidth (if using):</strong></p>
+<p>If 80% of traffic served via CDN at $0.04/GB:</p>
+<p>6,294 GB × 0.80 × $0.04 = $201.41/year</p>
+<p><strong>Combined cost:</strong> $565 (origin) if no CDN, or $200-250 with CDN optimization.</p>
+<h3>Compression and Transfer Efficiency</h3>
+<p>Not all content transfers equally. <strong>Text compresses well.</strong> HTML article (100KB raw) compresses to ~20KB with gzip. <strong>Images don&#39;t compress much</strong> (already compressed via JPEG/PNG).</p>
+<p><strong>Impact on bandwidth:</strong></p>
+<p>If AI crawlers request mostly text (articles, not images), gzip reduces bandwidth 70-80%.</p>
+<p><strong>Without compression:</strong></p>
+<p>Article = 100KB × 50,000 requests = 5GB</p>
+<p><strong>With gzip:</strong></p>
+<p>Article = 20KB × 50,000 requests = 1GB</p>
+<p><strong>Savings:</strong> 4GB (80% reduction)</p>
+<p><strong>Check if your server compresses responses to bots:</strong></p>
+<pre><code class="language-bash">curl -H &quot;Accept-Encoding: gzip&quot; -H &quot;User-Agent: GPTBot/1.0&quot; \
+     -I https://yoursite.com/article | grep &quot;Content-Encoding&quot;
+</code></pre>
+<p><strong>Expected:</strong> <code>Content-Encoding: gzip</code></p>
+<p><strong>If missing:</strong> Configure server to compress responses. <strong>Nginx:</strong></p>
+<pre><code class="language-nginx">gzip on;
+gzip_types text/html text/css application/json application/javascript;
+gzip_min_length 1000;
+</code></pre>
+<p><strong>Apache:</strong></p>
+<pre><code class="language-apache">&lt;IfModule mod_deflate.c&gt;
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
+&lt;/IfModule&gt;
+</code></pre>
+<p><strong>Bandwidth cost reduction:</strong> 50-80% for text-heavy sites.</p>
+<h2>True Cost Beyond Bandwidth</h2>
+<h3>Server Compute and CPU Cycles</h3>
+<p><strong>Bandwidth isn&#39;t the only cost.</strong> Every bot request consumes server resources:</p>
+<p><strong>CPU time:</strong> Processing HTTP request, executing application logic (CMS queries, template rendering), generating response.</p>
+<p><strong>Memory:</strong> Loading article data from database, caching layers.</p>
+<p><strong>Disk I/O:</strong> Reading files, database queries.</p>
+<p><strong>For static sites:</strong> Minimal compute (serving pre-rendered HTML). <strong>For dynamic sites:</strong> Significant compute (WordPress, Drupal, custom CMS executing PHP/Python per request).</p>
+<p><strong>Cost modeling:</strong></p>
+<p><strong>AWS EC2 instance:</strong> t3.medium ($0.0416/hour) handles ~1,000 requests/hour before CPU saturation.</p>
+<p>If AI crawlers generate 50,000 requests/month (1,667/day, ~70/hour):</p>
+<p>Bot requests consume ~7% of instance capacity.</p>
+<p>Monthly instance cost: $30 (720 hours × $0.0416)</p>
+<p>Bot-attributable compute: $30 × 0.07 = $2.10</p>
+<p><strong>Small cost per site, but scales:</strong> Large publishers running 50-100 instances see $100-500/month in bot-attributable compute.</p>
+<h3>Database Load and Query Costs</h3>
+<p><strong>CMS-driven sites execute database queries per request.</strong></p>
+<p>Typical article page load:</p>
+<ul>
+<li>Query article content (1-2 queries)</li>
+<li>Fetch author metadata (1 query)</li>
+<li>Load related articles (1 query)</li>
+<li>Retrieve comments/engagement data (1-2 queries)</li>
+</ul>
+<p><strong>Total:</strong> 5-7 queries per page load.</p>
+<p><strong>AI crawler impact:</strong></p>
+<p>50,000 bot requests/month × 6 queries = 300,000 queries/month</p>
+<p><strong>Database compute (AWS RDS):</strong></p>
+<p>db.t3.small ($0.034/hour) handles ~10,000 queries/hour.</p>
+<p>300,000 queries/month = ~417 queries/hour (4% of capacity).</p>
+<p>Monthly RDS cost: $25</p>
+<p>Bot-attributable: $25 × 0.04 = $1</p>
+<p><strong>Larger publishers (millions of monthly visitors):</strong> Bot traffic might push database to next tier ($50/month → $100/month instance), directly attributable cost.</p>
+<h3>CDN and Caching Layer Expenses</h3>
+<p><strong>CDN costs:</strong> Not just bandwidth. Request fees exist.</p>
+<p><strong>Cloudflare Workers:</strong> $0.50 per million requests (after 100K free).</p>
+<p><strong>Fastly:</strong> $0.0075 per 10,000 requests.</p>
+<p><strong>Example:</strong></p>
+<p>AI crawlers generate 500,000 requests/month.</p>
+<p><strong>Cloudflare Workers cost:</strong></p>
+<p>(500,000 - 100,000) / 1,000,000 × $0.50 = $0.20</p>
+<p><strong>Fastly cost:</strong></p>
+<p>500,000 / 10,000 × $0.0075 = $0.375</p>
+<p><strong>Minimal for most publishers.</strong> But high-traffic sites (millions of bot requests) see costs rise.</p>
+<p><strong>Caching efficiency matters:</strong></p>
+<p>If bots request same articles repeatedly, CDN cache hits avoid origin server load (saves bandwidth, compute).</p>
+<p><strong>Cache hit rate for AI crawlers:</strong></p>
+<p>Measure with CDN analytics. Typical: 60-80% cache hit rate.</p>
+<p>If cache hit rate is 70%:</p>
+<ul>
+<li>70% of bot requests served from cache (CDN bandwidth only, no origin cost)</li>
+<li>30% hit origin (full bandwidth + compute cost)</li>
+</ul>
+<p><strong>Optimization:</strong> Configure aggressive caching for bot traffic. Crawlers don&#39;t need real-time updates.</p>
+<p><strong>Nginx cache for bots:</strong></p>
+<pre><code class="language-nginx">location / {
+    if ($http_user_agent ~* &quot;GPTBot|ClaudeBot&quot;) {
+        expires 7d;
+        add_header Cache-Control &quot;public, max-age=604800&quot;;
+    }
+}
+</code></pre>
+<p>Cache bot responses for 7 days. Reduces origin hits 80%+.</p>
+<h2>Cost Quantification Methodology</h2>
+<h3>Building a Cost Model</h3>
+<p><strong>Total AI Crawler Cost = Bandwidth + Compute + Database + CDN + Opportunity Cost</strong></p>
+<p><strong>Step 1: Measure bandwidth consumption</strong> (as calculated earlier).</p>
+<p><strong>Step 2: Estimate compute cost</strong></p>
+<p>Bot requests as % of total traffic × monthly server cost.</p>
+<p><strong>Step 3: Estimate database cost</strong></p>
+<p>Bot queries as % of total queries × monthly database cost.</p>
+<p><strong>Step 4: Measure CDN costs</strong></p>
+<p>Bot requests × CDN request fee + bot bandwidth × CDN bandwidth rate.</p>
+<p><strong>Step 5: Opportunity cost</strong></p>
+<p>Bot traffic consumes capacity. Could that capacity serve revenue-generating human traffic?</p>
+<p><strong>Example calculation:</strong></p>
+<p><strong>Inputs:</strong></p>
+<ul>
+<li>Bot bandwidth: 500 GB/month</li>
+<li>Bot requests: 50,000/month</li>
+<li>Total site traffic: 1M requests/month (5% from bots)</li>
+<li>Bandwidth cost: $0.08/GB</li>
+<li>Server cost: $200/month</li>
+<li>Database cost: $50/month</li>
+<li>CDN request fee: $0.0075/10K requests</li>
+</ul>
+<p><strong>Calculation:</strong></p>
+<ol>
+<li><strong>Bandwidth:</strong> 500 GB × $0.08 = $40</li>
+<li><strong>Compute:</strong> $200 × 0.05 = $10</li>
+<li><strong>Database:</strong> $50 × 0.05 = $2.50</li>
+<li><strong>CDN requests:</strong> (50,000 / 10,000) × $0.0075 = $0.04</li>
+</ol>
+<p><strong>Total monthly cost:</strong> $52.54</p>
+<p><strong>Annual cost:</strong> $630</p>
+<p><strong>Revenue context:</strong> If site generates $50K annual ad revenue, bots cost 1.26% of revenue.</p>
+<h3>Case Study: Small Publisher (100K Visitors/Month)</h3>
+<p><strong>Profile:</strong></p>
+<ul>
+<li>Monthly visitors: 100,000</li>
+<li>AI bot traffic: 3% (3,000 visits, ~15,000 requests)</li>
+<li>Avg article size: 80KB (compressed)</li>
+<li>Hosting: Shared VPS ($40/month, 2TB bandwidth included)</li>
+<li>No CDN</li>
+</ul>
+<p><strong>Bandwidth consumption:</strong></p>
+<p>15,000 requests × 80 KB = 1.2 GB</p>
+<p><strong>Cost:</strong> Included in hosting plan (well under 2TB cap). <strong>$0 marginal cost</strong>.</p>
+<p><strong>Compute impact:</strong> Negligible (bots represent &lt;1% CPU load).</p>
+<p><strong>Database:</strong> Minimal (shared database, no per-query billing).</p>
+<p><strong>Total cost:</strong> Effectively $0.</p>
+<p><strong>Implication:</strong> For small publishers, AI crawler bandwidth cost is invisible. Hidden in fixed hosting fee.</p>
+<p><strong>But:</strong> Opportunity cost exists. If bot traffic grows to 20% (future scenario), could force upgrade to larger plan ($80/month). Difference ($40/month) attributable to bots.</p>
+<h3>Case Study: Medium Publisher (1M Visitors/Month)</h3>
+<p><strong>Profile:</strong></p>
+<ul>
+<li>Monthly visitors: 1,000,000</li>
+<li>AI bot traffic: 8% (80,000 visits, 400,000 requests)</li>
+<li>Avg article size: 120KB (compressed)</li>
+<li>Hosting: AWS (EC2 + RDS + CloudFront CDN)</li>
+<li>Current costs: $800/month (EC2: $400, RDS: $150, CloudFront: $250)</li>
+</ul>
+<p><strong>Bandwidth consumption:</strong></p>
+<p>400,000 requests × 120 KB = 48 GB</p>
+<p><strong>CloudFront cost:</strong></p>
+<p>48 GB × $0.085 (average global rate) = $4.08</p>
+<p><strong>Compute (EC2):</strong></p>
+<p>Bots = 8% of traffic = $400 × 0.08 = $32</p>
+<p><strong>Database (RDS):</strong></p>
+<p>$150 × 0.08 = $12</p>
+<p><strong>Total monthly cost:</strong> $48</p>
+<p><strong>Annual:</strong> $576</p>
+<p><strong>Revenue context:</strong></p>
+<p>Site generates $500K annual ad revenue.</p>
+<p>Bot cost = 0.11% of revenue.</p>
+<p><strong>Licensing opportunity:</strong></p>
+<p>If even one AI company pays $10K/year for licensed access, 17× ROI on bandwidth cost.</p>
+<h3>Case Study: Large Publisher (10M+ Visitors/Month)</h3>
+<p><strong>Profile:</strong></p>
+<ul>
+<li>Monthly visitors: 15,000,000</li>
+<li>AI bot traffic: 12% (1.8M visits, 9M requests)</li>
+<li>Avg article size: 150KB</li>
+<li>Hosting: Multi-region AWS, enterprise CDN</li>
+<li>Current costs: $15,000/month</li>
+</ul>
+<p><strong>Bandwidth consumption:</strong></p>
+<p>9M requests × 150 KB = 1.35 TB</p>
+<p><strong>CDN cost (Fastly):</strong></p>
+<p>1,350 GB × $0.04 = $54</p>
+<p><strong>Origin bandwidth:</strong></p>
+<p>30% cache miss rate: 1,350 GB × 0.30 = 405 GB</p>
+<p>405 GB × $0.09 (AWS egress) = $36.45</p>
+<p><strong>Compute (EC2 fleet):</strong></p>
+<p>$8,000/month compute cost × 0.12 = $960</p>
+<p><strong>Database (RDS cluster):</strong></p>
+<p>$3,000/month × 0.12 = $360</p>
+<p><strong>Total monthly cost:</strong> $1,410</p>
+<p><strong>Annual:</strong> $16,920</p>
+<p><strong>Revenue context:</strong></p>
+<p>$20M annual revenue. Bot cost = 0.08% of revenue.</p>
+<p><strong>But:</strong> $17K is real money. <strong>Licensing 3-4 AI companies at $50K each</strong> would turn $17K cost into $183K net revenue ($200K licensing - $17K cost).</p>
+<h2>Break-Even Licensing Calculations</h2>
+<h3>Determining Minimum Viable License Fee</h3>
+<p><strong>Question:</strong> What must AI company pay to cover bandwidth cost?</p>
+<p><strong>Formula:</strong></p>
+<p>Minimum License Fee = (Annual Bot Bandwidth Cost + Compute + Database) × Margin Multiplier</p>
+<p><strong>Margin multiplier:</strong> Account for overhead (sales, legal, contract management).</p>
+<p><strong>Typical multiplier:</strong> 3-5×</p>
+<p><strong>Example (medium publisher from earlier):</strong></p>
+<p>Annual bot cost: $576</p>
+<p>Minimum fee (3× margin): $576 × 3 = $1,728</p>
+<p><strong>Reality check:</strong> AI companies paying $10K-100K+ for content licenses. If your cost is $1,728, fee of $25,000 delivers $23,272 profit.</p>
+<p><strong>Larger publisher example:</strong></p>
+<p>Annual cost: $16,920</p>
+<p>Minimum fee (5× margin): $16,920 × 5 = $84,600</p>
+<p><strong>Pricing strategy:</strong> Don&#39;t anchor on cost. Price on value to AI company (content quality, differentiation, competitive necessity).</p>
+<p><strong>If competitor licensed similar content for $250K</strong>, demand comparable terms. Cost recovery is baseline, not ceiling.</p>
+<h3>ROI of Blocking vs. Licensing</h3>
+<p><strong>Scenario:</strong> ClaudeBot costs you $200/year in bandwidth.</p>
+<p><strong>Option 1: Block (robots.txt)</strong></p>
+<p>Cost savings: $200/year</p>
+<p>Revenue: $0</p>
+<p>Net: +$200</p>
+<p><strong>Option 2: License at $15,000/year</strong></p>
+<p>Cost: $200/year (continues)</p>
+<p>Revenue: $15,000</p>
+<p>Net: +$14,800</p>
+<p><strong>ROI comparison:</strong></p>
+<p>Blocking saves cost but forgoes revenue. Licensing turns cost center into profit center.</p>
+<p><strong>When to block instead of license:</strong></p>
+<ul>
+<li>AI company refuses reasonable licensing terms</li>
+<li>Strategic decision to withhold content from competitor&#39;s AI product</li>
+<li>Concern about brand dilution (AI summarizes content poorly, harms reputation)</li>
+</ul>
+<p><strong>When to license:</strong></p>
+<ul>
+<li>AI company willing to pay fair fee</li>
+<li>Attribution clause drives referral traffic (additional revenue beyond license fee)</li>
+<li>Content licensing is table stakes (competitors already licensed, you&#39;ll lose visibility if excluded)</li>
+</ul>
+<h3>Pricing Models Tied to Bandwidth Usage</h3>
+<p><strong>Traditional licensing:</strong> Flat annual fee (e.g., $50K/year).</p>
+<p><strong>Bandwidth-based pricing alternative:</strong></p>
+<p><strong>Per-GB pricing:</strong></p>
+<p>AI company pays $X per GB of content transferred.</p>
+<p><strong>Example:</strong> $0.50/GB</p>
+<p>If bot consumes 500 GB/year:</p>
+<p>500 GB × $0.50 = $250</p>
+<p><strong>Too cheap.</strong> Bandwidth-based pricing undervalues content. <strong>NYT article isn&#39;t worth $0.10</strong> (200KB × $0.50/GB).</p>
+<p><strong>Better model: Request-based pricing</strong></p>
+<p>Charge per article/page accessed.</p>
+<p><strong>Example:</strong> $0.05 per article request</p>
+<p>50,000 requests/year × $0.05 = $2,500</p>
+<p><strong>Hybrid model:</strong></p>
+<p>Base fee + usage overage.</p>
+<p>&quot;$10,000 annual fee includes 100,000 requests. $0.02 per additional request.&quot;</p>
+<p><strong>Negotiation leverage:</strong> Bandwidth cost data justifies fees. &quot;Your bot consumed 500GB last year, costing us $X. We&#39;re offering license at $Y, which is Z× value for you given how extensively you use our content.&quot;</p>
+<h2>Cost Reduction Strategies</h2>
+<h3>Selective Blocking by Content Tier</h3>
+<p><strong>Not all content is equally valuable.</strong> Optimize bandwidth by restricting bot access to premium content.</p>
+<p><strong>Strategy:</strong></p>
+<ul>
+<li><strong>Public articles:</strong> Allow all bots</li>
+<li><strong>Premium/paywalled content:</strong> Block unlicensed bots</li>
+</ul>
+<p><strong>Robots.txt:</strong></p>
+<pre><code>User-agent: GPTBot
+Disallow: /premium/
+Disallow: /subscriber-only/
+
+User-agent: ClaudeBot
+Allow: /
+</code></pre>
+<p><strong>Effect:</strong> Licensed bots (ClaudeBot) access full site. Unlicensed bots (GPTBot) limited to free content.</p>
+<p><strong>Bandwidth savings:</strong> If premium content is 30% of site and generates 40% of bot traffic:</p>
+<p>Total bot bandwidth: 500 GB/month</p>
+<p>Premium content bandwidth: 200 GB</p>
+<p>Blocking unlicensed bots from premium: saves 200 GB × 50% (assume half of bots unlicensed) = 100 GB</p>
+<p><strong>Cost savings:</strong> 100 GB × $0.08 = $8/month ($96/year)</p>
+<p><strong>Plus:</strong> Licensing leverage increases. &quot;Want access to premium archives? License required.&quot;</p>
+<h3>Rate Limiting Implementation</h3>
+<p><strong>Reduce bandwidth by controlling request frequency.</strong></p>
+<p><strong>Nginx rate limiting:</strong></p>
+<pre><code class="language-nginx">limit_req_zone $http_user_agent zone=bot_limit:10m rate=5r/s;
+
+location / {
+    if ($http_user_agent ~* &quot;GPTBot|ClaudeBot&quot;) {
+        limit_req zone=bot_limit burst=10;
+    }
+}
+</code></pre>
+<p><strong>Effect:</strong> Bots limited to 5 requests/second. Bursts up to 10 allowed. Excess requests return 429 (rate limit exceeded).</p>
+<p><strong>Bandwidth impact:</strong></p>
+<p>If bot previously hammered site at 50 req/sec, rate limit reduces to 5 req/sec (90% reduction).</p>
+<p><strong>Bandwidth savings:</strong> 90% × bot bandwidth = 450 GB/month if bot consumed 500 GB.</p>
+<p><strong>Cost savings:</strong> 450 GB × $0.08 = $36/month ($432/year)</p>
+<p><strong>Trade-off:</strong> Slower crawling. AI company might complain. Use as negotiation tool: &quot;Lift rate limits when you license.&quot;</p>
+<h3>Efficient Content Delivery to Bots</h3>
+<p><strong>Serve minimal HTML to bots.</strong> They don&#39;t need full-featured web pages (CSS, JavaScript, ads, tracking pixels).</p>
+<p><strong>Implementation:</strong></p>
+<p>Detect bot requests, serve simplified HTML.</p>
+<p><strong>Nginx:</strong></p>
+<pre><code class="language-nginx">location / {
+    if ($http_user_agent ~* &quot;GPTBot&quot;) {
+        rewrite ^ /bot-view$uri last;
+    }
+}
+
+location /bot-view/ {
+    # Serve stripped-down HTML (text only)
+    root /var/www/bot-content;
+}
+</code></pre>
+<p><strong>/bot-content/</strong> contains text-only versions of articles (no images, no styling).</p>
+<p><strong>Bandwidth comparison:</strong></p>
+<ul>
+<li>Full article page: 150KB</li>
+<li>Bot-optimized page: 20KB</li>
+</ul>
+<p><strong>Savings:</strong> 87% per request.</p>
+<p><strong>Scaling:</strong></p>
+<p>50,000 bot requests × 130KB saved = 6.5 GB/month</p>
+<p><strong>Cost savings:</strong> 6.5 GB × $0.08 = $0.52/month</p>
+<p><strong>Minimal savings for small publishers, but large publishers (millions of requests) save hundreds per month.</strong></p>
+<p><strong>Bonus:</strong> Faster responses for bots (less data transferred = faster crawl completion = happier AI company).</p>
+<h2>Long-Term Cost Projections</h2>
+<h3>AI Training Cycle Bandwidth Spikes</h3>
+<p><strong>AI models are retrained periodically.</strong></p>
+<p><strong>GPT-5 training:</strong> OpenAI scrapes internet again, ingesting updated content.</p>
+<p><strong>Implication:</strong> Bandwidth spikes during training cycles.</p>
+<p><strong>Historical pattern (estimated):</strong></p>
+<ul>
+<li><strong>Baseline:</strong> 500 GB/month (routine retrieval/indexing)</li>
+<li><strong>Training cycle:</strong> 5TB in 2-week period (10× spike)</li>
+</ul>
+<p><strong>Annual cost:</strong></p>
+<p>Baseline: 500 GB × 10 months = 5TB</p>
+<p>Training spike: 5TB × 2 cycles = 10TB</p>
+<p><strong>Total:</strong> 15TB/year</p>
+<p><strong>Cost:</strong> 15,000 GB × $0.08 = $1,200</p>
+<p><strong>Without accounting for spikes:</strong> Projected $480/year (500 GB × 12 months).</p>
+<p><strong>Underestimate by 2.5×.</strong></p>
+<p><strong>Planning:</strong> Include training cycle spikes in cost models. Licensing deals should cover peak usage, not just baseline.</p>
+<h3>Scaling Costs with AI Product Growth</h3>
+<p><strong>AI adoption is accelerating.</strong></p>
+<p>2023: ChatGPT 100M users</p>
+<p>2025: ChatGPT 500M+ users, Claude 200M+, Perplexity 50M+</p>
+<p><strong>More users = more queries = more content scraping.</strong></p>
+<p><strong>Projection:</strong></p>
+<p>If AI usage grows 50% annually, crawler bandwidth grows proportionally.</p>
+<p><strong>Year 1:</strong> 500 GB ($40/month)</p>
+<p><strong>Year 2:</strong> 750 GB ($60/month)</p>
+<p><strong>Year 3:</strong> 1,125 GB ($90/month)</p>
+<p><strong>5-year total:</strong> $3,600 (compared to $2,400 if growth ignored).</p>
+<p><strong>Licensing strategy:</strong> Build escalation clauses into contracts.</p>
+<p>&quot;Annual fee increases 20% per year to reflect growing usage of content in AI products.&quot;</p>
+<p>Or tie fees to request volume:</p>
+<p>&quot;Base fee $25K covers 100,000 requests annually. Additional requests billed at $0.10 each.&quot;</p>
+<h2>FAQ</h2>
+<h3>How do I measure AI crawler bandwidth if I don&#39;t have detailed logs?</h3>
+<p><strong>Web analytics (Google Analytics, Matomo):</strong> Segment bot traffic, estimate bandwidth using average page size. <strong>Formula:</strong> Bot visits × pages/visit × avg page size = bandwidth. <strong>Example:</strong> 10,000 bot visits × 3 pages/visit × 100KB/page = 3GB. <strong>Imprecise but directional.</strong> For accurate measurement, enable detailed server logging (Apache/Nginx access logs record bytes transferred per request). If hosting on cloud platform (AWS, Google Cloud), check egress metrics in billing dashboard—shows total outbound bandwidth (includes bots).</p>
+<h3>Is bandwidth my biggest AI scraping cost or are compute/database larger?</h3>
+<p><strong>Depends on architecture.</strong> <strong>Static sites</strong> (pre-rendered HTML): Bandwidth dominates (minimal compute/database). <strong>Dynamic sites</strong> (WordPress, Drupal, custom CMS): Compute and database costs can equal or exceed bandwidth. <strong>High-traffic sites</strong> (millions of monthly visitors): Bandwidth typically largest (servers already sized for compute load, bots add incremental bandwidth without proportional compute increase). <strong>Rule of thumb:</strong> Bandwidth = 60-80% of total crawler cost for most publishers. Run full cost model to confirm.</p>
+<h3>Should I factor in opportunity cost when calculating crawler expenses?</h3>
+<p><strong>Yes, especially at scale.</strong> Bot traffic consumes server capacity. <strong>Example:</strong> Server handles 10,000 req/hour max. Bots consume 1,000 req/hour (10%). During traffic spikes (viral article, breaking news), bot traffic delays human user responses or forces infrastructure upgrades. <strong>Opportunity cost:</strong> Could serve 1,000 more human visitors (with ad impressions, subscription conversion) if bots weren&#39;t consuming capacity. <strong>Quantify:</strong> Ad RPM × (bot requests / 1000) = foregone ad revenue. <strong>Advanced:</strong> Run A/B test blocking bots temporarily, measure human traffic performance improvement.</p>
+<h3>At what traffic level does crawler bandwidth cost become material?</h3>
+<p><strong>&lt;100K monthly visitors:</strong> Usually immaterial ($0-10/month). Included in hosting plans. <strong>100K-1M visitors:</strong> $20-100/month. Noticeable but manageable. Worth monitoring, not critical. <strong>1M-10M visitors:</strong> $100-1,000/month. Material enough to justify licensing conversations. <strong>10M+ visitors:</strong> $1,000-10,000+/month. Strategic issue. Licensing becomes business imperative. <strong>Threshold:</strong> When crawler cost exceeds 0.5% of revenue OR exceeds $500/month, prioritize monetization.</p>
+<h3>How do licensing fees compare to actual bandwidth costs?</h3>
+<p><strong>Licensing fees are typically 10-100× bandwidth costs.</strong> <strong>Example:</strong> Publisher&#39;s crawler bandwidth cost = $5,000/year. Licensing deal = $150,000/year. <strong>30× multiple.</strong> This isn&#39;t price gouging—you&#39;re selling content value, not bandwidth. AI company derives millions in revenue from your content. Bandwidth cost is floor (minimum to break even), not ceiling. Price on strategic value: content quality, exclusivity, competitive differentiation. If AI company can&#39;t function without your content (specialized domain, authoritative source), fees should reflect that leverage. Bandwidth cost justifies &quot;we deserve compensation,&quot; not &quot;compensation should equal cost.&quot;</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
