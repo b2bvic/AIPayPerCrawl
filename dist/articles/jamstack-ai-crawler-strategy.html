@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAMstack AI Crawler Strategy: Static Sites, Headless CMS, and Training Data Control | AI Pay Per Crawl</title>
+    <meta name="description" content="Manage AI crawler access for JAMstack architectures using static site generators, headless CMS, and edge functions. Unique challenges and solutions.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="JAMstack AI Crawler Strategy: Static Sites, Headless CMS, and Training Data Control">
+    <meta property="og:description" content="Manage AI crawler access for JAMstack architectures using static site generators, headless CMS, and edge functions. Unique challenges and solutions.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/jamstack-ai-crawler-strategy">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JAMstack AI Crawler Strategy: Static Sites, Headless CMS, and Training Data Control">
+    <meta name="twitter:description" content="Manage AI crawler access for JAMstack architectures using static site generators, headless CMS, and edge functions. Unique challenges and solutions.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/jamstack-ai-crawler-strategy">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "JAMstack AI Crawler Strategy: Static Sites, Headless CMS, and Training Data Control",
+  "description": "Manage AI crawler access for JAMstack architectures using static site generators, headless CMS, and edge functions. Unique challenges and solutions.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/jamstack-ai-crawler-strategy"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "JAMstack AI Crawler Strategy: Static Sites, Headless CMS, and Training Data Control",
+      "item": "https://aipaypercrawl.com/articles/jamstack-ai-crawler-strategy"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>JAMstack AI Crawler Strategy: Static Sites, Headless CMS, and Training Data Control</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 7 min read</span>
+        <h1>JAMstack AI Crawler Strategy: Static Sites, Headless CMS, and Training Data Control</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Manage AI crawler access for JAMstack architectures using static site generators, headless CMS, and edge functions. Unique challenges and solutions.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>JAMstack AI Crawler Strategy: Static Sites, Headless CMS, and Training Data Control</h1>
+<p>JAMstack architectures present unique challenges and opportunities for AI crawler management. Static site generators produce HTML at build time rather than server runtime, CDN delivery eliminates traditional server-side controls, and headless CMS systems separate content storage from presentation. Publishers using <strong>Gatsby</strong>, <strong>Next.js</strong>, <strong>Hugo</strong>, <strong>Jekyll</strong>, or similar tools need adapted strategies for crawler control, combining build-time file generation, edge computing, and API gateway controls unavailable in traditional server environments.</p>
+<h2>Static Site Generation and robots.txt</h2>
+<p>JAMstack sites generate robots.txt during build process rather than serving it dynamically. Create templates in your SSG:</p>
+<p><strong>Hugo</strong> example (<code>layouts/robots.txt</code>):</p>
+<pre><code>User-agent: *
+Crawl-delay: 1
+
+User-agent: GPTBot
+Disallow: /
+Allow: /blog/
+
+User-agent: ClaudeBot  
+Disallow: /
+
+User-agent: Google-Extended
+{{ if eq .Site.Params.allowGoogleAI true }}
+Allow: /
+{{ else }}
+Disallow: /
+{{ end }}
+</code></pre>
+<p>The <code>{{ if }}</code> conditional generates different robots.txt based on site configuration, enabling environment-specific rules (allow crawlers in staging, block in production).</p>
+<p><strong>Next.js</strong> example (<code>public/robots.txt</code> or API route):</p>
+<pre><code class="language-typescript">// pages/api/robots.ts
+import { NextApiRequest, NextApiResponse } from &#39;next&#39;
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const allowAICrawlers = process.env.ALLOW_AI_CRAWLERS === &#39;true&#39;
+  
+  const robotsTxt = `
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+${allowAICrawlers ? &#39;Allow: /&#39; : &#39;Disallow: /&#39;}
+
+User-agent: ClaudeBot
+${allowAICrawlers ? &#39;Allow: /&#39; : &#39;Disallow: /&#39;}
+`
+  
+  res.setHeader(&#39;Content-Type&#39;, &#39;text/plain&#39;)
+  res.send(robotsTxt)
+}
+</code></pre>
+<p>This generates robots.txt dynamically via API route, reading environment variables to control crawler access per deployment environment.</p>
+<h2>CDN and Edge Function Controls</h2>
+<p>JAMstack sites deploy to CDNs (<strong>Netlify</strong>, <strong>Vercel</strong>, <strong>Cloudflare Pages</strong>) lacking traditional server-side rate limiting. Edge functions provide crawler control at CDN edge:</p>
+<p><strong>Cloudflare Workers</strong> example:</p>
+<pre><code class="language-javascript">export default {
+  async fetch(request, env) {
+    const ua = request.headers.get(&#39;user-agent&#39;) || &#39;&#39;
+    const isAICrawler = /GPTBot|ClaudeBot|Google-Extended/.test(ua)
+    
+    if (!isAICrawler) {
+      return env.ASSETS.fetch(request)
+    }
+    
+    // Check rate limit
+    const ip = request.headers.get(&#39;cf-connecting-ip&#39;)
+    const key = `crawler:${ip}`
+    const count = await env.KV.get(key) || 0
+    
+    if (count &gt; 1000) {
+      return new Response(&#39;Rate limit exceeded&#39;, { status: 429 })
+    }
+    
+    await env.KV.put(key, parseInt(count) + 1, { expirationTtl: 86400 })
+    
+    const response = await env.ASSETS.fetch(request)
+    response.headers.set(&#39;X-Robots-Tag&#39;, &#39;GPTBot: noindex, nofollow&#39;)
+    return response
+  }
+}
+</code></pre>
+<p>This worker detects AI crawlers, implements rate limiting via KV store, and adds X-Robots-Tag headers—all at CDN edge without origin server.</p>
+<p><strong>Netlify</strong> edge functions:</p>
+<pre><code class="language-typescript">import type { Context } from &quot;@netlify/edge-functions&quot;
+
+export default async (request: Request, context: Context) =&gt; {
+  const ua = request.headers.get(&#39;user-agent&#39;) || &#39;&#39;
+  
+  if (ua.includes(&#39;GPTBot&#39;)) {
+    return new Response(&#39;Access denied for AI training&#39;, { 
+      status: 403,
+      headers: { &#39;X-Robots-Tag&#39;: &#39;noindex, nofollow&#39; }
+    })
+  }
+  
+  return context.next()
+}
+</code></pre>
+<p><strong>Vercel</strong> middleware:</p>
+<pre><code class="language-typescript">import { NextResponse } from &#39;next/server&#39;
+import type { NextRequest } from &#39;next/server&#39;
+
+export function middleware(request: NextRequest) {
+  const ua = request.headers.get(&#39;user-agent&#39;) || &#39;&#39;
+  
+  if (ua.includes(&#39;GPTBot&#39;) || ua.includes(&#39;ClaudeBot&#39;)) {
+    const response = NextResponse.next()
+    response.headers.set(&#39;X-Robots-Tag&#39;, &#39;noindex, nofollow, noarchive&#39;)
+    return response
+  }
+  
+  return NextResponse.next()
+}
+</code></pre>
+<p>These platform-specific approaches implement crawler controls without traditional web servers.</p>
+<h2>Headless CMS API Gateway Controls</h2>
+<p>JAMstack sites fetch content from headless CMS (<strong>Contentful</strong>, <strong>Sanity</strong>, <strong>Strapi</strong>) via APIs. If AI crawlers access CMS APIs directly (bypassing static site), implement API-level controls.</p>
+<p><strong>Strapi</strong> middleware blocking crawlers:</p>
+<pre><code class="language-javascript">// middlewares/crawlerBlock.js
+module.exports = (config, { strapi }) =&gt; {
+  return async (ctx, next) =&gt; {
+    const ua = ctx.request.headers[&#39;user-agent&#39;] || &#39;&#39;
+    const aiCrawlers = [&#39;GPTBot&#39;, &#39;ClaudeBot&#39;, &#39;Google-Extended&#39;]
+    
+    if (aiCrawlers.some(crawler =&gt; ua.includes(crawler))) {
+      ctx.status = 403
+      ctx.body = { error: &#39;AI crawler access not permitted&#39; }
+      return
+    }
+    
+    await next()
+  }
+}
+</code></pre>
+<p><strong>Contentful</strong> webhook-based access control:</p>
+<p>Contentful doesn&#39;t directly support user-agent filtering, but you can proxy API requests through Cloudflare Worker:</p>
+<pre><code class="language-javascript">// Contentful API proxy with crawler blocking
+const CONTENTFUL_API = &#39;https://cdn.contentful.com&#39;
+
+export default {
+  async fetch(request, env) {
+    const ua = request.headers.get(&#39;user-agent&#39;)
+    if (ua.includes(&#39;GPTBot&#39;)) {
+      return new Response(&#39;Forbidden&#39;, { status: 403 })
+    }
+    
+    const url = new URL(request.url)
+    url.hostname = &#39;cdn.contentful.com&#39;
+    return fetch(url.toString(), {
+      headers: request.headers
+    })
+  }
+}
+</code></pre>
+<p>Deploy this worker, point your site to worker URL instead of direct Contentful API, gaining crawler control.</p>
+<h2>Build-Time Content Segmentation</h2>
+<p>Generate separate static builds for public vs. licensed content:</p>
+<pre><code class="language-bash"># Build public site (allow crawlers)
+CONTENT_TIER=public ALLOW_CRAWLERS=true gatsby build
+
+# Build premium site (block crawlers)  
+CONTENT_TIER=premium ALLOW_CRAWLERS=false gatsby build --prefix-paths
+
+# Deploy to different paths
+aws s3 sync public/ s3://bucket/public/
+aws s3 sync public-premium/ s3://bucket/premium/
+</code></pre>
+<p>This creates <code>/public/</code> path with permissive robots.txt and <code>/premium/</code> path with restrictive robots.txt. Deploy to separate subdirectories or subdomains, each with appropriate crawler policies.</p>
+<h2>Git-Based Workflow Integration</h2>
+<p>JAMstack sites often deploy from Git commits. Implement pre-commit hooks validating crawler policies:</p>
+<pre><code class="language-bash">#!/bin/bash
+# .git/hooks/pre-commit
+
+# Check robots.txt contains AI crawler blocks
+if ! grep -q &quot;User-agent: GPTBot&quot; static/robots.txt; then
+  echo &quot;Error: robots.txt missing GPTBot block&quot;
+  exit 1
+fi
+
+# Validate no sensitive content in public paths
+if grep -r &quot;CONFIDENTIAL&quot; content/public/; then
+  echo &quot;Error: Confidential content in public directory&quot;
+  exit 1
+fi
+
+exit 0
+</code></pre>
+<p>This prevents accidental deployment of content without proper crawler restrictions.</p>
+<h2>Incremental Static Regeneration Considerations</h2>
+<p><strong>Next.js ISR</strong> regenerates pages on-demand, creating hybrid static/dynamic behavior. Crawler controls must account for this:</p>
+<pre><code class="language-typescript">// pages/article/[slug].tsx
+export async function getStaticProps({ params }) {
+  const article = await fetchArticle(params.slug)
+  
+  return {
+    props: { article },
+    revalidate: 3600, // Regenerate hourly
+    // Add crawler control headers (requires middleware)
+  }
+}
+</code></pre>
+<p>Middleware adds headers to ISR responses:</p>
+<pre><code class="language-typescript">export function middleware(request: NextRequest) {
+  const response = NextResponse.next()
+  
+  if (request.nextUrl.pathname.startsWith(&#39;/article/&#39;)) {
+    response.headers.set(&#39;X-Robots-Tag&#39;, &#39;GPTBot: noindex&#39;)
+  }
+  
+  return response
+}
+</code></pre>
+<p>This blocks AI crawlers from ISR content while allowing search indexing.</p>
+<h2>Client-Side Routing and SPA Challenges</h2>
+<p>Single-page applications using client-side routing may serve all routes from single HTML file. Crawlers executing JavaScript see full site; those parsing raw HTML see placeholder. Implement prerendering for crawler-visible content:</p>
+<p><strong>Gatsby</strong> automatically prerrenders all routes. <strong>Next.js</strong> requires <code>getStaticPaths</code>:</p>
+<pre><code class="language-typescript">export async function getStaticPaths() {
+  const paths = await fetchAllArticleSlugs()
+  
+  return {
+    paths: paths.map(slug =&gt; ({ params: { slug } })),
+    fallback: &#39;blocking&#39;
+  }
+}
+</code></pre>
+<p>This prerenders all article routes, making them crawlable. Apply robots.txt rules to control which prerendered pages crawlers access.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Can I use .htaccess for crawler control on JAMstack sites?</h3>
+<p>No, JAMstack sites serve via CDNs without Apache servers. Use edge functions, robots.txt, or X-Robots-Tag headers instead. If you must use Apache-style rules, deploy via Apache/Nginx reverse proxy rather than pure CDN.</p>
+<h3>How do I rate-limit crawlers without server-side rate limiting modules?</h3>
+<p>Edge functions with KV stores (Cloudflare Workers, Vercel Edge Config) implement rate limiting at CDN edge. Alternatively, use CDN platform rate limiting features (Cloudflare Rate Limiting rules, Fastly Rate Limiting).</p>
+<h3>Do AI crawlers respect robots.txt on static sites differently?</h3>
+<p>No, crawler behavior doesn&#39;t change based on site architecture. However, static sites lack dynamic enforcement, so compliance depends entirely on crawler cooperation. Edge functions add enforcement layer.</p>
+<h3>Can I generate different robots.txt per deployment environment?</h3>
+<p>Yes, use environment variables in SSG templates or dynamic API routes. Development/staging allows crawlers; production blocks them. This prevents accidentally indexing non-production content.</p>
+<h3>How do I track crawler access on CDN-hosted static sites?</h3>
+<p>CDN logs (Cloudflare Logs, Netlify Analytics, Vercel Analytics) capture crawler traffic. Export logs and analyze with tools like GoAccess. Some CDNs offer built-in bot analytics dashboards.</p>
+<h2>Conclusion</h2>
+<p>JAMstack architectures require adapted crawler management strategies leveraging build-time configuration, edge computing, and CDN platform features rather than traditional server-side controls. Static site generators produce robots.txt during builds, edge functions implement rate limiting and header injection at CDN edge, headless CMS APIs require gateway-level blocking, and Git-based workflows enable policy validation through hooks. Publishers using JAMstack benefit from performance, scalability, and security advantages while maintaining crawler control through platform-specific tools and creative architectural patterns. The key lies in recognizing where control points exist (build time, edge layer, API gateway) and implementing appropriate restrictions at each layer to achieve defense-in-depth protecting content from unauthorized AI training.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

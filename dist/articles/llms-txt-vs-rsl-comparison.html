@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>llms.txt vs RSL: Comparing AI Crawler Communication Standards | AI Pay Per Crawl</title>
+    <meta name="description" content="Compare llms.txt and Robots-Static-Link (RSL) proposals for AI crawler control. Which standard best serves publisher needs? Technical and strategic analysis.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="llms.txt vs RSL: Comparing AI Crawler Communication Standards">
+    <meta property="og:description" content="Compare llms.txt and Robots-Static-Link (RSL) proposals for AI crawler control. Which standard best serves publisher needs? Technical and strategic analysis.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/llms-txt-vs-rsl-comparison">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="llms.txt vs RSL: Comparing AI Crawler Communication Standards">
+    <meta name="twitter:description" content="Compare llms.txt and Robots-Static-Link (RSL) proposals for AI crawler control. Which standard best serves publisher needs? Technical and strategic analysis.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/llms-txt-vs-rsl-comparison">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "llms.txt vs RSL: Comparing AI Crawler Communication Standards",
+  "description": "Compare llms.txt and Robots-Static-Link (RSL) proposals for AI crawler control. Which standard best serves publisher needs? Technical and strategic analysis.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/llms-txt-vs-rsl-comparison"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "llms.txt vs RSL: Comparing AI Crawler Communication Standards",
+      "item": "https://aipaypercrawl.com/articles/llms-txt-vs-rsl-comparison"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>llms.txt vs RSL: Comparing AI Crawler Communication Standards</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 5 min read</span>
+        <h1>llms.txt vs RSL: Comparing AI Crawler Communication Standards</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Compare llms.txt and Robots-Static-Link (RSL) proposals for AI crawler control. Which standard best serves publisher needs? Technical and strategic analysis.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>llms.txt vs RSL: Comparing AI Crawler Communication Standards</h1>
+<p>Two competing proposals aim to standardize publisher-AI crawler communication: <strong>llms.txt</strong> (descriptive content file) and <strong>RSL</strong> (Robots-Static-Link, embedded HTML metadata). Both address limitations of robots.txt for AI-specific use cases, but differ in implementation approach, technical requirements, and strategic positioning. Publishers must evaluate which standard (or both) best aligns with their content architecture, licensing strategy, and operational capabilities.</p>
+<h2>llms.txt Technical Overview</h2>
+<p><strong>Location</strong>: <code>/llms.txt</code> at site root (analogous to <code>/robots.txt</code>)
+<strong>Format</strong>: Plain text with structured sections
+<strong>Discovery</strong>: Crawlers check known location
+<strong>Content</strong>: Licensing terms, API endpoints, structured data feeds, content recommendations</p>
+<p>Example:</p>
+<pre><code># llms.txt for example.com
+## Licensing
+Default License: All Rights Reserved
+Contact: licensing@example.com
+</code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Simple text file, easy to create and maintain</li>
+<li>No changes to existing HTML templates required</li>
+<li>Centralized location for all AI crawler information</li>
+<li>Separates concerns (robots.txt blocks, llms.txt informs)</li>
+<li>Crawlers can check once per domain rather than per page</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Requires crawlers to know about llms.txt convention</li>
+<li>Not linked from HTML, relies on convention adoption</li>
+<li>Cannot provide page-specific licensing information easily</li>
+<li>Requires separate file maintenance outside CMS</li>
+</ul>
+<h2>RSL Technical Overview</h2>
+<p><strong>Location</strong>: <code>&lt;link&gt;</code> tag in HTML <code>&lt;head&gt;</code> section
+<strong>Format</strong>: HTML metadata pointing to structured data
+<strong>Discovery</strong>: Embedded in every page
+<strong>Content</strong>: Links to licensing info, APIs, attribution requirements</p>
+<p>Example:</p>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;link rel=&quot;robots-static-link&quot; href=&quot;/ai-policy.json&quot; type=&quot;application/json&quot; /&gt;
+  &lt;link rel=&quot;license&quot; href=&quot;https://example.com/license&quot; /&gt;
+  &lt;meta name=&quot;ai-training&quot; content=&quot;allowed-with-attribution&quot; /&gt;
+&lt;/head&gt;
+</code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Page-level granularity (different pages, different terms)</li>
+<li>Uses existing HTML metadata standards</li>
+<li>Discoverable by any crawler parsing HTML</li>
+<li>CMS templates can generate automatically</li>
+<li>No new file conventions to adopt</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Requires HTML template modifications</li>
+<li>Adds bytes to every page (minor bandwidth impact)</li>
+<li>Crawler must parse HTML to discover information</li>
+<li>More complex than simple text file approach</li>
+</ul>
+<h2>Use Case Comparison</h2>
+<p><strong>Publisher Type: News Site With Tiered Licensing</strong></p>
+<p>llms.txt Approach:</p>
+<pre><code># llms.txt
+## Licensing
+Public Archive (pre-2022): CC BY-NC 4.0
+Recent Content (2022+): Commercial license required
+Contact: licensing@example.com
+</code></pre>
+<p>Single file describes different sections, but mapping URL patterns to licensing tiers requires crawlers to understand directory structure conventions.</p>
+<p>RSL Approach:</p>
+<pre><code class="language-html">&lt;!-- On archive pages --&gt;
+&lt;link rel=&quot;license&quot; href=&quot;https://creativecommons.org/licenses/by-nc/4.0/&quot; /&gt;
+
+&lt;!-- On recent articles --&gt;
+&lt;meta name=&quot;ai-training&quot; content=&quot;requires-license&quot; /&gt;
+&lt;link rel=&quot;licensing-contact&quot; href=&quot;https://example.com/licensing&quot; /&gt;
+</code></pre>
+<p>Each page explicitly declares licensing, eliminating ambiguity.</p>
+<p><strong>Winner for Tiered Licensing</strong>: RSL provides clearer per-page granularity.</p>
+<p><strong>Publisher Type: Open Access Research Repository</strong></p>
+<p>llms.txt Approach:</p>
+<pre><code># llms.txt
+## About
+Content: 50,000 peer-reviewed papers
+License: CC BY 4.0
+Bulk Download: https://example.org/data/export.tar.gz
+API: https://api.example.org/v1/
+</code></pre>
+<p>Centralized description of entire repository, links to bulk access methods AI companies prefer.</p>
+<p>RSL Approach:
+Every paper includes:</p>
+<pre><code class="language-html">&lt;link rel=&quot;license&quot; href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; /&gt;
+&lt;meta name=&quot;dc.identifier&quot; content=&quot;DOI:10.1234/example&quot; /&gt;
+</code></pre>
+<p>Crawlers verify licensing per-paper but miss bulk download opportunities without checking every page.</p>
+<p><strong>Winner for Bulk Access</strong>: llms.txt better communicates efficient access methods.</p>
+<p><strong>Publisher Type: Mixed Public-Private Content Platform</strong></p>
+<p>llms.txt Approach:</p>
+<pre><code># llms.txt
+## Access
+Public Content: /public/ (open access)
+Member Content: /members/ (restricted)
+Premium Content: /premium/ (licensing available)
+</code></pre>
+<p>Requires crawlers to respect directory-based access rules.</p>
+<p>RSL Approach:
+Public pages:</p>
+<pre><code class="language-html">&lt;meta name=&quot;ai-training&quot; content=&quot;allowed&quot; /&gt;
+</code></pre>
+<p>Member pages:</p>
+<pre><code class="language-html">&lt;meta name=&quot;ai-training&quot; content=&quot;restricted&quot; /&gt;
+&lt;meta name=&quot;robots&quot; content=&quot;noindex, nofollow&quot; /&gt;
+</code></pre>
+<p>Each page declares own status explicitly.</p>
+<p><strong>Winner for Mixed Content</strong>: RSL provides unambiguous per-page declarations.</p>
+<h2>Implementation Complexity</h2>
+<p><strong>llms.txt</strong>:</p>
+<ul>
+<li>Difficulty: Low</li>
+<li>Steps: Create text file, upload to web root</li>
+<li>Maintenance: Edit file when terms change</li>
+<li>CMS Integration: Minimal (static file)</li>
+<li>Best For: Publishers with simple licensing, small teams</li>
+</ul>
+<p><strong>RSL</strong>:</p>
+<ul>
+<li>Difficulty: Medium</li>
+<li>Steps: Modify HTML templates, add meta tags, link elements</li>
+<li>Maintenance: Update templates when terms change</li>
+<li>CMS Integration: Requires theme/template access</li>
+<li>Best For: Publishers with complex licensing, technical resources</li>
+</ul>
+<h2>Adoption and Industry Support</h2>
+<p><strong>llms.txt</strong>:</p>
+<ul>
+<li>Status: Proposed by AI researchers, gaining grassroots traction</li>
+<li>Implementation: Some publishers experimenting</li>
+<li>Crawler Support: Limited explicit support, crawlers may check organically</li>
+<li>Future: Depends on community adoption</li>
+</ul>
+<p><strong>RSL</strong>:</p>
+<ul>
+<li>Status: Proposed by web standards advocates</li>
+<li>Implementation: Few production examples</li>
+<li>Crawler Support: No confirmed crawler implementations</li>
+<li>Future: Requires broader standards body endorsement</li>
+</ul>
+<h2>Strategic Positioning</h2>
+<p><strong>llms.txt Signals</strong>:
+&quot;We&#39;re organized, have clear policies, offer structured access&quot;
+Positions publisher as professional, licensing-ready, crawler-friendly</p>
+<p><strong>RSL Signals</strong>:
+&quot;We&#39;ve integrated AI considerations into our content architecture&quot;
+Positions publisher as technically sophisticated, precise about rights</p>
+<p><strong>Both Together</strong>:
+llms.txt for domain-level policies + RSL for page-level specificity
+Maximum clarity, some redundancy, highest implementation effort</p>
+<h2>Recommendations by Publisher Profile</h2>
+<p><strong>Small Publisher, Simple Licensing</strong>:
+Use llms.txt only. Quick implementation, sufficient granularity.</p>
+<p><strong>Large Publisher, Complex Licensing</strong>:
+Implement both. llms.txt for overview, RSL for page-level precision.</p>
+<p><strong>Technical Publisher With API Focus</strong>:
+Prioritize llms.txt, advertise APIs and bulk access prominently.</p>
+<p><strong>Mixed Content Platform</strong>:
+RSL essential for per-page licensing declarations. llms.txt optional for overview.</p>
+<p><strong>E-commerce/Reviews</strong>:
+llms.txt for policy, RSL if different product categories have different licensing.</p>
+<p><strong>Frequently Asked Questions:</strong></p>
+<p><strong>Do I need to implement both?</strong>
+Not required, but complementary. llms.txt for domain overview, RSL for page specifics.</p>
+<p><strong>Which will AI crawlers actually adopt?</strong>
+Uncertain. Implement both to maximize coverage until industry converges on standard.</p>
+<p><strong>Can I use llms.txt with traditional robots.txt?</strong>
+Yes, they serve different purposes. robots.txt controls access, llms.txt describes content and licensing.</p>
+<p><strong>Does RSL work with client-side rendered sites?</strong>
+Yes, but RSL meta tags must appear in server-rendered HTML, not JavaScript-injected. SSR or pre-rendering required.</p>
+<p><strong>Which standard is more future-proof?</strong>
+Unclear. llms.txt simpler, lower maintenance; RSL more granular, flexible. Implement your primary standard well rather than partially implementing both.</p>
+<p>Publishers should monitor AI company announcements, crawler documentation updates, and industry discussions to track which standard gains traction. Early implementation demonstrates proactive engagement, potentially improving crawler cooperation and licensing inquiry rates regardless of which standard ultimately dominates.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

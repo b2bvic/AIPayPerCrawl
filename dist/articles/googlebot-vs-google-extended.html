@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Googlebot vs Google-Extended: Technical Differences and Control Strategies | AI Pay Per Crawl</title>
+    <meta name="description" content="Googlebot indexes for search while Google-Extended trains AI models. Learn the technical differences, IP ranges, user-agents, and robots.txt strategies for each.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Googlebot vs Google-Extended: Technical Differences and Control Strategies">
+    <meta property="og:description" content="Googlebot indexes for search while Google-Extended trains AI models. Learn the technical differences, IP ranges, user-agents, and robots.txt strategies for each.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/googlebot-vs-google-extended">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Googlebot vs Google-Extended: Technical Differences and Control Strategies">
+    <meta name="twitter:description" content="Googlebot indexes for search while Google-Extended trains AI models. Learn the technical differences, IP ranges, user-agents, and robots.txt strategies for each.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/googlebot-vs-google-extended">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Googlebot vs Google-Extended: Technical Differences and Control Strategies",
+  "description": "Googlebot indexes for search while Google-Extended trains AI models. Learn the technical differences, IP ranges, user-agents, and robots.txt strategies for each.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/googlebot-vs-google-extended"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Googlebot vs Google-Extended: Technical Differences and Control Strategies",
+      "item": "https://aipaypercrawl.com/articles/googlebot-vs-google-extended"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Googlebot vs Google-Extended: Technical Differences and Control Strategies</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 15 min read</span>
+        <h1>Googlebot vs Google-Extended: Technical Differences and Control Strategies</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Googlebot indexes for search while Google-Extended trains AI models. Learn the technical differences, IP ranges, user-agents, and robots.txt strategies for each.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Googlebot vs Google-Extended: Technical Differences and Control Strategies</h1>
+<p><strong>Googlebot</strong> and <strong>Google-Extended</strong> serve fundamentally different purposes within Google&#39;s infrastructure—one indexes content for search results, the other ingests data for AI model training. Publishers who treat them identically miss opportunities to monetize AI training while preserving search visibility, or inadvertently block search indexing when intending only to restrict AI access. The technical distinctions between these crawlers dictate control strategies, from robots.txt configuration to licensing negotiations and bandwidth allocation.</p>
+<h2>Purpose and Operational Context</h2>
+<p><strong>Googlebot</strong> crawls the web to populate Google&#39;s search index, discovering new pages, updating existing entries, and checking for site changes. Search indexing creates an immediate value exchange: Google drives referral traffic back to publishers through search results, ads, and features like Featured Snippets. Publishers tolerate—even encourage—<strong>Googlebot</strong> access because it delivers visitor acquisition, a measurable ROI that justifies hosting and bandwidth costs.</p>
+<p><strong>Google-Extended</strong> trains generative AI models like <strong>Gemini</strong>, processing content to extract patterns, relationships, and knowledge that enable language generation. Unlike search indexing, AI training produces no referral traffic. Once a model ingests content, it generates responses directly to user queries rather than linking back to sources. This asymmetry broke the traditional search bargain, prompting Google to create a separate crawler publishers could block without sacrificing search visibility.</p>
+<p>The timing matters. <strong>Google-Extended</strong> launched in September 2023, but <strong>Gemini</strong> (formerly <strong>Bard</strong>) training began earlier using data crawled by <strong>Googlebot</strong>. Publishers blocking <strong>Google-Extended</strong> today don&#39;t &quot;unlearn&quot; content already incorporated into model weights from pre-2023 crawling. This creates a retroactive licensing challenge—AI companies trained on content before publishers had technical means to opt out.</p>
+<p>Google&#39;s decision to separate crawlers acknowledged publisher concerns but also established a precedent: AI training constitutes a distinct use case requiring opt-in (or at minimum opt-out) controls. This architectural choice validated publisher arguments that training differs from search, supporting demands for separate licensing terms and compensation structures.</p>
+<h2>User-Agent Strings and Identification</h2>
+<p><strong>Googlebot</strong> uses two primary user-agent strings for desktop and mobile crawling:</p>
+<p>Desktop: <code>Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</code></p>
+<p>Mobile: <code>Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/W.X.Y.Z Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</code></p>
+<p>The URL <code>http://www.google.com/bot.html</code> provides documentation on <strong>Googlebot</strong> behavior. Crawlers append this to signal legitimacy—scrapers spoofing user-agents often omit the documentation URL or use incorrect formats.</p>
+<p><strong>Google-Extended</strong> user-agent:</p>
+<p><code>Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Google-Extended) Chrome/W.X.Y.Z Safari/537.36</code></p>
+<p>The <code>Google-Extended</code> identifier appears prominently, distinguishing it from search crawlers. Robots.txt rules target this exact string for AI-specific controls. Server logs filtering for <code>Google-Extended</code> isolate AI training requests from search indexing traffic.</p>
+<p>Additional Google crawler variants include <strong>Googlebot-Image</strong>, <strong>Googlebot-Video</strong>, <strong>Googlebot-News</strong>, and <strong>AdsBot-Google</strong>, each with identifying strings. These typically respect <strong>Googlebot</strong> rules in robots.txt unless you create specific directives for each variant. <strong>Google-Extended</strong> operates independently—blocking it doesn&#39;t affect these specialized search crawlers.</p>
+<p>User-agent verification prevents spoofing. Any client can send a false user-agent string claiming to be <strong>Googlebot</strong> or <strong>Google-Extended</strong>. Reverse DNS lookup confirms legitimacy: legitimate Google crawlers resolve to hostnames ending in <code>googlebot.com</code> or <code>google.com</code>, and forward DNS lookups on those hostnames return the same IP. This double-verification eliminates spoofed requests.</p>
+<p>Automation for user-agent verification:</p>
+<pre><code class="language-bash">IP=&quot;66.249.66.1&quot;
+HOST=$(host $IP | grep -oP &#39;(?&lt;=pointer ).*(?=\.)&#39;)
+VERIFY=$(host $HOST | grep -oP &#39;(?&lt;=address ).*&#39;)
+if [ &quot;$IP&quot; == &quot;$VERIFY&quot; ]; then
+  echo &quot;Legitimate Google crawler&quot;
+else
+  echo &quot;Spoofed user-agent&quot;
+fi
+</code></pre>
+<p>This script extracts the hostname via reverse DNS, then checks if forward DNS returns the original IP. Mismatches indicate spoofing attempts, which you can block with firewall rules independent of robots.txt compliance.</p>
+<h2>IP Ranges and Network Infrastructure</h2>
+<p>Google documents official crawler IP ranges, but both <strong>Googlebot</strong> and <strong>Google-Extended</strong> share the same IP pools. Google&#39;s documentation states: &quot;Google-Extended uses the same IP addresses as Googlebot.&quot; This overlap prevents IP-based blocking for crawler differentiation—you must rely on user-agent strings rather than network-layer filters.</p>
+<p>Google publishes IP ranges in JSON format via <code>https://developers.google.com/search/apis/ipranges/googlebot.json</code>, containing IPv4 and IPv6 prefixes. Download and parse this list to allowlist Google crawlers at firewall level, blocking all other traffic claiming to be Google. However, this allowlist permits both <strong>Googlebot</strong> and <strong>Google-Extended</strong>, requiring application-layer filtering (user-agent inspection) for finer control.</p>
+<p>Cloudflare, AWS, and other cloud providers host these IP ranges, as Google crawls from distributed infrastructure rather than centralized data centers. An IP appearing in the official Google ranges might originate from an AWS region in Virginia, GCP zone in Belgium, or third-party hosting provider. This distribution complicates geographic filtering—you cannot simply block specific countries or cloud providers without affecting legitimate crawlers.</p>
+<p>Shared IP infrastructure means that firewalls, CDNs, or load balancers cannot distinguish <strong>Googlebot</strong> from <strong>Google-Extended</strong> without inspecting HTTP headers. Tools like <strong>HAProxy</strong>, <strong>Nginx</strong>, or <strong>Cloudflare Workers</strong> examine user-agent strings at the application layer, applying different rate limits, access controls, or logging rules per crawler type despite identical source IPs.</p>
+<p>Dynamic IP allocation within Google&#39;s ranges creates challenges for static IP allowlists. Google rotates crawler IPs frequently, requiring periodic updates to firewall rules. Automating this with scripts that fetch the official JSON, diff against current rules, and apply changes prevents stale configurations from blocking legitimate crawlers after Google&#39;s IP assignments shift.</p>
+<h2>Robots.txt Configuration for Selective Access</h2>
+<p>Blocking <strong>Google-Extended</strong> while allowing <strong>Googlebot</strong> requires explicit user-agent blocks in robots.txt:</p>
+<pre><code>User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Disallow: /
+</code></pre>
+<p>This configuration permits full search indexing while preventing all AI training access. The order doesn&#39;t matter—robots.txt parsers match the most specific user-agent applicable to each crawler. <strong>Google-Extended</strong> reads the second block and honors the <code>Disallow: /</code> directive.</p>
+<p>Selective content licensing needs finer rules:</p>
+<pre><code>User-agent: Google-Extended
+Disallow: /
+Allow: /public-archive/
+Allow: /*.pdf$
+Disallow: /members/
+</code></pre>
+<p>This allows <strong>Google-Extended</strong> access only to <code>/public-archive/</code> subdirectories and PDF files, while explicitly blocking <code>/members/</code> areas and everything else by default. Use this pattern when licensing specific content types or sections to Google for AI training under negotiated agreements.</p>
+<p>Path-specific rules control different site sections:</p>
+<pre><code>User-agent: Googlebot
+Crawl-delay: 1
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: Google-Extended
+Disallow: /
+Allow: /articles/
+Allow: /whitepapers/
+</code></pre>
+<p><strong>Googlebot</strong> can index most content except admin and private sections, with 1-second crawl delay. <strong>Google-Extended</strong> accesses only articles and whitepapers—perhaps these are licensed to Google while other content remains restricted.</p>
+<p>Wildcard patterns simplify complex rules:</p>
+<pre><code>User-agent: Google-Extended
+Disallow: /*?*
+Disallow: /*.json$
+Disallow: /*/api/
+Allow: /content/
+</code></pre>
+<p>This blocks all URLs with query parameters, JSON files, and any path containing <code>/api/</code>, while allowing <code>/content/</code> subdirectory. Wildcards reduce robots.txt verbosity when you need to block patterns rather than enumerate every specific path.</p>
+<p>Testing robots.txt before deployment prevents accidental overblocking. Google Search Console includes a robots.txt tester under Index &gt; robots.txt, where you can specify user-agent and test URL to see if rules permit or block access. Test several representative URLs for both <strong>Googlebot</strong> and <strong>Google-Extended</strong> to verify intended behavior.</p>
+<h2>Crawl Behavior and Request Patterns</h2>
+<p><strong>Googlebot</strong> prioritizes fresh content and site updates, increasing crawl frequency for sites that publish regularly. It follows links to discover new pages, respects sitemaps submitted via Search Console, and adjusts rate based on server response times—slowing down if requests cause errors or timeouts. Typical <strong>Googlebot</strong> behavior generates 10K-100K requests daily for medium-sized sites, varying with content volume and update frequency.</p>
+<p><strong>Google-Extended</strong> exhibits different patterns. Training runs occur episodically rather than continuously—intense crawling for days or weeks followed by dormant periods. When active, request volumes may spike 10x above <strong>Googlebot</strong> baseline as the crawler systematically ingests site content. Publishers report surges preceding new <strong>Gemini</strong> model launches, suggesting training runs correlate with development cycles.</p>
+<p>Request distribution differs. <strong>Googlebot</strong> concentrates on HTML pages and follows user-facing navigation structures—menus, internal links, pagination. <strong>Google-Extended</strong> may request static resources like images, PDFs, or downloadable files more aggressively if training on multimodal datasets. Comparing file type distributions in server logs reveals whether a crawler focuses on text content or comprehensive media ingestion.</p>
+<p>Crawl depth patterns diverge. Search indexing prioritizes pages within 3-4 clicks from homepage, as deeper pages receive less search authority. AI training doesn&#39;t respect this hierarchy—<strong>Google-Extended</strong> might crawl entire archives, including old blog posts, documentation versions, or unlisted pages, if those contain useful training data. Sites with extensive historical content see disproportionate AI crawler interest compared to search crawler activity.</p>
+<p>Respect for rate limits varies by context. <strong>Googlebot</strong> dynamically adjusts to server capacity, backing off when error rates increase. <strong>Google-Extended</strong> likely follows similar logic but might tolerate higher error rates during training runs if content acquisition deadlines matter more than crawler politeness. Publishers enforcing strict rate limits via <a href="haproxy-ai-crawler-rate-limiting.html">HAProxy</a> or CDN rules ensure both crawlers respect boundaries regardless of their internal logic.</p>
+<h2>Performance and Bandwidth Impact</h2>
+<p><strong>Googlebot</strong> typically generates modest bandwidth consumption relative to site traffic—often 2-5% of total bytes transferred. For a site serving 1 TB monthly to human visitors, <strong>Googlebot</strong> might consume 20-50 GB. This overhead remains acceptable when search referrals justify the cost through visitor acquisition and ad revenue.</p>
+<p><strong>Google-Extended</strong> bandwidth profiles skew higher during active training periods. Publishers blocking images and multimedia via robots.txt for <strong>Google-Extended</strong> while allowing <strong>Googlebot</strong> full access report 60-70% bandwidth reduction for AI crawlers compared to search crawlers. This suggests training runs pull heavier content—perhaps full-resolution images, videos, or large PDFs—unless explicitly restricted.</p>
+<p>Compression reduces crawler bandwidth for both types. Enable gzip or Brotli compression for crawler responses, cutting text content transfer by 70-80%. Most crawlers send <code>Accept-Encoding: gzip</code> headers, signaling support for compressed responses. Server configurations for Apache, Nginx, and CDN platforms enable compression with minimal CPU overhead, translating directly to bandwidth savings.</p>
+<p>Caching strategies affect crawler costs differently. <strong>Googlebot</strong> respects cache headers (Cache-Control, ETag) and revalidates cached content efficiently. <strong>Google-Extended</strong> behavior on caching remains less documented, but training runs likely ignore cache headers, requesting full content regardless of freshness indicators. This means crawler bandwidth reductions from caching primarily benefit <strong>Googlebot</strong>, not necessarily AI training crawlers.</p>
+<p>Bandwidth accounting matters for pricing decisions. If you charge AI companies for training data access, measure actual bytes transferred to <strong>Google-Extended</strong> via server logs, not estimated content sizes. Compressed transfer sizes determine bandwidth costs and should determine billing rates. Use log analysis tools like <a href="goaccess-ai-crawler-analysis.html">GoAccess</a> to generate precise monthly bandwidth reports per crawler type.</p>
+<h2>Licensing and Access Control Integration</h2>
+<p>Publishers licensing content to Google for AI training need technical implementations aligning with contract terms. If an agreement permits <strong>Google-Extended</strong> access to specific content types, translate that into robots.txt rules:</p>
+<pre><code># Per licensing agreement dated 2024-01-15
+User-agent: Google-Extended
+Disallow: /
+Allow: /licensed-content/2020/
+Allow: /licensed-content/2021/
+Allow: /licensed-content/2022/
+# License excludes 2023-forward content
+Disallow: /licensed-content/2023/
+Disallow: /licensed-content/2024/
+</code></pre>
+<p>Comments in robots.txt reference agreements, creating audit trails. This documents the technical enforcement of contractual restrictions, useful if disputes arise about scope of licensed access.</p>
+<p>Usage-based licensing requires precise tracking. If Google pays per-page or per-GB transferred, server logs must capture <strong>Google-Extended</strong> activity separately from other crawlers. Export logs to databases or analytics platforms with queries calculating monthly totals:</p>
+<pre><code class="language-sql">SELECT COUNT(*) AS pages_accessed,
+       SUM(bytes_sent)/1024/1024/1024 AS gb_transferred
+FROM access_logs
+WHERE user_agent LIKE &#39;%Google-Extended%&#39;
+  AND status = 200
+  AND timestamp BETWEEN &#39;2024-01-01&#39; AND &#39;2024-01-31&#39;;
+</code></pre>
+<p>This SQL quantifies pages successfully accessed (200 status) and gigabytes transferred by <strong>Google-Extended</strong> in January 2024, providing invoice backup.</p>
+<p>Rate limit contracts cap requests per minute, hour, or day. Enforce these with server-side controls rather than trusting crawler politeness. Nginx example:</p>
+<pre><code class="language-nginx">limit_req_zone $http_user_agent zone=google_extended:10m rate=10r/m;
+
+server {
+  location / {
+    if ($http_user_agent ~* &quot;Google-Extended&quot;) {
+      limit_req zone=google_extended burst=20;
+    }
+  }
+}
+</code></pre>
+<p>This limits <strong>Google-Extended</strong> to 10 requests per minute with burst allowance of 20 requests. Requests exceeding the limit receive 429 Too Many Requests responses, enforcing contractual rate caps regardless of crawler behavior.</p>
+<p>Attribution requirements in licensing deals might require special handling. If contracts mandate that <strong>Gemini</strong> cites your content when used in responses, robots.txt cannot enforce this—it controls crawling, not model output behavior. Monitoring <strong>Gemini</strong> responses for proper attribution requires separate tools querying the model and checking for citations, beyond what crawler access controls provide.</p>
+<h2>Monitoring and Compliance Verification</h2>
+<p>Confirming that robots.txt directives actually affect crawler behavior requires ongoing verification. Server log analysis after implementing blocks should show zero or near-zero <strong>Google-Extended</strong> requests for disallowed paths. Continued access despite directives indicates either:</p>
+<ol>
+<li>Crawler non-compliance (ignoring robots.txt)</li>
+<li>Cached content still in training pipelines</li>
+<li>Syntax errors in robots.txt rules</li>
+<li>User-agent spoofing by non-Google scrapers</li>
+</ol>
+<p>Reverse DNS verification on IPs requesting blocked content determines whether requests genuinely come from Google or scrapers impersonating <strong>Google-Extended</strong>. Legitimate Google IPs resolve to Google-owned hostnames; others reveal their true origin.</p>
+<p>Google Search Console&#39;s robots.txt testing tool provides Google&#39;s official interpretation of your rules. Test blocked and allowed URLs for <strong>Google-Extended</strong> user-agent, confirming that Google&#39;s parser matches your intent. Discrepancies between Search Console tests and server log behavior suggest caching delays—Google may take 24-48 hours to refresh robots.txt and adjust crawler behavior.</p>
+<p>Automated monitoring scripts alert on compliance violations:</p>
+<pre><code class="language-python">import re
+from collections import Counter
+
+# Parse server logs
+with open(&#39;/var/log/nginx/access.log&#39;) as f:
+    lines = f.readlines()
+
+# Extract Google-Extended requests to blocked paths
+violations = [line for line in lines
+              if &#39;Google-Extended&#39; in line
+              and re.search(r&#39;GET /private/&#39;, line)]
+
+if len(violations) &gt; 100:
+    send_alert(f&quot;{len(violations)} robots.txt violations detected&quot;)
+</code></pre>
+<p>This Python snippet flags when <strong>Google-Extended</strong> requests exceed threshold for paths explicitly blocked in robots.txt, triggering alerts for investigation.</p>
+<p>Cross-reference crawler access with licensing periods. If your Google AI training license expires June 30 and logs show <strong>Google-Extended</strong> continuing to access licensed paths in July, you have evidence of contract breach. Maintain timestamped robots.txt versions and log archives covering entire contract periods for dispute resolution.</p>
+<h2>Strategic Considerations for Mixed Access</h2>
+<p>Most publishers want search visibility while controlling AI training, making selective access the default strategy. Allow <strong>Googlebot</strong> broadly to maximize search rankings and referral traffic. Restrict <strong>Google-Extended</strong> to monetize AI training through licensing agreements or block it entirely to protest compensation terms.</p>
+<p>Exceptions exist. Publishers in highly competitive search niches might block both <strong>Googlebot</strong> and <strong>Google-Extended</strong> for specific high-value content, forcing users to visit directly rather than satisfying intent through search results or AI summaries. Paywalled content follows this model—robots.txt blocks crawlers from member areas to preserve subscription value.</p>
+<p>Content types also drive differentiation. A legal database might allow <strong>Googlebot</strong> to index case summaries for search traffic while blocking <strong>Google-Extended</strong> from full case text to protect premium content value. A medical publisher could permit AI training on general health information while restricting pharmaceutical research to licensed access only.</p>
+<p>Temporal strategies matter too. License historical archives (2000-2020) to Google for AI training while reserving recent content (2021-forward) for separate negotiations at higher rates. Implement this via date-based path structures and robots.txt rules matching those paths.</p>
+<p>Geographic considerations apply when your audience concentrates in regions where Google faces regulatory constraints. If most traffic comes from the EU, where GDPR and CDSM Directive strengthen publisher rights, you negotiate from a position of legal advantage. Leverage this by blocking <strong>Google-Extended</strong> globally, forcing Google to meet your terms to access training data from any jurisdiction.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Do Googlebot and Google-Extended share IP addresses?</h3>
+<p>Yes, both crawlers use the same IP ranges. Google&#39;s official documentation states they share infrastructure. You cannot differentiate them with IP-based firewall rules—user-agent string inspection at the application layer is required.</p>
+<h3>If I block Google-Extended, does that affect my search rankings?</h3>
+<p>No, <strong>Google-Extended</strong> serves AI training purposes only, separate from search indexing. Blocking it doesn&#39;t impact how <strong>Googlebot</strong> crawls your site or how Google ranks pages in search results. However, future AI-mediated search features might use <strong>Google-Extended</strong> data, introducing indirect effects.</p>
+<h3>Can Google-Extended access content that Googlebot cannot?</h3>
+<p>Only if you configure robots.txt that way. By default, both respect the same restrictions unless you create explicit user-agent rules. Publishers typically allow broader access to <strong>Googlebot</strong> for search while restricting <strong>Google-Extended</strong> to specific sections or blocking it entirely.</p>
+<h3>How quickly does Google honor robots.txt changes for these crawlers?</h3>
+<p>Google re-fetches robots.txt periodically, typically within 24 hours but sometimes longer. Crawler behavior updates after the next fetch. Expect 1-3 days between deploying robots.txt changes and seeing crawlers fully comply in server logs.</p>
+<h3>What happens if I allow Google-Extended but block Googlebot?</h3>
+<p><strong>Google-Extended</strong> can train on your content, but search results won&#39;t show your pages since <strong>Googlebot</strong> cannot index them. This makes no strategic sense for most publishers—you&#39;d surrender AI training data while forgoing search traffic. Consider this only if you monetize AI licensing at rates that dwarf search referral value.</p>
+<h2>Conclusion</h2>
+<p><strong>Googlebot</strong> and <strong>Google-Extended</strong> represent Google&#39;s acknowledgment that search indexing and AI training constitute distinct use cases deserving separate governance. Publishers gain granular control through robots.txt user-agent rules, allowing strategic decisions about which crawler types access which content. The shared IP infrastructure forces reliance on user-agent strings rather than network filtering, requiring application-layer controls and careful verification. Most publishers adopt mixed strategies—broad <strong>Googlebot</strong> access for search visibility paired with restricted <strong>Google-Extended</strong> access to monetize AI training. This balance preserves referral traffic while creating licensing leverage, though <a href="google-search-console-ai-crawler.html">monitoring compliance</a> remains critical to ensure technical implementations match strategic intent and contractual terms.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

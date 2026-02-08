@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search Console AI Crawler Monitoring: Track Googlebot vs Google-Extended | AI Pay Per Crawl</title>
+    <meta name="description" content="Use Search Console&#39;s Crawl Stats to monitor Googlebot separately from Google-Extended. Learn how to detect AI training crawls and optimize robots.txt accordingly.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Google Search Console AI Crawler Monitoring: Track Googlebot vs Google-Extended">
+    <meta property="og:description" content="Use Search Console&#39;s Crawl Stats to monitor Googlebot separately from Google-Extended. Learn how to detect AI training crawls and optimize robots.txt accordingly.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/google-search-console-ai-crawler">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Google Search Console AI Crawler Monitoring: Track Googlebot vs Google-Extended">
+    <meta name="twitter:description" content="Use Search Console&#39;s Crawl Stats to monitor Googlebot separately from Google-Extended. Learn how to detect AI training crawls and optimize robots.txt accordingly.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/google-search-console-ai-crawler">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Google Search Console AI Crawler Monitoring: Track Googlebot vs Google-Extended",
+  "description": "Use Search Console's Crawl Stats to monitor Googlebot separately from Google-Extended. Learn how to detect AI training crawls and optimize robots.txt accordingly.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/google-search-console-ai-crawler"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Google Search Console AI Crawler Monitoring: Track Googlebot vs Google-Extended",
+      "item": "https://aipaypercrawl.com/articles/google-search-console-ai-crawler"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Google Search Console AI Crawler Monitoring: Track Googlebot vs Google-Extended</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 14 min read</span>
+        <h1>Google Search Console AI Crawler Monitoring: Track Googlebot vs Google-Extended</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Use Search Console&#39;s Crawl Stats to monitor Googlebot separately from Google-Extended. Learn how to detect AI training crawls and optimize robots.txt accordingly.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Google Search Console AI Crawler Monitoring: Track Googlebot vs Google-Extended</h1>
+<p><strong>Google Search Console</strong> provides dedicated crawler monitoring through its Crawl Stats report, but understanding what it reveals about AI training activity requires parsing which crawlers appear in your data and how <strong>Google-Extended</strong> differs from traditional <strong>Googlebot</strong> behavior. Publishers using robots.txt to control AI access need visibility into whether blocks work, if crawlers respect directives, and how much bandwidth different Google crawler types consume. Search Console offers partial answers—excellent for <strong>Googlebot</strong> analysis, limited for <strong>Google-Extended</strong>, and silent on non-Google AI crawlers like <strong>GPTBot</strong> or <strong>ClaudeBot</strong>.</p>
+<h2>Understanding Google&#39;s Crawler Ecosystem</h2>
+<p>Google operates multiple crawlers with distinct purposes, each identified by unique user-agent strings. <strong>Googlebot</strong> handles primary web search indexing, appearing in two variants—desktop and mobile. <strong>Googlebot-Image</strong> crawls images specifically, while <strong>Googlebot-Video</strong> targets video content. <strong>Google-Extended</strong> launched in September 2023 as the dedicated AI training crawler, separate from search indexing functions.</p>
+<p>Additional specialized crawlers include <strong>AdsBot-Google</strong> (testing ad landing pages), <strong>Googlebot-News</strong> (news-specific indexing), and <strong>FeedFetcher-Google</strong> (RSS/Atom feeds). Search Console aggregates these into categories rather than showing individual bot breakdowns, complicating efforts to isolate <strong>Google-Extended</strong> activity from other crawler types.</p>
+<p>The critical distinction: <strong>Googlebot</strong> respects <code>User-agent: Googlebot</code> rules in robots.txt, while <strong>Google-Extended</strong> follows <code>User-agent: Google-Extended</code> rules. A site allowing <strong>Googlebot</strong> but blocking <strong>Google-Extended</strong> should see search crawling continue while AI training crawling stops. Verifying this behavior requires correlating robots.txt changes with Crawl Stats data and server access logs.</p>
+<p>Google&#39;s documentation states that <strong>Google-Extended</strong> shares IP ranges with <strong>Googlebot</strong>, making IP-based blocking ineffective for separating the two. Publishers must rely on user-agent differentiation, which crawlers can spoof. Combining robots.txt directives with server logs showing actual user-agent strings provides the verification layer Search Console lacks.</p>
+<h2>Accessing and Interpreting Crawl Stats</h2>
+<p>Crawl Stats lives under Settings &gt; Crawl Stats in Search Console&#39;s left navigation. The report shows request counts, bytes downloaded, host status, and file type breakdowns for the last 90 days. Google aggregates data by day, preventing hourly or minute-level analysis available in server logs but offering sufficient granularity to detect trends and anomalies.</p>
+<p>The primary graph displays total crawl requests over time. Significant spikes often correlate with site changes—publishing many new pages, restructuring URLs, or submitting updated XML sitemaps. If you block <strong>Google-Extended</strong> on a specific date, a corresponding drop in requests suggests the crawler respected your directive. However, Search Console doesn&#39;t label which crawler types contributed to each data point, requiring inference.</p>
+<p>Host status codes section reveals crawler experience quality. High volumes of 4xx errors (404 Not Found, 403 Forbidden) indicate broken links, aggressive robots.txt blocks, or permission issues. 5xx errors (500 Internal Server Error, 503 Service Unavailable) point to server capacity problems or application crashes triggered by crawler loads. Google reduces crawl rate for sites returning many errors, potentially affecting both search indexing and AI training crawls.</p>
+<p>File type breakdown shows whether crawlers focus on HTML, CSS, JavaScript, images, or other resources. AI training crawlers should concentrate on HTML content containing text data, not static assets. If your site shows high CSS/JS/image request volumes after blocking HTML access for <strong>Google-Extended</strong>, either the crawler ignores robots.txt, your directives have syntax errors, or unrelated crawlers (search indexing) account for the traffic.</p>
+<p>Bytes downloaded metric quantifies bandwidth consumption. Multiply daily averages by monthly days to estimate total crawler bandwidth costs. If <strong>Google-Extended</strong> adds 10 GB daily above baseline <strong>Googlebot</strong> traffic, that&#39;s 300 GB monthly—potentially significant for sites on metered hosting or CDN plans charging per GB transferred.</p>
+<h2>Detecting Google-Extended Specifically</h2>
+<p>Search Console does not break out <strong>Google-Extended</strong> as a separate crawler in its reports as of early 2026. Google aggregates all its crawler activity into the single Crawl Stats view, preventing direct observation of AI training crawl patterns versus search indexing patterns. This limitation forces publishers to use indirect detection methods.</p>
+<p>Correlation analysis between robots.txt changes and crawl volume helps infer <strong>Google-Extended</strong> presence. Record your baseline crawl requests per day before adding <code>Disallow: / </code> for <strong>Google-Extended</strong>. Monitor for several weeks post-change. A measurable decline (20%+ drop) suggests <strong>Google-Extended</strong> was actively crawling before the block. No decline implies either the crawler wasn&#39;t active or it ignores robots.txt.</p>
+<p>Server log analysis provides definitive answers Search Console cannot. Export Apache or Nginx access logs covering the same period as Search Console data. Filter for <code>Google-Extended</code> user-agent strings and count requests. Compare these counts to Search Console&#39;s total request numbers. If logs show 100K Google-Extended requests but Search Console reports 500K total Google requests, <strong>Google-Extended</strong> accounted for 20% of Google crawler traffic.</p>
+<p>Tools like <strong>GoAccess</strong> or custom log processing scripts isolate crawler behavior with precision Search Console lacks. Generate separate reports per user-agent, revealing exact request volumes, bandwidth consumption, and URL targets for <strong>Google-Extended</strong> versus <strong>Googlebot</strong>. This granularity matters when negotiating AI licensing deals, since usage-based pricing depends on accurate measurement.</p>
+<p>Third-party crawler detection services like <strong>DataDome</strong> or <strong>Cloudflare Bot Management</strong> classify crawler traffic in real-time, labeling requests by crawler type. These platforms identify <strong>Google-Extended</strong> explicitly, providing dashboard views unavailable in Search Console. However, they add cost and require routing traffic through their infrastructure.</p>
+<p>Timing analysis offers circumstantial evidence. If Google launches a new <strong>Gemini</strong> model in December and your January Crawl Stats show request spikes, AI training runs might explain the increase. Cross-reference with Google&#39;s public AI release schedules to identify correlations. This method provides hunches rather than proof but guides further investigation.</p>
+<h2>Configuring Robots.txt for Crawler Segmentation</h2>
+<p>Effective <strong>Google-Extended</strong> control requires precise robots.txt syntax. The following blocks AI training while permitting search indexing:</p>
+<pre><code>User-agent: Googlebot
+Crawl-delay: 1
+Disallow: /private/
+
+User-agent: Google-Extended
+Disallow: /
+</code></pre>
+<p>The <code>User-agent: Googlebot</code> block applies rules to search crawlers—here allowing access to most content except <code>/private/</code> subdirectories, with 1-second crawl delay. The <code>User-agent: Google-Extended</code> block prevents all AI training access.</p>
+<p>Syntax errors break segmentation. A common mistake:</p>
+<pre><code>User-agent: Googlebot
+User-agent: Google-Extended
+Disallow: /
+</code></pre>
+<p>This block applies the <code>Disallow: /</code> rule to both crawlers, blocking both search and AI crawling. Separate the user-agents into distinct blocks to apply different rules.</p>
+<p>Allow rules carve out exceptions within broader disallows:</p>
+<pre><code>User-agent: Google-Extended
+Disallow: /
+Allow: /public-content/
+Allow: /*.pdf$
+</code></pre>
+<p>This permits <strong>Google-Extended</strong> to access <code>/public-content/</code> subdirectory and all PDF files while blocking everything else. Use this pattern when licensing specific content types or sections to Google for AI training while protecting other site areas.</p>
+<p>Wildcard patterns simplify rules covering multiple paths:</p>
+<pre><code>User-agent: Google-Extended
+Disallow: /wp-admin/
+Disallow: /*/private/
+Disallow: *.json$
+</code></pre>
+<p>These rules block WordPress admin areas, any subdirectory containing <code>/private/</code>, and all JSON files. Wildcards reduce robots.txt verbosity but require testing to ensure they match intended paths without overreaching.</p>
+<p>Google&#39;s robots.txt testing tool (in Search Console under Index &gt; robots.txt) validates syntax and tests whether specific URLs are blocked for given user-agents. Enter <strong>Google-Extended</strong> as user-agent and test critical URLs to confirm rules work as intended. The tool shows Google&#39;s interpretation, eliminating ambiguity about how crawlers parse your directives.</p>
+<h2>Monitoring Compliance and Enforcement</h2>
+<p>After implementing robots.txt changes, verification requires ongoing monitoring. Check Crawl Stats weekly for the first month post-change, then monthly thereafter. Establish baseline metrics pre-change: total requests per day, bytes downloaded, error rate percentages. Compare post-change metrics to these baselines, flagging deviations exceeding 10%.</p>
+<p>Create a compliance tracking spreadsheet logging:</p>
+<ul>
+<li>Date of robots.txt change</li>
+<li>Specific user-agent and rules modified</li>
+<li>Pre-change average daily requests (7-day window)</li>
+<li>Post-change average daily requests (30-day window)</li>
+<li>Percentage change</li>
+<li>Observed crawl delays or rate changes</li>
+</ul>
+<p>This documentation serves multiple purposes. It demonstrates compliance (or non-compliance) if you negotiate licensing deals with Google. It provides evidence for copyright infringement claims if <strong>Google-Extended</strong> ignores blocks. It helps diagnose technical issues if desired crawlers disappear—perhaps your rules were too aggressive.</p>
+<p>Automated monitoring scripts can alert on anomalies. Use Search Console API to pull Crawl Stats programmatically, comparing current metrics to historical averages. If daily requests exceed 2 standard deviations above mean for 3+ consecutive days, send email alerts. This catches crawler surges caused by Google ignoring robots.txt, site changes inadvertently exposing content, or DDoS attacks disguised as legitimate crawlers.</p>
+<p>Server log correlation fills gaps in Search Console reporting. Schedule weekly log analysis extracting <strong>Google-Extended</strong> request counts, comparing them to Search Console total crawler counts. Persistent discrepancies suggest either Search Console data lags (Google mentions 2-3 day delays) or undisclosed crawler activity not appearing in official reports.</p>
+<p>Legal and contractual compliance matters for publishers licensing content to Google. If your agreement caps <strong>Google-Extended</strong> at 10M requests monthly but logs show 15M, you have grounds for overage billing or breach claims. Maintain auditable records—Search Console screenshots, server log archives, dated robots.txt versions—to support enforcement actions.</p>
+<h2>Limitations and Gaps in Search Console Coverage</h2>
+<p>Search Console only reports Google crawlers, ignoring <strong>OpenAI</strong>&#39;s <strong>GPTBot</strong>, <strong>Anthropic</strong>&#39;s <strong>ClaudeBot</strong>, <strong>Meta</strong>&#39;s <strong>FacebookBot</strong>, and other AI crawlers. Publishers blocking all AI training must monitor each crawler separately through server logs or third-party tools like <a href="goaccess-ai-crawler-analysis.html">GoAccess</a>, since Search Console provides zero visibility into non-Google bots.</p>
+<p>Data aggregation hides crawler-specific behavior. If you allow <strong>Googlebot</strong> but block <strong>Google-Extended</strong>, and total requests drop 30%, you know blocking worked—but you don&#39;t know if <strong>Google-Extended</strong> concentrated on specific URLs, file types, or site sections. Granular analysis requires server logs showing per-crawler, per-URL request patterns.</p>
+<p>Sampling may affect accuracy for high-traffic sites. Google&#39;s documentation doesn&#39;t specify whether Crawl Stats reports represent complete counts or sampled estimates. For sites receiving millions of crawler requests daily, sampling errors could misrepresent actual volumes by 5-10%, significant when calculating bandwidth costs or licensing usage metrics.</p>
+<p>Delayed reporting frustrates real-time monitoring. Search Console data typically lags 2-3 days behind actual crawler activity. If you block <strong>Google-Extended</strong> Monday and check Crawl Stats Tuesday, Monday&#39;s blocking won&#39;t yet appear in reports. This delay prevents using Search Console for immediate validation, requiring log analysis for real-time verification.</p>
+<p>API access limitations restrict automation. Search Console API provides programmatic data access, but rate limits constrain frequent polling. Building real-time crawler dashboards requires staying within quota limits or supplementing Search Console data with log-based sources. The API also doesn&#39;t expose additional crawler granularity beyond what the web interface shows.</p>
+<h2>Integrating Search Console with Broader Monitoring</h2>
+<p>Comprehensive crawler monitoring combines Search Console, server logs, CDN analytics, and third-party tools into unified dashboards. Use <strong>Google Data Studio</strong> (now <strong>Looker Studio</strong>) to visualize Search Console API data alongside log analysis outputs, creating consolidated views showing all crawler types—Google and non-Google—in one interface.</p>
+<p>Export Search Console data via API:</p>
+<pre><code class="language-python">from google.oauth2 import service_account
+from googleapiclient.discovery import build
+
+credentials = service_account.Credentials.from_service_account_file(
+    &#39;credentials.json&#39;, scopes=[&#39;https://www.googleapis.com/auth/webmasters.readonly&#39;])
+
+service = build(&#39;webmasters&#39;, &#39;v3&#39;, credentials=credentials)
+site_url = &#39;https://example.com/&#39;
+
+response = service.urlcrawlerrorscounts().query(siteUrl=site_url).execute()
+</code></pre>
+<p>This Python snippet pulls error counts, which you can expand to fetch crawl rates, index status, and other metrics. Store results in time-series databases like <strong>InfluxDB</strong> or <strong>Prometheus</strong> for long-term trending and anomaly detection beyond Search Console&#39;s 90-day window.</p>
+<p>Correlate with CDN logs if using services like <strong>Cloudflare</strong>, <strong>Fastly</strong>, or <strong>AWS CloudFront</strong>. CDNs capture crawler requests before they reach your origin server, providing complete visibility including requests served from cache. Search Console only tracks requests hitting Google&#39;s crawlers, not cached responses—CDN logs reveal total attempted access.</p>
+<p>Cross-reference with robots.txt fetch dates. Google periodically re-fetches robots.txt to detect changes, visible in Search Console&#39;s robots.txt tool under fetch time stamps. If you modify robots.txt December 1 but Google doesn&#39;t re-fetch until December 5, crawlers operate under old rules for four days. Monitoring fetch dates explains delayed compliance.</p>
+<p>Combine with sitemap submission timing. Submitting updated XML sitemaps often triggers crawler surges as Google indexes new or modified URLs. Log sitemap submissions and correlate with Crawl Stats spikes to differentiate planned indexing activity from unexpected crawler behavior. This prevents mistaking legitimate search crawling for AI training surges.</p>
+<h2>Optimizing Crawl Budget for Mixed Access Scenarios</h2>
+<p>Publishers allowing search indexing while restricting AI training must balance crawl budget allocation. Google limits how aggressively it crawls each site to avoid overloading servers. Blocking <strong>Google-Extended</strong> frees budget for <strong>Googlebot</strong>, potentially improving search index freshness. Alternatively, allowing both crawlers but rate-limiting via <code>Crawl-delay</code> directives controls total server load.</p>
+<p>Crawl delay syntax:</p>
+<pre><code>User-agent: Googlebot
+Crawl-delay: 2
+
+User-agent: Google-Extended
+Crawl-delay: 10
+</code></pre>
+<p>This instructs <strong>Googlebot</strong> to wait 2 seconds between requests (30 requests/minute maximum) and <strong>Google-Extended</strong> to wait 10 seconds (6 requests/minute). Note that Google doesn&#39;t officially support <code>Crawl-delay</code> for <strong>Googlebot</strong> but respects it in practice. Test to confirm behavior matches expectations.</p>
+<p>Alternative rate limiting uses server-side controls like <a href="haproxy-ai-crawler-rate-limiting.html">HAProxy</a>, Nginx <code>limit_req</code> modules, or CDN rate limiters. These enforce limits independent of crawler cooperation, guaranteeing bandwidth caps even if bots ignore <code>Crawl-delay</code> directives. Server-side controls provide stronger enforcement but require technical configuration beyond robots.txt editing.</p>
+<p>Prioritize high-value content for crawlers. If licensing specific site sections to Google for AI training, use <code>Allow</code> rules making those sections easily crawlable while restricting other areas. This concentrates limited crawl budget on content generating licensing revenue:</p>
+<pre><code>User-agent: Google-Extended
+Disallow: /
+Allow: /premium-research/
+Allow: /whitepapers/
+</code></pre>
+<p>Monitor index coverage reports in Search Console to ensure <strong>Googlebot</strong> successfully indexes priority pages. If crawl budget constraints cause indexing gaps, consider reducing <strong>Google-Extended</strong> access further or upgrading server capacity to handle both crawler types without resource exhaustion.</p>
+<h2>Leveraging Crawl Stats for Licensing Negotiations</h2>
+<p>Crawl Stats data supports AI licensing negotiations by quantifying Google&#39;s existing content usage. When <strong>Anthropic</strong> or <strong>OpenAI</strong> requests licensing terms, show them Search Console reports demonstrating competitor crawler volumes. If <strong>Google-Extended</strong> averages 50K requests daily, that baseline helps establish market rates—Google implicitly values your content at levels driving that crawl intensity.</p>
+<p>Calculate bandwidth costs attributable to AI crawlers. If <strong>Google-Extended</strong> downloads 5 GB daily and your CDN charges $0.05/GB, that&#39;s $7.50 daily or $225 monthly in direct costs. Licensing agreements should at minimum cover infrastructure expenses, with premiums for content value added on top of cost recovery.</p>
+<p>Document compliance for usage-based licensing. If you agree to provide Google 10M pages monthly for AI training, Search Console crawl volumes (supplemented by logs) verify you&#39;re delivering contracted access. Conversely, if Google exceeds agreed-upon limits, reports provide evidence for overage billing.</p>
+<p>Showcase content uniqueness through crawl pattern analysis. If Crawl Stats show <strong>Google-Extended</strong> concentrates on specific subdomains or URL paths, those areas contain content Google finds especially valuable for training. Highlight this in negotiations: &quot;Your crawler targets our technical documentation 3x more than general site areas, demonstrating premium value.&quot;</p>
+<p>Compare pre-license and post-license crawl volumes when negotiating renewals. If signing a licensing deal correlates with 50% reduction in <strong>Google-Extended</strong> requests, Google replaced open crawling with structured data feeds—but you should argue for renewal rate increases reflecting their continued dependence on your content, now delivered via agreed channels.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Does Search Console show Google-Extended separately from Googlebot?</h3>
+<p>No, as of early 2026 Search Console aggregates all Google crawler activity into combined Crawl Stats reports. You cannot directly filter for <strong>Google-Extended</strong> requests within the interface. Server log analysis remains necessary for crawler-specific breakdowns.</p>
+<h3>How long does it take for robots.txt changes to affect Search Console metrics?</h3>
+<p>Google re-fetches robots.txt files periodically, typically within 24 hours but sometimes longer. Crawler behavior updates after the next fetch. Search Console data lags 2-3 days. Expect 3-5 days between making robots.txt changes and seeing effects reflected in Crawl Stats reports.</p>
+<h3>Can I use Search Console to monitor non-Google AI crawlers?</h3>
+<p>No, Search Console only tracks Google&#39;s own crawlers. Monitoring <strong>GPTBot</strong>, <strong>ClaudeBot</strong>, or other AI crawlers requires server log analysis, third-party analytics tools, or CDN reporting. Consider using <a href="goaccess-ai-crawler-analysis.html">GoAccess</a> for comprehensive multi-crawler tracking.</p>
+<h3>Why do my Crawl Stats show requests to URLs blocked in robots.txt?</h3>
+<p>Crawlers may attempt blocked URLs to discover they&#39;re blocked, generating 403 Forbidden responses visible in Crawl Stats. This doesn&#39;t indicate violations—crawlers test boundaries. However, high volumes of successful (200 OK) responses for blocked URLs suggest robots.txt syntax errors or crawler non-compliance.</p>
+<h3>How accurate is Search Console&#39;s bandwidth measurement for crawlers?</h3>
+<p>Google reports bytes downloaded as logged by their crawlers, which should be accurate. However, compressed responses (gzip, Brotli) appear as compressed size, not original content size. If your server compresses heavily, reported bandwidth understates actual content volume transferred. Check server logs for uncompressed sizes if calculating content delivery volumes for licensing.</p>
+<h2>Conclusion</h2>
+<p>Google Search Console provides essential but incomplete visibility into AI crawler activity, excelling at <strong>Googlebot</strong> monitoring while offering only indirect inference for <strong>Google-Extended</strong> behavior. Publishers serious about controlling AI training access must supplement Search Console with server log analysis, robots.txt testing, and correlation with external events like model launches or licensing negotiations. The 90-day historical window, delayed reporting, and aggregated crawler views limit Search Console&#39;s utility for real-time enforcement or granular usage tracking. However, its free access, official Google data source status, and integration with other Search Console features make it a foundational layer in comprehensive <a href="goaccess-ai-crawler-analysis.html">AI crawler monitoring strategies</a>. Pair it with log analysis tools, document findings for licensing discussions, and use trends to optimize robots.txt rules that balance search visibility with AI training controls.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

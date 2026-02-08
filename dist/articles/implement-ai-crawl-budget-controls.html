@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implement AI Crawl Budget Controls: Balancing Access With Infrastructure Costs | AI Pay Per Crawl</title>
+    <meta name="description" content="Design crawl budget systems controlling AI crawler access per time period, bandwidth caps, or request quotas. Nginx, Apache, and CDN implementation strategies.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Implement AI Crawl Budget Controls: Balancing Access With Infrastructure Costs">
+    <meta property="og:description" content="Design crawl budget systems controlling AI crawler access per time period, bandwidth caps, or request quotas. Nginx, Apache, and CDN implementation strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/implement-ai-crawl-budget-controls">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Implement AI Crawl Budget Controls: Balancing Access With Infrastructure Costs">
+    <meta name="twitter:description" content="Design crawl budget systems controlling AI crawler access per time period, bandwidth caps, or request quotas. Nginx, Apache, and CDN implementation strategies.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/implement-ai-crawl-budget-controls">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Implement AI Crawl Budget Controls: Balancing Access With Infrastructure Costs",
+  "description": "Design crawl budget systems controlling AI crawler access per time period, bandwidth caps, or request quotas. Nginx, Apache, and CDN implementation strategies.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/implement-ai-crawl-budget-controls"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Implement AI Crawl Budget Controls: Balancing Access With Infrastructure Costs",
+      "item": "https://aipaypercrawl.com/articles/implement-ai-crawl-budget-controls"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Implement AI Crawl Budget Controls: Balancing Access With Infrastructure Costs</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 7 min read</span>
+        <h1>Implement AI Crawl Budget Controls: Balancing Access With Infrastructure Costs</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Design crawl budget systems controlling AI crawler access per time period, bandwidth caps, or request quotas. Nginx, Apache, and CDN implementation strategies.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Implement AI Crawl Budget Controls: Balancing Access With Infrastructure Costs</h1>
+<p>Crawl budget systems limit AI crawler access to sustainable levels matching infrastructure capacity and business objectives. Unlike binary allow/block decisions, budget controls permit measured access—10,000 pages daily, 50 GB monthly, or dynamic allocation based on server load. This balances openness supporting AI development against protecting infrastructure from overload and controlling bandwidth costs under usage-based hosting or CDN plans.</p>
+<h2>Request-Based Budget Systems</h2>
+<p>Daily request quotas cap total crawler requests within 24-hour windows. Nginx implements this via limit_req module tracking request counts:</p>
+<pre><code class="language-nginx">limit_req_zone $http_user_agent zone=gptbot_daily:10m rate=10000r/d;
+
+location / {
+    if ($http_user_agent ~* &quot;GPTBot&quot;) {
+        limit_req zone=gptbot_daily burst=100;
+    }
+}
+</code></pre>
+<p>This allows 10,000 GPTBot requests per day with 100-request burst. After quota exhaustion, requests receive 429 responses until the daily window resets.</p>
+<p>Apache mod_ratelimit provides similar capabilities:</p>
+<pre><code class="language-apache">&lt;If &quot;%{HTTP_USER_AGENT} =~ /GPTBot/&quot;&gt;
+    SetOutputFilter RATE_LIMIT
+    SetEnv rate-limit 100
+    SetEnv rate-initial-burst 1000
+&lt;/If&gt;
+</code></pre>
+<p>Per-resource quotas control access to expensive content types. Limit PDF downloads separately from HTML pages:</p>
+<pre><code class="language-nginx">location ~* \.pdf$ {
+    limit_req zone=gptbot_pdf:10m rate=100r/d;
+    limit_req_status 429;
+}
+
+location ~* \.html$ {
+    limit_req zone=gptbot_html:10m rate=5000r/d;
+}
+</code></pre>
+<p>PDFs get 100/day quota; HTML gets 5,000/day. This recognizes differing bandwidth and value profiles.</p>
+<h2>Bandwidth-Based Budget Systems</h2>
+<p>Monthly bandwidth caps prevent infrastructure cost overruns. HAProxy stick tables track bytes transferred with monthly expiration:</p>
+<pre><code class="language-haproxy">frontend web
+    stick-table type string len 64 size 10k expire 2592000s store bytes_out_rate(2592000s)
+    
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+    http-request track-sc0 str(gptbot-bandwidth) if is_gptbot
+    
+    # 100 GB = 107374182400 bytes
+    http-request deny deny_status 402 if is_gptbot { sc_bytes_out_rate(0) gt 107374182400 }
+</code></pre>
+<p>After GPTBot transfers 100 GB in rolling 30-day window, requests receive 402 Payment Required until bandwidth resets.</p>
+<p>CDN-level bandwidth controls leverage platform features. Cloudflare Workers script:</p>
+<pre><code class="language-javascript">addEventListener(&#39;fetch&#39;, event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const ua = request.headers.get(&#39;user-agent&#39;)
+  if (!ua.includes(&#39;GPTBot&#39;)) return fetch(request)
+  
+  // Check KV for monthly bandwidth
+  const currentMonth = new Date().toISOString().slice(0,7)
+  const key = `gptbot-bw-${currentMonth}`
+  const used = await BANDWIDTH_KV.get(key) || 0
+  
+  const limit = 100 * 1024 * 1024 * 1024 // 100 GB
+  if (used &gt; limit) {
+    return new Response(&#39;Bandwidth quota exceeded&#39;, { status: 429 })
+  }
+  
+  const response = await fetch(request)
+  const size = response.headers.get(&#39;content-length&#39;) || 0
+  await BANDWIDTH_KV.put(key, parseInt(used) + parseInt(size))
+  
+  return response
+}
+</code></pre>
+<p>This Cloudflare Worker tracks GPTBot bandwidth in KV store, blocking after 100 GB monthly cap.</p>
+<h2>Time-Based Allocation Systems</h2>
+<p>Distribute crawl budgets across time periods, preventing burst exhaustion. Hourly sub-quotas within daily caps:</p>
+<pre><code class="language-nginx">limit_req_zone $http_user_agent zone=gptbot_hourly:10m rate=500r/h;
+limit_req_zone $http_user_agent zone=gptbot_daily:10m rate=10000r/d;
+
+location / {
+    if ($http_user_agent ~* &quot;GPTBot&quot;) {
+        limit_req zone=gptbot_hourly burst=50;
+        limit_req zone=gptbot_daily burst=100;
+    }
+}
+</code></pre>
+<p>Both limits apply simultaneously. GPTBot cannot exceed 500 req/hour even if daily quota remains available, ensuring sustained access rather than burst then block.</p>
+<p>Off-peak bonus allocation increases quotas during low-traffic periods:</p>
+<pre><code class="language-haproxy">acl is_peak_hours hour 8:00-18:00
+acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+http-request set-var(txn.hourly_limit) int(200) if is_peak_hours
+http-request set-var(txn.hourly_limit) int(800) if !is_peak_hours
+
+# Apply dynamic limit (implementation varies by proxy)
+</code></pre>
+<p>GPTBot gets 200 req/hour during business hours, 800 req/hour overnight. This maximizes crawler access without impacting peak human traffic.</p>
+<h2>Priority-Based Budget Allocation</h2>
+<p>Differentiate crawlers by licensing status or strategic value:</p>
+<pre><code class="language-nginx">geo $gptbot_priority {
+    default 0;
+    # OpenAI licensed IPs
+    52.12.0.0/14 1;
+    54.0.0.0/8 1;
+}
+
+map $gptbot_priority $rate_limit {
+    0 &quot;100r/h&quot;;  # Non-licensed: 100/hour
+    1 &quot;1000r/h&quot;; # Licensed: 1000/hour
+}
+
+limit_req_zone $http_user_agent zone=gptbot:10m rate=$rate_limit;
+</code></pre>
+<p>Licensed OpenAI IPs receive 10x quota compared to unlicensed sources. Requires maintaining IP allowlists but enables licensing enforcement.</p>
+<p>Content-value prioritization allocates more budget to premium sections:</p>
+<pre><code class="language-nginx">location /premium/ {
+    limit_req zone=gptbot:10m rate=50r/h;
+}
+
+location /public/ {
+    limit_req zone=gptbot:10m rate=500r/h;
+}
+</code></pre>
+<p>Public content gets generous quota; premium content receives tight limits, encouraging licensing for comprehensive access.</p>
+<h2>Dynamic Budget Adjustment</h2>
+<p>Backend health-aware allocation tightens budgets during infrastructure stress:</p>
+<pre><code class="language-haproxy">acl backend_healthy nbsrv(web_servers) ge 3
+acl backend_degraded nbsrv(web_servers) eq 2
+acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+http-request set-var(txn.rate) int(500) if backend_healthy
+http-request set-var(txn.rate) int(100) if backend_degraded
+
+# Apply variable rate limit
+</code></pre>
+<p>When servers healthy, GPTBot gets 500 req/hour; when degraded, drops to 100 req/hour, preserving capacity for humans.</p>
+<p>Revenue-based scaling adjusts budgets based on licensing payments. Publisher with $10K/month license gets 2x budget of publisher paying $5K/month. Requires external budget management system integrated with web servers via API or configuration updates.</p>
+<h2>Budget Tracking and Reporting</h2>
+<p>Logging crawler budget consumption enables billing, optimization, and compliance verification:</p>
+<pre><code class="language-nginx">log_format crawler_budget &#39;$remote_addr - [$time_local] &quot;$request&quot; &#39;
+                          &#39;$status $body_bytes_sent &quot;$http_user_agent&quot; &#39;
+                          &#39;quota_remaining=$quota_remaining&#39;;
+
+access_log /var/log/nginx/crawler_budget.log crawler_budget if=$is_crawler;
+</code></pre>
+<p>Process logs to generate usage reports:</p>
+<pre><code class="language-bash">#!/bin/bash
+# Daily GPTBot budget report
+grep &#39;GPTBot&#39; /var/log/nginx/crawler_budget.log | \
+awk &#39;{
+  requests++;
+  bytes+=$7
+}
+END {
+  print &quot;Date: &quot; strftime(&quot;%Y-%m-%d&quot;)
+  print &quot;Requests: &quot; requests
+  print &quot;Bandwidth: &quot; bytes/1024/1024 &quot; MB&quot;
+  print &quot;Quota Remaining: &quot; (10000-requests) &quot; requests&quot;
+}&#39;
+</code></pre>
+<p>Automate alerts when budgets approach exhaustion:</p>
+<pre><code class="language-python">import subprocess
+import smtplib
+
+# Check current GPTBot usage
+result = subprocess.run([&#39;grep&#39;, &#39;GPTBot&#39;, &#39;/var/log/nginx/access.log&#39;], 
+                        capture_output=True, text=True)
+request_count = len(result.stdout.strip().split(&#39;\n&#39;))
+
+daily_quota = 10000
+remaining = daily_quota - request_count
+
+if remaining &lt; 1000:  # Alert at 90% utilization
+    msg = f&quot;GPTBot budget alert: {remaining} requests remaining&quot;
+    # Send email alert
+    smtp.sendmail(&#39;monitor@example.com&#39;, &#39;admin@example.com&#39;, msg)
+</code></pre>
+<p>This monitors real-time usage, alerting administrators when crawlers near quota limits.</p>
+<h2>Integration With Licensing Agreements</h2>
+<p>Contract terms translate to technical budget parameters:</p>
+<pre><code>Section 5: Access Quotas
+5.1 Daily Request Limit: 50,000 requests per 24-hour period
+5.2 Monthly Bandwidth Cap: 500 GB per calendar month  
+5.3 Peak Hour Restrictions: Max 2,000 requests/hour
+    during 09:00-17:00 EST
+5.4 Overage Fees: $1.00 per 1,000 requests beyond daily
+    quota, $0.10 per GB beyond monthly bandwidth cap
+</code></pre>
+<p>Implement these in server configurations:</p>
+<pre><code class="language-nginx"># Contract: 50K req/day, 500 GB/month
+limit_req_zone $http_user_agent zone=licensed_daily:10m rate=50000r/d;
+# Bandwidth tracking via HAProxy or CDN
+</code></pre>
+<p>Log enforcement events for billing:</p>
+<pre><code class="language-nginx">http-request set-var(txn.over_quota) bool(true) if is_gptbot { sc_http_req_rate(0) gt 50000 }
+http-response set-header X-Quota-Exceeded true if { var(txn.over_quota) }
+</code></pre>
+<p>Generate monthly invoices from logs:</p>
+<pre><code class="language-bash"># Calculate overage charges
+REQUESTS=$(grep &#39;X-Quota-Exceeded&#39; /var/log/haproxy.log | wc -l)
+OVERAGE_FEE=$(echo &quot;$REQUESTS * 0.001&quot; | bc)
+echo &quot;Overage charges: \$$OVERAGE_FEE&quot;
+</code></pre>
+<h2>Frequently Asked Questions</h2>
+<h3>How do I prevent crawlers from evading quotas by rotating IPs?</h3>
+<p>Track by user-agent string in addition to IP. Legitimate crawlers use consistent user-agents across IPs. Implement fingerprinting combining user-agent, TLS fingerprint, and behavioral patterns to detect quota evasion attempts.</p>
+<h3>Can I offer quota &quot;buyups&quot; mid-month if crawlers need more access?</h3>
+<p>Yes, implement this through API-driven quota adjustments. Crawler sends request to your billing API purchasing additional quota; system updates rate limit tables dynamically without waiting for month-end reset.</p>
+<h3>Do budget systems work with CDNs that cache content?</h3>
+<p>Yes, but track bandwidth at origin server level for accurate billing. Cached responses don&#39;t hit origin, so edge-level bandwidth tracking overstates actual infrastructure cost. Use origin traffic for quota calculations.</p>
+<h3>How granular should budget allocations be?</h3>
+<p>Balance granularity with operational complexity. Daily quotas suffice for most use cases; hourly sub-quotas add complexity but prevent burst exhaustion. Per-resource quotas (HTML vs PDF) make sense when content types have vastly different costs.</p>
+<h3>What happens when legitimate users get caught in crawler rate limits?</h3>
+<p>Use precise user-agent matching and IP validation to avoid false positives. Legitimate users shouldn&#39;t match crawler patterns. If unavoidable overlap exists, implement allowlist for known good IPs or require human verification (CAPTCHA) before blocking.</p>
+<h2>Conclusion</h2>
+<p>Crawl budget controls provide middle path between unrestricted crawler access and total blocking, enabling publishers to define sustainable access levels matching infrastructure capacity, cost constraints, and licensing agreement terms. Request quotas, bandwidth caps, time-based allocation, priority tiers, and dynamic adjustment based on backend health create flexible systems balancing multiple objectives. Combined with logging, monitoring, and billing integration, these technical controls operationalize licensing agreements, enforce contractual terms, and provide usage evidence for overage charges or compliance verification. Publishers implementing budget systems gain precise control over AI crawler access while maintaining measurable openness supporting AI ecosystem development within defined economic and technical boundaries.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

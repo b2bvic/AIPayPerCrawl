@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAProxy AI Crawler Rate Limiting: Advanced Traffic Shaping for Bot Management | AI Pay Per Crawl</title>
+    <meta name="description" content="Implement sophisticated AI crawler rate limiting with HAProxy using user-agent detection, stick tables, and dynamic rate controls. Production-ready configs included.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="HAProxy AI Crawler Rate Limiting: Advanced Traffic Shaping for Bot Management">
+    <meta property="og:description" content="Implement sophisticated AI crawler rate limiting with HAProxy using user-agent detection, stick tables, and dynamic rate controls. Production-ready configs included.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/haproxy-ai-crawler-rate-limiting">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HAProxy AI Crawler Rate Limiting: Advanced Traffic Shaping for Bot Management">
+    <meta name="twitter:description" content="Implement sophisticated AI crawler rate limiting with HAProxy using user-agent detection, stick tables, and dynamic rate controls. Production-ready configs included.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/haproxy-ai-crawler-rate-limiting">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HAProxy AI Crawler Rate Limiting: Advanced Traffic Shaping for Bot Management",
+  "description": "Implement sophisticated AI crawler rate limiting with HAProxy using user-agent detection, stick tables, and dynamic rate controls. Production-ready configs included.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/haproxy-ai-crawler-rate-limiting"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HAProxy AI Crawler Rate Limiting: Advanced Traffic Shaping for Bot Management",
+      "item": "https://aipaypercrawl.com/articles/haproxy-ai-crawler-rate-limiting"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>HAProxy AI Crawler Rate Limiting: Advanced Traffic Shaping for Bot Management</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 13 min read</span>
+        <h1>HAProxy AI Crawler Rate Limiting: Advanced Traffic Shaping for Bot Management</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Implement sophisticated AI crawler rate limiting with HAProxy using user-agent detection, stick tables, and dynamic rate controls. Production-ready configs included.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>HAProxy AI Crawler Rate Limiting: Advanced Traffic Shaping for Bot Management</h1>
+<p><strong>HAProxy</strong> provides sophisticated traffic control capabilities that surpass basic robots.txt directives when managing AI crawler access. While robots.txt requests compliance, <strong>HAProxy</strong> enforces limits regardless of crawler cooperation through application-layer filtering, dynamic rate tables, and multi-dimensional throttling strategies. Publishers facing aggressive AI crawler traffic, negotiating licensing agreements with usage caps, or operating under strict bandwidth budgets gain precise control through <strong>HAProxy</strong> configurations that permit desired crawler access while preventing infrastructure overload.</p>
+<h2>Why HAProxy for Crawler Management</h2>
+<p>Web servers like <strong>Nginx</strong> and <strong>Apache</strong> include rate limiting modules, but <strong>HAProxy</strong>&#39;s specialized load balancing and traffic shaping features provide advantages for complex crawler control scenarios. <strong>HAProxy</strong> operates as a reverse proxy sitting between clients and origin servers, inspecting requests before they reach application infrastructure, allowing denial or throttling before expensive backend processing occurs.</p>
+<p>Stick tables enable stateful tracking across multiple HAProxy instances in load-balanced deployments. A crawler hitting multiple frontend servers still encounters unified rate limits because stick tables share state. Traditional web server rate limiting operates per-instance, allowing crawlers to bypass limits by distributing requests across servers. <strong>HAProxy</strong> closes this loophole.</p>
+<p>Dynamic rate adjustment based on backend health distinguishes <strong>HAProxy</strong> from simpler approaches. If origin servers show elevated error rates or response times, <strong>HAProxy</strong> can automatically tighten crawler rate limits to preserve capacity for human users. When backend health improves, crawler limits relax, maximizing training data delivery within infrastructure constraints.</p>
+<p>Multi-criteria filtering combines user-agent detection with IP-based rules, geographic origin, time-of-day patterns, and request characteristics. Block <strong>GPTBot</strong> from specific IP ranges during peak hours while allowing access at 2 AM. Permit <strong>ClaudeBot</strong> to request HTML at 20/minute but restrict PDF downloads to 5/minute. <strong>HAProxy</strong>&#39;s ACL (Access Control List) system enables sophisticated policies robots.txt cannot express.</p>
+<p>Logging and metrics integration feeds crawler traffic data into monitoring platforms like <strong>Prometheus</strong>, <strong>Grafana</strong>, or <strong>Datadog</strong>. Track per-crawler request rates, bandwidth consumption, error rates, and throttling events in real-time dashboards. This visibility supports billing under usage-based licensing agreements and provides evidence for copyright enforcement actions.</p>
+<h2>Basic User-Agent Rate Limiting Configuration</h2>
+<p>A fundamental <strong>HAProxy</strong> configuration limiting <strong>GPTBot</strong> requests establishes the pattern for more complex policies:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    bind *:80
+    bind *:443 ssl crt /etc/haproxy/certs/site.pem
+
+    # Define GPTBot ACL
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+    # Track GPTBot requests in stick table
+    stick-table type string len 64 size 100k expire 60s store http_req_rate(60s)
+    http-request track-sc0 req.hdr(User-Agent) if is_gptbot
+
+    # Rate limit: 10 requests per minute
+    http-request deny deny_status 429 if is_gptbot { sc_http_req_rate(0) gt 10 }
+
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    server web1 192.168.1.10:80 check
+    server web2 192.168.1.11:80 check
+</code></pre>
+<p>This configuration identifies <strong>GPTBot</strong> via <code>User-Agent</code> header, tracks requests in a stick table with 60-second expiry, and denies requests exceeding 10 per minute with HTTP 429 status. The stick table stores request rates per unique user-agent string, enabling per-crawler limits.</p>
+<p>Key components:</p>
+<ul>
+<li><code>acl is_gptbot</code>: Defines boolean condition matching <strong>GPTBot</strong> in <code>User-Agent</code> header (case-insensitive via <code>-i</code> flag)</li>
+<li><code>stick-table</code>: Creates in-memory table tracking 100,000 unique user-agent strings with 60-second expiration</li>
+<li><code>http-request track-sc0</code>: Increments counter for matched requests</li>
+<li><code>http-request deny</code>: Blocks requests when tracked rate exceeds threshold (10 req/min)</li>
+<li><code>deny_status 429</code>: Returns &quot;Too Many Requests&quot; status code</li>
+</ul>
+<p>Testing this configuration:</p>
+<pre><code class="language-bash">for i in {1..15}; do
+  curl -A &quot;GPTBot/1.0&quot; https://example.com/
+  sleep 5
+done
+</code></pre>
+<p>First 10 requests succeed; subsequent requests receive 429 responses until the 60-second window slides forward allowing new requests.</p>
+<h2>Multi-Crawler Differentiated Rate Limits</h2>
+<p>Production environments with multiple AI crawlers require per-crawler limits reflecting licensing agreements, infrastructure capacity, and strategic priorities:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    bind *:443 ssl crt /etc/haproxy/certs/site.pem
+
+    # Define crawler ACLs
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+    acl is_claudebot hdr_sub(User-Agent) -i ClaudeBot
+    acl is_google_extended hdr_sub(User-Agent) -i Google-Extended
+    acl is_ccbot hdr_sub(User-Agent) -i CCBot
+
+    # Stick tables for rate tracking
+    stick-table type string len 64 size 100k expire 60s store http_req_rate(60s),bytes_out_rate(60s)
+
+    # Track all crawlers
+    http-request track-sc0 req.hdr(User-Agent) if is_gptbot or is_claudebot or is_google_extended or is_ccbot
+
+    # Per-crawler rate limits (requests/minute)
+    http-request deny deny_status 429 if is_gptbot { sc_http_req_rate(0) gt 20 }
+    http-request deny deny_status 429 if is_claudebot { sc_http_req_rate(0) gt 15 }
+    http-request deny deny_status 429 if is_google_extended { sc_http_req_rate(0) gt 30 }
+    http-request deny deny_status 429 if is_ccbot { sc_http_req_rate(0) gt 10 }
+
+    # Bandwidth limits (MB/minute)
+    http-request deny deny_status 429 if is_gptbot { sc_bytes_out_rate(0) gt 52428800 }  # 50 MB/min
+    http-request deny deny_status 429 if is_claudebot { sc_bytes_out_rate(0) gt 31457280 }  # 30 MB/min
+
+    default_backend web_servers
+</code></pre>
+<p>This implements:</p>
+<ul>
+<li><strong>GPTBot</strong>: 20 requests/minute, 50 MB/minute bandwidth cap</li>
+<li><strong>ClaudeBot</strong>: 15 requests/minute, 30 MB/minute bandwidth cap</li>
+<li><strong>Google-Extended</strong>: 30 requests/minute, no bandwidth cap</li>
+<li><strong>CCBot</strong> (Common Crawl): 10 requests/minute, no bandwidth cap</li>
+</ul>
+<p>Bandwidth tracking via <code>bytes_out_rate</code> enforces data transfer limits independent of request counts, critical when crawlers request large PDFs or media files. A crawler staying within request limits but downloading 100 MB/minute in large files still hits bandwidth throttles.</p>
+<h2>IP-Based Verification and Spoofing Prevention</h2>
+<p>Crawlers can spoof <code>User-Agent</code> headers, claiming to be <strong>GPTBot</strong> while originating from non-OpenAI infrastructure. <strong>HAProxy</strong> can combine user-agent filtering with IP range verification:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    # Define legitimate OpenAI IP ranges
+    acl openai_ips src 52.12.0.0/14 54.0.0.0/8 23.20.0.0/14
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+    # Legitimate GPTBot: correct user-agent AND valid IP
+    acl legit_gptbot is_gptbot openai_ips
+
+    # Spoofed GPTBot: correct user-agent but invalid IP
+    acl spoofed_gptbot is_gptbot !openai_ips
+
+    # Block spoofed crawlers immediately
+    http-request deny deny_status 403 if spoofed_gptbot
+
+    # Rate limit legitimate crawlers
+    stick-table type string len 64 size 100k expire 60s store http_req_rate(60s)
+    http-request track-sc0 req.hdr(User-Agent) if legit_gptbot
+    http-request deny deny_status 429 if legit_gptbot { sc_http_req_rate(0) gt 20 }
+
+    default_backend web_servers
+</code></pre>
+<p>IP ranges listed above are examples—publishers should maintain current lists from <strong>OpenAI</strong> documentation or observed legitimate crawler IPs. Automate updates:</p>
+<pre><code class="language-bash">#!/bin/bash
+# Fetch current OpenAI IP ranges and update HAProxy ACL
+curl -s https://openai.com/crawler-ips.json | \
+  jq -r &#39;.prefixes[]&#39; &gt; /etc/haproxy/openai_ips.lst
+
+# Reload HAProxy configuration
+systemctl reload haproxy
+</code></pre>
+<p>This script refreshes IP lists daily via cron, keeping ACL current as <strong>OpenAI</strong> provisions new infrastructure.</p>
+<h2>Time-Based Rate Adjustment</h2>
+<p>Publishers often prefer allowing heavier crawler access during off-peak hours when human traffic is low. <strong>HAProxy</strong> ACLs support time-based rules:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    # Define time periods
+    acl peak_hours hdr_sub(Date) -m str -i hour=08,09,10,11,12,13,14,15,16,17,18
+    acl off_peak_hours hdr_sub(Date) -m str -i hour=00,01,02,03,04,05,06,19,20,21,22,23
+
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+    stick-table type string len 64 size 100k expire 60s store http_req_rate(60s)
+    http-request track-sc0 req.hdr(User-Agent) if is_gptbot
+
+    # Strict limits during peak hours (8 AM - 6 PM)
+    http-request deny deny_status 429 if is_gptbot peak_hours { sc_http_req_rate(0) gt 5 }
+
+    # Relaxed limits during off-peak (6 PM - 8 AM)
+    http-request deny deny_status 429 if is_gptbot off_peak_hours { sc_http_req_rate(0) gt 30 }
+
+    default_backend web_servers
+</code></pre>
+<p>This throttles <strong>GPTBot</strong> to 5 requests/minute during daytime hours, allowing 30 requests/minute at night. Adjust thresholds based on traffic patterns—analyze logs to identify true peak periods for your audience.</p>
+<p>Alternative approach using native time-based ACLs:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    acl is_business_hours hour 8:00-18:00
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+    # Dynamic rate limit based on time
+    http-request set-var(txn.rate_limit) int(5) if is_business_hours
+    http-request set-var(txn.rate_limit) int(30) if !is_business_hours
+
+    stick-table type string len 64 size 100k expire 60s store http_req_rate(60s)
+    http-request track-sc0 req.hdr(User-Agent) if is_gptbot
+
+    http-request deny deny_status 429 if is_gptbot { sc_http_req_rate(0),sub(txn.rate_limit) gt 0 }
+
+    default_backend web_servers
+</code></pre>
+<p>This sets a transaction variable (<code>txn.rate_limit</code>) dynamically based on time, then compares actual rate against the variable. More maintainable than hardcoding thresholds in multiple rules.</p>
+<h2>Content-Type and Path-Based Restrictions</h2>
+<p>AI training benefits from HTML content more than static resources. Publishers can allow HTML access while restricting or blocking images, CSS, JavaScript, and binaries:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+    # Define content types
+    acl html_request path_end -i .html .htm
+    acl image_request path_end -i .jpg .jpeg .png .gif .webp
+    acl video_request path_end -i .mp4 .avi .mov .webm
+    acl doc_request path_end -i .pdf .doc .docx .xls .xlsx
+    acl static_request path_end -i .css .js .woff .ttf
+
+    # Block static resources for crawlers
+    http-request deny deny_status 403 if is_gptbot static_request
+
+    # Aggressive limits for media
+    stick-table type string len 128 size 100k expire 300s store http_req_rate(300s)
+    http-request track-sc0 str(gptbot-media),req.hdr(User-Agent),path if is_gptbot image_request or video_request
+    http-request deny deny_status 429 if is_gptbot { sc_http_req_rate(0) gt 10 } image_request or video_request
+
+    # Moderate limits for documents
+    http-request track-sc1 str(gptbot-docs),req.hdr(User-Agent) if is_gptbot doc_request
+    http-request deny deny_status 429 if is_gptbot { sc_http_req_rate(1) gt 20 } doc_request
+
+    # Permissive limits for HTML
+    http-request track-sc2 str(gptbot-html),req.hdr(User-Agent) if is_gptbot html_request
+    http-request deny deny_status 429 if is_gptbot { sc_http_req_rate(2) gt 50 } html_request
+
+    default_backend web_servers
+</code></pre>
+<p>This configuration:</p>
+<ul>
+<li>Blocks CSS/JS/fonts completely (403 Forbidden)</li>
+<li>Limits images/video to 10 requests per 5 minutes</li>
+<li>Limits PDFs/Office docs to 20 requests per 5 minutes</li>
+<li>Permits HTML at 50 requests per 5 minutes</li>
+</ul>
+<p>Separate stick table entries (<code>sc0</code>, <code>sc1</code>, <code>sc2</code>) track different content types independently, preventing HTML requests from consuming media quotas.</p>
+<p>Path-based restrictions protect premium content sections:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+    # Content sections
+    acl public_content path_beg /blog /articles /public
+    acl premium_content path_beg /premium /members /exclusive
+    acl licensed_content path_beg /licensed-archive
+
+    # Block premium content entirely
+    http-request deny deny_status 403 if is_gptbot premium_content
+
+    # Allow licensed content (may have separate agreement)
+    # Apply standard rate limits
+
+    # Permissive public content
+    # Apply relaxed rate limits
+
+    default_backend web_servers
+</code></pre>
+<h2>Backend Health-Aware Dynamic Rate Limiting</h2>
+<p><strong>HAProxy</strong> can adjust crawler limits based on backend server health, preserving capacity for human users during degraded performance:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+    # Check backend health
+    acl backend_healthy nbsrv(web_servers) ge 2
+    acl backend_degraded nbsrv(web_servers) eq 1
+    acl backend_critical nbsrv(web_servers) lt 1
+
+    # Block crawlers entirely if backend critical
+    http-request deny deny_status 503 if is_gptbot backend_critical
+
+    # Tight limits if degraded
+    stick-table type string len 64 size 100k expire 60s store http_req_rate(60s)
+    http-request track-sc0 req.hdr(User-Agent) if is_gptbot
+    http-request deny deny_status 429 if is_gptbot backend_degraded { sc_http_req_rate(0) gt 5 }
+
+    # Normal limits if healthy
+    http-request deny deny_status 429 if is_gptbot backend_healthy { sc_http_req_rate(0) gt 20 }
+
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    option httpchk GET /health
+    http-check expect status 200
+    server web1 192.168.1.10:80 check inter 5s
+    server web2 192.168.1.11:80 check inter 5s
+    server web3 192.168.1.12:80 check inter 5s
+</code></pre>
+<p>The <code>nbsrv()</code> function returns count of healthy servers in backend pool. Rules adjust crawler limits:</p>
+<ul>
+<li>All servers down: Return 503, block crawlers</li>
+<li>One server up: Limit crawlers to 5 req/min</li>
+<li>Two+ servers up: Allow normal 20 req/min</li>
+</ul>
+<p>This prioritizes human traffic during infrastructure issues while resuming crawler access when capacity permits.</p>
+<h2>Licensing Agreement Enforcement</h2>
+<p>Publishers with usage-based licensing agreements requiring precise crawler control implement contract terms through <strong>HAProxy</strong>:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    # OpenAI contract: 50 GB/month, max 20 req/min
+    acl is_gptbot hdr_sub(User-Agent) -i GPTBot
+
+    # Track bandwidth (bytes per second, convert to MB/month)
+    stick-table type string len 64 size 10k expire 2592000s store bytes_out_rate(2592000s)
+    http-request track-sc0 str(gptbot-monthly),req.hdr(User-Agent) if is_gptbot
+
+    # 50 GB = 53687091200 bytes
+    http-request deny deny_status 402 if is_gptbot { sc_bytes_out_rate(0) gt 53687091200 }
+
+    # Request rate limit
+    stick-table type string len 64 size 10k expire 60s store http_req_rate(60s)
+    http-request track-sc1 str(gptbot-rate),req.hdr(User-Agent) if is_gptbot
+    http-request deny deny_status 429 if is_gptbot { sc_http_req_rate(1) gt 20 }
+
+    default_backend web_servers
+</code></pre>
+<p>The monthly bandwidth cap uses 2,592,000-second (30-day) stick table expiry, tracking cumulative bytes transferred. Once <strong>GPTBot</strong> exceeds 50 GB in rolling 30-day window, requests receive HTTP 402 (Payment Required) status, signaling billing overage.</p>
+<p>Logging these enforcement events provides billing documentation:</p>
+<pre><code class="language-haproxy">frontend web_frontend
+    # ... rate limiting rules ...
+
+    # Log rate limit denials
+    http-request capture req.hdr(User-Agent) len 128
+    http-request set-var(txn.rate_exceeded) bool(true) if is_gptbot { sc_http_req_rate(1) gt 20 }
+    http-response set-header X-Rate-Limit-Exceeded true if { var(txn.rate_exceeded) }
+
+    log-format &quot;%ci:%cp [%tr] %ft %b/%s %TR/%Tw/%Tc/%Tr/%Ta %ST %B %CC %CS %tsc %ac/%fc/%bc/%sc/%rc %sq/%bq %hr %hs %{+Q}r %[capture.req.hdr(0)] rate_exceeded=%[var(txn.rate_exceeded)]&quot;
+</code></pre>
+<p>This custom log format includes rate limit exceeded flag, enabling post-processing scripts to generate monthly usage reports:</p>
+<pre><code class="language-bash">#!/bin/bash
+# Generate GPTBot usage report
+grep &#39;GPTBot&#39; /var/log/haproxy.log | \
+  awk &#39;{ bytes+=$10 } END { print &quot;Total GPTBot bandwidth: &quot; bytes/1024/1024/1024 &quot; GB&quot; }&#39;
+
+grep &#39;rate_exceeded=true&#39; /var/log/haproxy.log | \
+  awk &#39;{ print $1, $2 }&#39; | \
+  uniq -c &gt; gptbot_throttle_events.txt
+</code></pre>
+<h2>Monitoring and Observability</h2>
+<p><strong>HAProxy</strong> integrates with monitoring systems via stats socket, Prometheus exporter, and syslog:</p>
+<pre><code class="language-haproxy">global
+    stats socket /var/run/haproxy.sock mode 660 level admin
+    stats timeout 30s
+
+    # Prometheus metrics endpoint
+    stats bind-process 1
+    stats socket ipv4@127.0.0.1:9101 level admin expose-fd listeners
+
+frontend stats
+    bind *:8404
+    http-request use-service prometheus-exporter if { path /metrics }
+    stats enable
+    stats uri /stats
+    stats refresh 10s
+</code></pre>
+<p>Query stick table contents via stats socket:</p>
+<pre><code class="language-bash">echo &quot;show table web_frontend&quot; | socat stdio /var/run/haproxy.sock
+</code></pre>
+<p>This displays current entries in stick tables, showing which crawlers are being tracked and their current request rates.</p>
+<p><strong>Prometheus</strong> queries for crawler metrics:</p>
+<pre><code class="language-promql"># GPTBot requests per second
+rate(haproxy_frontend_http_requests_total{user_agent=&quot;GPTBot&quot;}[5m])
+
+# GPTBot rate limit denials
+rate(haproxy_frontend_denied_requests_total{user_agent=&quot;GPTBot&quot;,reason=&quot;rate_limit&quot;}[5m])
+
+# Crawler bandwidth consumption
+rate(haproxy_frontend_bytes_out_total{user_agent=&quot;GPTBot&quot;}[1h])
+</code></pre>
+<p>Grafana dashboards visualize these metrics, alerting when crawler traffic exceeds expected patterns or licensing agreement thresholds.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Can HAProxy differentiate crawlers if they use the same IP ranges?</h3>
+<p>Yes, via user-agent strings. <strong>HAProxy</strong> inspects HTTP headers at application layer, distinguishing <strong>GPTBot</strong> from <strong>ClaudeBot</strong> even if both originate from overlapping cloud provider IP ranges. Combine user-agent ACLs with IP validation to prevent spoofing while enabling granular per-crawler controls.</p>
+<h3>Does HAProxy rate limiting work with CDN platforms like Cloudflare?</h3>
+<p>Yes, but ensure <strong>HAProxy</strong> sees actual crawler IPs via <code>X-Forwarded-For</code> or CDN-specific headers. Configure <strong>HAProxy</strong> to trust CDN IP ranges and extract client IPs from forwarded headers. Rate limits then apply to original crawler IPs rather than CDN edge IPs.</p>
+<h3>How do I test HAProxy rate limiting without deploying to production?</h3>
+<p>Use <strong>HAProxy</strong> in a local Docker container with test configuration. Send requests via curl with different user-agents and rates, observing 429 responses when limits are exceeded. Verify stick table contents via stats socket to confirm tracking works as intended before promoting to production.</p>
+<h3>Can I implement graduated rate limits that slow crawlers instead of blocking them?</h3>
+<p><strong>HAProxy</strong> doesn&#39;t support TCP-level slow-down, but you can use tarpit directive to delay response:</p>
+<pre><code class="language-haproxy">http-request tarpit if is_gptbot { sc_http_req_rate(0) gt 20 }
+</code></pre>
+<p>This holds the connection open without responding, causing crawler to wait. However, hard denials (429 status) are clearer and allow crawlers to implement backoff.</p>
+<h3>How do HAProxy rate limits interact with robots.txt crawl-delay?</h3>
+<p>Independently. Robots.txt is advisory; crawlers can ignore <code>Crawl-delay</code>. <strong>HAProxy</strong> enforces limits regardless of crawler cooperation. Use both: robots.txt requests politeness, <strong>HAProxy</strong> guarantees compliance. If a crawler respects robots.txt delays, it stays within <strong>HAProxy</strong> limits naturally.</p>
+<h2>Conclusion</h2>
+<p><strong>HAProxy</strong> provides production-grade crawler rate limiting that far exceeds robots.txt capabilities, enabling publishers to enforce licensing agreement terms, protect infrastructure during high-traffic events, and differentiate treatment of various AI crawlers based on business relationships. Combining user-agent detection, IP validation, time-based rules, content-type filtering, and backend-health awareness creates sophisticated policies matching real-world publisher needs. Stick tables, logging, and monitoring integration deliver the observability necessary for usage-based billing and compliance verification. Publishers pursuing <a href="legal-publisher-ai-licensing.html">AI crawler monetization</a> or managing crawlers alongside human traffic benefit from <strong>HAProxy</strong>&#39;s flexibility, especially in environments where simple robots.txt controls prove insufficient against aggressive or non-compliant crawlers.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

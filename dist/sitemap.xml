@@ -721,6 +721,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aipaypercrawl.com/articles/global-ai-copyright-comparison.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/goaccess-ai-crawler-analysis.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/google-ai-content-deals-gemini.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://aipaypercrawl.com/articles/google-extended-crawler-profile.html</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -733,14 +751,116 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aipaypercrawl.com/articles/google-search-console-ai-crawler.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/googlebot-vs-google-extended.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/government-website-ai-crawlers.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://aipaypercrawl.com/articles/gptbot-behavior-analysis.html</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aipaypercrawl.com/articles/gptbot-crawler-profile.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/gptbot-vs-chatgpt-user.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/haproxy-ai-crawler-rate-limiting.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/how-ai-companies-value-training-data.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/how-ai-crawlers-work-architecture.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/http-headers-ai-crawler-management.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/hybrid-ai-licensing-models.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/implement-ai-crawl-budget-controls.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/jamstack-ai-crawler-strategy.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/japan-ai-training-copyright-exception.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/javascript-rendering-ai-crawlers.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/legal-publisher-ai-licensing.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/llms-txt-examples-templates.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://aipaypercrawl.com/articles/llms-txt-specification-guide.html</loc>
     <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/llms-txt-vs-rsl-comparison.html</loc>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

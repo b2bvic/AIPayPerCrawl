@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Headers for AI Crawler Management: X-Robots-Tag and Advanced Access Control | AI Pay Per Crawl</title>
+    <meta name="description" content="Use HTTP headers like X-Robots-Tag, Cache-Control, and custom headers to control AI crawler access beyond robots.txt. Server configuration examples included.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="HTTP Headers for AI Crawler Management: X-Robots-Tag and Advanced Access Control">
+    <meta property="og:description" content="Use HTTP headers like X-Robots-Tag, Cache-Control, and custom headers to control AI crawler access beyond robots.txt. Server configuration examples included.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/http-headers-ai-crawler-management">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HTTP Headers for AI Crawler Management: X-Robots-Tag and Advanced Access Control">
+    <meta name="twitter:description" content="Use HTTP headers like X-Robots-Tag, Cache-Control, and custom headers to control AI crawler access beyond robots.txt. Server configuration examples included.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/http-headers-ai-crawler-management">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HTTP Headers for AI Crawler Management: X-Robots-Tag and Advanced Access Control",
+  "description": "Use HTTP headers like X-Robots-Tag, Cache-Control, and custom headers to control AI crawler access beyond robots.txt. Server configuration examples included.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/http-headers-ai-crawler-management"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HTTP Headers for AI Crawler Management: X-Robots-Tag and Advanced Access Control",
+      "item": "https://aipaypercrawl.com/articles/http-headers-ai-crawler-management"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>HTTP Headers for AI Crawler Management: X-Robots-Tag and Advanced Access Control</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 7 min read</span>
+        <h1>HTTP Headers for AI Crawler Management: X-Robots-Tag and Advanced Access Control</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Use HTTP headers like X-Robots-Tag, Cache-Control, and custom headers to control AI crawler access beyond robots.txt. Server configuration examples included.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>HTTP Headers for AI Crawler Management: X-Robots-Tag and Advanced Access Control</h1>
+<p>HTTP response headers provide granular crawler control unavailable through robots.txt alone. While robots.txt operates site-wide or per-directory, headers enable per-resource directives—blocking specific PDFs, controlling cache behavior for dynamic content, or implementing time-based access restrictions. Publishers managing complex content portfolios with mixed public-private sections, licensing agreements covering specific file types, or technical requirements for fine-grained access control benefit from header-based crawler management supplementing robots.txt foundations.</p>
+<h2>X-Robots-Tag Header Fundamentals</h2>
+<p>The X-Robots-Tag HTTP header instructs crawlers how to handle specific resources. Unlike robots.txt, which crawlers check before requesting pages, X-Robots-Tag appears in response headers, applying to the actual resource requested. This enables dynamic access control based on user authentication, subscription status, or business logic impossible to express statically.</p>
+<p>Basic syntax blocking AI crawlers:</p>
+<pre><code>X-Robots-Tag: noindex, nofollow
+</code></pre>
+<p>This header prevents search indexing and link following. However, it does not specifically block AI training. To target AI crawlers explicitly, specify user-agents:</p>
+<pre><code>X-Robots-Tag: GPTBot: noindex, nofollow, noarchive
+X-Robots-Tag: ClaudeBot: noindex, nofollow, noarchive  
+X-Robots-Tag: Google-Extended: noindex, nofollow, noarchive
+</code></pre>
+<p>Multiple X-Robots-Tag headers or comma-separated directives in one header control different crawlers independently. The <code>noarchive</code> directive discourages long-term content storage, relevant for training data collection.</p>
+<p>Nginx configuration adding headers:</p>
+<pre><code class="language-nginx">location /premium-content/ {
+    add_header X-Robots-Tag &quot;GPTBot: noindex, nofollow&quot; always;
+    add_header X-Robots-Tag &quot;ClaudeBot: noindex, nofollow&quot; always;
+}
+</code></pre>
+<p>Apache configuration:</p>
+<pre><code class="language-apache">&lt;Directory /var/www/html/premium-content&gt;
+    Header set X-Robots-Tag &quot;GPTBot: noindex, nofollow&quot;
+    Header append X-Robots-Tag &quot;ClaudeBot: noindex, nofollow&quot;
+&lt;/Directory&gt;
+</code></pre>
+<p>The <code>always</code> flag (Nginx) or <code>append</code> directive (Apache) ensures headers apply to error responses and cached content, not just successful 200 OK responses.</p>
+<h2>Dynamic Header Generation Based on User Context</h2>
+<p>Publishers with paywall or authentication systems can serve different headers to authenticated users versus crawlers. This prevents content leakage while maintaining search visibility for logged-out preview content:</p>
+<pre><code class="language-php">&lt;?php
+// Detect AI crawlers
+$user_agent = $_SERVER[&#39;HTTP_USER_AGENT&#39;];
+$ai_crawlers = [&#39;GPTBot&#39;, &#39;ClaudeBot&#39;, &#39;Google-Extended&#39;, &#39;CCBot&#39;];
+$is_crawler = false;
+
+foreach ($ai_crawlers as $crawler) {
+    if (stripos($user_agent, $crawler) !== false) {
+        $is_crawler = true;
+        break;
+    }
+}
+
+// Block crawlers from premium content if user not authenticated
+if ($is_crawler &amp;&amp; !user_is_authenticated()) {
+    header(&#39;X-Robots-Tag: noindex, nofollow, noarchive&#39;);
+    header(&#39;HTTP/1.1 403 Forbidden&#39;);
+    exit(&#39;Access restricted for AI crawlers&#39;);
+}
+
+// Serve content to authenticated users
+render_content();
+?&gt;
+</code></pre>
+<p>This PHP example blocks AI crawlers from accessing content unless the user has valid authentication cookies. Legitimate users retrieve content normally; crawlers receive 403 errors with X-Robots-Tag headers.</p>
+<h2>Content-Type Specific Controls</h2>
+<p>Publishers licensing text content but reserving multimedia rights use headers differentiating by file type:</p>
+<pre><code class="language-nginx">location ~* \.(pdf|doc|docx)$ {
+    add_header X-Robots-Tag &quot;GPTBot: noindex, nofollow&quot; always;
+}
+
+location ~* \.(jpg|png|gif|mp4)$ {
+    add_header X-Robots-Tag &quot;GPTBot: noindex, nofollow&quot; always;
+    add_header X-Robots-Tag &quot;ClaudeBot: noindex, nofollow&quot; always;
+}
+
+location ~* \.(html|txt)$ {
+    # Allow HTML and text for crawlers (subject to other restrictions)
+}
+</code></pre>
+<p>This blocks AI crawlers from documents and media while permitting HTML access. Combined with robots.txt, this provides defense-in-depth—crawlers should respect robots.txt before requesting, but headers catch attempts to access blocked resources.</p>
+<h2>Cache-Control Headers and Training Data Staleness</h2>
+<p>Cache-Control headers influence how crawlers treat content freshness. While designed for proxy caching, these headers signal content volatility relevant to training data:</p>
+<pre><code>Cache-Control: no-store, must-revalidate
+</code></pre>
+<p>This instructs intermediaries not to store responses. AI crawlers might interpret no-store as publishers objecting to long-term retention, though enforcement depends on crawler implementation.</p>
+<p>For content publishers want crawlers to update frequently:</p>
+<pre><code>Cache-Control: max-age=3600, must-revalidate
+</code></pre>
+<p>One-hour cache validity signals crawlers should re-fetch content regularly, keeping training datasets current. Useful for news sites wanting models trained on up-to-date information.</p>
+<p>For stable archival content:</p>
+<pre><code>Cache-Control: public, max-age=31536000, immutable
+</code></pre>
+<p>One-year cache validity with immutable flag tells crawlers content won&#39;t change, allowing aggressive local caching. This reduces redundant requests for historical archives.</p>
+<h2>Rate Limiting Headers and Crawler Politeness</h2>
+<p>HTTP 429 Too Many Requests responses include Retry-After headers instructing crawlers when to attempt next request:</p>
+<pre><code>HTTP/1.1 429 Too Many Requests
+Retry-After: 120
+</code></pre>
+<p>This tells crawlers to wait 120 seconds before retrying. Combining with X-Robots-Tag:</p>
+<pre><code class="language-nginx">limit_req_zone $http_user_agent zone=gptbot:10m rate=10r/m;
+
+location / {
+    if ($http_user_agent ~* &quot;GPTBot&quot;) {
+        limit_req zone=gptbot burst=5;
+        add_header Retry-After &quot;60&quot; always;
+        add_header X-RateLimit-Limit &quot;10&quot; always;
+        add_header X-RateLimit-Remaining &quot;0&quot; always;
+    }
+}
+</code></pre>
+<p>Custom X-RateLimit headers (common in APIs) communicate rate limits to crawlers, potentially improving cooperation. While not standardized for web crawlers, documenting these headers in crawler documentation (linked from robots.txt) educates AI companies about your infrastructure constraints.</p>
+<h2>Authentication and Authorization Headers</h2>
+<p>WWW-Authenticate challenges force crawlers to provide credentials:</p>
+<pre><code>HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Basic realm=&quot;Premium Content&quot;
+X-Robots-Tag: noindex, nofollow
+</code></pre>
+<p>This blocks unauthorized crawler access while permitting authenticated access if AI companies have subscriptions or licensing agreements granting credentials.</p>
+<p>For token-based systems:</p>
+<pre><code class="language-nginx">location /api/premium-content {
+    if ($http_authorization != &quot;Bearer YOUR_API_KEY&quot;) {
+        add_header WWW-Authenticate &#39;Bearer realm=&quot;API&quot;&#39; always;
+        return 401;
+    }
+    # Serve content
+}
+</code></pre>
+<p>AI companies with licensing deals receive API keys, tracked in logs for billing. Those without keys receive 401 responses blocking access.</p>
+<h2>Link Headers and Alternative Discovery</h2>
+<p>Link headers can advertise alternative content representations or licensing information:</p>
+<pre><code>Link: &lt;/terms/ai-licensing&gt;; rel=&quot;license&quot;
+Link: &lt;/api/structured-data&gt;; rel=&quot;alternate&quot;; type=&quot;application/json&quot;
+</code></pre>
+<p>The license relation points crawlers to licensing terms, potentially containing contact information for negotiating access. The alternate relation offers structured data feeds, which AI companies prefer over HTML scraping.</p>
+<p>Publishers providing both web and API access advertise these through Link headers, encouraging crawlers toward preferred access methods:</p>
+<pre><code class="language-nginx">location /articles/ {
+    add_header Link &#39;&lt;/api/articles&gt;; rel=&quot;alternate&quot;; type=&quot;application/json&quot;&#39;;
+}
+</code></pre>
+<p>This tells crawlers that JSON API endpoint exists, potentially reducing HTML scraping load if crawlers switch to API access.</p>
+<h2>Security and Anti-Scraping Headers</h2>
+<p>Content-Security-Policy headers restrict embedding and external resource loading, limiting scrapers&#39; ability to execute JavaScript or load external scripts:</p>
+<pre><code>Content-Security-Policy: default-src &#39;self&#39;; script-src &#39;none&#39;
+</code></pre>
+<p>This prevents JavaScript execution in scraped content, though AI crawlers processing raw HTML aren&#39;t affected. However, it signals security consciousness that may correlate with legal enforcement likelihood.</p>
+<p>X-Frame-Options prevents embedding:</p>
+<pre><code>X-Frame-Options: SAMEORIGIN
+</code></pre>
+<p>While not directly affecting crawlers, this demonstrates access control posture potentially deterring aggressive scraping.</p>
+<h2>Monitoring and Compliance Verification</h2>
+<p>Log analysis verifies crawler respect for headers. Check server logs for X-Robots-Tag responses and subsequent crawler behavior:</p>
+<pre><code class="language-bash">grep &#39;X-Robots-Tag&#39; /var/log/nginx/access.log | \
+grep &#39;GPTBot&#39; | \
+awk &#39;{print $9, $10}&#39; | sort | uniq -c
+</code></pre>
+<p>This counts HTTP status codes for responses with X-Robots-Tag sent to GPTBot. If many 200 OK responses follow noindex headers, the crawler ignores directives—flag for enforcement escalation.</p>
+<p>Custom logging tracks header compliance:</p>
+<pre><code class="language-nginx">log_format crawler &#39;$remote_addr - [$time_local] &quot;$request&quot; &#39;
+                   &#39;$status $body_bytes_sent &#39;
+                   &#39;&quot;$http_user_agent&quot; &#39;
+                   &#39;robots_tag=&quot;$sent_http_x_robots_tag&quot;&#39;;
+
+access_log /var/log/nginx/crawler.log crawler if=$is_crawler;
+</code></pre>
+<p>This creates dedicated crawler logs including X-Robots-Tag values, simplifying compliance analysis.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Do all AI crawlers respect X-Robots-Tag headers?</h3>
+<p>Major AI companies (OpenAI, Anthropic, Google) claim to respect X-Robots-Tag, but verification requires log analysis. Smaller crawlers or research projects may ignore headers. Defense-in-depth combining headers, robots.txt, and server-side access controls ensures compliance.</p>
+<h3>Can I use X-Robots-Tag to block training but allow search indexing?</h3>
+<p>Yes, specify different directives per crawler user-agent. Allow Googlebot while blocking Google-Extended and GPTBot:</p>
+<pre><code>X-Robots-Tag: GPTBot: noindex, nofollow
+X-Robots-Tag: Google-Extended: noindex, nofollow
+</code></pre>
+<p>Omit X-Robots-Tag for Googlebot, allowing indexing.</p>
+<h3>Do X-Robots-Tag headers apply to non-HTML resources like PDFs?</h3>
+<p>Yes, X-Robots-Tag applies to any HTTP response. Add headers to PDF, image, and document responses to control crawler access to those file types specifically.</p>
+<h3>How do headers interact with robots.txt?</h3>
+<p>Headers provide additional control after robots.txt. If robots.txt blocks a path, compliant crawlers never request it, so headers don&#39;t apply. If robots.txt allows access, headers control specific resource treatment.</p>
+<h3>Can headers enforce licensing agreement terms?</h3>
+<p>Indirectly. Headers block technical access, but enforcement depends on crawler cooperation. Licensing agreements provide legal recourse; headers provide technical enforcement. Use both for defense-in-depth.</p>
+<h2>Conclusion</h2>
+<p>HTTP headers extend crawler control beyond robots.txt limitations, enabling per-resource, dynamic, and context-aware access policies. X-Robots-Tag targets specific crawlers, Cache-Control manages content freshness expectations, authentication headers restrict access to licensed users, and rate limiting headers communicate infrastructure constraints. Publishers with complex content licensing, mixed public-private catalogs, or fine-grained access requirements benefit from header-based controls supplementing robots.txt foundations. Combined with server-side enforcement like <a href="haproxy-ai-crawler-rate-limiting.html">HAProxy rate limiting</a> and comprehensive <a href="goaccess-ai-crawler-analysis.html">monitoring</a>, headers create robust technical frameworks for managing AI crawler access while maintaining flexibility for legitimate users and licensed AI company access.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
