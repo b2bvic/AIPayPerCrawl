@@ -1,26 +1,16 @@
+/**
+ * AI Pay Per Crawl — Markdown to HTML processor.
+ * Parses frontmatter, converts markdown via marked, wraps in Protocol template.
+ */
+
 const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
+const { megaNavHtml, footerHtml, headIncludes, megaNavScript, ENTITY_DOMAINS } = require('./shared');
 
 const SKIP_FILES = ['README.md', '_brief.md', '_content-stack.md'];
 const ARTICLES_DIR = path.join(__dirname, '..', 'Articles');
 const DIST_DIR = path.join(__dirname, '..', 'dist', 'articles');
-
-const ENTITY_DOMAINS = [
-  'scalewithsearch.com',
-  'victorvalentineromo.com',
-  'aifirstsearch.com',
-  'browserprompt.com',
-  'creatinepedia.com',
-  'polytraffic.com',
-  'tattooremovalnear.com',
-  'comicstripai.com',
-  'aipaypercrawl.com',
-  'aipaypercrawl.com',
-  'b2bvic.com',
-  'seobyrole.com',
-  'quickfixseo.com'
-];
 
 function parseFrontmatter(content) {
   const meta = {};
@@ -43,101 +33,118 @@ function slugify(filename) {
   return filename.replace(/\.md$/, '');
 }
 
-function buildArticleHTML(title, description, body, slug, date) {
-  const htmlBody = marked(body);
-  const entityLinks = ENTITY_DOMAINS.map(d => `    <link rel="me" href="https://${d}" />`).join('\n');
+function escapeAttr(str) {
+  return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
 
-  const jsonLd = JSON.stringify({
+function calculateReadingTime(content) {
+  const words = content.split(/\s+/).length;
+  return Math.ceil(words / 200);
+}
+
+function buildArticleHTML(title, description, body, slug, date, keywords) {
+  const htmlBody = marked(body);
+  const readingTime = calculateReadingTime(body);
+  const safeTitle = escapeAttr(title);
+  const safeDesc = escapeAttr(description);
+
+  const articleSchema = JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "TechArticle",
     "headline": title,
     "description": description,
     "author": {
       "@type": "Person",
+      "@id": "https://victorvalentineromo.com/#person",
       "name": "Victor Valentine Romo",
       "url": "https://victorvalentineromo.com"
     },
     "publisher": {
       "@type": "Organization",
+      "@id": "https://aipaypercrawl.com/#organization",
       "name": "AI Pay Per Crawl",
       "url": "https://aipaypercrawl.com"
     },
     "datePublished": date || "2026-01-19",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://aipaypercrawl.com/articles/${slug}.html`
+      "@id": `https://aipaypercrawl.com/articles/${slug}`
     }
+  }, null, 2);
+
+  const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aipaypercrawl.com" },
+      { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://aipaypercrawl.com/articles.html" },
+      { "@type": "ListItem", "position": 3, "name": title, "item": `https://aipaypercrawl.com/articles/${slug}` }
+    ]
   }, null, 2);
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${title} | AI Pay Per Crawl</title>
-    <meta name="description" content="${description}" />
-    <meta name="author" content="Victor Valentine Romo" />
-    <meta property="og:title" content="${title}" />
-    <meta property="og:description" content="${description}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://aipaypercrawl.com/articles/${slug}.html" />
-    <meta property="og:site_name" content="AI Pay Per Crawl" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${title}" />
-    <meta name="twitter:description" content="${description}" />
-    <link rel="canonical" href="https://aipaypercrawl.com/articles/${slug}.html" />
-${entityLinks}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              emerald: {
-                50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7',
-                400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857',
-                800: '#065f46', 900: '#064e3b', 950: '#022c22'
-              }
-            }
-          }
-        }
-      }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${safeTitle} | AI Pay Per Crawl</title>
+    <meta name="description" content="${safeDesc}">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="${safeTitle}">
+    <meta property="og:description" content="${safeDesc}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/${slug}">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${safeTitle}">
+    <meta name="twitter:description" content="${safeDesc}">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/${slug}">
+    <script type="application/ld+json">
+${articleSchema}
     </script>
     <script type="application/ld+json">
-${jsonLd}
+${breadcrumbSchema}
     </script>
+${headIncludes}
 </head>
-<body class="bg-white text-gray-900 antialiased">
+<body>
 
-    <!-- Nav -->
-    <nav class="border-b border-gray-200 bg-white">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" class="text-xl font-bold text-cyan-600 hover:text-cyan-700 transition-colors">AI Pay Per Crawl</a>
-            <div class="flex gap-6 text-sm font-medium text-gray-600">
-                <a href="/articles.html" class="hover:text-cyan-600 transition-colors">Articles</a>
-                <a href="/#about" class="hover:text-cyan-600 transition-colors">About</a>
-            </div>
-        </div>
-    </nav>
+${megaNavHtml}
 
-    <!-- Article -->
-    <main class="max-w-4xl mx-auto px-6 py-12">
-        <article class="prose prose-lg prose-gray max-w-none prose-headings:text-gray-900 prose-h1:text-3xl prose-h1:font-bold prose-h2:text-2xl prose-h2:font-semibold prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-xl prose-h3:font-medium prose-h3:mt-8 prose-h3:mb-3 prose-a:text-cyan-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-blockquote:border-cyan-500 prose-blockquote:bg-cyan-50 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg">
-            ${htmlBody}
-        </article>
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>${safeTitle}</span>
+      </div>
 
-        <div class="mt-16 pt-8 border-t border-gray-200">
-            <a href="/articles.html" class="text-cyan-600 hover:text-cyan-700 font-medium">&larr; All Articles</a>
-        </div>
-    </main>
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; ${readingTime} min read</span>
+        <h1>${safeTitle}</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">${safeDesc}</p>
+      </header>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-200 bg-gray-50 mt-16">
-        <div class="max-w-4xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
-            &copy; 2026 AI Pay Per Crawl. A <a href="https://scalewithsearch.com" class="text-cyan-600 hover:underline">Scale With Search</a> property.
-        </div>
-    </footer>
+      <article class="article-body">
+        ${htmlBody}
+      </article>
 
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+${footerHtml}
+
+${megaNavScript}
 </body>
 </html>`;
 }
@@ -163,7 +170,7 @@ function processArticles() {
     const date = (meta.date || meta.created || '2026.01.19').replace(/\./g, '-');
     const keywords = meta.keywords || meta.focus_keyword || '';
 
-    const html = buildArticleHTML(title, description, body, slug, date);
+    const html = buildArticleHTML(title, description, body, slug, date, keywords);
     fs.writeFileSync(path.join(DIST_DIR, `${slug}.html`), html);
     console.log(`  Built: articles/${slug}.html`);
 

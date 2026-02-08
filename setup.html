@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule &mdash; Complete AI Pay-Per-Crawl Implementation | AI Pay Per Crawl</title>
+    <meta name="description" content="Rule: the complete pay-per-crawl implementation kit. Cloudflare configuration, RSL templates, llms.txt files, pricing calculator, licensing contracts. $2,497. Deploys in 6 hours.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Rule &mdash; Complete AI Pay-Per-Crawl Implementation">
+    <meta property="og:description" content="Cloudflare configuration, RSL templates, llms.txt files, pricing calculator, licensing contracts. $2,497. Deploys in 6 hours.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aipaypercrawl.com/setup.html">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://aipaypercrawl.com/setup.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Rule",
+      "description": "Complete AI pay-per-crawl implementation kit. Cloudflare configuration, RSL templates, llms.txt files, pricing calculator, licensing contracts.",
+      "brand": {
+        "@type": "Organization",
+        "name": "AI Pay Per Crawl"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "2497",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://aipaypercrawl.com/setup.html"
+      }
+    }
+    </script>
+    <style>
+      .setup-grid {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: var(--sp-12);
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .setup-grid { grid-template-columns: 1fr; }
+      }
+      .price-card {
+        position: sticky;
+        top: calc(var(--nav-height) + var(--sp-6));
+        background: var(--base);
+        border: 2px solid var(--cta);
+        border-radius: 16px;
+        padding: var(--sp-8);
+        text-align: center;
+        box-shadow: 0 0 0 1px var(--cta), 0 12px 40px rgba(16, 185, 129, 0.12);
+      }
+      .module {
+        padding: var(--sp-6);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: var(--sp-4);
+        transition: border-color 0.15s;
+      }
+      .module:hover { border-color: var(--accent); }
+      .module__number {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: var(--sp-2);
+      }
+      .module__title {
+        font-family: var(--font-display);
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: var(--sp-2);
+      }
+      .module__desc {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+      }
+      .proof-stat {
+        display: flex;
+        align-items: baseline;
+        gap: var(--sp-3);
+        padding: var(--sp-4) 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .proof-stat:last-child { border-bottom: none; }
+      .proof-stat__value {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--cta);
+        min-width: 100px;
+      }
+      .proof-stat__label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+      .anti-item {
+        display: flex;
+        gap: var(--sp-3);
+        padding: var(--sp-3) 0;
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+      .anti-item::before {
+        content: "\2717";
+        color: var(--text-muted);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .pro-item {
+        display: flex;
+        gap: var(--sp-3);
+        padding: var(--sp-3) 0;
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+      .pro-item::before {
+        content: "\2713";
+        color: var(--cta);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+    </style>
+</head>
+<body>
+
+  <!-- ═══ MINIMAL NAV ═══ -->
+  <nav class="nav" role="navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+      <div class="nav__links">
+        <a href="/" class="nav__link">Home</a>
+        <a href="/articles.html" class="nav__link">Articles</a>
+        <div class="nav__divider"></div>
+        <a href="#pricing" class="nav__cta">Get Rule &mdash; $2,497</a>
+      </div>
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/" class="mobile-menu__link">Home</a>
+      <a href="/articles.html" class="mobile-menu__link">Articles</a>
+      <a href="#pricing" class="mobile-menu__cta">Get Rule &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" style="padding-bottom: var(--sp-8);">
+      <div class="container">
+        <div class="breadcrumbs" style="margin-bottom: var(--sp-8);">
+          <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+          <span>Rule</span>
+        </div>
+        <span class="hero__label">// rule &mdash; $2,497</span>
+        <h1 class="hero__title" style="max-width: 700px;">Complete AI pay-per-crawl implementation.</h1>
+        <p class="hero__subtitle">Cloudflare configuration. RSL templates. llms.txt files. Pricing calculator. Licensing contracts. Enforcement strategy. Monitoring checklist. Everything a publisher needs to monetize AI crawler traffic. Deployed in 6 hours.</p>
+        <div class="hero__actions">
+          <a href="#pricing" class="btn btn--primary btn--large">Get Rule &mdash; $2,497</a>
+          <a href="#modules" class="btn btn--secondary">See What's Inside</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROBLEM ═══ -->
+    <section class="section section--alt">
+      <div class="container--narrow">
+        <span class="label">The Problem</span>
+        <h2 style="margin-top: var(--sp-4); margin-bottom: var(--sp-6);">73,000 crawls for every 1 referral.</h2>
+        <p>Anthropic's ClaudeBot scrapes your archives while sending nothing back. OpenAI's GPTBot indexes your technical docs. Google's Gemini crawlers train on your research reports. ByteDance's Bytespider ignores your robots.txt entirely.</p>
+        <p>They train billion-dollar models on your content. You earn zero.</p>
+        <p style="margin-bottom: 0;">The standard response: block everything. 75% of publishers now block CCBot. 69% block ClaudeBot. 62% block GPTBot.</p>
+
+        <div class="code-block" style="margin-top: var(--sp-8);">
+          <div class="code-block__header">
+            <div class="code-block__dots">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+            </div>
+            <span class="code-block__lang">server-log</span>
+          </div>
+          <pre><code>23:14:07  GPTBot/1.0      /docs/api-reference     200  0.3s
+23:14:07  GPTBot/1.0      /docs/authentication    200  0.2s
+23:14:08  ClaudeBot/1.0   /research/q4-report     200  0.4s
+23:14:08  Bytespider/1.0  /archive/2024           200  0.1s
+23:14:09  GPTBot/1.0      /docs/webhooks          200  0.3s
+23:14:09  ClaudeBot/1.0   /research/methodology   200  0.2s
+...
+Revenue from 14,000 daily AI crawls:  $0.00</code></pre>
+        </div>
+
+        <p style="margin-top: var(--sp-8);">Blocking stops the scraping. It does not generate revenue.</p>
+        <p>Meanwhile, publishers with infrastructure collect: News Corp secured $250M from OpenAI. Reddit extracts $60M annually from Google. The Financial Times formed a direct partnership with Anthropic.</p>
+        <p style="margin-bottom: 0;"><strong>The difference is not legal teams or traffic volume. It is implementation.</strong> They built systems that enforce payment for access. You are running a website. They are running a licensing operation.</p>
+      </div>
+    </section>
+
+    <!-- ═══ WHAT vs. WITHOUT ═══ -->
+    <section class="section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: var(--sp-12);">
+          <span class="label">Without Rule vs. With Rule</span>
+          <h2 style="margin-top: var(--sp-4);">Implementation transforms the economics.</h2>
+        </div>
+        <div class="grid grid--2">
+          <div style="padding: var(--sp-6);">
+            <h3 style="margin-bottom: var(--sp-6); color: var(--text-muted);">Without Implementation</h3>
+            <div class="anti-item">AI crawlers scrape freely, 24/7</div>
+            <div class="anti-item">No pricing terms published</div>
+            <div class="anti-item">robots.txt is binary: allow or block</div>
+            <div class="anti-item">Zero revenue from AI training access</div>
+            <div class="anti-item">No enforcement mechanism</div>
+            <div class="anti-item">No compliance tracking</div>
+            <div class="anti-item">Block-everything leaves money on the table</div>
+          </div>
+          <div style="padding: var(--sp-6); background: var(--surface-raised); border-radius: 12px;">
+            <h3 style="margin-bottom: var(--sp-6); color: var(--cta);">With Rule Deployed</h3>
+            <div class="pro-item">Cloudflare enforces per-crawl pricing at CDN layer</div>
+            <div class="pro-item">RSL file publishes machine-readable licensing terms</div>
+            <div class="pro-item">llms.txt communicates terms in natural language</div>
+            <div class="pro-item">$500-$5,000+/month from existing crawler traffic</div>
+            <div class="pro-item">Non-compliant crawlers blocked automatically</div>
+            <div class="pro-item">Dashboard monitors compliance rates per bot</div>
+            <div class="pro-item">Revenue from every crawl, not just pageviews</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MODULES ═══ -->
+    <section id="modules" class="section section--alt">
+      <div class="container">
+        <div class="setup-grid">
+          <div>
+            <span class="label">What You Get</span>
+            <h2 style="margin-top: var(--sp-4); margin-bottom: var(--sp-8);">Six modules. Complete coverage.</h2>
+
+            <div class="module">
+              <div class="module__number">Module 01</div>
+              <div class="module__title">Cloudflare Pay-Per-Crawl Configuration</div>
+              <p class="module__desc">Step-by-step dashboard setup: crawler detection rules, pricing tier configuration, payment integration, grace period settings, and monitoring dashboard. 60 minutes to deploy. Covers free through Enterprise plans.</p>
+            </div>
+
+            <div class="module">
+              <div class="module__number">Module 02</div>
+              <div class="module__title">RSL File Templates</div>
+              <p class="module__desc">Three pricing model templates ready for deployment. Template A: Per-crawl pricing (standard Cloudflare marketplace). Template B: Flat-rate annual (direct deal supplement). Template C: Hybrid model (base fee + usage overage). Copy, customize variables, deploy.</p>
+            </div>
+
+            <div class="module">
+              <div class="module__number">Module 03</div>
+              <div class="module__title">llms.txt Templates</div>
+              <p class="module__desc">Content-type-specific specification files: News/Media, B2B/Trade Publication, Technical Documentation. Each template communicates your licensing terms in the format AI systems parse and respect.</p>
+            </div>
+
+            <div class="module">
+              <div class="module__number">Module 04</div>
+              <div class="module__title">Pricing Calculator + Formulas</div>
+              <p class="module__desc">Input your content type, uniqueness score, archive depth, and crawler volume. Output: suggested per-crawl rate, monthly revenue estimate, annual projection. The formulas are included. Run your own models.</p>
+            </div>
+
+            <div class="module">
+              <div class="module__number">Module 05</div>
+              <div class="module__title">Licensing Contracts</div>
+              <p class="module__desc">Three contract structures with full clause breakdowns. Per-Crawl Licensing Agreement (Cloudflare Marketplace). Flat-Rate Annual Agreement (Direct Deal). Attribution-Heavy Agreement (Traffic + Revenue Share). Modify for your publication.</p>
+            </div>
+
+            <div class="module">
+              <div class="module__number">Module 06</div>
+              <div class="module__title">robots.txt + Enforcement Strategy</div>
+              <p class="module__desc">Three ready-to-deploy configurations: Block All (pre-monetization), License via Cloudflare (pay-per-crawl active), Hybrid (some direct deals + marketplace). Plus: first-week monitoring checklist, enforcement escalation procedures, compliance tracking templates.</p>
+            </div>
+          </div>
+
+          <!-- Sticky price card -->
+          <div id="pricing" class="price-card">
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cta); margin-bottom: var(--sp-4);">Rule</div>
+            <div style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--text-primary); line-height: 1;">$2,497</div>
+            <div style="font-size: 0.875rem; color: var(--text-muted); margin: var(--sp-2) 0 var(--sp-6);">One-time payment. Complete kit.</div>
+
+            <ul style="list-style: none; text-align: left; margin-bottom: var(--sp-6);">
+              <li style="padding: var(--sp-2) 0; font-size: 0.875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--sp-2);"><span style="color: var(--cta); font-weight: 700;">&#10003;</span> Cloudflare configuration guide</li>
+              <li style="padding: var(--sp-2) 0; font-size: 0.875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--sp-2);"><span style="color: var(--cta); font-weight: 700;">&#10003;</span> 3 RSL file templates</li>
+              <li style="padding: var(--sp-2) 0; font-size: 0.875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--sp-2);"><span style="color: var(--cta); font-weight: 700;">&#10003;</span> 3 llms.txt templates</li>
+              <li style="padding: var(--sp-2) 0; font-size: 0.875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--sp-2);"><span style="color: var(--cta); font-weight: 700;">&#10003;</span> Pricing calculator + formulas</li>
+              <li style="padding: var(--sp-2) 0; font-size: 0.875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--sp-2);"><span style="color: var(--cta); font-weight: 700;">&#10003;</span> 3 licensing contracts</li>
+              <li style="padding: var(--sp-2) 0; font-size: 0.875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--sp-2);"><span style="color: var(--cta); font-weight: 700;">&#10003;</span> robots.txt configurations</li>
+              <li style="padding: var(--sp-2) 0; font-size: 0.875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--sp-2);"><span style="color: var(--cta); font-weight: 700;">&#10003;</span> Enforcement strategy</li>
+              <li style="padding: var(--sp-2) 0; font-size: 0.875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--sp-2);"><span style="color: var(--cta); font-weight: 700;">&#10003;</span> Monitoring checklist</li>
+            </ul>
+
+            <a href="#" class="btn btn--primary" style="width: 100%; font-size: 1rem; padding: var(--sp-4);">Get Rule</a>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: var(--sp-3); margin-bottom: 0;">Deploys in 6 hours. Works on any Cloudflare plan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROOF ═══ -->
+    <section class="section">
+      <div class="container--narrow">
+        <span class="label">Benchmark Data</span>
+        <h2 style="margin-top: var(--sp-4); margin-bottom: var(--sp-8);">What publishers report after implementation.</h2>
+
+        <div style="background: var(--surface-raised); border-radius: 12px; padding: var(--sp-6); margin-bottom: var(--sp-8);">
+          <h4 style="margin-bottom: var(--sp-2);">Case Study: B2B Trade Publication</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: var(--sp-4);">8M monthly pageviews &middot; 14,000 daily AI crawler requests &middot; Cloudflare Pay-Per-Crawl + RSL</p>
+          <div class="proof-stat">
+            <span class="proof-stat__value">$1,200</span>
+            <span class="proof-stat__label">Monthly average after 9 months</span>
+          </div>
+          <div class="proof-stat">
+            <span class="proof-stat__value">38%</span>
+            <span class="proof-stat__label">Compliance rate (OpenAI and Anthropic pay; Bytespider blocked)</span>
+          </div>
+          <div class="proof-stat">
+            <span class="proof-stat__value">6 hrs</span>
+            <span class="proof-stat__label">Setup time to first revenue</span>
+          </div>
+        </div>
+
+        <h3 style="margin-bottom: var(--sp-6);">Compliance Rates by Crawler (January 2026)</h3>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Crawler</th>
+                <th>Cloudflare Compliance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OpenAI</td>
+                <td style="font-family: var(--font-mono); font-size: 0.8125rem;">GPTBot</td>
+                <td style="color: var(--cta);">85%+</td>
+              </tr>
+              <tr>
+                <td>Anthropic</td>
+                <td style="font-family: var(--font-mono); font-size: 0.8125rem;">ClaudeBot</td>
+                <td style="color: var(--cta);">90%+</td>
+              </tr>
+              <tr>
+                <td>Google</td>
+                <td style="font-family: var(--font-mono); font-size: 0.8125rem;">Google-Extended</td>
+                <td style="color: var(--accent);">Direct deals</td>
+              </tr>
+              <tr>
+                <td>ByteDance</td>
+                <td style="font-family: var(--font-mono); font-size: 0.8125rem;">Bytespider</td>
+                <td style="color: #ef4444;">&lt;5% &mdash; block</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top: var(--sp-6);">Average publisher results: 35-45% compliance rate, $500-$5,000/month revenue (varies by traffic volume and pricing tier).</p>
+      </div>
+    </section>
+
+    <!-- ═══ DE-RISK ═══ -->
+    <section class="section section--alt">
+      <div class="container--narrow">
+        <span class="label">What This Is Not</span>
+        <h2 style="margin-top: var(--sp-4); margin-bottom: var(--sp-6);">Implementation, not legal advice.</h2>
+        <p>You do not need a licensing lawyer to configure Cloudflare's Pay-Per-Crawl dashboard. You do not need a $250M legal budget to deploy an RSL file. You do not need a dedicated partnerships team to monitor crawler compliance.</p>
+        <p>You need checklists. Templates. Benchmarks.</p>
+        <p>Six modules. Every template tested against the protocols that OpenAI, Anthropic, and Google read. Deploys in a single afternoon.</p>
+
+        <div style="margin-top: var(--sp-8); padding: var(--sp-6); border: 1px solid var(--border); border-radius: 12px; background: var(--base);">
+          <h4 style="margin-bottom: var(--sp-4);">Post-Purchase: Two Follow-Up Lessons</h4>
+          <div style="display: flex; gap: var(--sp-3); align-items: flex-start; margin-bottom: var(--sp-3);">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); font-weight: 600; min-width: 50px;">Week 1</span>
+            <span style="font-size: 0.9375rem; color: var(--text-secondary);">Common Setup Mistakes &mdash; the four ways publishers break AI crawler monetization</span>
+          </div>
+          <div style="display: flex; gap: var(--sp-3); align-items: flex-start;">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); font-weight: 600; min-width: 50px;">Week 2</span>
+            <span style="font-size: 0.9375rem; color: var(--text-secondary);">Enforcement Strategies &mdash; what to do when AI companies ignore your terms</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FINAL CTA ═══ -->
+    <section class="section" style="text-align: center;">
+      <div class="container">
+        <span class="label">// rule</span>
+        <h2 style="margin-top: var(--sp-4); max-width: 600px; margin-left: auto; margin-right: auto;">Your content feeds AI.<br>This is how you collect.</h2>
+        <p style="max-width: 500px; margin: var(--sp-6) auto var(--sp-8); font-size: 1.0625rem;">Every hour without implementation is revenue from AI crawlers you do not capture. The infrastructure exists. The compliance rates are published. The only missing piece is your configuration.</p>
+
+        <div style="display: inline-block; background: var(--surface-raised); border: 2px solid var(--cta); border-radius: 16px; padding: var(--sp-8) var(--sp-10); text-align: center; box-shadow: 0 12px 40px rgba(16, 185, 129, 0.1);">
+          <div style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--text-primary); line-height: 1;">$2,497</div>
+          <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-muted); margin: var(--sp-2) 0 var(--sp-6);">One-time. 6 modules. 6-hour deployment.</div>
+          <a href="#" class="btn btn--primary btn--large">Master the Protocol</a>
+        </div>
+
+        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: var(--sp-6);">Questions? <a href="mailto:victor@aipaypercrawl.com">victor@aipaypercrawl.com</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it.</p>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles/cloudflare-pay-per-crawl-setup.html">Cloudflare Setup</a></li>
+            <li><a href="/articles/rsl-protocol-implementation-guide.html">RSL Protocol</a></li>
+            <li><a href="/articles/llms-txt-specification-guide.html">llms.txt Guide</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing</div>
+          <ul class="footer__links">
+            <li><a href="/articles/ai-training-data-pricing-publishers.html">Pricing Models</a></li>
+            <li><a href="/articles/ai-content-licensing-models-comparison.html">Licensing Comparison</a></li>
+            <li><a href="/articles/ai-crawler-directory-2026.html">Crawler Directory</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Network</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Smooth scroll to pricing */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

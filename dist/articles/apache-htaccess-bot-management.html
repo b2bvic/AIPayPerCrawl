@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apache htaccess bot management | AI Pay Per Crawl</title>
+    <meta name="description" content="">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="apache htaccess bot management">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/apache-htaccess-bot-management">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="apache htaccess bot management">
+    <meta name="twitter:description" content="">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/apache-htaccess-bot-management">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "apache htaccess bot management",
+  "description": "",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-01-19",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/apache-htaccess-bot-management"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "apache htaccess bot management",
+      "item": "https://aipaypercrawl.com/articles/apache-htaccess-bot-management"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>apache htaccess bot management</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 12 min read</span>
+        <h1>apache htaccess bot management</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;"></p>
+      </header>
+
+      <article class="article-body">
+        <p>title:: Apache .htaccess Bot Management: Block and Throttle AI Crawlers at the Server Level
+description:: Configure Apache .htaccess rules to block, throttle, or conditionally route AI crawlers like GPTBot, ClaudeBot, and Bytespider. Full mod_rewrite examples included.
+focus_keyword:: apache htaccess bot management
+category:: implementation
+author:: Victor Valentine Romo
+date:: 2026.02.07</p>
+<h1>Apache .htaccess Bot Management: Block and Throttle AI Crawlers at the Server Level</h1>
+<p><strong>Apache HTTP Server</strong> runs beneath roughly 30% of active websites. Its distributed configuration system — the <code>.htaccess</code> file — gives site operators per-directory control without touching the main server configuration. For publishers on shared hosting where the admin panel is all they get, <code>.htaccess</code> is the most powerful enforcement tool available.</p>
+<p>AI crawlers don&#39;t care what server software you run. <strong>GPTBot</strong> scrapes Apache sites. <strong>ClaudeBot</strong> scrapes Apache sites. <strong>Bytespider</strong> definitely scrapes Apache sites. The crawlers send HTTP requests. Apache processes them. The only question is whether your configuration intercepts those requests before content gets served.</p>
+<p><code>.htaccess</code> sits between robots.txt (which asks nicely) and CDN-level blocking (which intercepts at the network edge). It&#39;s server-level enforcement accessible to anyone with FTP access to their document root. No SSH required. No admin privileges needed. Just a text file in the right directory with the right directives.</p>
+<p><a href="/articles/nginx-ai-crawler-blocking.html">For Nginx-based servers, see the dedicated guide</a></p>
+<hr>
+<h2>How .htaccess Interception Works for Bot Management</h2>
+<h3>Request Processing Order in Apache</h3>
+<p>When a request arrives at Apache, the server evaluates it through a defined sequence. Understanding this sequence reveals where <code>.htaccess</code> rules fit and why they&#39;re effective.</p>
+<ol>
+<li><strong>Connection established</strong> — TCP handshake completes</li>
+<li><strong>Request received</strong> — Apache reads the HTTP method, URI, and headers</li>
+<li><strong>Virtual host matched</strong> — Apache identifies which site configuration applies</li>
+<li><strong>Directory context evaluated</strong> — Apache walks the filesystem path, loading <code>.htaccess</code> files at each level</li>
+<li><strong>mod_rewrite rules evaluated</strong> — Rewrite conditions and rules execute</li>
+<li><strong>Access control checked</strong> — Allow/Deny directives apply</li>
+<li><strong>Content handler invoked</strong> — PHP, static file serving, or proxy pass</li>
+</ol>
+<p><code>.htaccess</code> rules execute at step 4-6, before content handlers run. A blocked AI crawler receives a 403 response without Apache ever invoking PHP, rendering templates, or querying databases. The resource savings compound: no PHP-FPM process spawned, no database connection opened, no memory allocated for page generation.</p>
+<h3>mod_rewrite vs. mod_setenvif vs. mod_authz</h3>
+<p>Apache provides multiple modules for user-agent-based filtering. Each has different characteristics.</p>
+<p><strong>mod_rewrite</strong> — The most flexible option. Evaluates regular expressions against any request attribute. Can redirect, block, or modify requests based on complex conditions. Most <code>.htaccess</code> bot management solutions use this module.</p>
+<pre><code class="language-apache">RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} GPTBot [NC]
+RewriteRule .* - [F,L]
+</code></pre>
+<p><strong>mod_setenvif</strong> — Sets environment variables based on request attributes. Lighter weight than mod_rewrite but less flexible. Useful for flagging crawlers and applying access rules downstream.</p>
+<pre><code class="language-apache">SetEnvIfNoCase User-Agent &quot;GPTBot&quot; ai_crawler
+SetEnvIfNoCase User-Agent &quot;ClaudeBot&quot; ai_crawler
+Order Allow,Deny
+Allow from all
+Deny from env=ai_crawler
+</code></pre>
+<p><strong>mod_authz</strong> (Apache 2.4+) — Modern access control using the <code>Require</code> directive. More readable syntax but requires Apache 2.4, which some shared hosts still haven&#39;t updated to.</p>
+<pre><code class="language-apache">&lt;RequireAll&gt;
+    Require all granted
+    &lt;RequireNone&gt;
+        Require expr &quot;%{HTTP_USER_AGENT} =~ /GPTBot/i&quot;
+        Require expr &quot;%{HTTP_USER_AGENT} =~ /ClaudeBot/i&quot;
+    &lt;/RequireNone&gt;
+&lt;/RequireAll&gt;
+</code></pre>
+<p>For maximum compatibility across hosting environments, mod_rewrite is the safest bet. Nearly every Apache installation supports it, and shared hosting plans universally enable it.</p>
+<hr>
+<h2>Blocking AI Crawlers with .htaccess</h2>
+<h3>Complete Block List Configuration</h3>
+<p>Place this in the <code>.htaccess</code> file at your document root:</p>
+<pre><code class="language-apache"># AI Crawler Management
+# Updated: 2026-02-07
+# Reference: https://aipaypercrawl.com/articles/ai-crawler-directory-2026.html
+
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+
+# Block AI Training Crawlers
+RewriteCond %{HTTP_USER_AGENT} GPTBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ClaudeBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} Bytespider [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} CCBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} Google-Extended [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} PerplexityBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} Meta-ExternalAgent [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} Applebot-Extended [NC]
+RewriteRule .* - [F,L]
+&lt;/IfModule&gt;
+</code></pre>
+<p>The <code>[NC]</code> flag makes matching case-insensitive. The <code>[OR]</code> flag chains conditions with logical OR — any matching condition triggers the rule. <code>[F]</code> returns 403 Forbidden. <code>[L]</code> stops further rule processing.</p>
+<p>This block sits above any existing rewrite rules in your <code>.htaccess</code>. Order matters: if a prior rule matches and processes the request, later rules (including your crawler blocks) may never execute. AI crawler rules should be the first rewrite block encountered.</p>
+<h3>Selective Blocking by Content Directory</h3>
+<p>Not all content warrants the same protection level. Block AI crawlers from premium content while allowing access to commodity pages:</p>
+<pre><code class="language-apache"># Block AI crawlers from premium content directories
+RewriteCond %{HTTP_USER_AGENT} (GPTBot|ClaudeBot|Bytespider|CCBot|Google-Extended) [NC]
+RewriteCond %{REQUEST_URI} ^/research/ [OR]
+RewriteCond %{REQUEST_URI} ^/analysis/ [OR]
+RewriteCond %{REQUEST_URI} ^/premium/ [OR]
+RewriteCond %{REQUEST_URI} ^/data/
+RewriteRule .* - [F,L]
+</code></pre>
+<p>This configuration blocks AI crawlers from <code>/research/</code>, <code>/analysis/</code>, <code>/premium/</code>, and <code>/data/</code> while allowing them to crawl everything else. The strategy works when you plan to monetize premium content through <a href="/articles/ai-content-licensing-models-comparison.html">direct licensing</a> while letting commodity content circulate freely as a discovery mechanism.</p>
+<h3>Custom Error Pages for Blocked Crawlers</h3>
+<p>A bare 403 response provides no information. Custom error pages communicate your licensing position:</p>
+<pre><code class="language-apache"># Custom error document for AI crawlers
+ErrorDocument 403 /ai-licensing-required.html
+</code></pre>
+<p>Create <code>ai-licensing-required.html</code> at your document root:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Licensing Required&lt;/title&gt;
+    &lt;meta name=&quot;robots&quot; content=&quot;noindex&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;AI Training Access Requires a License&lt;/h1&gt;
+    &lt;p&gt;This domain licenses content for AI training at published rates.&lt;/p&gt;
+    &lt;p&gt;Review terms: &lt;a href=&quot;/rsl.json&quot;&gt;/rsl.json&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Contact: licensing@example.com&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>The <code>noindex</code> meta tag prevents search engines from indexing your error page. The licensing information converts a dead-end block into a commercial opportunity. AI company engineers reviewing crawler logs see exactly how to proceed.</p>
+<hr>
+<h2>Throttling AI Crawlers with mod_ratelimit</h2>
+<h3>Apache Rate Limiting Modules</h3>
+<p>Apache&#39;s <strong>mod_ratelimit</strong> controls bandwidth (bytes per second), not request frequency. For request-based rate limiting, <strong>mod_qos</strong> or reverse-proxy configurations provide better control.</p>
+<p><strong>mod_ratelimit</strong> — bandwidth throttle:</p>
+<pre><code class="language-apache">&lt;IfModule mod_ratelimit.c&gt;
+SetEnvIfNoCase User-Agent &quot;GPTBot&quot; ai_crawler
+SetEnvIfNoCase User-Agent &quot;ClaudeBot&quot; ai_crawler
+SetEnvIfNoCase User-Agent &quot;Bytespider&quot; ai_crawler
+
+&lt;If &quot;-n reqenv(&#39;ai_crawler&#39;)&quot;&gt;
+    SetOutputFilter RATE_LIMIT
+    SetEnv rate-limit 50
+&lt;/If&gt;
+&lt;/IfModule&gt;
+</code></pre>
+<p>This limits AI crawlers to 50 KB/s bandwidth. A typical article page weighing 100KB takes 2 seconds to deliver instead of milliseconds. The crawler still receives content, but data extraction slows dramatically. At scale, this reduces the AI company&#39;s crawl efficiency by orders of magnitude.</p>
+<h3>Connection-Based Throttling</h3>
+<p><strong>mod_qos</strong> provides connection and request rate limiting:</p>
+<pre><code class="language-apache">&lt;IfModule mod_qos.c&gt;
+# Limit AI crawlers to 5 concurrent connections
+QS_SrvMaxConnPerIP 5
+SetEnvIfNoCase User-Agent &quot;GPTBot&quot; QS_Cond=ai
+SetEnvIfNoCase User-Agent &quot;ClaudeBot&quot; QS_Cond=ai
+SetEnvIfNoCase User-Agent &quot;Bytespider&quot; QS_Cond=ai
+&lt;/IfModule&gt;
+</code></pre>
+<p>Note: <strong>mod_qos</strong> requires server-level installation, which shared hosting typically doesn&#39;t provide. If available, it offers superior control compared to <code>.htaccess</code>-only approaches.</p>
+<h3>Combining Throttle + Block by Crawler Type</h3>
+<p>Apply different rules to different crawlers based on their compliance history:</p>
+<pre><code class="language-apache"># Compliant crawlers (GPTBot, ClaudeBot) — throttle, don&#39;t block
+SetEnvIfNoCase User-Agent &quot;GPTBot&quot; compliant_crawler
+SetEnvIfNoCase User-Agent &quot;ClaudeBot&quot; compliant_crawler
+
+# Non-compliant crawlers (Bytespider) — block entirely
+RewriteCond %{HTTP_USER_AGENT} Bytespider [NC]
+RewriteRule .* - [F,L]
+
+# Compliant crawlers get bandwidth throttle
+&lt;IfModule mod_ratelimit.c&gt;
+&lt;If &quot;-n reqenv(&#39;compliant_crawler&#39;)&quot;&gt;
+    SetOutputFilter RATE_LIMIT
+    SetEnv rate-limit 100
+&lt;/If&gt;
+&lt;/IfModule&gt;
+</code></pre>
+<p><strong>Bytespider</strong> gets a hard 403. <strong>GPTBot</strong> and <strong>ClaudeBot</strong> receive content at reduced bandwidth. The distinction reflects reality: <a href="/articles/ai-crawler-directory-2026.html">compliant crawlers</a> that honor licensing terms deserve different treatment than crawlers that disregard all publisher preferences.</p>
+<hr>
+<h2>IP-Based Blocking for User-Agent Spoofers</h2>
+<h3>Why User-Agent Blocking Isn&#39;t Sufficient</h3>
+<p>Any HTTP client can set any user-agent string. A scraping script can identify as <strong>Googlebot</strong>, <strong>Mozilla Firefox</strong>, or anything else. <strong>Bytespider</strong> has been observed sending requests with standard browser user-agent strings to bypass user-agent-based blocking.</p>
+<p>When a crawler lies about its identity, user-agent rules fail silently. Traffic continues. Content gets scraped. Log analysis might eventually reveal the deception through behavioral patterns, but the damage accumulates in the meantime.</p>
+<h3>Blocking Known AI Company IP Ranges</h3>
+<p>IP ranges can&#39;t be spoofed at the TCP level. Responses must route back to the source address. Blocking known AI company infrastructure blocks their crawlers regardless of user-agent claims.</p>
+<pre><code class="language-apache"># Block known Bytespider (ByteDance) IP ranges
+&lt;IfModule mod_authz_core.c&gt;
+&lt;RequireAll&gt;
+    Require all granted
+    Require not ip 220.243.135.0/24
+    Require not ip 220.243.136.0/24
+    Require not ip 111.225.148.0/24
+    Require not ip 111.225.149.0/24
+&lt;/RequireAll&gt;
+&lt;/IfModule&gt;
+
+# Apache 2.2 fallback
+&lt;IfModule !mod_authz_core.c&gt;
+Order Allow,Deny
+Allow from all
+Deny from 220.243.135.0/24
+Deny from 220.243.136.0/24
+Deny from 111.225.148.0/24
+Deny from 111.225.149.0/24
+&lt;/IfModule&gt;
+</code></pre>
+<p>The dual-module syntax ensures compatibility across Apache 2.2 and 2.4 installations. Shared hosting environments may run either version.</p>
+<h3>Maintaining and Updating IP Block Lists</h3>
+<p>AI companies rotate infrastructure. <strong>ByteDance</strong> shifts IP ranges periodically. Static block lists decay in effectiveness over time.</p>
+<p>Maintain your IP block list in a separate included file:</p>
+<pre><code class="language-apache"># .htaccess
+Include /path/to/ai-ip-blocks.conf
+</code></pre>
+<p>Note: The <code>Include</code> directive may not work in <code>.htaccess</code> on all hosts. If restricted, maintain the IP list directly in <code>.htaccess</code> and schedule monthly manual reviews.</p>
+<p>Sources for updated IP ranges:</p>
+<ul>
+<li><strong>OpenAI</strong> publishes GPTBot ranges in their documentation</li>
+<li><strong>Anthropic</strong> publishes ClaudeBot ranges</li>
+<li><strong>ByteDance</strong> does not publish ranges — community-maintained lists are the primary source</li>
+<li>The <a href="/articles/ai-crawler-directory-2026.html">AI crawler directory</a> aggregates known ranges</li>
+</ul>
+<hr>
+<h2>Conditional Routing for Monetization</h2>
+<h3>Redirecting AI Crawlers to Licensing Endpoints</h3>
+<p>Rather than blocking, redirect AI crawlers to a licensing page:</p>
+<pre><code class="language-apache">RewriteCond %{HTTP_USER_AGENT} (GPTBot|ClaudeBot|Google-Extended) [NC]
+RewriteCond %{REQUEST_URI} !^/ai-licensing [NC]
+RewriteCond %{REQUEST_URI} !^/rsl\.json [NC]
+RewriteRule ^(.*)$ /ai-licensing?requested=$1 [R=302,L]
+</code></pre>
+<p>Crawlers requesting any content page get redirected to <code>/ai-licensing</code> with the originally requested URL as a parameter. The exception rules ensure crawlers can still access the licensing page itself and your <a href="/articles/rsl-protocol-implementation-guide.html">RSL file</a> — blocking those would create a dead loop.</p>
+<h3>Serving Truncated Content to Unpaid Crawlers</h3>
+<p>Deliver abbreviated content to AI crawlers while serving full content to humans and search engines:</p>
+<pre><code class="language-apache"># Route AI crawlers to excerpt versions
+RewriteCond %{HTTP_USER_AGENT} (GPTBot|ClaudeBot|Bytespider|CCBot) [NC]
+RewriteCond %{REQUEST_URI} ^/articles/ [NC]
+RewriteRule ^articles/(.*)$ /ai-excerpts/$1 [L]
+</code></pre>
+<p>Create an <code>/ai-excerpts/</code> directory containing trimmed versions of your articles — headlines, first paragraphs, and a licensing notice. Full content remains behind the licensing wall. Crawlers receive enough to evaluate your content&#39;s worth without getting the full product.</p>
+<h3>Integrating with Cloudflare Pay-Per-Crawl</h3>
+<p>For Apache sites behind <strong>Cloudflare</strong>, <code>.htaccess</code> serves as the origin-level fallback. Cloudflare handles detection and billing at the edge. <code>.htaccess</code> catches requests that bypass the CDN — direct-to-origin requests, cached content bypasses, or CDN configuration gaps.</p>
+<p>The recommended layering:</p>
+<ol>
+<li><strong>Cloudflare</strong> — CDN-edge AI crawler detection, <a href="/articles/cloudflare-pay-per-crawl-setup.html">Pay-Per-Crawl billing</a>, managed rulesets</li>
+<li><strong>.htaccess</strong> — Origin-level blocking for requests that reach Apache directly</li>
+<li><strong>robots.txt</strong> — Advisory layer for compliant crawlers</li>
+</ol>
+<p>Configure <code>.htaccess</code> to trust Cloudflare&#39;s headers:</p>
+<pre><code class="language-apache"># Trust Cloudflare&#39;s real IP header
+SetEnvIf CF-Connecting-IP &quot;.&quot; real_ip
+RemoteIPHeader CF-Connecting-IP
+</code></pre>
+<p>This ensures IP-based rules evaluate the visitor&#39;s real IP address rather than Cloudflare&#39;s edge server IP.</p>
+<hr>
+<h2>Logging and Monitoring</h2>
+<h3>Custom Log Directives for Crawler Tracking</h3>
+<p>Apache&#39;s <strong>mod_log_config</strong> supports conditional logging:</p>
+<pre><code class="language-apache"># Log AI crawler requests to a separate file
+SetEnvIfNoCase User-Agent &quot;GPTBot&quot; ai_crawler
+SetEnvIfNoCase User-Agent &quot;ClaudeBot&quot; ai_crawler
+SetEnvIfNoCase User-Agent &quot;Bytespider&quot; ai_crawler
+SetEnvIfNoCase User-Agent &quot;CCBot&quot; ai_crawler
+SetEnvIfNoCase User-Agent &quot;Google-Extended&quot; ai_crawler
+SetEnvIfNoCase User-Agent &quot;PerplexityBot&quot; ai_crawler
+
+CustomLog /var/log/apache2/ai-crawlers.log combined env=ai_crawler
+</code></pre>
+<p>Note: <code>CustomLog</code> in <code>.htaccess</code> requires <code>LogOverride</code> to be enabled in the server configuration. Many shared hosting environments don&#39;t support this. Check with your provider or test by adding the directive and monitoring for errors.</p>
+<h3>Analyzing Blocked Request Patterns</h3>
+<p>Apache&#39;s error log records 403 responses. Filter for AI crawler blocks:</p>
+<pre><code class="language-bash">grep &quot;403&quot; /var/log/apache2/error.log | grep -i &quot;gptbot\|claudebot\|bytespider&quot;
+</code></pre>
+<p>Weekly analysis reveals trends: which crawlers attempt access most frequently, which content they target, whether new user agents appear. This data feeds <a href="/articles/dynamic-pricing-ai-crawlers.html">pricing strategy</a> if you shift from blocking to monetization.</p>
+<hr>
+<h2>Testing and Validation</h2>
+<h3>Verifying Rules with curl</h3>
+<p>Test each crawler rule before deploying to production:</p>
+<pre><code class="language-bash"># Should return 403
+curl -A &quot;GPTBot/1.0&quot; -I https://example.com/articles/test.html
+
+# Should return 403
+curl -A &quot;ClaudeBot/1.0&quot; -I https://example.com/articles/test.html
+
+# Should return 200 (search engine — never block)
+curl -A &quot;Googlebot/2.1&quot; -I https://example.com/articles/test.html
+
+# Should return 200 (normal browser)
+curl -A &quot;Mozilla/5.0 (Windows NT 10.0)&quot; -I https://example.com/articles/test.html
+</code></pre>
+<p>Any configuration error that blocks <strong>Googlebot</strong> will damage search rankings. Verify search engine crawlers pass through after every <code>.htaccess</code> modification.</p>
+<h3>Common .htaccess Errors and Fixes</h3>
+<p><strong>500 Internal Server Error after adding rules:</strong> Check for syntax errors. A missing <code>[NC]</code> flag, unclosed <code>&lt;IfModule&gt;</code> block, or typo in a module name triggers 500 errors. Remove the new rules, confirm the site loads, then add rules back one block at a time.</p>
+<p><strong>Rules not taking effect:</strong> Verify that <code>AllowOverride All</code> (or at minimum <code>AllowOverride FileInfo Options</code>) is set in your Apache virtual host configuration. Some shared hosts restrict <code>.htaccess</code> capabilities. Also verify that mod_rewrite is enabled — run <code>apache2ctl -M | grep rewrite</code> if you have shell access.</p>
+<p><strong>Blocking too broadly:</strong> A regex like <code>Bot</code> matches <strong>Googlebot</strong>, <strong>Bingbot</strong>, and every other crawler containing &quot;Bot&quot; in its name. Always use specific crawler names: <code>GPTBot</code>, <code>ClaudeBot</code>, not generic patterns.</p>
+<hr>
+<h2>Frequently Asked Questions</h2>
+<h3>Does .htaccess blocking affect site performance?</h3>
+<p>Minimally. Apache evaluates <code>.htaccess</code> files on every request, and complex rule sets add microseconds of processing. The net performance impact is typically positive: blocking thousands of daily AI crawler requests reduces overall server load. The CPU cycles saved by not serving full pages to crawlers far exceed the cost of evaluating rewrite conditions.</p>
+<h3>Can I use .htaccess on Nginx or LiteSpeed servers?</h3>
+<p><strong>Nginx</strong> does not process <code>.htaccess</code> files. Use <a href="/articles/nginx-ai-crawler-blocking.html">Nginx-specific configuration</a> instead. <strong>LiteSpeed</strong> does process <code>.htaccess</code> files with mod_rewrite compatibility, so Apache rules generally work on LiteSpeed hosts. <strong>OpenLiteSpeed</strong> has partial support — test each rule after deployment.</p>
+<h3>Should I block at .htaccess level or through a CDN?</h3>
+<p>Both. CDN-level blocking (<strong>Cloudflare</strong>, <strong>Fastly</strong>, <a href="/articles/cdn-level-crawler-management.html">other CDNs</a>) intercepts at the network edge, saving origin bandwidth. <code>.htaccess</code> catches direct-to-origin requests that bypass the CDN. The layers complement each other. Neither alone covers all scenarios.</p>
+<h3>How do I handle AI crawlers that spoof their user-agent string?</h3>
+<p>User-agent blocking catches honest crawlers. IP range blocking catches dishonest ones. Combine both in your <code>.htaccess</code>. Add known AI company IP ranges to deny lists. For sophisticated spoofers that rotate IPs, behavioral analysis at the CDN level (<strong>Cloudflare Bot Management</strong>) provides better detection than <code>.htaccess</code> rules alone.</p>
+<h3>Will blocking AI crawlers break my WordPress site?</h3>
+<p>No. WordPress functions independently of AI crawler access. The only risk: accidentally blocking <strong>Googlebot</strong> (search indexer) with an overly broad rule. Use specific AI crawler names in your patterns, never generic terms like <code>Bot</code> or <code>Spider</code> that match search engine crawlers. Test with <code>curl</code> after every change.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

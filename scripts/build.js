@@ -1,29 +1,31 @@
+#!/usr/bin/env node
+
+/**
+ * AI Pay Per Crawl — Build Script
+ *
+ * Processes Articles/*.md into dist/, copies root pages, generates sitemap.
+ * Pure CSS build (no Tailwind). "The Protocol" design system.
+ */
+
 const fs = require('fs');
 const path = require('path');
 const { processArticles } = require('./md-to-html');
+const { megaNavHtml, footerHtml, headIncludes, megaNavScript, ENTITY_DOMAINS } = require('./shared');
 
-const DIST = path.join(__dirname, '..', 'dist');
+const ROOT_DIR = path.join(__dirname, '..');
+const DIST = path.join(ROOT_DIR, 'dist');
 
-const ENTITY_DOMAINS = [
-  'scalewithsearch.com',
-  'victorvalentineromo.com',
-  'aifirstsearch.com',
-  'browserprompt.com',
-  'creatinepedia.com',
-  'polytraffic.com',
-  'tattooremovalnear.com',
-  'comicstripai.com',
-  'aipaypercrawl.com',
-  'aipaypercrawl.com',
-  'b2bvic.com',
-  'seobyrole.com',
-  'quickfixseo.com'
+// Root-level files to copy to dist
+const ROOT_FILES = [
+  'index.html',
+  'setup.html',
+  'articles.html',
+  'robots.txt',
+  'base.css',
+  'netlify.toml'
 ];
 
-const SAME_AS = ENTITY_DOMAINS.map(d => `"https://${d}"`).join(',\n      ');
-const ENTITY_LINKS = ENTITY_DOMAINS.map(d => `    <link rel="me" href="https://${d}" />`).join('\n');
-
-// Clean dist
+// ── Clean dist ────────────────────────────────────────────────────
 function clean() {
   if (fs.existsSync(DIST)) {
     fs.rmSync(DIST, { recursive: true });
@@ -32,213 +34,83 @@ function clean() {
   console.log('Cleaned dist/');
 }
 
-// Build article cards for index
+// ── Copy root files ───────────────────────────────────────────────
+function copyRootFiles() {
+  let copied = 0;
+  for (const file of ROOT_FILES) {
+    const src = path.join(ROOT_DIR, file);
+    if (fs.existsSync(src)) {
+      fs.copyFileSync(src, path.join(DIST, file));
+      console.log(`  ${file}`);
+      copied++;
+    } else {
+      console.log(`  ${file} (not found, skipping)`);
+    }
+  }
+  return copied;
+}
+
+// ── Build article cards for index ─────────────────────────────────
 function buildArticleCards(articles) {
-  return articles.map(a => `
-            <a href="/articles/${a.slug}.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">${a.title}</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">${a.description}</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>`).join('\n');
+  return articles.map((a, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    return `
+          <a href="/articles/${a.slug}.html" class="card card--article">
+            <div class="card__number">${num}</div>
+            <h3 class="card__title">${a.title}</h3>
+            <p class="card__desc">${a.description}</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>`;
+  }).join('\n');
 }
 
-// Index page
-function buildIndex(articles) {
-  const cards = buildArticleCards(articles);
-  const jsonLd = JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "name": "AI Pay Per Crawl",
-        "url": "https://aipaypercrawl.com",
-        "description": "Pay only for what search engines crawl. Frameworks for acquiring, valuing, and monetizing undervalued organic traffic.",
-        "publisher": { "@id": "https://aipaypercrawl.com/#organization" }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://aipaypercrawl.com/#organization",
-        "name": "AI Pay Per Crawl",
-        "url": "https://aipaypercrawl.com",
-        "founder": {
-          "@type": "Person",
-          "name": "Victor Valentine Romo",
-          "url": "https://victorvalentineromo.com"
-        },
-        "sameAs": [
-          ...ENTITY_DOMAINS.map(d => `https://${d}`)
-        ]
-      }
-    ]
-  }, null, 2);
-
-  const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Pay Per Crawl — Pay only for what search engines crawl</title>
-    <meta name="description" content="Frameworks for acquiring, valuing, and monetizing undervalued organic traffic. SEO as arbitrage, not marketing." />
-    <meta name="author" content="Victor Valentine Romo" />
-    <meta property="og:title" content="AI Pay Per Crawl — Pay only for what search engines crawl" />
-    <meta property="og:description" content="Frameworks for acquiring, valuing, and monetizing undervalued organic traffic." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://aipaypercrawl.com" />
-    <meta property="og:site_name" content="AI Pay Per Crawl" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://aipaypercrawl.com/" />
-${ENTITY_LINKS}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              emerald: {
-                50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7',
-                400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857',
-                800: '#065f46', 900: '#064e3b', 950: '#022c22'
-              }
-            }
-          }
-        }
-      }
-    </script>
-    <script type="application/ld+json">
-${jsonLd}
-    </script>
-</head>
-<body class="bg-white text-gray-900 antialiased">
-
-    <!-- Nav -->
-    <nav class="border-b border-gray-200 bg-white sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" class="text-xl font-bold text-cyan-600 hover:text-cyan-700 transition-colors">AI Pay Per Crawl</a>
-            <div class="flex gap-6 text-sm font-medium text-gray-600">
-                <a href="/articles.html" class="hover:text-cyan-600 transition-colors">Articles</a>
-                <a href="#about" class="hover:text-cyan-600 transition-colors">About</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <section class="bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white">
-        <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-                Profit from organic<br class="hidden md:block" /> search gaps.
-            </h1>
-            <p class="mt-6 text-lg md:text-xl text-cyan-100 max-w-2xl leading-relaxed">
-                SEO treated as arbitrage, not marketing. Frameworks for finding undervalued traffic, calculating real acquisition costs, and monetizing at multiples above spend.
-            </p>
-            <div class="mt-10 flex flex-wrap gap-4">
-                <a href="/articles.html" class="inline-block bg-white text-cyan-700 font-semibold px-8 py-3 rounded-lg hover:bg-cyan-50 transition-colors">Read the Playbooks</a>
-                <a href="#about" class="inline-block border-2 border-cyan-300 text-cyan-100 font-semibold px-8 py-3 rounded-lg hover:bg-cyan-800 transition-colors">Learn More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Articles Grid -->
-    <section class="max-w-5xl mx-auto px-6 py-20">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900">Latest Articles</h2>
-            <p class="mt-3 text-gray-600 max-w-xl mx-auto">In-depth articles covering key topics.</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-${cards}
-        </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="bg-gray-50 border-t border-gray-200">
-        <div class="max-w-4xl mx-auto px-6 py-20">
-            <h2 class="text-3xl font-bold text-gray-900">About AI Pay Per Crawl</h2>
-            <div class="mt-6 space-y-4 text-gray-700 leading-relaxed">
-                <p>AI Pay Per Crawl treats search traffic as a calculable asset class. Every keyword, domain, and content investment has a measurable spread between acquisition cost and monetization value. The frameworks here help operators identify, evaluate, and execute high-spread plays.</p>
-                <p>Built by Victor Valentine Romo.</p>
-                <p>AI Pay Per Crawl is a Scale With Search property.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-gray-200 bg-white">
-        <div class="max-w-5xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
-            &copy; 2026 AI Pay Per Crawl. A <a href="https://scalewithsearch.com" class="text-cyan-600 hover:underline">Scale With Search</a> property.
-        </div>
-    </footer>
-
-</body>
-</html>`;
-
-  fs.writeFileSync(path.join(DIST, 'index.html'), html);
-  console.log('Built: index.html');
-}
-
-// Articles hub
+// ── Build articles hub ────────────────────────────────────────────
 function buildArticlesHub(articles) {
   const cards = buildArticleCards(articles);
 
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Articles | AI Pay Per Crawl</title>
-    <meta name="description" content="Articles and guides covering pay only for what search engines crawl." />
-    <link rel="canonical" href="https://aipaypercrawl.com/articles.html" />
-${ENTITY_LINKS}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              emerald: {
-                50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7',
-                400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857',
-                800: '#065f46', 900: '#064e3b', 950: '#022c22'
-              }
-            }
-          }
-        }
-      }
-    </script>
+    <meta name="description" content="Implementation guides, pricing models, crawler analysis, and licensing infrastructure for AI pay-per-crawl monetization.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles.html">
+    <meta property="og:title" content="Articles | AI Pay Per Crawl">
+    <meta property="og:description" content="Implementation guides, pricing models, crawler analysis, and licensing infrastructure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles.html">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+${headIncludes}
 </head>
-<body class="bg-white text-gray-900 antialiased">
+<body>
 
-    <!-- Nav -->
-    <nav class="border-b border-gray-200 bg-white sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" class="text-xl font-bold text-cyan-600 hover:text-cyan-700 transition-colors">AI Pay Per Crawl</a>
-            <div class="flex gap-6 text-sm font-medium text-gray-600">
-                <a href="/articles.html" class="text-cyan-600 font-semibold">Articles</a>
-                <a href="/#about" class="hover:text-cyan-600 transition-colors">About</a>
-            </div>
-        </div>
-    </nav>
+${megaNavHtml}
 
-    <!-- Header -->
-    <section class="bg-cyan-600 text-white">
-        <div class="max-w-5xl mx-auto px-6 py-16">
-            <h1 class="text-3xl md:text-4xl font-bold">Latest Articles</h1>
-            <p class="mt-4 text-cyan-100 text-lg max-w-2xl">Tactical frameworks with real cost models and P&L data. Each article covers a key topic in depth.</p>
-        </div>
-    </section>
+  <main class="pt-nav">
+    <div class="section" style="background: var(--surface-alt); padding-top: calc(var(--sp-16));">
+      <div class="container">
+        <span class="label">Reference</span>
+        <h1 style="margin-top: var(--sp-4);">Articles</h1>
+        <p style="font-size: 1.125rem; max-width: 600px; margin-top: var(--sp-4);">
+          Implementation guides, pricing models, crawler analysis, and licensing infrastructure. Technical depth. Zero fluff.
+        </p>
+      </div>
+    </div>
 
-    <!-- Articles Grid -->
-    <section class="max-w-5xl mx-auto px-6 py-16">
-        <div class="grid md:grid-cols-2 gap-6">
+    <div class="section">
+      <div class="container">
+        <div class="grid grid--2">
 ${cards}
         </div>
-    </section>
+      </div>
+    </div>
+  </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-200 bg-gray-50 mt-8">
-        <div class="max-w-5xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
-            &copy; 2026 AI Pay Per Crawl. A <a href="https://scalewithsearch.com" class="text-cyan-600 hover:underline">Scale With Search</a> property.
-        </div>
-    </footer>
+${footerHtml}
 
+${megaNavScript}
 </body>
 </html>`;
 
@@ -246,56 +118,30 @@ ${cards}
   console.log('Built: articles.html');
 }
 
-// 404 page
+// ── 404 page ──────────────────────────────────────────────────────
 function build404() {
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page Not Found | AI Pay Per Crawl</title>
-    <meta name="robots" content="noindex" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              emerald: {
-                50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7',
-                400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857',
-                800: '#065f46', 900: '#064e3b', 950: '#022c22'
-              }
-            }
-          }
-        }
-      }
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 &mdash; Page Not Found | AI Pay Per Crawl</title>
+    <meta name="robots" content="noindex">
+${headIncludes}
 </head>
-<body class="bg-white text-gray-900 antialiased">
+<body>
 
-    <nav class="border-b border-gray-200 bg-white">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" class="text-xl font-bold text-cyan-600 hover:text-cyan-700 transition-colors">AI Pay Per Crawl</a>
-            <div class="flex gap-6 text-sm font-medium text-gray-600">
-                <a href="/articles.html" class="hover:text-cyan-600 transition-colors">Articles</a>
-                <a href="/#about" class="hover:text-cyan-600 transition-colors">About</a>
-            </div>
-        </div>
-    </nav>
+${megaNavHtml}
 
-    <main class="max-w-4xl mx-auto px-6 py-32 text-center">
-        <h1 class="text-6xl font-bold text-cyan-600">404</h1>
-        <p class="mt-4 text-xl text-gray-600">This page doesn't exist. This page doesn't exist.</p>
-        <a href="/" class="inline-block mt-8 bg-cyan-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-cyan-700 transition-colors">Back to Home</a>
-    </main>
+  <main class="pt-nav" style="text-align: center; padding: var(--sp-24) var(--sp-6);">
+    <div style="font-family: var(--font-display); font-size: 6rem; font-weight: 700; color: var(--accent); line-height: 1;">404</div>
+    <p style="font-size: 1.25rem; color: var(--text-secondary); margin: var(--sp-4) 0 var(--sp-8);">This endpoint returned nothing. Crawlers can't find it either.</p>
+    <a href="/" class="btn btn--primary">Back to Home</a>
+  </main>
 
-    <footer class="border-t border-gray-200 bg-gray-50 mt-16">
-        <div class="max-w-4xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
-            &copy; 2026 AI Pay Per Crawl. A <a href="https://scalewithsearch.com" class="text-cyan-600 hover:underline">Scale With Search</a> property.
-        </div>
-    </footer>
+${footerHtml}
 
+${megaNavScript}
 </body>
 </html>`;
 
@@ -303,7 +149,7 @@ function build404() {
   console.log('Built: 404.html');
 }
 
-// Sitemap
+// ── Sitemap ───────────────────────────────────────────────────────
 function buildSitemap(articles) {
   const today = new Date().toISOString().split('T')[0];
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -313,6 +159,12 @@ function buildSitemap(articles) {
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/setup.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://aipaypercrawl.com/articles.html</loc>
@@ -336,7 +188,7 @@ function buildSitemap(articles) {
   console.log('Built: sitemap.xml');
 }
 
-// Robots.txt
+// ── Robots.txt ────────────────────────────────────────────────────
 function buildRobots() {
   const content = `User-agent: *
 Allow: /
@@ -347,23 +199,29 @@ Sitemap: https://aipaypercrawl.com/sitemap.xml
   console.log('Built: robots.txt');
 }
 
-// Main
+// ── Main ──────────────────────────────────────────────────────────
 function main() {
   console.log('Building aipaypercrawl.com...\n');
 
   clean();
 
+  // Copy root files
+  console.log('\nRoot files:');
+  const rootCount = copyRootFiles();
+
+  // Process markdown articles
   console.log('\nProcessing articles...');
   const articles = processArticles();
-  console.log(`\n${articles.length} articles processed.\n`);
+  console.log(`${articles.length} articles processed.\n`);
 
-  buildIndex(articles);
+  // Generate hub + utility pages
   buildArticlesHub(articles);
   build404();
   buildSitemap(articles);
   buildRobots();
 
-  console.log(`\nBuild complete. ${articles.length + 4} files in dist/`);
+  const total = rootCount + articles.length + 3;
+  console.log(`\nBuild complete. ${total} files in dist/`);
 }
 
 main();

@@ -1,134 +1,668 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Articles | AI Pay Per Crawl</title>
-    <meta name="description" content="Articles and guides covering pay only for what search engines crawl." />
-    <link rel="canonical" href="https://aipaypercrawl.com/articles.html" />
-    <link rel="me" href="https://scalewithsearch.com" />
-    <link rel="me" href="https://victorvalentineromo.com" />
-    <link rel="me" href="https://aifirstsearch.com" />
-    <link rel="me" href="https://browserprompt.com" />
-    <link rel="me" href="https://creatinepedia.com" />
-    <link rel="me" href="https://polytraffic.com" />
-    <link rel="me" href="https://tattooremovalnear.com" />
-    <link rel="me" href="https://comicstripai.com" />
-    <link rel="me" href="https://aipaypercrawl.com" />
-    <link rel="me" href="https://aipaypercrawl.com" />
-    <link rel="me" href="https://b2bvic.com" />
-    <link rel="me" href="https://seobyrole.com" />
-    <link rel="me" href="https://quickfixseo.com" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              emerald: {
-                50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7',
-                400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857',
-                800: '#065f46', 900: '#064e3b', 950: '#022c22'
-              }
-            }
-          }
-        }
-      }
-    </script>
+    <meta name="description" content="Implementation guides, pricing models, crawler analysis, and licensing infrastructure for AI pay-per-crawl monetization.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles.html">
+    <meta property="og:title" content="Articles | AI Pay Per Crawl">
+    <meta property="og:description" content="Implementation guides, pricing models, crawler analysis, and licensing infrastructure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles.html">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
 </head>
-<body class="bg-white text-gray-900 antialiased">
+<body>
 
-    <!-- Nav -->
-    <nav class="border-b border-gray-200 bg-white sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" class="text-xl font-bold text-cyan-600 hover:text-cyan-700 transition-colors">AI Pay Per Crawl</a>
-            <div class="flex gap-6 text-sm font-medium text-gray-600">
-                <a href="/articles.html" class="text-cyan-600 font-semibold">Articles</a>
-                <a href="/#about" class="hover:text-cyan-600 transition-colors">About</a>
-            </div>
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
         </div>
-    </nav>
 
-    <!-- Header -->
-    <section class="bg-cyan-600 text-white">
-        <div class="max-w-5xl mx-auto px-6 py-16">
-            <h1 class="text-3xl md:text-4xl font-bold">Latest Articles</h1>
-            <p class="mt-4 text-cyan-100 text-lg max-w-2xl">Tactical frameworks with real cost models and P&L data. Each article covers a key topic in depth.</p>
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
         </div>
-    </section>
 
-    <!-- Articles Grid -->
-    <section class="max-w-5xl mx-auto px-6 py-16">
-        <div class="grid md:grid-cols-2 gap-6">
-
-            <a href="/articles/ai-content-licensing-models-comparison.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">AI Content Licensing Models: robots.txt vs. RSL vs. Direct Deals Compared</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Complete comparison of AI content licensing approaches. Learn when to block with robots.txt, monetize via RSL marketplace, or negotiate direct deals like News Corp and Reddit.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
-
-            <a href="/articles/ai-crawler-directory-2026.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">The Complete AI Crawler Directory: Identification, Behavior, and Blocking Instructions</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Comprehensive directory of AI crawlers from OpenAI, Anthropic, Google, ByteDance, and others. Includes user-agent strings, crawl behaviors, robots.txt blocking instructions, and server-level enforcement strategies.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
-
-            <a href="/articles/ai-training-data-pricing-publishers.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">Pricing Your Content for AI Training: How Publishers Calculate Licensing Value</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Publisher valuation framework for AI training data licensing. Industry benchmarks for per-crawl pricing, content uniqueness scoring, and common pricing mistakes to avoid.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
-
-            <a href="/articles/associated-press-openai-licensing-deal.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">Associated Press + OpenAI Licensing Deal: Contract Structure and Lessons for Publishers</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Teardown of the AP-OpenAI licensing agreement. Analyze deal structure, content scope, attribution terms, and strategic lessons for publishers pursuing AI licensing deals.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
-
-            <a href="/articles/cloudflare-pay-per-crawl-setup.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">Cloudflare Pay-Per-Crawl Setup: Complete Configuration Guide for Publishers</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Step-by-step guide to configuring Cloudflare Pay-Per-Crawl for AI crawler monetization. Learn pricing tiers, Stripe billing integration, and enforcement settings.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
-
-            <a href="/articles/financial-times-anthropic-deal.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">Financial Times + Anthropic Partnership: Why FT Chose Claude Over ChatGPT</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Complete analysis of the Financial Times and Anthropic licensing partnership including deal structure, strategic rationale, and lessons for publishers.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
-
-            <a href="/articles/llms-txt-specification-guide.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">llms.txt Specification: The Human-Readable Licensing Standard for AI Systems</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Complete guide to implementing llms.txt for AI content licensing. Learn file structure, placement, and how AI systems parse human-readable licensing terms.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
-
-            <a href="/articles/news-corp-openai-licensing-deal.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">News Corp's $250M OpenAI Deal: The Largest News Licensing Agreement Explained</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Deep analysis of the $250M, 5-year licensing agreement between News Corp and OpenAI—deal structure, property valuations, and lessons for publishers.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
-
-            <a href="/articles/reddit-google-ai-licensing-deal.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">Reddit's $60M Annual Google Deal: How User-Generated Content Powers AI Licensing</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Teardown of the Reddit-Google AI licensing deal. Analyze UGC valuation, deal structure, content scope, and lessons for platforms monetizing user-generated content through AI licensing.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
-
-            <a href="/articles/rsl-protocol-implementation-guide.html" class="group block bg-white border border-gray-200 rounded-xl p-6 hover:border-cyan-400 hover:shadow-lg transition-all duration-200">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors leading-snug">RSL Protocol Implementation: How Publishers License Content to AI Systems</h3>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">Complete guide to implementing RSL (Really Simple Licensing) protocol for AI content licensing. Learn file structure, pricing models, hosting requirements, and enforcement strategies.</p>
-                <span class="inline-block mt-4 text-sm font-medium text-cyan-600 group-hover:text-cyan-700">Read article &rarr;</span>
-            </a>
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-200 bg-gray-50 mt-8">
-        <div class="max-w-5xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
-            &copy; 2026 AI Pay Per Crawl. A <a href="https://scalewithsearch.com" class="text-cyan-600 hover:underline">Scale With Search</a> property.
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
         </div>
-    </footer>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="section" style="background: var(--surface-alt); padding-top: calc(var(--sp-16));">
+      <div class="container">
+        <span class="label">Reference</span>
+        <h1 style="margin-top: var(--sp-4);">Articles</h1>
+        <p style="font-size: 1.125rem; max-width: 600px; margin-top: var(--sp-4);">
+          Implementation guides, pricing models, crawler analysis, and licensing infrastructure. Technical depth. Zero fluff.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <div class="grid grid--2">
+
+          <a href="/articles/ai-content-licensing-models-comparison.html" class="card card--article">
+            <div class="card__number">01</div>
+            <h3 class="card__title">AI Content Licensing Models: robots.txt vs. RSL vs. Direct Deals Compared</h3>
+            <p class="card__desc">Complete comparison of AI content licensing approaches. Learn when to block with robots.txt, monetize via RSL marketplace, or negotiate direct deals like News Corp and Reddit.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/ai-crawler-analytics-dashboard.html" class="card card--article">
+            <div class="card__number">02</div>
+            <h3 class="card__title">ai crawler analytics dashboard</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/ai-crawler-directory-2026.html" class="card card--article">
+            <div class="card__number">03</div>
+            <h3 class="card__title">The Complete AI Crawler Directory: Identification, Behavior, and Blocking Instructions</h3>
+            <p class="card__desc">Comprehensive directory of AI crawlers from OpenAI, Anthropic, Google, ByteDance, and others. Includes user-agent strings, crawl behaviors, robots.txt blocking instructions, and server-level enforcement strategies.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/ai-crawler-user-agent-strings.html" class="card card--article">
+            <div class="card__number">04</div>
+            <h3 class="card__title">ai crawler user agent strings</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/ai-search-vs-training-crawlers.html" class="card card--article">
+            <div class="card__number">05</div>
+            <h3 class="card__title">ai search vs training crawlers</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/ai-training-data-pricing-publishers.html" class="card card--article">
+            <div class="card__number">06</div>
+            <h3 class="card__title">Pricing Your Content for AI Training: How Publishers Calculate Licensing Value</h3>
+            <p class="card__desc">Publisher valuation framework for AI training data licensing. Industry benchmarks for per-crawl pricing, content uniqueness scoring, and common pricing mistakes to avoid.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/amazonbot-crawler-profile.html" class="card card--article">
+            <div class="card__number">07</div>
+            <h3 class="card__title">amazonbot crawler profile</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/apache-htaccess-bot-management.html" class="card card--article">
+            <div class="card__number">08</div>
+            <h3 class="card__title">apache htaccess bot management</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/applebot-extended-crawler-profile.html" class="card card--article">
+            <div class="card__number">09</div>
+            <h3 class="card__title">applebot extended crawler profile</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/associated-press-openai-licensing-deal.html" class="card card--article">
+            <div class="card__number">10</div>
+            <h3 class="card__title">Associated Press + OpenAI Licensing Deal: Contract Structure and Lessons for Publishers</h3>
+            <p class="card__desc">Teardown of the AP-OpenAI licensing agreement. Analyze deal structure, content scope, attribution terms, and strategic lessons for publishers pursuing AI licensing deals.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/block-all-ai-crawlers-robots-txt.html" class="card card--article">
+            <div class="card__number">11</div>
+            <h3 class="card__title">block all ai crawlers robots txt</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/block-claudebot-robots-txt.html" class="card card--article">
+            <div class="card__number">12</div>
+            <h3 class="card__title">block claudebot robots txt</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/block-gptbot-robots-txt.html" class="card card--article">
+            <div class="card__number">13</div>
+            <h3 class="card__title">block gptbot robots txt</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/bytespider-tiktok-crawler.html" class="card card--article">
+            <div class="card__number">14</div>
+            <h3 class="card__title">bytespider tiktok crawler</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/ccbot-common-crawl-profile.html" class="card card--article">
+            <div class="card__number">15</div>
+            <h3 class="card__title">ccbot common crawl profile</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/cdn-level-crawler-management.html" class="card card--article">
+            <div class="card__number">16</div>
+            <h3 class="card__title">cdn level crawler management</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/claudebot-behavior-analysis.html" class="card card--article">
+            <div class="card__number">17</div>
+            <h3 class="card__title">claudebot behavior analysis</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/cloudflare-pay-per-crawl-setup.html" class="card card--article">
+            <div class="card__number">18</div>
+            <h3 class="card__title">Cloudflare Pay-Per-Crawl Setup: Complete Configuration Guide for Publishers</h3>
+            <p class="card__desc">Step-by-step guide to configuring Cloudflare Pay-Per-Crawl for AI crawler monetization. Learn pricing tiers, Stripe billing integration, and enforcement settings.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/content-valuation-for-ai-training.html" class="card card--article">
+            <div class="card__number">19</div>
+            <h3 class="card__title">content valuation for ai training</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/copyright-law-ai-training-data.html" class="card card--article">
+            <div class="card__number">20</div>
+            <h3 class="card__title">copyright law ai training data</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/dynamic-pricing-ai-crawlers.html" class="card card--article">
+            <div class="card__number">21</div>
+            <h3 class="card__title">dynamic pricing ai crawlers</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/financial-times-anthropic-deal.html" class="card card--article">
+            <div class="card__number">22</div>
+            <h3 class="card__title">Financial Times + Anthropic Partnership: Why FT Chose Claude Over ChatGPT</h3>
+            <p class="card__desc">Complete analysis of the Financial Times and Anthropic licensing partnership including deal structure, strategic rationale, and lessons for publishers.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/google-extended-crawler-profile.html" class="card card--article">
+            <div class="card__number">23</div>
+            <h3 class="card__title">google extended crawler profile</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/google-extended-vs-googlebot.html" class="card card--article">
+            <div class="card__number">24</div>
+            <h3 class="card__title">google extended vs googlebot</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/gptbot-behavior-analysis.html" class="card card--article">
+            <div class="card__number">25</div>
+            <h3 class="card__title">gptbot behavior analysis</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/llms-txt-specification-guide.html" class="card card--article">
+            <div class="card__number">26</div>
+            <h3 class="card__title">llms.txt Specification: The Human-Readable Licensing Standard for AI Systems</h3>
+            <p class="card__desc">Complete guide to implementing llms.txt for AI content licensing. Learn file structure, placement, and how AI systems parse human-readable licensing terms.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/meta-ai-crawler-profile.html" class="card card--article">
+            <div class="card__number">27</div>
+            <h3 class="card__title">meta ai crawler profile</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/news-corp-openai-licensing-deal.html" class="card card--article">
+            <div class="card__number">28</div>
+            <h3 class="card__title">News Corp's $250M OpenAI Deal: The Largest News Licensing Agreement Explained</h3>
+            <p class="card__desc">Deep analysis of the $250M, 5-year licensing agreement between News Corp and OpenAI—deal structure, property valuations, and lessons for publishers.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/nginx-ai-crawler-blocking.html" class="card card--article">
+            <div class="card__number">29</div>
+            <h3 class="card__title">nginx ai crawler blocking</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/opt-out-mechanisms-comparison.html" class="card card--article">
+            <div class="card__number">30</div>
+            <h3 class="card__title">opt out mechanisms comparison</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/per-crawl-pricing-model.html" class="card card--article">
+            <div class="card__number">31</div>
+            <h3 class="card__title">per crawl pricing model</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/perplexity-bot-controversy.html" class="card card--article">
+            <div class="card__number">32</div>
+            <h3 class="card__title">perplexity bot controversy</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/publisher-class-actions-ai.html" class="card card--article">
+            <div class="card__number">33</div>
+            <h3 class="card__title">publisher class actions ai</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/publisher-revenue-calculator.html" class="card card--article">
+            <div class="card__number">34</div>
+            <h3 class="card__title">publisher revenue calculator</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/reddit-google-ai-licensing-deal.html" class="card card--article">
+            <div class="card__number">35</div>
+            <h3 class="card__title">Reddit's $60M Annual Google Deal: How User-Generated Content Powers AI Licensing</h3>
+            <p class="card__desc">Teardown of the Reddit-Google AI licensing deal. Analyze UGC valuation, deal structure, content scope, and lessons for platforms monetizing user-generated content through AI licensing.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/robots-txt-ai-crawlers-template.html" class="card card--article">
+            <div class="card__number">36</div>
+            <h3 class="card__title">robots txt ai crawlers template</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/robots-txt-vs-pay-per-crawl.html" class="card card--article">
+            <div class="card__number">37</div>
+            <h3 class="card__title">robots txt vs pay per crawl</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/rsl-protocol-implementation-guide.html" class="card card--article">
+            <div class="card__number">38</div>
+            <h3 class="card__title">RSL Protocol Implementation: How Publishers License Content to AI Systems</h3>
+            <p class="card__desc">Complete guide to implementing RSL (Really Simple Licensing) protocol for AI content licensing. Learn file structure, pricing models, hosting requirements, and enforcement strategies.</p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/server-level-ai-bot-blocking.html" class="card card--article">
+            <div class="card__number">39</div>
+            <h3 class="card__title">server level ai bot blocking</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/small-publisher-monetization.html" class="card card--article">
+            <div class="card__number">40</div>
+            <h3 class="card__title">small publisher monetization</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/vercel-netlify-ai-crawler-config.html" class="card card--article">
+            <div class="card__number">41</div>
+            <h3 class="card__title">vercel netlify ai crawler config</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/volume-discount-structures.html" class="card card--article">
+            <div class="card__number">42</div>
+            <h3 class="card__title">volume discount structures</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+
+          <a href="/articles/wordpress-ai-crawler-plugin.html" class="card card--article">
+            <div class="card__number">43</div>
+            <h3 class="card__title">wordpress ai crawler plugin</h3>
+            <p class="card__desc"></p>
+            <span class="card__arrow">Read article &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
 </body>
 </html>
