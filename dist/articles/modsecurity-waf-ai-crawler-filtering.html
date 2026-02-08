@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModSecurity WAF AI Crawler Filtering: Implementation Guide | AI Pay Per Crawl</title>
+    <meta name="description" content="Deploy ModSecurity Web Application Firewall rules blocking unauthorized AI training crawlers. Technical patterns for User-agent filtering and rate limiting enforcement.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ModSecurity WAF AI Crawler Filtering: Implementation Guide">
+    <meta property="og:description" content="Deploy ModSecurity Web Application Firewall rules blocking unauthorized AI training crawlers. Technical patterns for User-agent filtering and rate limiting enforcement.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/modsecurity-waf-ai-crawler-filtering">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ModSecurity WAF AI Crawler Filtering: Implementation Guide">
+    <meta name="twitter:description" content="Deploy ModSecurity Web Application Firewall rules blocking unauthorized AI training crawlers. Technical patterns for User-agent filtering and rate limiting enforcement.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/modsecurity-waf-ai-crawler-filtering">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "ModSecurity WAF AI Crawler Filtering: Implementation Guide",
+  "description": "Deploy ModSecurity Web Application Firewall rules blocking unauthorized AI training crawlers. Technical patterns for User-agent filtering and rate limiting enforcement.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/modsecurity-waf-ai-crawler-filtering"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "ModSecurity WAF AI Crawler Filtering: Implementation Guide",
+      "item": "https://aipaypercrawl.com/articles/modsecurity-waf-ai-crawler-filtering"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>ModSecurity WAF AI Crawler Filtering: Implementation Guide</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 11 min read</span>
+        <h1>ModSecurity WAF AI Crawler Filtering: Implementation Guide</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Deploy ModSecurity Web Application Firewall rules blocking unauthorized AI training crawlers. Technical patterns for User-agent filtering and rate limiting enforcement.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>ModSecurity WAF AI Crawler Filtering: Implementation Guide</h1>
+<p><strong>ModSecurity</strong> serves as open-source Web Application Firewall providing real-time traffic inspection and filtering. Publishers deploy ModSecurity rules to enforce AI crawler access policies regardless of robots.txt compliance. Technical implementation transforms passive robots.txt suggestions into active enforcement blocking unauthorized training data harvesting at network edge before content delivery.</p>
+<h2>ModSecurity Architecture and Request Processing</h2>
+<p>ModSecurity operates as web server module (Apache, Nginx, IIS) inspecting HTTP requests and responses through rule-based engine. Request processing flows through five phases: connection establishment (phase 1), request headers (phase 2), request body (phase 3), response headers (phase 4), response body (phase 5). AI crawler filtering primarily leverages phases 1-2, examining connection source and request headers before application processing.</p>
+<p>Rule syntax follows structure: <code>SecRule VARIABLE &quot;OPERATOR&quot; &quot;ACTIONS&quot;</code>. Variables extract request properties—User-agent header, IP address, request path. Operators test conditions—string matching, regex patterns, numeric comparisons. Actions specify responses—block, allow, log, set variables. Chaining multiple rules creates complex logic evaluating combinations of request attributes.</p>
+<p>Rule evaluation determines request fate. Match triggers associated actions. Common blocking actions return HTTP 403 Forbidden or 429 Too Many Requests status codes. Logging actions record blocked attempts for monitoring and compliance documentation. Pass actions allow request while executing secondary actions like incrementing rate limit counters.</p>
+<p>ModSecurity Core Rule Set (CRS) provides baseline protections against SQL injection, XSS, and common attacks. AI crawler filtering requires custom rules targeting specific User-agent patterns and crawler behaviors. Custom rules supplement rather than replace CRS, maintaining security posture while adding crawler-specific controls.</p>
+<h2>Basic User-Agent Blocking Rules</h2>
+<p>User-agent header inspection provides primary crawler identification mechanism. AI training crawlers typically declare identity via User-agent strings enabling straightforward blocking.</p>
+<p>Block OpenAI GPTBot crawler:</p>
+<pre><code>SecRule REQUEST_HEADERS:User-Agent &quot;@contains GPTBot&quot; \
+    &quot;id:2001,\
+    phase:1,\
+    deny,\
+    status:403,\
+    log,\
+    msg:&#39;OpenAI GPTBot blocked&#39;,\
+    tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>Rule 2001 executes during phase 1 (connection), examines User-agent header for &quot;GPTBot&quot; substring, returns 403 Forbidden if matched, logs event with descriptive message. Tag enables filtering AI crawler blocks in log aggregation tools.</p>
+<p>Block multiple AI crawlers with single rule:</p>
+<pre><code>SecRule REQUEST_HEADERS:User-Agent &quot;@rx (GPTBot|ClaudeBot|CCBot|anthropic-ai|ChatGPT-User)&quot; \
+    &quot;id:2002,\
+    phase:1,\
+    deny,\
+    status:403,\
+    log,\
+    msg:&#39;AI training crawler blocked: %{MATCHED_VAR}&#39;,\
+    tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>Regex operator (@rx) matches any of listed crawler User-agents. Matched variable placeholder (%{MATCHED_VAR}) logs specific crawler blocked, aiding monitoring and analytics. Single rule reduces configuration maintenance compared to per-crawler rules.</p>
+<p>Case-insensitive matching handles User-agent variations:</p>
+<pre><code>SecRule REQUEST_HEADERS:User-Agent &quot;@rx (?i)(gptbot|claudebot|ccbot)&quot; \
+    &quot;id:2003,\
+    phase:1,\
+    deny,\
+    status:403,\
+    log,\
+    msg:&#39;AI crawler blocked (case-insensitive): %{MATCHED_VAR}&#39;,\
+    tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>The <code>(?i)</code> regex flag enables case-insensitive matching, catching &quot;GPTBot&quot;, &quot;gptbot&quot;, &quot;GPTBOT&quot; variants. Crawlers with inconsistent User-agent casing cannot evade detection through case manipulation.</p>
+<h2>Advanced Pattern Matching and Behavioral Detection</h2>
+<p>Simple User-agent matching fails against sophisticated crawlers spoofing browser identities. Behavioral analysis detecting crawler-like request patterns supplements User-agent filtering.</p>
+<p>Detect generic bot User-agents lacking specific identification:</p>
+<pre><code>SecRule REQUEST_HEADERS:User-Agent &quot;@rx bot|crawler|spider|scraper&quot; \
+    &quot;id:2004,\
+    phase:1,\
+    pass,\
+    nolog,\
+    setvar:&#39;tx.suspicious_ua=+1&#39;&quot;
+
+SecRule TX:suspicious_ua &quot;@ge 1&quot; \
+    &quot;id:2005,\
+    phase:1,\
+    chain&quot;
+    SecRule REQUEST_HEADERS:User-Agent &quot;!@contains Googlebot&quot; \
+        &quot;!@contains Bingbot&quot; \
+        &quot;!@contains YandexBot&quot; \
+        &quot;deny,\
+        status:403,\
+        log,\
+        msg:&#39;Generic bot blocked: %{REQUEST_HEADERS.User-Agent}&#39;,\
+        tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>First rule detects generic bot keywords, increments suspicious User-agent counter. Chained second rule blocks if suspicious but not whitelisted search engines. Approach catches unidentified crawlers while preserving legitimate search engine access.</p>
+<p>Missing or suspicious User-agent headers signal crawler activity:</p>
+<pre><code>SecRule &amp;REQUEST_HEADERS:User-Agent &quot;@eq 0&quot; \
+    &quot;id:2006,\
+    phase:1,\
+    deny,\
+    status:403,\
+    log,\
+    msg:&#39;Missing User-Agent header&#39;,\
+    tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>Legitimate browsers always send User-agent headers. Absence indicates crawler attempting stealth. Rule rejects requests lacking User-agent entirely.</p>
+<h2>IP Address and Geolocation Filtering</h2>
+<p>User-agent headers are easily spoofed. IP address provides secondary verification, though sophisticated crawlers use residential proxies and distributed infrastructure complicating IP-based blocking.</p>
+<p>Block known AI company IP ranges:</p>
+<pre><code>SecRule REMOTE_ADDR &quot;@ipMatch 162.158.0.0/16,104.16.0.0/12&quot; \
+    &quot;id:2007,\
+    phase:1,\
+    deny,\
+    status:403,\
+    log,\
+    msg:&#39;AI company IP range blocked&#39;,\
+    tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>IPMatch operator tests whether request source IP falls within specified CIDR ranges. Example shows blocking specific network blocks (update with actual AI company ranges). Requires ongoing maintenance as companies expand infrastructure.</p>
+<p>IP reputation databases enhance filtering:</p>
+<pre><code>SecRule REMOTE_ADDR &quot;@ipMatchFromFile /etc/modsecurity/ip-blocklist.txt&quot; \
+    &quot;id:2008,\
+    phase:1,\
+    deny,\
+    status:403,\
+    log,\
+    msg:&#39;Blocked IP from reputation list&#39;,\
+    tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>External file contains one IP or CIDR range per line. Centralized blocklist enables bulk updates without modifying rules. Integrate with IP reputation services (Project Honeypot, AbuseIPDB) automating blocklist updates.</p>
+<p>Geographic restrictions block crawler-heavy regions:</p>
+<pre><code>SecRule GEO:COUNTRY_CODE &quot;@rx (CN|RU|KR)&quot; \
+    &quot;id:2009,\
+    phase:1,\
+    pass,\
+    nolog,\
+    setvar:&#39;tx.high_risk_geo=+1&#39;&quot;
+</code></pre>
+<p>GEO variables require GeoIP database integration (MaxMind). Geographic filtering reduces crawler traffic from regions with heavy crawler activity. Balance against legitimate user exclusion—geography alone insufficient for blocking without additional signals.</p>
+<h2>Rate Limiting and Request Throttling</h2>
+<p>Rate limiting restricts request frequency from individual IPs regardless of bot identification. Aggressive request patterns characteristic of crawlers trigger throttling or blocking.</p>
+<p>Track requests per IP address:</p>
+<pre><code>SecAction &quot;id:2010,\
+    phase:1,\
+    nolog,\
+    pass,\
+    initcol:ip=%{REMOTE_ADDR}&quot;
+
+SecRule REQUEST_HEADERS:User-Agent &quot;@rx (GPTBot|ClaudeBot|CCBot)&quot; \
+    &quot;id:2011,\
+    phase:1,\
+    pass,\
+    setvar:ip.ai_requests=+1,\
+    expirevar:ip.ai_requests=60&quot;
+
+SecRule IP:ai_requests &quot;@gt 10&quot; \
+    &quot;id:2012,\
+    phase:1,\
+    deny,\
+    status:429,\
+    log,\
+    msg:&#39;AI crawler rate limit exceeded: %{ip.ai_requests} requests&#39;,\
+    tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>Initialization rule creates persistent collection tracking requests per IP. Second rule increments counter for AI crawler requests with 60-second expiration. Third rule blocks when counter exceeds 10 requests per minute. Returns HTTP 429 Too Many Requests signaling rate limit to compliant crawlers.</p>
+<p>Progressive rate limiting increases strictness for persistent violators:</p>
+<pre><code>SecRule IP:ai_requests &quot;@gt 100&quot; \
+    &quot;id:2013,\
+    phase:1,\
+    deny,\
+    status:403,\
+    log,\
+    msg:&#39;AI crawler permanent block: excessive requests&#39;,\
+    setvar:ip.blocked=1,\
+    expirevar:ip.blocked=3600,\
+    tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>Crawlers exceeding 100 requests/minute escalate to permanent hourly block. Demonstrates graduated enforcement—initial violations receive soft rate limiting (429), persistent violations trigger hard blocks (403). Escalation deters repeated circumvention attempts.</p>
+<h2>Content-Specific Protection Rules</h2>
+<p>Differentiated content tiers require granular access controls. Premium content, API endpoints, and high-value archives demand stronger protections than public marketing pages.</p>
+<p>Protect premium content paths:</p>
+<pre><code>SecRule REQUEST_URI &quot;@beginsWith /premium/&quot; \
+    &quot;id:2014,\
+    phase:1,\
+    chain&quot;
+    SecRule REQUEST_HEADERS:User-Agent &quot;@rx (GPTBot|ClaudeBot|CCBot)&quot; \
+        &quot;deny,\
+        status:403,\
+        log,\
+        msg:&#39;AI crawler blocked from premium content: %{REQUEST_URI}&#39;,\
+        tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>Chained rules evaluate path and User-agent combination. First rule matches premium path, second rule checks crawler User-agent. Both conditions required for block. Public paths permit crawler access while protecting paywalled content.</p>
+<p>API endpoint protection prevents programmatic scraping:</p>
+<pre><code>SecRule REQUEST_URI &quot;@beginsWith /api/&quot; \
+    &quot;id:2015,\
+    phase:1,\
+    chain&quot;
+    SecRule &amp;REQUEST_HEADERS:Authorization &quot;@eq 0&quot; \
+        &quot;chain&quot;
+    SecRule REQUEST_HEADERS:User-Agent &quot;@rx bot|crawler|scraper&quot; \
+        &quot;deny,\
+        status:401,\
+        log,\
+        msg:&#39;Unauthenticated bot blocked from API&#39;,\
+        tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>Three-condition chain: API path, missing Authorization header, bot User-agent. Authenticated API access permitted (legitimate integrations), but unauthenticated bots rejected with HTTP 401 Unauthorized.</p>
+<p>Block specific file types from crawler access:</p>
+<pre><code>SecRule REQUEST_URI &quot;@rx \.(pdf|doc|docx|xls|xlsx|zip)$&quot; \
+    &quot;id:2016,\
+    phase:1,\
+    chain&quot;
+    SecRule REQUEST_HEADERS:User-Agent &quot;@rx (GPTBot|ClaudeBot|CCBot)&quot; \
+        &quot;deny,\
+        status:403,\
+        log,\
+        msg:&#39;AI crawler blocked from document: %{REQUEST_URI}&#39;,\
+        tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>Blocks crawlers from accessing downloadable documents while permitting human users. Protects proprietary documents, reports, and ebooks from AI training data harvesting.</p>
+<h2>Logging and Monitoring Configuration</h2>
+<p>Effective enforcement requires comprehensive logging documenting blocked attempts, identifying evasion patterns, and supporting legal compliance.</p>
+<p>Detailed logging configuration:</p>
+<pre><code>SecAuditEngine RelevantOnly
+SecAuditLogRelevantStatus &quot;^(?:403|429)$&quot;
+SecAuditLogType Serial
+SecAuditLog /var/log/modsecurity/audit.log
+SecAuditLogFormat JSON
+</code></pre>
+<p>RelevantOnly mode logs only requests triggering rules. Relevant status filter captures blocked requests (403, 429). JSON format enables structured log analysis with SIEM and analytics tools. Audit log contains complete request and response details supporting forensic investigation.</p>
+<p>Alert integration with monitoring systems:</p>
+<pre><code>SecRule TX:ai_crawler_blocked &quot;@eq 1&quot; \
+    &quot;id:2017,\
+    phase:5,\
+    pass,\
+    exec:/usr/local/bin/ai-crawler-alert.sh&quot;
+</code></pre>
+<p>Phase 5 (logging phase) executes external script when crawler block occurs. Script can send email alerts, trigger webhook notifications, or update monitoring dashboards. Real-time alerting enables rapid response to blocking bypass attempts or emerging crawler threats.</p>
+<p>Log analysis extracts crawler intelligence:</p>
+<pre><code class="language-bash">grep &quot;ai-crawler&quot; /var/log/modsecurity/audit.log | \
+jq -r &#39;[.transaction.request.headers.&quot;User-Agent&quot;, .transaction.client_ip] | @tsv&#39; | \
+sort | uniq -c | sort -rn
+</code></pre>
+<p>Parses JSON audit logs, extracts User-agent and IP, counts occurrences. Reveals most common AI crawlers and persistent IPs enabling targeted enforcement improvements. Regular analysis informs rule tuning and blocklist updates.</p>
+<h2>Whitelisting Legitimate Crawlers</h2>
+<p>Overly aggressive blocking disrupts search engine indexing and legitimate monitoring services. Whitelist rules permit essential crawlers while maintaining AI training crawler blocks.</p>
+<p>Whitelist major search engines:</p>
+<pre><code>SecRule REQUEST_HEADERS:User-Agent &quot;@rx (Googlebot|Bingbot|YandexBot|DuckDuckBot)&quot; \
+    &quot;id:2018,\
+    phase:1,\
+    pass,\
+    nolog,\
+    ctl:ruleRemoveById=2002-2016,\
+    tag:&#39;whitelisted-crawler&#39;&quot;
+</code></pre>
+<p>Pass action allows request to proceed. ctl directive disables rules 2002-2016 (AI crawler blocks) for whitelisted User-agents. Ensures search engine access unaffected by AI crawler filtering.</p>
+<p>Verify search engine crawler authenticity via reverse DNS:</p>
+<pre><code>SecRule REQUEST_HEADERS:User-Agent &quot;@contains Googlebot&quot; \
+    &quot;id:2019,\
+    phase:1,\
+    pass,\
+    nolog,\
+    setvar:&#39;tx.claimed_googlebot=1&#39;&quot;
+
+SecRule TX:claimed_googlebot &quot;@eq 1&quot; \
+    &quot;id:2020,\
+    phase:1,\
+    chain&quot;
+    SecRule REMOTE_HOST &quot;!@endsWith .googlebot.com&quot; \
+        &quot;deny,\
+        status:403,\
+        log,\
+        msg:&#39;Fake Googlebot detected&#39;,\
+        tag:&#39;crawler-impersonation&#39;&quot;
+</code></pre>
+<p>First rule flags requests claiming Googlebot identity. Second rule verifies reverse DNS hostname matches legitimate Google crawler domain. Blocks User-agent spoofing—crawlers claiming &quot;Googlebot&quot; but originating from non-Google infrastructure.</p>
+<h2>Performance Optimization</h2>
+<p>ModSecurity rule evaluation consumes CPU resources. Efficient rule design minimizes performance impact on legitimate traffic.</p>
+<p>Early phase evaluation reduces processing overhead:</p>
+<pre><code>SecRule REQUEST_HEADERS:User-Agent &quot;@rx (GPTBot|ClaudeBot)&quot; \
+    &quot;id:2021,\
+    phase:1,\
+    deny,\
+    status:403,\
+    nolog,\
+    tag:&#39;ai-crawler&#39;&quot;
+</code></pre>
+<p>Phase 1 processing during connection establishment prevents deeper request processing. <code>nolog</code> directive skips audit logging for obvious blocks, reducing I/O overhead. Reserve detailed logging for ambiguous cases requiring investigation.</p>
+<p>Rule ordering prioritizes common matches:</p>
+<pre><code># Place most frequently matched rules first
+SecRule REQUEST_HEADERS:User-Agent &quot;@contains GPTBot&quot; ...
+SecRule REQUEST_HEADERS:User-Agent &quot;@contains ClaudeBot&quot; ...
+# Less common crawlers later
+SecRule REQUEST_HEADERS:User-Agent &quot;@contains obscure-crawler&quot; ...
+</code></pre>
+<p>Rule engine evaluates sequentially. Placing common crawler patterns first reduces average evaluation time. Analyze logs identifying high-frequency crawlers for rule ordering optimization.</p>
+<p>String operations faster than regex:</p>
+<pre><code># Faster
+SecRule REQUEST_HEADERS:User-Agent &quot;@contains GPTBot&quot; ...
+
+# Slower
+SecRule REQUEST_HEADERS:User-Agent &quot;@rx GPTBot&quot; ...
+</code></pre>
+<p>String containment operator (@contains) outperforms regex (@rx) for simple substring matching. Reserve regex for complex patterns requiring alternation, anchoring, or character classes.</p>
+<h2>Integration with Nginx and Apache</h2>
+<p>ModSecurity integrates with web servers requiring configuration coordination between WAF rules and server directives.</p>
+<p><strong>Apache integration</strong> via mod_security2:</p>
+<pre><code class="language-apache">LoadModule security2_module modules/mod_security2.so
+
+&lt;IfModule security2_module&gt;
+    SecRuleEngine On
+    Include /etc/modsecurity/modsecurity.conf
+    Include /etc/modsecurity/owasp-crs/*.conf
+    Include /etc/modsecurity/custom-rules/ai-crawlers.conf
+&lt;/IfModule&gt;
+</code></pre>
+<p>Load ModSecurity module, enable rule engine, include CRS baseline and custom AI crawler rules. Configuration applies globally unless overridden by directory-specific rules.</p>
+<p><strong>Nginx integration</strong> via ModSecurity-nginx connector:</p>
+<pre><code class="language-nginx">load_module modules/ngx_http_modsecurity_module.so;
+
+http {
+    modsecurity on;
+    modsecurity_rules_file /etc/nginx/modsecurity.conf;
+
+    server {
+        listen 80;
+        server_name example.com;
+
+        location / {
+            modsecurity_rules &#39;
+                SecRule REQUEST_HEADERS:User-Agent &quot;@contains GPTBot&quot; &quot;id:3001,deny,status:403&quot;
+            &#39;;
+            proxy_pass http://backend;
+        }
+    }
+}
+</code></pre>
+<p>Nginx connector enables ModSecurity functionality in Nginx. Inline rules within location blocks provide request-path-specific controls. External rules file maintains shared rules across locations.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Does ModSecurity impact website performance for legitimate users?</h3>
+<p>Properly optimized ModSecurity rules impose minimal latency—typically 1-5ms per request. Early-phase blocking (phase 1-2) prevents expensive application processing for bot traffic, potentially improving overall performance. Performance impact scales with rule complexity and quantity. Monitor response times and optimize rules if latency increases. Hardware acceleration and rule ordering minimize overhead.</p>
+<h3>How do I update ModSecurity rules to block newly identified AI crawlers?</h3>
+<p>Add new SecRule entries to custom rules file targeting new crawler User-agents. Reload ModSecurity configuration without web server restart: <code>systemctl reload apache2</code> (Apache) or <code>nginx -s reload</code> (Nginx). Automated updates possible via scripts fetching threat intelligence feeds and regenerating rules files. Version control rules files enabling rollback if updates cause issues. Test rule changes in staging environment before production deployment.</p>
+<h3>Can AI crawlers bypass ModSecurity by using residential proxies?</h3>
+<p>Residential proxies complicate IP-based blocking—traffic originates from consumer ISP addresses indistinguishable from legitimate users. User-agent filtering and behavioral analysis remain effective even with proxy use. JavaScript challenges requiring client-side execution detect automated crawlers regardless of IP source. No single defensive measure provides complete protection; layered defense combining User-agent, behavior, and technical challenges increases bypass cost beyond economic viability for most attackers.</p>
+<h3>What legal documentation does ModSecurity logging provide for enforcement?</h3>
+<p>Audit logs create evidence trail documenting unauthorized access attempts. Logs record timestamp, source IP, User-agent, blocked URL, and rule triggered. JSON format enables tamper-evident log preservation. Documented access attempts despite robots.txt restrictions and terms of service prohibitions strengthen legal claims of willful circumvention. Logs support damages calculation based on request volume and bandwidth consumption. Maintain logs with appropriate retention policies meeting legal discovery requirements.</p>
+<h3>How do I whitelist licensed AI crawlers while blocking unlicensed ones?</h3>
+<p>Licensed crawlers receive authentication credentials (API keys, OAuth tokens) distinguishing from unlicensed crawlers. ModSecurity rules check for authentication headers before blocking:</p>
+<pre><code>SecRule REQUEST_HEADERS:Authorization &quot;@rx ^Bearer [a-zA-Z0-9]+&quot; \
+    &quot;id:2022,phase:1,pass,ctl:ruleRemoveById=2002-2016,tag:&#39;licensed-crawler&#39;&quot;
+</code></pre>
+<p>Presence of valid Authorization header disables AI crawler blocking rules. Authentication verification happens before content delivery ensuring only paid crawlers access protected content. Alternative: maintain whitelist of licensed crawler IP ranges applied via IP matching rules.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

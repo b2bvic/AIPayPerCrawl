@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenResty Lua AI Crawler Monetization: Dynamic Content Licensing with Nginx and Lua | AI Pay Per Crawl</title>
+    <meta name="description" content="Implement sophisticated AI crawler monetization using OpenResty and Lua scripting. Dynamic pricing, usage tracking, and adaptive rate limiting for content licensing.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="OpenResty Lua AI Crawler Monetization: Dynamic Content Licensing with Nginx and Lua">
+    <meta property="og:description" content="Implement sophisticated AI crawler monetization using OpenResty and Lua scripting. Dynamic pricing, usage tracking, and adaptive rate limiting for content licensing.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/openresty-lua-ai-crawler-monetization">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OpenResty Lua AI Crawler Monetization: Dynamic Content Licensing with Nginx and Lua">
+    <meta name="twitter:description" content="Implement sophisticated AI crawler monetization using OpenResty and Lua scripting. Dynamic pricing, usage tracking, and adaptive rate limiting for content licensing.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/openresty-lua-ai-crawler-monetization">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "OpenResty Lua AI Crawler Monetization: Dynamic Content Licensing with Nginx and Lua",
+  "description": "Implement sophisticated AI crawler monetization using OpenResty and Lua scripting. Dynamic pricing, usage tracking, and adaptive rate limiting for content licensing.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/openresty-lua-ai-crawler-monetization"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "OpenResty Lua AI Crawler Monetization: Dynamic Content Licensing with Nginx and Lua",
+      "item": "https://aipaypercrawl.com/articles/openresty-lua-ai-crawler-monetization"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>OpenResty Lua AI Crawler Monetization: Dynamic Content Licensing with Nginx and Lua</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 11 min read</span>
+        <h1>OpenResty Lua AI Crawler Monetization: Dynamic Content Licensing with Nginx and Lua</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Implement sophisticated AI crawler monetization using OpenResty and Lua scripting. Dynamic pricing, usage tracking, and adaptive rate limiting for content licensing.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>OpenResty Lua AI Crawler Monetization: Dynamic Content Licensing with Nginx and Lua</h1>
+<p><strong>OpenResty</strong> extends Nginx with Lua scripting capabilities enabling sophisticated AI crawler monetization beyond static configuration. Dynamic rate limiting, usage-based billing, real-time authentication verification, and adaptive crawler management transform basic blocking into programmable licensing platform. Technical implementation creates flexible infrastructure supporting complex business logic without application-layer processing overhead.</p>
+<h2>OpenResty Architecture and Lua Integration</h2>
+<p>OpenResty bundles Nginx with LuaJIT (Just-In-Time compiled Lua) and ngx_lua module enabling Lua code execution during Nginx request processing. Lua scripts execute in Nginx worker processes accessing request context, performing external API calls, and manipulating responses without proxy round-trips to backend application servers.</p>
+<p>Request lifecycle phases expose Lua hooks:</p>
+<ul>
+<li><code>init_by_lua</code>: Server initialization (load configuration, connect to databases)</li>
+<li><code>init_worker_by_lua</code>: Worker process startup (initialize per-worker state)</li>
+<li><code>access_by_lua</code>: Request access control (authentication, rate limiting)</li>
+<li><code>content_by_lua</code>: Content generation (API endpoints, dynamic responses)</li>
+<li><code>header_filter_by_lua</code>: Response header manipulation</li>
+<li><code>body_filter_by_lua</code>: Response body modification</li>
+<li><code>log_by_lua</code>: Request logging (async usage tracking)</li>
+</ul>
+<p>AI crawler monetization primarily leverages <code>access_by_lua</code> for authentication and rate limiting, <code>log_by_lua</code> for usage tracking, and <code>content_by_lua</code> for licensing API endpoints.</p>
+<p>Shared memory zones enable state sharing across worker processes and requests. Dict-based shared memory (<code>lua_shared_dict</code>) stores rate limit counters, authentication caches, and usage statistics accessible to all workers. Persistence limited to memory—server restart clears state requiring external storage (Redis, PostgreSQL) for durable data.</p>
+<p>External integration via cosocket enables HTTP API calls, database queries, and cache access within Nginx. Lua code performs sub-requests to authentication services, usage tracking backends, and pricing APIs without blocking event loop. Non-blocking I/O maintains Nginx performance characteristics while enabling complex logic.</p>
+<h2>Authentication and API Key Verification</h2>
+<p>Licensed AI crawlers authenticate using API keys in Authorization header or custom headers. OpenResty validates keys against database or cache enabling authorized access and usage tracking.</p>
+<p>Basic API key authentication:</p>
+<pre><code class="language-lua">-- access_by_lua_block
+local api_key = ngx.req.get_headers()[&quot;Authorization&quot;]
+
+if not api_key or not api_key:match(&quot;^Bearer%s+&quot;) then
+    ngx.status = ngx.HTTP_UNAUTHORIZED
+    ngx.header[&quot;WWW-Authenticate&quot;] = &#39;Bearer realm=&quot;AI Crawler License&quot;&#39;
+    ngx.say(&quot;Authentication required. Contact licensing@example.com&quot;)
+    return ngx.exit(ngx.HTTP_UNAUTHORIZED)
+end
+
+local key = api_key:match(&quot;^Bearer%s+(.+)$&quot;)
+
+-- Simple validation (production requires database lookup)
+local valid_keys = {
+    [&quot;key_openai_12345&quot;] = true,
+    [&quot;key_anthropic_67890&quot;] = true,
+}
+
+if not valid_keys[key] then
+    ngx.status = ngx.HTTP_FORBIDDEN
+    ngx.say(&quot;Invalid API key&quot;)
+    return ngx.exit(ngx.HTTP_FORBIDDEN)
+end
+
+-- Store authenticated key for usage tracking
+ngx.ctx.api_key = key
+</code></pre>
+<p>Extracts Bearer token from Authorization header, validates against key database (simplified here; production uses Redis or PostgreSQL), stores authenticated key in request context for downstream usage tracking. Unauthorized requests receive 401 response with licensing contact information.</p>
+<p>Redis-backed authentication with caching:</p>
+<pre><code class="language-lua">-- init_worker_by_lua_block
+local redis = require &quot;resty.redis&quot;
+
+-- access_by_lua_block
+local api_key = ngx.req.get_headers()[&quot;Authorization&quot;]
+
+if not api_key or not api_key:match(&quot;^Bearer%s+&quot;) then
+    return ngx.exit(ngx.HTTP_UNAUTHORIZED)
+end
+
+local key = api_key:match(&quot;^Bearer%s+(.+)$&quot;)
+
+-- Check shared memory cache first
+local cache = ngx.shared.api_key_cache
+local is_valid = cache:get(key)
+
+if is_valid == nil then
+    -- Cache miss - query Redis
+    local red = redis:new()
+    red:set_timeout(1000)
+
+    local ok, err = red:connect(&quot;redis.example.com&quot;, 6379)
+    if not ok then
+        ngx.log(ngx.ERR, &quot;Redis connection failed: &quot;, err)
+        return ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
+    end
+
+    is_valid = red:get(&quot;api_key:&quot; .. key)
+    red:close()
+
+    if is_valid == ngx.null then
+        is_valid = false
+    end
+
+    -- Cache result for 60 seconds
+    cache:set(key, is_valid, 60)
+end
+
+if not is_valid then
+    return ngx.exit(ngx.HTTP_FORBIDDEN)
+end
+
+ngx.ctx.api_key = key
+ngx.ctx.customer_id = is_valid  -- Redis stores customer ID as value
+</code></pre>
+<p>Two-tier caching: shared memory dict provides sub-millisecond key validation for repeated requests; Redis stores authoritative key database. Cache miss triggers Redis lookup with 60-second TTL reducing Redis load. Production implementation includes error handling, connection pooling, and key rotation support.</p>
+<h2>Dynamic Rate Limiting Per License Tier</h2>
+<p>Licensed crawlers receive differentiated rate limits based on subscription tier. OpenResty implements tiered rate limiting using shared memory counters and Lua logic.</p>
+<pre><code class="language-lua">-- nginx.conf
+lua_shared_dict rate_limit_counters 10m;
+
+-- access_by_lua_block
+local key = ngx.ctx.api_key
+local customer_id = ngx.ctx.customer_id
+
+-- Lookup customer tier (simplified - production queries database)
+local tiers = {
+    [&quot;customer_startup_001&quot;] = {rate = 10, burst = 20},   -- 10 req/sec
+    [&quot;customer_enterprise_002&quot;] = {rate = 100, burst = 200} -- 100 req/sec
+}
+
+local tier = tiers[customer_id] or {rate = 1, burst = 5}  -- Default tier
+
+-- Token bucket algorithm using shared memory
+local limit_dict = ngx.shared.rate_limit_counters
+local limit_key = &quot;rate_limit:&quot; .. customer_id
+
+local current_time = ngx.now()
+local last_time, tokens = limit_dict:get(limit_key)
+
+if not last_time then
+    -- First request from this customer
+    tokens = tier.rate
+    last_time = current_time
+end
+
+-- Refill tokens based on elapsed time
+local elapsed = current_time - last_time
+tokens = math.min(tier.burst, tokens + elapsed * tier.rate)
+
+if tokens &lt; 1 then
+    -- Rate limit exceeded
+    ngx.status = ngx.HTTP_TOO_MANY_REQUESTS
+    ngx.header[&quot;Retry-After&quot;] = math.ceil(1 / tier.rate)
+    ngx.say(&quot;Rate limit exceeded. Tier: &quot;, tier.rate, &quot; req/sec&quot;)
+    return ngx.exit(ngx.HTTP_TOO_MANY_REQUESTS)
+end
+
+-- Consume one token
+tokens = tokens - 1
+limit_dict:set(limit_key, {last_time = current_time, tokens = tokens})
+
+-- Add rate limit headers
+ngx.header[&quot;X-RateLimit-Limit&quot;] = tier.rate
+ngx.header[&quot;X-RateLimit-Remaining&quot;] = math.floor(tokens)
+ngx.header[&quot;X-RateLimit-Reset&quot;] = current_time + (tier.burst - tokens) / tier.rate
+</code></pre>
+<p>Token bucket algorithm permits burst traffic up to configured burst size while maintaining average rate over time. Shared memory dict stores per-customer token counters. Headers communicate rate limit status to crawlers enabling client-side rate limiting. Production implementation loads tiers from Redis enabling dynamic tier changes without Nginx reload.</p>
+<h2>Usage Tracking and Billing Integration</h2>
+<p>Consumption-based pricing requires accurate usage tracking. OpenResty logs request details to external billing systems without blocking request processing.</p>
+<pre><code class="language-lua">-- log_by_lua_block
+local api_key = ngx.ctx.api_key
+local customer_id = ngx.ctx.customer_id
+
+if not customer_id then
+    return  -- Unauthenticated request, no billing
+end
+
+local usage_data = {
+    customer_id = customer_id,
+    timestamp = ngx.now(),
+    method = ngx.req.get_method(),
+    uri = ngx.var.request_uri,
+    status = ngx.var.status,
+    bytes_sent = ngx.var.bytes_sent,
+    request_time = ngx.var.request_time,
+}
+
+-- Queue usage event for async processing
+local cjson = require &quot;cjson&quot;
+local httpc = require &quot;resty.http&quot;.new()
+
+httpc:set_timeout(500)  -- 500ms timeout for non-blocking
+
+local res, err = httpc:request_uri(&quot;http://billing.internal/api/usage&quot;, {
+    method = &quot;POST&quot;,
+    body = cjson.encode(usage_data),
+    headers = {
+        [&quot;Content-Type&quot;] = &quot;application/json&quot;,
+    },
+    keepalive_timeout = 60000,
+    keepalive_pool = 10,
+})
+
+if not res then
+    ngx.log(ngx.ERR, &quot;Usage tracking failed: &quot;, err)
+    -- Continue serving request despite tracking failure
+end
+</code></pre>
+<p>Executes during logging phase after response sent to client. Non-blocking HTTP POST sends usage data to billing service. Connection pooling and keepalive reduce overhead. Failures logged but don&#39;t impact request serving. Billing service aggregates usage events into monthly invoices.</p>
+<p>Redis-buffered usage aggregation reduces HTTP overhead:</p>
+<pre><code class="language-lua">-- log_by_lua_block
+local customer_id = ngx.ctx.customer_id
+if not customer_id then return end
+
+local redis = require &quot;resty.redis&quot;
+local red = redis:new()
+
+red:set_timeout(100)
+red:connect(&quot;redis.example.com&quot;, 6379)
+
+-- Increment request counter for customer
+red:incr(&quot;usage:&quot; .. customer_id .. &quot;:requests:&quot; .. os.date(&quot;%Y%m%d&quot;))
+
+-- Add bytes sent to daily total
+red:incrby(&quot;usage:&quot; .. customer_id .. &quot;:bytes:&quot; .. os.date(&quot;%Y%m%d&quot;), ngx.var.bytes_sent)
+
+red:close()
+</code></pre>
+<p>Aggregates usage in Redis with daily granularity. Billing service periodically reads Redis counters generating invoices. Reduces per-request overhead from milliseconds (HTTP POST) to microseconds (Redis increment). Production adds error handling and connection pooling.</p>
+<h2>Content Tiering and Differential Access</h2>
+<p>License tiers grant access to different content categories. Premium subscribers access all content; basic tier limited to recent public articles.</p>
+<pre><code class="language-lua">-- access_by_lua_block
+local customer_id = ngx.ctx.customer_id
+local uri = ngx.var.uri
+
+-- Define content tier requirements
+local premium_paths = {
+    [&quot;/premium/&quot;] = true,
+    [&quot;/archive/&quot;] = true,
+    [&quot;/exclusive/&quot;] = true,
+}
+
+local path_is_premium = false
+for prefix, _ in pairs(premium_paths) do
+    if uri:sub(1, #prefix) == prefix then
+        path_is_premium = true
+        break
+    end
+end
+
+if path_is_premium then
+    -- Check customer tier (simplified - production queries database)
+    local customer_tier = &quot;basic&quot;  -- Lookup from database
+
+    if customer_tier ~= &quot;enterprise&quot; and customer_tier ~= &quot;premium&quot; then
+        ngx.status = ngx.HTTP_PAYMENT_REQUIRED
+        ngx.say(&quot;Premium content requires enterprise or premium license&quot;)
+        ngx.say(&quot;Upgrade at https://example.com/licensing&quot;)
+        return ngx.exit(ngx.HTTP_PAYMENT_REQUIRED)
+    end
+end
+</code></pre>
+<p>Examines request URI determining content tier requirement. Compares against customer license tier blocking insufficient tier. HTTP 402 Payment Required (or 403 Forbidden) signals upgrade requirement. Production implementation uses pattern matching, database-driven content categorization, and granular permissions.</p>
+<p>Dynamic pricing per content type:</p>
+<pre><code class="language-lua">-- log_by_lua_block
+local customer_id = ngx.ctx.customer_id
+local uri = ngx.var.uri
+
+-- Calculate cost based on content type
+local cost = 0
+
+if uri:match(&quot;^/api/articles/&quot;) then
+    cost = 0.10  -- $0.10 per article
+elseif uri:match(&quot;^/api/images/&quot;) then
+    cost = 0.50  -- $0.50 per image
+elseif uri:match(&quot;^/api/videos/&quot;) then
+    cost = 2.00  -- $2.00 per video
+end
+
+if cost &gt; 0 then
+    local redis = require &quot;resty.redis&quot;
+    local red = redis:new()
+
+    red:connect(&quot;redis.example.com&quot;, 6379)
+
+    -- Increment customer cost accumulator
+    red:incrbyfloat(&quot;billing:&quot; .. customer_id .. &quot;:charges:&quot; .. os.date(&quot;%Y%m&quot;), cost)
+
+    red:close()
+end
+</code></pre>
+<p>Calculates per-request charge based on content type. Accumulates charges in Redis for monthly billing. Supports differentiated pricing across content categories maximizing revenue capture. Production adds detailed line-item tracking for invoice generation.</p>
+<h2>Adaptive Rate Limiting Based on System Load</h2>
+<p>Dynamic rate limit adjustment maintains service availability during high load while maximizing crawler access during available capacity.</p>
+<pre><code class="language-lua">-- init_worker_by_lua_block
+-- Background timer checking system load
+local function adjust_rate_limits(premature)
+    if premature then return end
+
+    local load = ngx.shared.system_metrics:get(&quot;load_average&quot;) or 0
+    local max_load = 8.0
+
+    local rate_multiplier = 1.0
+    if load &gt; max_load * 0.8 then
+        rate_multiplier = 0.2  -- Reduce to 20% during high load
+    elseif load &gt; max_load * 0.6 then
+        rate_multiplier = 0.5  -- Reduce to 50%
+    end
+
+    ngx.shared.rate_limit_settings:set(&quot;multiplier&quot;, rate_multiplier)
+
+    -- Re-schedule
+    local ok, err = ngx.timer.at(10, adjust_rate_limits)
+    if not ok then
+        ngx.log(ngx.ERR, &quot;Timer scheduling failed: &quot;, err)
+    end
+end
+
+-- Start timer
+ngx.timer.at(0, adjust_rate_limits)
+
+-- access_by_lua_block
+local base_rate = tier.rate
+local multiplier = ngx.shared.rate_limit_settings:get(&quot;multiplier&quot;) or 1.0
+local effective_rate = base_rate * multiplier
+
+-- Apply effective rate in token bucket algorithm
+</code></pre>
+<p>Background timer periodically checks system load (CPU, memory, connection count) and adjusts rate limit multiplier. High load reduces crawler rate limits protecting service availability. Low load permits aggressive crawler access maximizing content delivery. Balances revenue generation against operational stability.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Does OpenResty implementation provide better AI crawler control than plain Nginx?</h3>
+<p>Yes, Lua programmability enables dynamic logic impossible in static Nginx configuration. Plain Nginx offers simple rate limiting and User-agent blocking; OpenResty adds database-backed authentication, tiered pricing, usage tracking, and adaptive rate limiting. Complexity cost: Lua development expertise required, debugging more difficult than static config, potential for programming errors impacting service. Trade-off: OpenResty justifies investment for sophisticated monetization requirements; plain Nginx sufficient for basic blocking. Publishers building API-based licensing platforms benefit from OpenResty flexibility; simple robots.txt blocking adequate for many use cases.</p>
+<h3>What performance overhead does Lua processing add to request handling?</h3>
+<p>LuaJIT-compiled code executes efficiently with microseconds overhead for simple logic. Database queries and external API calls dominate latency—Redis lookup 1-5ms, HTTP POST 10-50ms. Optimize using: (1) caching frequently-accessed data in shared memory, (2) async processing in log phase for non-critical operations, (3) connection pooling for external services, (4) minimizing per-request processing moving logic to background timers. Well-optimized OpenResty adds &lt;10ms median latency; poorly-optimized implementations degrade to 100+ms. Benchmark under realistic load testing before production deployment.</p>
+<h3>How does OpenResty handle high-volume AI crawler traffic without overwhelming backend?</h3>
+<p>OpenResty processes requests at Nginx edge before proxying to backend. Authentication, rate limiting, and usage tracking execute in Nginx workers without backend involvement. Only authorized requests within rate limits reach application servers. Edge enforcement protects backend from crawler overload. Additional protection: crawler requests bypass expensive application logic serving static cached content; separate cache for crawler traffic prevents crawler cache pollution affecting user experience. Architecture: OpenResty -&gt; cache layer -&gt; application backend, with most crawler requests served from cache.</p>
+<h3>What happens if Redis or billing service becomes unavailable during usage tracking?</h3>
+<p>Circuit breaker pattern degrades gracefully. Redis unavailable: accept all authenticated requests (cached API keys still valid from shared memory), log usage locally for later sync when Redis recovers, temporarily disable new authentication requiring Redis lookup. Billing service unavailable: buffer usage events in Redis queue for async processing, continue serving requests without real-time billing updates, alert operations team for manual intervention. Critical principle: licensing enforcement failures should fail open (serve content) rather than fail closed (deny access), avoiding revenue loss from infrastructure issues. Monitor failure rates and implement automatic alerts.</p>
+<h3>Can OpenResty implementation handle millions of AI crawler requests daily?</h3>
+<p>Yes, properly tuned. Nginx processes 10,000-50,000+ requests/second on modern hardware; Lua overhead minimal for optimized code. Bottlenecks: external service latency (Redis, databases, billing APIs) and connection exhaustion. Scale vertically (more CPU/memory) and horizontally (multiple OpenResty nodes behind load balancer). Optimization: aggressive caching, connection pooling, async processing, database read replicas. Real-world: major CDNs use OpenResty processing billions of requests daily. Publishers operating at million+ daily requests scale should benchmark realistic traffic patterns validating performance before deployment. Consider managed OpenResty offerings from cloud providers reducing operational complexity.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

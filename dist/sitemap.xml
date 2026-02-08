@@ -865,8 +865,50 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aipaypercrawl.com/articles/machine-readable-licensing-terms.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/media-company-ai-crawler-playbook.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/medical-publisher-ai-licensing.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://aipaypercrawl.com/articles/meta-ai-crawler-profile.html</loc>
     <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/meta-ai-training-opt-out.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/migrate-free-to-paid-ai-crawling.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/modsecurity-waf-ai-crawler-filtering.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/negotiate-ai-licensing-mid-publisher.html</loc>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -877,8 +919,68 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aipaypercrawl.com/articles/news-media-alliance-ai-position.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/news-organization-ai-licensing.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/newspaper-ai-crawler-strategy.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://aipaypercrawl.com/articles/nginx-ai-crawler-blocking.html</loc>
     <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/nginx-ai-crawler-rate-limiting.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/niche-content-ai-licensing-value.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/nyt-vs-openai-case-analysis.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/openai-crawler-ip-ranges.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/openai-publisher-licensing-strategy.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/openai-training-data-selection.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/openresty-lua-ai-crawler-monetization.html</loc>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -895,8 +997,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aipaypercrawl.com/articles/per-crawl-vs-flat-rate-licensing.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://aipaypercrawl.com/articles/perplexity-bot-controversy.html</loc>
     <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/perplexity-scraping-controversy.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aipaypercrawl.com/articles/perplexitybot-crawler-profile.html</loc>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
