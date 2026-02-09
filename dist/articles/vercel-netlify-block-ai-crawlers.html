@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block AI Crawlers on Vercel and Netlify: Edge Function Implementation | AI Pay Per Crawl</title>
+    <meta name="description" content="Configure Vercel Edge Functions and Netlify Edge Handlers to block or throttle AI training crawlers with serverless access control.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Block AI Crawlers on Vercel and Netlify: Edge Function Implementation">
+    <meta property="og:description" content="Configure Vercel Edge Functions and Netlify Edge Handlers to block or throttle AI training crawlers with serverless access control.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/vercel-netlify-block-ai-crawlers">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Block AI Crawlers on Vercel and Netlify: Edge Function Implementation">
+    <meta name="twitter:description" content="Configure Vercel Edge Functions and Netlify Edge Handlers to block or throttle AI training crawlers with serverless access control.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/vercel-netlify-block-ai-crawlers">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Block AI Crawlers on Vercel and Netlify: Edge Function Implementation",
+  "description": "Configure Vercel Edge Functions and Netlify Edge Handlers to block or throttle AI training crawlers with serverless access control.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/vercel-netlify-block-ai-crawlers"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Block AI Crawlers on Vercel and Netlify: Edge Function Implementation",
+      "item": "https://aipaypercrawl.com/articles/vercel-netlify-block-ai-crawlers"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Block AI Crawlers on Vercel and Netlify: Edge Function Implementation</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 10 min read</span>
+        <h1>Block AI Crawlers on Vercel and Netlify: Edge Function Implementation</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Configure Vercel Edge Functions and Netlify Edge Handlers to block or throttle AI training crawlers with serverless access control.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Block AI Crawlers on Vercel and Netlify: Edge Function Implementation</h1>
+<p>Modern JAMstack deployment platforms <strong>Vercel</strong> and <strong>Netlify</strong> host millions of websites through serverless architectures that excel at static site delivery but require different approaches to crawler management than traditional server configurations. Publishers deploying on these platforms can&#39;t edit Apache <code>.htaccess</code> files or modify nginx configurations—instead, they must use <strong>edge functions</strong> that execute at CDN edge locations before requests reach static assets. This architecture provides powerful distributed control but demands understanding platform-specific APIs and deployment patterns.</p>
+<p><strong>Edge functions</strong> on both platforms run JavaScript/TypeScript code in V8 isolates at CDN edges worldwide, enabling microsecond-latency request interception. For AI crawler blocking, edge functions inspect request headers, evaluate User-Agent strings and IP addresses, enforce rate limits, and return rejection responses or forward requests to static content—all without origin server involvement. This edge execution minimizes infrastructure costs even under heavy crawler load because rejected requests consume minimal compute.</p>
+<p>The serverless nature creates both advantages and constraints. Functions scale automatically handling traffic spikes, deploy globally providing consistent blocking worldwide, and integrate naturally with modern web development workflows. However, they operate in restricted runtime environments with memory/execution limits, lack persistent storage requiring external state management for rate limiting, and charge per invocation creating cost considerations for high-traffic sites.</p>
+<h2>Vercel Edge Functions for Crawler Blocking</h2>
+<p>Vercel&#39;s edge middleware system provides request interception capabilities suitable for implementing sophisticated crawler controls.</p>
+<p><strong>Basic User-Agent blocking</strong> implements straightforward pattern matching. Create <code>middleware.ts</code> in project root:</p>
+<pre><code class="language-typescript">import { NextResponse } from &#39;next/server&#39;
+import type { NextRequest } from &#39;next/server&#39;
+
+export function middleware(request: NextRequest) {
+  const userAgent = request.headers.get(&#39;user-agent&#39;) || &#39;&#39;
+
+  const blockedCrawlers = [
+    &#39;GPTBot&#39;,
+    &#39;ClaudeBot&#39;,
+    &#39;ChatGPT-User&#39;,
+    &#39;Google-Extended&#39;,
+    &#39;CCBot&#39;,
+    &#39;anthropic-ai&#39;,
+    &#39;Claude-Web&#39;
+  ]
+
+  const isBlocked = blockedCrawlers.some(crawler =&gt;
+    userAgent.toLowerCase().includes(crawler.toLowerCase())
+  )
+
+  if (isBlocked) {
+    return new NextResponse(&#39;AI training crawlers not permitted&#39;, {
+      status: 403,
+      headers: {
+        &#39;Content-Type&#39;: &#39;text/plain&#39;,
+      },
+    })
+  }
+
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: [
+    &#39;/((?!api|_next/static|_next/image|favicon.ico).*)&#39;,
+  ],
+}
+</code></pre>
+<p>This intercepts all requests except Next.js internals, checks User-Agent against blocked crawler list, and returns 403 for matches. The crawler list updates through code deployments when new AI training crawlers emerge.</p>
+<p><strong>IP-based verification</strong> prevents User-Agent spoofing by validating crawler identity against known IP ranges. Vercel edge functions access request IP through <code>request.ip</code>:</p>
+<pre><code class="language-typescript">const verifyIP = (ip: string, userAgent: string): boolean =&gt; {
+  // OpenAI GPTBot ranges (example - must maintain updated)
+  const gptbotRanges = [
+    &#39;23.98.142.0/24&#39;,
+    &#39;104.18.0.0/16&#39;,
+  ]
+
+  // Anthropic ClaudeBot ranges
+  const claudebotRanges = [
+    &#39;3.144.0.0/16&#39;,
+  ]
+
+  // If claiming to be GPTBot, verify IP is in range
+  if (userAgent.includes(&#39;GPTBot&#39;)) {
+    return isIPInRanges(ip, gptbotRanges)
+  }
+
+  if (userAgent.includes(&#39;ClaudeBot&#39;)) {
+    return isIPInRanges(ip, claudebotRanges)
+  }
+
+  return true // Not claiming to be verified crawler
+}
+
+function isIPInRanges(ip: string, ranges: string[]): boolean {
+  // IP range checking logic (use library like ip-range-check)
+  // Return true if IP falls within any specified range
+}
+</code></pre>
+<p>Functions verify that crawlers claiming specific identities originate from documented IP ranges, blocking spoofed requests.</p>
+<p><strong>Rate limiting with Vercel KV</strong> requires external state storage since edge functions are stateless. Vercel KV provides Redis-compatible key-value store:</p>
+<pre><code class="language-typescript">import { kv } from &#39;@vercel/kv&#39;
+
+async function checkRateLimit(
+  identifier: string,
+  limit: number,
+  windowSeconds: number
+): Promise&lt;boolean&gt; {
+  const key = `ratelimit:${identifier}`
+  const current = await kv.get&lt;number&gt;(key) || 0
+
+  if (current &gt;= limit) {
+    return false // Rate limit exceeded
+  }
+
+  await kv.incr(key)
+  await kv.expire(key, windowSeconds)
+
+  return true // Within limit
+}
+
+export async function middleware(request: NextRequest) {
+  const userAgent = request.headers.get(&#39;user-agent&#39;) || &#39;&#39;
+
+  // Rate limit AI crawlers to 10 requests per minute
+  if (isAICrawler(userAgent)) {
+    const identifier = `${request.ip}:${userAgent}`
+    const allowed = await checkRateLimit(identifier, 10, 60)
+
+    if (!allowed) {
+      return new NextResponse(&#39;Rate limit exceeded&#39;, {
+        status: 429,
+        headers: {
+          &#39;Retry-After&#39;: &#39;60&#39;,
+        },
+      })
+    }
+  }
+
+  return NextResponse.next()
+}
+</code></pre>
+<p>This tracks request counts per IP/User-Agent combination, enforcing per-minute quotas. Vercel KV charges based on operations and storage, requiring cost monitoring for high-traffic sites.</p>
+<p><strong>Environment-based configuration</strong> enables different blocking strategies across development, staging, and production:</p>
+<pre><code class="language-typescript">const getBlockingConfig = () =&gt; {
+  const env = process.env.VERCEL_ENV || &#39;development&#39;
+
+  return {
+    development: {
+      blockAI: false, // Allow crawlers in dev for testing
+    },
+    preview: {
+      blockAI: true,
+      rateLimit: 100, // Generous limit for preview
+    },
+    production: {
+      blockAI: true,
+      rateLimit: 10,
+      strictVerification: true,
+    },
+  }[env]
+}
+</code></pre>
+<p>This allows developers to test with crawlers in development while enforcing strict production controls.</p>
+<p><strong>Geo-blocking capabilities</strong> restrict crawler access by geography:</p>
+<pre><code class="language-typescript">export function middleware(request: NextRequest) {
+  const country = request.geo?.country || &#39;UNKNOWN&#39;
+
+  // Allow only US/CA/EU for AI crawlers
+  const allowedCountries = [&#39;US&#39;, &#39;CA&#39;, &#39;GB&#39;, &#39;DE&#39;, &#39;FR&#39;]
+
+  if (isAICrawler(userAgent) &amp;&amp; !allowedCountries.includes(country)) {
+    return new NextResponse(&#39;Geographic restriction&#39;, {
+      status: 451, // Unavailable For Legal Reasons
+    })
+  }
+
+  return NextResponse.next()
+}
+</code></pre>
+<p>Vercel provides geolocation data in request object, enabling regional access policies.</p>
+<h2>Netlify Edge Handlers Implementation</h2>
+<p>Netlify&#39;s edge functions use Deno runtime and integrate with Netlify&#39;s deployment and routing system.</p>
+<p><strong>Basic edge function structure</strong> for crawler blocking. Create file in <code>netlify/edge-functions/</code>:</p>
+<pre><code class="language-typescript">// netlify/edge-functions/block-crawlers.ts
+import type { Context } from &quot;https://edge.netlify.com&quot;
+
+const BLOCKED_CRAWLERS = [
+  &#39;GPTBot&#39;,
+  &#39;ClaudeBot&#39;,
+  &#39;Google-Extended&#39;,
+  &#39;CCBot&#39;,
+  &#39;anthropic-ai&#39;,
+]
+
+export default async (request: Request, context: Context) =&gt; {
+  const userAgent = request.headers.get(&#39;user-agent&#39;) || &#39;&#39;
+
+  const isBlocked = BLOCKED_CRAWLERS.some(crawler =&gt;
+    userAgent.toLowerCase().includes(crawler.toLowerCase())
+  )
+
+  if (isBlocked) {
+    return new Response(&#39;AI training crawlers not permitted&#39;, {
+      status: 403,
+      headers: {
+        &#39;Content-Type&#39;: &#39;text/plain&#39;,
+      },
+    })
+  }
+
+  // Continue to origin/static asset
+  return context.next()
+}
+
+export const config = { path: &quot;/*&quot; }
+</code></pre>
+<p>Configure in <code>netlify.toml</code>:</p>
+<pre><code class="language-toml">[[edge_functions]]
+function = &quot;block-crawlers&quot;
+path = &quot;/*&quot;
+</code></pre>
+<p>This intercepts all requests through the edge function before serving static assets.</p>
+<p><strong>Blobs storage for rate limiting</strong> since Netlify edge functions can&#39;t directly access Redis. Netlify Blobs provides edge-accessible key-value storage:</p>
+<pre><code class="language-typescript">import { getStore } from &quot;@netlify/blobs&quot;
+
+export default async (request: Request, context: Context) =&gt; {
+  const ratelimit = getStore(&quot;ratelimit&quot;)
+  const userAgent = request.headers.get(&#39;user-agent&#39;) || &#39;&#39;
+
+  if (isAICrawler(userAgent)) {
+    const ip = context.ip
+    const key = `${ip}:${Date.now() / 60000 | 0}` // Per-minute window
+
+    const count = await ratelimit.get(key) || &#39;0&#39;
+    const requests = parseInt(count, 10)
+
+    if (requests &gt;= 10) {
+      return new Response(&#39;Rate limit exceeded&#39;, {
+        status: 429,
+        headers: { &#39;Retry-After&#39;: &#39;60&#39; },
+      })
+    }
+
+    await ratelimit.set(key, String(requests + 1), {
+      metadata: { expires: Date.now() + 120000 } // Expire after 2 min
+    })
+  }
+
+  return context.next()
+}
+</code></pre>
+<p><strong>Context-aware blocking</strong> uses Netlify&#39;s context for deployment-specific behavior:</p>
+<pre><code class="language-typescript">export default async (request: Request, context: Context) =&gt; {
+  const deployContext = context.deploy.context // production, deploy-preview, branch-deploy
+
+  // Only block in production
+  if (deployContext !== &#39;production&#39;) {
+    return context.next()
+  }
+
+  // Apply production blocking logic
+  if (isBlockedCrawler(request)) {
+    return new Response(&#39;Blocked&#39;, { status: 403 })
+  }
+
+  return context.next()
+}
+</code></pre>
+<p><strong>Cookie-based authentication</strong> enables selective crawler access for licensed partners:</p>
+<pre><code class="language-typescript">const validateCrawlerToken = (request: Request): boolean =&gt; {
+  const cookieHeader = request.headers.get(&#39;cookie&#39;) || &#39;&#39;
+  const cookies = Object.fromEntries(
+    cookieHeader.split(&#39;; &#39;).map(c =&gt; c.split(&#39;=&#39;))
+  )
+
+  const token = cookies[&#39;crawler_license_token&#39;]
+
+  // Validate against known licensed crawler tokens
+  const licensedTokens = [
+    process.env.OPENAI_LICENSE_TOKEN,
+    process.env.ANTHROPIC_LICENSE_TOKEN,
+  ]
+
+  return licensedTokens.includes(token)
+}
+
+export default async (request: Request, context: Context) =&gt; {
+  const userAgent = request.headers.get(&#39;user-agent&#39;) || &#39;&#39;
+
+  if (isAICrawler(userAgent)) {
+    if (!validateCrawlerToken(request)) {
+      return new Response(&#39;License required&#39;, { status: 401 })
+    }
+  }
+
+  return context.next()
+}
+</code></pre>
+<p>This enables tiered licensing where authorized crawlers receive tokens granting access despite blocks.</p>
+<p><strong>Logging and monitoring</strong> tracks crawler activity:</p>
+<pre><code class="language-typescript">export default async (request: Request, context: Context) =&gt; {
+  const userAgent = request.headers.get(&#39;user-agent&#39;) || &#39;&#39;
+
+  if (isAICrawler(userAgent)) {
+    // Log to Netlify Functions (separate serverless function)
+    await fetch(`${context.site.url}/.netlify/functions/log-crawler`, {
+      method: &#39;POST&#39;,
+      body: JSON.stringify({
+        timestamp: Date.now(),
+        userAgent,
+        ip: context.ip,
+        path: new URL(request.url).pathname,
+        blocked: shouldBlock(userAgent),
+      }),
+    })
+  }
+
+  return context.next()
+}
+</code></pre>
+<p>Logs feed into analytics platforms (Datadog, New Relic) for compliance monitoring.</p>
+<h2>Performance and Cost Optimization</h2>
+<p>Edge functions incur costs per invocation and execution time, requiring optimization for cost-effective crawler management.</p>
+<p><strong>Early return patterns</strong> minimize execution time by checking conditions in order of likelihood:</p>
+<pre><code class="language-typescript">export function middleware(request: NextRequest) {
+  const userAgent = request.headers.get(&#39;user-agent&#39;)
+
+  // Fast path: most requests aren&#39;t crawlers
+  if (!userAgent || !userAgent.match(/bot|crawler/i)) {
+    return NextResponse.next() // Exit immediately
+  }
+
+  // Slower checks only for potential crawlers
+  if (isBlockedAICrawler(userAgent)) {
+    return new NextResponse(&#39;Blocked&#39;, { status: 403 })
+  }
+
+  return NextResponse.next()
+}
+</code></pre>
+<p><strong>Caching verification results</strong> reduces redundant IP range checks:</p>
+<pre><code class="language-typescript">const ipVerificationCache = new Map&lt;string, boolean&gt;()
+
+function isVerifiedCrawler(ip: string, userAgent: string): boolean {
+  const cacheKey = `${ip}:${userAgent}`
+
+  if (ipVerificationCache.has(cacheKey)) {
+    return ipVerificationCache.get(cacheKey)!
+  }
+
+  const verified = checkIPRanges(ip, userAgent)
+  ipVerificationCache.set(cacheKey, verified)
+
+  // Limit cache size
+  if (ipVerificationCache.size &gt; 1000) {
+    const firstKey = ipVerificationCache.keys().next().value
+    ipVerificationCache.delete(firstKey)
+  }
+
+  return verified
+}
+</code></pre>
+<p><strong>Selective path matching</strong> avoids processing requests for static assets:</p>
+<pre><code class="language-typescript">// Vercel config
+export const config = {
+  matcher: [
+    // Only run on HTML pages, not static assets
+    &#39;/((?!_next/static|_next/image|favicon.ico|.*\\.(?:jpg|jpeg|png|gif|svg|css|js)).*)&#39;,
+  ],
+}
+</code></pre>
+<p><strong>Rate limit optimization</strong> reduces storage operations:</p>
+<pre><code class="language-typescript">// Instead of incrementing on every request, batch operations
+async function checkRateLimit(key: string): Promise&lt;boolean&gt; {
+  const cached = localCache.get(key)
+
+  if (cached &amp;&amp; cached.count &lt; 10 &amp;&amp; Date.now() &lt; cached.expires) {
+    cached.count++
+    return true
+  }
+
+  // Only hit KV when cache expires or limit approached
+  const stored = await kv.get(key)
+  // ... update logic
+}
+</code></pre>
+<p><strong>Monitoring costs</strong> through platform dashboards:</p>
+<ul>
+<li>Track edge function invocations per deployment</li>
+<li>Measure average execution time</li>
+<li>Monitor KV/Blobs operation counts</li>
+<li>Set billing alerts at thresholds</li>
+</ul>
+<p>Typical costs for moderate traffic sites (100K requests/month) with crawler blocking run $5-20/month for edge functions plus storage costs.</p>
+<h2>Frequently Asked Questions</h2>
+<p><strong>Do edge functions add latency to page loads?</strong></p>
+<p>Minimal—typically 1-5ms for simple User-Agent checks. Complex operations (IP verification, rate limit lookups) might add 20-50ms. Since functions execute at CDN edges near users, latency remains low. Performance-critical sites should benchmark specific implementations and optimize hot paths.</p>
+<p><strong>Can crawlers bypass edge function blocks by accessing CDN cache directly?</strong></p>
+<p>No. Edge functions execute before cache lookups in request processing pipeline. Even cached content goes through edge middleware, ensuring blocks apply consistently. However, if crawler accessed content before blocks were deployed, CDN cache might serve stale allowed responses until cache expires.</p>
+<p><strong>How do I test edge function crawler blocking before deploying to production?</strong></p>
+<p>Both platforms offer local development environments. Vercel&#39;s <code>vercel dev</code> and Netlify&#39;s <code>netlify dev</code> run edge functions locally. Test by setting custom User-Agent in curl/Postman: <code>curl -A &quot;GPTBot/1.0&quot; https://localhost:3000</code> should trigger blocks if logic works correctly. Deploy to preview/staging environments before production.</p>
+<p><strong>What happens when Vercel or Netlify have outages—do edge functions fail open or closed?</strong></p>
+<p>During edge function failures, platforms typically fail open (serve content without middleware execution) to maintain availability. This means crawler blocks might not enforce during outages. For critical protection, implement defense-in-depth with both edge functions and origin-level blocks if possible.</p>
+<p><strong>Can I use the same edge function code on both Vercel and Netlify?</strong></p>
+<p>Core logic transfers but platform-specific APIs differ (Next.js middleware APIs vs. Deno edge runtime). Abstract shared logic into separate functions and create thin platform-specific wrappers. Or choose one platform&#39;s patterns and stick with it. Maintaining parallel implementations for both platforms adds maintenance burden best avoided unless multi-platform deployment is essential.</p>
+<p><strong>How frequently can I update crawler block lists without performance impacts?</strong></p>
+<p>Edge functions redeploy with code changes (seconds to minutes). Update block lists by changing code and redeploying. For more dynamic updates, store block lists in KV/Blobs and fetch at runtime—adds latency but enables updates without deployment. Balance update frequency against performance/cost tradeoffs based on how rapidly new crawlers emerge.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traefik Middleware for AI Crawler Routing: Reverse Proxy Access Control | AI Pay Per Crawl</title>
+    <meta name="description" content="Implement Traefik reverse proxy middleware to route, throttle, and block AI training crawlers at the edge with dynamic configuration and metrics.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Traefik Middleware for AI Crawler Routing: Reverse Proxy Access Control">
+    <meta property="og:description" content="Implement Traefik reverse proxy middleware to route, throttle, and block AI training crawlers at the edge with dynamic configuration and metrics.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/traefik-middleware-ai-crawler-routing">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Traefik Middleware for AI Crawler Routing: Reverse Proxy Access Control">
+    <meta name="twitter:description" content="Implement Traefik reverse proxy middleware to route, throttle, and block AI training crawlers at the edge with dynamic configuration and metrics.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/traefik-middleware-ai-crawler-routing">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Traefik Middleware for AI Crawler Routing: Reverse Proxy Access Control",
+  "description": "Implement Traefik reverse proxy middleware to route, throttle, and block AI training crawlers at the edge with dynamic configuration and metrics.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/traefik-middleware-ai-crawler-routing"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Traefik Middleware for AI Crawler Routing: Reverse Proxy Access Control",
+      "item": "https://aipaypercrawl.com/articles/traefik-middleware-ai-crawler-routing"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Traefik Middleware for AI Crawler Routing: Reverse Proxy Access Control</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 18 min read</span>
+        <h1>Traefik Middleware for AI Crawler Routing: Reverse Proxy Access Control</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Implement Traefik reverse proxy middleware to route, throttle, and block AI training crawlers at the edge with dynamic configuration and metrics.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Traefik Middleware for AI Crawler Routing: Reverse Proxy Access Control</h1>
+<p><strong>Traefik</strong> reverse proxy offers publishers a powerful platform for implementing sophisticated AI crawler access control through middleware components that intercept requests before they reach backend services. Unlike firewall rules or CDN-level blocks, Traefik middleware operates at the application layer with full access to HTTP headers, request paths, and dynamic configuration that adapts to changing crawler behaviors without redeploying applications.</p>
+<p>For publishers managing multiple services and applications, centralized <strong>AI crawler routing</strong> through Traefik provides consistent policy enforcement across the entire infrastructure. A single middleware configuration can protect WordPress blogs, headless CMS APIs, static documentation sites, and custom applications through unified rules that evolve as new training crawlers emerge or licensing agreements modify access requirements.</p>
+<p>The middleware approach particularly benefits organizations running containerized workloads where Traefik already serves as the ingress controller. Rather than implementing crawler blocking independently in each microservice, centralized middleware applies protection uniformly while allowing per-service customization when needed. Integration with Traefik&#39;s metrics and logging infrastructure provides visibility into crawler activity patterns that inform both technical enforcement and licensing negotiation strategies.</p>
+<h2>Traefik Architecture for Crawler Management</h2>
+<p>Understanding Traefik&#39;s request processing pipeline establishes how middleware intercepts and controls AI crawler traffic before it consumes backend resources.</p>
+<p><strong>Request flow architecture</strong> in Traefik follows this sequence:</p>
+<ol>
+<li>Client request arrives at Traefik entry point (port 80/443)</li>
+<li>Router matches request to backend service based on Host header or path</li>
+<li>Middleware chain executes sequentially before forwarding to backend</li>
+<li>Backend service processes request (if middleware permits)</li>
+<li>Response flows back through middleware chain to client</li>
+</ol>
+<p>AI crawler control middleware inserts into step 3, evaluating User-Agent, IP address, request rate, and other characteristics to decide whether requests proceed to backends or receive rejection responses. This positioning means crawler traffic never reaches application servers when blocked—infrastructure costs stay minimal even under heavy crawler load.</p>
+<p><strong>Middleware chaining</strong> enables composition of multiple protective layers. A comprehensive crawler management chain might include:</p>
+<ul>
+<li><strong>IP allowlist middleware</strong>: Permits verified crawler IPs, blocks spoofed requests</li>
+<li><strong>User-Agent filtering middleware</strong>: Identifies crawler types from User-Agent strings</li>
+<li><strong>Rate limiting middleware</strong>: Enforces request quotas per crawler type</li>
+<li><strong>Content routing middleware</strong>: Directs crawlers to specific content tiers based on licensing</li>
+<li><strong>Logging middleware</strong>: Records crawler activity for compliance monitoring</li>
+</ul>
+<p>Each middleware component focuses on a single concern, with composition creating defense-in-depth. If IP verification middleware is bypassed through a novel technique, User-Agent filtering provides backup protection.</p>
+<p><strong>Dynamic configuration</strong> distinguishes Traefik from static reverse proxies. Configuration changes deploy without restarting Traefik—new crawler user agents, updated IP ranges, or modified rate limits take effect immediately. This agility proves critical as AI companies launch new crawlers or existing crawlers change behaviors. Publishers can respond to <a href="test-ai-crawler-blocks-verification.html">test verification</a> discoveries within minutes rather than hours required for traditional web server configuration deployment.</p>
+<p><strong>Provider integrations</strong> enable Traefik to source configuration from various backends:</p>
+<ul>
+<li><strong>File provider</strong>: YAML/TOML configuration files for simple deployments</li>
+<li><strong>Docker provider</strong>: Auto-discovers services from container labels</li>
+<li><strong>Kubernetes provider</strong>: Integrates with Ingress resources and CRDs</li>
+<li><strong>Consul/etcd providers</strong>: Centralized configuration for distributed deployments</li>
+</ul>
+<p>Publishers running Kubernetes might define crawler policies in CustomResourceDefinitions that Traefik watches, automatically updating middleware as policies change. Docker-based deployments might tag containers with labels specifying crawler access rules that Traefik enforces without separate configuration files.</p>
+<p><strong>Observability integration</strong> surfaces crawler activity through Traefik&#39;s metrics and tracing systems. Publishers can:</p>
+<ul>
+<li>Export crawler request metrics to Prometheus for alerting and dashboards</li>
+<li>Integrate with Datadog or New Relic for commercial observability platforms</li>
+<li>Enable OpenTelemetry tracing to follow crawler requests through microservice chains</li>
+<li>Stream access logs to centralized logging systems with crawler-specific fields</li>
+</ul>
+<p>This observability enables data-driven decision making about whether <a href="throttle-vs-block-ai-crawlers.html">throttling versus blocking</a> serves publisher interests and provides evidence for licensing negotiations.</p>
+<h2>User-Agent Detection Middleware</h2>
+<p>The foundation of crawler identification relies on User-Agent strings that crawlers include in HTTP headers. Well-behaved <strong>AI training crawlers</strong> identify themselves with distinctive user agents like <code>GPTBot</code> or <code>ClaudeBot</code>, enabling straightforward detection.</p>
+<p><strong>Basic User-Agent matching</strong> implements simple string comparison. Traefik middleware configuration might include:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    block-ai-crawlers:
+      plugin:
+        userAgentBlocker:
+          blockedUserAgents:
+            - &quot;GPTBot&quot;
+            - &quot;ClaudeBot&quot;
+            - &quot;Bingbot.*&quot;
+            - &quot;.*ChatGPT.*&quot;
+          blockResponse:
+            status: 403
+            body: &quot;AI training crawlers are not permitted&quot;
+</code></pre>
+<p>This approach blocks requests where User-Agent headers match the specified patterns. Regular expression support enables flexible matching—<code>Bingbot.*</code> catches various Bingbot version strings, while <code>.*ChatGPT.*</code> blocks any user agent containing that substring.</p>
+<p><strong>Allowlist-based filtering</strong> inverts the logic for publishers who prefer denying by default. Rather than enumerating crawlers to block, middleware permits only recognized legitimate user agents:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    allowlist-crawlers:
+      plugin:
+        userAgentAllowlist:
+          allowedUserAgents:
+            - &quot;Googlebot&quot;
+            - &quot;Bingbot&quot;
+          defaultDeny: true
+          denyStatus: 403
+</code></pre>
+<p>This approach improves security by preventing novel unlisted crawlers from accessing content. However, it requires maintenance as new legitimate crawlers emerge and risks blocking beneficial traffic if allowlists become stale.</p>
+<p><strong>Categorized matching</strong> creates user agent groups with different handling policies. Publishers might define:</p>
+<ul>
+<li><strong>Search crawlers</strong>: Googlebot, Bingbot, DuckDuckBot (allowed)</li>
+<li><strong>AI training crawlers</strong>: GPTBot, ClaudeBot, Google-Extended (blocked)</li>
+<li><strong>Research crawlers</strong>: University-affiliated user agents (throttled)</li>
+<li><strong>Unknown crawlers</strong>: Unrecognized user agents (challenged)</li>
+</ul>
+<p>Middleware routes each category to appropriate handling logic—search crawlers proceed unrestricted, training crawlers face blocks, research crawlers encounter rate limits, and unknown crawlers must complete JavaScript challenges.</p>
+<p><strong>User-Agent normalization</strong> addresses variation and case sensitivity. Crawlers might report user agents as <code>GPTBot/1.0</code>, <code>gptbot</code>, or <code>GPTBot-experimental</code>. Middleware normalization converts all variations to canonical forms before comparison:</p>
+<pre><code class="language-go">func normalizeUserAgent(ua string) string {
+    ua = strings.ToLower(ua)
+    ua = regexp.MustCompile(`[/-]\d+\.\d+.*`).ReplaceAllString(ua, &quot;&quot;)
+    return strings.TrimSpace(ua)
+}
+</code></pre>
+<p>This function converts to lowercase, removes version numbers, and trims whitespace, ensuring <code>GPTBot/1.0</code> and <code>gptbot</code> both match <code>gptbot</code> in configuration.</p>
+<p><strong>Spoofing detection</strong> catches malicious crawlers that falsely claim to be legitimate bots. A crawler might set User-Agent to <code>Googlebot</code> to evade blocks targeting training crawlers. Detection combines User-Agent inspection with IP verification—if User-Agent claims Googlebot but IP doesn&#39;t belong to Google&#39;s published ranges, the request is spoofed. Middleware implementation:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    verify-crawler-identity:
+      plugin:
+        crawlerVerifier:
+          verificationRules:
+            - userAgent: &quot;Googlebot&quot;
+              ipRanges:
+                - &quot;66.249.64.0/19&quot;
+                - &quot;2001:4860:4000::/36&quot;
+              onFailure: block
+            - userAgent: &quot;ClaudeBot&quot;
+              dnsVerification:
+                pattern: &quot;*.anthropic.com&quot;
+              onFailure: block
+</code></pre>
+<p>This configuration blocks requests claiming to be Googlebot unless originating from Google IP ranges, and verifies ClaudeBot through <a href="verify-claudebot-ip-dns.html">DNS reverse lookup</a>.</p>
+<h2>IP-Based Access Control</h2>
+<p>User-Agent headers are easily forged, making IP-based verification essential for robust crawler management. Publishers can verify crawler identity and implement geographic restrictions through IP middleware.</p>
+<p><strong>Published IP range verification</strong> leverages crawler IP documentation from AI companies. <strong>OpenAI</strong> publishes GPTBot IP ranges; <strong>Anthropic</strong> documents ClaudeBot infrastructure. Middleware can enforce that requests match claimed identities:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    verify-crawler-ips:
+      ipWhiteList:
+        sourceRange:
+          - &quot;23.98.142.0/24&quot;    # OpenAI GPTBot
+          - &quot;3.144.0.0/16&quot;      # Anthropic ClaudeBot
+        strategy:
+          depth: 1              # Trust X-Forwarded-For header depth
+</code></pre>
+<p>The <code>depth</code> parameter accounts for CDNs and proxies that add X-Forwarded-For headers. Setting depth to 1 examines the client IP immediately before Traefik; deeper values look further through the proxy chain.</p>
+<p><strong>Dynamic IP list updates</strong> accommodate changes as AI companies expand infrastructure. Rather than static configuration files, middleware might fetch IP ranges from external sources:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    dynamic-ip-allowlist:
+      plugin:
+        dynamicIPList:
+          sources:
+            - url: &quot;https://openai.com/gptbot-ranges.json&quot;
+              refreshInterval: &quot;24h&quot;
+              format: &quot;json&quot;
+              path: &quot;$.ipv4Ranges&quot;
+            - url: &quot;https://anthropic.com/claudebot-ips.txt&quot;
+              refreshInterval: &quot;24h&quot;
+              format: &quot;cidrs&quot;
+          cacheFile: &quot;/etc/traefik/dynamic-ips.json&quot;
+</code></pre>
+<p>Middleware refreshes IP lists daily, caching them locally to continue operating if external sources become unavailable. This automation eliminates manual configuration updates as crawler infrastructure evolves.</p>
+<p><strong>Geographic filtering</strong> blocks or throttles crawlers from specific regions. Publishers might allow North American crawler access while blocking Asian or European traffic based on licensing agreements or data sovereignty concerns:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    geo-restrict-crawlers:
+      plugin:
+        geoIP:
+          allowedCountries:
+            - &quot;US&quot;
+            - &quot;CA&quot;
+          denyStatus: 451      # Unavailable For Legal Reasons
+          geoDatabase: &quot;/etc/traefik/GeoLite2-Country.mmdb&quot;
+</code></pre>
+<p>Implementation requires MaxMind GeoLite2 or similar geolocation databases that map IPs to countries. The middleware looks up request source IPs and compares against allowed countries before permitting backend access.</p>
+<p><strong>Reputation-based blocking</strong> integrates with threat intelligence feeds identifying malicious IPs. While not specifically targeting AI crawlers, reputation blocking catches residential proxies and compromised infrastructure that adversarial crawlers might use for circumvention:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    ip-reputation:
+      plugin:
+        threatIntel:
+          feeds:
+            - &quot;https://reputation-service.example/api/v1/check&quot;
+          blockThreshold: 0.7   # Block IPs with reputation score &lt; 0.7
+          cacheTimeout: &quot;1h&quot;
+</code></pre>
+<p>The middleware queries reputation services, blocking IPs that score below threshold. Caching prevents excessive reputation lookups that could add latency to every request.</p>
+<h2>Rate Limiting Implementation</h2>
+<p>Even when publishers permit crawler access, <strong>rate limiting</strong> prevents infrastructure overload. Traefik middleware offers sophisticated rate limiting that adapts to crawler behavior patterns.</p>
+<p><strong>Per-crawler rate limits</strong> apply different quotas to different user agents. Search crawlers might receive generous limits while training crawlers face tight restrictions:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    adaptive-rate-limit:
+      rateLimit:
+        rateSets:
+          search-crawlers:
+            average: 100
+            period: &quot;1m&quot;
+            burst: 200
+          ai-crawlers:
+            average: 10
+            period: &quot;1m&quot;
+            burst: 20
+</code></pre>
+<p>The <code>average</code> parameter specifies sustained request rate, <code>period</code> defines the time window, and <code>burst</code> permits short spikes. These settings throttle AI crawlers to 10 requests per minute sustained with 20 request bursts, while search crawlers enjoy 10x higher limits.</p>
+<p><strong>Token bucket algorithm</strong> implementation provides smooth traffic shaping. Rather than hard cutoffs at window boundaries, token buckets refill continuously:</p>
+<ul>
+<li>Bucket holds tokens representing request permission</li>
+<li>Each request consumes a token</li>
+<li>Tokens regenerate at the specified average rate</li>
+<li>Burst parameter determines maximum tokens the bucket can hold</li>
+<li>Requests arriving when the bucket is empty face delay or rejection</li>
+</ul>
+<p>This algorithm prevents exploitation where crawlers time requests to window boundaries, spreading load more evenly across time.</p>
+<p><strong>Distributed rate limiting</strong> synchronizes quotas across multiple Traefik instances. Clustered deployments must prevent individual instances from independently applying quotas, which would effectively multiply limits by instance count. Solutions include:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    clustered-rate-limit:
+      plugin:
+        distributedRateLimit:
+          storage: &quot;redis://redis-cluster:6379/0&quot;
+          keyPrefix: &quot;traefik-ratelimit:&quot;
+          average: 10
+          period: &quot;1m&quot;
+</code></pre>
+<p>Middleware stores quota state in Redis, ensuring all Traefik instances consult centralized counters. This prevents crawlers from exploiting distributed architectures by spreading requests across backend instances.</p>
+<p><strong>Adaptive throttling</strong> adjusts limits based on observed behavior. Crawlers respecting initial limits might earn quota increases, while aggressive crawlers face progressive restrictions:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    adaptive-crawler-throttle:
+      plugin:
+        behaviorBasedThrottle:
+          initialRate: 10
+          goodBehaviorIncrease: 1.5  # Multiply limit by 1.5 after 1 hour compliance
+          violationDecrease: 0.5     # Halve limit upon violations
+          evaluationInterval: &quot;1h&quot;
+</code></pre>
+<p>This creates incentive structures rewarding polite crawler behavior while punishing aggressive scraping, automatically optimizing resource allocation without manual intervention.</p>
+<p><strong>Cost-based rate limiting</strong> varies quotas by resource consumption. Requests for large media files, expensive search queries, or dynamic personalized content might count more heavily against quotas than static text pages:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    cost-based-limit:
+      plugin:
+        costRateLimit:
+          budget: 1000           # Total cost units per period
+          period: &quot;1m&quot;
+          costs:
+            - pathPattern: &quot;/api/search&quot;
+              cost: 10
+            - pathPattern: &quot;/images/.*\\.jpg&quot;
+              cost: 5
+            - pathPattern: &quot;.*&quot;
+              cost: 1            # Default cost for unmatched paths
+</code></pre>
+<p>A crawler requesting 10 search queries and 100 images would consume 150 cost units (10 × 10 + 100 × 5), leaving 850 units for additional requests that minute. This approach aligns throttling with actual infrastructure impact rather than raw request counts.</p>
+<h2>Content Routing and Access Tiers</h2>
+<p>Publishers implementing <a href="tiered-ai-content-licensing.html">tiered licensing</a> need middleware that routes authenticated crawlers to appropriate content based on their tier, while blocking unlicensed access entirely.</p>
+<p><strong>License tier authentication</strong> validates crawler credentials against entitlements databases. API keys or JWT tokens in Authorization headers identify the crawler and their tier:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    tier-authentication:
+      plugin:
+        licenseAuth:
+          authEndpoint: &quot;https://licensing-api.publisher.com/validate&quot;
+          headerName: &quot;X-API-Key&quot;
+          cacheDuration: &quot;5m&quot;
+          onAuthFailure: 403
+</code></pre>
+<p>Middleware extracts API keys from request headers, queries the licensing API to determine tier, caches results to minimize auth overhead, and attaches tier information to requests forwarded to backends.</p>
+<p><strong>Tier-based content filtering</strong> restricts access to content appropriate for each license tier. A crawler with Historical Archive tier access should only reach content older than defined thresholds:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    tier-content-filter:
+      plugin:
+        tierFilter:
+          rules:
+            - tier: &quot;historical&quot;
+              allowPaths:
+                - &quot;/archive/.*&quot;
+              denyPaths:
+                - &quot;/recent/.*&quot;
+                - &quot;/premium/.*&quot;
+            - tier: &quot;commercial&quot;
+              allowPaths:
+                - &quot;/.*&quot;              # Full access
+          defaultDeny: true
+</code></pre>
+<p>Middleware checks authenticated tier against path patterns, permitting historical tier crawlers to access <code>/archive/*</code> while blocking <code>/recent/*</code> and <code>/premium/*</code>. Commercial tier receives unrestricted access.</p>
+<p><strong>Dynamic content watermarking</strong> embeds tier-specific identifiers enabling violation detection. Middleware injects markers that vary by license tier, enabling publishers to trace content redistribution:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    tier-watermarking:
+      plugin:
+        watermark:
+          headerInjection:
+            - name: &quot;X-Content-Tier&quot;
+              value: &quot;${tier}&quot;
+          htmlModification:
+            insertBeforeTag: &quot;&lt;/body&gt;&quot;
+            content: &quot;&lt;!-- Licensed to ${licenseeID} tier ${tier} --&gt;&quot;
+</code></pre>
+<p>When content accessed by Historical tier crawlers appears in contexts suggesting higher-tier usage, HTML comments reveal the source license. This passive monitoring complements active compliance auditing.</p>
+<p><strong>Usage tracking and quota enforcement</strong> monitors tier consumption for volume-based licenses. Middleware counts accessed content against tier limits:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    usage-metering:
+      plugin:
+        usageTracker:
+          meteringEndpoint: &quot;https://licensing-api.publisher.com/meter&quot;
+          batchSize: 100         # Send usage batches of 100 requests
+          flushInterval: &quot;60s&quot;   # Force flush every minute
+          onQuotaExceeded:
+            action: &quot;throttle&quot;
+            rate: 1              # 1 request per minute when over quota
+</code></pre>
+<p>Every successful content delivery triggers usage recording sent to the metering endpoint. When crawlers exceed tier quotas, middleware automatically throttles future requests until quota resets or tier upgrades occur.</p>
+<h2>robots.txt Integration</h2>
+<p>While robots.txt provides standard crawler guidance, Traefik middleware can enforce robots.txt directives for non-compliant crawlers and enhance the protocol with dynamic rules.</p>
+<p><strong>robots.txt parsing and enforcement</strong> translates standard directives into Traefik access control. Rather than trusting crawlers to honor robots.txt, middleware actively blocks disallowed paths:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    robotstxt-enforcer:
+      plugin:
+        robotsTxt:
+          robotsFile: &quot;/var/www/robots.txt&quot;
+          reloadInterval: &quot;5m&quot;
+          enforceMode: &quot;block&quot;   # Or &quot;log&quot; for monitoring without blocking
+          defaultAllow: true     # Allow if no matching directive
+</code></pre>
+<p>Middleware parses robots.txt, identifying User-Agent-specific disallow directives, and blocks requests violating those rules before they reach backends. This mandatory enforcement prevents the most common circumvention vector—crawlers simply ignoring robots.txt.</p>
+<p><strong>Per-crawler robots.txt generation</strong> serves customized robots.txt files based on requesting user agent. Publishers might want different crawlers to see different restrictions:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    dynamic-robots:
+      plugin:
+        dynamicRobots:
+          templates:
+            - userAgent: &quot;GPTBot&quot;
+              template: &quot;/etc/traefik/robots-ai-crawlers.txt&quot;
+            - userAgent: &quot;Googlebot&quot;
+              template: &quot;/etc/traefik/robots-search.txt&quot;
+            - userAgent: &quot;*&quot;
+              template: &quot;/etc/traefik/robots-default.txt&quot;
+</code></pre>
+<p>When GPTBot requests <code>/robots.txt</code>, middleware serves restrictive AI crawler rules. Googlebot receives permissive search crawler rules. This segmentation communicates different expectations to different crawler classes.</p>
+<p><strong>Compliance monitoring and honeypots</strong> detect crawlers violating robots.txt. Middleware serves honeypot content in robots.txt-disallowed paths, triggering alerts when accessed:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    robots-honeypot:
+      plugin:
+        honeypot:
+          disallowedPaths:
+            - &quot;/admin&quot;
+            - &quot;/api/internal&quot;
+          honeypotResponse:
+            status: 200
+            body: &quot;Honeypot content with unique identifier ${requestID}&quot;
+          alertWebhook: &quot;https://monitoring.publisher.com/alert&quot;
+</code></pre>
+<p>Compliant crawlers never request disallowed paths. Access attempts indicate violations, triggering webhooks that notify security teams and potentially auto-escalate restrictions against violating crawler IPs.</p>
+<h2>Custom Middleware Development</h2>
+<p>Publishers with unique requirements beyond standard middleware capabilities can develop custom Traefik plugins in Go that implement specialized crawler management logic.</p>
+<p><strong>Plugin architecture</strong> provides a framework for extending Traefik. Plugins implement the <code>Handler</code> interface, receiving HTTP requests, performing custom logic, and either forwarding to the next middleware or terminating with responses:</p>
+<pre><code class="language-go">package main
+
+import (
+    &quot;context&quot;
+    &quot;net/http&quot;
+)
+
+type CrawlerManager struct {
+    next   http.Handler
+    config *Config
+}
+
+func (cm *CrawlerManager) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
+    // Custom crawler detection and handling logic
+    if cm.isBannedCrawler(req) {
+        http.Error(rw, &quot;Crawler blocked&quot;, http.StatusForbidden)
+        return
+    }
+
+    cm.next.ServeHTTP(rw, req)
+}
+</code></pre>
+<p>This skeleton shows the plugin structure—<code>ServeHTTP</code> intercepts requests, applies custom logic (here checking if the crawler is banned), and either blocks requests or forwards them to <code>next.ServeHTTP</code>.</p>
+<p><strong>Advanced fingerprinting</strong> combines multiple signals beyond User-Agent and IP. Custom plugins might analyze:</p>
+<ul>
+<li>TLS fingerprints (cipher suites, extensions, curves)</li>
+<li>HTTP/2 settings frames and stream prioritization</li>
+<li>Header ordering and capitalization patterns</li>
+<li>JavaScript execution capabilities through challenge-response</li>
+<li>Browser automation artifact detection</li>
+</ul>
+<p>These sophisticated techniques identify headless browsers and automation frameworks that AI training operations use, even when they rotate IPs and user agents:</p>
+<pre><code class="language-go">func (cm *CrawlerManager) fingerprintClient(req *http.Request) CrawlerType {
+    tlsFingerprint := cm.extractTLSFingerprint(req.TLS)
+    headerFingerprint := cm.extractHeaderFingerprint(req.Header)
+
+    if cm.matchesHeadlessBrowser(tlsFingerprint, headerFingerprint) {
+        return CrawlerTypeAutomated
+    }
+
+    return CrawlerTypeHuman
+}
+</code></pre>
+<p><strong>Machine learning-based detection</strong> trains models on historical crawler behavior to identify novel crawlers not yet catalogued. Plugins can integrate ML inference:</p>
+<pre><code class="language-go">func (cm *CrawlerManager) classifyCrawler(req *http.Request) (CrawlerCategory, float64) {
+    features := cm.extractFeatures(req)
+
+    prediction := cm.mlModel.Predict(features)
+
+    return prediction.Category, prediction.Confidence
+}
+</code></pre>
+<p>The model ingests request features (timing patterns, path sequences, referrer chains) and outputs classifications with confidence scores. Low-confidence predictions might trigger human review while high-confidence results automate blocking decisions.</p>
+<p><strong>Real-time licensing API integration</strong> queries publisher licensing systems to determine crawler permissions dynamically. Rather than caching credentials, plugins make real-time decisions:</p>
+<pre><code class="language-go">func (cm *CrawlerManager) checkLicense(ctx context.Context, crawlerID string) (*LicenseStatus, error) {
+    resp, err := cm.licenseAPI.Query(ctx, crawlerID)
+    if err != nil {
+        return nil, err
+    }
+
+    return &amp;LicenseStatus{
+        Tier:         resp.Tier,
+        QuotaRemaining: resp.QuotaRemaining,
+        ExpirationDate: resp.ExpirationDate,
+    }, nil
+}
+</code></pre>
+<p>This integration ensures middleware reflects current licensing state, automatically revoking access for expired licenses or enforcing tier downgrades without configuration changes.</p>
+<h2>Observability and Monitoring</h2>
+<p>Effective crawler management requires visibility into who&#39;s accessing content, how enforcement policies perform, and where circumvention attempts occur.</p>
+<p><strong>Structured logging</strong> emits crawler activity in machine-parsable formats enabling analysis:</p>
+<pre><code class="language-yaml">http:
+  middlewares:
+    crawler-logging:
+      plugin:
+        structuredLog:
+          format: &quot;json&quot;
+          fields:
+            - &quot;timestamp&quot;
+            - &quot;sourceIP&quot;
+            - &quot;userAgent&quot;
+            - &quot;requestPath&quot;
+            - &quot;crawlerCategory&quot;
+            - &quot;actionTaken&quot;
+            - &quot;tier&quot;
+          destination: &quot;stdout&quot;
+          sampling:
+            rate: 0.1          # Log 10% of requests to reduce volume
+</code></pre>
+<p>JSON-formatted logs feed into centralized logging systems (Elasticsearch, Loki) where queries aggregate patterns: which crawlers access most frequently, which paths they target, how often rate limits trigger, and compliance with licensing terms.</p>
+<p><strong>Prometheus metrics</strong> expose time-series data about crawler activity:</p>
+<pre><code class="language-yaml"># Example metrics exported by middleware
+traefik_crawler_requests_total{user_agent=&quot;GPTBot&quot;,action=&quot;blocked&quot;} 1523
+traefik_crawler_requests_total{user_agent=&quot;ClaudeBot&quot;,action=&quot;throttled&quot;} 842
+traefik_crawler_requests_total{user_agent=&quot;Googlebot&quot;,action=&quot;allowed&quot;} 15420
+traefik_ratelimit_dropped_total{middleware=&quot;ai-crawlers&quot;} 234
+traefik_license_quota_remaining{licensee=&quot;OpenAI&quot;,tier=&quot;commercial&quot;} 450000
+</code></pre>
+<p>Publishers create Grafana dashboards visualizing crawler trends, alert on anomalous activity (sudden traffic spikes, new unknown crawlers), and measure enforcement effectiveness.</p>
+<p><strong>Distributed tracing</strong> follows crawler requests through microservice architectures. When middleware permits a request, trace context propagates showing:</p>
+<ul>
+<li>Which middleware components processed the request</li>
+<li>Authentication lookups and license validation latency</li>
+<li>Backend service processing time</li>
+<li>Database queries triggered by crawler content access</li>
+</ul>
+<p>Tracing identifies performance bottlenecks in crawler handling and reveals when crawler behavior (requesting expensive queries) degrades system performance.</p>
+<p><strong>Alerting rules</strong> notify publishers of significant events:</p>
+<pre><code class="language-yaml"># Prometheus alerting rules
+groups:
+  - name: crawler_alerts
+    rules:
+      - alert: NewCrawlerDetected
+        expr: rate(traefik_crawler_requests_total{user_agent!~&quot;Googlebot|Bingbot|ClaudeBot|GPTBot&quot;}[5m]) &gt; 10
+        annotations:
+          summary: &quot;Unknown crawler detected&quot;
+
+      - alert: LicenseQuotaExhausted
+        expr: traefik_license_quota_remaining &lt; 1000
+        annotations:
+          summary: &quot;Licensee {{$labels.licensee}} approaching quota limit&quot;
+</code></pre>
+<p>Alerts enable rapid response to circumvention attempts and proactive licensing discussions when quotas near exhaustion.</p>
+<h2>Frequently Asked Questions</h2>
+<p><strong>How does Traefik middleware compare to CDN-based crawler blocking?</strong></p>
+<p>Traefik operates at the application layer with full HTTP context, enabling sophisticated logic like authentication integration, dynamic content routing, and license tier enforcement. CDNs typically offer simpler rules focusing on IP/user-agent blocking and rate limiting. Traefik provides more flexibility and customization for complex licensing scenarios, while CDNs deliver blocking closer to the network edge with lower latency overhead. Many publishers use both—CDN for coarse-grained protection and Traefik for fine-grained policy enforcement.</p>
+<p><strong>Can Traefik middleware prevent all AI crawler circumvention?</strong></p>
+<p>No technical solution stops determined adversaries. Middleware raises circumvention costs by requiring sophisticated evasion (residential proxies, browser automation, behavior mimicry) but sufficiently motivated crawlers can bypass protections. Effective strategies combine technical middleware enforcement with legal frameworks through <a href="terms-of-service-ai-scraping.html">Terms of Service</a>, monitoring for circumvention indicators, and willingness to pursue legal action against violators. Middleware makes unauthorized access difficult enough that most AI companies choose licensing over circumvention.</p>
+<p><strong>What performance impact does crawler middleware add?</strong></p>
+<p>Well-optimized middleware adds minimal latency—typically single-digit milliseconds for simple user-agent checks, 10-20ms for IP verification with caching, and 50-100ms for authentication against external licensing APIs. Rate limiting state lookups add negligible overhead when using in-memory or Redis-backed storage. Custom plugins with complex logic (ML model inference, TLS fingerprinting) might add 100-200ms. Publishers should benchmark specific middleware configurations under realistic load to quantify impact and optimize critical paths.</p>
+<p><strong>How should publishers update middleware configuration as new AI crawlers emerge?</strong></p>
+<p>Dynamic configuration allows zero-downtime updates. Publishers monitoring for unknown user agents (via metrics or logs) can add them to middleware blocklists or throttling rules without restarting Traefik. Automated approaches might fetch crawler lists from threat intelligence feeds or industry consortia, refreshing configuration hourly or daily. Custom plugins can implement fallback policies for unknown user agents—aggressive blocking for zero-trust approaches, or temporary throttling with alerts for investigation.</p>
+<p><strong>Can Traefik enforce different policies per domain in multi-tenant deployments?</strong></p>
+<p>Yes. Traefik routers match requests to services based on Host headers, with each service having independent middleware chains. A multi-tenant publisher might configure:</p>
+<ul>
+<li>Domain A: Blocks all AI crawlers (subscriber content)</li>
+<li>Domain B: Throttles AI crawlers (ad-supported content)</li>
+<li>Domain C: Requires license authentication (premium API)</li>
+</ul>
+<p>Each domain&#39;s router references appropriate middleware, enabling policy segmentation within a single Traefik instance.</p>
+<p><strong>How does middleware handle crawlers that respect robots.txt versus those that don&#39;t?</strong></p>
+<p>Compliant crawlers honor robots.txt without middleware enforcement—middleware allows their requests through unless other policies (rate limiting, licensing) apply. Non-compliant crawlers that ignore robots.txt trigger middleware enforcement that actively blocks access to disallowed paths. Middleware effectively makes robots.txt mandatory rather than advisory, creating consistent policy enforcement regardless of crawler cooperation. This ensures publishers maintain control even when crawlers don&#39;t voluntarily respect technical signals.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

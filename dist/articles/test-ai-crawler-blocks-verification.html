@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test AI Crawler Blocks: Verification Methods and Compliance Testing | AI Pay Per Crawl</title>
+    <meta name="description" content="How to test robots.txt blocks, verify AI crawler compliance, and validate technical measures preventing unauthorized training data collection.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Test AI Crawler Blocks: Verification Methods and Compliance Testing">
+    <meta property="og:description" content="How to test robots.txt blocks, verify AI crawler compliance, and validate technical measures preventing unauthorized training data collection.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/test-ai-crawler-blocks-verification">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Test AI Crawler Blocks: Verification Methods and Compliance Testing">
+    <meta name="twitter:description" content="How to test robots.txt blocks, verify AI crawler compliance, and validate technical measures preventing unauthorized training data collection.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/test-ai-crawler-blocks-verification">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Test AI Crawler Blocks: Verification Methods and Compliance Testing",
+  "description": "How to test robots.txt blocks, verify AI crawler compliance, and validate technical measures preventing unauthorized training data collection.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/test-ai-crawler-blocks-verification"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Test AI Crawler Blocks: Verification Methods and Compliance Testing",
+      "item": "https://aipaypercrawl.com/articles/test-ai-crawler-blocks-verification"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Test AI Crawler Blocks: Verification Methods and Compliance Testing</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 20 min read</span>
+        <h1>Test AI Crawler Blocks: Verification Methods and Compliance Testing</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">How to test robots.txt blocks, verify AI crawler compliance, and validate technical measures preventing unauthorized training data collection.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Test AI Crawler Blocks: Verification Methods and Compliance Testing</h1>
+<p>Testing whether <strong>AI crawler blocks</strong> actually prevent unauthorized access requires systematic verification across multiple layers: robots.txt parsing, IP filtering enforcement, rate limiting functionality, and JavaScript challenge effectiveness. Publishers who implement blocking measures without rigorous testing often discover their protections contain exploitable gaps. Meanwhile, AI companies testing their crawler compliance need methodologies that confirm respect for technical signals without violating <a href="terms-of-service-ai-scraping.html">Terms of Service</a> during verification attempts.</p>
+<p>The verification challenge intensifies because modern <strong>AI training crawlers</strong> employ sophisticated evasion techniques. Simple robots.txt checks prove insufficient when crawlers rotate user agents, spoof legitimate bot identities, or distribute requests across residential proxy networks. Comprehensive testing must anticipate adversarial scenarios where motivated actors deliberately circumvent protections, not just polite crawlers that honor technical signals.</p>
+<h2>robots.txt Parsing Verification</h2>
+<p>The foundation of crawler blocking starts with robots.txt, making verification of proper parsing critical. Syntax errors, directive ordering problems, or web server misconfigurations can silently undermine intended restrictions, leaving publishers exposed while believing they&#39;re protected.</p>
+<p><strong>Syntax validation</strong> catches common formatting errors before crawlers encounter them. The robots.txt specification requires specific syntax: User-agent lines must precede their associated directives, wildcard patterns follow defined rules, and directives must use correct capitalization. Testing tools like Google&#39;s robots.txt Tester parse the file and highlight syntax errors that might cause inconsistent crawler interpretation.</p>
+<p>Publishers should test robots.txt parsing with multiple user agents because <strong>AI crawlers</strong> interpret directives differently than traditional search bots. A test suite might include:</p>
+<ul>
+<li><strong>Googlebot</strong> as a baseline for standard interpretation</li>
+<li><strong>GPTBot</strong> representing OpenAI&#39;s training crawler</li>
+<li><strong>ClaudeBot</strong> for Anthropic&#39;s data collection</li>
+<li><strong>Bingbot</strong> which Microsoft uses for search and AI</li>
+<li>Generic user agents to verify wildcard blocking</li>
+</ul>
+<p>Each test confirms whether the specified user agent correctly interprets its disallow directives. Discrepancies reveal parsing inconsistencies that sophisticated crawlers might exploit.</p>
+<p><strong>Wildcard pattern testing</strong> ensures path-based restrictions work as intended. A robots.txt file might include:</p>
+<pre><code>User-agent: GPTBot
+Disallow: /api/
+Disallow: /admin/*
+Disallow: /*.json$
+</code></pre>
+<p>Testing requires confirming that requests to <code>/api/endpoint</code>, <code>/admin/dashboard</code>, and <code>/data.json</code> are all properly blocked for GPTBot while potentially remaining accessible to other user agents. Many publishers discover their wildcard patterns don&#39;t match expected paths due to web server differences in pattern evaluation.</p>
+<p><strong>Directive precedence verification</strong> addresses situations where multiple rules might apply to a single request. When robots.txt contains both Allow and Disallow directives affecting the same path, crawlers should follow specific precedence rules (typically most specific pattern wins). Testing confirms crawlers honor this precedence rather than applying first-match or last-match logic that could expose supposedly protected content.</p>
+<p><strong>Web server configuration interaction</strong> creates another testing dimension. The robots.txt file might be perfectly formatted, but server-level redirects, rewrite rules, or caching behaviors can interfere with proper delivery. Tests should verify:</p>
+<ul>
+<li>robots.txt returns 200 status code (not 404 or 500)</li>
+<li>Content-Type header indicates <code>text/plain</code></li>
+<li>No redirect chains prevent crawler access to the file</li>
+<li>CDN caching doesn&#39;t serve stale versions during updates</li>
+<li>File size doesn&#39;t exceed crawler parsing limits (typically 500KB)</li>
+</ul>
+<p>Publishers using content delivery networks must specifically test that CDN nodes serve current robots.txt versions. A common failure mode occurs when publishers update their origin robots.txt but CDN caches retain previous versions for hours or days, allowing crawlers to proceed based on outdated permissive rules.</p>
+<h2>IP Verification Testing</h2>
+<p>Many AI companies publish their <strong>crawler IP ranges</strong>, enabling publishers to verify that traffic claiming specific user agent identities actually originates from authorized sources. Testing IP verification prevents user agent spoofing attacks where malicious scrapers impersonate legitimate crawlers.</p>
+<p><strong>DNS reverse lookup verification</strong> confirms crawler identity through domain ownership. When a request claims to be ClaudeBot, the verification process:</p>
+<ol>
+<li>Extracts the request&#39;s source IP address</li>
+<li>Performs reverse DNS lookup to obtain hostname</li>
+<li>Verifies hostname matches expected pattern (e.g., <code>*.anthropic.com</code>)</li>
+<li>Performs forward DNS lookup on hostname to confirm it resolves to original IP</li>
+<li>Compares forward resolution result against source IP</li>
+</ol>
+<p>This bidirectional verification prevents IP spoofing because attackers can&#39;t forge DNS records for domains they don&#39;t control. Testing this verification requires attempting access from both legitimate crawler IPs and spoofed sources to confirm the system correctly differentiates them.</p>
+<p><strong>Published IP range validation</strong> supplements DNS verification for companies that document their crawler infrastructure. <strong>OpenAI</strong> publishes GPTBot IP ranges, allowing publishers to whitelist or blacklist specific networks. Testing validates that:</p>
+<ul>
+<li>Requests from published IP ranges are correctly identified</li>
+<li>Blocking rules apply to the complete published range</li>
+<li>Range updates from the AI company trigger configuration refreshes</li>
+<li>Subnet mask calculations properly encompass all addresses</li>
+</ul>
+<p>Publishers should maintain test scripts that periodically verify IP range accuracy against published documentation, alerting when discrepancies emerge that might indicate either configuration errors or undocumented crawler infrastructure.</p>
+<p><strong>Geographic routing verification</strong> tests whether <a href="vercel-netlify-block-ai-crawlers.html">CDN-based blocking</a> properly applies regional restrictions. Some publishers allow AI crawler access from certain jurisdictions while blocking others, reflecting varied international approaches to training data rights. Testing requires simulating requests from multiple geographic regions to confirm routing logic functions correctly.</p>
+<p><strong>Proxy detection testing</strong> addresses scenarios where AI training operations route requests through proxy services to obscure origin. While legitimate crawlers identify themselves and use documented IP ranges, some training data collectors employ:</p>
+<ul>
+<li>Residential proxy networks that appear as consumer ISP traffic</li>
+<li>Data center proxies with constantly rotating IPs</li>
+<li>VPN services masking corporate origins</li>
+</ul>
+<p>Testing proxy detection systems involves challenging the infrastructure with known proxy IPs to verify blocking triggers appropriately. However, publishers must balance proxy blocking against false positives that might affect legitimate users behind corporate VPNs or privacy tools.</p>
+<h2>Rate Limiting Validation</h2>
+<p><strong>Rate limiting</strong> restricts crawler velocity, preventing infrastructure overload even when content access is permitted. Testing rate limiting functionality confirms that protective thresholds trigger correctly without inadvertently blocking legitimate traffic.</p>
+<p><strong>Request threshold testing</strong> validates that rate limits apply at specified intervals. If configuration restricts a crawler to 10 requests per minute, testing should:</p>
+<ul>
+<li>Send exactly 10 requests within a minute and verify all succeed</li>
+<li>Send an 11th request and confirm it&#39;s blocked or delayed</li>
+<li>Wait for the time window to reset and verify access resumes</li>
+<li>Test burst scenarios where requests cluster at interval boundaries</li>
+</ul>
+<p>This reveals whether rate limiting uses sliding windows (more precise but computationally expensive) or fixed intervals (simpler but potentially allowing burst exploitation).</p>
+<p><strong>Per-user-agent rate limiting</strong> ensures restrictions apply independently to different crawlers. A publisher might allow Googlebot 100 requests per minute while restricting GPTBot to 10. Testing confirms that one crawler exhausting its quota doesn&#39;t impact another&#39;s access, preventing scenarios where training crawlers could consume rate limit capacity intended for search indexing.</p>
+<p><strong>Distributed request handling</strong> tests rate limiting across multiple server instances. Cloud-deployed publishers using auto-scaling architectures must ensure rate limiting state synchronizes across instances. A crawler could exploit distributed deployments by distributing requests across servers that independently track quotas. Testing involves:</p>
+<ul>
+<li>Directing requests to multiple backend instances</li>
+<li>Verifying centralized rate limit tracking</li>
+<li>Confirming that scaling events don&#39;t reset quotas</li>
+<li>Testing quota enforcement during instance failures</li>
+</ul>
+<p><strong>Adaptive rate limiting</strong> responds to crawler behavior patterns. Rather than static thresholds, sophisticated systems might allow higher rates during off-peak periods or reduce limits when crawlers exhibit aggressive patterns. Testing these adaptive systems requires simulating various traffic profiles and confirming appropriate threshold adjustments.</p>
+<p><strong>Rate limit bypass attempts</strong> should be included in testing to verify security. Adversarial testing might include:</p>
+<ul>
+<li>Rotating user agent strings to evade per-crawler limits</li>
+<li>Distributing requests across IP ranges to avoid per-IP restrictions</li>
+<li>Manipulating timing to stay just under thresholds</li>
+<li>Sending requests through multiple simultaneous connections</li>
+</ul>
+<p>If test bypass attempts succeed, the rate limiting implementation contains exploitable gaps requiring architectural changes.</p>
+<h2>JavaScript Challenge Testing</h2>
+<p><strong>JavaScript challenges</strong> verify that the client can execute dynamic code, distinguishing browsers from simple HTTP crawlers. AI training crawlers typically use headless browsers or JavaScript engines to navigate such challenges, requiring publishers to implement sophisticated detection beyond basic execution tests.</p>
+<p><strong>Basic execution verification</strong> confirms crawlers must evaluate JavaScript to access content. Simple implementations might:</p>
+<ul>
+<li>Serve initial page with content hidden in JavaScript</li>
+<li>Require client-side calculation to request protected resources</li>
+<li>Use session tokens generated through JavaScript execution</li>
+<li>Implement time-based challenges that require multiple round trips</li>
+</ul>
+<p>Testing involves attempting access both with and without JavaScript execution, confirming that content remains unavailable to simple HTTP clients while accessible to full browsers.</p>
+<p><strong>Headless browser detection</strong> targets AI crawlers using tools like Puppeteer, Playwright, or Selenium. These automation frameworks enable JavaScript execution but leave detectable artifacts:</p>
+<ul>
+<li>Missing or unusual browser properties (navigator.webdriver)</li>
+<li>Inconsistent window and document dimensions</li>
+<li>Absent browser plugin enumeration</li>
+<li>Unusual canvas fingerprints</li>
+<li>Timing inconsistencies in event handling</li>
+</ul>
+<p>Testing headless detection requires automated browsers configured both with and without evasion techniques, verifying that detection triggers appropriately against unmodified automation tools while avoiding false positives for legitimate users.</p>
+<p><strong>Canvas fingerprinting challenges</strong> exploit rendering differences between environments. The challenge might instruct the client to render text or graphics on a canvas element, then return a hash of the resulting pixel data. Automated browsers using different rendering engines than standard Chrome/Firefox produce distinctive fingerprints. Testing confirms that:</p>
+<ul>
+<li>Known automation tool fingerprints trigger blocking</li>
+<li>Legitimate browser fingerprints pass verification</li>
+<li>Fingerprint variation within acceptable bounds for real users</li>
+<li>Attempted fingerprint spoofing is detectible</li>
+</ul>
+<p><strong>WebGL capability testing</strong> extends fingerprinting to 3D graphics APIs. AI crawlers running in minimized or headless environments often lack full WebGL support. Challenges requiring WebGL rendering and capability reporting detect simplified automation environments. Testing validates that WebGL-based verification doesn&#39;t inadvertently block users on older hardware or privacy-focused configurations that limit WebGL for fingerprinting resistance.</p>
+<p><strong>Behavioral analysis verification</strong> tracks interaction patterns. Real users move mice, pause between actions, and exhibit variable timing. Automation scripts demonstrate mechanical consistency. Testing behavioral detection involves simulating both human-like and bot-like interaction patterns, confirming the system correctly classifies each. This requires sophisticated test harnesses that can replay recorded user sessions and compare detection outcomes against known ground truth.</p>
+<h2>CDN and Edge Function Testing</h2>
+<p>Publishers using <strong>content delivery networks</strong> implement crawler blocking at the edge, preventing unauthorized requests from reaching origin servers. Testing CDN-based blocking confirms configurations propagate correctly across global edge locations and interact properly with dynamic content.</p>
+<p><strong>Edge location consistency</strong> verifies blocking rules apply uniformly across CDN points of presence. A publisher blocking GPTBot must ensure the restriction works from edge nodes in Asia, Europe, and Americas. Testing requires:</p>
+<ul>
+<li>Issuing requests from geographically distributed sources</li>
+<li>Confirming consistent blocking behavior across regions</li>
+<li>Verifying configuration propagation times after updates</li>
+<li>Testing fallback behavior when edge nodes lack current rules</li>
+</ul>
+<p>Inconsistent edge enforcement creates windows where crawlers accessing specific regions might bypass intended blocks, especially during configuration deployments.</p>
+<p><strong>Cache interaction testing</strong> addresses challenges when CDN caches serve previously fetched content. If a crawler accessed content before blocking rules deployed, cached versions might remain accessible even after restrictions activate. Testing should:</p>
+<ul>
+<li>Verify cache invalidation after blocking rule changes</li>
+<li>Confirm crawlers can&#39;t request cached content directly</li>
+<li>Test cache key construction to prevent cache poisoning</li>
+<li>Validate cache respect for robots.txt and ToS restrictions</li>
+</ul>
+<p><strong>Edge function execution</strong> enables sophisticated blocking logic that adapts to request characteristics. <a href="vercel-netlify-block-ai-crawlers.html">Vercel and Netlify edge functions</a> can implement:</p>
+<ul>
+<li>Real-time IP reputation checking</li>
+<li>Request pattern analysis for bot detection</li>
+<li>Dynamic rate limiting based on content value</li>
+<li>A/B testing of blocking strategies</li>
+</ul>
+<p>Testing edge function blocking requires automated test suites that verify function logic executes correctly, handles edge cases gracefully, and maintains acceptable latency overhead. Performance testing confirms that sophisticated detection logic doesn&#39;t degrade user experience.</p>
+<p><strong>Failover and redundancy testing</strong> ensures blocking persists during CDN issues. If edge functions fail, what happens? Secure defaults should deny access rather than failover to unrestricted content delivery. Testing involves:</p>
+<ul>
+<li>Forcing edge function failures and observing behavior</li>
+<li>Simulating CDN partial outages</li>
+<li>Testing origin server fallback scenarios</li>
+<li>Verifying security policy enforcement during degraded states</li>
+</ul>
+<h2>Monitoring and Compliance Validation</h2>
+<p>Ongoing <strong>compliance monitoring</strong> detects when AI crawlers respect or violate blocking measures. Publishers can&#39;t rely solely on initial testing—continuous validation reveals emerging evasion techniques and configuration drift.</p>
+<p><strong>Access log analysis</strong> provides the foundation for compliance monitoring. Server logs recording user agent, IP address, requested paths, and response codes enable pattern detection:</p>
+<ul>
+<li>Unusual request volumes from specific user agents</li>
+<li>Access to robots.txt-disallowed paths</li>
+<li>Suspicious user agent strings attempting to evade detection</li>
+<li>Geographic anomalies suggesting proxy usage</li>
+<li>Timing patterns consistent with automated scraping</li>
+</ul>
+<p>Automated log analysis tools should alert publishers when indicators suggest blocking measure circumvention. Log sampling and aggregation techniques handle high-volume sites where full log analysis becomes computationally expensive.</p>
+<p><strong>Honeypot content</strong> deliberately placed in robots.txt-disallowed areas detects noncompliant crawlers. Publishers might create:</p>
+<ul>
+<li>Disallowed paths containing fake but compelling content</li>
+<li>Invisible links only accessible to crawlers ignoring robots.txt</li>
+<li>Tempting endpoints that trigger alerts when accessed</li>
+<li>Content marked with unique identifiers to trace training data usage</li>
+</ul>
+<p>When honeypot access occurs, it definitively proves a crawler violated robots.txt restrictions. The accessing IP, user agent, and timing provide evidence for <a href="terms-of-service-ai-scraping.html">Terms of Service enforcement</a> actions.</p>
+<p><strong>Third-party monitoring services</strong> offer external validation of blocking effectiveness. These services attempt to access protected content using various crawler identities and techniques, reporting success rates and identifying evasion methods. External monitoring provides:</p>
+<ul>
+<li>Independent verification of in-house testing</li>
+<li>Coverage of evasion techniques publishers might not anticipate</li>
+<li>Benchmarking against industry baseline blocking effectiveness</li>
+<li>Expert analysis of emerging crawler behaviors</li>
+</ul>
+<p><strong>Model output monitoring</strong> represents indirect compliance testing. Publishers can query AI models for verbatim reproduction of their protected content, detecting training data inclusion despite supposed blocking. When a model reproduces content that should have been inaccessible, it suggests:</p>
+<ul>
+<li>Blocking measures were bypassed during training data collection</li>
+<li>Content was accessed before protections were implemented</li>
+<li>The AI company obtained content through means other than crawling</li>
+<li>Sufficient similar content exists that the model can reconstruct examples</li>
+</ul>
+<p>While not definitive proof of specific violations, model output monitoring reveals when blocking measures failed to prevent training data inclusion, triggering investigation into how access occurred.</p>
+<h2>Automated Testing Frameworks</h2>
+<p><strong>Continuous testing</strong> of crawler blocking requires automation given the dynamic nature of both publisher content and crawler behaviors. Frameworks that regularly verify protection effectiveness catch regressions and emerging threats.</p>
+<p><strong>Integration testing pipelines</strong> incorporate blocking verification into deployment workflows. Before new site versions go live, automated tests confirm:</p>
+<ul>
+<li>robots.txt remains properly formatted</li>
+<li>Blocking rules survived code changes</li>
+<li>New content respects protection patterns</li>
+<li>CDN configurations propagate correctly</li>
+<li>Edge functions continue executing as intended</li>
+</ul>
+<p>Integration testing prevents scenarios where site updates inadvertently disable or weaken crawler protections, catching issues during staging rather than production.</p>
+<p><strong>Scheduled penetration testing</strong> simulates adversarial crawler attempts on regular intervals. Weekly or monthly tests attempt to:</p>
+<ul>
+<li>Bypass IP filtering through proxy services</li>
+<li>Evade user agent detection via string manipulation</li>
+<li>Circumvent JavaScript challenges with automated browsers</li>
+<li>Exhaust rate limiting through distributed requests</li>
+<li>Access honeypot content placed in protected areas</li>
+</ul>
+<p>Results trend over time, revealing whether protections strengthen, weaken, or remain consistent. Scheduling aligns testing with AI company training data collection cycles when known.</p>
+<p><strong>Compliance testing as a service</strong> enables publishers without internal security expertise to maintain rigorous verification. Service providers offer:</p>
+<ul>
+<li>Managed testing infrastructure replicating crawler behaviors</li>
+<li>Expert analysis of results and recommended improvements</li>
+<li>Threat intelligence about emerging evasion techniques</li>
+<li>Compliance reporting for licensing and legal purposes</li>
+<li>Incident response when unauthorized access is detected</li>
+</ul>
+<p>These services particularly benefit smaller publishers who implement crawler blocking but lack resources for comprehensive ongoing validation.</p>
+<p><strong>Collaborative testing initiatives</strong> among publishers share evasion technique discoveries and countermeasure effectiveness. Industry groups might operate shared testing infrastructure where members contribute blocking strategies and receive feedback on performance against standardized crawler simulation suites. This collective approach accelerates protection advancement across the publisher ecosystem.</p>
+<h2>Testing Ethical Considerations</h2>
+<p>Testing crawler blocking involves simulating potentially unwelcome bot traffic, raising questions about testing ethics and avoiding unintended consequences.</p>
+<p><strong>Informed testing protocols</strong> ensure testing doesn&#39;t inadvertently harm other parties. Publishers testing their own blocking measures face few ethical constraints, but third-party testers must:</p>
+<ul>
+<li>Obtain explicit permission before testing another party&#39;s infrastructure</li>
+<li>Limit test traffic volume to avoid denial of service</li>
+<li>Identify test traffic through distinct user agents</li>
+<li>Notify site operators of test schedules and sources</li>
+<li>Provide results to tested parties to improve their protections</li>
+</ul>
+<p><strong>Evasion technique disclosure</strong> presents a dilemma. Publishing detailed evasion methods helps publishers improve defenses but also aids malicious actors. Responsible disclosure approaches include:</p>
+<ul>
+<li>Sharing vulnerabilities privately with affected publishers first</li>
+<li>Allowing reasonable remediation time before public disclosure</li>
+<li>Describing classes of vulnerabilities without exact exploitation steps</li>
+<li>Coordinating disclosure timing across multiple affected parties</li>
+</ul>
+<p><strong>AI company cooperative testing</strong> represents the ideal scenario where crawlers and publishers collaborate on compliance verification. AI companies might:</p>
+<ul>
+<li>Provide test credentials for controlled crawling</li>
+<li>Share training data collection schedules</li>
+<li>Operate public test endpoints for validation</li>
+<li>Report blocking measure encounters for debugging</li>
+<li>Fund industry testing infrastructure development</li>
+</ul>
+<p>This cooperative model requires trust and mutual benefit recognition currently absent in many publisher-AI company relationships, but industry pressure and potential regulation may drive greater collaboration.</p>
+<h2>Testing Failure Modes and Remediation</h2>
+<p>Understanding how blocking measures fail guides both testing strategy and remediation priorities. Common failure patterns include technical defects, configuration errors, and architectural limitations.</p>
+<p><strong>Silent failure</strong> represents the most dangerous mode—blocking appears functional but doesn&#39;t actually prevent access. This occurs when:</p>
+<ul>
+<li>Blocking logic contains exceptions that inadvertently permit all traffic</li>
+<li>Error handling in blocking code fails open rather than closed</li>
+<li>Configuration changes partially deploy, creating inconsistent state</li>
+<li>Caching serves previously accessible content despite new restrictions</li>
+</ul>
+<p>Testing must specifically probe for silent failures through negative test cases that should trigger blocking but might slip through edge cases.</p>
+<p><strong>Performance degradation</strong> failures occur when blocking measures work but impose unacceptable latency. Complex verification logic, real-time IP reputation checks, or heavyweight JavaScript challenges might successfully block crawlers while making the site unusably slow for legitimate visitors. Performance testing identifies when security measures cross into user experience degradation, requiring optimization or alternative approaches.</p>
+<p><strong>False positive blocking</strong> causes collateral damage when protection measures inadvertently restrict legitimate traffic. Testing should verify that:</p>
+<ul>
+<li>Search engine crawlers maintain access when intended</li>
+<li>Accessibility tools function despite bot detection</li>
+<li>Corporate users behind proxies aren&#39;t misidentified</li>
+<li>Privacy-conscious browser configurations pass verification</li>
+<li>API consumers with automation tools can authenticate</li>
+</ul>
+<p>Remediation often requires allowlisting specific user agents, IP ranges, or authentication tokens to carve out exceptions from broader blocking rules.</p>
+<p><strong>Evasion technique emergence</strong> represents an ongoing failure mode as sophisticated crawlers develop countermeasures. Today&#39;s effective blocking becomes tomorrow&#39;s bypass target. Testing must anticipate evolution through:</p>
+<ul>
+<li>Threat modeling of potential evasion techniques</li>
+<li>Monitoring security research and bot mitigation literature</li>
+<li>Analyzing successful penetration tests for novel approaches</li>
+<li>Tracking AI company technology investments in crawler sophistication</li>
+</ul>
+<h2>Compliance Testing for AI Companies</h2>
+<p>AI companies testing their crawler compliance face distinct requirements. Rather than verifying blocking effectiveness, they need processes confirming their crawlers respect publisher restrictions even when technically capable of circumventing them.</p>
+<p><strong>Policy compliance verification</strong> checks that crawler behavior aligns with company policies. If an AI company commits to respecting robots.txt, internal testing must confirm:</p>
+<ul>
+<li>Crawlers parse robots.txt before accessing any site content</li>
+<li>Disallow directives are properly interpreted and obeyed</li>
+<li>Crawlers don&#39;t attempt access to restricted paths</li>
+<li>Fallback behavior when robots.txt is unavailable errs toward restriction</li>
+<li>Policy violations in crawler code are detected before deployment</li>
+</ul>
+<p><strong>Training data filtering</strong> verifies that content from non-compliant crawls doesn&#39;t enter training datasets. Even when crawlers occasionally violate restrictions due to bugs, filtering should catch prohibited content before model training. Testing validates:</p>
+<ul>
+<li>Blocklist propagation from robots.txt violations to data pipelines</li>
+<li>Content from restricted domains excluded from training sets</li>
+<li>Temporal restrictions honored (e.g., only content older than X date)</li>
+<li>License terms matched correctly to scraped content</li>
+<li>Audit logs tracking content inclusion decisions</li>
+</ul>
+<p><strong>Bias toward restriction</strong> represents a compliance principle where technical ambiguity resolves toward respecting publisher intent. When robots.txt directives are unclear or multiple signals conflict, compliant crawlers should err toward more restriction. Testing confirms this bias by:</p>
+<ul>
+<li>Presenting ambiguous robots.txt patterns</li>
+<li>Simulating conflicting signals (robots.txt vs. meta tags)</li>
+<li>Testing behavior when publisher servers return errors</li>
+<li>Verifying how stale cached robots.txt is handled</li>
+</ul>
+<p><strong>Transparency mechanisms</strong> enable external validation of compliance. AI companies might:</p>
+<ul>
+<li>Publish real-time crawler access statistics</li>
+<li>Provide publishers with crawl logs for their domains</li>
+<li>Operate public APIs reporting which sites are included in training data</li>
+<li>Submit to third-party audits of data collection practices</li>
+<li>Participate in industry compliance certification programs</li>
+</ul>
+<p>Testing these transparency mechanisms confirms they accurately reflect crawler behavior rather than aspirational policies.</p>
+<h2>Frequently Asked Questions</h2>
+<p><strong>How can I verify that robots.txt blocks are actually working?</strong></p>
+<p>Test robots.txt effectiveness through multiple methods: use Google Search Console&#39;s robots.txt Tester, examine server logs for requests to disallowed paths from target user agents, place honeypot content in blocked areas and monitor for access, and attempt crawling your own site using various user agents to confirm blocking triggers appropriately.</p>
+<p><strong>What&#39;s the best way to confirm an AI crawler is authentic and not spoofed?</strong></p>
+<p>Verify crawler authenticity through <a href="verify-claudebot-ip-dns.html">DNS reverse lookup</a>: extract the request source IP, perform reverse DNS to get the hostname, verify the hostname matches the expected pattern for that crawler, then perform forward DNS on that hostname and confirm it resolves back to the original IP. This bidirectional check prevents spoofing.</p>
+<p><strong>Should I test crawler blocking in production or staging environments?</strong></p>
+<p>Test in staging first to validate blocking logic without risking production access disruption. However, production testing remains necessary because CDN configurations, geographic routing, and edge function behaviors often differ between environments. Schedule low-impact production tests during off-peak periods using distinct test user agents.</p>
+<p><strong>How often should crawler blocking measures be tested?</strong></p>
+<p>Implement continuous monitoring through log analysis for real-time violation detection. Conduct comprehensive blocking verification monthly to catch configuration drift. Perform adversarial penetration testing quarterly to identify emerging evasion techniques. Retest immediately after any site infrastructure changes, CDN configuration updates, or reports of unauthorized crawler access.</p>
+<p><strong>Can testing crawler blocks violate Terms of Service?</strong></p>
+<p>Testing your own site&#39;s blocking measures doesn&#39;t violate your ToS. Testing another site&#39;s blocks requires explicit permission from the site operator. When conducting research on crawler blocking effectiveness across multiple sites, use minimal test traffic, identify test requests through distinct user agents, and limit testing to publicly documented blocking mechanisms rather than attempting to discover vulnerabilities.</p>
+<p><strong>What metrics indicate successful crawler blocking?</strong></p>
+<p>Key metrics include: zero requests from blocked user agents to protected content paths in server logs, no honeypot content access by restricted crawlers, confirmed rate limiting triggering at specified thresholds, successful IP verification for all claimed crawler identities, and absence of your protected content in AI model training data as verified through model output testing.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

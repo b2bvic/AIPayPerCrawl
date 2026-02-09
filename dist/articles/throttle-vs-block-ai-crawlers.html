@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throttle vs Block AI Crawlers: Strategic Access Control for Publishers | AI Pay Per Crawl</title>
+    <meta name="description" content="Compare throttling and blocking approaches for AI crawler management, including hybrid strategies and decision frameworks for content monetization.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Throttle vs Block AI Crawlers: Strategic Access Control for Publishers">
+    <meta property="og:description" content="Compare throttling and blocking approaches for AI crawler management, including hybrid strategies and decision frameworks for content monetization.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/throttle-vs-block-ai-crawlers">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Throttle vs Block AI Crawlers: Strategic Access Control for Publishers">
+    <meta name="twitter:description" content="Compare throttling and blocking approaches for AI crawler management, including hybrid strategies and decision frameworks for content monetization.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/throttle-vs-block-ai-crawlers">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Throttle vs Block AI Crawlers: Strategic Access Control for Publishers",
+  "description": "Compare throttling and blocking approaches for AI crawler management, including hybrid strategies and decision frameworks for content monetization.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/throttle-vs-block-ai-crawlers"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Throttle vs Block AI Crawlers: Strategic Access Control for Publishers",
+      "item": "https://aipaypercrawl.com/articles/throttle-vs-block-ai-crawlers"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Throttle vs Block AI Crawlers: Strategic Access Control for Publishers</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 21 min read</span>
+        <h1>Throttle vs Block AI Crawlers: Strategic Access Control for Publishers</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Compare throttling and blocking approaches for AI crawler management, including hybrid strategies and decision frameworks for content monetization.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Throttle vs Block AI Crawlers: Strategic Access Control for Publishers</h1>
+<p>Publishers managing <strong>AI training crawlers</strong> face a fundamental strategic choice: completely block access to protect content, or throttle access to maintain some relationship with AI companies while controlling resource consumption. This decision shapes revenue potential, infrastructure costs, competitive positioning, and long-term content value. Neither approach universally dominates—optimal strategies depend on content type, business model, technical capacity, and market positioning.</p>
+<p><strong>Blocking</strong> prevents all access from specified crawlers, typically implemented through robots.txt disallow directives, IP filtering, or CDN-level restrictions. This approach prioritizes content control and forces AI companies to negotiate licensing agreements before obtaining training data. Publishers choosing complete blocks signal that their content carries sufficient value to command licensing fees, betting that AI companies will ultimately pay rather than proceed without their material.</p>
+<p><strong>Throttling</strong> permits limited crawler access under technical constraints that prevent infrastructure overload while still allowing training data collection. Rate limits, time-window restrictions, and partial content access represent throttling mechanisms that balance publisher resource protection with AI company needs. Throttling strategies acknowledge the difficulty of complete blocking while attempting to maintain some leverage for future licensing negotiations.</p>
+<p>The spectrum between these poles includes hybrid approaches where publishers block some crawlers while throttling others, restrict recent content while allowing historical access, or throttle during licensing negotiations then block if agreements fail. Understanding the implications of each strategy requires examining technical implementation, business model alignment, and market dynamics in the evolving <a href="training-data-supply-chain.html">training data supply chain</a>.</p>
+<h2>Technical Implementation Comparison</h2>
+<p>Blocking and throttling require different technical architectures with distinct operational characteristics, cost profiles, and maintenance requirements.</p>
+<p><strong>Blocking implementation</strong> achieves simplicity through denial. robots.txt rules like <code>User-agent: GPTBot</code> followed by <code>Disallow: /</code> instruct crawlers to avoid the entire site. Publishers supplement robots.txt with:</p>
+<ul>
+<li>IP range blocking at firewall or CDN level</li>
+<li>User agent filtering in web server configuration</li>
+<li><a href="verify-claudebot-ip-dns.html">DNS verification</a> to prevent spoofing</li>
+<li>JavaScript challenges that automated crawlers can&#39;t complete</li>
+<li>Authentication requirements for content access</li>
+</ul>
+<p>This defense-in-depth approach assumes adversarial crawlers will attempt circumvention. Each layer increases implementation complexity but strengthens blocking effectiveness. The technical investment occurs upfront, after which blocking requires minimal ongoing resource consumption—rejected requests consume trivial bandwidth and processing.</p>
+<p><strong>Throttling implementation</strong> demands sophisticated traffic shaping. Rather than binary allow/deny decisions, throttling systems must:</p>
+<ul>
+<li>Track request rates per user agent and IP address</li>
+<li>Maintain state across distributed server instances</li>
+<li>Implement quota reset logic on various time windows</li>
+<li>Differentiate between burst traffic and sustained scraping</li>
+<li>Provide feedback to crawlers about rate limit status</li>
+<li>Handle quota exhaustion gracefully without service disruption</li>
+</ul>
+<p>Throttling architectures often employ token bucket or leaky bucket algorithms to smooth traffic while preventing abuse. These systems require persistent storage for quota tracking, coordination mechanisms for distributed deployments, and monitoring to detect when crawlers approach or exceed limits. Operational complexity exceeds blocking because throttling must continuously process and meter crawler requests rather than rejecting them at the perimeter.</p>
+<p><strong>CDN integration</strong> affects both approaches differently. Blocking at the CDN edge prevents crawler requests from reaching origin servers, minimizing infrastructure costs. <strong>Cloudflare</strong>, <strong>Fastly</strong>, and similar providers offer crawler blocking through configuration rules that deploy globally within minutes. Edge blocking scales efficiently because CDNs already distribute blocking logic across worldwide points of presence.</p>
+<p>Throttling at CDN edges introduces challenges because quota state must synchronize across distributed edge locations. A crawler could potentially exploit geographic distribution by directing requests to multiple edge regions that independently track quotas. Solutions include:</p>
+<ul>
+<li>Centralized quota services that edge functions query before serving content</li>
+<li>Eventually consistent quota replication with over-limit allowances</li>
+<li>Geographic partitioning where each region enforces independent quotas</li>
+<li>Hybrid approaches using edge blocking for over-quota requests</li>
+</ul>
+<p>The latency and reliability requirements for quota checking influence architecture choices, with performance-sensitive publishers potentially accepting quota circumvention risks to avoid centralization bottlenecks.</p>
+<p><strong>Cost structures</strong> diverge significantly. Blocking incurs minimal ongoing costs once implemented—primarily the opportunity cost of foregone crawler traffic. Throttling sustains costs for:</p>
+<ul>
+<li>Quota storage and state management infrastructure</li>
+<li>Increased bandwidth from permitted crawler traffic</li>
+<li>Computational resources for traffic analysis and metering</li>
+<li>Monitoring and alerting systems to detect quota violations</li>
+<li>Customer support for explaining and adjusting rate limits</li>
+</ul>
+<p>Publishers must evaluate whether throttling&#39;s partial access generates sufficient value through relationship building, licensing negotiations, or indirect benefits to justify these ongoing expenses.</p>
+<h2>Business Model Alignment</h2>
+<p>Content monetization strategies heavily influence whether blocking or throttling serves publisher interests. Different content types, audience characteristics, and revenue sources create varying incentives around AI crawler access.</p>
+<p><strong>Subscription-based publishers</strong> like news organizations and academic journals generate revenue from human readers, not crawlers. Training data licensing represents potential supplementary income but conflicts with subscriber value propositions. If AI models can answer questions using training data from subscriber-only content, why would users pay for subscriptions? This dynamic pushes subscription publishers toward blocking unless they secure licensing agreements that compensate for cannibalized subscriptions.</p>
+<p><strong>The New York Times</strong> exemplifies this approach—aggressively blocking AI training crawlers while simultaneously negotiating licensing deals. The strategy treats training data as a premium asset that requires compensation matching or exceeding subscription revenue risk. Complete blocking establishes negotiating leverage: AI companies seeking quality journalism must engage commercially rather than freely scraping.</p>
+<p><strong>Ad-supported publishers</strong> face different calculations. Crawler traffic generates no ad impressions, making throttling seem cost-free. However, if AI models trained on ad-supported content can directly answer user queries, search traffic to ad-supported pages declines. This future threat motivates some ad-supported publishers to block training crawlers despite lacking immediate revenue impact, viewing their content as infrastructure for AI systems that will divert their traffic.</p>
+<p>Conversely, ad-supported publishers might throttle training crawlers hoping that AI model responses drive awareness and backlinks that increase SEO authority. If a model cites &quot;according to Publisher X...&quot; when answering queries, that attribution could generate curious users who visit for deeper content. This optimistic scenario remains unproven, making throttling a speculative strategy betting on future attribution benefits.</p>
+<p><strong>E-commerce platforms</strong> using content to drive product purchases must consider whether AI training helps or harms. Product descriptions and reviews in training data could:</p>
+<ul>
+<li>Increase brand awareness when models mention products</li>
+<li>Generate product research questions that ultimately drive purchases</li>
+<li>Cannibalize traffic if models directly recommend products</li>
+<li>Enable competitors to train models that recommend alternatives</li>
+</ul>
+<p>The net effect remains unclear, pushing many e-commerce publishers toward throttling as a hedged strategy. Limited crawler access maintains some AI relationship while preserving options to block if traffic cannibalization materializes.</p>
+<p><strong>Nonprofit and educational publishers</strong> operating under open access mandates face constrained choices. Institutions committed to broad content dissemination struggle to justify blocking crawlers that further distribution goals. However, commercial AI companies monetizing freely-provided educational content create tension with open access principles. Some nonprofits adopt throttling as a compromise: allowing research and educational AI use while blocking commercial training through licensing tier differentiation.</p>
+<p>The <strong>business model evolution</strong> factor complicates decisions. Many publishers currently rely on search traffic and ads but aim to develop subscription or licensing revenue streams. Blocking too aggressively before establishing licensing sales channels could forfeit near-term traffic while failing to generate offsetting license revenue. Throttling provides transition flexibility, permitting crawler access during business model shifts while maintaining technical capability to block if licensing strategies succeed.</p>
+<h2>Resource Protection Dynamics</h2>
+<p>Publisher infrastructure costs and capacity constraints create technical imperatives independent of business model considerations. Aggressive crawler behavior can degrade service quality for legitimate users, making some form of access control mandatory.</p>
+<p><strong>Server load management</strong> represents the immediate concern. AI training crawlers operate at scale, requesting thousands or millions of pages. Without rate limiting, crawlers can overwhelm server capacity, causing:</p>
+<ul>
+<li>Increased latency for human visitors</li>
+<li>Database connection exhaustion</li>
+<li>Memory and CPU resource saturation</li>
+<li>CDN overage charges from excess bandwidth</li>
+<li>Application-level service degradation</li>
+</ul>
+<p>Blocking eliminates crawler resource consumption entirely. Throttling attempts to permit crawling at rates infrastructure can tolerate without impacting user experience. The appropriate throttling threshold depends on spare capacity during peak hours—publishers must limit crawlers to levels that won&#39;t affect real users even during traffic spikes.</p>
+<p><strong>Bandwidth cost optimization</strong> particularly matters for publishers near CDN bandwidth limits or paying per-GB transfer pricing. Crawler traffic can consume substantial bandwidth:</p>
+<ul>
+<li>Large media files (images, videos, PDFs) that training crawlers download</li>
+<li>API endpoints returning JSON data for structured content extraction</li>
+<li>Archive pages containing content listings crawlers use for discovery</li>
+<li>Redundant requests when crawlers don&#39;t respect caching headers</li>
+</ul>
+<p>Complete blocking eliminates crawler bandwidth costs. Throttling reduces but doesn&#39;t eliminate them, requiring publishers to calculate whether crawling activity costs justify strategic benefits from partial access.</p>
+<p><strong>Database query optimization</strong> addresses crawlers that trigger expensive queries. Content management systems often execute complex database operations to render pages. When crawlers request thousands of pages, they generate equivalent database load. Publishers might:</p>
+<ul>
+<li>Block crawlers entirely to eliminate database strain</li>
+<li>Throttle crawlers to database capacity limits</li>
+<li>Serve crawlers static cached pages instead of dynamic generation</li>
+<li>Create crawler-optimized content access paths requiring fewer queries</li>
+</ul>
+<p>The implementation choice depends on infrastructure flexibility and whether distinct crawler content delivery paths are technically feasible.</p>
+<p><strong>Geographic distribution effects</strong> create nuanced resource considerations. Crawlers operating from distant geographic regions increase latency for CDN cache misses, potentially triggering more origin server requests than local crawler traffic. Publishers might implement geography-aware throttling that permits higher rates from regions near CDN edge locations while restricting distant crawler traffic.</p>
+<h2>Licensing Negotiation Strategy</h2>
+<p>Whether publishers block or throttle significantly influences their position in licensing negotiations with AI companies. Each approach sends different signals about content value and publisher willingness to deal.</p>
+<p><strong>Blocking as negotiating leverage</strong> demonstrates that publisher content isn&#39;t freely available, forcing AI companies to choose between proceeding without that content or negotiating access. This strategy works best when:</p>
+<ul>
+<li>Content is unique and difficult for AI companies to replicate from other sources</li>
+<li>The publisher represents substantial market share in a content category</li>
+<li>Other similar publishers also block, creating collective leverage</li>
+<li>The AI company&#39;s model quality noticeably suffers without the blocked content</li>
+</ul>
+<p>Publishers blocking without negotiating leverage risk being ignored. AI companies may simply train without blocked content if alternatives exist. The <strong>New York Times</strong> commands leverage through investigative journalism uniqueness. A small blog blocking training crawlers likely lacks equivalent influence.</p>
+<p><strong>Throttling as relationship maintenance</strong> signals willingness to cooperate while establishing that unlimited scraping isn&#39;t acceptable. This approach keeps communication channels open and demonstrates good faith. AI companies might:</p>
+<ul>
+<li>Appreciate the balanced approach and reciprocate with license offers</li>
+<li>Respect the publisher as a reasonable partner for commercial relationships</li>
+<li>Provide transparency about training data use given the cooperative posture</li>
+<li>Include the publisher in early discussions about attribution or compensation frameworks</li>
+</ul>
+<p>However, throttling risks being interpreted as implicit permission, weakening claims that content use requires licensing. AI companies might argue &quot;you let us crawl, so we assumed consent&quot; even when throttling was intended as temporary compromise pending negotiations.</p>
+<p><strong>Conditional access strategies</strong> combine blocking and throttling dynamically based on negotiation progress. A publisher might:</p>
+<ol>
+<li>Initially throttle crawlers to signal openness</li>
+<li>Block if AI company doesn&#39;t initiate licensing discussions within X months</li>
+<li>Restore throttled access during active negotiations</li>
+<li>Block again if negotiations fail to reach agreement</li>
+<li>Remove all restrictions once licensing contract is signed</li>
+</ol>
+<p>This graduated approach maximizes flexibility while maintaining pressure on AI companies to engage commercially. The challenge lies in coordination—publishers must monitor crawler activity, track negotiation status, and synchronize technical access controls with business development efforts.</p>
+<p><strong>Industry coordination</strong> amplifies leverage. When publishers collectively block or impose similar throttling restrictions, AI companies face coordinated pressure that individual publishers can&#39;t generate. Industry groups like the <strong>News Media Alliance</strong> work to establish common positions on training data licensing, with technical access policies supporting commercial negotiations. Publishers participating in coordinated strategies benefit from shared leverage while individual defectors undermine collective bargaining power.</p>
+<h2>Hybrid and Conditional Approaches</h2>
+<p>The blocking versus throttling choice isn&#39;t binary. Sophisticated publishers implement hybrid strategies that vary access policies by content type, time period, crawler identity, or usage context.</p>
+<p><strong>Content tier differentiation</strong> applies different policies based on content value. A publisher might:</p>
+<ul>
+<li>Block crawlers from premium subscriber content</li>
+<li>Throttle access to recent articles (less than 30 days old)</li>
+<li>Allow unlimited crawling of archive content (older than 1 year)</li>
+<li>Permit full access to marketing and promotional content</li>
+</ul>
+<p>This stratification protects high-value content while using older material to maintain AI relationships and potential traffic referrals. Implementation requires robots.txt path-based rules or dynamic access control that evaluates content metadata before serving responses.</p>
+<p><strong>Crawler identity-based policies</strong> recognize that different AI companies present varied risks and opportunities. A publisher might:</p>
+<ul>
+<li>Allow <strong>Googlebot</strong> unlimited access for search indexing</li>
+<li>Throttle research-oriented crawlers from academic institutions</li>
+<li>Block commercial AI training crawlers by default</li>
+<li>Permit specific AI companies with licensing agreements</li>
+</ul>
+<p>This differentiation acknowledges that not all crawlers pose equivalent threats. Research applications might advance societal interests that publishers support, while commercial training seeks free inputs for profit-generating products. <a href="university-ai-crawler-policy.html">University AI crawler policies</a> often receive more permissive treatment than corporate training operations.</p>
+<p><strong>Temporal access windows</strong> restrict crawling to specific time periods when infrastructure capacity is available. Publishers experiencing predictable traffic patterns might:</p>
+<ul>
+<li>Permit crawling only during overnight hours (e.g., 2-6 AM local time)</li>
+<li>Increase throttling rates during off-peak periods</li>
+<li>Completely block crawlers during known traffic spikes</li>
+<li>Implement seasonal restrictions matching content production cycles</li>
+</ul>
+<p>Time-based policies balance infrastructure protection with partial access accommodation. However, global AI companies operating across time zones may circumvent temporal restrictions by shifting crawler activity to regions where current time falls within permitted windows.</p>
+<p><strong>Usage-based progressive throttling</strong> adapts restriction severity to crawler behavior. Polite crawlers respecting rate limits might gradually earn higher quotas, while aggressive crawlers face increasingly restrictive limits:</p>
+<ul>
+<li>Initial requests receive moderate throttling</li>
+<li>Crawlers staying within limits gain higher quotas over time</li>
+<li>Crawlers exceeding limits face exponentially longer delays</li>
+<li>Repeated violations trigger complete blocks</li>
+</ul>
+<p>This adaptive approach rewards good behavior while escalating responses to abuse. Implementation requires sophisticated tracking of crawler behavior history and dynamic quota adjustment algorithms.</p>
+<p><strong>Licensing-contingent access</strong> uses technical controls to enforce business agreements. When publishers license training data to AI companies, agreements might specify:</p>
+<ul>
+<li>Crawlers may access licensed content at specified rates</li>
+<li>License violations trigger automatic throttling or blocking</li>
+<li>Expired licenses result in immediate access revocation</li>
+<li>License compliance monitoring through technical telemetry</li>
+</ul>
+<p>This tight integration between commercial terms and technical implementation ensures that access aligns with contractual obligations. The approach requires infrastructure that can dynamically update access policies based on licensing database state.</p>
+<h2>Long-Term Strategic Considerations</h2>
+<p>Decisions between blocking and throttling have implications extending beyond immediate resource protection and licensing negotiations, shaping publishers&#39; positions in evolving AI ecosystems.</p>
+<p><strong>Model dependence effects</strong> create risks when models train on publisher content. If blocking occurs after AI companies already collected substantial training data, the damage is done—blocking prevents future collection but doesn&#39;t remove existing model knowledge. This creates a window of opportunity: publishers establishing blocks early limit model dependence on their content, strengthening future licensing leverage. Those who throttle or ignore AI crawlers for extended periods may find their content so thoroughly integrated into models that retrospective licensing demands lack credibility.</p>
+<p><strong>Competitive positioning</strong> within publisher industries depends partly on training data strategies. Publishers who license content while competitors block might:</p>
+<ul>
+<li>Gain revenue competitors forego</li>
+<li>Improve SEO through model citations and awareness</li>
+<li>Build relationships with AI companies that lead to partnership opportunities</li>
+</ul>
+<p>Alternatively, blocking publishers might:</p>
+<ul>
+<li>Preserve content uniqueness that maintains direct traffic</li>
+<li>Avoid training AI systems that eventually cannibalize their audience</li>
+<li>Maintain premium positioning that justifies higher licensing fees</li>
+</ul>
+<p>Market dynamics will eventually reveal which strategy proves superior, but short-term decisions commit publishers to divergent paths.</p>
+<p><strong>AI attribution evolution</strong> could reshape incentives. If AI models begin consistently citing sources, publishers who permitted training might benefit from exposure in model responses. Users seeking deeper information might follow citations to publisher sites, driving traffic. However, if attribution remains minimal or non-existent, publishers who permitted training data collection receive no compensating benefit for traffic cannibalization.</p>
+<p><strong>Regulatory trajectory</strong> introduces uncertainty. Emerging <a href="us-ai-legislation-publisher-rights.html">AI legislation in the US</a> and abroad may establish training data rights that override current voluntary technical measures. Publishers blocking or throttling today position themselves favorably if regulations create statutory licensing requirements—they can demonstrate having withheld consent, strengthening claims to compensation. Publishers who freely allowed crawling may struggle to claim retrospective licensing rights for content AI companies already collected.</p>
+<p><strong>Search engine relationship preservation</strong> remains critical for most publishers. While training crawlers might be blocked, search indexing crawlers like Googlebot must maintain access to preserve organic traffic. Publishers implementing crawler policies must carefully distinguish between crawler types, ensuring that training data restrictions don&#39;t inadvertently block search crawlers. Overly aggressive blocking risks SEO catastrophe that far outweighs training data concerns.</p>
+<p><strong>Technical capability signaling</strong> affects how AI companies perceive publishers. Sophisticated blocking or throttling implementations demonstrate technical competence and serious intent regarding content protection. Publishers who can implement robust access controls, monitor compliance, and rapidly respond to circumvention attempts signal that they&#39;re serious negotiating partners. Those with ineffective or easily bypassed restrictions appear less formidable, potentially receiving lower licensing offers or being ignored entirely.</p>
+<h2>Decision Framework for Publishers</h2>
+<p>Selecting between blocking, throttling, or hybrid approaches requires structured evaluation of publisher-specific factors rather than universal best practices.</p>
+<p><strong>Content uniqueness assessment</strong> determines negotiating leverage. Publishers should evaluate:</p>
+<ul>
+<li>How readily could AI companies obtain similar content from other sources?</li>
+<li>Does our content represent unique insights, data, or perspectives?</li>
+<li>What fraction of market share in our content category do we represent?</li>
+<li>Would model quality noticeably degrade without our specific content?</li>
+</ul>
+<p>High uniqueness justifies aggressive blocking to force licensing negotiations. Low uniqueness suggests throttling or permissive access because AI companies can easily substitute alternative sources.</p>
+<p><strong>Business model vulnerability analysis</strong> identifies AI threat level. Consider:</p>
+<ul>
+<li>What percentage of revenue depends on organic search traffic?</li>
+<li>How much could AI query answering cannibalize our traffic?</li>
+<li>Do we have alternative monetization paths if traffic declines?</li>
+<li>Could AI model citations generate offsetting awareness benefits?</li>
+</ul>
+<p>High vulnerability to AI-driven traffic losses supports blocking strategies that slow AI capabilities development in publisher content areas. Low vulnerability permits throttling experiments to explore potential benefits.</p>
+<p><strong>Resource capacity evaluation</strong> establishes technical constraints. Publishers should calculate:</p>
+<ul>
+<li>What percentage of current infrastructure capacity do crawlers consume?</li>
+<li>How much would unlimited crawler access cost in bandwidth and compute?</li>
+<li>Can we technically implement effective throttling or only binary blocking?</li>
+<li>What monitoring and enforcement resources can we dedicate to crawler management?</li>
+</ul>
+<p>Limited technical capacity pushes publishers toward simple blocking rather than sophisticated throttling. Organizations with engineering resources can explore nuanced hybrid approaches.</p>
+<p><strong>Industry position consideration</strong> accounts for competitive dynamics. Analyze:</p>
+<ul>
+<li>What approaches are similar publishers adopting?</li>
+<li>Would blocking while competitors allow access harm our SEO relative to theirs?</li>
+<li>Can we participate in collective industry licensing efforts?</li>
+<li>Does our market position allow leadership through aggressive protection?</li>
+</ul>
+<p>Industry coordination amplifies individual actions. Publishers operating in sectors with strong collective organizing might adopt strategies aligned with industry groups. Those in fragmented markets must evaluate positions independently.</p>
+<p><strong>Licensing revenue potential</strong> estimates commercial opportunity. Project:</p>
+<ul>
+<li>What could we realistically charge AI companies for training data licenses?</li>
+<li>How many AI companies would potentially pay for access?</li>
+<li>What costs would licensing negotiations and administration impose?</li>
+<li>Does licensing revenue justify foregone potential AI-driven traffic?</li>
+</ul>
+<p>Publishers with substantial high-value content might generate meaningful licensing revenue, justifying blocking strategies that force negotiations. Smaller publishers may find licensing administrative costs exceed realistic revenue, suggesting throttling or permissive access as more practical.</p>
+<p><strong>Regulatory timeline expectations</strong> incorporate policy development probabilities. Evaluate:</p>
+<ul>
+<li>How likely is legislation establishing training data rights in relevant jurisdictions?</li>
+<li>What timeline might regulations emerge on?</li>
+<li>Would we benefit from demonstrating historical blocking to claim compensation?</li>
+<li>Should we wait for regulatory clarity before committing to strategies?</li>
+</ul>
+<p>Publishers in jurisdictions with active AI policy development might adopt aggressive protection assuming future regulations will validate their positions. Those in regions unlikely to regulate training data access must rely on voluntary technical measures and negotiations without legislative backstop.</p>
+<h2>Monitoring and Strategy Adjustment</h2>
+<p>Neither blocking nor throttling represents permanent decisions. Publishers should implement monitoring that enables strategy refinement based on observed outcomes and market evolution.</p>
+<p><strong>Crawler behavior tracking</strong> reveals how AI companies respond to restrictions. Monitor:</p>
+<ul>
+<li>Do blocked crawlers attempt circumvention through spoofing or proxies?</li>
+<li>Do throttled crawlers respect rate limits or push against boundaries?</li>
+<li>How does crawler traffic volume trend over time?</li>
+<li>Are new unidentified crawlers emerging to bypass known restrictions?</li>
+</ul>
+<p>Circumvention attempts suggest need for blocking strengthening or throttling adjustment. Respectful crawler behavior might justify relaxing restrictions or initiating licensing discussions.</p>
+<p><strong>Traffic impact analysis</strong> measures whether AI cannibalization materializes. Track:</p>
+<ul>
+<li>Organic search traffic trends from major search engines</li>
+<li>Direct traffic patterns suggesting brand awareness</li>
+<li>Query patterns in site search showing information-seeking behavior</li>
+<li>Referrals from AI model interfaces if attribution exists</li>
+</ul>
+<p>Declining traffic correlated with AI capability advancement validates concerns that motivated restrictive crawler policies. Stable traffic despite AI growth suggests cannibalization fears may be overblown, potentially justifying more permissive approaches.</p>
+<p><strong>Licensing opportunity monitoring</strong> identifies when AI companies might be receptive to negotiations. Watch for:</p>
+<ul>
+<li>News coverage of licensing deals between AI companies and other publishers</li>
+<li>Industry conferences or events where AI companies discuss training data</li>
+<li>Public statements from AI companies about content partnerships</li>
+<li>Direct outreach from AI companies requesting access or discussing terms</li>
+</ul>
+<p>These signals indicate opportune moments to initiate or revitalize licensing discussions, potentially adjusting technical restrictions to support negotiating posture.</p>
+<p><strong>Competitive intelligence gathering</strong> tracks how similar publishers approach crawler management. Research:</p>
+<ul>
+<li>What blocking or throttling strategies are competitors implementing?</li>
+<li>Have competitors announced licensing deals with AI companies?</li>
+<li>Are industry groups coordinating positions on training data?</li>
+<li>What outcomes are competitors experiencing from their approaches?</li>
+</ul>
+<p>Learning from other publishers&#39; experiences informs strategy adjustments without requiring direct experimentation with multiple approaches.</p>
+<p><strong>Cost-benefit reassessment</strong> periodically reevaluates whether current strategies serve publisher interests. Calculate:</p>
+<ul>
+<li>What infrastructure costs does crawler traffic impose?</li>
+<li>Has blocking or throttling generated licensing inquiries or revenue?</li>
+<li>What opportunity costs from foregone crawler access might we be incurring?</li>
+<li>Do technical implementation and monitoring costs justify protection benefits?</li>
+</ul>
+<p>Strategies that made sense at adoption may become obsolete as market conditions, technical capabilities, or business models evolve. Regular reassessment prevents path dependency from perpetuating suboptimal approaches.</p>
+<h2>Frequently Asked Questions</h2>
+<p><strong>When should publishers block AI crawlers instead of throttling them?</strong></p>
+<p>Block when content uniqueness provides strong licensing negotiating leverage, when business models face substantial AI cannibalization risk, when infrastructure can&#39;t sustain crawler traffic even with throttling, or when publishers participate in industry collective action strategies. Throttling makes sense when licensing revenue potential is low, when AI attribution might generate traffic benefits, when maintaining relationships with AI companies serves strategic purposes, or when technical capability exists for sophisticated rate limiting.</p>
+<p><strong>Can throttling lead to implicit permission arguments from AI companies?</strong></p>
+<p>Yes. AI companies might argue that allowing throttled access demonstrated consent to training data use, weakening publisher licensing claims. Publishers implementing throttling should pair it with explicit <a href="terms-of-service-ai-scraping.html">Terms of Service</a> stating that limited access doesn&#39;t constitute permission for training, and that commercial AI use requires separate licensing agreements regardless of technical accessibility.</p>
+<p><strong>How do blocking and throttling affect search engine crawlers?</strong></p>
+<p>Properly implemented blocking or throttling targets specific AI training crawler user agents while preserving search engine access. Publishers must carefully configure robots.txt and access control systems to distinguish Googlebot, Bingbot, and other search crawlers from GPTBot, ClaudeBot, and training crawlers. Inadvertent search crawler blocking causes catastrophic SEO damage far exceeding training data concerns.</p>
+<p><strong>What throttling rates should publishers set for AI crawlers?</strong></p>
+<p>Throttling rates depend on infrastructure capacity and content volume. Start with conservative limits like 10 requests per minute per crawler, monitor server impact, and adjust upward if infrastructure comfortably handles the load. Consider peak traffic periods—throttling limits should preserve performance for legitimate users during maximum usage. Different content types might warrant different rates, with static historical content permitting higher rates than dynamic or premium content.</p>
+<p><strong>Can publishers switch from throttling to blocking if licensing negotiations fail?</strong></p>
+<p>Yes. Starting with throttling maintains relationships and demonstrates good faith while preserving the option to block if AI companies don&#39;t engage commercially. Communicate clearly that throttled access is provisional pending licensing discussions, and establish timelines for escalating to complete blocking if negotiations don&#39;t progress. This graduated approach maximizes flexibility while maintaining pressure.</p>
+<p><strong>How do content licensing tiers interact with blocking versus throttling?</strong></p>
+<p><a href="tiered-ai-content-licensing.html">Tiered content licensing</a> models can align with hybrid technical policies: block premium content requiring top-tier licenses, throttle mid-tier content available under standard licenses, and allow unrestricted access to promotional content. Technical access controls enforce commercial agreements, with licensing tier determining crawling permissions. This integration ensures that technical implementation reflects business model segmentation.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
