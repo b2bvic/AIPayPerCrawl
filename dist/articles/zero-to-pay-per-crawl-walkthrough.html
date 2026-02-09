@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero To Pay Per Crawl Walkthrough: Publisher Implementation Guide | AI Pay Per Crawl</title>
+    <meta name="description" content="Step-by-step guide to implementing pay-per-crawl licensing. Learn technical setup, pricing strategy, and legal frameworks for AI content monetization.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Zero To Pay Per Crawl Walkthrough: Publisher Implementation Guide">
+    <meta property="og:description" content="Step-by-step guide to implementing pay-per-crawl licensing. Learn technical setup, pricing strategy, and legal frameworks for AI content monetization.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/zero-to-pay-per-crawl-walkthrough">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zero To Pay Per Crawl Walkthrough: Publisher Implementation Guide">
+    <meta name="twitter:description" content="Step-by-step guide to implementing pay-per-crawl licensing. Learn technical setup, pricing strategy, and legal frameworks for AI content monetization.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/zero-to-pay-per-crawl-walkthrough">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Zero To Pay Per Crawl Walkthrough: Publisher Implementation Guide",
+  "description": "Step-by-step guide to implementing pay-per-crawl licensing. Learn technical setup, pricing strategy, and legal frameworks for AI content monetization.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/zero-to-pay-per-crawl-walkthrough"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Zero To Pay Per Crawl Walkthrough: Publisher Implementation Guide",
+      "item": "https://aipaypercrawl.com/articles/zero-to-pay-per-crawl-walkthrough"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>Zero To Pay Per Crawl Walkthrough: Publisher Implementation Guide</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 21 min read</span>
+        <h1>Zero To Pay Per Crawl Walkthrough: Publisher Implementation Guide</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Step-by-step guide to implementing pay-per-crawl licensing. Learn technical setup, pricing strategy, and legal frameworks for AI content monetization.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>Zero To Pay Per Crawl Walkthrough: Publisher Implementation Guide</h1>
+<p><strong>Implementing pay per crawl licensing</strong> transforms AI bot traffic from resource drain into revenue stream through systematic technical, legal, and business development steps that establish crawler detection, access control, usage metering, pricing frameworks, and contract mechanisms. This walkthrough guides publishers from initial assessment through operational licensing relationships, addressing common implementation challenges and providing decision frameworks for strategic choices encountered along the journey.</p>
+<p>Publishers contemplating <a href="what-is-pay-per-crawl.html">pay per crawl</a> monetization face significant questions before committing resources: Does our content warrant licensing fees? Do we possess technical capacity for implementation? What pricing makes sense for our niche? How do we find potential licensees? This walkthrough structures answers through phase-based implementation that allows publishers to validate viability at each stage before advancing—minimizing wasted effort on approaches unlikely to succeed while maximizing learning from incremental progress.</p>
+<p>The implementation timeline spans weeks to months depending on publisher size and sophistication. A small publisher with limited technical resources might accomplish basic setup in 2-3 weeks, reaching operational licensing conversations within 6-8 weeks. A large publisher building comprehensive infrastructure might invest 2-3 months in technical implementation followed by 3-6 months of business development before closing significant deals. This walkthrough provides realistic timeframes that help publishers set appropriate expectations and allocate resources accordingly.</p>
+<h2>Phase 1: Content Assessment and Positioning</h2>
+<p>Successful pay per crawl licensing begins with honest evaluation of content value and differentiation before investing in implementation infrastructure.</p>
+<p><strong>Content inventory</strong> establishes baseline understanding of what you&#39;re offering. Document total article count, publication date ranges, content categories and topics, word count ranges, multimedia elements (images, videos, data visualizations), structured data (databases, spreadsheets, APIs), and update frequency. A comprehensive inventory might reveal: &quot;Archive contains 12,000 articles published 2015-2026, averaging 800 words each, focused 60% on renewable energy technology, 30% on environmental policy, 10% on industry business news. Updated with 15-20 new articles weekly.&quot;</p>
+<p>This inventory serves multiple purposes. It provides pricing input—volume affects deal structures and per-article rates. It identifies differentiation—specialized topical focus commands premiums over general coverage. It reveals freshness—actively maintained archives attract more interest than stale content. Publishers discovering thin archives (under 1,000 articles) or stale content (no updates in 6+ months) should reconsider whether licensing makes sense versus alternative strategies.</p>
+<p><strong>Competitive analysis</strong> examines what alternative sources AI companies could use instead of licensing your content. Search your primary topic keywords and evaluate competing publishers: Who else covers your niche? How much content do they publish? What quality level? Are they blocking AI crawlers or allowing free access? If competitors offer similar content freely available, your negotiating position weakens. If you hold unique content not available elsewhere, positioning strengthens.</p>
+<p>Competitive factors include citation authority (does your content get cited by academics or industry experts?), insider access (do you have exclusive sources or first-mover advantages?), data assets (do you maintain proprietary databases or structured datasets?), and community engagement (do you host valuable user discussions or expert contributions?). Publishers should document specific differentiation beyond &quot;high quality&quot;—AI companies evaluating licensing deals need concrete evidence of content value.</p>
+<p><strong>AI company needs assessment</strong> identifies which AI companies might want your content. A medical publisher serves AI companies building healthcare applications. A legal publisher serves AI companies developing legal research tools. A specialized hobby publisher (woodworking, amateur radio, vintage motorcycles) serves AI companies training models for niche domains where general training data provides weak coverage.</p>
+<p>Research AI company funding, product focus, and announced partnerships to identify promising licensing targets. A company that just raised Series B funding for enterprise legal AI represents better prospects than an early-stage startup without product-market fit. A company announcing partnerships with major law firms signals serious legal AI development—likely needing legal content training data. Publishers should compile target lists of 10-20 potential licensees before proceeding to implementation.</p>
+<p><strong>Pricing research</strong> investigates market rates for comparable content. Review disclosed licensing deals from news reports and industry publications. Examine academic publisher pricing for journal access. Survey licensing marketplaces to understand prevailing rates. While most deals remain confidential, available data provides directional guidance: news publishers typically negotiate $0.001-$0.01 per article, academic publishers command $0.10-$1.00 per specialized article, and large platform deals reach millions annually for comprehensive archives.</p>
+<p>Publishers should calibrate expectations based on content positioning. Commodity content commands low rates since AI companies have abundant alternatives. Specialized content in defensible niches commands premiums since substitution is difficult. Realistic pricing expectations prevent pursuing deals unlikely to close and help prioritize which implementation efforts deliver sufficient ROI.</p>
+<p>The <a href="why-publishers-get-ai-deals.html">why publishers get AI deals</a> article provides detailed analysis of factors determining successful licensing outcomes.</p>
+<h2>Phase 2: Technical Infrastructure Setup</h2>
+<p>Implementing pay per crawl requires technical infrastructure for crawler detection, access control, and usage metering.</p>
+<p><strong>Server logging enhancement</strong> starts with ensuring comprehensive access logs capture necessary data points. Default web server configurations often omit critical information for crawler billing. Publishers must configure:</p>
+<ul>
+<li><strong>User agent logging</strong>: Capture the user-agent header that identifies crawler software  </li>
+<li><strong>Response size logging</strong>: Measure bytes transferred for data volume billing  </li>
+<li><strong>Response time logging</strong>: Identify slow requests that might indicate crawler problems  </li>
+<li><strong>Referrer logging</strong>: Track request sources  </li>
+<li><strong>Geolocation logging</strong>: Record requester geography</li>
+</ul>
+<p>Apache servers configure enhanced logging in httpd.conf or .htaccess:</p>
+<pre><code class="language-apache">LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-agent}i\&quot; %D&quot; detailed
+CustomLog /var/log/apache2/access_detailed.log detailed
+</code></pre>
+<p>Nginx servers configure equivalent logging in nginx.conf:</p>
+<pre><code class="language-nginx">log_format detailed &#39;$remote_addr - $remote_user [$time_local] &#39;
+                    &#39;&quot;$request&quot; $status $body_bytes_sent &#39;
+                    &#39;&quot;$http_referer&quot; &quot;$http_user_agent&quot; $request_time&#39;;
+access_log /var/log/nginx/access_detailed.log detailed;
+</code></pre>
+<p>Log retention policies must preserve data through billing cycles. Monthly billing requires at least 60-90 days retention (current month plus prior month plus dispute buffer). Longer retention supports auditing and trend analysis but increases storage costs. Publishers typically implement 90-day active retention with monthly archive compression—detailed logs for recent months, compressed archives for historical data.</p>
+<p><strong>Crawler detection system</strong> identifies AI bot traffic within server logs. Start with <a href="what-is-user-agent-string.html">user agent string</a> matching for known AI crawlers:</p>
+<pre><code class="language-bash"># Extract GPTBot requests from logs
+grep &quot;GPTBot&quot; /var/log/apache2/access_detailed.log &gt; gptbot_activity.log
+
+# Count daily requests by crawler
+awk &#39;{print $4, $10}&#39; access_detailed.log | sort | uniq -c
+</code></pre>
+<p>Known AI crawler user agents include:</p>
+<ul>
+<li><strong>GPTBot</strong> (OpenAI training crawler)  </li>
+<li><strong>ClaudeBot</strong> (Anthropic training crawler)  </li>
+<li><strong>Google-Extended</strong> (Google AI training, distinct from Googlebot search)  </li>
+<li><strong>CCBot</strong> (Common Crawl dataset compilation)  </li>
+<li><strong>anthropic-ai</strong> (Anthropic alternative agent)  </li>
+<li><strong>Omgilibot</strong> (Omgili/training data collection)</li>
+</ul>
+<p>Publishers should build detection databases that map user agent patterns to AI companies, allowing automated aggregation of crawl activity by licensee. A simple database schema might include crawler_name, company, user_agent_pattern, and billing_rate fields.</p>
+<p>Advanced detection combines user agent analysis with behavioral patterns. AI crawlers typically exhibit:</p>
+<ul>
+<li>High request frequency (10-100+ requests per minute)  </li>
+<li>Systematic URL traversal (sequential article access)  </li>
+<li>Consistent user agent (unlike human browser variety)  </li>
+<li>Off-peak activity timing (overnight crawling)</li>
+</ul>
+<p>Pattern-based detection catches crawlers that rotate user agents to evade simple string matching.</p>
+<p><strong>Access control implementation</strong> restricts AI crawler access to licensed content. The simplest approach uses <a href="what-is-robots-txt.html">robots.txt</a> to block unlicensed crawlers:</p>
+<pre><code>User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+</code></pre>
+<p>This blocks specified crawlers from all content. Publishers simultaneously operate authenticated API endpoints or provide dedicated access credentials to licensed AI companies, allowing them to access content via paid channels while public crawling remains blocked.</p>
+<p>API-based access requires building endpoints that serve content in structured formats:</p>
+<pre><code>GET /api/v1/articles/{article_id}
+Authorization: Bearer {api_key}
+
+Response:
+{
+  &quot;id&quot;: &quot;12345&quot;,
+  &quot;title&quot;: &quot;Understanding Neural Networks&quot;,
+  &quot;author&quot;: &quot;Jane Smith&quot;,
+  &quot;published_date&quot;: &quot;2026-01-15&quot;,
+  &quot;body_text&quot;: &quot;Article content here...&quot;,
+  &quot;categories&quot;: [&quot;AI&quot;, &quot;Technology&quot;],
+  &quot;canonical_url&quot;: &quot;https://publisher.com/articles/neural-networks&quot;
+}
+</code></pre>
+<p>API access provides precise metering since each request gets logged with authenticated identity, enabling accurate billing. However, it requires development effort that small publishers might lack. Marketplaces and intermediary platforms can provide managed API infrastructure that reduces publisher implementation burden.</p>
+<p><strong>Usage metering system</strong> aggregates crawler activity for billing. Simple implementations export monthly summaries from server logs:</p>
+<pre><code class="language-bash"># Count requests by crawler this month
+awk &#39;/GPTBot/ &amp;&amp; /Jan\/2026/ {count++} END {print &quot;GPTBot requests:&quot;, count}&#39; access_detailed.log
+
+# Calculate data transfer by crawler
+awk &#39;/GPTBot/ &amp;&amp; /Jan\/2026/ {sum+=$10} END {print &quot;GPTBot bytes:&quot;, sum}&#39; access_detailed.log
+</code></pre>
+<p>Automated systems parse logs in real-time, updating usage databases that track cumulative activity:</p>
+<pre><code class="language-sql">CREATE TABLE crawler_usage (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    company VARCHAR(100),
+    crawler_name VARCHAR(100),
+    request_count INT,
+    bytes_transferred BIGINT,
+    month DATE,
+    billed BOOLEAN DEFAULT FALSE
+);
+
+INSERT INTO crawler_usage (company, crawler_name, request_count, bytes_transferred, month)
+VALUES (&#39;OpenAI&#39;, &#39;GPTBot&#39;, 125000, 2500000000, &#39;2026-01-01&#39;);
+</code></pre>
+<p>Integration with accounting systems enables automatic invoice generation when usage data arrives, eliminating manual billing workflows.</p>
+<p>The <a href="wordpress-ai-monetization-setup.html">WordPress AI monetization setup</a> article provides CMS-specific implementation guidance for common publishing platforms.</p>
+<h2>Phase 3: Licensing Page and Legal Framework</h2>
+<p>With technical infrastructure operational, publishers need customer-facing licensing pages and legal agreements that govern relationships.</p>
+<p><strong>Licensing page creation</strong> follows patterns described in <a href="write-ai-licensing-page-website.html">how to write an AI licensing page for a website</a>. Key sections include:</p>
+<ul>
+<li><strong>Value proposition</strong>: Articulate what makes your content valuable (specialization, volume, quality)  </li>
+<li><strong>Content inventory</strong>: Specify what licensing covers (article count, categories, formats)  </li>
+<li><strong>Pricing framework</strong>: Provide tier structure or reference pricing without necessarily disclosing exact rates  </li>
+<li><strong>Access methods</strong>: Explain delivery mechanisms (API, bulk transfer, authenticated crawling)  </li>
+<li><strong>Usage restrictions</strong>: Define permitted and prohibited applications  </li>
+<li><strong>Contact mechanism</strong>: Provide inquiry form or email for licensing conversations</li>
+</ul>
+<p>The page should communicate professionalism and business sophistication. Publishers using personal email addresses, generic contact forms, or vague content descriptions signal weak positioning that undermines negotiation leverage. Publishers operating professional licensing pages with specific content inventories and clear frameworks signal serious business operations that command respect.</p>
+<p><strong>Terms of service update</strong> establishes legal foundation for content restrictions. Publishers should explicitly prohibit unauthorized AI training:</p>
+<p>&quot;All content on this website is protected by copyright. Automated data collection, scraping, or training of artificial intelligence models without explicit written authorization violates our terms of service and intellectual property rights. Unauthorized use may result in legal action and damages.&quot;</p>
+<p>This language doesn&#39;t prevent violations—determined actors proceed regardless—but it strengthens legal claims if infringement occurs. Courts evaluate whether parties should have known their actions violated rights; explicit ToS provisions eliminate &quot;we didn&#39;t know&quot; defenses.</p>
+<p><strong>Licensing agreement template</strong> defines relationships with authorized AI companies. Standard agreement elements include:</p>
+<p><strong>Grant of rights</strong>: &quot;Publisher grants Licensee non-exclusive, non-transferable, limited license to access, download, and process specified content for purpose of training artificial intelligence models.&quot;</p>
+<p><strong>Scope definition</strong>: &quot;Licensed content includes articles published from January 2020 through agreement termination date, totaling approximately 8,000 pieces, accessible via authenticated API at api.publisher.com/v1/&quot;</p>
+<p><strong>Usage restrictions</strong>: &quot;Licensee may use content solely for training proprietary AI models. Licensee may not republish, redistribute, or sublicense content to third parties without separate written authorization.&quot;</p>
+<p><strong>Payment terms</strong>: &quot;Licensee shall pay Publisher monthly fees of $X per thousand API requests, calculated on cumulative monthly access. Payment due within 30 days of invoice receipt.&quot;</p>
+<p><strong>Attribution requirements</strong>: &quot;Licensee shall include visible source citations with hyperlinks when AI outputs derive factual information from licensed content, formatted as &#39;<a href="source_url">Source Title</a>&#39; within 50 words of derived statement.&quot;</p>
+<p><strong>Audit rights</strong>: &quot;Publisher may audit Licensee usage up to twice annually upon 30 days notice. Licensee shall provide reasonable access to systems and records necessary to verify compliance.&quot;</p>
+<p><strong>Termination provisions</strong>: &quot;Either party may terminate upon 90 days written notice. Upon termination, Licensee shall cease accessing licensed content. Previously downloaded content may remain in trained models but Licensee shall not conduct additional training using licensed content.&quot;</p>
+<p><strong>Indemnification</strong>: &quot;Publisher shall indemnify Licensee against third-party claims that licensed content infringes intellectual property rights. Licensee shall indemnify Publisher against claims arising from Licensee&#39;s use of licensed content.&quot;</p>
+<p>Publishers should work with legal counsel to adapt templates for their jurisdiction and risk tolerance. While standard templates provide starting points, customization ensures terms appropriately balance publisher and licensee interests given specific content characteristics and business models.</p>
+<h2>Phase 4: Business Development and Outreach</h2>
+<p>Technical infrastructure and legal frameworks enable licensing, but publishers must actively pursue AI companies to close deals.</p>
+<p><strong>Target list compilation</strong> identifies 20-30 AI companies most likely to value your content. Research companies by:</p>
+<ul>
+<li><strong>Product focus</strong>: What AI applications are they building? Healthcare AI needs medical content, legal AI needs legal content  </li>
+<li><strong>Funding stage</strong>: Series B+ companies have budget for licensing; pre-seed startups typically cannot afford deals  </li>
+<li><strong>Partnership announcements</strong>: Companies announcing partnerships with industry leaders signal serious development in that domain  </li>
+<li><strong>Job postings</strong>: Companies hiring &quot;data acquisition&quot; or &quot;content licensing&quot; roles actively seek training data  </li>
+<li><strong>Conference presence</strong>: Companies presenting at industry conferences demonstrate commitment to the domain</li>
+</ul>
+<p>Prioritize targets by deal probability. A company with announced healthcare AI product, recent funding, and visible business development team represents high probability. A company with vague AI focus, limited funding, and no clear product represents low probability.</p>
+<p><strong>Outreach messaging</strong> positions licensing as partnership opportunity rather than hard sell. Effective outreach emails include:</p>
+<ul>
+<li><strong>Subject line</strong>: &quot;Specialized [Domain] Content for AI Training - [Your Publisher Name]&quot;  </li>
+<li><strong>Value proposition</strong>: &quot;We maintain 10,000+ expert-authored articles on [niche topic], representing one of the most comprehensive archives in the domain&quot;  </li>
+<li><strong>Differentiation</strong>: &quot;Our content includes proprietary datasets, expert interviews, and original research not available through general web crawling&quot;  </li>
+<li><strong>Call to action</strong>: &quot;I&#39;d welcome a brief conversation to explore whether our content would support [Company&#39;s] AI development. Are you available for a 15-minute call next week?&quot;</li>
+</ul>
+<p>Avoid desperate positioning that undermines negotiation leverage. &quot;We&#39;re trying to monetize our content&quot; signals weak position. &quot;We&#39;re selectively licensing our archive to AI leaders&quot; signals strong position. The latter attracts interest; the former invites low-ball offers.</p>
+<p><strong>Marketplace participation</strong> provides alternative to direct outreach for publishers lacking business development capacity. Emerging platforms like <strong>Spawning AI</strong> and <strong>Human Native</strong> aggregate publisher content and facilitate AI company discovery. Publishers list their archives with pricing and terms; AI companies browse catalog offerings and initiate licensing through platform infrastructure.</p>
+<p>Marketplaces reduce publisher burden—they handle discovery, negotiation support, contract standardization, and billing infrastructure—but take revenue percentage (typically 15-30%). Publishers should evaluate whether marketplace fee justifies operational simplification. Small publishers with limited resources likely benefit from marketplace participation. Large publishers with dedicated licensing teams might achieve better economics through direct deals.</p>
+<p><strong>Pilot programs</strong> reduce AI company risk by offering trial access before full licensing commitment. A publisher might propose: &quot;We&#39;ll provide 30-day trial access to 1,000 articles from our archive at no cost. Evaluate content quality and training value, then we can discuss broader licensing if it proves useful.&quot;</p>
+<p>Pilot programs accelerate deal cycles by eliminating evaluation friction. AI companies hesitant to commit $50,000 annually for unproven content will accept free trials. Publishers confident in content quality convert trials to paid licenses at high rates—if content genuinely helps model training, AI companies want continued access.</p>
+<p><strong>Partnership framing</strong> positions licensing as collaborative rather than transactional. Messaging should emphasize: &quot;We&#39;re excited to support cutting-edge AI development with our specialized knowledge base. Ensuring proper compensation enables us to continue producing high-quality content that benefits the entire AI ecosystem.&quot;</p>
+<p>This framing aligns interests—publishers produce valuable content, AI companies train better models, both parties succeed—rather than creating adversarial dynamics where publishers extract maximum revenue and AI companies minimize cost. Partnership framing increases deal closure rates and cultivates long-term relationships that yield renewals and expansion.</p>
+<h2>Phase 5: Deal Negotiation and Closure</h2>
+<p>When AI companies express licensing interest, publishers enter negotiation phase requiring preparation and strategy.</p>
+<p><strong>Pricing strategy</strong> balances revenue maximization against deal closure probability. Publishers should establish:</p>
+<ul>
+<li><strong>Anchor pricing</strong>: Initial rates proposed in first discussions, set 30-50% above expected settlement to leave negotiation room  </li>
+<li><strong>Walk-away threshold</strong>: Minimum acceptable rates below which deals don&#39;t justify effort  </li>
+<li><strong>Differentiation justification</strong>: Specific content attributes that justify premium pricing (exclusivity, specialization, freshness)</li>
+</ul>
+<p>A publisher might anchor at $0.05 per article while knowing they&#39;ll accept $0.02, with walk-away threshold at $0.01. This provides negotiation flexibility while ensuring deals meet minimum viability. Publishers disclosing walk-away thresholds during negotiation sacrifice leverage—AI companies will offer exactly the threshold rather than something above it.</p>
+<p><strong>Volume discount structures</strong> create deal size incentives. Tiered pricing like &quot;$0.05 per article for first 1,000, $0.03 for 1,000-10,000, $0.01 for 10,000+&quot; encourages AI companies to license broader content sets rather than cherry-picking small samples. Publishers prefer larger deals that spread operational overhead across more revenue; AI companies prefer volume discounts that reduce per-unit costs.</p>
+<p><strong>Payment terms negotiation</strong> balances cash flow management with customer accommodation. Monthly billing provides frequent cash flow but creates administrative burden with repeated invoicing. Annual pre-payment provides upfront cash but requires AI companies to commit large amounts before proving value. Quarterly billing often compromises effectively—moderate payment frequency with manageable administrative overhead.</p>
+<p>Publishers should resist AI company pressure for extended payment terms. &quot;Net 90&quot; (payment due 90 days after invoice) creates significant cash flow drag compared to &quot;Net 30&quot;. Large enterprises often demand extended terms; publishers should offset with modest price increases—if a company insists on Net 90 rather than Net 30, increase pricing 5-10% to compensate for the working capital cost.</p>
+<p><strong>Attribution requirements</strong> create ongoing value beyond initial payment. Publishers negotiating citation terms should specify:</p>
+<ul>
+<li><strong>Citation format</strong>: &quot;Visible hyperlink within generated response text, formatted as &#39;<a href="URL">Title</a>&#39;&quot;  </li>
+<li><strong>Citation proximity</strong>: &quot;Within 50 words of any statement derived from licensed content&quot;  </li>
+<li><strong>Citation testing</strong>: &quot;Pilot program measuring actual click-through rates before final agreement&quot;  </li>
+<li><strong>Citation reporting</strong>: &quot;Monthly reports showing total citations, click-through counts, and example implementations&quot;</li>
+</ul>
+<p>Without specific requirements, AI companies might interpret &quot;attribution&quot; minimally—tiny footnotes or buried references that generate zero traffic. Specific contractual language ensures meaningful citation implementation.</p>
+<p><strong>Exclusivity premiums</strong> apply when publishers grant single AI company exclusive access to content categories. If an AI company wants exclusive training rights to your medical content, preventing competitors from accessing the same data, they should pay 2-3x standard rates. Exclusivity reduces publisher monetization opportunities (can&#39;t license to other AI companies) while creating competitive advantage for the licensee (unique training data competitors lack).</p>
+<p>Publishers should time-limit exclusivity rather than granting indefinite exclusive rights. &quot;12-month exclusive license, renewable annually at both parties&#39; mutual agreement&quot; provides flexibility to renegotiate or end exclusivity if better opportunities emerge.</p>
+<p><strong>Contract execution</strong> requires attention to standard terms beyond core economic elements. Key provisions include:</p>
+<ul>
+<li><strong>Liability caps</strong>: Publishers typically cap liability at license fees paid (if you pay $50,000 annually, maximum liability is $50,000)  </li>
+<li><strong>Warranty disclaimers</strong>: Publishers disclaim warranties about content accuracy beyond &quot;content is authentic and not knowingly infringing&quot;  </li>
+<li><strong>Force majeure</strong>: Excuses performance during events beyond control (natural disasters, internet outages)  </li>
+<li><strong>Confidentiality</strong>: Both parties agree not to disclose agreement terms publicly</li>
+</ul>
+<p>Publishers should resist AI company requests for unlimited liability, warranties of absolute content accuracy, or public disclosure of financial terms. Standard market terms protect publishers from unreasonable risk while enabling deal closure.</p>
+<h2>Phase 6: Operational Management and Optimization</h2>
+<p>After deal closure, ongoing operational management ensures compliance, optimizes performance, and identifies expansion opportunities.</p>
+<p><strong>Usage monitoring</strong> tracks actual crawl activity against contracted terms. Publishers should implement automated alerts for:</p>
+<ul>
+<li><strong>Over-limit usage</strong>: Crawler exceeds contracted request volume, triggering overage charges  </li>
+<li><strong>Under-limit usage</strong>: Crawler using significantly less than contracted volume, signaling potential churn  </li>
+<li><strong>Unauthorized access</strong>: Crawlers from unlicensed AI companies attempting access  </li>
+<li><strong>Performance issues</strong>: Slow response times or errors that might frustrate licensee</li>
+</ul>
+<p>Real-time dashboards provide visibility into licensing health. A dashboard might display: &quot;OpenAI GPTBot: 850,000 requests this month (85% of 1M monthly limit), Anthropic ClaudeBot: 120,000 requests (12% of 1M limit, potential risk of churn).&quot;</p>
+<p><strong>Performance optimization</strong> addresses technical friction in licensee experience. If response times exceed 2 seconds, implement caching. If API authentication fails frequently, review credential management. If licensees report missing content, audit API coverage of content inventory. Poor technical performance reduces content value and increases churn risk—proactive optimization protects revenue.</p>
+<p><strong>Attribution tracking</strong> measures whether AI companies implement required citations. Publishers should:</p>
+<ul>
+<li>Periodically query licensed AI systems with prompts likely to trigger citations of your content  </li>
+<li>Document whether citations appear and how they&#39;re formatted  </li>
+<li>Measure click-through rates from citations when possible  </li>
+<li>Discuss citation quality with licensees if implementations fall short</li>
+</ul>
+<p>If contracted citations don&#39;t materialize, publishers should escalate through contract governance procedures—formal notices, audit invocations, ultimately termination threats if citations are contractually required but systematically absent.</p>
+<p><strong>Renewal optimization</strong> begins months before agreement expiration. Publishers should:</p>
+<ul>
+<li><strong>3 months before expiration</strong>: Review usage data, identify upsell opportunities, assess licensee satisfaction  </li>
+<li><strong>2 months before expiration</strong>: Initiate renewal conversations, propose contract adjustments based on usage patterns  </li>
+<li><strong>1 month before expiration</strong>: Finalize renewal terms or prepare for access termination</li>
+</ul>
+<p>Proactive renewal management reduces churn. Licensees who see value in content want continued access; publishers who initiate renewal conversations control timing and framing. Passive publishers who wait for licensees to raise renewal might face last-minute rush or silent non-renewal when licensees forget about approaching expiration.</p>
+<p><strong>Expansion opportunities</strong> leverage existing relationships. A licensee starting with Starter tier might grow into Professional tier as usage increases. A licensee initially licensing only articles might expand to license proprietary datasets or structured data. Publishers should monitor usage patterns identifying growth signals—increasing request volume, expanding topical queries, new product launches by the licensee that create additional content needs.</p>
+<p>Proactive upsell messaging might note: &quot;We&#39;ve observed your usage approaching tier limits. To avoid potential throttling and support your expanding needs, would you like to discuss upgrading to the next tier? We can also provide early access to our new dataset covering [emerging area].&quot;</p>
+<h2>Frequently Asked Questions</h2>
+<h3>How long does it take to implement pay per crawl from scratch?</h3>
+<p>Implementation timelines span 4-12 weeks depending on technical sophistication and available resources. Phase 1 content assessment takes 1-2 weeks. Phase 2 technical infrastructure setup takes 2-4 weeks for publishers with engineering capacity, potentially 4-8 weeks for those requiring external development help. Phase 3 legal framework development takes 1-2 weeks with legal counsel. Phase 4 outreach and business development takes 4-8 weeks before initial licensing conversations begin. First deal closure typically occurs 8-16 weeks from project start. Publishers should allocate 10-20% of one person&#39;s time during implementation, increasing to dedicated business development once operational.</p>
+<h3>What if no AI companies respond to outreach?</h3>
+<p>Non-response typically signals content positioning issues rather than implementation problems. Reassess whether your content genuinely differentiates from freely available alternatives—AI companies ignore commodity content offers since substitutes exist. Consider marketplace platforms that aggregate content discovery rather than direct outreach. Evaluate pricing strategy—excessive rates deter inquiry even from interested parties. Review messaging professionalism—generic, poorly-written outreach gets ignored while targeted, professional messaging generates responses. If repositioning doesn&#39;t generate interest after 8-12 weeks, licensing might not be viable for your content and alternative strategies (blocking, diversification, community building) warrant exploration.</p>
+<h3>How do I enforce licensing terms after AI companies access my content?</h3>
+<p>Enforcement combines technical monitoring, contractual audit rights, and legal recourse. Implement watermarking or fingerprinting that enables detection of your content in AI model outputs. Exercise audit rights periodically to verify usage compliance. Monitor whether AI systems implement required attribution. For violations, escalate progressively: informal email noting concerns, formal breach notification letter invoking contract provisions, withholding future content access if violations persist, ultimately pursuing legal claims for material contract breaches. Perfect enforcement is impossible—content downloaded during licensing can&#39;t be fully &quot;un-trained&quot;—but contractual frameworks create accountability and financial remedies.</p>
+<h3>Should I use licensing marketplaces or negotiate direct deals?</h3>
+<p>The choice depends on business development capacity and deal economics. Marketplaces reduce publisher burden by handling discovery, negotiation, contracts, and billing but take 15-30% revenue share. Publishers with limited resources benefit from marketplace simplification—revenue share is worthwhile given operational overhead savings. Publishers with dedicated licensing teams might achieve better economics through direct deals that avoid revenue sharing. Hybrid strategies work well: marketplace for small deals ($500-$5,000 annually) where manual overhead exceeds revenue share cost, direct negotiation for large deals ($50,000+ annually) where relationship investment justifies effort.</p>
+<h3>What happens if the AI company stops paying mid-contract?</h3>
+<p>Payment default triggers contract termination provisions. Stop providing access immediately upon payment failure—revoke API keys, block crawler IP addresses, disable authenticated access. Send formal breach notice documenting payment failure and demanding cure within specified timeframe (typically 10-30 days per contract terms). If payment arrives, restore access. If payment doesn&#39;t arrive, terminate contract and pursue collection through standard business debt mechanisms (collection agencies, small claims court for modest amounts, commercial litigation for large amounts). Maintain detailed usage logs documenting access prior to payment failure since these become evidence in collection proceedings. Future licensing agreements with new partners should require larger security deposits or shorter payment terms if prior default experiences suggest increased risk.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress AI Monetization Setup: Implementing Pay-Per-Crawl on Your Site | AI Pay Per Crawl</title>
+    <meta name="description" content="Step-by-step guide to implementing AI content licensing on WordPress: authentication, metering, licensing metadata, and revenue collection infrastructure.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="WordPress AI Monetization Setup: Implementing Pay-Per-Crawl on Your Site">
+    <meta property="og:description" content="Step-by-step guide to implementing AI content licensing on WordPress: authentication, metering, licensing metadata, and revenue collection infrastructure.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/wordpress-ai-monetization-setup">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WordPress AI Monetization Setup: Implementing Pay-Per-Crawl on Your Site">
+    <meta name="twitter:description" content="Step-by-step guide to implementing AI content licensing on WordPress: authentication, metering, licensing metadata, and revenue collection infrastructure.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/wordpress-ai-monetization-setup">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "WordPress AI Monetization Setup: Implementing Pay-Per-Crawl on Your Site",
+  "description": "Step-by-step guide to implementing AI content licensing on WordPress: authentication, metering, licensing metadata, and revenue collection infrastructure.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/wordpress-ai-monetization-setup"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "WordPress AI Monetization Setup: Implementing Pay-Per-Crawl on Your Site",
+      "item": "https://aipaypercrawl.com/articles/wordpress-ai-monetization-setup"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>WordPress AI Monetization Setup: Implementing Pay-Per-Crawl on Your Site</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 10 min read</span>
+        <h1>WordPress AI Monetization Setup: Implementing Pay-Per-Crawl on Your Site</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">Step-by-step guide to implementing AI content licensing on WordPress: authentication, metering, licensing metadata, and revenue collection infrastructure.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>WordPress AI Monetization Setup: Implementing Pay-Per-Crawl on Your Site</h1>
+<p><strong>WordPress publishers</strong> can implement AI content monetization infrastructure without custom development—plugins and existing APIs provide authentication, usage metering, licensing metadata, and billing integration transforming standard blogs into pay-per-crawl platforms. The technical barrier to AI revenue has collapsed from requiring engineering teams to configuring settings panels, making monetization accessible to publishers at all scale levels.</p>
+<p>This guide walks through complete WordPress setup for AI licensing: blocking unauthorized bots, implementing machine-readable licensing standards (llms.txt, TDM, RSL), deploying authenticated APIs, metering content access, and integrating payment processing. Publishers with basic WordPress familiarity can implement functional AI monetization infrastructure in hours rather than weeks.</p>
+<h2>Prerequisites and Setup Requirements</h2>
+<p>Before implementing AI monetization, verify baseline capabilities.</p>
+<p><strong>WordPress version</strong>: 6.0+ recommended for REST API functionality
+<strong>Hosting</strong>: Shared hosting works for initial implementation, VPS/cloud recommended for scale (&gt;10K monthly API requests)
+<strong>SSL certificate</strong>: Required for API authentication (HTTPS)
+<strong>PHP</strong>: 7.4+ for modern plugin compatibility
+<strong>Plugins</strong>: Install core plugins detailed below</p>
+<p><strong>Initial preparation</strong>:</p>
+<ol>
+<li><strong>Back up site</strong>: Full database and file backup before structural changes</li>
+<li><strong>Test environment</strong>: Staging site for testing before production deployment</li>
+<li><strong>Document current state</strong>: Note existing plugins, theme, performance baseline</li>
+</ol>
+<h2>Step 1: Block Unauthorized AI Crawlers</h2>
+<p>First line of defense: prevent free scraping by unauthorized bots.</p>
+<h3>robots.txt Configuration</h3>
+<p>WordPress automatically generates robots.txt at site root. Override with custom version:</p>
+<p><strong>Option A: Plugin approach</strong> — Install <strong>Yoast SEO</strong> or <strong>Rank Math</strong>, both include robots.txt editors.</p>
+<p><strong>Yoast</strong>: Tools → File Editor → robots.txt
+<strong>Rank Math</strong>: Rank Math → General Settings → Edit robots.txt</p>
+<p>Add AI bot blocks:</p>
+<pre><code>User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /premium/
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+</code></pre>
+<p>This blocks OpenAI, Common Crawl, Google AI training, and ByteDance while allowing search engine indexing.</p>
+<p><strong>Option B: Manual approach</strong> — Create <code>/public_html/robots.txt</code> via FTP or file manager with above content.</p>
+<h3>.htaccess User-Agent Blocking</h3>
+<p>Enforce blocks at web server level (Apache hosting):</p>
+<p>Edit <code>.htaccess</code> in WordPress root:</p>
+<pre><code class="language-apache"># Block AI training bots
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (GPTBot|CCBot|Claude-Web|Google-Extended|Bytespider) [NC]
+RewriteRule .* - [F,L]
+</code></pre>
+<p><strong>Test blocking</strong>: Use curl with bot user-agent:</p>
+<pre><code class="language-bash">curl -A &quot;GPTBot&quot; https://yoursite.com/test-article/
+</code></pre>
+<p>Should return 403 Forbidden. Regular browser access should work normally.</p>
+<h3>Cloudflare WAF (if using Cloudflare)</h3>
+<p>Security → WAF → Create Rule:</p>
+<p><strong>Field</strong>: User Agent
+<strong>Operator</strong>: contains
+<strong>Value</strong>: GPTBot
+<strong>Action</strong>: Block</p>
+<p>Repeat for other AI bots or use expression:</p>
+<pre><code>(http.user_agent contains &quot;GPTBot&quot;) or (http.user_agent contains &quot;CCBot&quot;)
+</code></pre>
+<h2>Step 2: Implement Machine-Readable Licensing Standards</h2>
+<p>Signal licensing intent via established protocols.</p>
+<h3>llms.txt File Creation</h3>
+<p>Create <code>/public_html/llms.txt</code>:</p>
+<pre><code># AI Licensing Policy - [Your Site Name]
+Training: Licensed
+RAG: Licensed
+FineTuning: Licensed
+Contact: licensing@yoursite.com
+Pricing: https://yoursite.com/ai-licensing-pricing
+Attribution: Required-Hyperlink
+Rate-Limit: 5 requests/second
+</code></pre>
+<p>Customize directives per your strategy (see <a href="what-is-llms-txt.html">what-is-llms-txt</a>).</p>
+<p><strong>WordPress implementation</strong>: Upload via FTP, or use plugin like <strong>File Manager</strong> creating file in site root.</p>
+<h3>TDM Reservation Meta Tags</h3>
+<p>Add to all pages:</p>
+<p><strong>Functions.php method</strong>:</p>
+<p>Edit theme&#39;s <code>functions.php</code>:</p>
+<pre><code class="language-php">function add_tdm_reservation() {
+    echo &#39;&lt;meta name=&quot;tdm-reservation&quot; content=&quot;1&quot;&gt;&#39; . &quot;\n&quot;;
+}
+add_action(&#39;wp_head&#39;, &#39;add_tdm_reservation&#39;, 1);
+</code></pre>
+<p><strong>Plugin method</strong>: Install <strong>Insert Headers and Footers</strong> or <strong>WPCode</strong>:</p>
+<p>Navigate to plugin settings, add to header injection:</p>
+<pre><code class="language-html">&lt;meta name=&quot;tdm-reservation&quot; content=&quot;1&quot;&gt;
+</code></pre>
+<p>Verify by viewing page source—meta tag should appear in <code>&lt;head&gt;</code>.</p>
+<h3>RSS Feed Licensing (RSL)</h3>
+<p>Extend feeds with licensing metadata:</p>
+<p>Add to <code>functions.php</code>:</p>
+<pre><code class="language-php">function add_rsl_licensing($content) {
+    global $post;
+    
+    $licensing = &#39;
+    &lt;ai:usage&gt;
+        &lt;ai:training&gt;licensed&lt;/ai:training&gt;
+        &lt;ai:rag&gt;licensed&lt;/ai:rag&gt;
+    &lt;/ai:usage&gt;
+    &lt;ai:pricing currency=&quot;USD&quot; per=&quot;retrieval&quot;&gt;0.05&lt;/ai:pricing&gt;
+    &lt;ai:contact&gt;licensing@yoursite.com&lt;/ai:contact&gt;
+    &#39;;
+    
+    return $content . $licensing;
+}
+add_filter(&#39;the_excerpt_rss&#39;, &#39;add_rsl_licensing&#39;);
+add_filter(&#39;the_content_feed&#39;, &#39;add_rsl_licensing&#39;);
+</code></pre>
+<p>Check feed (<code>/feed/</code>) for embedded licensing metadata.</p>
+<h2>Step 3: Deploy Authenticated Content API</h2>
+<p>WordPress REST API provides authentication framework—extend for AI licensing.</p>
+<h3>Install API Authentication Plugin</h3>
+<p><strong>Application Passwords</strong> (WordPress 5.6+): Built-in, enables basic authentication via app-specific passwords.</p>
+<p>Navigate: Users → Profile → Application Passwords → Add New</p>
+<p>Name: &quot;AI Client - OpenAI&quot; (or client name)
+Click &quot;Add New Application Password&quot;</p>
+<p>Save generated password—provide to AI clients for API authentication.</p>
+<h3>Create Custom API Endpoint</h3>
+<p>Serve content via authenticated endpoint:</p>
+<p>Add to theme&#39;s <code>functions.php</code> or create custom plugin:</p>
+<pre><code class="language-php">// Register custom API route
+add_action(&#39;rest_api_init&#39;, function() {
+    register_rest_route(&#39;ai-licensing/v1&#39;, &#39;/content/(?P&lt;id&gt;\d+)&#39;, array(
+        &#39;methods&#39; =&gt; &#39;GET&#39;,
+        &#39;callback&#39; =&gt; &#39;serve_licensed_content&#39;,
+        &#39;permission_callback&#39; =&gt; &#39;verify_ai_license&#39;,
+        &#39;args&#39; =&gt; array(
+            &#39;id&#39; =&gt; array(
+                &#39;validate_callback&#39; =&gt; function($param) {
+                    return is_numeric($param);
+                }
+            ),
+        ),
+    ));
+});
+
+// Verify licensing authentication
+function verify_ai_license($request) {
+    // Check if user authenticated
+    return current_user_can(&#39;read&#39;);
+}
+
+// Serve content to licensed clients
+function serve_licensed_content($request) {
+    $post_id = $request[&#39;id&#39;];
+    $post = get_post($post_id);
+    
+    if (!$post) {
+        return new WP_Error(&#39;not_found&#39;, &#39;Content not found&#39;, array(&#39;status&#39; =&gt; 404));
+    }
+    
+    // Log access for metering
+    log_ai_access(get_current_user_id(), $post_id);
+    
+    return array(
+        &#39;id&#39; =&gt; $post-&gt;ID,
+        &#39;title&#39; =&gt; $post-&gt;post_title,
+        &#39;content&#39; =&gt; $post-&gt;post_content,
+        &#39;excerpt&#39; =&gt; $post-&gt;post_excerpt,
+        &#39;date&#39; =&gt; $post-&gt;post_date,
+        &#39;author&#39; =&gt; get_the_author_meta(&#39;display_name&#39;, $post-&gt;post_author),
+        &#39;categories&#39; =&gt; wp_get_post_categories($post-&gt;ID),
+        &#39;tags&#39; =&gt; wp_get_post_tags($post-&gt;ID),
+        &#39;license&#39; =&gt; array(
+            &#39;attribution_required&#39; =&gt; true,
+            &#39;price_per_retrieval&#39; =&gt; 0.05,
+            &#39;currency&#39; =&gt; &#39;USD&#39;
+        )
+    );
+}
+</code></pre>
+<p><strong>API access endpoint</strong>:</p>
+<pre><code>GET https://yoursite.com/wp-json/ai-licensing/v1/content/12345
+Authorization: Basic [base64-encoded-username:apppassword]
+</code></pre>
+<p>Returns JSON with article content and licensing metadata.</p>
+<h3>Rate Limiting</h3>
+<p>Prevent abuse via rate limiting plugin:</p>
+<p>Install <strong>WP REST API Controller</strong> or <strong>Limit Login Attempts Reloaded</strong> (supports API rate limiting).</p>
+<p>Configure:</p>
+<ul>
+<li><strong>Max requests</strong>: 10 per second per user</li>
+<li><strong>Burst allowance</strong>: 50 requests before throttling</li>
+<li><strong>Ban duration</strong>: 1 hour for violators</li>
+</ul>
+<h2>Step 4: Implement Usage Metering and Billing</h2>
+<p>Track API access for charging clients.</p>
+<h3>Usage Logging Function</h3>
+<p>Add to functions.php:</p>
+<pre><code class="language-php">// Log AI content access
+function log_ai_access($user_id, $post_id) {
+    global $wpdb;
+    $table_name = $wpdb-&gt;prefix . &#39;ai_access_logs&#39;;
+    
+    $wpdb-&gt;insert($table_name, array(
+        &#39;user_id&#39; =&gt; $user_id,
+        &#39;post_id&#39; =&gt; $post_id,
+        &#39;access_time&#39; =&gt; current_time(&#39;mysql&#39;),
+        &#39;ip_address&#39; =&gt; $_SERVER[&#39;REMOTE_ADDR&#39;],
+        &#39;user_agent&#39; =&gt; $_SERVER[&#39;HTTP_USER_AGENT&#39;]
+    ));
+}
+
+// Create logging table on activation
+function create_ai_log_table() {
+    global $wpdb;
+    $table_name = $wpdb-&gt;prefix . &#39;ai_access_logs&#39;;
+    $charset_collate = $wpdb-&gt;get_charset_collate();
+    
+    $sql = &quot;CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        user_id mediumint(9) NOT NULL,
+        post_id mediumint(9) NOT NULL,
+        access_time datetime DEFAULT &#39;0000-00-00 00:00:00&#39; NOT NULL,
+        ip_address varchar(45) NOT NULL,
+        user_agent text NOT NULL,
+        PRIMARY KEY (id)
+    ) $charset_collate;&quot;;
+    
+    require_once(ABSPATH . &#39;wp-admin/includes/upgrade.php&#39;);
+    dbDelta($sql);
+}
+
+register_activation_hook(__FILE__, &#39;create_ai_log_table&#39;);
+</code></pre>
+<h3>Usage Reporting Dashboard</h3>
+<p>Create admin page showing client usage:</p>
+<pre><code class="language-php">// Add menu item
+add_action(&#39;admin_menu&#39;, &#39;ai_licensing_menu&#39;);
+
+function ai_licensing_menu() {
+    add_menu_page(
+        &#39;AI Licensing Stats&#39;,
+        &#39;AI Licensing&#39;,
+        &#39;manage_options&#39;,
+        &#39;ai-licensing-stats&#39;,
+        &#39;ai_licensing_stats_page&#39;,
+        &#39;dashicons-chart-area&#39;
+    );
+}
+
+// Display usage statistics
+function ai_licensing_stats_page() {
+    global $wpdb;
+    $table_name = $wpdb-&gt;prefix . &#39;ai_access_logs&#39;;
+    
+    // Get usage by client (user)
+    $results = $wpdb-&gt;get_results(&quot;
+        SELECT user_id, COUNT(*) as access_count
+        FROM $table_name
+        WHERE MONTH(access_time) = MONTH(CURRENT_DATE())
+        GROUP BY user_id
+    &quot;);
+    
+    echo &#39;&lt;div class=&quot;wrap&quot;&gt;&#39;;
+    echo &#39;&lt;h1&gt;AI Licensing Usage - Current Month&lt;/h1&gt;&#39;;
+    echo &#39;&lt;table class=&quot;wp-list-table widefat fixed striped&quot;&gt;&#39;;
+    echo &#39;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Client&lt;/th&gt;&lt;th&gt;Retrievals&lt;/th&gt;&lt;th&gt;Revenue ($0.05/retrieval)&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&#39;;
+    echo &#39;&lt;tbody&gt;&#39;;
+    
+    foreach ($results as $row) {
+        $user = get_userdata($row-&gt;user_id);
+        $username = $user ? $user-&gt;user_login : &#39;Unknown&#39;;
+        $revenue = $row-&gt;access_count * 0.05;
+        
+        echo &quot;&lt;tr&gt;&quot;;
+        echo &quot;&lt;td&gt;{$username}&lt;/td&gt;&quot;;
+        echo &quot;&lt;td&gt;{$row-&gt;access_count}&lt;/td&gt;&quot;;
+        echo &quot;&lt;td&gt;\${$revenue}&lt;/td&gt;&quot;;
+        echo &quot;&lt;/tr&gt;&quot;;
+    }
+    
+    echo &#39;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&#39;;
+}
+</code></pre>
+<p>Access dashboard: WordPress Admin → AI Licensing</p>
+<h3>Payment Integration</h3>
+<p><strong>Option A: Manual invoicing</strong> — Export monthly usage, email invoices to clients, collect via bank transfer or PayPal.</p>
+<p><strong>Option B: Stripe integration</strong> — Use <strong>WP Simple Pay</strong> or <strong>Stripe Payment Links</strong>:</p>
+<ol>
+<li>Install WP Simple Pay plugin</li>
+<li>Create pricing tiers matching per-retrieval costs</li>
+<li>Generate payment links</li>
+<li>Email clients with usage reports + payment links</li>
+<li>Track payments in Stripe dashboard</li>
+</ol>
+<p><strong>Option C: Automated subscription</strong> — <strong>MemberPress</strong> or <strong>Restrict Content Pro</strong>:</p>
+<ol>
+<li>Create AI Licensing membership tiers:<ul>
+<li>Starter: 1,000 retrievals/month — $50</li>
+<li>Growth: 10,000 retrievals/month — $400</li>
+<li>Enterprise: Unlimited — $2,000</li>
+</ul>
+</li>
+<li>Provision API credentials upon subscription</li>
+<li>Track usage against quotas</li>
+<li>Block access when quota exceeded until renewal</li>
+</ol>
+<h2>Step 5: Client Onboarding Workflow</h2>
+<p>Streamline licensing for AI companies.</p>
+<p><strong>Create licensing landing page</strong>:</p>
+<p>WordPress page at <code>/ai-licensing/</code> explaining:</p>
+<ul>
+<li>Content available for licensing</li>
+<li>Pricing tiers and usage limits</li>
+<li>API documentation</li>
+<li>Contact form for questions</li>
+<li>Signup/purchase button</li>
+</ul>
+<p><strong>Signup process</strong>:</p>
+<ol>
+<li>Client completes form or purchases tier</li>
+<li>Automated email sends API credentials (application password)</li>
+<li>Provide API documentation (endpoint URLs, authentication format, response structure)</li>
+<li>Client integrates API into their systems</li>
+<li>Usage tracking begins automatically</li>
+</ol>
+<p><strong>API documentation template</strong>:</p>
+<pre><code># [Your Site] AI Licensing API
+
+## Authentication
+Use HTTP Basic Auth with provided credentials:
+Username: [ai-client-username]
+Password: [application-password]
+
+## Endpoints
+
+### Get Single Article
+GET /wp-json/ai-licensing/v1/content/{post_id}
+
+### Search Content
+GET /wp-json/ai-licensing/v1/search?q={query}&amp;limit=10
+
+## Response Format
+{
+  &quot;id&quot;: 12345,
+  &quot;title&quot;: &quot;Article Title&quot;,
+  &quot;content&quot;: &quot;Full article text...&quot;,
+  &quot;license&quot;: {
+    &quot;attribution_required&quot;: true,
+    &quot;price_per_retrieval&quot;: 0.05
+  }
+}
+
+## Rate Limits
+10 requests/second
+1,000 requests/day
+
+## Pricing
+$0.05 per article retrieval
+Volume discounts available &gt;10,000 monthly
+
+## Support
+licensing@yoursite.com
+</code></pre>
+<h2>Alternative: Turnkey WordPress Plugins</h2>
+<p>For non-technical publishers, use plugins handling everything:</p>
+<p><strong>AI Content Licensing Pro</strong> (hypothetical, check WordPress.org for current options):</p>
+<ul>
+<li>One-click AI bot blocking</li>
+<li>Automated llms.txt generation</li>
+<li>REST API authentication</li>
+<li>Usage metering dashboard</li>
+<li>Stripe billing integration</li>
+<li>$99 annual license</li>
+</ul>
+<p><strong>Implementation</strong>: Install plugin, configure pricing in settings panel, activate monetization.</p>
+<h2>Monitoring and Optimization</h2>
+<p>Post-implementation, track performance.</p>
+<p><strong>Key metrics</strong>:</p>
+<ul>
+<li>API requests per client per day/month</li>
+<li>Revenue per client</li>
+<li>Most-accessed content (informs editorial strategy)</li>
+<li>Bot blocking effectiveness (unauthorized crawls vs. licensed API usage)</li>
+<li>Server performance under API load</li>
+</ul>
+<p><strong>Use Google Analytics</strong> or <strong>Matomo</strong> tracking API endpoint hits:</p>
+<p>Add tracking to API response function:</p>
+<pre><code class="language-php">// Track API usage in analytics
+function track_api_analytics($post_id) {
+    // Google Analytics Measurement Protocol
+    $data = array(
+        &#39;v&#39; =&gt; 1,
+        &#39;tid&#39; =&gt; &#39;UA-XXXXXXXXX-X&#39;,
+        &#39;t&#39; =&gt; &#39;event&#39;,
+        &#39;ec&#39; =&gt; &#39;API&#39;,
+        &#39;ea&#39; =&gt; &#39;Content Access&#39;,
+        &#39;el&#39; =&gt; &#39;Post &#39; . $post_id
+    );
+    
+    wp_remote_post(&#39;https://www.google-analytics.com/collect&#39;, array(&#39;body&#39; =&gt; $data));
+}
+</code></pre>
+<h2>FAQ: WordPress AI Monetization</h2>
+<p><strong>Can free WordPress.com sites implement AI licensing?</strong></p>
+<p>Limited—WordPress.com restricts custom code and plugins on free tiers. Requires Business or eCommerce plan ($300+/year) for plugin installation and custom domains necessary for professional API deployment.</p>
+<p><strong>Do AI licensing APIs slow down website performance?</strong></p>
+<p>Minimal impact—API requests bypass full WordPress theme rendering, serving only content data. Proper caching and database optimization maintain performance. VPS hosting recommended beyond 10K monthly API calls.</p>
+<p><strong>How do publishers handle clients exceeding quotas?</strong></p>
+<p><strong>Hard caps</strong>: API returns 429 Too Many Requests when quota exhausted, blocking further access until renewal/payment.</p>
+<p><strong>Overage billing</strong>: Allow exceeding quota, charge premium rate (e.g., $0.10/retrieval instead of $0.05) for overages.</p>
+<p><strong>Proactive alerts</strong>: Email clients at 80% quota consumption offering quota increases.</p>
+<p><strong>What if AI clients don&#39;t integrate APIs and keep scraping?</strong></p>
+<p>Enforce blocks via .htaccess, Cloudflare WAF, or hosting-level IP bans. Contact company legal teams citing terms violations. Issue DMCA takedowns if scraped content appears in products. Persistent violators face litigation for unauthorized access.</p>
+<p><strong>Should WordPress publishers use shared hosting or upgrade?</strong></p>
+<p><strong>Shared hosting works initially</strong> for testing and small-scale (&lt;1K monthly API calls). <strong>Upgrade to VPS or cloud hosting</strong> (DigitalOcean, Linode, AWS Lightsail) when reaching 5K+ monthly calls or securing major licensing deals. Dedicated resources prevent API traffic impacting site performance.</p>
+<p><strong>Can publishers combine AI licensing with existing monetization?</strong></p>
+<p>Yes—run ads, subscriptions, and AI licensing simultaneously. AI licensing supplements rather than replaces traditional revenue. Some publishers offer discounted AI access to advertisers or corporate sponsors as value-added benefit.</p>
+<h2>WordPress AI Monetization in Production</h2>
+<p>WordPress provides accessible infrastructure for publishers entering AI licensing. While enterprise publishers might build custom platforms, WordPress suffices for most—proven APIs, plugin ecosystem, and familiar administration interface accelerate implementation from concept to revenue.</p>
+<p>Start with free AI bot blocking and licensing metadata (llms.txt, TDM tags), then add authenticated APIs and metering as licensing negotiations progress. Incremental implementation reduces risk—validate AI company interest before investing in billing infrastructure.</p>
+<p>For broader AI monetization strategy beyond technical implementation, see <a href="what-is-pay-per-crawl.html">what-is-pay-per-crawl</a> and <a href="zero-to-pay-per-crawl-walkthrough.html">zero-to-pay-per-crawl-walkthrough</a>.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>

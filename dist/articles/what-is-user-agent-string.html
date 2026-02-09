@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is a User-Agent String: Identifying AI Bots Accessing Your Content | AI Pay Per Crawl</title>
+    <meta name="description" content="User-agent strings identify web clients including AI crawlers. Learn how to detect GPTBot, Claude-Web, and other AI bots via server logs and analytics.">
+    <meta name="author" content="Victor Valentine Romo">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="What Is a User-Agent String: Identifying AI Bots Accessing Your Content">
+    <meta property="og:description" content="User-agent strings identify web clients including AI crawlers. Learn how to detect GPTBot, Claude-Web, and other AI bots via server logs and analytics.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://aipaypercrawl.com/articles/what-is-user-agent-string">
+    <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What Is a User-Agent String: Identifying AI Bots Accessing Your Content">
+    <meta name="twitter:description" content="User-agent strings identify web clients including AI crawlers. Learn how to detect GPTBot, Claude-Web, and other AI bots via server logs and analytics.">
+    <link rel="canonical" href="https://aipaypercrawl.com/articles/what-is-user-agent-string">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "What Is a User-Agent String: Identifying AI Bots Accessing Your Content",
+  "description": "User-agent strings identify web clients including AI crawlers. Learn how to detect GPTBot, Claude-Web, and other AI bots via server logs and analytics.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://victorvalentineromo.com/#person",
+    "name": "Victor Valentine Romo",
+    "url": "https://victorvalentineromo.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://aipaypercrawl.com/#organization",
+    "name": "AI Pay Per Crawl",
+    "url": "https://aipaypercrawl.com"
+  },
+  "datePublished": "2026-02-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aipaypercrawl.com/articles/what-is-user-agent-string"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://aipaypercrawl.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "https://aipaypercrawl.com/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "What Is a User-Agent String: Identifying AI Bots Accessing Your Content",
+      "item": "https://aipaypercrawl.com/articles/what-is-user-agent-string"
+    }
+  ]
+}
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234f46e5' width='100' height='100' rx='12'/><text x='50' y='70' font-family='monospace' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'>APC</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="me" href="https://scalewithsearch.com">
+    <link rel="me" href="https://victorvalentineromo.com">
+    <link rel="me" href="https://aifirstsearch.com">
+    <link rel="me" href="https://browserprompt.com">
+    <link rel="me" href="https://creatinepedia.com">
+    <link rel="me" href="https://polytraffic.com">
+    <link rel="me" href="https://tattooremovalnear.com">
+    <link rel="me" href="https://comicstripai.com">
+    <link rel="me" href="https://aipaypercrawl.com">
+    <link rel="me" href="https://b2bvic.com">
+    <link rel="me" href="https://seobyrole.com">
+    <link rel="me" href="https://quickfixseo.com">
+</head>
+<body>
+
+
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">APC</a>
+
+      <div class="nav__links">
+        <!-- Implementation dropdown -->
+        <div class="mega-wrapper" data-mega="implementation">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-implementation">
+            Implementation
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Pricing dropdown -->
+        <div class="mega-wrapper" data-mega="pricing">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-pricing">
+            Pricing
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Crawlers dropdown -->
+        <div class="mega-wrapper" data-mega="crawlers">
+          <button class="nav__link mega-trigger" aria-expanded="false" aria-controls="mega-crawlers">
+            Crawlers
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <!-- Legal (direct link) -->
+        <a href="/articles.html" class="nav__link">Legal</a>
+
+        <div class="nav__divider"></div>
+
+        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Implementation -->
+    <div id="mega-implementation" class="mega-panel" role="region" aria-label="Implementation guides">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Infrastructure</div>
+          <a href="/articles.html" class="mega-link">Cloudflare Setup</a>
+          <a href="/articles.html" class="mega-link">Nginx Rules</a>
+          <a href="/articles.html" class="mega-link">Apache Config</a>
+          <a href="/articles.html" class="mega-link">WordPress Plugin</a>
+          <a href="/articles.html" class="mega-link">CDN Integration</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Protocols</div>
+          <a href="/articles.html" class="mega-link">RSL Protocol</a>
+          <a href="/articles.html" class="mega-link">llms.txt Specification</a>
+          <a href="/articles.html" class="mega-link">robots.txt for AI</a>
+          <a href="/articles.html" class="mega-link">Machine-Readable Terms</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Quick Start</div>
+          <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
+            <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Pricing -->
+    <div id="mega-pricing" class="mega-panel" role="region" aria-label="Pricing models">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Models</div>
+          <a href="/articles.html" class="mega-link">Per-Crawl Pricing</a>
+          <a href="/articles.html" class="mega-link">Flat-Rate Annual</a>
+          <a href="/articles.html" class="mega-link">Tiered Pricing</a>
+          <a href="/articles.html" class="mega-link">Volume Discounts</a>
+          <a href="/articles.html" class="mega-link">Hybrid Models</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Benchmarks</div>
+          <a href="/articles.html" class="mega-link">Rate Cards by Content Type</a>
+          <a href="/articles.html" class="mega-link">Revenue Calculators</a>
+          <a href="/articles.html" class="mega-link">Industry Benchmarks</a>
+          <a href="/articles.html" class="mega-link">Deal Comparisons</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Recent Deals</div>
+          <a href="/articles.html" class="mega-link">News Corp &times; OpenAI ($250M)</a>
+          <a href="/articles.html" class="mega-link">Reddit &times; Google ($60M/yr)</a>
+          <a href="/articles.html" class="mega-link">FT &times; Anthropic</a>
+          <a href="/articles.html" class="mega-link">AP &times; OpenAI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Crawlers -->
+    <div id="mega-crawlers" class="mega-panel" role="region" aria-label="Crawler information">
+      <div class="mega-panel__inner">
+        <div>
+          <div class="mega-column__label">Major Crawlers</div>
+          <a href="/articles.html" class="mega-link">GPTBot (OpenAI)</a>
+          <a href="/articles.html" class="mega-link">ClaudeBot (Anthropic)</a>
+          <a href="/articles.html" class="mega-link">Googlebot-Extended</a>
+          <a href="/articles.html" class="mega-link">Bytespider (ByteDance)</a>
+          <a href="/articles.html" class="mega-link">CCBot (Common Crawl)</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Detection</div>
+          <a href="/articles.html" class="mega-link">Bot Detection Methods</a>
+          <a href="/articles.html" class="mega-link">User Agent Reference</a>
+          <a href="/articles.html" class="mega-link">IP Range Verification</a>
+          <a href="/articles.html" class="mega-link">Compliance Rates</a>
+        </div>
+        <div>
+          <div class="mega-column__label">Directory</div>
+          <a href="/articles.html" class="mega-link">Full Crawler Directory</a>
+          <a href="/articles.html" class="mega-link">Crawler Behavior Matrix</a>
+          <a href="/articles.html" class="mega-link">robots.txt Respect Rates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/articles.html" class="mobile-menu__link">Implementation</a>
+      <a href="/articles.html" class="mobile-menu__link">Pricing</a>
+      <a href="/articles.html" class="mobile-menu__link">Crawlers</a>
+      <a href="/articles.html" class="mobile-menu__link">Legal</a>
+      <a href="/articles.html" class="mobile-menu__link">All Articles</a>
+      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+    </div>
+  </nav>
+
+  <main class="pt-nav">
+    <div class="container--narrow" style="padding-top: var(--sp-8);">
+      <div class="breadcrumbs">
+        <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
+        <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
+        <span>What Is a User-Agent String: Identifying AI Bots Accessing Your Content</span>
+      </div>
+
+      <header style="margin-bottom: var(--sp-12);">
+        <span class="label" style="margin-bottom: var(--sp-4); display: block;">Article &middot; 8 min read</span>
+        <h1>What Is a User-Agent String: Identifying AI Bots Accessing Your Content</h1>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: var(--sp-4); max-width: 640px;">User-agent strings identify web clients including AI crawlers. Learn how to detect GPTBot, Claude-Web, and other AI bots via server logs and analytics.</p>
+      </header>
+
+      <article class="article-body">
+        <h1>What Is a User-Agent String: Identifying AI Bots Accessing Your Content</h1>
+<p><strong>A user-agent string</strong> is text identifying the software making HTTP requests to web servers—revealing whether visitors are human browsers, search engine crawlers, or AI training bots. Every web request includes a User-Agent header containing information about client type, version, and operating system. Publishers analyzing user-agent strings distinguish <strong>ChatGPT&#39;s GPTBot</strong> from <strong>Google&#39;s crawler</strong> from <strong>legitimate users</strong>, enabling targeted access control, usage monitoring, and AI bot monetization strategies.</p>
+<p>The HTTP specification requires clients identify themselves via User-Agent headers, though compliance is voluntary—bots can lie or omit identification. Responsible bots including search engines and major AI companies use descriptive identifiers helping publishers understand traffic sources. For publishers implementing pay-per-crawl models or blocking unauthorized AI access, user-agent analysis provides the starting point for identifying which bots consume content and at what volume.</p>
+<h2>User-Agent String Structure and Components</h2>
+<p>User-agent strings follow loosely standardized formats encoding client characteristics.</p>
+<p><strong>General structure</strong>:</p>
+<pre><code>User-Agent: &lt;product&gt;/&lt;version&gt; &lt;comment&gt;
+</code></pre>
+<p><strong>Real-world examples</strong>:</p>
+<p><strong>Chrome browser</strong> (human user):</p>
+<pre><code>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+</code></pre>
+<p><strong>Googlebot</strong> (search crawler):</p>
+<pre><code>Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+</code></pre>
+<p><strong>GPTBot</strong> (OpenAI training):</p>
+<pre><code>Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.0; +https://openai.com/gptbot
+</code></pre>
+<h3>Key Components</h3>
+<p><strong>Product name</strong>: Primary identifier (Chrome, Googlebot, GPTBot)</p>
+<p><strong>Version</strong>: Software version number</p>
+<p><strong>Comments</strong>: Parenthetical details about operating system, compatibility, rendering engine</p>
+<p><strong>Contact URL</strong>: Link to bot documentation (common for crawlers)</p>
+<p>Parsers extract product name to identify client type.</p>
+<h2>AI Bot User-Agent Strings (2026 Directory)</h2>
+<p>Major AI companies operate identifiable crawlers with documented user-agent strings.</p>
+<h3>OpenAI</h3>
+<p><strong>GPTBot</strong> (training data collection):</p>
+<pre><code>User-Agent: GPTBot/1.0 (+https://openai.com/gptbot)
+</code></pre>
+<p>Shortened form sometimes seen:</p>
+<pre><code>User-Agent: GPTBot
+</code></pre>
+<p><strong>ChatGPT-User</strong> (ChatGPT browsing feature):</p>
+<pre><code>Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot
+</code></pre>
+<h3>Anthropic</h3>
+<p><strong>Claude-Web</strong>:</p>
+<pre><code>User-Agent: Claude-Web/1.0
+</code></pre>
+<p>Or with details:</p>
+<pre><code>Mozilla/5.0 (compatible; Claude-Web/1.0; +https://www.anthropic.com)
+</code></pre>
+<h3>Google</h3>
+<p><strong>Google-Extended</strong> (training, distinct from search indexing):</p>
+<pre><code>User-Agent: Google-Extended
+</code></pre>
+<p>Or:</p>
+<pre><code>Mozilla/5.0 (compatible; Google-Extended)
+</code></pre>
+<p><strong>Standard Googlebot</strong> (search indexing, not training):</p>
+<pre><code>Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+</code></pre>
+<h3>Meta</h3>
+<p><strong>FacebookBot</strong> (includes AI training):</p>
+<pre><code>User-Agent: facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
+</code></pre>
+<p>Newer Meta AI crawler:</p>
+<pre><code>User-Agent: Meta-ExternalAgent/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)
+</code></pre>
+<h3>Apple</h3>
+<p><strong>Applebot-Extended</strong> (Apple Intelligence training):</p>
+<pre><code>User-Agent: Mozilla/5.0 (compatible; Applebot-Extended/0.1; +http://www.apple.com/go/applebot)
+</code></pre>
+<p><strong>Standard Applebot</strong> (search indexing):</p>
+<pre><code>User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15 (Applebot/0.1; +http://www.apple.com/go/applebot)
+</code></pre>
+<h3>Perplexity</h3>
+<p><strong>PerplexityBot</strong>:</p>
+<pre><code>User-Agent: PerplexityBot/1.0 (+https://docs.perplexity.ai/docs/perplexity-bot)
+</code></pre>
+<h3>Cohere</h3>
+<p><strong>cohere-ai</strong>:</p>
+<pre><code>User-Agent: cohere-ai/1.0
+</code></pre>
+<h3>Common Crawl</h3>
+<p><strong>CCBot</strong> (dataset used by many AI companies):</p>
+<pre><code>User-Agent: CCBot/2.0 (https://commoncrawl.org/faq/)
+</code></pre>
+<h3>Bytedance</h3>
+<p><strong>Bytespider</strong> (TikTok/Bytedance AI):</p>
+<pre><code>User-Agent: Bytespider
+</code></pre>
+<h3>Undisclosed / Unknown Bots</h3>
+<p>Many AI training operations use generic user-agents or impersonate browsers to evade blocking. These appear as standard Chrome/Firefox/Safari and are harder to distinguish from legitimate users without behavioral analysis.</p>
+<h2>Detecting AI Bots via Server Logs</h2>
+<p>Publishers analyze web server logs to identify AI crawler activity.</p>
+<h3>Log File Locations</h3>
+<p><strong>Apache</strong>: <code>/var/log/apache2/access.log</code> or <code>/var/log/httpd/access_log</code></p>
+<p><strong>Nginx</strong>: <code>/var/log/nginx/access.log</code></p>
+<p><strong>Cloudflare</strong>: Export via dashboard or API</p>
+<p><strong>Hosting platforms</strong>: Check control panel for log access</p>
+<h3>Log Entry Structure</h3>
+<p>Standard Combined Log Format:</p>
+<pre><code>192.0.2.1 - - [08/Feb/2026:10:15:30 +0000] &quot;GET /article/12345 HTTP/1.1&quot; 200 15234 &quot;-&quot; &quot;GPTBot/1.0&quot;
+</code></pre>
+<p>Components:</p>
+<ul>
+<li>IP address: 192.0.2.1</li>
+<li>Timestamp: 08/Feb/2026:10:15:30</li>
+<li>Request: GET /article/12345</li>
+<li>Status: 200 (success)</li>
+<li>Bytes transferred: 15234</li>
+<li>Referrer: - (none)</li>
+<li>User-Agent: GPTBot/1.0</li>
+</ul>
+<h3>Filtering AI Bot Traffic</h3>
+<p><strong>Grep command</strong> extracting GPTBot requests:</p>
+<pre><code class="language-bash">grep &quot;GPTBot&quot; /var/log/nginx/access.log
+</code></pre>
+<p>Multiple bots:</p>
+<pre><code class="language-bash">grep -E &quot;GPTBot|Claude-Web|CCBot|Google-Extended&quot; /var/log/nginx/access.log
+</code></pre>
+<p>Count requests per bot:</p>
+<pre><code class="language-bash">grep &quot;GPTBot&quot; /var/log/nginx/access.log | wc -l
+</code></pre>
+<p>Output:</p>
+<pre><code>1523
+</code></pre>
+<p>GPTBot made 1,523 requests.</p>
+<h3>Analyzing Crawl Patterns</h3>
+<p><strong>Requests over time</strong>:</p>
+<pre><code class="language-bash">grep &quot;GPTBot&quot; /var/log/nginx/access.log | awk &#39;{print $4}&#39; | cut -d: -f1-2 | uniq -c
+</code></pre>
+<p>Output:</p>
+<pre><code> 234 [08/Feb/2026:08
+ 456 [08/Feb/2026:09
+ 833 [08/Feb/2026:10
+</code></pre>
+<p>Shows GPTBot activity increasing through morning.</p>
+<p><strong>Most accessed content</strong>:</p>
+<pre><code class="language-bash">grep &quot;GPTBot&quot; /var/log/nginx/access.log | awk &#39;{print $7}&#39; | sort | uniq -c | sort -rn | head -10
+</code></pre>
+<p>Output:</p>
+<pre><code>  45 /article/ai-licensing
+  32 /article/content-monetization
+  28 /article/pay-per-crawl
+</code></pre>
+<p>Reveals which content AI bots retrieve most frequently—informing pricing and licensing strategy.</p>
+<p><strong>Data volume consumed</strong>:</p>
+<pre><code class="language-bash">grep &quot;GPTBot&quot; /var/log/nginx/access.log | awk &#39;{sum+=$10} END {print sum/1024/1024 &quot; MB&quot;}&#39;
+</code></pre>
+<p>Output:</p>
+<pre><code>234.5 MB
+</code></pre>
+<p>GPTBot transferred 234MB—relevant for bandwidth cost monitoring.</p>
+<h2>Implementing User-Agent Blocking</h2>
+<p>Publishers block AI bots by filtering user-agent strings at web server or CDN level.</p>
+<h3>Apache (.htaccess or httpd.conf)</h3>
+<p>Block GPTBot:</p>
+<pre><code class="language-apache">RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} GPTBot [NC]
+RewriteRule .* - [F,L]
+</code></pre>
+<p>Block multiple AI bots:</p>
+<pre><code class="language-apache">RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (GPTBot|CCBot|Claude-Web|Google-Extended|Bytespider) [NC]
+RewriteRule .* - [F,L]
+</code></pre>
+<p><strong>[NC]</strong>: Case-insensitive matching
+<strong>[F]</strong>: Forbidden (403 response)
+<strong>[L]</strong>: Last rule, stop processing</p>
+<h3>Nginx</h3>
+<p>Block in <code>nginx.conf</code> or site config:</p>
+<pre><code class="language-nginx">if ($http_user_agent ~* (GPTBot|CCBot|Claude-Web|Google-Extended)) {
+    return 403;
+}
+</code></pre>
+<p>Or serve specific message:</p>
+<pre><code class="language-nginx">if ($http_user_agent ~* (GPTBot|CCBot)) {
+    return 402 &quot;Content access requires licensing. Contact licensing@publisher.com&quot;;
+}
+</code></pre>
+<h3>Cloudflare WAF</h3>
+<p>Create firewall rule in Cloudflare dashboard:</p>
+<p><strong>Field</strong>: User Agent
+<strong>Operator</strong>: contains
+<strong>Value</strong>: GPTBot
+<strong>Action</strong>: Block</p>
+<p>Add multiple rules for different bots or use single rule with regex:</p>
+<p><strong>Expression</strong>:</p>
+<pre><code>(http.user_agent contains &quot;GPTBot&quot;) or (http.user_agent contains &quot;CCBot&quot;) or (http.user_agent contains &quot;Claude-Web&quot;)
+</code></pre>
+<p><strong>Action</strong>: Block</p>
+<h3>Rate Limiting by User-Agent</h3>
+<p>Instead of blocking entirely, throttle AI bots:</p>
+<p><strong>Nginx</strong> rate limit:</p>
+<pre><code class="language-nginx">limit_req_zone $http_user_agent zone=bot_limit:10m rate=5r/s;
+
+server {
+    location / {
+        if ($http_user_agent ~* (GPTBot|CCBot)) {
+            set $is_bot 1;
+        }
+        
+        limit_req zone=bot_limit burst=10 nodelay;
+    }
+}
+</code></pre>
+<p>Allows 5 requests/second with 10-request burst tolerance—sufficient for indexing but prevents aggressive scraping.</p>
+<h2>User-Agent Spoofing and Evasion</h2>
+<p>User-agent blocking faces limitations since bots can lie about identity.</p>
+<p><strong>Spoofing</strong>: Bots send fake user-agent strings impersonating browsers:</p>
+<pre><code>User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0
+</code></pre>
+<p>Appears as Chrome browser, actually a scraper.</p>
+<p><strong>Detection methods</strong>:</p>
+<p><strong>Behavioral analysis</strong>: Real browsers load CSS, JS, images; scrapers fetch only HTML. Monitor resource loading patterns.</p>
+<p><strong>IP reputation</strong>: Check source IPs against known bot datacenter ranges. Browser users connect from residential ISPs.</p>
+<p><strong>TLS fingerprinting</strong>: Browser TLS handshakes differ from Python requests or curl. Analyze connection characteristics.</p>
+<p><strong>JavaScript challenges</strong>: Serve content only after JS execution. Basic scrapers fail, browsers succeed.</p>
+<p><strong>CAPTCHA</strong>: Require human verification for suspicious traffic.</p>
+<p><strong>Honeypot traps</strong>: Invisible links only bots follow. Legitimate browsers don&#39;t see/click them.</p>
+<p>Services like <strong>Cloudflare Bot Management</strong>, <strong>DataDome</strong>, and <strong>PerimeterX</strong> combine signals detecting spoofed bots.</p>
+<h2>User-Agents and Pay-Per-Crawl Implementation</h2>
+<p>User-agent analysis enables pay-per-crawl monetization infrastructure (see <a href="what-is-pay-per-crawl.html">what-is-pay-per-crawl</a>).</p>
+<p><strong>Workflow</strong>:</p>
+<ol>
+<li><strong>Detect AI bots</strong> via user-agent strings in server logs</li>
+<li><strong>Block unauthorized bots</strong> at web server/CDN</li>
+<li><strong>Issue API keys</strong> to licensed AI companies</li>
+<li><strong>Whitelist authorized user-agents</strong> or IP ranges</li>
+<li><strong>Meter API requests</strong> by user-agent for billing</li>
+</ol>
+<p><strong>Example</strong>: Publisher blocks GPTBot via nginx, then negotiates licensing with OpenAI. OpenAI receives API key, requests include custom user-agent:</p>
+<pre><code>User-Agent: GPTBot-Licensed/1.0 (key:abc123)
+</code></pre>
+<p>Publisher&#39;s API recognizes licensed agent, serves content, increments usage counter for billing.</p>
+<p><strong>Differentiated pricing</strong> by user-agent:</p>
+<pre><code class="language-python">pricing = {
+    &#39;GPTBot-Licensed&#39;: 0.10,      # OpenAI partnership rate
+    &#39;Claude-Web-Licensed&#39;: 0.05,   # Anthropic volume discount
+    &#39;PerplexityBot-Licensed&#39;: 0.15 # Premium RAG access
+}
+
+user_agent = request.headers.get(&#39;User-Agent&#39;)
+charge = pricing.get(user_agent, 0.20)  # Default rate for unknown
+
+increment_billing(client_id, charge)
+</code></pre>
+<h2>FAQ: User-Agent Strings and AI Bots</h2>
+<p><strong>Can publishers block all AI bots reliably using user-agent filtering?</strong></p>
+<p>No—responsible bots identify themselves, but malicious scrapers spoof user-agents or omit identification. User-agent blocking catches compliant actors, missing sophisticated evaders. Layer with behavioral analysis, IP filtering, and authentication for comprehensive protection.</p>
+<p><strong>Do AI companies change user-agent strings frequently?</strong></p>
+<p>Major companies maintain stable user-agents—GPTBot, Claude-Web, Google-Extended have remained consistent. However, versioning updates occur (GPTBot/1.0 → GPTBot/1.1). Publishers should use substring matching (<code>contains &quot;GPTBot&quot;</code>) rather than exact strings to handle versioning.</p>
+<p><strong>What&#39;s the difference between Googlebot and Google-Extended?</strong></p>
+<p><strong>Googlebot</strong>: Crawls for search indexing, drives referral traffic
+<strong>Google-Extended</strong>: Crawls for AI training (Bard/Gemini), no traffic benefit</p>
+<p>Publishers should allow Googlebot (preserve SEO), consider blocking Google-Extended (monetize training access).</p>
+<p><strong>Can AI companies bypass user-agent blocks by using residential proxy networks?</strong></p>
+<p>Yes—sophisticated operations route traffic through residential IPs with spoofed browser user-agents, appearing as legitimate users. Detection requires advanced bot management platforms analyzing behavioral signals beyond user-agent strings.</p>
+<p><strong>Should publishers block Common Crawl (CCBot)?</strong></p>
+<p>Depends on strategy:</p>
+<ul>
+<li><strong>Block</strong>: Prevents many AI companies from accessing free training data (Common Crawl archives used widely)</li>
+<li><strong>Allow</strong>: Supports research, archival projects, and AI companies lacking direct crawlers</li>
+</ul>
+<p>Most publishers monetizing AI access block CCBot to force direct licensing negotiations.</p>
+<p><strong>How do publishers verify bot user-agent authenticity?</strong></p>
+<p><strong>Reverse DNS lookup</strong>: Check if IP resolves to claimed company domain:</p>
+<pre><code class="language-bash">host 66.249.66.1
+</code></pre>
+<p>Output:</p>
+<pre><code>1.66.249.66.in-addr.arpa domain name pointer crawl-66-249-66-1.googlebot.com.
+</code></pre>
+<p>Confirms IP belongs to Google. Fake Googlebots won&#39;t pass verification.</p>
+<p><strong>Forward DNS confirmation</strong>: Resolve hostname back to IP confirming match.</p>
+<h2>User-Agent Analysis as Revenue Intelligence</h2>
+<p>User-agent monitoring reveals which AI companies value your content, informing monetization strategy.</p>
+<p><strong>High-volume crawlers</strong> indicate strong content demand—prioritize licensing outreach to those companies.</p>
+<p><strong>Crawl pattern analysis</strong> shows which content AI bots retrieve most, guiding editorial investment toward high-AI-value topics.</p>
+<p><strong>Temporal patterns</strong> reveal crawl frequency changes—spikes might indicate model retraining cycles or RAG system launches.</p>
+<p><strong>Competitive intelligence</strong>: If competitors&#39; content attracts more AI crawler activity, analyze their content strategy for insights.</p>
+<p>Publishers implementing pay-per-crawl treat user-agent data as business intelligence—the foundation for pricing, negotiation leverage, and product development in AI content licensing markets.</p>
+<p>For technical blocking implementation, see <a href="what-is-robots-txt.html">what-is-robots-txt</a>. For broader monetization frameworks, see <a href="zero-to-pay-per-crawl-walkthrough.html">zero-to-pay-per-crawl-walkthrough</a>.</p>
+
+      </article>
+
+      <div class="cta-box" style="margin: var(--sp-16) 0;">
+        <h3>Your Content Feeds AI. Get Paid for It.</h3>
+        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
+        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+      </div>
+
+      <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
+        <a href="/articles.html" style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent);">&larr; All Articles</a>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">AI Pay Per Crawl</div>
+          <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Implementation</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Cloudflare Setup</a></li>
+            <li><a href="/articles.html">RSL Protocol</a></li>
+            <li><a href="/articles.html">llms.txt Guide</a></li>
+            <li><a href="/articles.html">Nginx Rules</a></li>
+            <li><a href="/articles.html">Apache Config</a></li>
+            <li><a href="/articles.html">WordPress Plugin</a></li>
+            <li><a href="/articles.html">CDN Integration</a></li>
+            <li><a href="/articles.html">robots.txt Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Pricing &amp; Tools</div>
+          <ul class="footer__links">
+            <li><a href="/articles.html">Pricing Models</a></li>
+            <li><a href="/articles.html">Rate Cards</a></li>
+            <li><a href="/articles.html">Revenue Calculator</a></li>
+            <li><a href="/articles.html">Crawler Directory</a></li>
+            <li><a href="/articles.html">Bot Detection</a></li>
+            <li><a href="/articles.html">Compliance Rates</a></li>
+            <li><a href="/articles.html">Deal Analysis</a></li>
+            <li><a href="/articles.html">Licensing Templates</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">From Scale With Search</div>
+          <ul class="footer__links">
+            <li><a href="https://scalewithsearch.com" target="_blank" rel="me">Scale With Search</a></li>
+            <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
+            <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
+            <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
+            <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
+            <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
+            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bar">
+        <p>&copy; 2026 AI Pay Per Crawl. Built by <a href="https://victorvalentineromo.com" target="_blank">Victor Valentine Romo</a>.</p>
+        <p>A <a href="https://scalewithsearch.com" target="_blank">Scale With Search</a> property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Mega menu */
+    (function() {
+      var triggers = document.querySelectorAll('.mega-trigger');
+      var panels = document.querySelectorAll('.mega-panel');
+      var closeTimeout = null;
+
+      function openPanel(id) {
+        clearTimeout(closeTimeout);
+        panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+        triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        var panel = document.getElementById('mega-' + id);
+        var trigger = document.querySelector('[data-mega="' + id + '"] .mega-trigger');
+        if (panel) panel.classList.add('mega-panel--open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function scheduleClose() {
+        closeTimeout = setTimeout(function() {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }, 200);
+      }
+
+      function cancelClose() { clearTimeout(closeTimeout); }
+
+      triggers.forEach(function(btn) {
+        var wrapper = btn.closest('[data-mega]');
+        var id = wrapper.getAttribute('data-mega');
+        btn.addEventListener('mouseenter', function() { openPanel(id); });
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var panel = document.getElementById('mega-' + id);
+          if (panel && panel.classList.contains('mega-panel--open')) {
+            panel.classList.remove('mega-panel--open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            openPanel(id);
+          }
+        });
+        wrapper.addEventListener('mouseleave', scheduleClose);
+      });
+
+      panels.forEach(function(panel) {
+        panel.addEventListener('mouseenter', cancelClose);
+        panel.addEventListener('mouseleave', scheduleClose);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-mega]') && !e.target.closest('.mega-panel')) {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          panels.forEach(function(p) { p.classList.remove('mega-panel--open'); });
+          triggers.forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
+        }
+      });
+    })();
+
+    /* Mobile menu */
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuIcon = document.getElementById('menu-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('mobile-menu--open');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    /* Self-link neutralizer */
+    (function() {
+      var currentPath = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (href === currentPath) {
+          a.removeAttribute('href');
+          a.setAttribute('aria-current', 'page');
+          a.style.opacity = '0.5';
+          a.style.pointerEvents = 'none';
+        }
+      });
+    })();
+
+    /* Copy code button */
+    function copyCode(button) {
+      var codeBlock = button.closest('.code-block');
+      var code = codeBlock.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied!';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var body = this.nextElementSibling;
+        this.setAttribute('aria-expanded', !expanded);
+        body.classList.toggle('accordion__body--open');
+      });
+    });
+  </script>
+</body>
+</html>
