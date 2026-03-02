@@ -131,9 +131,12 @@ ${megaNavHtml}
       </article>
 
       <div class="cta-box" style="margin: var(--sp-16) 0;">
-        <h3>Your Content Feeds AI. Get Paid for It.</h3>
-        <p>Complete pay-per-crawl implementation. Templates, pricing models, licensing contracts. Everything.</p>
-        <a href="/setup.html" class="btn btn--primary btn--large">Master the Protocol &mdash; $2,497</a>
+        <h3>This is one piece of the system.</h3>
+        <p>Built by Victor Romo (<a href="https://x.com/b2bvic" target="_blank" style="color: var(--accent);">@b2bvic</a>) &mdash; I build AI memory systems for businesses.</p>
+        <div style="display: flex; gap: var(--sp-4); flex-wrap: wrap; margin-top: var(--sp-4);">
+          <a href="https://scalewithsearch.com" class="btn btn--primary btn--large" target="_blank">See The Full System</a>
+          <a href="https://github.com/b2bvic/scale-with-search" class="btn btn--secondary btn--large" target="_blank">View Repo</a>
+        </div>
       </div>
 
       <div style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">
