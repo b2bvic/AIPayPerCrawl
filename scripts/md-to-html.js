@@ -69,6 +69,12 @@ function buildArticleHTML(title, description, body, slug, date, keywords) {
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `https://aipaypercrawl.com/articles/${slug}`
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": `https://aipaypercrawl.com/images/articles/${slug}.png`,
+      "width": 1200,
+      "height": 675
     }
   }, null, 2);
 
@@ -96,9 +102,13 @@ function buildArticleHTML(title, description, body, slug, date, keywords) {
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://aipaypercrawl.com/articles/${slug}">
     <meta property="og:site_name" content="AI Pay Per Crawl">
+    <meta property="og:image" content="https://aipaypercrawl.com/images/articles/${slug}.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${safeTitle}">
     <meta name="twitter:description" content="${safeDesc}">
+    <meta name="twitter:image" content="https://aipaypercrawl.com/images/articles/${slug}.png">
     <link rel="canonical" href="https://aipaypercrawl.com/articles/${slug}">
     <script type="application/ld+json">
 ${articleSchema}
@@ -118,6 +128,10 @@ ${megaNavHtml}
         <a href="/">Home</a><span class="breadcrumbs__sep">/</span>
         <a href="/articles.html">Articles</a><span class="breadcrumbs__sep">/</span>
         <span>${safeTitle}</span>
+      </div>
+
+      <div class="article-hero" style="margin-bottom: var(--sp-8); border-radius: 12px; overflow: hidden;">
+        <img src="/images/articles/${slug}.png" alt="${safeTitle}" width="1200" height="675" loading="eager" style="width: 100%; height: auto; display: block;">
       </div>
 
       <header style="margin-bottom: var(--sp-12);">
