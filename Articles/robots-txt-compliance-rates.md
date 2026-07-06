@@ -4,10 +4,16 @@ description:: Analysis of robots.txt compliance rates across major AI crawlers i
 focus_keyword:: robots.txt compliance rates
 category:: Policy and Compliance
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # Robots.txt Compliance Rates Across AI Crawlers: Which AI Companies Actually Respect Publisher Blocks?
+
+> **Quick Summary**
+> - **What this covers:** Analysis of robots.txt compliance rates across major AI crawlers including GPTBot, Claude-Web, and Google-Extended with data on which AI companies honor blocks.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **Robots.txt** remains the primary mechanism for publishers to control crawler access, but compliance varies dramatically across AI companies. While **OpenAI's GPTBot** and **Anthropic's Claude-Web** generally respect disallow directives, dozens of unlabeled crawlers ignore robots.txt entirely. Publishers implementing AI crawler blocks need empirical compliance data to determine whether technical controls work or whether legal mechanisms become necessary.
 
@@ -193,3 +199,13 @@ Yes. Blocking GPTBot doesn't prevent OpenAI from licensing Common Crawl archives
 Depends on strategy. Blocking eliminates exploitation but also eliminates leverage. Monitoring first, then blocking selectively, positions you for licensing negotiations.
 
 Robots.txt compliance rates reveal which AI companies respect publisher control and which prioritize data acquisition regardless of restrictions. Publishers relying solely on robots.txt should implement server-level enforcement and pursue licensing agreements to monetize content that technical blocks can't fully protect.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

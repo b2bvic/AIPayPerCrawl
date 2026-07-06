@@ -4,10 +4,16 @@ description:: Complete guide to llms.txt specification for declaring AI training
 focus_keyword:: what is llms txt
 category:: Fundamentals
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # What is llms.txt: Structured AI Crawler Guidance and Training Data Protocol
+
+> **Quick Summary**
+> - **What this covers:** Complete guide to llms.txt specification for declaring AI training policies, licensing terms, and crawler behavior instructions in machine-readable format.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **llms.txt** is an emerging standard for websites to communicate training data policies, licensing requirements, and content access preferences to AI systems and crawlers in a structured machine-readable format. Similar to how robots.txt has governed search engine crawler behavior for decades, llms.txt aims to establish conventions for AI-specific interactions, addressing use cases robots.txt wasn't designed for: licensing terms, content quality metadata, attribution requirements, and differentiated access based on AI company identity and use case.
 
@@ -490,6 +496,16 @@ licensing:
 ```
 
 API provides actual content delivery and metering; llms.txt communicates availability and access procedures. Together they enable automated licensing workflows at scale.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

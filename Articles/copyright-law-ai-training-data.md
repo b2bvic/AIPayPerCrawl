@@ -3,9 +3,15 @@ description:: The evolving legal framework for AI training data and web content 
 focus_keyword:: copyright law ai training data
 category:: legal
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Copyright Law and AI Training Data: The Legal Landscape for Publishers
+
+> **Quick Summary**
+> - **What this covers:** copyright-law-ai-training-data
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 The central legal question of the AI era: does training an AI model on copyrighted web content constitute fair use, or does it require a license?
 
@@ -199,6 +205,16 @@ The practical outcome: publishers can monetize AI crawler access regardless of h
 5. **Stay informed** — Monitor NYT v. OpenAI and other active cases
 6. **Consider class actions** — Evaluate participation as suits emerge
 7. **Generate revenue** — Don't wait for legal clarity to start earning from AI crawlers
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

@@ -3,9 +3,15 @@ description:: Design volume discount tiers for AI crawler licensing. Reward high
 focus_keyword:: volume discount structures ai crawlers
 category:: pricing
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Volume Discount Structures for AI Crawlers: Tiered Pricing for High-Frequency Bots
+
+> **Quick Summary**
+> - **What this covers:** volume-discount-structures
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **GPTBot** hitting your domain 200,000 times monthly isn't the same economic relationship as a startup crawler requesting 2,000 pages. The volume difference is 100x. The downstream value difference may be even larger. And the negotiation leverage shifts dramatically when a single crawler accounts for significant licensing revenue.
 
@@ -308,6 +314,16 @@ Quarterly review questions:
 3. **Is total revenue growing?** Compare pre-discount total revenue to post-discount total revenue. If volume discounts reduced total revenue, the discount was too aggressive or demand was already inelastic at your previous rates.
 
 4. **Are competitors offering better volume terms?** If crawlers suddenly reduce volume on your domain while industry crawling increases overall, they may have found better rates elsewhere. [Benchmark your pricing](/articles/content-valuation-for-ai-training.html) against industry data.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

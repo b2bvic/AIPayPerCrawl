@@ -4,10 +4,16 @@ description:: Complete guide to Text and Data Mining Reservation under EU copyri
 focus_keyword:: tdm reservation protocol
 category:: Legal Framework
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # TDM Reservation Protocol Explained: EU's Text and Data Mining Opt-Out Mechanism for AI Training Rights
+
+> **Quick Summary**
+> - **What this covers:** Complete guide to Text and Data Mining Reservation under EU copyright law including implementation, legal status, and comparison to robots.txt for AI licensing.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **Text and Data Mining (TDM) Reservation** is a legal mechanism under **EU copyright law** allowing rightsholders to prohibit automated text and data mining—including AI training—on their content. Unlike robots.txt (a voluntary protocol), **TDM reservation carries legal weight in the European Union**, requiring AI companies to respect opt-outs or face copyright infringement liability. Implemented via **machine-readable declarations** in robots.txt, meta tags, or Terms of Service, TDM reservation provides EU publishers with stronger protection than US publishers enjoy under voluntary robots.txt conventions. However, adoption remains low, technical implementation varies, and enforcement depends on EU member states' copyright enforcement rigor.
 
@@ -398,3 +404,13 @@ X-TDM-Reservation: 1
 No. Compliance varies. Major AI labs (OpenAI, Anthropic, Google) likely honor it; smaller companies may not.
 
 TDM reservation provides EU publishers with legally enforceable protection against AI training—stronger than robots.txt alone. Combined with robots.txt, server-level blocking, and licensing strategies, TDM reservation forms part of a comprehensive AI crawler control framework for EU-based or EU-serving publishers.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

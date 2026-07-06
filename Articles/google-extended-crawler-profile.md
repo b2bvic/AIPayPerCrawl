@@ -3,9 +3,15 @@ description:: Complete profile of Google-Extended, the crawler Google uses for A
 focus_keyword:: google-extended crawler
 category:: crawlers
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Google-Extended Crawler Profile: Separating Search Indexing From AI Training
+
+> **Quick Summary**
+> - **What this covers:** google-extended-crawler-profile
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **Google** operates the most consequential split in the AI crawler landscape. **Googlebot** indexes your content for search results and sends you traffic. **Google-Extended** scrapes the same content for **Gemini** training data and sends you nothing. Same company, same infrastructure, two fundamentally different economic relationships with your content.
 
@@ -262,6 +268,16 @@ Unlike other AI crawlers, you cannot verify **Google-Extended** compliance throu
 - **Googlebot-News** — Controls Google News crawling. Independent.
 
 Blocking **Google-Extended** while allowing all other **Google** tokens preserves full search functionality while restricting AI training use.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

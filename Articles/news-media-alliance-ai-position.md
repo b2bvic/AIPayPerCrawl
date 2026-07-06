@@ -4,10 +4,16 @@ description:: News Media Alliance advocates for publisher compensation from AI c
 focus_keyword:: news media alliance ai
 category:: Industry Organizations
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # News Media Alliance AI Position: Publisher Coalition Strategy on Training Data Compensation
+
+> **Quick Summary**
+> - **What this covers:** News Media Alliance advocates for publisher compensation from AI companies training on news content. Coalition strategy, policy positions, and member licensing facilitation.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **News Media Alliance** represents 2,000+ news publishers across United States advocating for industry interests in policy, regulation, and business practices. AI training data compensation emerged as priority advocacy focus as generative AI threatens publisher business models while exploiting news content without authorization or payment. Alliance strategy combines collective licensing facilitation, regulatory advocacy, and public positioning to secure publisher compensation.
 
@@ -138,3 +144,13 @@ Alliance distinguishes between search indexing (providing attribution and traffi
 ### What international coordination exists between News Media Alliance and global publisher organizations?
 
 Alliance maintains formal and informal relationships with **World Association of News Publishers** (WAN-IFRA), **European Publishers Council**, **Digital Content Next**, and regional organizations worldwide. Coordination includes information sharing about AI company behavior, aligned policy positions on copyright and licensing, collaborative research on AI economic impact, and mutual support for international litigation. Regular convenings and working group participation facilitate coordination. Global alignment strengthens negotiating position and prevents AI companies from exploiting jurisdictional differences.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

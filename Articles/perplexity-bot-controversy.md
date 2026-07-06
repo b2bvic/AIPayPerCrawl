@@ -3,9 +3,15 @@ description:: The story of Perplexity AI's crawler controversy. Documented robot
 focus_keyword:: perplexity bot controversy
 category:: crawlers
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # PerplexityBot Controversy: The AI Crawler That Ignited Publisher Backlash
+
+> **Quick Summary**
+> - **What this covers:** perplexity-bot-controversy
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **Perplexity AI** didn't invent the problem of AI crawlers scraping without permission. **OpenAI**, **Anthropic**, **Google**, and **ByteDance** all crawled the web for training data before **Perplexity** existed as a company. But **Perplexity** became the lightning rod. The company and its crawler — **PerplexityBot** — drew more concentrated publisher anger than any other AI company, including those scraping at far larger scale.
 
@@ -240,6 +246,16 @@ The company's growth trajectory matters. **Perplexity** reportedly raised at a $
 Answer engines are the most directly competitive AI product for publishers. They don't just absorb content into opaque models — they present it back to users in a format that replaces visiting the source. The publisher's content becomes the answer engine's product.
 
 This dynamic explains why **Perplexity** drew outsized backlash relative to its crawling volume. The harm is visible and immediate in a way that training-data extraction is not.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

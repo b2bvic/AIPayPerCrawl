@@ -4,10 +4,16 @@ description:: The attention economy monetized user time via ads—the training e
 focus_keyword:: attention economy vs training economy
 category:: ai-monetization
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # Attention Economy vs Training Economy: How AI Shifts Publisher Value from Traffic to Training Data
+
+> **Quick Summary**
+> - **What this covers:** The attention economy monetized user time via ads—the training economy monetizes content itself as AI training infrastructure, fundamentally reshaping publisher business models.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 The attention economy—where publishers monetized user time through advertising—is collapsing into the training economy, where value derives from content as AI training infrastructure. This is not a business model adjustment. It's a phase transition from one economic regime to another, comparable to music's shift from album sales to streaming or retail's shift from physical stores to e-commerce.
 
@@ -240,3 +246,30 @@ A: Track licensing revenue per article ($10-50/article target), number of AI com
 **Q: Can small publishers (under 1,000 articles) participate in training economy?**
 
 A: Yes, via niche specialization. A 500-article site covering quantum error correction has licensing value despite small size. Generic content at small scale has no value. Build differentiation via expertise, proprietary data, or domain authority before pursuing licensing.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
+
+---
+
+## Frequently Asked Questions
+
+### Should I block all AI crawlers from my site?
+
+Not necessarily. Blocking indiscriminately cuts you off from AI-powered search results and citation traffic. The better approach is selective access — allow crawlers from platforms that drive referral traffic or pay for content, block those that only scrape without attribution. Start with robots.txt analysis, then layer in more granular controls based on your traffic data.
+
+### How do I know which AI bots are crawling my site?
+
+Check your server access logs for user-agent strings containing GPTBot, ClaudeBot, Googlebot (with AI-related query patterns), Bytespider, CCBot, and others. Most hosting platforms expose these in analytics. If you lack raw log access, tools like Cloudflare or server-side middleware can surface bot traffic patterns without custom infrastructure.
+
+### Can I monetize AI crawler access to my content?
+
+Some publishers are negotiating licensing deals directly with AI companies. For smaller sites, the practical path is controlling access (robots.txt, rate limiting, paywalling API endpoints) and measuring whether AI-sourced citation traffic converts. The pay-per-crawl model is emerging but not standardized — position yourself by documenting your content value and traffic patterns now.
+

@@ -4,10 +4,16 @@ description:: Implement sophisticated AI crawler monetization using OpenResty an
 focus_keyword:: openresty lua ai crawler
 category:: Technical Implementation
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # OpenResty Lua AI Crawler Monetization: Dynamic Content Licensing with Nginx and Lua
+
+> **Quick Summary**
+> - **What this covers:** Implement sophisticated AI crawler monetization using OpenResty and Lua scripting. Dynamic pricing, usage tracking, and adaptive rate limiting for content licensing.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **OpenResty** extends Nginx with Lua scripting capabilities enabling sophisticated AI crawler monetization beyond static configuration. Dynamic rate limiting, usage-based billing, real-time authentication verification, and adaptive crawler management transform basic blocking into programmable licensing platform. Technical implementation creates flexible infrastructure supporting complex business logic without application-layer processing overhead.
 
@@ -381,3 +387,13 @@ Circuit breaker pattern degrades gracefully. Redis unavailable: accept all authe
 ### Can OpenResty implementation handle millions of AI crawler requests daily?
 
 Yes, properly tuned. Nginx processes 10,000-50,000+ requests/second on modern hardware; Lua overhead minimal for optimized code. Bottlenecks: external service latency (Redis, databases, billing APIs) and connection exhaustion. Scale vertically (more CPU/memory) and horizontally (multiple OpenResty nodes behind load balancer). Optimization: aggressive caching, connection pooling, async processing, database read replicas. Real-world: major CDNs use OpenResty processing billions of requests daily. Publishers operating at million+ daily requests scale should benchmark realistic traffic patterns validating performance before deployment. Consider managed OpenResty offerings from cloud providers reducing operational complexity.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

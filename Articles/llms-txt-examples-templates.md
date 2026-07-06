@@ -4,10 +4,16 @@ description:: Complete llms.txt implementation guide with examples, templates, a
 focus_keyword:: llms.txt file
 category:: Technical
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # llms.txt Examples and Templates: Implementing the New AI Crawler Standard
+
+> **Quick Summary**
+> - **What this covers:** Complete llms.txt implementation guide with examples, templates, and best practices. Structure training-friendly content for AI crawler discovery.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 The llms.txt proposal creates standardized format for publishers to provide AI-friendly content summaries, licensing terms, and structured data feeds. Placed at `/llms.txt` (analogous to robots.txt), this file helps AI crawlers discover valuable content, understand licensing terms, and access structured data efficiently. While not yet universally adopted, early implementation positions publishers advantageously in emerging training data markets.
 
@@ -268,3 +274,13 @@ Optional. Many publishers include "contact for pricing" to encourage inquiries w
 Whenever licensing terms, contact information, or content structure changes significantly. Include last-updated date to help crawlers recognize stale information.
 
 Publishers implementing llms.txt create clear communication channels with AI companies, potentially increasing licensing inquiries, improving crawler targeting of valuable content, and demonstrating proactive engagement with AI training ecosystem rather than reactive blocking.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

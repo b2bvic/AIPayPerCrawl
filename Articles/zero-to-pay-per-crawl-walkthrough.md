@@ -4,10 +4,16 @@ description:: Step-by-step guide to implementing pay-per-crawl licensing. Learn 
 focus_keyword:: zero to pay per crawl walkthrough
 category:: Strategy
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # Zero To Pay Per Crawl Walkthrough: Publisher Implementation Guide
+
+> **Quick Summary**
+> - **What this covers:** Step-by-step guide to implementing pay-per-crawl licensing. Learn technical setup, pricing strategy, and legal frameworks for AI content monetization.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **Implementing pay per crawl licensing** transforms AI bot traffic from resource drain into revenue stream through systematic technical, legal, and business development steps that establish crawler detection, access control, usage metering, pricing frameworks, and contract mechanisms. This walkthrough guides publishers from initial assessment through operational licensing relationships, addressing common implementation challenges and providing decision frameworks for strategic choices encountered along the journey.
 
@@ -336,3 +342,13 @@ The choice depends on business development capacity and deal economics. Marketpl
 ### What happens if the AI company stops paying mid-contract?
 
 Payment default triggers contract termination provisions. Stop providing access immediately upon payment failure—revoke API keys, block crawler IP addresses, disable authenticated access. Send formal breach notice documenting payment failure and demanding cure within specified timeframe (typically 10-30 days per contract terms). If payment arrives, restore access. If payment doesn't arrive, terminate contract and pursue collection through standard business debt mechanisms (collection agencies, small claims court for modest amounts, commercial litigation for large amounts). Maintain detailed usage logs documenting access prior to payment failure since these become evidence in collection proceedings. Future licensing agreements with new partners should require larger security deposits or shorter payment terms if prior default experiences suggest increased risk.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

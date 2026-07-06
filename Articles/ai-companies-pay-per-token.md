@@ -4,10 +4,16 @@ description:: Token-level pricing economics for AI training data. Cost per milli
 focus_keyword:: how much ai companies pay per token training data
 category:: monetization
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 ---
 
 # What AI Companies Pay Per Token of Training Data
+
+> **Quick Summary**
+> - **What this covers:** Token-level pricing economics for AI training data. Cost per million tokens, content value variations, and publisher pricing strategies.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 AI training data economics operate at token granularity. Models process text as tokens (roughly 0.75 words per token). A 1,000-word article contains approximately 1,333 tokens. Publishers licensing content to AI companies are effectively selling tokens — the atomic unit of training value.
 
@@ -514,3 +520,30 @@ Assumptions: 10M pageviews/year, 2,000 articles in archive, 1,000 words each = 2
 ### Do higher token counts always mean more revenue?
 
 No. Quality matters more than quantity. 1M tokens of proprietary research can be worth more than 100M tokens of generic blog posts. Token count sets the baseline, but uniqueness, authority, recency, and strategic value create 10-100x multipliers. Publishers with massive archives of low-value content earn less than publishers with small archives of unique high-value content.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
+
+---
+
+## Frequently Asked Questions
+
+### Should I block all AI crawlers from my site?
+
+Not necessarily. Blocking indiscriminately cuts you off from AI-powered search results and citation traffic. The better approach is selective access — allow crawlers from platforms that drive referral traffic or pay for content, block those that only scrape without attribution. Start with robots.txt analysis, then layer in more granular controls based on your traffic data.
+
+### How do I know which AI bots are crawling my site?
+
+Check your server access logs for user-agent strings containing GPTBot, ClaudeBot, Googlebot (with AI-related query patterns), Bytespider, CCBot, and others. Most hosting platforms expose these in analytics. If you lack raw log access, tools like Cloudflare or server-side middleware can surface bot traffic patterns without custom infrastructure.
+
+### Can I monetize AI crawler access to my content?
+
+Some publishers are negotiating licensing deals directly with AI companies. For smaller sites, the practical path is controlling access (robots.txt, rate limiting, paywalling API endpoints) and measuring whether AI-sourced citation traffic converts. The pay-per-crawl model is emerging but not standardized — position yourself by documenting your content value and traffic patterns now.
+

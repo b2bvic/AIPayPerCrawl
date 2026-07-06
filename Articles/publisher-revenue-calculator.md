@@ -3,9 +3,15 @@ description:: Calculate your potential AI crawler licensing revenue using traffi
 focus_keyword:: publisher revenue calculator pay per crawl
 category:: pricing
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Publisher Revenue Calculator: Estimating Pay-Per-Crawl Income from Current Traffic
+
+> **Quick Summary**
+> - **What this covers:** publisher-revenue-calculator
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 Before investing time in [Cloudflare Pay-Per-Crawl setup](/articles/cloudflare-pay-per-crawl-setup.html), [RSL protocol implementation](/articles/rsl-protocol-implementation-guide.html), or [content valuation](/articles/content-valuation-for-ai-training.html), the first question is whether the revenue justifies the effort. A site generating $5/month from AI crawlers doesn't warrant a complex licensing infrastructure. A site generating $500/month does.
 
@@ -317,6 +323,16 @@ Replace benchmark rates with your specific content valuation:
 4. Factor in [volume discount](/articles/volume-discount-structures.html) structures for high-volume crawlers
 
 The refined estimate may be higher or lower than the benchmark-based calculation. Technical documentation sites frequently discover their actual revenue potential exceeds benchmark estimates because AI crawlers target their content disproportionately.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

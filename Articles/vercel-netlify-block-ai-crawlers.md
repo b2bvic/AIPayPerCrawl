@@ -4,10 +4,16 @@ description:: Configure Vercel Edge Functions and Netlify Edge Handlers to block
 focus_keyword:: vercel netlify block ai crawlers
 category:: Technical
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # Block AI Crawlers on Vercel and Netlify: Edge Function Implementation
+
+> **Quick Summary**
+> - **What this covers:** Configure Vercel Edge Functions and Netlify Edge Handlers to block or throttle AI training crawlers with serverless access control.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 Modern JAMstack deployment platforms **Vercel** and **Netlify** host millions of websites through serverless architectures that excel at static site delivery but require different approaches to crawler management than traditional server configurations. Publishers deploying on these platforms can't edit Apache `.htaccess` files or modify nginx configurations—instead, they must use **edge functions** that execute at CDN edge locations before requests reach static assets. This architecture provides powerful distributed control but demands understanding platform-specific APIs and deployment patterns.
 
@@ -468,3 +474,13 @@ Core logic transfers but platform-specific APIs differ (Next.js middleware APIs 
 **How frequently can I update crawler block lists without performance impacts?**
 
 Edge functions redeploy with code changes (seconds to minutes). Update block lists by changing code and redeploying. For more dynamic updates, store block lists in KV/Blobs and fetch at runtime—adds latency but enables updates without deployment. Balance update frequency against performance/cost tradeoffs based on how rapidly new crawlers emerge.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

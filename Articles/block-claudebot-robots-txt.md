@@ -3,9 +3,15 @@ description:: Step-by-step guide to blocking Anthropic's ClaudeBot with robots.t
 focus_keyword:: block claudebot robots.txt
 category:: implementation
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # How to Block ClaudeBot With robots.txt: Anthropic Crawler Disallow Guide
+
+> **Quick Summary**
+> - **What this covers:** block-claudebot-robots-txt
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **ClaudeBot** has the best compliance record of any major AI crawler. When you tell it to stop, it stops. Within 12-24 hours. Consistently. This makes blocking [ClaudeBot](/articles/claudebot-crawler-profile.html) straightforward from a technical standpoint — but less straightforward from a strategic standpoint, because **Anthropic** is also the most cooperative payer in the AI licensing ecosystem.
 
@@ -256,6 +262,16 @@ Combined with [GPTBot](/articles/block-gptbot-robots-txt.html) revenue (30-50% o
 3. **Re-enable ClaudeBot** — Update robots.txt to allow access with monetization active.
 4. **Monitor revenue** — Track **ClaudeBot** contribution in your analytics.
 5. **Optimize pricing** — **ClaudeBot** is the best signal for pricing sensitivity. If volume drops after a rate increase, you've exceeded the market. If it holds, push higher.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

@@ -4,10 +4,16 @@ description:: Comprehensive tracker of AI copyright lawsuits. NYT v OpenAI, Gett
 focus_keyword:: ai copyright lawsuits 2026 tracker
 category:: legal
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 ---
 
 # Every Active AI Copyright Lawsuit in 2026: Case Tracker
+
+> **Quick Summary**
+> - **What this covers:** Comprehensive tracker of AI copyright lawsuits. NYT v OpenAI, Getty v Stability AI, Authors Guild cases, music industry suits, and emerging litigation shaping AI scraping law.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 AI companies scraped the internet. Copyright holders sued. **The New York Times** v **OpenAI**. **Getty Images** v **Stability AI**. **Authors Guild** v **OpenAI**. **Universal Music Group** v **Anthropic**. **Sarah Silverman** v **Meta**. **Concord Music** v **OpenAI**. Dozens of active cases reshaping AI's legal foundation.
 
@@ -444,3 +450,30 @@ Aggregates federal court filings, searchable without PACER fees.
 ### How do licensing deals affect pending litigation?
 
 **Settlements typically include:** (1) Licensing agreement (ongoing content access), (2) Payment (lump sum + annual fees), (3) **Dismissal of lawsuit with prejudice** (plaintiff can't refile). **Effect:** Case ends, no precedent set (settlement doesn't create legal ruling). **Trade-off:** Publisher gets immediate payment, loses potential for court victory that would benefit entire industry. **Some publishers sue explicitly for settlement leverage** (litigation threat forces licensing negotiation). **Others sue seeking precedent** (willing to go to trial for industry-wide ruling).
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
+
+---
+
+## Frequently Asked Questions
+
+### Should I block all AI crawlers from my site?
+
+Not necessarily. Blocking indiscriminately cuts you off from AI-powered search results and citation traffic. The better approach is selective access — allow crawlers from platforms that drive referral traffic or pay for content, block those that only scrape without attribution. Start with robots.txt analysis, then layer in more granular controls based on your traffic data.
+
+### How do I know which AI bots are crawling my site?
+
+Check your server access logs for user-agent strings containing GPTBot, ClaudeBot, Googlebot (with AI-related query patterns), Bytespider, CCBot, and others. Most hosting platforms expose these in analytics. If you lack raw log access, tools like Cloudflare or server-side middleware can surface bot traffic patterns without custom infrastructure.
+
+### Can I monetize AI crawler access to my content?
+
+Some publishers are negotiating licensing deals directly with AI companies. For smaller sites, the practical path is controlling access (robots.txt, rate limiting, paywalling API endpoints) and measuring whether AI-sourced citation traffic converts. The pay-per-crawl model is emerging but not standardized — position yourself by documenting your content value and traffic patterns now.
+

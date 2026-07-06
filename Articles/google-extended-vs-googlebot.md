@@ -3,9 +3,15 @@ description:: Understand the critical difference between Google-Extended (AI tra
 focus_keyword:: google extended vs googlebot
 category:: crawlers
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Google-Extended vs Googlebot: Separating AI Training Crawls from Search Indexing
+
+> **Quick Summary**
+> - **What this covers:** google-extended-vs-googlebot
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **Google** runs two crawlers that look similar but serve fundamentally different purposes. **Googlebot** indexes content for search results. **Google-Extended** feeds **Gemini** training and **AI Overviews** generation. Confusing the two — or blocking the wrong one — either tanks your search visibility or hands your content to AI training for free.
 
@@ -361,6 +367,16 @@ After implementing any Google crawler changes:
 6. Monitor **Performance** report for ranking or traffic changes (none expected)
 
 This verification takes 10 minutes and eliminates the risk that a configuration error affects search visibility. Run it after every change to Google-related crawler rules.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

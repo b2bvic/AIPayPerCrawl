@@ -3,9 +3,15 @@ description:: AI crawler monetization strategies for small publishers under 100K
 focus_keyword:: small publisher ai monetization
 category:: pricing
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Small Publisher AI Monetization: Pay-Per-Crawl Strategies Under 100K Pageviews
+
+> **Quick Summary**
+> - **What this covers:** small-publisher-monetization
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 The AI content licensing conversation gravitates toward big numbers. **News Corp**'s $250 million deal with **OpenAI**. **Reddit**'s $60 million annual arrangement with **Google**. **Financial Times** reportedly earning [$5-10 million annually from Anthropic](/articles/financial-times-anthropic-deal.html). These deals create the impression that AI licensing is a game for publishers with million-visitor domains and legal departments on retainer.
 
@@ -240,6 +246,16 @@ If your current content is commodity-level (low AI training value), consider mig
 - Document specialized processes with step-by-step specificity
 
 A blog post titled "10 Tips for Home Gardening" commands $0.003/crawl. A comprehensive guide titled "Complete Soil Amendment Ratios by Plant Type with pH Testing Methodology" commands $0.015/crawl. Same topic domain. Five times the per-crawl value.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

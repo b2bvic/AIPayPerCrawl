@@ -4,10 +4,16 @@ description:: Deploy ModSecurity Web Application Firewall rules blocking unautho
 focus_keyword:: modsecurity ai crawler filtering
 category:: Technical Implementation
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # ModSecurity WAF AI Crawler Filtering: Implementation Guide
+
+> **Quick Summary**
+> - **What this covers:** Deploy ModSecurity Web Application Firewall rules blocking unauthorized AI training crawlers. Technical patterns for User-agent filtering and rate limiting enforcement.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **ModSecurity** serves as open-source Web Application Firewall providing real-time traffic inspection and filtering. Publishers deploy ModSecurity rules to enforce AI crawler access policies regardless of robots.txt compliance. Technical implementation transforms passive robots.txt suggestions into active enforcement blocking unauthorized training data harvesting at network edge before content delivery.
 
@@ -462,3 +468,13 @@ SecRule REQUEST_HEADERS:Authorization "@rx ^Bearer [a-zA-Z0-9]+" \
 ```
 
 Presence of valid Authorization header disables AI crawler blocking rules. Authentication verification happens before content delivery ensuring only paid crawlers access protected content. Alternative: maintain whitelist of licensed crawler IP ranges applied via IP matching rules.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

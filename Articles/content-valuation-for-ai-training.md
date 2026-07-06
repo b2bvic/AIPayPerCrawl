@@ -3,9 +3,15 @@ description:: Framework for pricing web content for AI training use. Covers valu
 focus_keyword:: content valuation for ai training
 category:: pricing
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Content Valuation for AI Training: How to Price Your Content for AI Consumption
+
+> **Quick Summary**
+> - **What this covers:** content-valuation-for-ai-training
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 Pricing content for AI consumption has no established playbook. When **News Corp** negotiated $250 million from **OpenAI**, they priced based on leverage, exclusivity, and competitive dynamics between AI companies. When a 500,000-pageview trade publication sets per-crawl rates in their [RSL file](/articles/rsl-protocol-implementation-guide.html), they price based on content characteristics, crawler demand, and market benchmarks that barely exist yet.
 
@@ -305,6 +311,16 @@ Path-based pricing in your [RSL file](/articles/rsl-protocol-implementation-guid
 AI companies crawling 100,000+ pages monthly expect volume pricing. Refusing discounts entirely may push high-volume crawlers toward direct deals with competitors who offer better terms.
 
 Structure [volume discount tiers](/articles/volume-discount-structures.html) that reward volume while maintaining minimum per-crawl rates above your cost of content production.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

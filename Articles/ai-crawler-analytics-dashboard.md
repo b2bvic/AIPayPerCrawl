@@ -3,9 +3,15 @@ description:: Build a monitoring dashboard for AI crawler activity using Grafana
 focus_keyword:: ai crawler analytics dashboard
 category:: implementation
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Building an AI Crawler Analytics Dashboard: Monitor Bot Traffic and Revenue
+
+> **Quick Summary**
+> - **What this covers:** ai-crawler-analytics-dashboard
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 You can't optimize what you can't measure. Publishers blocking or monetizing AI crawlers without visibility into crawler behavior operate on assumption. Which crawlers hit your domain most? Which content sections attract the heaviest AI scraping? Are your block rules actually working, or is **Bytespider** slipping through under a spoofed user agent?
 
@@ -342,6 +348,16 @@ For Pay-Per-Crawl publishers, monthly reconciliation compares:
 3. **RSL file rates** — What should have been charged
 
 Discrepancies indicate billing failures, volume discount calculations, or configuration errors. A [revenue calculator](/articles/publisher-revenue-calculator.html) model benchmarked against actual revenue reveals whether your pricing captures the value your content delivers.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

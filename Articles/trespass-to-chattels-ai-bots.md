@@ -4,10 +4,16 @@ description:: How trespass to chattels doctrine applies to AI training crawlers,
 focus_keyword:: trespass to chattels ai bots
 category:: Legal
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # Trespass to Chattels and AI Bots: Property Law Applied to Web Scraping
+
+> **Quick Summary**
+> - **What this covers:** How trespass to chattels doctrine applies to AI training crawlers, examining unauthorized server access, resource consumption, and legal remedies.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 Publishers seeking legal remedies against unauthorized **AI training crawler** access increasingly invoke **trespass to chattels**, a property law doctrine traditionally addressing physical interference with personal property. Applied to web scraping, the theory holds that AI bots accessing servers without permission constitute unauthorized use of computer systems—tangible property—causing harm through resource consumption, bandwidth costs, and service degradation. This legal framework bypasses copyright challenges by focusing on property rights in server infrastructure rather than content ownership.
 
@@ -263,3 +269,13 @@ Largely untested legal theory. Publishers argue that models constitute ongoing b
 **How do international jurisdictions handle trespass to chattels claims for web scraping?**
 
 Trespass to chattels is primarily a US common law doctrine with limited direct equivalents elsewhere. UK and Commonwealth jurisdictions recognize some forms of chattel trespass but apply it differently. European jurisdictions generally lack equivalent doctrines, relying instead on copyright, data protection, and computer misuse statutes. Asian jurisdictions vary widely. This creates significant challenges for publishers pursuing global AI companies—trespass claims may only be viable in certain US jurisdictions, requiring publishers to rely on other legal frameworks internationally. Forum shopping and jurisdictional issues complicate enforcement of any judgments across borders.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

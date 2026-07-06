@@ -117,6 +117,7 @@ ${articleSchema}
 ${breadcrumbSchema}
     </script>
 ${headIncludes}
+${typeof ENTITY_SCHEMAS_HTML !== "undefined" ? ENTITY_SCHEMAS_HTML : ""}
 </head>
 <body>
 

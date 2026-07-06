@@ -4,10 +4,16 @@ description:: Block Perplexity's crawler using robots.txt directives. Includes c
 focus_keyword:: block perplexitybot robots txt
 category:: ai-monetization
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # Block PerplexityBot in robots.txt: Stop Controversial AI Crawler
+
+> **Quick Summary**
+> - **What this covers:** Block Perplexity's crawler using robots.txt directives. Includes controversy background, compliance verification, and server-level enforcement methods.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **Perplexity** operates PerplexityBot to crawl content for its AI-powered search product. The crawler generated substantial controversy in mid-2024 when publishers documented systematic robots.txt violations and paywall bypassing.
 
@@ -334,6 +340,16 @@ Quarterly review of unidentified bot traffic catches new variants before they ex
 **Risk-tolerant strategy:** Allow with enhanced monitoring. Implement server-level blocks ready to activate immediately if compliance failures recur.
 
 Most publishers favor conservative approach: block until **Perplexity** proves sustained trustworthiness.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

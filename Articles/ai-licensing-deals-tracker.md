@@ -4,10 +4,16 @@ description:: Track all confirmed AI content licensing deals—pricing, terms, p
 focus_keyword:: AI licensing deals tracker
 category:: ai-monetization
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # AI Licensing Deals Tracker: Comprehensive Database of Publisher-to-AI Training Data Agreements (OpenAI, Anthropic, Google)
+
+> **Quick Summary**
+> - **What this covers:** Track all confirmed AI content licensing deals—pricing, terms, publishers involved—to benchmark negotiations and identify market trends.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **AI content licensing agreements** between publishers and model developers remain largely confidential, but reported deals provide market benchmarks for pricing, terms, and partnership structures. As of February 2026, at least **32 confirmed publisher-to-AI licensing agreements** have been publicly disclosed or leaked, representing an estimated **$800M+ in aggregate annual licensing revenue** flowing from **OpenAI**, **Anthropic**, **Google**, **Meta**, and emerging AI companies to content creators. This tracker compiles known deals, inferred terms, and strategic patterns—enabling publishers to benchmark their own negotiations against market precedents.
 
@@ -472,3 +478,13 @@ Use [AI crawler traffic analytics](ai-crawler-traffic-analytics.html) to detect 
 ### Are AI licensing deals growing or shrinking in value over time?
 
 Mixed trends. Early deals (2023-2024) commanded premium pricing as AI companies established partnerships and mitigated copyright risk. As more publishers license (increased supply), per-publisher pricing may compress—but total market size grows as more AI companies emerge (xAI, Mistral, Cohere, etc.). Specialized content (technical, financial, medical) maintains pricing power; commodity news content faces downward pressure. Long-term: [AI monetization flywheels](ai-monetization-flywheel.html) shift revenue from licensing to attribution-driven traffic and product integrations—but that's speculative.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

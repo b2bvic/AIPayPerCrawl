@@ -4,10 +4,16 @@ description:: Implement DNS filtering and edge network controls to block AI craw
 focus_keyword:: DNS-level AI crawler blocking
 category:: ai-monetization
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # DNS-Level AI Crawler Blocking: Preventing Training Bots at the Network Edge
+
+> **Quick Summary**
+> - **What this covers:** Implement DNS filtering and edge network controls to block AI crawlers before they reach your origin servers, reducing infrastructure costs and enforcing access policies at scale.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 Web server rate limiting and robots.txt directives operate at the application layer—AI crawlers reach your infrastructure, consume bandwidth, generate logs, and only then encounter access controls. By that point, they've already imposed costs. **DNS-level blocking** intervenes earlier, preventing unwanted bot traffic from ever reaching your servers by returning non-routable responses or blocking resolution entirely for identified crawler IP ranges.
 
@@ -564,3 +570,13 @@ Unlikely. Website owners generally have the right to control access to their pro
 **Q: Can I temporarily block AI crawlers during licensing negotiations as leverage?**
 
 Yes, and this is a common negotiation tactic. Block crawler access, then approach the AI company: "We've implemented access restrictions. We're open to discussing licensing terms that would restore access." This demonstrates you control a resource they want, strengthening your position. However, use carefully—overly aggressive tactics can sour relationships.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

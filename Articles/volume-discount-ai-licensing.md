@@ -4,10 +4,16 @@ description:: Design volume-based pricing structures for AI training data licens
 focus_keyword:: volume discount ai licensing
 category:: Business
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # Volume Discount AI Licensing: Pricing Strategies for Bulk Training Data
+
+> **Quick Summary**
+> - **What this covers:** Design volume-based pricing structures for AI training data licenses, implementing discount tiers and incentive frameworks that scale with usage.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 Publishers licensing content to AI companies face fundamental pricing decisions around how volume should affect unit costs. **Volume discount structures** balance competing objectives: incentivizing larger purchases that generate substantial revenue while avoiding excessive discounts that leave money on the table. Unlike physical goods where volume discounts reflect reduced marginal production costs, digital training data has near-zero marginal reproduction costs—making discount justifications more strategic than cost-based.
 
@@ -307,3 +313,13 @@ Contracts should specify overage handling: (1) Automatic tier upgrade at next th
 **How do synthetic data and free alternatives affect volume discount strategies?**
 
 Pressure publishers toward more aggressive discounting to remain competitive with near-zero cost alternatives. Publishers must differentiate on quality, compliance, uniqueness, or convenience that justifies premiums over free options. Volume discounts can't compete with free on pure economics—value proposition must emphasize attributes free alternatives lack (legal certainty, quality guarantees, specialized domains, currentness).
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

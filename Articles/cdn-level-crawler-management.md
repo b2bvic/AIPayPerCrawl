@@ -3,9 +3,15 @@ description:: Configure Fastly, Akamai, and Bunny CDN for AI crawler detection a
 focus_keyword:: cdn level crawler management
 category:: implementation
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # CDN-Level AI Crawler Management: Fastly, Akamai, and Bunny CDN Bot Control
+
+> **Quick Summary**
+> - **What this covers:** cdn-level-crawler-management
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **Cloudflare** dominates the AI crawler monetization conversation because they built [Pay-Per-Crawl](/articles/cloudflare-pay-per-crawl-setup.html) first. But Cloudflare isn't the only CDN, and publishers already invested in **Fastly**, **Akamai**, or **Bunny CDN** don't need to migrate their entire infrastructure to manage AI bots.
 
@@ -271,6 +277,16 @@ Moving between CDN providers involves DNS changes, SSL certificate provisioning,
 - Cache warming period (cold caches increase origin load temporarily)
 
 Don't migrate mid-incident. If **Bytespider** is aggressively scraping your site, stabilize with origin-level blocking first, then plan the CDN migration deliberately.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

@@ -3,9 +3,15 @@ description:: Configure AI crawler blocking and management on Vercel and Netlify
 focus_keyword:: vercel netlify ai crawler config
 category:: implementation
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Vercel and Netlify AI Crawler Configuration: Serverless Bot Management
+
+> **Quick Summary**
+> - **What this covers:** vercel-netlify-ai-crawler-config
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 Serverless platforms upended the traditional web stack. No servers to configure. No Nginx files to edit. No `.htaccess` to manage. **Vercel** and **Netlify** abstract infrastructure entirely — developers deploy code, the platform handles everything else.
 
@@ -400,6 +406,16 @@ Neither **Vercel** nor **Netlify** offers built-in AI crawler monetization. They
 3. **RSL file + manual invoicing** — Publish pricing in your [RSL file](/articles/rsl-protocol-implementation-guide.html), monitor compliance, invoice non-compliant AI companies manually. Low tech, high friction.
 
 For publishers on serverless platforms who want automated AI crawler revenue, Cloudflare as a frontend layer is the standard approach.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

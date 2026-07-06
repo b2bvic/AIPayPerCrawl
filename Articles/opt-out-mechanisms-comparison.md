@@ -3,9 +3,15 @@ description:: Compare every opt-out mechanism for AI training use. robots.txt, T
 focus_keyword:: opt out mechanisms comparison ai training
 category:: legal
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # AI Training Opt-Out Mechanisms Compared: robots.txt vs TDM Headers vs Legal Notices
+
+> **Quick Summary**
+> - **What this covers:** opt-out-mechanisms-comparison
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 Publishers who want AI companies to stop using their content for training have at least six mechanisms available. None of them are perfect. Some rely on voluntary compliance. Others carry legal weight but lack technical enforcement. A few offer both signaling and enforcement, but require infrastructure investment.
 
@@ -376,6 +382,16 @@ The opt-out landscape continues evolving. Mechanisms in development or early dep
 - **Legislative mandates** — EU and US proposals that would make opt-out mechanisms legally binding rather than voluntary. If passed, technical signals gain statutory enforcement.
 
 Publishers implementing the current stack position themselves to adopt new mechanisms as they emerge. The fundamental architecture — declare terms, enforce access, monetize compliance — remains stable even as specific protocols evolve.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

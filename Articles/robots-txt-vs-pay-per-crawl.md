@@ -3,9 +3,15 @@ description:: Blocking AI crawlers with robots.txt generates zero revenue. Pay-p
 focus_keyword:: robots txt vs pay per crawl
 category:: implementation
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # robots.txt vs Pay-Per-Crawl: Why Blocking AI Crawlers Leaves Money on the Table
+
+> **Quick Summary**
+> - **What this covers:** robots-txt-vs-pay-per-crawl
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 The reflex was understandable. AI companies scraped the web without permission. Publishers responded by adding **GPTBot**, **ClaudeBot**, and **Bytespider** to their robots.txt block lists. By early 2025, 75% of major publishers had blocked at least one AI crawler. Defense posture. Protect the archive. Stop the extraction.
 
@@ -197,6 +203,16 @@ Every month of pure blocking is a month of lost revenue. A publisher who switche
 AI crawler volumes are increasing, not decreasing. As AI companies deploy more capable models requiring fresher training data, crawl frequency rises. The revenue opportunity grows with each model generation.
 
 Early implementers also establish pricing precedent. When your [RSL file](/articles/rsl-protocol-implementation-guide.html) has published rates since 2025, AI companies treat those rates as established. Latecomers enter a market where pricing expectations already exist — set by others.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

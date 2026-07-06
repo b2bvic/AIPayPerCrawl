@@ -3,9 +3,15 @@ description:: Complete profile of CCBot, the Common Crawl crawler that feeds ope
 focus_keyword:: ccbot common crawl ai training
 category:: crawlers
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # CCBot Profile: Common Crawl's Open Dataset Crawler
+
+> **Quick Summary**
+> - **What this covers:** ccbot-common-crawl-profile
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **CCBot** is the force multiplier of AI training data. Block [GPTBot](/articles/gptbot-crawler-profile.html) and you deny **OpenAI** one data source. Block [ClaudeBot](/articles/claudebot-crawler-profile.html) and you deny **Anthropic** one data source. Block **CCBot** and you deny training data to **OpenAI**, **Anthropic**, **Meta**, **Google**, **Cohere**, **Stability AI**, **EleutherAI**, and dozens of other AI companies simultaneously — because they all train on **Common Crawl** datasets.
 
@@ -306,6 +312,16 @@ Monitor for:
 - Compliance verification after blocking (requests should cease within one crawl cycle)
 - Volume trends (increasing **CCBot** activity may indicate expanded crawl campaigns)
 - Request patterns (which content sections **CCBot** targets most heavily)
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

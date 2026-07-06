@@ -4,10 +4,16 @@ description:: Learn how to implement differentiated access policies that preserv
 focus_keyword:: search crawlers vs AI training bots
 category:: ai-monetization
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # The Dual-Strategy Approach: Allowing Search Crawlers While Blocking AI Training Bots
+
+> **Quick Summary**
+> - **What this covers:** Learn how to implement differentiated access policies that preserve search visibility while protecting content from unauthorized AI training—balancing SEO and monetization.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 Publishers face a strategic paradox: **Google's Googlebot** drives 50-80% of their traffic through organic search visibility, while **Google's Google-Extended** extracts content for training AI models without compensating publishers. Blocking one means blocking the other—or does it? The emergence of separate crawler user-agents for search indexing versus AI training creates an opportunity for differentiated access policies that preserve SEO while protecting content monetization rights.
 
@@ -447,3 +453,13 @@ Yes. Each negotiation is independent. **OpenAI** might pay $X, **Anthropic** mig
 **Q: What if an AI company's crawler ignores my robots.txt and continues scraping?**
 
 Document the violations with server logs showing crawler requests after robots.txt block was implemented. Send DMCA takedown notice (see [DMCA guide](#)). Escalate to cease-and-desist letter threatening litigation. For persistent violators, IP-based blocking via firewall or DNS is appropriate. Willful disregard of robots.txt strengthens your legal case for infringement.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.

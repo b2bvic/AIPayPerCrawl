@@ -4,10 +4,16 @@ description:: Legal and contractual attribution obligations for AI systems citin
 focus_keyword:: ai content attribution requirements sources
 category:: legal
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 ---
 
 # AI Content Attribution Requirements: When AI Companies Must Credit Sources
+
+> **Quick Summary**
+> - **What this covers:** Legal and contractual attribution obligations for AI systems citing publishers. Citation standards, traffic attribution, and enforcement mechanisms.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 AI systems now cite sources. **ChatGPT** shows inline citations with clickable links. **Claude** references source material with URLs. **Perplexity** structures every response around cited sources. **Google's** AI Overviews include attribution links. The shift from black-box outputs to cited responses happened between 2023 and 2025.
 
@@ -537,3 +543,30 @@ Varies widely. **Perplexity** (citation-centric) drives more referral traffic th
 ### What if AI company attributes correctly but still harms my business?
 
 Attribution doesn't eliminate competitive displacement. If AI response summarizes your article so comprehensively that user doesn't need to click through, attribution may generate minimal traffic despite technically complying with requirements. Publishers must negotiate both attribution AND usage limitations (e.g., "AI response may cite article but must not reproduce full article content").
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
+
+---
+
+## Frequently Asked Questions
+
+### Should I block all AI crawlers from my site?
+
+Not necessarily. Blocking indiscriminately cuts you off from AI-powered search results and citation traffic. The better approach is selective access — allow crawlers from platforms that drive referral traffic or pay for content, block those that only scrape without attribution. Start with robots.txt analysis, then layer in more granular controls based on your traffic data.
+
+### How do I know which AI bots are crawling my site?
+
+Check your server access logs for user-agent strings containing GPTBot, ClaudeBot, Googlebot (with AI-related query patterns), Bytespider, CCBot, and others. Most hosting platforms expose these in analytics. If you lack raw log access, tools like Cloudflare or server-side middleware can surface bot traffic patterns without custom infrastructure.
+
+### Can I monetize AI crawler access to my content?
+
+Some publishers are negotiating licensing deals directly with AI companies. For smaller sites, the practical path is controlling access (robots.txt, rate limiting, paywalling API endpoints) and measuring whether AI-sourced citation traffic converts. The pay-per-crawl model is emerging but not standardized — position yourself by documenting your content value and traffic patterns now.
+

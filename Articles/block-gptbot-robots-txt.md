@@ -3,9 +3,15 @@ description:: Step-by-step guide to blocking OpenAI's GPTBot with robots.txt. Co
 focus_keyword:: block gptbot robots.txt
 category:: implementation
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # How to Block GPTBot With robots.txt: OpenAI Crawler Disallow Guide
+
+> **Quick Summary**
+> - **What this covers:** block-gptbot-robots-txt
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **OpenAI** operates the most commercially active AI crawler on the web. [GPTBot](/articles/gptbot-crawler-profile.html) feeds training data into **GPT-4**, **GPT-5**, **ChatGPT**, and every product in **OpenAI**'s portfolio. If you're not being compensated for this access, blocking **GPTBot** is the first step toward either negotiating licensing terms or activating [Pay-Per-Crawl](/articles/cloudflare-pay-per-crawl-setup.html) monetization.
 
@@ -270,6 +276,16 @@ These estimates assume standard marketplace pricing ($0.005-0.010/crawl). Your a
 2. **This week:** Set up [Cloudflare Pay-Per-Crawl](/articles/cloudflare-pay-per-crawl-setup.html) and [RSL](/articles/rsl-protocol-implementation-guide.html) pricing
 3. **Next step:** Update robots.txt to allow **GPTBot** with monetization active
 4. **Ongoing:** Monitor revenue, adjust pricing, optimize content for [crawler targeting](/articles/gptbot-crawler-profile.html)
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

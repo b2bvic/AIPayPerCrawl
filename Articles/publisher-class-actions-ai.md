@@ -3,9 +3,15 @@ description:: Comprehensive tracker of lawsuits by publishers and authors agains
 focus_keyword:: publisher class actions ai companies
 category:: legal
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # Publisher Class Actions Against AI Companies: Tracking Active Lawsuits
+
+> **Quick Summary**
+> - **What this covers:** publisher-class-actions-ai
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 The legal counterattack against AI companies began in earnest in late 2023 and has accelerated since. Publishers, authors, visual artists, musicians, and software developers have filed dozens of lawsuits alleging that AI companies violated copyright by training models on their work without permission or compensation.
 
@@ -268,6 +274,16 @@ Consult IP counsel before committing. The decision to join or pursue individual 
 | Andersen v. Stability AI | N.D. Cal. | Active | Visual art training |
 | RIAA v. Suno/Udio | SDNY | Active | Music training |
 | Kadrey v. Meta | N.D. Cal. | Consolidated | LLaMA book training |
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

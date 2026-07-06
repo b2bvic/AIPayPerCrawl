@@ -3,9 +3,15 @@ description:: Copy-paste robots.txt template that blocks every known AI crawler 
 focus_keyword:: block all ai crawlers robots.txt
 category:: implementation
 author:: Victor Valentine Romo
-date:: 2026.02.07
+date:: 2026.03.20
 
 # How to Block All AI Crawlers With robots.txt: Copy-Paste Template
+
+> **Quick Summary**
+> - **What this covers:** block-all-ai-crawlers-robots-txt
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 You want every AI crawler off your site. No training. No retrieval. No scraping. This is the template that accomplishes that — a copy-paste robots.txt configuration that blocks every documented AI crawler while preserving search engine indexing, social media previews, and standard web functionality.
 
@@ -323,6 +329,16 @@ This template is a starting point, not a permanent state. The progression:
 2. **Activate [Pay-Per-Crawl](/articles/cloudflare-pay-per-crawl-setup.html)** — set up Cloudflare's monetization layer
 3. **Selectively re-enable** compliant crawlers — [GPTBot](/articles/gptbot-crawler-profile.html) and [ClaudeBot](/articles/claudebot-crawler-profile.html) first
 4. **Monitor and adjust** — track revenue, adjust pricing, expand or contract access
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
 
 ---
 

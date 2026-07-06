@@ -5,6 +5,31 @@
  * Exports: megaNavHtml, footerHtml, headIncludes, megaNavScript
  */
 
+// ── Entity SEO (network-wide) ─────────────────────────────────
+const ENTITY_PERSON_SCHEMA = '{"@type":"Person","@id":"https://victorvalentineromo.com/#person","name":"Victor Valentine Romo","url":"https://victorvalentineromo.com","jobTitle":"Knowledge Systems Architect","sameAs":["https://linkedin.com/in/b2bvic","https://twitter.com/b2bvic","https://github.com/b2bvic"]}';
+const ENTITY_ORG_SCHEMA = '{"@type":"Organization","@id":"https://scalewithsearch.com/#org","name":"Scale With Search","url":"https://scalewithsearch.com","founder":{"@id":"https://victorvalentineromo.com/#person"},"logo":{"@type":"ImageObject","url":"https://scalewithsearch.com/og-image.png"}}';
+const ENTITY_WEBSITE_SCHEMA = '{"@context":"https://schema.org","@type":"WebSite","@id":"https://aipaypercrawl.com/#website","name":"AI Pay Per Crawl","url":"https://aipaypercrawl.com","description":"AI crawler access control, monetization, and bot management for publishers.","publisher":{"@id":"https://scalewithsearch.com/#org"},"creator":{"@id":"https://victorvalentineromo.com/#person"},"inLanguage":"en-US"}';
+const ENTITY_SCHEMAS_HTML =
+  '  <script type="application/ld+json">' + ENTITY_PERSON_SCHEMA + '</script>\n' +
+  '  <script type="application/ld+json">' + ENTITY_ORG_SCHEMA + '</script>\n' +
+  '  <script type="application/ld+json">' + ENTITY_WEBSITE_SCHEMA + '</script>\n' +
+  '  <link rel="author" href="https://victorvalentineromo.com">\n' +
+  '  <link rel="me" href="https://scalewithsearch.com">\n' +
+  '  <link rel="me" href="https://aifirstsearch.com">\n' +
+  '  <link rel="me" href="https://browserprompt.com">\n' +
+  '  <link rel="me" href="https://polytraffic.com">\n' +
+  '  <link rel="me" href="">\n' +
+  '  <link rel="me" href="">\n' +
+  '  <link rel="me" href="">\n' +
+  '  <link rel="me" href="https://creatinepedia.com">\n' +
+  '  <link rel="me" href="https://organicarbitrage.com">\n' +
+  '  <link rel="me" href="">\n' +
+  '  <link rel="me" href="">\n' +
+  '  <link rel="me" href="https://victorvalentineromo.com">\n' +
+  '  <link rel="me" href="https://linkedin.com/in/b2bvic">\n' +
+  '  <link rel="me" href="https://twitter.com/b2bvic">\n' +
+  '  <link rel="me" href="https://github.com/b2bvic">';
+
 // ─── Entity Domains ────────────────────────────────────────────────
 const ENTITY_DOMAINS = [
   'scalewithsearch.com',
@@ -13,12 +38,7 @@ const ENTITY_DOMAINS = [
   'browserprompt.com',
   'creatinepedia.com',
   'polytraffic.com',
-  'tattooremovalnear.com',
-  'comicstripai.com',
   'aipaypercrawl.com',
-  'b2bvic.com',
-  'seobyrole.com',
-  'quickfixseo.com'
 ];
 
 const ENTITY_LINKS = ENTITY_DOMAINS.map(d => `    <link rel="me" href="https://${d}">`).join('\n');
@@ -222,13 +242,14 @@ const footerHtml = `
           <div class="footer__heading">From Scale With Search</div>
           <ul class="footer__links">
             <li><a href="https://scalewithsearch.com" target="_blank" rel="me" style="font-weight: 600; color: var(--accent);">Scale With Search &rarr;</a></li>
+            <li><a href="https://seoforexecutives.substack.com" target="_blank" rel="noopener">Newsletter</a></li>
             <li><a href="https://github.com/b2bvic/scale-with-search" target="_blank" rel="me" style="font-weight: 600; color: var(--accent);">Open Source Repo &rarr;</a></li>
             <li><a href="https://aifirstsearch.com" target="_blank" rel="me">AI First Search</a></li>
             <li><a href="https://browserprompt.com" target="_blank" rel="me">Browser Prompt</a></li>
             <li><a href="https://polytraffic.com" target="_blank" rel="me">Polytraffic</a></li>
             <li><a href="https://creatinepedia.com" target="_blank" rel="me">Creatinepedia</a></li>
             <li><a href="https://victorvalentineromo.com" target="_blank" rel="me">Victor Romo</a></li>
-            <li><a href="https://b2bvic.com" target="_blank" rel="me">B2B Vic</a></li>
+            <li><a href="" target="_blank" rel="me">B2B Vic</a></li>
           </ul>
         </div>
       </div>

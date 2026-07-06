@@ -4,10 +4,16 @@ description:: Step-by-step guide to blocking Google-Extended AI crawler while pr
 focus_keyword:: block google-extended
 category:: Technical Implementation
 author:: Victor Valentine Romo
-date:: 2026.02.08
+date:: 2026.03.20
 ---
 
 # How to Block Google-Extended Without Affecting Search Rankings: Robots.txt Configuration for AI Training Prevention
+
+> **Quick Summary**
+> - **What this covers:** Step-by-step guide to blocking Google-Extended AI crawler while preserving Googlebot access for search indexing and maintaining organic traffic rankings.
+> - **Who it's for:** publishers and site owners managing AI bot traffic
+> - **Key takeaway:** Read the first section for the core framework, then use the specific tactics that match your situation.
+
 
 **Google-Extended** is Google's AI training crawler, introduced September 2023 to gather data for **Bard** (now Gemini) and other generative AI products. Unlike **Googlebot**, which powers Google Search indexing, Google-Extended serves exclusively AI training purposes. Publishers who block Google-Extended prevent their content from training Google's AI models without impacting search visibility, rankings, or organic traffic—making it the cleanest separation available between search crawling and AI data collection.
 
@@ -291,3 +297,13 @@ Yes, but robots.txt is more efficient. Meta tags require adding code to every pa
 Yes. Block Google-Extended first to establish leverage, then negotiate licensing terms that grant access in exchange for compensation.
 
 Publishers who block Google-Extended control how their content interacts with Google's AI products without sacrificing search visibility, organic traffic, or rankings. This creates space for licensing negotiations where content value determines compensation rather than default exploitation.
+
+---
+
+## When Blocking AI Crawlers Isn't the Move
+
+Skip this if:
+
+- **Your site has less than 1,000 monthly organic visits.** AI crawlers aren't your problem — getting indexed by traditional search is. Focus on content quality and link acquisition before worrying about bot management.
+- **You're running a personal blog or portfolio site.** AI citation of your content is free exposure at this scale. Blocking crawlers costs you visibility without protecting meaningful revenue.
+- **Your revenue comes entirely from direct sales, not content.** If your content isn't the product (e-commerce, SaaS with no content moat), AI crawlers are neutral. Your competitive advantage lives in the product, not the pages.
