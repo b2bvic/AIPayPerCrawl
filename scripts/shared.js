@@ -93,7 +93,7 @@ const megaNavHtml = `
 
         <div class="nav__divider"></div>
 
-        <a href="/setup.html" class="nav__cta">Master the Protocol &mdash; $2,497</a>
+        <a href="/setup.html" class="nav__cta">Get This Built For You</a>
       </div>
 
       <button class="nav__mobile-btn" id="mobile-menu-btn" aria-label="Open menu">
@@ -125,7 +125,7 @@ const megaNavHtml = `
           <div style="background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(79,70,229,0.04)); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
             <h3 style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Skip the learning curve.</h3>
             <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete pay-per-crawl implementation. Templates, pricing, contracts.</p>
-            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+            <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get This Built For You</a>
           </div>
         </div>
       </div>
@@ -194,7 +194,7 @@ const megaNavHtml = `
       <a href="/articles.html" class="mobile-menu__link">Legal</a>
       <a href="/articles.html" class="mobile-menu__link">All Articles</a>
       <a href="https://scalewithsearch.com" class="mobile-menu__link" target="_blank" rel="me">Scale With Search &rarr;</a>
-      <a href="/setup.html" class="mobile-menu__cta">Master the Protocol &mdash; $2,497</a>
+      <a href="/setup.html" class="mobile-menu__cta">Get This Built For You</a>
     </div>
   </nav>`;
 
@@ -207,7 +207,7 @@ const footerHtml = `
         <div class="footer__brand">
           <div class="footer__logo">AI Pay Per Crawl</div>
           <p class="footer__desc">Your content feeds AI. The protocol ensures you get paid for it. Implementation guides, pricing models, and licensing infrastructure for publishers monetizing AI crawler traffic.</p>
-          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get Rule &mdash; $2,497</a>
+          <a href="/setup.html" class="btn btn--primary" style="font-size: 0.8125rem; padding: 0.625rem 1.25rem;">Get This Built For You</a>
         </div>
 
         <div>

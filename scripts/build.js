@@ -199,6 +199,22 @@ Sitemap: https://aipaypercrawl.com/sitemap.xml
   console.log('Built: robots.txt');
 }
 
+function buildLlmsTxt(articles) {
+  const content = `# AI Pay Per Crawl
+
+> Your content feeds AI. Get paid for it. Research on AI crawler monetization, publisher rights, RSL, llms.txt, and Cloudflare Pay Per Crawl.
+
+AI Pay Per Crawl is a research library on AI crawler monetization and content licensing, written by Victor Valentine Romo (https://victorvalentineromo.com). It is part of the Scale With Search network (https://scalewithsearch.com).
+
+## Key pages
+
+- [Article library](https://aipaypercrawl.com/articles.html): ${articles.length} in-depth articles
+- [Have pay-per-crawl implemented for you](https://aipaypercrawl.com/setup.html): done-for-you crawler controls and licensing setup
+`;
+  fs.writeFileSync(path.join(DIST, 'llms.txt'), content);
+  console.log('Built: llms.txt');
+}
+
 // ── Main ──────────────────────────────────────────────────────────
 function main() {
   console.log('Building aipaypercrawl.com...\n');
@@ -219,6 +235,7 @@ function main() {
   build404();
   buildSitemap(articles);
   buildRobots();
+  buildLlmsTxt(articles);
 
   const total = rootCount + articles.length + 3;
   console.log(`\nBuild complete. ${total} files in dist/`);
