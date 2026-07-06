@@ -22,7 +22,8 @@ const ROOT_FILES = [
   'articles.html',
   'robots.txt',
   'base.css',
-  'netlify.toml'
+  'netlify.toml',
+  '333116cedf044b48b071fde39f6fffd6.txt' // IndexNow key
 ];
 
 // ── Clean dist ────────────────────────────────────────────────────
