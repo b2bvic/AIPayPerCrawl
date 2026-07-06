@@ -161,13 +161,13 @@ function buildSitemap(articles) {
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://aipaypercrawl.com/setup.html</loc>
+    <loc>https://aipaypercrawl.com/setup</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://aipaypercrawl.com/articles.html</loc>
+    <loc>https://aipaypercrawl.com/articles</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -176,7 +176,7 @@ function buildSitemap(articles) {
   for (const a of articles) {
     xml += `
   <url>
-    <loc>https://aipaypercrawl.com/articles/${a.slug}.html</loc>
+    <loc>https://aipaypercrawl.com/articles/${a.slug}</loc>
     <lastmod>${a.date}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
