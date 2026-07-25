@@ -1,0 +1,10 @@
+# AI Pay Per Crawl
+
+> Your content feeds AI. Get paid for it. Research on AI crawler monetization, publisher rights, RSL, llms.txt, and Cloudflare Pay Per Crawl.
+
+AI Pay Per Crawl is a research library on AI crawler monetization and content licensing, written by Victor Valentine Romo (https://victorvalentineromo.com). It is part of the Scale With Search network (https://scalewithsearch.com).
+
+## Key pages
+
+- [Article library](https://aipaypercrawl.com/articles.html): 240 in-depth articles
+- [Have pay-per-crawl implemented for you](https://aipaypercrawl.com/setup.html): done-for-you crawler controls and licensing setup
