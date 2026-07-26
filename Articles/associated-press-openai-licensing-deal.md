@@ -28,7 +28,6 @@ That opacity is the story. What **AP** revealed tells publishers what to announc
 
 This teardown analyzes the public terms, infers the deal structure from industry comparisons, and extracts lessons for publishers pursuing their own AI licensing agreements.
 
-[INTERNAL: News Corp Deal Teardown]
 
 ---
 
@@ -91,7 +90,6 @@ For publishers analyzing this deal: The absence of financial disclosure suggests
 | Technology | API access and product collaboration |
 | Positioning | First-mover credibility |
 
-[INTERNAL: AI Content Licensing Models Comparison]
 
 ---
 
@@ -155,7 +153,6 @@ The **OpenAI** deal almost certainly excluded **Stylebook** content. That produc
 
 Scope exclusions protect revenue streams and confidential information. Publishers negotiating their own deals should inventory what stays out, not just what goes in.
 
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 
@@ -259,7 +256,6 @@ Enforcement is the weak point in attribution agreements. Publishers should negot
 
 The reality: Enforcement depends on ongoing relationship value. **OpenAI** has incentive to comply because losing **AP** content damages product quality and industry reputation. That incentive matters more than contract language.
 
-[INTERNAL: RSL Protocol Implementation Guide]
 
 ---
 
@@ -395,7 +391,6 @@ These questions have significant copyright implications. The **AP** deal almost 
 - Who owns AI-generated content drawing from licensed sources?
 - What happens to derivative works if the deal terminates?
 
-[INTERNAL: Reddit Deal Teardown]
 
 ---
 

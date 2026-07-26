@@ -26,7 +26,6 @@ This isn't a replacement for RSL or **robots.txt**. It's a complement. RSL tells
 
 Publishers who implement llms.txt create a single source of truth for their licensing terms that works across every audience: AI crawlers, AI company compliance teams, legal departments, and the LLMs themselves when they encounter the file during retrieval operations.
 
-[INTERNAL: RSL Protocol Implementation Guide]
 
 ---
 
@@ -90,7 +89,6 @@ The two files serve different functions in the licensing stack:
 
 A publisher running both files has coverage across the full lifecycle. RSL handles what happens when **GPTBot** requests a page. llms.txt handles what happens when a human at **OpenAI** reviews whether their crawler's behavior aligns with your terms, and what happens when GPT-4 retrieves your content and needs to understand usage constraints.
 
-[INTERNAL: robots.txt vs. RSL vs. Direct Deals Comparison]
 
 ---
 
@@ -195,7 +193,6 @@ Crawlers that access content without payment will be:
 
 The enforcement section isn't just posturing. It communicates that you monitor crawler behavior and have mechanisms to respond. AI companies that care about compliance will note this. AI companies that ignore terms will ignore this too, but you've established documentation for any future disputes.
 
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 
@@ -306,7 +303,6 @@ before accessing content.
 
 Both examples demonstrate clarity, specificity, and actionable information. The trade publication focuses on simplicity. The news organization adds tiered pricing and signals existing relationships with major AI companies.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]
 
 ---
 
@@ -405,7 +401,6 @@ Most RAG implementations don't check llms.txt today. The standard is new. But as
 
 Publishers implementing llms.txt now establish their terms before this becomes standard practice. When RAG systems do start checking licensing files, your terms are already in place.
 
-[INTERNAL: AI Crawler Directory]
 
 ---
 
@@ -468,8 +463,6 @@ Publishers who implement it create documentation that serves multiple audiences:
 
 The file takes 30 minutes to write. The benefits compound as AI licensing matures and more systems incorporate llms.txt awareness into their operations.
 
-[INTERNAL: RSL Protocol Implementation Guide]
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]
 
 ---
 

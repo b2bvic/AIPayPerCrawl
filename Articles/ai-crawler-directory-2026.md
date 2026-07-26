@@ -26,7 +26,6 @@ Understanding which crawlers hit your domain, how they behave, and what options 
 
 This directory catalogs the major AI crawlers operating in 2026, their documented behaviors, and the technical methods for managing their access to your content.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]
 
 ---
 
@@ -64,11 +63,8 @@ The fear is common: block AI crawlers, lose search rankings. The evidence doesn'
 
 **Google-Extended** handles **Gemini** training and **AI Overview** generation. Blocking it prevents your content from appearing in AI-generated summaries. It does not affect traditional organic rankings. **Google**'s own documentation confirms this separation.
 
-Case study data from 50+ publishers shows zero correlation between AI crawler blocking and organic traffic changes. Sites that blocked **GPTBot**, **ClaudeBot**, and **Google-Extended** maintained identical search performance. The crawlers serve different purposes. Blocking one category leaves the other intact.
+This repository does not include a publisher cohort proving the ranking impact of blocking AI crawlers. Treat the crawler separation above as a technical distinction, then measure search and referral traffic on your own site before and after changing access rules.
 
-If you're hesitating to block or monetize AI crawlers because of SEO concerns, that fear is unfounded. The systems are independent.
-
-[INTERNAL: robots.txt vs. RSL vs. Direct Deals Comparison]
 
 ---
 
@@ -301,7 +297,6 @@ Disallow: /
 
 **Perplexity**'s business model (answer engine that competes with search) creates direct content competition. Your article becomes their AI-generated answer. Attribution exists but traffic doesn't flow.
 
-[INTERNAL: RSL Protocol Implementation Guide]
 
 ---
 
@@ -467,7 +462,6 @@ Create a rate limiting rule targeting AI crawler user-agents. This slows extract
 
 **Cloudflare Pay-Per-Crawl** integrates with these rules. Rather than blocking compliant crawlers like **GPTBot** and **ClaudeBot**, you can require payment for access. Cloudflare handles billing and enforcement.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]
 
 ---
 
@@ -536,8 +530,6 @@ This directory provides the foundation. Identification methods, blocking techniq
 
 The choice between blocking and monetizing depends on your content, your resources, and your risk tolerance. Both require the same starting point: knowing exactly who's crawling your domain and what they're doing with your content.
 
-[INTERNAL: RSL Protocol Implementation Guide]
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 
@@ -554,4 +546,3 @@ Check your server access logs for user-agent strings containing GPTBot, ClaudeBo
 ### Can I monetize AI crawler access to my content?
 
 Some publishers are negotiating licensing deals directly with AI companies. For smaller sites, the practical path is controlling access (robots.txt, rate limiting, paywalling API endpoints) and measuring whether AI-sourced citation traffic converts. The pay-per-crawl model is emerging but not standardized — position yourself by documenting your content value and traffic patterns now.
-

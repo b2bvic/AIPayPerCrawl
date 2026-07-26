@@ -656,13 +656,13 @@ def create_key(tier: str, customer: Customer = Depends(get_current_customer)):
 <h3>Standard Header Authentication</h3>
 <pre><code class="language-http">GET /licensed-content/article-123 HTTP/1.1
 Host: example.com
-X-API-Key: lic_a1b2c3d4e5f6...
+X-API-Key: DEMO
 User-Agent: GPTBot/1.0
 </code></pre>
 <p>Crawlers include the API key in <code>X-API-Key</code> header. Middleware validates before serving content.</p>
 <h3>Query Parameter Authentication (Fallback)</h3>
 <p>Some crawlers can&#39;t set custom headers. Support query parameters:</p>
-<pre><code class="language-http">GET /licensed-content/article-123?api_key=lic_a1b2c3d4e5f6... HTTP/1.1
+<pre><code class="language-http">GET /licensed-content/article-123?api_key=DEMO HTTP/1.1
 </code></pre>
 <p><strong>Security risk</strong>: API keys in URLs appear in logs, referrer headers, and browser history. Prefer header authentication; use query parameters only when necessary.</p>
 <h2>Admin Panel for Publisher Management</h2>

@@ -365,7 +365,7 @@ local function validate_api_key(key)
     -- For this tutorial, we&#39;ll use a simple file-based lookup
 
     local valid_keys = {
-        [&quot;test-key-123&quot;] = { quota = 1000, used = 0 },
+        [&quot;DEMO&quot;] = { quota = 1000, used = 0 },
         [&quot;openai-key-456&quot;] = { quota = 10000, used = 500 }
     }
 
@@ -497,7 +497,7 @@ sudo systemctl reload nginx
 </code></pre>
 <p><strong>Status code:</strong> 402 Payment Required</p>
 <h3>Test 2: AI Crawler With Valid API Key</h3>
-<pre><code class="language-bash">curl -A &quot;GPTBot/1.0&quot; -H &quot;Authorization: Bearer test-key-123&quot; http://yoursite.com/article.html
+<pre><code class="language-bash">KEY=DEMO curl -A &quot;GPTBot/1.0&quot; --oauth2-bearer &quot;$KEY&quot; http://yoursite.com/article.html
 </code></pre>
 <p><strong>Expected response:</strong> The actual article content</p>
 <p><strong>Status code:</strong> 200 OK</p>
@@ -570,8 +570,8 @@ end
 log_access(api_key, ngx.var.request_uri, user_agent)
 </code></pre>
 <p>This creates a log file:</p>
-<pre><code>2026-02-08 10:15:32 | test-key-123 | /article1.html | GPTBot/1.0
-2026-02-08 10:15:45 | test-key-123 | /article2.html | GPTBot/1.0
+<pre><code>2026-02-08 10:15:32 | DEMO | /article1.html | GPTBot/1.0
+2026-02-08 10:15:45 | DEMO | /article2.html | GPTBot/1.0
 2026-02-08 10:16:02 | openai-key-456 | /archive/2025/post.html | GPTBot/1.0
 </code></pre>
 <p>Process this log monthly for billing:</p>
@@ -579,10 +579,10 @@ log_access(api_key, ngx.var.request_uri, user_agent)
 awk &#39;{print $3}&#39; /var/log/nginx/ai-licensing.log | sort | uniq -c
 </code></pre>
 <p>Output:</p>
-<pre><code>  245 test-key-123
+<pre><code>  245 DEMO
   1523 openai-key-456
 </code></pre>
-<p>Bill accordingly: <code>245 × $0.01 = $2.45</code> for test-key-123.</p>
+<p>Bill accordingly: <code>245 × $0.01 = $2.45</code> for the demo key.</p>
 <h2>Production Enhancements</h2>
 <p>The tutorial implementation works but needs hardening for production.</p>
 <h3>Enhancement 1: Rate Limiting Per Key</h3>

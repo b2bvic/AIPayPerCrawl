@@ -27,7 +27,6 @@ The announcement sent a signal to the industry. Premium journalism has a price. 
 
 This teardown examines what **News Corp** licensed, how the deal was likely structured, why this specific agreement commands the highest known valuation, and what other publishers can extract from studying its architecture.
 
-[INTERNAL: AP Deal Teardown]
 
 ---
 
@@ -81,7 +80,6 @@ The pattern: Extract maximum value from platforms that benefit from **News Corp*
 
 Public announcement of the $250 million figure served strategic purpose beyond investor relations. It anchored industry expectations. Publishers negotiating after May 2024 could point to **News Corp** pricing as precedent. AI companies couldn't claim market rates were lower.
 
-[INTERNAL: robots.txt vs RSL vs Direct Deals]
 
 ---
 
@@ -203,7 +201,6 @@ Non-exclusivity means **News Corp** could pursue deals with **Anthropic**, **Goo
 
 If exclusivity exists, it's likely narrow. Perhaps exclusive retrieval rights while allowing training licenses elsewhere. Or exclusivity for specific properties while others remain licensable. Full exclusivity at $50 million annual seems underpriced given multi-buyer potential.
 
-[INTERNAL: Financial Times Deal Teardown]
 
 ---
 
@@ -297,7 +294,6 @@ Digital advertising generates approximately $3-5 CPM (cost per thousand impressi
 
 AI licensing pays better than advertising per content interaction. The comparison isn't perfect — crawls and pageviews measure different things. But the economics favor licensing over ad-supported access.
 
-[INTERNAL: Reddit Deal Teardown]
 
 ---
 

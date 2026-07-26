@@ -30,7 +30,6 @@ Pricing AI training data requires different thinking than advertising rate cards
 
 This framework breaks down how publishers calculate that utility and translate it into defensible pricing.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup]
 
 ---
 
@@ -101,7 +100,6 @@ The gap between extraction value and referral value explains why AI licensing em
 
 Pay-Per-Crawl addresses this by charging for extraction directly. The 73,000:1 ratio becomes 73,000 billable events.
 
-[INTERNAL: RSL Protocol Implementation Guide]
 
 ---
 
@@ -173,7 +171,6 @@ Hybrid pricing combines flat fees with per-crawl components. A base license gran
 
 The **Reddit-Google** deal likely includes hybrid elements. Base annual payment plus real-time API access priced separately. The disclosed $60 million figure probably represents the floor, not the ceiling.
 
-[INTERNAL: AI Content Licensing Models Comparison]
 
 ---
 
@@ -305,7 +302,6 @@ Your server logs reveal demand. High crawl frequency from specific AI companies 
 
 Use baseline data to identify which AI companies to prioritize, set initial pricing, and project revenue (crawl volume x per-crawl rate = estimated monthly income).
 
-[INTERNAL: AI Crawler Directory]
 
 ---
 
@@ -374,7 +370,6 @@ Setting prices without enforcement is signaling, not monetization.
 
 **The fix:** Prioritize established AI companies with demonstrated compliance. Offer loyalty benefits that create switching costs.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup]
 
 ---
 

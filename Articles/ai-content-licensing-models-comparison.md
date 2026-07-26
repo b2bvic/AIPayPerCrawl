@@ -26,7 +26,6 @@ The decision isn't philosophical. It's financial. A 5-million-pageview trade pub
 
 This comparison breaks down each model's mechanics, economics, ideal use cases, and limitations. The goal isn't to advocate for one approach. It's to show which approach fits which publisher circumstance.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]
 
 ---
 
@@ -73,7 +72,6 @@ Direct deals require scale, unique content, or irreplaceable data. **News Corp**
 
 The threshold for direct deal viability sits around **50 million monthly pageviews** or truly irreplaceable niche data (proprietary research, specialized technical documentation, unique datasets). Below that threshold, AI companies can find substitute content elsewhere. Above it, you have negotiating leverage.
 
-[INTERNAL: News Corp OpenAI Deal Teardown]
 
 ---
 
@@ -121,7 +119,6 @@ Legal enforceability is weak. robots.txt isn't a contract. Violating its directi
 
 Blocking also forecloses future optionality. AI companies building relationships with publishers typically start with compliant crawlers. Publishers who block everything aren't on AI company radar for partnership opportunities.
 
-[INTERNAL: AI Crawler Directory]
 
 ---
 
@@ -195,7 +192,6 @@ The marketplace sweet spot: sufficient traffic to generate meaningful crawler ac
 
 These ranges assume standard per-crawl pricing ($0.005-$0.015) and typical crawler behavior. Specialized content (technical documentation, financial data) commands higher rates and may exceed these ranges.
 
-[INTERNAL: RSL Protocol Implementation Guide]
 
 ---
 
@@ -281,7 +277,6 @@ Direct deals require leverage. Leverage comes from:
 
 Direct deals make sense when potential revenue justifies the investment. Legal fees for contract drafting run **$15,000-$50,000**. Negotiation takes months. If marketplace revenue would be $3,000/month ($36,000/year), direct deal overhead may not pencil out. If marketplace revenue would be $10,000/month ($120,000/year), direct deals that could yield $5 million annually justify the investment.
 
-[INTERNAL: Reddit Google AI Licensing Deal Teardown]
 
 ---
 
@@ -313,7 +308,6 @@ Some publishers separate retrieval licensing (ongoing, frequent, lower value per
 
 This hybrid captures both revenue streams without sacrificing either. Retrieval revenue is ongoing. Training revenue is lump-sum. Combined, they may exceed either approach alone.
 
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 
@@ -375,9 +369,6 @@ Marketplace revenue today funds direct deal negotiations tomorrow. Direct deal l
 
 The worst strategy is paralysis. While you deliberate, AI crawlers are scraping. Choose a path. Execute. Iterate.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]
-[INTERNAL: RSL Protocol Implementation Guide]
-[INTERNAL: Associated Press OpenAI Licensing Deal Teardown]
 
 ---
 

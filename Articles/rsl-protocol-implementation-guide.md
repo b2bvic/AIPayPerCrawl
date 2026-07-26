@@ -28,7 +28,6 @@ RSL lets publishers communicate licensing terms in a format AI crawlers can pars
 
 This isn't a proposal anymore. Publishers are implementing RSL. AI companies are reading it. The infrastructure exists. What's missing is adoption at scale.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]
 
 ---
 
@@ -84,7 +83,6 @@ These three mechanisms serve different functions:
 
 RSL sits between blocking and negotiating. It enables licensing to AI companies you'll never talk to, at rates you set, without lawyers or contracts. For publishers under 50 million monthly pageviews, this is typically the most practical path.
 
-[INTERNAL: robots.txt vs. RSL vs. Direct Deals Comparison]
 
 ---
 
@@ -295,7 +293,6 @@ Breaking news commands higher rates (time-sensitive, high demand). Archive conte
 
 This structure requires crawler systems that parse path-based pricing. **Cloudflare** supports it. Other enforcement systems may apply your default rate to everything.
 
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 
@@ -447,7 +444,6 @@ Update the `updated` field in your RSL file whenever you change terms:
 
 AI companies can compare this date against their crawl logs to verify they were operating under current terms.
 
-[INTERNAL: AI Crawler Directory]
 
 ---
 
@@ -495,7 +491,6 @@ Your RSL file feeds into this system. Cloudflare's dashboard overrides take prec
 
 The limitation: Cloudflare only enforces for crawlers that use proper user-agent identification and don't circumvent detection. Sophisticated bad actors can still scrape. But compliant AI companies from **OpenAI**, **Anthropic**, and **Google** work within the system.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]
 
 ---
 
@@ -517,8 +512,6 @@ Every publisher who implements RSL strengthens the standard. Every RSL file that
 
 Publishers waiting for the "right time" to implement RSL are watching the market develop without them. The right time was when you first noticed AI crawlers in your server logs. The second-best time is now.
 
-[INTERNAL: llms.txt Specification Guide]
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 

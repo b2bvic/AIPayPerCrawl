@@ -203,14 +203,14 @@ location /feed/ {
 Generate unique feed URLs per subscriber:
 
 ```
-https://example.com/feed/?key=a1b2c3d4e5f6
+https://example.com/feed/?key=DEMO
 ```
 
 The `key` parameter identifies the subscriber. Validate keys server-side before serving feed content:
 
 ```php
 <?php
-$valid_keys = ['a1b2c3d4e5f6', 'x7y8z9w0v1u2'];
+$valid_keys = ['DEMO'];
 $provided_key = $_GET['key'] ?? '';
 
 if (!in_array($provided_key, $valid_keys)) {

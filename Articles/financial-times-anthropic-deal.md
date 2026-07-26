@@ -32,7 +32,6 @@ The deal terms remain largely undisclosed. No dollar figures. No payment structu
 
 This teardown analyzes what **FT** licensed, infers deal structure from industry comparisons, and extracts lessons for publishers evaluating AI company selection as a strategic decision.
 
-[INTERNAL: News Corp Deal Teardown]
 
 ---
 
@@ -92,7 +91,6 @@ This strategy assumes users develop AI platform preferences. If users consolidat
 
 **FT** bet on platform fragmentation. That bet shapes their entire AI licensing strategy.
 
-[INTERNAL: AP Deal Teardown]
 
 ---
 
@@ -174,7 +172,6 @@ Not everything **FT** owns appears in the **Anthropic** agreement.
 
 Scope exclusions protect valuable assets and sensitive information. **FT** generates substantial value from subscriber analytics and research products. Bundling those into an AI licensing deal would undervalue standalone commercial opportunities.
 
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 
@@ -262,7 +259,6 @@ Revenue sharing aligns incentives. If **Claude** becomes more valuable because o
 
 **FT** may have negotiated such provisions given their technology partnership framing. Collaborative relationships often include performance alignment that purely transactional deals lack.
 
-[INTERNAL: AI Content Licensing Models Comparison]
 
 ---
 
@@ -389,7 +385,6 @@ Historical training value helps models understand patterns. When **Claude** expl
 
 Attribution consistency builds brand association. Readers encountering **Claude** for business queries repeatedly see "Financial Times" citations. That repetition has marketing value separate from licensing payment.
 
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup]
 
 ---
 
@@ -535,7 +530,6 @@ Open question: Will **FT** pursue additional AI licensing relationships?
 
 **FT** will likely pursue additional deals selectively. **Google Gemini** integration would capture search-adjacent users. **Meta** licensing would capture social audiences. Each partnership decision involves strategic trade-offs beyond revenue.
 
-[INTERNAL: Reddit Deal Teardown]
 
 ---
 

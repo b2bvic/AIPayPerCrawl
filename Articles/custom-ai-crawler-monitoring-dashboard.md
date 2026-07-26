@@ -101,7 +101,7 @@ Publishers using **Cloudflare**, **Fastly**, or **AWS CloudFront** must configur
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone_id}/logpush/jobs" \
   -H "X-Auth-Email: your-email@example.com" \
-  -H "X-Auth-Key: your-api-key" \
+  --oauth2-bearer "$CF_TOKEN" \
   -H "Content-Type: application/json" \
   --data '{
     "destination_conf": "s3://your-bucket/cloudflare-logs?region=us-east-1",

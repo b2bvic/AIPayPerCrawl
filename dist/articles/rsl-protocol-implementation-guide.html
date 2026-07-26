@@ -271,7 +271,6 @@
 <p><strong>Dave Winer</strong>, the programmer who co-created <strong>RSS</strong> and helped build the infrastructure of the early web, saw this gap. In September 2025, he proposed <strong>Really Simple Licensing (RSL)</strong> as the machine-readable standard for AI content licensing. The name echoes RSS deliberately. Simple. Standardized. Built for adoption.</p>
 <p>RSL lets publishers communicate licensing terms in a format AI crawlers can parse automatically. When <strong>GPTBot</strong> hits your domain, it can check your RSL file, read your pricing, and decide whether to proceed or move on. <strong>Cloudflare Pay-Per-Crawl</strong> uses RSL as one of its data sources for automated enforcement.</p>
 <p>This isn&#39;t a proposal anymore. Publishers are implementing RSL. AI companies are reading it. The infrastructure exists. What&#39;s missing is adoption at scale.</p>
-<p>[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]</p>
 <hr>
 <h2>Why RSL Matters (The New robots.txt for AI)</h2>
 <h3>Dave Winer&#39;s Vision for Machine-Readable Licensing</h3>
@@ -315,7 +314,6 @@
 <li>Best for: Large publishers with unique leverage (<strong>News Corp</strong>, <strong>Reddit</strong>, <strong>Financial Times</strong>)</li>
 </ul>
 <p>RSL sits between blocking and negotiating. It enables licensing to AI companies you&#39;ll never talk to, at rates you set, without lawyers or contracts. For publishers under 50 million monthly pageviews, this is typically the most practical path.</p>
-<p>[INTERNAL: robots.txt vs. RSL vs. Direct Deals Comparison]</p>
 <hr>
 <h2>Understanding RSL File Structure</h2>
 <h3>Required Fields (licensor, content_type, pricing_model)</h3>
@@ -475,7 +473,6 @@
 </code></pre>
 <p>Breaking news commands higher rates (time-sensitive, high demand). Archive content commands lower rates (commoditized, easily substituted). Research and analysis commands premium rates (unique expertise, hard to replace).</p>
 <p>This structure requires crawler systems that parse path-based pricing. <strong>Cloudflare</strong> supports it. Other enforcement systems may apply your default rate to everything.</p>
-<p>[INTERNAL: Pricing Your Content for AI Training]</p>
 <hr>
 <h2>Where to Host Your RSL File</h2>
 <h3>Domain Root Placement (/rsl.json vs. /licensing/rsl.json)</h3>
@@ -569,7 +566,6 @@ git commit -m &quot;RSL v1.2: Increased research section pricing to $0.025&quot;
 <pre><code class="language-json">&quot;updated&quot;: &quot;2026-01-15&quot;
 </code></pre>
 <p>AI companies can compare this date against their crawl logs to verify they were operating under current terms.</p>
-<p>[INTERNAL: AI Crawler Directory]</p>
 <hr>
 <h2>Enforcement: What Happens When AI Companies Ignore RSL</h2>
 <h3>Legal Precedent for Terms-of-Service Violations</h3>
@@ -604,7 +600,6 @@ git commit -m &quot;RSL v1.2: Increased research section pricing to $0.025&quot;
 <p>This removes enforcement burden from you. Cloudflare handles billing through <strong>Stripe</strong>. Cloudflare handles crawler identification. Cloudflare handles payment collection.</p>
 <p>Your RSL file feeds into this system. Cloudflare&#39;s dashboard overrides take precedence, but RSL provides the baseline configuration. Change your RSL file, Cloudflare&#39;s enforcement updates automatically.</p>
 <p>The limitation: Cloudflare only enforces for crawlers that use proper user-agent identification and don&#39;t circumvent detection. Sophisticated bad actors can still scrape. But compliant AI companies from <strong>OpenAI</strong>, <strong>Anthropic</strong>, and <strong>Google</strong> work within the system.</p>
-<p>[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]</p>
 <hr>
 <h2>When Blocking AI Crawlers Isn&#39;t the Move</h2>
 <p>Skip this if:</p>
@@ -618,8 +613,6 @@ git commit -m &quot;RSL v1.2: Increased research section pricing to $0.025&quot;
 <p>Implementation takes 30 minutes for a basic file, an hour for tiered pricing and full options. The infrastructure to read and enforce RSL exists. The remaining challenge is publisher adoption.</p>
 <p>Every publisher who implements RSL strengthens the standard. Every RSL file that results in payment validates the model. The system works. It just needs critical mass.</p>
 <p>Publishers waiting for the &quot;right time&quot; to implement RSL are watching the market develop without them. The right time was when you first noticed AI crawlers in your server logs. The second-best time is now.</p>
-<p>[INTERNAL: llms.txt Specification Guide]
-[INTERNAL: Pricing Your Content for AI Training]</p>
 <hr>
 <h2>Frequently Asked Questions</h2>
 <h3>Should I block all AI crawlers from my site?</h3>

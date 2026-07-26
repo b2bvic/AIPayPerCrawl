@@ -140,7 +140,7 @@ local function validate_api_key(key)
     -- For this tutorial, we'll use a simple file-based lookup
 
     local valid_keys = {
-        ["test-key-123"] = { quota = 1000, used = 0 },
+        ["DEMO"] = { quota = 1000, used = 0 },
         ["openai-key-456"] = { quota = 10000, used = 500 }
     }
 
@@ -295,7 +295,7 @@ curl -A "GPTBot/1.0" http://yoursite.com/article.html
 
 ### Test 2: AI Crawler With Valid API Key
 ```bash
-curl -A "GPTBot/1.0" -H "Authorization: Bearer test-key-123" http://yoursite.com/article.html
+KEY=DEMO curl -A "GPTBot/1.0" --oauth2-bearer "$KEY" http://yoursite.com/article.html
 ```
 
 **Expected response:** The actual article content
@@ -392,8 +392,8 @@ log_access(api_key, ngx.var.request_uri, user_agent)
 
 This creates a log file:
 ```
-2026-02-08 10:15:32 | test-key-123 | /article1.html | GPTBot/1.0
-2026-02-08 10:15:45 | test-key-123 | /article2.html | GPTBot/1.0
+2026-02-08 10:15:32 | DEMO | /article1.html | GPTBot/1.0
+2026-02-08 10:15:45 | DEMO | /article2.html | GPTBot/1.0
 2026-02-08 10:16:02 | openai-key-456 | /archive/2025/post.html | GPTBot/1.0
 ```
 
@@ -405,11 +405,11 @@ awk '{print $3}' /var/log/nginx/ai-licensing.log | sort | uniq -c
 
 Output:
 ```
-  245 test-key-123
+  245 DEMO
   1523 openai-key-456
 ```
 
-Bill accordingly: `245 × $0.01 = $2.45` for test-key-123.
+Bill accordingly: `245 × $0.01 = $2.45` for the demo key.
 
 ## Production Enhancements
 
@@ -650,4 +650,3 @@ Check your server access logs for user-agent strings containing GPTBot, ClaudeBo
 ### Can I monetize AI crawler access to my content?
 
 Some publishers are negotiating licensing deals directly with AI companies. For smaller sites, the practical path is controlling access (robots.txt, rate limiting, paywalling API endpoints) and measuring whether AI-sourced citation traffic converts. The pay-per-crawl model is emerging but not standardized — position yourself by documenting your content value and traffic patterns now.
-

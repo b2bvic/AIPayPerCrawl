@@ -30,7 +30,6 @@ Publishers running Pay-Per-Crawl report $500 to $5,000 monthly from AI crawler l
 
 This guide walks through the full setup process. Four to six hours of configuration. Revenue generation starting within 30 to 60 days.
 
-[INTERNAL: RSL Protocol Implementation Guide]
 
 ---
 
@@ -80,7 +79,6 @@ Not all AI companies respond the same to licensing requirements.
 
 Pay-Per-Crawl works for compliant crawlers. Non-compliant ones get blocked. The result: revenue from companies that play by rules, protection from those that don't.
 
-[INTERNAL: AI Crawler Directory]
 
 ---
 
@@ -161,7 +159,6 @@ Example tier structure:
 - `/research/`: $0.015/crawl (proprietary data)
 - `/docs/`: $0.020/crawl (technical documentation)
 
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 
@@ -416,7 +413,6 @@ After 30 days, analyze crawler behavior:
 
 Pricing isn't set-and-forget. Quarterly reviews catch market shifts, new AI company entrants, and changes in your own content value.
 
-[INTERNAL: llms.txt Specification Guide]
 
 ---
 
@@ -502,9 +498,6 @@ Publishers who implement now establish pricing before market benchmarks solidify
 
 The infrastructure exists. The AI companies are crawling. The only variable is whether they pay you for the privilege.
 
-[INTERNAL: RSL Protocol Implementation Guide]
-[INTERNAL: AI Crawler Directory]
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 

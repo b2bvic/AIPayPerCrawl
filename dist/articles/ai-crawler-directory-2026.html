@@ -270,7 +270,6 @@
 <p>The difference matters. <strong>Googlebot</strong> crawls to help users find your content. <strong>GPTBot</strong> crawls to help <strong>OpenAI</strong> build products that compete with your content. Search indexing and AI training serve fundamentally different economic functions.</p>
 <p>Understanding which crawlers hit your domain, how they behave, and what options exist for blocking or monetizing them forms the foundation of any AI licensing strategy. You can&#39;t price what you can&#39;t identify. You can&#39;t negotiate from strength when you don&#39;t know who&#39;s at the table.</p>
 <p>This directory catalogs the major AI crawlers operating in 2026, their documented behaviors, and the technical methods for managing their access to your content.</p>
-<p>[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]</p>
 <hr>
 <h2>Why AI Crawlers Are Different From Search Crawlers</h2>
 <h3>Training Crawls vs. Retrieval Crawls vs. Search Indexing</h3>
@@ -289,9 +288,7 @@
 <p>The fear is common: block AI crawlers, lose search rankings. The evidence doesn&#39;t support it.</p>
 <p><strong>GPTBot</strong> and <strong>Googlebot</strong> are separate crawlers with separate user-agent strings and separate robots.txt entries. Blocking one has no effect on the other. <strong>OpenAI</strong> has no influence over <strong>Google</strong>&#39;s search algorithm. Their systems don&#39;t communicate.</p>
 <p><strong>Google-Extended</strong> handles <strong>Gemini</strong> training and <strong>AI Overview</strong> generation. Blocking it prevents your content from appearing in AI-generated summaries. It does not affect traditional organic rankings. <strong>Google</strong>&#39;s own documentation confirms this separation.</p>
-<p>Case study data from 50+ publishers shows zero correlation between AI crawler blocking and organic traffic changes. Sites that blocked <strong>GPTBot</strong>, <strong>ClaudeBot</strong>, and <strong>Google-Extended</strong> maintained identical search performance. The crawlers serve different purposes. Blocking one category leaves the other intact.</p>
-<p>If you&#39;re hesitating to block or monetize AI crawlers because of SEO concerns, that fear is unfounded. The systems are independent.</p>
-<p>[INTERNAL: robots.txt vs. RSL vs. Direct Deals Comparison]</p>
+<p>This repository does not include a publisher cohort proving the ranking impact of blocking AI crawlers. Treat the crawler separation above as a technical distinction, then measure search and referral traffic on your own site before and after changing access rules.</p>
 <hr>
 <h2>The Major AI Crawlers (Detailed Profiles)</h2>
 <h3>GPTBot (OpenAI) - User-Agent, Crawl Frequency, Respect for Robots.txt</h3>
@@ -434,7 +431,6 @@ Disallow: /
 </code></pre>
 <p><strong>Plus server-level enforcement</strong> as backup.</p>
 <p><strong>Perplexity</strong>&#39;s business model (answer engine that competes with search) creates direct content competition. Your article becomes their AI-generated answer. Attribution exists but traffic doesn&#39;t flow.</p>
-<p>[INTERNAL: RSL Protocol Implementation Guide]</p>
 <hr>
 <h2>How to Identify Unknown AI Crawlers</h2>
 <h3>Server Log Analysis Techniques</h3>
@@ -553,7 +549,6 @@ not (http.user_agent contains &quot;bingbot&quot;)
 <p><strong>Rate limiting</strong> (throttles rather than blocks):</p>
 <p>Create a rate limiting rule targeting AI crawler user-agents. This slows extraction without complete blocking, useful if you&#39;re testing monetization approaches.</p>
 <p><strong>Cloudflare Pay-Per-Crawl</strong> integrates with these rules. Rather than blocking compliant crawlers like <strong>GPTBot</strong> and <strong>ClaudeBot</strong>, you can require payment for access. Cloudflare handles billing and enforcement.</p>
-<p>[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]</p>
 <hr>
 <h2>Monitoring Crawler Activity Over Time</h2>
 <h3>Log Analysis Tools (GoAccess, Matomo, Plausible)</h3>
@@ -597,8 +592,6 @@ fi
 <p>AI crawler management isn&#39;t a one-time configuration. The ecosystem shifts continuously. New players enter. Existing players change behavior. Compliance levels fluctuate.</p>
 <p>This directory provides the foundation. Identification methods, blocking techniques, and monitoring approaches remain stable even as specific crawlers change. Apply these frameworks to whatever AI bots appear next.</p>
 <p>The choice between blocking and monetizing depends on your content, your resources, and your risk tolerance. Both require the same starting point: knowing exactly who&#39;s crawling your domain and what they&#39;re doing with your content.</p>
-<p>[INTERNAL: RSL Protocol Implementation Guide]
-[INTERNAL: Pricing Your Content for AI Training]</p>
 <hr>
 <h2>Frequently Asked Questions</h2>
 <h3>Should I block all AI crawlers from my site?</h3>

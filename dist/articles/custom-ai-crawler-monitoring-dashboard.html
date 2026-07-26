@@ -323,7 +323,7 @@ CustomLog /var/log/apache2/access.log json_format
 <p><strong>Cloudflare Logpush</strong> example configuration:</p>
 <pre><code class="language-bash">curl -X POST &quot;https://api.cloudflare.com/client/v4/zones/{zone_id}/logpush/jobs&quot; \
   -H &quot;X-Auth-Email: your-email@example.com&quot; \
-  -H &quot;X-Auth-Key: your-api-key&quot; \
+  --oauth2-bearer &quot;$CF_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
   --data &#39;{
     &quot;destination_conf&quot;: &quot;s3://your-bucket/cloudflare-logs?region=us-east-1&quot;,

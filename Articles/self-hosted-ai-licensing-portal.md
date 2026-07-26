@@ -473,7 +473,7 @@ AI crawlers authenticate using API keys via HTTP headers.
 ```http
 GET /licensed-content/article-123 HTTP/1.1
 Host: example.com
-X-API-Key: lic_a1b2c3d4e5f6...
+X-API-Key: DEMO
 User-Agent: GPTBot/1.0
 ```
 
@@ -484,7 +484,7 @@ Crawlers include the API key in `X-API-Key` header. Middleware validates before 
 Some crawlers can't set custom headers. Support query parameters:
 
 ```http
-GET /licensed-content/article-123?api_key=lic_a1b2c3d4e5f6... HTTP/1.1
+GET /licensed-content/article-123?api_key=DEMO HTTP/1.1
 ```
 
 **Security risk**: API keys in URLs appear in logs, referrer headers, and browser history. Prefer header authentication; use query parameters only when necessary.

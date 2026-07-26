@@ -396,8 +396,8 @@ Terms of service, DPAs (data processing agreements), audit rights, content remov
 └─────────────────────────────┘
 </code></pre>
 <p><strong>Sample API Endpoint:</strong></p>
-<pre><code class="language-bash"># AI company authenticates
-curl -H &quot;Authorization: Bearer LICENSE_KEY&quot; \
+<pre><code class="language-bash"># AI company authenticates with a runtime secret
+curl --oauth2-bearer &quot;$LICENSE_KEY&quot; \
      https://publisher.com/api/v1/content?category=technology&amp;limit=1000
 </code></pre>
 <p>Returns JSON:</p>

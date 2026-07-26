@@ -28,7 +28,6 @@ The deal demonstrated **Reddit** could monetize its 18-year archive of user disc
 
 This teardown examines deal structure, content valuation methodology, and strategic lessons for platforms considering similar agreements.
 
-[INTERNAL: AP Deal Teardown]
 
 ---
 
@@ -80,7 +79,6 @@ Partial disclosure served **Reddit's** interests. The $60 million figure was hea
 
 **Search integration value:** **Google** already featured **Reddit** results prominently in search. AI Overviews draw on **Reddit** discussions. Licensing secures ongoing access and removes legal ambiguity around training data usage.
 
-[INTERNAL: AI Content Licensing Models Comparison]
 
 ---
 
@@ -281,7 +279,6 @@ This tension exists for any **UGC** platform. Users contribute freely. Platforms
 
 **Reddit** didn't navigate ownership questions creatively. They relied on contracts users already signed. Clean legal position, messy community relations.
 
-[INTERNAL: Pricing Your Content for AI Training]
 
 ---
 
@@ -386,7 +383,6 @@ Before licensing **UGC**, verify you have rights.
 
 If your Terms of Service lack these provisions, update them before pursuing AI licensing. Retroactive application may not cover existing content depending on jurisdiction.
 
-[INTERNAL: News Corp Deal Teardown]
 
 ---
 

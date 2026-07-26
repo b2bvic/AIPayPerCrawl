@@ -270,7 +270,6 @@
 <p><strong>llms.txt</strong> solves this by being readable. Plain text. Natural language. A document that both AI systems and humans can interpret without tooling.</p>
 <p>This isn&#39;t a replacement for RSL or <strong>robots.txt</strong>. It&#39;s a complement. RSL tells machines what to do. llms.txt tells humans (and increasingly, AI systems themselves) what the rules are in language they can process contextually.</p>
 <p>Publishers who implement llms.txt create a single source of truth for their licensing terms that works across every audience: AI crawlers, AI company compliance teams, legal departments, and the LLMs themselves when they encounter the file during retrieval operations.</p>
-<p>[INTERNAL: RSL Protocol Implementation Guide]</p>
 <hr>
 <h2>What llms.txt Is (And How It Differs From RSL)</h2>
 <h3>Human-Readable vs. Machine-Readable Licensing</h3>
@@ -315,7 +314,6 @@ Contact licensing@example.com to establish a billing relationship.
 <li>Enforcement: Relies on AI company compliance teams and the AI systems&#39; own processing</li>
 </ul>
 <p>A publisher running both files has coverage across the full lifecycle. RSL handles what happens when <strong>GPTBot</strong> requests a page. llms.txt handles what happens when a human at <strong>OpenAI</strong> reviews whether their crawler&#39;s behavior aligns with your terms, and what happens when GPT-4 retrieves your content and needs to understand usage constraints.</p>
-<p>[INTERNAL: robots.txt vs. RSL vs. Direct Deals Comparison]</p>
 <hr>
 <h2>File Structure and Required Elements</h2>
 <h3>Header Section (Site Name, Licensing Contact, Update Date)</h3>
@@ -393,7 +391,6 @@ Crawlers that access content without payment will be:
 3. Reported to industry blocklists
 </code></pre>
 <p>The enforcement section isn&#39;t just posturing. It communicates that you monitor crawler behavior and have mechanisms to respond. AI companies that care about compliance will note this. AI companies that ignore terms will ignore this too, but you&#39;ve established documentation for any future disputes.</p>
-<p>[INTERNAL: Pricing Your Content for AI Training]</p>
 <hr>
 <h2>Creating an Effective llms.txt File</h2>
 <h3>Tone and Clarity (Writing for AI Interpretation)</h3>
@@ -488,7 +485,6 @@ Crawlers not listed above must contact partnerships@
 before accessing content.
 </code></pre>
 <p>Both examples demonstrate clarity, specificity, and actionable information. The trade publication focuses on simplicity. The news organization adds tiered pricing and signals existing relationships with major AI companies.</p>
-<p>[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]</p>
 <hr>
 <h2>Placement and Discoverability</h2>
 <h3>Hosting at /llms.txt (Domain Root)</h3>
@@ -549,7 +545,6 @@ X-RSL-Location: https://example.com/rsl.json
 </ol>
 <p>Most RAG implementations don&#39;t check llms.txt today. The standard is new. But as AI licensing matures, expect more systems to incorporate licensing awareness into their retrieval pipelines.</p>
 <p>Publishers implementing llms.txt now establish their terms before this becomes standard practice. When RAG systems do start checking licensing files, your terms are already in place.</p>
-<p>[INTERNAL: AI Crawler Directory]</p>
 <hr>
 <h2>Updating and Versioning</h2>
 <h3>When to Update Your llms.txt File</h3>
@@ -590,8 +585,6 @@ X-RSL-Location: https://example.com/rsl.json
 <p>The llms.txt specification fills a gap in the AI licensing stack. RSL handles machine-to-machine communication. robots.txt handles crawler directives. llms.txt handles everything that requires human interpretation or AI contextual understanding.</p>
 <p>Publishers who implement it create documentation that serves multiple audiences: the AI systems that might read it during retrieval, the compliance teams at AI companies reviewing licensing terms, and their own legal teams preparing for negotiations or disputes.</p>
 <p>The file takes 30 minutes to write. The benefits compound as AI licensing matures and more systems incorporate llms.txt awareness into their operations.</p>
-<p>[INTERNAL: RSL Protocol Implementation Guide]
-[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]</p>
 <hr>
 <h2>Frequently Asked Questions</h2>
 <h3>Should I block all AI crawlers from my site?</h3>

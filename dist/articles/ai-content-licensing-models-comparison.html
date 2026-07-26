@@ -270,7 +270,6 @@
 <p>Each path has economics. Each has enforcement mechanisms. Each serves different publisher profiles.</p>
 <p>The decision isn&#39;t philosophical. It&#39;s financial. A 5-million-pageview trade publication and a 500-million-pageview news conglomerate face the same AI crawlers but have radically different leverage positions. The framework that works for <strong>News Corp</strong> doesn&#39;t work for a construction industry newsletter. The framework that works for a newsletter might leave <strong>Reddit</strong>-scale platforms undermonetized by orders of magnitude.</p>
 <p>This comparison breaks down each model&#39;s mechanics, economics, ideal use cases, and limitations. The goal isn&#39;t to advocate for one approach. It&#39;s to show which approach fits which publisher circumstance.</p>
-<p>[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]</p>
 <hr>
 <h2>The Three Paths to AI Content Licensing</h2>
 <h3>Blocking (robots.txt) — Control Without Compensation</h3>
@@ -297,7 +296,6 @@ Disallow: /
 <p>Custom contracts. Negotiated terms. Upfront payments or guaranteed annual minimums. Attribution requirements. Audit rights. Exclusivity clauses (or explicitly non-exclusive terms).</p>
 <p>Direct deals require scale, unique content, or irreplaceable data. <strong>News Corp</strong> brings <strong>Wall Street Journal</strong>, <strong>New York Post</strong>, <strong>Times of London</strong>, <strong>Barron&#39;s</strong>, <strong>MarketWatch</strong> — decades of archived journalism plus real-time news feeds. <strong>Reddit</strong> brings 18 years of user-generated discussions across every conceivable topic. These aren&#39;t fungible content sources.</p>
 <p>The threshold for direct deal viability sits around <strong>50 million monthly pageviews</strong> or truly irreplaceable niche data (proprietary research, specialized technical documentation, unique datasets). Below that threshold, AI companies can find substitute content elsewhere. Above it, you have negotiating leverage.</p>
-<p>[INTERNAL: News Corp OpenAI Deal Teardown]</p>
 <hr>
 <h2>robots.txt: The Blocking-Only Approach</h2>
 <h3>How robots.txt Works for AI Crawlers</h3>
@@ -351,7 +349,6 @@ Disallow: /
 <p>Blocking via robots.txt generates zero revenue. Your content doesn&#39;t enter AI systems (assuming crawler compliance), but you receive nothing in exchange. Archives you spent years building contribute nothing to your bottom line.</p>
 <p>Legal enforceability is weak. robots.txt isn&#39;t a contract. Violating its directives may constitute trespass or terms-of-service violation, but precedent is limited. No court has awarded significant damages for robots.txt violations by AI crawlers.</p>
 <p>Blocking also forecloses future optionality. AI companies building relationships with publishers typically start with compliant crawlers. Publishers who block everything aren&#39;t on AI company radar for partnership opportunities.</p>
-<p>[INTERNAL: AI Crawler Directory]</p>
 <hr>
 <h2>RSL + Cloudflare Pay-Per-Crawl: The Marketplace Approach</h2>
 <h3>How RSL Protocol Defines Licensing Terms</h3>
@@ -422,7 +419,6 @@ Disallow: /
 </tr>
 </tbody></table>
 <p>These ranges assume standard per-crawl pricing ($0.005-$0.015) and typical crawler behavior. Specialized content (technical documentation, financial data) commands higher rates and may exceed these ranges.</p>
-<p>[INTERNAL: RSL Protocol Implementation Guide]</p>
 <hr>
 <h2>Direct Licensing Deals: The News Corp / Reddit Approach</h2>
 <h3>Case Study: News Corp&#39;s $250M Deal With OpenAI</h3>
@@ -515,7 +511,6 @@ Disallow: /
 </tr>
 </tbody></table>
 <p>Direct deals make sense when potential revenue justifies the investment. Legal fees for contract drafting run <strong>$15,000-$50,000</strong>. Negotiation takes months. If marketplace revenue would be $3,000/month ($36,000/year), direct deal overhead may not pencil out. If marketplace revenue would be $10,000/month ($120,000/year), direct deals that could yield $5 million annually justify the investment.</p>
-<p>[INTERNAL: Reddit Google AI Licensing Deal Teardown]</p>
 <hr>
 <h2>Hybrid Strategies: Combining Multiple Approaches</h2>
 <h3>Block Aggressive Crawlers, License to Compliant Ones Via RSL</h3>
@@ -535,7 +530,6 @@ Disallow: /
 <p><strong>Cloudflare marketplace</strong> handles retrieval. Per-crawl pricing. Automated billing. Revenue scales with AI usage of your content in real-time responses.</p>
 <p><strong>Direct negotiation</strong> handles training. Flat fee for archive access. One-time payment (or annual renewal) for permission to train on historical content.</p>
 <p>This hybrid captures both revenue streams without sacrificing either. Retrieval revenue is ongoing. Training revenue is lump-sum. Combined, they may exceed either approach alone.</p>
-<p>[INTERNAL: Pricing Your Content for AI Training]</p>
 <hr>
 <h2>Decision Framework: Which Model Is Right for Your Publication</h2>
 <h3>Content Uniqueness Assessment</h3>
@@ -593,9 +587,6 @@ Disallow: /
 <p>The strategic approach: start where you can execute effectively. Gather data. Adjust as the market matures and your leverage position clarifies.</p>
 <p>Marketplace revenue today funds direct deal negotiations tomorrow. Direct deal learnings inform marketplace pricing refinements. Blocking creates optionality for future negotiations.</p>
 <p>The worst strategy is paralysis. While you deliberate, AI crawlers are scraping. Choose a path. Execute. Iterate.</p>
-<p>[INTERNAL: Cloudflare Pay-Per-Crawl Setup Tutorial]
-[INTERNAL: RSL Protocol Implementation Guide]
-[INTERNAL: Associated Press OpenAI Licensing Deal Teardown]</p>
 <hr>
 <h2>Frequently Asked Questions</h2>
 <h3>Should I block all AI crawlers from my site?</h3>
